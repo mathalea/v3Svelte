@@ -7,13 +7,13 @@ import { Mathalea } from "../Mathalea";
 
   const exercice1 = {
     directory: "6e",
-    filename: "6C10",
-    nbQuestions: 1,
+    filename: "6M10",
+    nbQuestions: 3,
   };
   const exercice2 = {
     directory: "6e",
-    filename: "6G10",
-    nbQuestions: 2,
+    filename: "6C11",
+    nbQuestions: 3,
   };
   const exercice3 = {
     directory: "6e",
@@ -35,7 +35,7 @@ import { Mathalea } from "../Mathalea";
 
 <main>
   {#each mesExercices as exercice, i (exercice)}
-    <Exercice {...exercice} indiceExercice = {i}  />
+    <Exercice {...exercice} indiceExercice = {i} indiceLastExercice = {mesExercices.length}  />
   {/each}
 </main>
 

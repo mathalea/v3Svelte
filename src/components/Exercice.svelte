@@ -1,8 +1,8 @@
 
 <script lang="ts">
   import { onMount, tick } from 'svelte'
-  import Monter from './Monter.svelte'
-  import Descendre from './Descendre.svelte'
+  import Monter from './BoutonMonter.svelte'
+  import Descendre from './BoutonDescendre.svelte'
   import { Mathalea } from '../Mathalea'
   import type Exercice from "../exercices/ExerciceTs"
 
@@ -11,6 +11,7 @@
   export let filename: string
   export let nbQuestions = undefined
   export let indiceExercice: number
+  export let indiceLastExercice: number
 
   let exercice: Exercice
   let divExercice: HTMLDivElement
@@ -66,7 +67,7 @@ async function refreshDisplay() {
   {#if indiceExercice > 0}
     <Monter indice={indiceExercice} />
   {/if}
-  {#if indiceExercice > -1}
+  {#if indiceExercice < indiceLastExercice - 1}
     <Descendre indice={indiceExercice} />
   {/if}
 </div>
