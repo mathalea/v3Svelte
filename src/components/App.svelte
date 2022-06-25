@@ -1,5 +1,6 @@
 <script lang="ts">
 import { tick } from 'svelte'
+import { flip } from 'svelte/animate'
 import { Mathalea } from "../Mathalea";
 
   import Exercice from "./Exercice.svelte"
@@ -35,7 +36,9 @@ import { Mathalea } from "../Mathalea";
 
 <main>
   {#each mesExercices as exercice, i (exercice)}
-    <Exercice {...exercice} indiceExercice = {i} indiceLastExercice = {mesExercices.length}  />
+    <div animate:flip="{{duration:d => 30 * Math.sqrt(d)}}" >
+      <Exercice {...exercice} indiceExercice = {i} indiceLastExercice = {mesExercices.length} />
+    </div>
   {/each}
 </main>
 
