@@ -1,10 +1,33 @@
-<script lang="ts">
-import { tick } from 'svelte'
-import { flip } from 'svelte/animate'
-import { Mathalea } from "../Mathalea";
+<Header />
+<main>
+  {#each mesExercices as exercice, i (exercice)}
+    <div animate:flip={{ duration: (d) => 30 * Math.sqrt(d) }}>
+      <Exercice
+        {...exercice}
+        indiceExercice={i}
+        indiceLastExercice={mesExercices.length}
+      />
+    </div>
+  {/each}
+</main>
+<Footer />
 
-  import Exercice from "./Exercice.svelte"
-  import { listeExercices } from "./store"
+<style>
+  :root {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  }
+</style>
+
+<script lang="ts">
+  import { tick } from "svelte";
+  import { flip } from "svelte/animate";
+  import { Mathalea } from "../Mathalea";
+
+  import Exercice from "./Exercice.svelte";
+  import Header from "./Header.svelte";
+  import Footer from "./Footer.svelte";
+  import { listeExercices } from "./store";
 
   const exercice1 = {
     directory: "6e",
@@ -22,29 +45,13 @@ import { Mathalea } from "../Mathalea";
     nbQuestions: 3,
   };
 
-  let mesExercices
+  let mesExercices;
 
   listeExercices.subscribe(async (liste) => {
-		mesExercices = liste
-    await tick()
-    Mathalea.renderDiv(document.querySelector('#app'))
-	})
+    mesExercices = liste;
+    await tick();
+    Mathalea.renderDiv(document.querySelector("#app"));
+  });
 
-  listeExercices.set([exercice1, exercice2, exercice3])
-
+  listeExercices.set([exercice1, exercice2, exercice3]);
 </script>
-
-<main>
-  {#each mesExercices as exercice, i (exercice)}
-    <div animate:flip="{{duration:d => 30 * Math.sqrt(d)}}" >
-      <Exercice {...exercice} indiceExercice = {i} indiceLastExercice = {mesExercices.length} />
-    </div>
-  {/each}
-</main>
-
-<style>
-  :root {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
-      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
-  }
-</style>
