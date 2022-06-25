@@ -1,6 +1,7 @@
 {
   "extends": "@tsconfig/svelte/tsconfig.json",
   "compilerOptions": {
+    "outDir": "./built",
     "target": "esnext",
     "useDefineForClassFields": true,
     "module": "esnext",
@@ -17,5 +18,6 @@
     "isolatedModules": true
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
+  "exclude": ["./built/**/*"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

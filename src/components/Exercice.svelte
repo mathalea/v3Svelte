@@ -1,8 +1,9 @@
 
 <script lang="ts">
   import { onMount, tick } from 'svelte'
-  import Monter from './BoutonMonter.svelte'
-  import Descendre from './BoutonDescendre.svelte'
+  import { fade } from 'svelte/transition'
+  import BoutonMonter from './BoutonMonter.svelte'
+  import BouttonDescendre from './BoutonDescendre.svelte'
   import { Mathalea } from '../Mathalea'
   import type Exercice from "../exercices/ExerciceTs"
 
@@ -16,7 +17,8 @@
   let exercice: Exercice
   let divExercice: HTMLDivElement
   let visible = true
-  let contenuEtNonCorrection = true
+  let contenuVisible = true
+  let correctionVisible = false
   let titre: string = ""
   let contenu: string = ""
   let correction: string = ""
@@ -24,6 +26,24 @@
   function renderMath() {
     Mathalea.renderDiv(divExercice)
   }
+
+  async function transitionContenuCorrection() {
+    if (correctionVisible) {
+      correctionVisible = !correctionVisible
+      await delay(0.3)
+      contenuVisible = !contenuVisible
+    } else {
+      contenuVisible = !contenuVisible
+      await delay(0.3)
+      correctionVisible = !correctionVisible
+    }
+  }
+
+  function delay(n){
+    return new Promise(function(resolve){
+        setTimeout(resolve,n*1000);
+    });
+}
 
   async function newData() {
     const seed = (Math.random() * 1000).toString()
@@ -45,7 +65,7 @@ async function refreshDisplay() {
 
   $: {
     // Dès qu'une de ces variables change, on réactualise le rendu
-    if (visible || contenuEtNonCorrection ||!contenuEtNonCorrection) refreshDisplay()
+    if (visible || correctionVisible || contenuVisible) refreshDisplay()
   }
 
   onMount(async () => {
@@ -62,22 +82,23 @@ async function refreshDisplay() {
 
 <div>
   <button type="button" on:click={() => {visible = !visible}}>{visible ? "Cacher" : "Montrer"}</button>
-  <button type="button" on:click={() => {contenuEtNonCorrection = !contenuEtNonCorrection}}>{contenuEtNonCorrection ? "Voir la correction" : "Voir la consigne"}</button>
+  <button type="button" on:click={transitionContenuCorrection}>{contenuVisible ? "Voir la correction" : "Voir la consigne"}</button>
   <button type="button" on:click={newData}>Actualiser</button>
   {#if indiceExercice > 0}
-    <Monter indice={indiceExercice} />
+    <BoutonMonter indice={indiceExercice} />
   {/if}
   {#if indiceExercice < indiceLastExercice - 1}
-    <Descendre indice={indiceExercice} />
+    <BouttonDescendre indice={indiceExercice} />
   {/if}
 </div>
 {#if visible}
 <div bind:this="{divExercice}">
   <h1>Exercice {indiceExercice + 1} - {titre}</h1>
-  {#if contenuEtNonCorrection}
-    <div>{@html contenu}</div>
-    {:else}
-    <div>{@html correction}</div>
+  {#if contenuVisible}
+    <div transition:fade>{@html contenu}</div>
+  {/if}
+  {#if correctionVisible}
+    <div transition:fade >{@html correction}</div>
   {/if}
   </div>
 {/if}
