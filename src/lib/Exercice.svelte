@@ -4,6 +4,10 @@
   import { Mathalea } from '../Mathalea'
   import type Exercice from "../exercices/ExerciceTs"
 
+  export let directory: string
+  export let filename: string
+  export let nbQuestions = undefined
+
   let count: number = 0
   let exercice: Exercice
   let divExercice: HTMLDivElement
@@ -40,8 +44,9 @@ async function refreshDisplay() {
   }
 
   onMount(async () => {
-    exercice = await Mathalea.load('6e', '6C10')
+    exercice = await Mathalea.load(directory, filename)
     titre = exercice.titre
+    if (nbQuestions) exercice.nbQuestions = nbQuestions
     exercice.nouvelleVersion()
     contenu = exercice.contenu
     correction = exercice.contenuCorrection

@@ -1,9 +1,18 @@
 <script lang="ts">
 import Exercice from './lib/Exercice.svelte';
+
+const exercice1 = {
+    directory: '6e',
+    filename: '6C10',
+    nbQuestions: 3
+  }
 </script>
 
 <main>
-  <Exercice />
+  
+  <Exercice {...exercice1}/>
+  <Exercice directory={'6e'} filename='6G10'  />
+  <Exercice {...exercice1}/>
 
 </main>
 
