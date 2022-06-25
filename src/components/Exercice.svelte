@@ -1,9 +1,12 @@
 <script lang="ts">
-  import { onMount, tick } from 'svelte';
+  import { afterUpdate, onMount, tick } from 'svelte'
+  import seedrandom from 'seedrandom'
   import BoutonMonter from './BoutonMonter.svelte';
   import BoutonDescendre from './BoutonDescendre.svelte';
   import { Mathalea } from '../Mathalea';
   import type Exercice from '../exercices/ExerciceTs';
+  import Settings from './Settings.svelte';
+  import { randomInt } from 'mathjs';
 
   export let directory: string;
   export let filename: string;
@@ -20,9 +23,15 @@
   let contenu: string = '';
   let correction: string = '';
 
-  function renderMath() {
+  afterUpdate(() => {
     Mathalea.renderDiv(divExercice);
+  })
+
+  function handleNewSettings(event: Event) {
+    if (event.detail.nbQuestions) exercice.nbQuestions = (event.detail.nbQuestions)
+    updateDisplay()
   }
+
 
   async function transitionContenuCorrection() {
     correctionVisible = !correctionVisible;
@@ -30,35 +39,25 @@
   }
 
   async function newData() {
-    const seed = (Math.random() * 1000).toString();
-    exercice.seed = seed;
-    exercice.nouvelleVersion();
-    // Randomseed
-    contenu = exercice.contenu;
-    correction = exercice.contenuCorrection;
-    refreshDisplay();
+    const seed = (Math.random() * 1000).toString()
+    exercice.seed = seed
+    updateDisplay()
   }
 
-  async function refreshDisplay() {
-    if (exercice) {
-      await tick();
-      renderMath();
-    }
+  function updateDisplay() {
+    if (exercice.seed === undefined) exercice.seed = randomInt(1, 9999).toString()
+    seedrandom(exercice.seed, { global: true })
+    exercice.nouvelleVersion()
+    contenu = exercice.contenu
+    correction = exercice.contenuCorrection
   }
 
-  $: {
-    // Dès qu'une de ces variables change, on réactualise le rendu
-    if (visible || correctionVisible || contenuVisible) refreshDisplay();
-  }
 
   onMount(async () => {
     exercice = await Mathalea.load(directory, filename);
     titre = exercice.titre;
     if (nbQuestions) exercice.nbQuestions = nbQuestions;
-    exercice.nouvelleVersion();
-    contenu = exercice.contenu;
-    correction = exercice.contenuCorrection;
-    refreshDisplay();
+    updateDisplay()
   });
 </script>
 
@@ -104,6 +103,7 @@
       <div>{@html correction}</div>
     {/if}
   {/if}
+  <Settings nbQuestions={nbQuestions} on:reglages={handleNewSettings}/>
 </div>
 
 <style>
