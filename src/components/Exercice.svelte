@@ -1,14 +1,17 @@
 
 <script lang="ts">
   import { onMount, tick } from 'svelte'
+  import Monter from './Monter.svelte'
+  import Descendre from './Descendre.svelte'
   import { Mathalea } from '../Mathalea'
   import type Exercice from "../exercices/ExerciceTs"
+
 
   export let directory: string
   export let filename: string
   export let nbQuestions = undefined
+  export let indiceExercice: number
 
-  let count: number = 0
   let exercice: Exercice
   let divExercice: HTMLDivElement
   let visible = true
@@ -25,6 +28,7 @@
     const seed = (Math.random() * 1000).toString()
     exercice.seed = seed
     exercice.nouvelleVersion()
+    // Randomseed
     contenu = exercice.contenu
     correction = exercice.contenuCorrection
     refreshDisplay()
@@ -50,8 +54,7 @@ async function refreshDisplay() {
     exercice.nouvelleVersion()
     contenu = exercice.contenu
     correction = exercice.contenuCorrection
-    await tick()
-    renderMath()
+    refreshDisplay()
    
   })
 </script>
@@ -60,10 +63,16 @@ async function refreshDisplay() {
   <button type="button" on:click={() => {visible = !visible}}>{visible ? "Cacher" : "Montrer"}</button>
   <button type="button" on:click={() => {contenuEtNonCorrection = !contenuEtNonCorrection}}>{contenuEtNonCorrection ? "Voir la correction" : "Voir la consigne"}</button>
   <button type="button" on:click={newData}>Actualiser</button>
+  {#if indiceExercice > 0}
+    <Monter indice={indiceExercice} />
+  {/if}
+  {#if indiceExercice > -1}
+    <Descendre indice={indiceExercice} />
+  {/if}
 </div>
 {#if visible}
 <div bind:this="{divExercice}">
-  <h1>{titre}</h1>
+  <h1>Exercice {indiceExercice + 1} - {titre}</h1>
   {#if contenuEtNonCorrection}
     <div>{@html contenu}</div>
     {:else}

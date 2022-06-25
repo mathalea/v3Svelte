@@ -1,0 +1,47 @@
+<script lang="ts">
+import { tick } from 'svelte'
+import { Mathalea } from "../Mathalea";
+
+  import Exercice from "./Exercice.svelte"
+  import { listeExercices } from "./store"
+
+  const exercice1 = {
+    directory: "6e",
+    filename: "6C10",
+    nbQuestions: 1,
+  };
+  const exercice2 = {
+    directory: "6e",
+    filename: "6G10",
+    nbQuestions: 2,
+  };
+  const exercice3 = {
+    directory: "6e",
+    filename: "6N10",
+    nbQuestions: 3,
+  };
+
+  let mesExercices
+
+  listeExercices.subscribe(async (liste) => {
+		mesExercices = liste
+    await tick()
+    Mathalea.renderDiv(document.querySelector('#app'))
+	})
+
+  listeExercices.set([exercice1, exercice2, exercice3])
+
+</script>
+
+<main>
+  {#each mesExercices as exercice, i (exercice)}
+    <Exercice {...exercice} indiceExercice = {i}  />
+  {/each}
+</main>
+
+<style>
+  :root {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+      Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  }
+</style>
