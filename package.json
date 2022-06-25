@@ -1,0 +1,36 @@
+{
+  "name": "v3svelte",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "check": "svelte-check --tsconfig ./tsconfig.json"
+  },
+  "dependencies": {
+    "@cortex-js/compute-engine": "^0.6.0",
+    "algebrite": "^1.4.0",
+    "clipboard": "^2.0.11",
+    "decimal.js": "^10.3.1",
+    "earcut": "^2.2.3",
+    "instrumenpoche": "git+https://git.sesamath.net/sesamath/instrumenpoche.git",
+    "katex": "^0.13.24",
+    "loadjs": "^4.2.0",
+    "mathjs": "^10.6.1",
+    "mathlive": "^0.69.11",
+    "mathsteps": "github:mathalea/mathsteps",
+    "seedrandom": "^3.0.5"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
+    "@tsconfig/svelte": "^2.0.1",
+    "svelte": "^3.44.0",
+    "svelte-check": "^2.2.7",
+    "svelte-preprocess": "^4.9.8",
+    "tslib": "^2.3.1",
+    "typescript": "^4.5.4",
+    "vite": "^2.9.9"
+  }
+}
