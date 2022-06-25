@@ -28,22 +28,9 @@
   }
 
   async function transitionContenuCorrection() {
-    if (correctionVisible) {
       correctionVisible = !correctionVisible
-      await delay(0.3)
       contenuVisible = !contenuVisible
-    } else {
-      contenuVisible = !contenuVisible
-      await delay(0.3)
-      correctionVisible = !correctionVisible
     }
-  }
-
-  function delay(n){
-    return new Promise(function(resolve){
-        setTimeout(resolve,n*1000);
-    });
-}
 
   async function newData() {
     const seed = (Math.random() * 1000).toString()
@@ -95,10 +82,10 @@ async function refreshDisplay() {
 <div bind:this="{divExercice}">
   <h1>Exercice {indiceExercice + 1} - {titre}</h1>
   {#if contenuVisible}
-    <div transition:fade>{@html contenu}</div>
+    <div>{@html contenu}</div>
   {/if}
   {#if correctionVisible}
-    <div transition:fade >{@html correction}</div>
+    <div>{@html correction}</div>
   {/if}
   </div>
 {/if}
