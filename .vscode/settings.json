@@ -1,0 +1,14 @@
+{
+    "svelte.enable-ts-plugin": true,
+    "svelte.ask-to-enable-ts-plugin": false,
+    "standard.enableGlobally": true,
+    "standard.validate": [
+
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "typescriptsvelte",
+        "javascriptsvelte"
+    ]
+}
