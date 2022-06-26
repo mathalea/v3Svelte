@@ -1,3 +1,5 @@
+// @ts-nocheck
+/* eslint-disable no-unused-vars */
 
 const fs = require('fs')
 const path = require('path')
@@ -8,7 +10,9 @@ const jsDir = path.resolve(__dirname, '..')
 const dictFile = path.resolve(jsDir, 'modules', 'exercicesDisponiblesReferentiel2022.json')
 const uuidToUrlFile = path.resolve(jsDir, 'modules', 'uuidsToUrl.json')
 const referentiel2022File = path.resolve(jsDir, 'modules', 'referentiel2022.json')
-let dictionnaire, referentiel2022, uuidToUrl
+let dictionnaire = new Map()
+let referentiel2022 = new Map()
+let uuidsToUrl = new Map()
 
 /**
  * @author Sylvain Chambon
@@ -52,12 +56,12 @@ function toObjet (dico) {
  * Crée une Uuid de 5 caractères hexadécimaux (1M de possibilités)
  * @returns {string}
  */
-function create_UUID () {
+function createUuid () {
   let dt = new Date().getTime()
   const uuid = 'xxxxx'.replace(/[xy]/g, function (c) {
     const r = (dt + Math.random() * 16) % 16 | 0
     dt = Math.floor(dt / 16)
-    return (c == 'x' ? r : (r & 0x3 | 0x8)).toString(16)
+    return (c === 'x' ? r : (r & 0x3 | 0x8)).toString(16)
   })
   return uuid
 }
@@ -71,9 +75,10 @@ function getAllFilesOfDir (dir) {
   fs.readdirSync(dir).forEach(entry => {
     if (entry === 'Exercice.js' || entry === 'ExerciceTs.ts' || entry === 'beta' || entry === 'Profs') return
     const fullEntry = path.join(dir, entry)
-    if (fs.statSync(fullEntry).isDirectory()) return
-    else if ((/\.js$/.test(entry) || (/\.ts$/.test(entry))) && !/^_/.test(entry)) {
-      files.push(fullEntry)
+    if (!fs.statSync(fullEntry).isDirectory()) {
+      if ((/\.js$/.test(entry) || (/\.ts$/.test(entry))) && !/^_/.test(entry)) {
+        files.push(fullEntry)
+      }
     } // sinon on ignore
   })
   return files
@@ -105,16 +110,16 @@ function getAllFiles (dir) {
  * @returns {string} l'uuid de l'exercice dont la référence dans le référentiel2022 est ref
  */
 function uuidFromRef (ref) {
-  if (!referentiel2022 instanceof Map) {
+  if (!(referentiel2022 instanceof Map)) {
     console.log('referentiel2022 non valide ou non initialisé')
-    return false
+    return ''
   }
-  for ([niv, chaps] of referentiel2022) {
-    for ([chap, exos] of chaps) {
+  for (const [niv, chaps] of referentiel2022) {
+    for (const [chap, exos] of chaps) {
       if (exos.get(ref)) return exos.get(ref)
     }
   }
-  return false
+  return ''
 }
 /**
  *
@@ -122,13 +127,13 @@ function uuidFromRef (ref) {
  * @returns {string} la référence correspondante dans le référentiel2022
  */
 function urlFromUuid (uuid) {
-  if (!uuidToUrl instanceof Map) {
+  if (!(uuidsToUrl instanceof Map)) {
     console.log('dictionnaire uurlToUuid non valide ou non initialisé')
-    return false
+    return ''
   }
   const cheminFichier = uuidsToUrl.get(uuid)
   if (cheminFichier) return cheminFichier[0] + '/' + cheminFichier[1]
-  else return false
+  else return ''
 }
 /**
  *
@@ -136,9 +141,9 @@ function urlFromUuid (uuid) {
  * @returns {array} la liste des uuids des exercices du niveau charché.
  */
 function listeChapitresDuNiveau (level) {
-  if (!referentiel2022 instanceof Map) {
+  if (!(referentiel2022 instanceof Map)) {
     console.log('referentiel2022 non valide ou non initialisé')
-    return false
+    return []
   }
   const chaps = referentiel2022.get(level)
   const listeChapitres = []
@@ -154,11 +159,11 @@ function listeChapitresDuNiveau (level) {
  */
 function listeExosDuChapitre (chap) {
   const listeExos = []
-  if (!referentiel2022 instanceof Map) {
+  if (!(referentiel2022 instanceof Map)) {
     console.log('referentiel2022 non valide ou non initialisé')
     return listeExos
   }
-  for ([niv, chaps] of referentiel2022) {
+  for (const [niv, chaps] of referentiel2022) {
     if (chaps.get(chap)) {
       chaps.get(chap).forEach((value, key) => listeExos.push([key, value]))
     }
@@ -172,12 +177,12 @@ function listeExosDuChapitre (chap) {
  */
 function listeExosAvecTag (tag) {
   const listeExos = []
-  if (!dictionnaire instanceof Map) {
+  if (!(dictionnaire instanceof Map)) {
     console.log('dictionnaire des exercices disponibles non valide ou non initialisé')
     return listeExos
   }
-  for ([niv, chaps] of dictionnaire) {
-    for ([chap, exos] of chaps) {
+  for (const [niv, chaps] of dictionnaire) {
+    for (const [chap, exos] of chaps) {
       exos.forEach((value, key, exos) => {
         try {
           if (value.get('themes').includes(tag)) listeExos.push(key)
@@ -191,13 +196,13 @@ function listeExosAvecTag (tag) {
 }
 
 function ecrireUuidDansFichier (uuid, name, file) {
-  let fichier = fs.readFileSync(file, 'utf-8', (err, data) => { console.log('data') })
+  let fichier = fs.readFileSync(file, 'utf-8')
   if (fichier) {
     fichier = `export const uuid = '${uuid}'\nexport const ref = '${name}'\n` + fichier
     fs.writeFileSync(file, fichier, 'utf-8')
     return false
   } else {
-    console.log(`Le fichier ${file} n\'a pas pu être ouvert en lecture`)
+    console.log(`Le fichier ${file} n'a pas pu être ouvert en lecture`)
     return false
   }
 }
@@ -212,7 +217,7 @@ function collecteUuidsDico (dico) {
 }
 
 function ajouteExoReferentiel ({ uuid, name, level, chap, referentiel }) {
-  if (!referentiel instanceof Map) {
+  if (!(referentiel instanceof Map)) {
     console.log('référentiel non valide')
     return false
   }
@@ -229,7 +234,7 @@ function ajouteExoReferentiel ({ uuid, name, level, chap, referentiel }) {
   refChap.set(name, uuid)
 }
 function ajouteExoDico ({ uuid = '', name = '', titre = '', level = '', chap = '', themes = [], tags = {}, datePublication = '', dateModification = '', dico }) {
-  if (!dico instanceof Map) {
+  if (!(dico instanceof Map)) {
     console.log('dictionnaire non valide')
     return false
   }
@@ -269,7 +274,7 @@ function builJsonDictionnaireExercices () {
   let listOfUuids = []
   // On prépare les fichiers que l'on va alimenter : listOfUuids, dictionnaire, uuidsToUrl
   if (fs.existsSync(dictFile)) {
-    const contenuFichierDico = fs.readFileSync(dictFile, 'utf-8', (err, data) => { console.log('data') })
+    const contenuFichierDico = fs.readFileSync(dictFile, 'utf-8')
     if (contenuFichierDico === '') {
       console.log('Le fichier est vide ou n\'existe pas')
       dictionnaire = new Map()
@@ -281,12 +286,12 @@ function builJsonDictionnaireExercices () {
     dictionnaire = new Map()
   }
   if (fs.existsSync(uuidToUrlFile)) {
-    uuidsToUrl = toMap(JSON.parse(fs.readFileSync(uuidToUrlFile, 'utf-8', (err, data) => { console.log('data') })))
+    uuidsToUrl = toMap(JSON.parse(fs.readFileSync(uuidToUrlFile, 'utf-8')))
   } else {
     uuidsToUrl = new Map()
   }
   if (fs.existsSync(referentiel2022File)) {
-    referentiel2022 = toMap(JSON.parse(fs.readFileSync(referentiel2022File, 'utf-8', (err, data) => { console.log('data') })))
+    referentiel2022 = toMap(JSON.parse(fs.readFileSync(referentiel2022File, 'utf-8')))
   } else {
     referentiel2022 = new Map()
   }
@@ -302,14 +307,14 @@ function builJsonDictionnaireExercices () {
     let titre, isAmcReady, isInteractifReady
     const isCan = file.indexOf('\\can\\') !== -1
     let level, chap
-    let themes, tags, datePublication, dateDeModification
+    let themes, datePublication, dateModification
     try {
       module = requireImport(file)
     } catch (error) { // error sans doute du à l'usage de typescript... On cherche les paramètres dans le texte du fichier.
       module = fs.readFileSync(file, 'utf8')
       if (module.indexOf('export const uuid =') === -1) {
         do {
-          uuid = create_UUID()
+          uuid = createUuid()
         } while (listOfUuids.indexOf(uuid) !== -1)
         let chunks = /export const titre *= *(['"])([^'"]+)\1/.exec(module)
         titre = chunks[2]
@@ -328,7 +333,7 @@ function builJsonDictionnaireExercices () {
     if (typeof module !== 'string') {
       try {
         do {
-          uuid = create_UUID()
+          uuid = createUuid()
         } while (listOfUuids.indexOf(uuid) !== -1)
         titre = module.titre
         isAmcReady = Boolean(module.amcReady)
@@ -360,7 +365,7 @@ function builJsonDictionnaireExercices () {
         chap = name.substring(0, 4)
       }
     }
-    tags = { AMC: !!isAmcReady, Interactif: !!isInteractifReady, Can: !!isCan }
+    const tags = { AMC: !!isAmcReady, Interactif: !!isInteractifReady, Can: !!isCan }
     ecrireUuidDansFichier(uuid, name, file)
     ajouteExoDico({ uuid, name, titre, level, chap, themes, tags, datePublication, dateModification, dico: dictionnaire })
     ajouteExoReferentiel({ uuid, name, level, chap, referentiel: referentiel2022 })
@@ -382,13 +387,13 @@ function builJsonDictionnaireExercices () {
  */
 function buildJsonExercicesOfLevel (level) { // level contient la première lettre du niveau
   let listeExosLevel
-  if (dictionnaire === undefined) dictionnaire = toMap(JSON.parse(fs.readFileSync(dictFile, 'utf-8', (err, data) => { console.log('data') })))
+  if (dictionnaire === undefined) dictionnaire = toMap(JSON.parse(fs.readFileSync(dictFile, 'utf-8')))
   const entrées = Object.entries(toObjet(dictionnaire))
   const listeExos = []
   for (const [clé, liste] of entrées) {
     if (clé === level) {
       for (const [key, data] of Object.entries(liste)) {
-        exos = Object.entries(data)
+        const exos = Object.entries(data)
         for (const [key2, value] of Object.entries(exos)) {
           listeExos.push([value[0], value[1]])
         }
