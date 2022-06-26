@@ -67,4 +67,5 @@
     exercice5,
     exercice6,
   ]);
+  // listeExercices.set([exercice1]);
 </script>
