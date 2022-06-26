@@ -1,5 +1,6 @@
 <script lang="ts">
   import { afterUpdate, onMount, tick } from 'svelte'
+  import { fade } from 'svelte/transition'
   import seedrandom from 'seedrandom'
   import BoutonMonter from './BoutonMonter.svelte'
   import BoutonDescendre from './BoutonDescendre.svelte'
@@ -85,7 +86,9 @@
     {/if}
   {/if}
   {#if parametresVisible}
-  <Settings nbQuestions={nbQuestions} on:reglages={handleNewSettings}/>
+  <div transition:fade class="mt-3">
+    <Settings nbQuestions={nbQuestions} on:reglages={handleNewSettings}/>
+  </div>
   {/if}
 </div>
 
