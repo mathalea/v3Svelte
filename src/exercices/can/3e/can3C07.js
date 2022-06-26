@@ -1,3 +1,5 @@
+export const uuid = '3a3a9'
+export const ref = 'can3C07'
 import Exercice from '../../Exercice.js'
 import { randint, texNombrec, calcul, texNum } from '../../../modules/outils.js'
 import { mathalea2d, point, segmentAvecExtremites, codeSegments, labelPoint, texteParPosition } from '../../../modules/2d.js'

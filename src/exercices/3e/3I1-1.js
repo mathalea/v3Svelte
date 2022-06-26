@@ -1,3 +1,5 @@
+export const uuid = '77e51'
+export const ref = '3I1-1'
 import { texteEnCouleurEtGras, listeQuestionsToContenu, combinaisonListesSansChangerOrdre, randint, modalYoutube, lampeMessage, enumerateSansPuceSansNumero, texteGras } from '../../modules/outils.js'
 import Exercice from '../Exercice.js'
 import { context } from '../../modules/context.js'

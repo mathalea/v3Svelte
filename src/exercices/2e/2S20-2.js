@@ -1,3 +1,5 @@
+export const uuid = '44ef2'
+export const ref = '2S20-2'
 import DeterminerDesMedianes from '../4e/4S11.js'
 export const titre = 'Calculer des médianes'
 export { interactifReady, interactifType } from '../4e/4S11.js'

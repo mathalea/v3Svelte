@@ -1,3 +1,5 @@
+export const uuid = '31763'
+export const ref = '6I11'
 /* eslint-disable camelcase */
 import Exercice from '../Exercice.js'
 import { context } from '../../modules/context.js'

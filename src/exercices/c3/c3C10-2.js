@@ -1,3 +1,5 @@
+export const uuid = 'f1559'
+export const ref = 'c3C10-2'
 import ExerciceLabyrintheMultiples from '../6e/6C10-5.js'
 export const titre = 'Labyrinthe de multiples'
 

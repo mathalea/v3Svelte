@@ -1,3 +1,5 @@
+export const uuid = '44ee3'
+export const ref = '3L12-1'
 import Exercice from '../Exercice.js'
 import { randint, choice, texFraction, lettreDepuisChiffre, listeQuestionsToContenuSansNumero } from '../../modules/outils.js'
 import { setReponse } from '../../modules/gestionInteractif.js'

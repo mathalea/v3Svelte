@@ -1,3 +1,5 @@
+export const uuid = '76e52'
+export const ref = 'can2F03'
 import { fraction } from '../../../modules/fractions'
 import Exercice from '../../Exercice.js'
 import { randint, rienSi1, ecritureParentheseSiNegatif, choice, texteEnCouleur, reduireAxPlusB, sp, listeQuestionsToContenuSansNumero } from '../../../modules/outils.js'

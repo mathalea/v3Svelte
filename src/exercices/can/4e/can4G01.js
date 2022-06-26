@@ -1,3 +1,5 @@
+export const uuid = '76b37'
+export const ref = 'can4G01'
 import Exercice from '../../Exercice.js'
 import { randint, choice, creerNomDePolygone, texteEnCouleur, texNombrec } from '../../../modules/outils.js'
 import { afficheLongueurSegment, codeAngle, mathalea2d, point, pointAdistance, polygoneAvecNom } from '../../../modules/2d.js'

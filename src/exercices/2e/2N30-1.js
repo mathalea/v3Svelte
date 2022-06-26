@@ -1,3 +1,5 @@
+export const uuid = 'e9cab'
+export const ref = '2N30-1'
 export const titre = 'Décomposer une fraction (partie entière +fraction inférieure à 1) puis donner l\'écriture décimale'
 
 // eslint-disable-next-line import/first

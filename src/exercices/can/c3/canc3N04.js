@@ -1,3 +1,5 @@
+export const uuid = '71599'
+export const ref = 'canc3N04'
 import { calcul, randint, texNombre } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Arrondir à l\'unité'

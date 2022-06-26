@@ -1,3 +1,5 @@
+export const uuid = 'b2010'
+export const ref = 'canc3N05'
 import { calcul, choice, randint, texNombrec } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer une somme (partie entière/décimale)'

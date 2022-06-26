@@ -1,3 +1,5 @@
+export const uuid = '5f7ff'
+export const ref = '2N30-3'
 export const titre = 'Multiplier des fractions'
 
 // eslint-disable-next-line import/first

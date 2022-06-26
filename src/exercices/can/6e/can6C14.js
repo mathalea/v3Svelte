@@ -1,3 +1,5 @@
+export const uuid = 'b76fb'
+export const ref = 'can6C14'
 import { calcul, randint, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer la somme de quatre entiers qui se marient'

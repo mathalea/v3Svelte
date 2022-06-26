@@ -1,3 +1,5 @@
+export const uuid = '52bac'
+export const ref = 'can3C12'
 import { choice, randint } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Encadrer une racine carrée'

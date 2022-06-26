@@ -1,3 +1,5 @@
+export const uuid = 'a5334'
+export const ref = 'can5N01'
 import { calcul, randint, texNombrec, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer la somme de nombres décimaux'

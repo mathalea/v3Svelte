@@ -1,3 +1,5 @@
+export const uuid = '8d56d'
+export const ref = '2F20-1'
 import Exercice from '../Exercice.js'
 import { fraction, obtenirListeFractionsIrreductibles, obtenirListeFractionsIrreductiblesFaciles } from '../../modules/fractions'
 import {

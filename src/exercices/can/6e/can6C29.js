@@ -1,3 +1,5 @@
+export const uuid = 'c9313'
+export const ref = 'can6C29'
 import Exercice from '../../Exercice.js'
 import { randint, choice, texteEnCouleur } from '../../../modules/outils.js'
 export const titre = 'Résoudre un problème de partage'

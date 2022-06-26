@@ -1,3 +1,5 @@
+export const uuid = 'a7a15'
+export const ref = 'can2P02'
 import Exercice from '../../Exercice.js'
 import { randint, calcul, choice, prenomM } from '../../../modules/outils.js'
 export const titre = 'Dénombrer dans une situation concrète'

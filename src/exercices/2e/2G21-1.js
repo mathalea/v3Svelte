@@ -1,3 +1,5 @@
+export const uuid = 'aeb0b'
+export const ref = '2G21-1'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice } from '../../modules/outils.js'
 import { mathalea2d, point, tracePoint, vecteur, polygoneAvecNom, translation, pointAdistance, longueur, homothetie, latexParPoint, similitude, translationAnimee } from '../../modules/2d.js'

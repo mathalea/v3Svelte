@@ -1,3 +1,5 @@
+export const uuid = '0e81f'
+export const ref = 'HPC102'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, combinaisonListes, texNombre } from '../../modules/outils.js'
 import { aleaVariables } from '../../modules/outilsMathjs.js'

@@ -1,3 +1,5 @@
+export const uuid = 'a5f4b'
+export const ref = 'can4C08'
 import Exercice from '../../Exercice.js'
 import { calcul, combinaisonListes, texNombre } from '../../../modules/outils.js'
 export const titre = 'Calculer une somme de puissances de 10'

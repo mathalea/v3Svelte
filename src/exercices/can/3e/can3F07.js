@@ -1,3 +1,5 @@
+export const uuid = 'f906f'
+export const ref = 'can3F07'
 import Exercice from '../../Exercice.js'
 import { randint, calcul, texFraction, miseEnEvidence, reduireAxPlusB, texteCentre } from '../../../modules/outils.js'
 import { courbe2, mathalea2d, point, repere2, tracePoint, texteParPosition, segment } from '../../../modules/2d.js'

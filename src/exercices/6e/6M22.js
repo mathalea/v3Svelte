@@ -1,3 +1,5 @@
+export const uuid = '7f4d5'
+export const ref = '6M22'
 import ExercicePerimetresEtAires from './_Exercice_perimetres_et_aires.js'
 
 export const titre = 'Calculer périmètre et aire de disques (à partir d\'un texte)'

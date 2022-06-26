@@ -1,3 +1,5 @@
+export const uuid = 'eedf7'
+export const ref = 'MG32_3F13'
 import Exercice from '../Exercice.js'
 import { context } from '../../modules/context.js'
 import { listeQuestionsToContenuSansNumero, randint, calcul, texGraphique, resolutionSystemeLineaire2x2 } from '../../modules/outils.js'

@@ -1,3 +1,5 @@
+export const uuid = '7b0bd'
+export const ref = 'c3C10'
 import AdditionsSoustractionsMultiplicationsPosees from '../6e/6C10.js'
 export const titre = 'Additions, soustractions et multiplications posées de nombres entiers'
 export { interactifReady, interactifType, amcReady, amcType } from '../6e/6C10.js'

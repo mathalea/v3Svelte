@@ -1,3 +1,5 @@
+export const uuid = '55d0e'
+export const ref = '2N40-2'
 import CalculerLaValeurDUneExpressionLitterale from '../5e/5L14.js'
 export const titre = 'Calculer la valeur d\'une expression littérale.'
 export { interactifReady, interactifType } from '../5e/5L14.js'

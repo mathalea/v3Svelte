@@ -1,3 +1,5 @@
+export const uuid = '2d7a3'
+export const ref = 'can5C06'
 import { choice, randint, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Trouver le reste d’une division euclidienne'

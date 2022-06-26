@@ -1,3 +1,5 @@
+export const uuid = 'af1c9'
+export const ref = 'can6C31'
 import { choice, randint, texNombre, texteEnCouleur, arrondi } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Soustraire un décimal d’un entier'

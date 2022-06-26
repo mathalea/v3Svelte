@@ -1,3 +1,5 @@
+export const uuid = 'ab32d'
+export const ref = '5N13-2'
 import EgalitesEntreFractions from '../6e/6N41.js'
 export const amcReady = true
 export const amcType = 'qcmMono' // type de question AMC

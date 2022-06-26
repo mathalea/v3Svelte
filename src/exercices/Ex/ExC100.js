@@ -1,3 +1,5 @@
+export const uuid = '9cd37'
+export const ref = 'ExC100'
 import { listeQuestionsToContenu, randint, fractionSimplifiee, abs, texFraction, miseEnEvidence } from '../../modules/outils.js'
 
 import Exercice from '../Exercice.js'

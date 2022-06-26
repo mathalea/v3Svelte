@@ -1,3 +1,5 @@
+export const uuid = 'dc18b'
+export const ref = '1E11-3'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, rienSi1, ecritureAlgebrique, ecritureAlgebriqueSauf1, ecritureParentheseSiNegatif } from '../../modules/outils.js'
 import { setReponse } from '../../modules/gestionInteractif.js'

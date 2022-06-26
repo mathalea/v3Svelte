@@ -1,3 +1,5 @@
+export const uuid = '06f84'
+export const ref = 'can3S03'
 import Exercice from '../../Exercice.js'
 import { randint, choice, texFractionReduite, texNombrec, texFraction, simplificationDeFractionAvecEtapes } from '../../../modules/outils.js'
 export const titre = 'Calculer une probabilités*'

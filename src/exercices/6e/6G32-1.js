@@ -1,3 +1,5 @@
+export const uuid = 'fedb3'
+export const ref = '6G32-1'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenuSansNumero, randint, shuffle, combinaisonListes, lettreDepuisChiffre, texcolors, texteGras, numAlpha } from '../../modules/outils.js'
 import { point, tracePoint, labelPoint, droite, segment, demiDroite, polygone, codeAngle, texteParPosition, mathalea2d } from '../../modules/2d.js'

@@ -1,3 +1,5 @@
+export const uuid = '7cfd5'
+export const ref = 'can6C25'
 import Exercice from '../../Exercice.js'
 import { randint, choice, texNombrec, prenomF } from '../../../modules/outils.js'
 export const titre = 'Rechercher un prix unitaire'

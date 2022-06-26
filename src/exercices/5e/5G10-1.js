@@ -1,3 +1,5 @@
+export const uuid = '5ec6a'
+export const ref = '5G10-1'
 import ConstruireParSymetrie from '../6e/_Construire_par_symetrie.js'
 export const titre = 'Construire le symétrique d\'un point par rapport à une droite'
 export const dateDeModificationImportante = '14/11/2021'

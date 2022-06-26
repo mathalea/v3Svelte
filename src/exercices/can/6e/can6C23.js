@@ -1,3 +1,5 @@
+export const uuid = '64055'
+export const ref = 'can6C23'
 import Exercice from '../../Exercice.js'
 import { randint, calcul, choice, texteEnCouleur } from '../../../modules/outils.js'
 export const titre = 'Calculer avec +/-99 ou +/-999'

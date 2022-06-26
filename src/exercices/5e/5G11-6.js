@@ -1,3 +1,5 @@
+export const uuid = 'dda82'
+export const ref = '5G11-6'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, contraindreValeur, randint, choice, shuffle } from '../../modules/outils.js'
 import { labelPoint, longueur, mathalea2d, papierPointe, point, rotation, tracePoint } from '../../modules/2d.js'

@@ -1,3 +1,5 @@
+export const uuid = '6fc47'
+export const ref = '2N32-7'
 import Exercice from '../Exercice.js'
 import { ecritureAlgebrique, ecritureAlgebriqueSauf1, abs, listeQuestionsToContenu, pgcd, randint, texFractionReduite } from '../../modules/outils.js'
 

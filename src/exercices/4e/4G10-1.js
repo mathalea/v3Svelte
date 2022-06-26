@@ -1,3 +1,5 @@
+export const uuid = '8aae4'
+export const ref = '4G10-1'
 import TransformationsDuPlanEtCoordonnees from '../3e/3G10-1.js'
 export const titre = 'Trouver les coordonnée de l\'image d\'un point par une translation'
 export { interactifReady, interactifType, amcReady, amcType } from '../3e/3G10-1.js'

@@ -1,3 +1,5 @@
+export const uuid = '8a1f9'
+export const ref = 'can4L06'
 import { calcul, randint } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer une expression pour une valeur particulière*'

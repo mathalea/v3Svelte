@@ -1,3 +1,5 @@
+export const uuid = '267a1'
+export const ref = '5R20-3'
 import Exercice from '../Exercice.js'
 import { context } from '../../modules/context.js'
 import {

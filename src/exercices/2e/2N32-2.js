@@ -1,3 +1,5 @@
+export const uuid = 'd4922'
+export const ref = '2N32-2'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, combinaisonListes, ecritureAlgebrique, ecritureParentheseSiNegatif } from '../../modules/outils.js'
 

@@ -1,3 +1,5 @@
+export const uuid = '16824'
+export const ref = '4C22'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, combinaisonListes, abs, pgcd, texFractionReduite, obtenirListeFacteursPremiers, obtenirListeFractionsIrreductibles, obtenirListeNombresPremiers, decompositionFacteursPremiers, texFraction } from '../../modules/outils.js'
 import { fraction } from '../../modules/fractions.js'

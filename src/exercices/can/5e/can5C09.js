@@ -1,3 +1,5 @@
+export const uuid = 'dadb7'
+export const ref = 'can5C09'
 import { calcul, randint, texNombrec, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Multiplier par les multiples de 101'

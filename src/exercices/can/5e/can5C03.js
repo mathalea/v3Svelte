@@ -1,3 +1,5 @@
+export const uuid = '15ce3'
+export const ref = 'can5C03'
 import { calcul, randint, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer une différence d’entiers'

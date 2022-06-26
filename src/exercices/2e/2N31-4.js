@@ -1,3 +1,5 @@
+export const uuid = 'ff7a4'
+export const ref = '2N31-4'
 import PrioritesEtRelatifsEtPuissances from '../4e/4C34.js'
 export const titre = 'Calculs utilisant les priorités opératoires et les puissances'
 export { amcReady, amcType } from '../4e/4C34.js'

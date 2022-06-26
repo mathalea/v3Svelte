@@ -1,3 +1,5 @@
+export const uuid = '0df00'
+export const ref = '4I1'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, shuffle, calcul, texteEnCouleur, combinaisonListes } from '../../modules/outils.js'
 import { creerLutin, avance, baisseCrayon, leveCrayon, tournerD, allerA, mathalea2d, scratchblock } from '../../modules/2d.js'

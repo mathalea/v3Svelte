@@ -1,3 +1,5 @@
+export const uuid = '87680'
+export const ref = 'can2G13'
 import Exercice from '../../Exercice.js'
 import { randint, choice, ecritureParentheseSiNegatif, texteEnCouleur, extraireRacineCarree, lettreMinusculeDepuisChiffre } from '../../../modules/outils.js'
 export const titre = 'Calculer la norme d’un vecteur'

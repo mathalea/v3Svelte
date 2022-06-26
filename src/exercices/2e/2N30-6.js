@@ -1,3 +1,5 @@
+export const uuid = '330b0'
+export const ref = '2N30-6'
 export const titre = 'Fractions irréductibles'
 
 // eslint-disable-next-line import/first

@@ -1,3 +1,5 @@
+export const uuid = '18ca0'
+export const ref = 'can5C18'
 import Exercice from '../../Exercice.js'
 import { listeQuestionsToContenu, randint, choice } from '../../../modules/outils.js'
 import { propositionsQcm } from '../../../modules/interactif/questionQcm.js'

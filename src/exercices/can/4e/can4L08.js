@@ -1,3 +1,5 @@
+export const uuid = '20159'
+export const ref = 'can4L08'
 import Exercice from '../../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, rienSi1, ecritureAlgebrique, ecritureParentheseSiNegatif } from '../../../modules/outils.js'
 import { propositionsQcm } from '../../../modules/interactif/questionQcm.js'

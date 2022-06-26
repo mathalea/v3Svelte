@@ -1,3 +1,5 @@
+export const uuid = 'be32e'
+export const ref = '6G20-2'
 import VocabulaireDesTriangles from '../5e/5G20-1.js'
 export const titre = 'Utiliser le vocabulaire des triangles'
 

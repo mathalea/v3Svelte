@@ -1,3 +1,5 @@
+export const uuid = 'ba728'
+export const ref = '5L14-4'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, combinaisonListes, texteEnCouleur, contraindreValeur } from '../../modules/outils.js'
 import ChoisirExpressionLitterale from './_Choisir_expression_litterale.js'

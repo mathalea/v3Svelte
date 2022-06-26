@@ -1,3 +1,5 @@
+export const uuid = 'c91e7'
+export const ref = 'can6C19'
 import { randint, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Déterminer le complément à 100'

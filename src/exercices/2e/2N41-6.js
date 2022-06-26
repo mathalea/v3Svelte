@@ -1,3 +1,5 @@
+export const uuid = 'f2afc'
+export const ref = '2N41-6'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, combinaisonListes, texFractionReduite, texFraction } from '../../modules/outils.js'
 import { setReponse } from '../../modules/gestionInteractif.js'

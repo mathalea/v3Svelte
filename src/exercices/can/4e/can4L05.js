@@ -1,3 +1,5 @@
+export const uuid = 'f9b45'
+export const ref = 'can4L05'
 import { choice, ecritureAlgebrique, ecritureParentheseSiNegatif, randint, signe } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Développer avec la simple distributivité'

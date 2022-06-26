@@ -1,3 +1,5 @@
+export const uuid = '2b862'
+export const ref = '5G30'
 import UtiliserLeCodagePourDecrire from '../6e/_Utiliser_le_codage_pour_decrire.js'
 
 // 5G30

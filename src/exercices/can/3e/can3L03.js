@@ -1,3 +1,5 @@
+export const uuid = '9dbfe'
+export const ref = 'can3L03'
 import { ecritureAlgebrique, randint } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Résoudre une équation du type ax+b=c'

@@ -1,3 +1,5 @@
+export const uuid = '13f89'
+export const ref = 'c3C11'
 import DivisionsEuclidiennes from '../6e/6C11.js'
 export const titre = 'Divisions euclidiennes'
 export { interactifReady, interactifType, amcReady, amcType } from '../6e/6C11.js'

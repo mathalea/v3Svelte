@@ -1,3 +1,5 @@
+export const uuid = '064bf'
+export const ref = '5G20-0'
 import ConstruireUnTriangle from '../6e/6G21.js'
 export const titre = 'Construire un triangle aux instruments'
 

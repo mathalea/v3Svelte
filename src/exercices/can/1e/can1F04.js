@@ -1,3 +1,5 @@
+export const uuid = '8fa0b'
+export const ref = 'can1F04'
 import Exercice from '../../Exercice.js'
 import { randint, listeQuestionsToContenu, choice } from '../../../modules/outils.js'
 import { ajouteChampTexteMathLive } from '../../../modules/interactif/questionMathLive.js'

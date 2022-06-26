@@ -1,3 +1,5 @@
+export const uuid = '9a6bf'
+export const ref = '3L15'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, combinaisonListes, ecritureAlgebriqueSauf1, ecritureAlgebrique, rienSi1, texFraction, texFractionReduite, randint, pgcd, choice } from '../../modules/outils.js'
 export const titre = 'Équations du second degré se ramenant au premier degré'

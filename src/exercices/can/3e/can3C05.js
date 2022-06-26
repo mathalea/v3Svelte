@@ -1,3 +1,5 @@
+export const uuid = '19f83'
+export const ref = 'can3C05'
 import Exercice from '../../Exercice.js'
 import { randint, calcul, texNombrec, rienSi1 } from '../../../modules/outils.js'
 export const titre = 'Calculer avec  une puissance de 10'

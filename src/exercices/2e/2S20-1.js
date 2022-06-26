@@ -1,3 +1,5 @@
+export const uuid = 'dcf59'
+export const ref = '2S20-1'
 import calculEffectifFrequence from '../3e/3S12.js'
 export const titre = 'Calculer des effectifs et des fréquences'
 export { interactifReady, interactifType } from '../3e/3S12.js'

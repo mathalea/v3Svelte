@@ -1,3 +1,5 @@
+export const uuid = '7a6e8'
+export const ref = 'canc3C01'
 import { choice } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Déterminer un nombre à partir d’une phrase'

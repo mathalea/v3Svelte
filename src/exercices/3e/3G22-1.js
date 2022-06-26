@@ -1,3 +1,5 @@
+export const uuid = 'a5fe7'
+export const ref = '3G22-1'
 import Exercice from '../Exercice.js'
 import Decimal from 'decimal.js'
 import { listeQuestionsToContenu, combinaisonListes, randint, texNombre } from '../../modules/outils.js'

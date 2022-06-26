@@ -1,3 +1,5 @@
+export const uuid = '17928'
+export const ref = 'can1L04'
 import Exercice from '../../Exercice.js'
 import { randint, listeQuestionsToContenu, choice, reduirePolynomeDegre3, ecritureParentheseSiNegatif, texNombre } from '../../../modules/outils.js'
 import { ajouteChampTexteMathLive } from '../../../modules/interactif/questionMathLive.js'

@@ -1,3 +1,5 @@
+export const uuid = '28717'
+export const ref = '2N40-4'
 import DistributiviteSimpleDoubleReduction from '../3e/3L11-3.js'
 export const titre = 'Utiliser la distributivité (simple ou double) et réduire'
 export { interactifReady, interactifType } from '../3e/3L11-3.js'

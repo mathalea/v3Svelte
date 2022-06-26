@@ -1,3 +1,5 @@
+export const uuid = '9978a'
+export const ref = 'can3S02'
 import Exercice from '../../Exercice.js'
 import { choice, texFractionReduite, texFraction } from '../../../modules/outils.js'
 export const titre = 'Calculer la probabilité d’ un évènement contraire'

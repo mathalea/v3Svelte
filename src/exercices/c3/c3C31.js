@@ -1,3 +1,5 @@
+export const uuid = '6a57e'
+export const ref = 'c3C31'
 import ProblemeCourse from '../6e/6C32.js'
 export const titre = 'Problème - Les courses'
 export { interactifReady, interactifType, amcReady, amcType } from '../6e/6C32.js'

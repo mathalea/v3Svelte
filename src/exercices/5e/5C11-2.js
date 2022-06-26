@@ -1,3 +1,5 @@
+export const uuid = '71014'
+export const ref = '5C11-2'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, prenom, TrouverSolutionMathador } from '../../modules/outils.js'
 

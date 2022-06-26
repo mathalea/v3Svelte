@@ -1,3 +1,5 @@
+export const uuid = 'fc386'
+export const ref = 'can5C04'
 import { calcul, randint, texteEnCouleur, texNombrec } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer avec triple et moitié'

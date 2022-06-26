@@ -1,3 +1,5 @@
+export const uuid = '37608'
+export const ref = '1E11-1'
 
 import Exercice from '../Exercice'
 import { combinaisonListes, contraindreValeur, lettreDepuisChiffre, listeQuestionsToContenu } from '../../modules/outils'

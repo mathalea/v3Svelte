@@ -1,3 +1,5 @@
+export const uuid = 'af7d4'
+export const ref = '6M22-1'
 import { pointAdistance, point, segment, rotation, cercle, tracePoint, mathalea2d, afficheLongueurSegment, latexParPoint } from '../../modules/2d.js'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, arrondi, texNombre, contraindreValeur, randint, interactivite, texNombrec, stringNombre } from '../../modules/outils.js'

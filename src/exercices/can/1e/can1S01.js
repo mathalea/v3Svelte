@@ -1,3 +1,5 @@
+export const uuid = 'b7b65'
+export const ref = 'can1S01'
 import Exercice from '../../Exercice.js'
 import { randint, choice, ecritureAlgebrique, calcul, texNombrec, texFractionReduite } from '../../../modules/outils.js'
 export const titre = 'Calculer un terme d’une suite explicite'

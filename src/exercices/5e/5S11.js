@@ -1,3 +1,5 @@
+export const uuid = '7d1d6'
+export const ref = '5S11'
 import LectureDiagrammeBarre from '../6e/6S10.js'
 export const titre = 'Lire un diagramme en barre'
 

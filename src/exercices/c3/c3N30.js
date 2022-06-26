@@ -1,3 +1,5 @@
+export const uuid = '15a65'
+export const ref = 'c3N30'
 import ExerciceConversions from '../6e/_Exercice_conversions.js'
 export const titre = "Conversion d'unités des préfixes k,h,da vers unité de référence"
 export { interactifReady, interactifType, amcReady, amcType } from '../6e/_Exercice_conversions.js'

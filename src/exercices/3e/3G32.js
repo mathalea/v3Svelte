@@ -1,3 +1,5 @@
+export const uuid = 'c4fd7'
+export const ref = '3G32'
 import problemesTrigoLongueur from '../3e/3G32-0.js'
 export const titre = "Calculer la largeur d'une rivière"
 export { interactifReady, interactifType } from '../3e/3G32-0.js'

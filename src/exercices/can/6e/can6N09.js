@@ -1,3 +1,5 @@
+export const uuid = '37dcd'
+export const ref = 'can6N09'
 import { calcul, choice, randint, texNombrec, sp } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Trouver le nombre qui suit'

@@ -1,3 +1,5 @@
+export const uuid = '6155a'
+export const ref = '1G10'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, combinaisonListes, shuffle } from '../../modules/outils.js'
 import { ajouteChampTexteMathLive } from '../../modules/interactif/questionMathLive.js'

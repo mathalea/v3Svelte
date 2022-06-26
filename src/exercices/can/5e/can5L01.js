@@ -1,3 +1,5 @@
+export const uuid = 'd25bb'
+export const ref = 'can5L01'
 import Exercice from '../../Exercice.js'
 import { randint, calcul, texNombre, texNombrec, choice } from '../../../modules/outils.js'
 export const titre = 'Trouver $a+1$ ou $a-1$ connaissant $2a$'

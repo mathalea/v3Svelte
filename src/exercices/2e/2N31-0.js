@@ -1,3 +1,5 @@
+export const uuid = '628b3'
+export const ref = '2N31-0'
 import PuissanceDunNombre from '../4e/4C35.ts'
 export const titre = 'Puissances : écriture décimale ou fractionnaire'
 export const dateDePublication = '14/06/2022'

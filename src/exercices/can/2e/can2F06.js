@@ -1,3 +1,5 @@
+export const uuid = '6d4d3'
+export const ref = 'can2F06'
 import Exercice from '../../Exercice.js'
 import { listeQuestionsToContenu, reduireAxPlusB, randint, choice, texFractionReduite } from '../../../modules/outils.js'
 import { tableauDeVariation, mathalea2d } from '../../../modules/2d.js'

@@ -1,3 +1,5 @@
+export const uuid = '34a95'
+export const ref = 'can2F13'
 import ImageFonctionsRefs from '../../2e/2F11-1.js'
 export const titre = 'Déterminer l’image d’un nombre par une fonction de référence.'
 export const interactifReady = true

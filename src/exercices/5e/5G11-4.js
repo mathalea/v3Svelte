@@ -1,3 +1,5 @@
+export const uuid = '75ab9'
+export const ref = '5G11-4'
 import TransformationsDuPlanEtCoordonnees from '../3e/3G10-1.js'
 export const titre = 'Trouver les coordonnée de l\'image d\'un point par une symétrie centrale'
 export { interactifReady, interactifType, amcReady, amcType } from '../3e/3G10-1.js'

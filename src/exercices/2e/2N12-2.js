@@ -1,3 +1,5 @@
+export const uuid = '0802c'
+export const ref = '2N12-2'
 import PuissancesEncadrement from '../4e/4C30-1.js'
 export const titre = 'Encadrer avec des puissances de 10'
 export const dateDeModifImportante = '2/11/2021'

@@ -1,3 +1,5 @@
+export const uuid = '44976'
+export const ref = 'can2F10'
 import Exercice from '../../Exercice.js'
 import { listeQuestionsToContenu, ecritureAlgebrique, extraireRacineCarree, ecritureParentheseSiNegatif, texNombrec, miseEnEvidence, randint, sp, calcul, choice, texFractionReduite } from '../../../modules/outils.js'
 import { propositionsQcm } from '../../../modules/interactif/questionQcm.js'

@@ -1,3 +1,5 @@
+export const uuid = '3206f'
+export const ref = '6G11'
 import ParalleleEtPerpendiculaires from './6G12-1.js'
 export const titre = 'Tracer des perpendiculaires'
 export const amcReady = true

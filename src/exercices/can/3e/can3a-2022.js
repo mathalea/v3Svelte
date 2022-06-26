@@ -1,3 +1,5 @@
+export const uuid = 'bcf77'
+export const ref = 'can3a-2022'
 import Exercice from '../../Exercice.js'
 import { fraction } from '../../../modules/fractions.js'
 import Decimal from 'decimal.js'

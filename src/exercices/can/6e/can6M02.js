@@ -1,3 +1,5 @@
+export const uuid = 'a3aba'
+export const ref = 'can6M02'
 import { context } from '../../../modules/context'
 import { propositionsQcm } from '../../../modules/interactif/questionQcm'
 import { enleveElement, listeQuestionsToContenu, randint } from '../../../modules/outils'

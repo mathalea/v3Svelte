@@ -1,3 +1,5 @@
+export const uuid = '87afc'
+export const ref = '5G20'
 import ConstruireUnTriangleAvecCible from '../6e/_Construire_un_triangle_avec_cible.js'
 export const titre = 'Construire un triangle avec cible auto-corrective'
 

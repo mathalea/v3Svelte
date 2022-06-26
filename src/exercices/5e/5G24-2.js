@@ -1,3 +1,5 @@
+export const uuid = 'e62f5'
+export const ref = '5G24-2'
 import Exercice from '../Exercice.js'
 import { point, pointAdistance, rotation, translation, vecteur, barycentre, codeSegment, codeAngle, nommePolygone, mathalea2d, triangle2points2longueurs } from '../../modules/2d.js'
 import { listeQuestionsToContenu, combinaisonListes, randint, creerNomDePolygone, texteEnCouleur } from '../../modules/outils.js'

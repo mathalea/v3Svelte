@@ -1,3 +1,5 @@
+export const uuid = 'a23aa'
+export const ref = 'can5P05'
 import Exercice from '../../Exercice.js'
 import { randint, texNombrec, choice, calcul } from '../../../modules/outils.js'
 export const titre = 'Prendre t % d’une quantité'

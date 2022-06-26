@@ -1,3 +1,5 @@
+export const uuid = 'dd3cf'
+export const ref = 'can4G07'
 import Exercice from '../../Exercice.js'
 import { randint, calcul, choice, texNombrec, creerNomDePolygone } from '../../../modules/outils.js'
 import {

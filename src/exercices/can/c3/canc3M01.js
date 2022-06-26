@@ -1,3 +1,5 @@
+export const uuid = 'dded9'
+export const ref = 'canc3M01'
 import { context } from '../../../modules/context.js'
 import { choice, randint, texNombrec } from '../../../modules/outils.js'
 import Exercice from '../../Exercice.js'

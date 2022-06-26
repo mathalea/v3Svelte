@@ -1,3 +1,5 @@
+export const uuid = 'df9de'
+export const ref = '2N20-4'
 import PremierOuPas from '../3e/3A11.js'
 export const titre = 'Primalité ou pas'
 export const dateDeModifImportante = '29/10/2021'

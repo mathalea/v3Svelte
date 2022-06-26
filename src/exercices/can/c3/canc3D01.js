@@ -1,3 +1,5 @@
+export const uuid = 'c4426'
+export const ref = 'canc3D01'
 import { cercle, mathalea2d, point, rotation, segment } from '../../../modules/2d.js'
 import { context } from '../../../modules/context.js'
 import { randint } from '../../../modules/outils.js'

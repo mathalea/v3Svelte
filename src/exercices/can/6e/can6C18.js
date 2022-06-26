@@ -1,3 +1,5 @@
+export const uuid = 'dd396'
+export const ref = 'can6C18'
 import { randint, texteEnCouleur, choice } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Utiliser la division euclidienne'

@@ -1,3 +1,5 @@
+export const uuid = '7d8ae'
+export const ref = '3G12-1'
 import PavagesEtTransformations from '../6e/_Pavages_et_transformations.js'
 
 export const titre = 'Trouver l\'image d\'une figure par une rotation de 90 degrés dans un pavage'

@@ -1,3 +1,5 @@
+export const uuid = 'a8c2b'
+export const ref = '5G40'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, calcul, choisitLettresDifferentes, lettreDepuisChiffre, choice, combinaisonListes } from '../../modules/outils.js'
 import { cercleCentrePoint, cercle, codeSegments, pointAdistance, pointIntersectionCC, point, labelPoint, similitude, polygoneAvecNom, tracePoint, texteParPoint, droite, segment, traceCompas, dansLaCibleCarree, cibleCarree, rotation, mathalea2d } from '../../modules/2d.js'

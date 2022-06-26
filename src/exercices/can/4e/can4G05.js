@@ -1,3 +1,5 @@
+export const uuid = '45a10'
+export const ref = 'can4G05'
 import Exercice from '../../Exercice.js'
 import { randint, choice, texteEnCouleur, extraireRacineCarree, texRacineCarree } from '../../../modules/outils.js'
 export const titre = 'Calculer la diagonale d’un carré'

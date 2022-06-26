@@ -1,3 +1,5 @@
+export const uuid = '9ecd2'
+export const ref = '2N51-5'
 import ExerciceEquation1Tiret2 from '../3e/3L13-1.js'
 export const titre = 'Équations du premier degré (utilisant la distributivité)'
 export { interactifReady, interactifType } from '../3e/3L13-1.js'

@@ -1,3 +1,5 @@
+export const uuid = 'cb503'
+export const ref = 'can2C11'
 import Exercice from '../../Exercice.js'
 import { randint, texNombrec, choice, calcul } from '../../../modules/outils.js'
 export const titre = 'Passer du coefficient multiplicateur au taux d’évolution'

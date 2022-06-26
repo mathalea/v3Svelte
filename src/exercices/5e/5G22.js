@@ -1,3 +1,5 @@
+export const uuid = '7b4e4'
+export const ref = '5G22'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, combinaisonListes, Triangles } from '../../modules/outils.js'
 import { point, mediatrice, codageMediatrice, constructionMediatrice, bissectrice, codageBissectrice, constructionBissectrice, polygone, nommePolygone, rotation, similitude, medianeTriangle, centreGraviteTriangle, hauteurTriangle, codageHauteurTriangle, codageMedianeTriangle, mathalea2d } from '../../modules/2d.js'

@@ -1,3 +1,5 @@
+export const uuid = '69f8a'
+export const ref = 'can1P01'
 import Exercice from '../../Exercice.js'
 import { listeQuestionsToContenu, randint } from '../../../modules/outils.js'
 import { number } from 'mathjs'

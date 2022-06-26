@@ -1,3 +1,5 @@
+export const uuid = '91c1f'
+export const ref = '4A11-2'
 import FractionsIrreductibles from '../3e/3A12.js'
 export const titre = 'Fractions irréductibles'
 

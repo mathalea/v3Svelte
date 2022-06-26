@@ -1,3 +1,5 @@
+export const uuid = 'f35a2'
+export const ref = '2N20-7'
 import ppcmEngrenages from '../3e/3A13.js'
 export const titre = 'Engrenages'
 export const dateDeModifImportante = '14/11/2021'

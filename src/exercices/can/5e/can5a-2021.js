@@ -1,3 +1,5 @@
+export const uuid = 'b4e7d'
+export const ref = 'can5a-2021'
 import Exercice from '../../Exercice.js'
 import { fraction, obtenirListeFractionsIrreductibles } from '../../../modules/fractions.js'
 import { mathalea2d, point, labelPoint, codeSegment, codeAngle, droiteGraduee2, segment, milieu, texteParPosition } from '../../../modules/2d.js'

@@ -1,3 +1,5 @@
+export const uuid = 'c88e3'
+export const ref = 'can3C02'
 import { texNombrec, randint, sp, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer une moyenne avec des décimaux'

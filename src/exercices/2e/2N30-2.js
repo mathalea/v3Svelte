@@ -1,3 +1,5 @@
+export const uuid = '53a02'
+export const ref = '2N30-2'
 export const titre = 'Additionner ou soustraire deux fractions'
 
 // eslint-disable-next-line import/first

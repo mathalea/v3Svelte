@@ -1,3 +1,5 @@
+export const uuid = 'd1c8a'
+export const ref = 'can2P01'
 import { fraction } from '../../../modules/fractions'
 import { choice, randint, simplificationDeFractionAvecEtapes, texFractionReduite } from '../../../modules/outils'
 import Exercice from '../../Exercice'

@@ -1,3 +1,5 @@
+export const uuid = '45352'
+export const ref = 'can1S08'
 import Exercice from '../../Exercice.js'
 import { randint, choice, ecritureParentheseSiNegatif, texNombrec } from '../../../modules/outils.js'
 export const titre = 'Calculer la raison d’une suite arithmétique/géométrique*'

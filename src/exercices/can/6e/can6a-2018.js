@@ -1,3 +1,5 @@
+export const uuid = 'ef907'
+export const ref = 'can6a-2018'
 import Exercice from '../../Exercice.js'
 import { fraction } from '../../../modules/fractions.js'
 import { mathalea2d, point, polygoneAvecNom, droiteGraduee2, segmentAvecExtremites, segment, milieu, texteParPosition } from '../../../modules/2d.js'

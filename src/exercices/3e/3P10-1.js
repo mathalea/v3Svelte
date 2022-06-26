@@ -1,3 +1,5 @@
+export const uuid = 'e2dcd'
+export const ref = '3P10-1'
 /* eslint-disable camelcase */
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, combinaisonListes, calcul, texNombrec, texPrix, modalUrl } from '../../modules/outils.js'

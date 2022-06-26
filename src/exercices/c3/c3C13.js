@@ -1,3 +1,5 @@
+export const uuid = '2c428'
+export const ref = 'c3C13'
 import QuestionsPrix from '../6e/6C12.js'
 export const titre = 'Résoudre des problèmes de prix'
 export const interactifReady = true

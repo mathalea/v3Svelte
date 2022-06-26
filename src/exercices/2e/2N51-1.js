@@ -1,3 +1,5 @@
+export const uuid = '76739'
+export const ref = '2N51-1'
 import TesterSiUnNombreEstSolutionDUneEquation from '../4e/4L14-0.js'
 export const titre = 'Tester si un nombre est solution d\'une équation'
 // export { interactifReady, interactifType } from '../4e/4L14-0.js'

@@ -1,3 +1,5 @@
+export const uuid = 'cfb88'
+export const ref = '6S10'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, premiereLettreEnMajuscule, numAlpha, calcul, sp } from '../../modules/outils.js'
 import { repere2, traceBarre, mathalea2d } from '../../modules/2d.js'

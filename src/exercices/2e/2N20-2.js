@@ -1,3 +1,5 @@
+export const uuid = 'c1f21'
+export const ref = '2N20-2'
 import TableauCriteresDeDivisibilite from '../6e/6N43-2.js'
 export const titre = 'Critères de divisibilité (plusieurs possibles)'
 export { interactifReady, interactifType, amcReady, amcType } from '../6e/6N43-2.js'

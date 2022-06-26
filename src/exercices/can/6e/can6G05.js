@@ -1,3 +1,5 @@
+export const uuid = '42b0e'
+export const ref = 'can6G05'
 import { codeSegments, droite, labelPoint, mathalea2d, point, segment, segmentAvecExtremites, tracePointSurDroite } from '../../../modules/2d.js'
 import { calcul, randint } from '../../../modules/outils.js'
 import Exercice from '../../Exercice.js'

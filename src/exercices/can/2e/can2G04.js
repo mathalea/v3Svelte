@@ -1,3 +1,5 @@
+export const uuid = '7afe5'
+export const ref = 'can2G04'
 import Exercice from '../../Exercice.js'
 import { randint, choice, texNombre, ecritureParentheseSiNegatif, texteEnCouleur, creerNomDePolygone, arrondi } from '../../../modules/outils.js'
 export const titre = 'Calculer les coordonnées du milieu'

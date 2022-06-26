@@ -1,3 +1,5 @@
+export const uuid = 'd7fe2'
+export const ref = 'can4C04'
 import { ecritureParentheseSiNegatif, miseEnEvidence, randint, shuffle } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Utiliser la règle des signes'

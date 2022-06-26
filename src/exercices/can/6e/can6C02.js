@@ -1,3 +1,5 @@
+export const uuid = '3922c'
+export const ref = 'can6C02'
 import { calcul, randint, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Multiplier un nombre pair par 5'

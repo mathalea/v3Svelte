@@ -1,3 +1,5 @@
+export const uuid = '0ff38'
+export const ref = '4A11-0'
 import ExerciceDecomposerEnFacteursPremiers from '../5e/5A13.js'
 export const titre = 'Décomposer un nombre entier en produit de (petits) facteurs premiers'
 export const dateDeModifImportante = '2/11/2021'

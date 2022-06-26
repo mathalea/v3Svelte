@@ -1,3 +1,5 @@
+export const uuid = '99951'
+export const ref = '2N20-3'
 import DivisionEuclidienneMultiplesDiviseursCriteres from '../3e/3A10.js'
 export const titre = 'Division Euclidienne - Diviseurs - Multiples'
 export const dateDeModifImportante = '29/10/2021'

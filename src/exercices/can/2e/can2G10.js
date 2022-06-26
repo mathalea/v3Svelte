@@ -1,3 +1,5 @@
+export const uuid = '1b4d2'
+export const ref = 'can2G10'
 import Exercice from '../../Exercice.js'
 import { listeQuestionsToContenu, creerNomDePolygone, miseEnEvidence, choice, sp } from '../../../modules/outils.js'
 import { propositionsQcm } from '../../../modules/interactif/questionQcm.js'

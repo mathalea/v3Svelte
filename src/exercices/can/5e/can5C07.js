@@ -1,3 +1,5 @@
+export const uuid = '5688a'
+export const ref = 'can5C07'
 import { randint, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Utiliser une priorité opératoire'

@@ -1,3 +1,5 @@
+export const uuid = '98d79'
+export const ref = '4G11-1'
 import PavagesEtTransformations from '../6e/_Pavages_et_transformations.js'
 
 export const titre = 'Trouver l\'image d\'une figure par une translation dans un pavage'

@@ -1,3 +1,5 @@
+export const uuid = '80d58'
+export const ref = 'can3S01'
 import { fraction } from '../../../modules/fractions'
 import { randint, choice } from '../../../modules/outils'
 import Exercice from '../../Exercice'

@@ -1,3 +1,5 @@
+export const uuid = '3d3c8'
+export const ref = '6N11-2'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, combinaisonListes, calcul, lettreDepuisChiffre, htmlConsigne, texNombre, egal, shuffle, stringNombre } from '../../modules/outils.js'
 import { pointCliquable } from '../../modules/2dinteractif.js'

@@ -1,3 +1,5 @@
+export const uuid = '3ff29'
+export const ref = '4C24'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, choice, decompositionFacteursPremiersBarres } from '../../modules/outils.js'
 import { setReponse } from '../../modules/gestionInteractif.js'

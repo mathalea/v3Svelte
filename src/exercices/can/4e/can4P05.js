@@ -1,3 +1,5 @@
+export const uuid = 'de24e'
+export const ref = 'can4P05'
 import { courbeSpline, droiteParPointEtPente, mathalea2d, point, repere2 } from '../../../modules/2d'
 import { splineCatmullRom } from '../../../modules/fonctionsMaths'
 import { choice, randint } from '../../../modules/outils'

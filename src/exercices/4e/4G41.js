@@ -1,3 +1,5 @@
+export const uuid = '0f90a'
+export const ref = '4G41'
 import CalculDAngle from '../3e/3G31.js'
 export { interactifReady, interactifType, amcReady, amcType } from '../3e/3G31.js'
 export const titre = 'Utiliser le cosinus pour calculer la mesure d\'un angle dans un triangle rectangle'

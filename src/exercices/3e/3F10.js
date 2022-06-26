@@ -1,3 +1,5 @@
+export const uuid = 'baf8a'
+export const ref = '3F10'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, shuffle2tableaux } from '../../modules/outils.js'
 import { setReponse } from '../../modules/gestionInteractif.js'

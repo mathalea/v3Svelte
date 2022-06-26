@@ -1,3 +1,5 @@
+export const uuid = '9cc78'
+export const ref = '6N22'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, combinaisonListes, choice, randint, quotientier, rangeMinMax, nombreDeChiffresDe } from '../../modules/outils.js'
 import FractionEtendue from '../../modules/FractionEtendue.js'

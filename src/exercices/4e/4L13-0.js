@@ -1,3 +1,5 @@
+export const uuid = 'cdd93'
+export const ref = '4L13-0'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, combinaisonListes, prenom, texteEnCouleur } from '../../modules/outils.js'
 import { point, segment, codageCarre, polygoneRegulierParCentreEtRayon, nommePolygone, afficheCoteSegment, codeSegments, mathalea2d } from '../../modules/2d.js'

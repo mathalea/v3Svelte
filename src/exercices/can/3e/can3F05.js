@@ -1,3 +1,5 @@
+export const uuid = '90afa'
+export const ref = 'can3F05'
 import CalculsImagesFonctions from '../../3e/3F10-2.js'
 export { interactifReady, interactifType, amcReady, amcType } from '../../3e/3F10-2.js'
 export const titre = 'Calculer un antécédent par fonction affine'

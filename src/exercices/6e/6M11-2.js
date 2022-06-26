@@ -1,3 +1,5 @@
+export const uuid = '23194'
+export const ref = '6M11-2'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenuSansNumero, randint, arrondi, texNombrec, texNombre, texTexte } from '../../modules/outils.js'
 import { afficheLongueurSegment, codageAngleDroit, codeSegments, fixeBordures, mathalea2d, point, polygoneAvecNom, segment } from '../../modules/2d.js'

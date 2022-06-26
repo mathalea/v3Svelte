@@ -1,3 +1,5 @@
+export const uuid = 'edc80'
+export const ref = '2G33-1'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, combinaisonListes, randint, texFraction, texFractionReduite, pgcd, ecritureParentheseSiNegatif } from '../../modules/outils.js'
 export const titre = 'Alignement de 3 points.'

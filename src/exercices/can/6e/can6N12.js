@@ -1,3 +1,5 @@
+export const uuid = '371b9'
+export const ref = 'can6N12'
 import sommmeFractionsDecimales from '../../6e/6N10-6.js'
 export { interactifReady, interactifType, amcType, amcReady } from '../../6e/6N10-6.js'
 export const titre = 'Passer d’un calcul de fractions décimales à une écriture décimale*'

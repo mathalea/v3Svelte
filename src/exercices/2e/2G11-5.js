@@ -1,3 +1,5 @@
+export const uuid = '9213d'
+export const ref = '2G11-5'
 import CalculDeVolumes from '../6e/6M30.js'
 export const titre = 'Calculs de volumes'
 export { interactifReady, interactifType } from '../6e/6M30.js'

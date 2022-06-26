@@ -1,3 +1,5 @@
+export const uuid = '905fe'
+export const ref = '5G51'
 import Exercice from '../Exercice.js'
 import { context } from '../../modules/context.js'
 import { listeQuestionsToContenu, randint, choice, combinaisonListes, creerNomDePolygone } from '../../modules/outils.js'

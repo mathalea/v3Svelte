@@ -1,3 +1,5 @@
+export const uuid = 'aadd7'
+export const ref = 'can2G05'
 import Exercice from '../../Exercice.js'
 import { randint, choice, ecritureParentheseSiNegatif, creerNomDePolygone, texteEnCouleur } from '../../../modules/outils.js'
 export const titre = 'Calculer une distance avec les coordonnées'

@@ -1,3 +1,5 @@
+export const uuid = 'fa780'
+export const ref = 'CM010'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, range1, combinaisonListes, texNombrec, texNombre, calcul } from '../../modules/outils.js'
 import { ajouteChampTexte, setReponse } from '../../modules/gestionInteractif.js'

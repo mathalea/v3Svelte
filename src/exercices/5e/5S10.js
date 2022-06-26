@@ -1,3 +1,5 @@
+export const uuid = '4a43c'
+export const ref = '5S10'
 import OrganiserDonneesDepuisTexte from '../6e/6S11.js'
 export const titre = 'Organiser des données dans un tableau'
 

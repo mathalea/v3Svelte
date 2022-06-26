@@ -1,3 +1,5 @@
+export const uuid = '58ee1'
+export const ref = '6N23-2'
 import Exercice from '../Exercice.js'
 import { context } from '../../modules/context.js'
 import { listeQuestionsToContenuSansNumero, randint, shuffle, calcul, choisitLettresDifferentes, texNombre, texFraction, numAlpha, nombreDeChiffresDansLaPartieEntiere, nombreDeChiffresDansLaPartieDecimale, nombreDeChiffresDe } from '../../modules/outils.js'

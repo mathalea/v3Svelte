@@ -1,3 +1,5 @@
+export const uuid = '6ccbf'
+export const ref = '5S13-1'
 import calculEffectifFrequence from '../3e/3S12.js'
 export const titre = 'Calculer des effectifs et des fréquences'
 

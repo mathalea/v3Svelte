@@ -1,3 +1,5 @@
+export const uuid = 'd9fd1'
+export const ref = '1AN11'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, combinaisonListes, ecritureAlgebrique, randint, ecritureParentheseSiNegatif, ecritureAlgebriqueSauf1, reduireAxPlusB } from '../../modules/outils.js'
 export const titre = 'Equation de tangente'

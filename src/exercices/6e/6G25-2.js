@@ -1,3 +1,5 @@
+export const uuid = '3d315'
+export const ref = '6G25-2'
 import PavagesEtTransformations from './_Pavages_et_transformations.js'
 
 export const titre = 'Trouver l\'image d\'une figure par une symétrie axiale dans un pavage carré'

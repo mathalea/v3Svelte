@@ -1,3 +1,5 @@
+export const uuid = 'c1e7c'
+export const ref = '2N10-2'
 import PlacerPointsSurAxe from '../6e/6N30-2.js'
 export const titre = 'Placer un point d\'abscisse décimale'
 export { interactifReady, interactifType, amcReady, amcType } from '../6e/6N30-2.js'

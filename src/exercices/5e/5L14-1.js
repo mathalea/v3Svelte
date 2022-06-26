@@ -1,3 +1,5 @@
+export const uuid = '38d09'
+export const ref = '5L14-1'
 import EcrireUneExpressionNumerique from './_Ecrire_une_expression_numerique.js'
 export const titre = 'Calculer une expression littérale pour les valeurs données en détaillant les calculs'
 

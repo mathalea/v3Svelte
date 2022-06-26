@@ -1,3 +1,5 @@
+export const uuid = '3a839'
+export const ref = 'can6C22'
 import { calcul, choice, randint, texNombre, texteEnCouleur, texNombrec } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Déterminer la valeur décimale d’une fraction'

@@ -1,3 +1,5 @@
+export const uuid = 'ad332'
+export const ref = '3G13'
 import Exercice from '../Exercice.js'
 import { point, segmentAvecExtremites, labelPoint, arcPointPointAngle, mathalea2d, fixeBordures, texteSurSegment, texteSurArc, rotation, homothetie } from '../../modules/2d.js'
 import { context } from '../../modules/context.js'

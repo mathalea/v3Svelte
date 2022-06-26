@@ -1,3 +1,5 @@
+export const uuid = '462e3'
+export const ref = 'can1G03'
 import MesurePrincipal from '../../1e/1G12.js'
 export { interactifReady, interactifType } from '../../1e/1G12.js'
 export const titre = 'Simplifier les sinus et cosinus des angles associés'

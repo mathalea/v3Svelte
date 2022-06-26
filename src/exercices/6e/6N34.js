@@ -1,3 +1,5 @@
+export const uuid = '84375'
+export const ref = '6N34'
 import ExerciceConversions from './_Exercice_conversions.js'
 export const titre = 'Effectuer des conversions avec tous les préfixes de milli à tera'
 export { interactifReady, interactifType, amcReady, amcType } from './_Exercice_conversions.js'

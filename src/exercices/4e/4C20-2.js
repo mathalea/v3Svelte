@@ -1,3 +1,5 @@
+export const uuid = 'f6683'
+export const ref = '4C20-2'
 export const titre = 'Fractions égales et égalité des produits en croix 4e'
 
 // eslint-disable-next-line import/first

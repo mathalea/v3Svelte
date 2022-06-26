@@ -1,3 +1,5 @@
+export const uuid = 'baf2a'
+export const ref = 'can1L01'
 
 import Exercice from '../../Exercice'
 import { choice, randint, reduirePolynomeDegre3, ecritureParentheseSiNegatif } from '../../../modules/outils'

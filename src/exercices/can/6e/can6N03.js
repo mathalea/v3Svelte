@@ -1,3 +1,5 @@
+export const uuid = '868a9'
+export const ref = 'can6N03'
 import { randint } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Recomposer un entier*'

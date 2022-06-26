@@ -1,3 +1,5 @@
+export const uuid = '719dc'
+export const ref = '3A12-2'
 import ProblemesEvenementsRecurrents from '../4e/4A12.js'
 export const titre = 'Problèmes d\'évenements récurrents'
 

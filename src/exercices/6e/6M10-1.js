@@ -1,3 +1,5 @@
+export const uuid = '36b6b'
+export const ref = '6M10-1'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, contraindreValeur, combinaisonListes, texteExposant, texNombre, texteEnCouleurEtGras, miseEnEvidence, stringNombre, arrondi } from '../../modules/outils.js'
 import { latexParCoordonnees, mathalea2d, point, polygone, segment, texteParPositionEchelle } from '../../modules/2d.js'

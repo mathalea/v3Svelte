@@ -1,3 +1,5 @@
+export const uuid = '6a428'
+export const ref = 'can2L08'
 import Exercice from '../../Exercice.js'
 import { randint, choice, ecritureAlgebrique, ecritureParentheseSiNegatif, abs } from '../../../modules/outils.js'
 export const titre = 'Résoudre une équation du type $\\dfrac{x+a}{b}=c$'

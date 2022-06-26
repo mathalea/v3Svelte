@@ -1,3 +1,5 @@
+export const uuid = '35ef5'
+export const ref = '2N40-3'
 import EcrireUneExpressionLitterale from '../5e/5L10.js'
 export const titre = 'Écrire une expression littérale'
 export { interactifReady, interactifType } from '../5e/5L10.js'

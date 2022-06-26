@@ -1,3 +1,5 @@
+export const uuid = 'e781e'
+export const ref = '6G42'
 import Solide6e from './_Solide_6e.js'
 export const titre = 'Connaître les propriétés du cube et du pavé droit'
 

@@ -1,3 +1,5 @@
+export const uuid = 'a053d'
+export const ref = '5G31-1'
 import ConstructibiliteDesTriangles from './_Constructibilite_des_triangles.js'
 
 export const titre = 'Constructibilité des triangles via les angles'

@@ -1,3 +1,5 @@
+export const uuid = '319e1'
+export const ref = 'can6C27'
 import Exercice from '../../Exercice.js'
 import { randint, choice, texNombrec, prenomF, prenomM, texPrix, texteEnCouleurEtGras, texteEnCouleur, calcul } from '../../../modules/outils.js'
 export const titre = 'Résoudre un problème concret'

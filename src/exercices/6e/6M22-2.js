@@ -1,3 +1,5 @@
+export const uuid = 'e4368'
+export const ref = '6M22-2'
 /* eslint-disable camelcase */
 import { pointAdistance, point, mathalea2d, arc, codeSegments, rotation, afficheLongueurSegment } from '../../modules/2d.js'
 import Exercice from '../Exercice.js'

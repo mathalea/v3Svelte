@@ -1,3 +1,5 @@
+export const uuid = 'b8ff8'
+export const ref = '6C35'
 /* eslint-disable camelcase */
 
 import Exercice from '../Exercice.js'

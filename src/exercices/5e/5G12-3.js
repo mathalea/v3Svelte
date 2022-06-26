@@ -1,3 +1,5 @@
+export const uuid = '61273'
+export const ref = '5G12-3'
 import TrouverLaTransformations from '../4e/4G12-1.js'
 export const titre = 'Identifier une transformation'
 export { interactifReady, interactifType } from '../4e/4G12-1.js'

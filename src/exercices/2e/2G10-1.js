@@ -1,3 +1,5 @@
+export const uuid = '3823c'
+export const ref = '2G10-1'
 import EgaliteDAngles from '../5e/5G30-1.js'
 export const titre = 'Déterminer des angles en utilisant les cas d\'égalité'
 // export { interactifReady, interactifType } from '../5e/5G30-1.js'

@@ -1,3 +1,5 @@
+export const uuid = '934d5'
+export const ref = '2N31-3'
 import PuissancesDUnRelatif2 from '../4e/4C33-3.js'
 export const titre = 'Puissances : Calculs automatisés et règles de calculs'
 // export { amcReady, amcType } from '../4e/4C33-3.js'

@@ -1,3 +1,5 @@
+export const uuid = 'e77a5'
+export const ref = 'can3M01'
 import { choice, randint } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer l’aire ou un périmètre d’un carré'

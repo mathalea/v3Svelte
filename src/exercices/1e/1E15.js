@@ -1,3 +1,5 @@
+export const uuid = '01648'
+export const ref = '1E15'
 /* eslint-disable no-eval */
 /* eslint-disable no-unused-vars */
 import { xcas, listeQuestionsToContenu, randint } from '../../modules/outils.js'

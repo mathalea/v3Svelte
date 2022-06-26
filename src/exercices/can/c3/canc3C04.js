@@ -1,3 +1,5 @@
+export const uuid = '3a224'
+export const ref = 'canc3C04'
 import { choice, randint } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer le double ou moitié'

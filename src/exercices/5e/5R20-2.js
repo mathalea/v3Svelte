@@ -1,3 +1,5 @@
+export const uuid = '16749'
+export const ref = '5R20-2'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, ecritureNombreRelatif, ecritureNombreRelatifc, ecritureAlgebrique } from '../../modules/outils.js'
 import { propositionsQcm } from '../../modules/interactif/questionQcm.js'

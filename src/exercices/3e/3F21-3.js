@@ -1,3 +1,5 @@
+export const uuid = '3161b'
+export const ref = '3F21-3'
 import Exercice from '../Exercice.js'
 import { ecritureAlgebrique, listeQuestionsToContenu, randint, rienSi1, texNombre, stringNombre, sp, choice } from '../../modules/outils.js'
 import { mathalea2d, repere2, cercle, point, segment, milieu, texteParPoint, droite } from '../../modules/2d.js'

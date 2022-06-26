@@ -1,3 +1,5 @@
+export const uuid = '41f9c'
+export const ref = '5L14-6'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, combinaisonListes } from '../../modules/outils.js'
 import ChoisirUneExpressionLitterale from './_Choisir_expression_litterale.js'

@@ -1,3 +1,5 @@
+export const uuid = '80ef3'
+export const ref = '3G23'
 /* eslint-disable camelcase */
 /* eslint-disable prefer-const */
 /* eslint-disable no-case-declarations */

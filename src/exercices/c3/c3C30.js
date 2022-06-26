@@ -1,3 +1,5 @@
+export const uuid = '1f455'
+export const ref = 'c3C30'
 import MultiplierDecimauxPar101001000 from '../6e/6C30-1.js'
 export const titre = 'Additions, soustractions et multiplications posées de nombres entiers'
 export { interactifReady, interactifType, amcReady, amcType } from '../6e/6C30-1.js'

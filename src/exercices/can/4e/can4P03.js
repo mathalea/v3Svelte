@@ -1,3 +1,5 @@
+export const uuid = '32997'
+export const ref = 'can4P03'
 import { calcul, choice, randint, tableauColonneLigne, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer une quatrième proportionnelle'

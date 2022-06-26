@@ -1,3 +1,5 @@
+export const uuid = '4bced'
+export const ref = 'canPredef6-3'
 import Exercice from '../../Exercice.js'
 import { listeQuestionsToContenu, randint, calcul, pgcd, texNombrec, choice, texNombre, sp, shuffle, texPrix, combinaisonListesSansChangerOrdre, range1 } from '../../../modules/outils.js'
 import FractionEtendue from '../../../modules/FractionEtendue.js'

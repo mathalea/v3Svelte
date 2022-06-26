@@ -1,3 +1,5 @@
+export const uuid = 'e12a9'
+export const ref = 'CM007'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint } from '../../modules/outils.js'
 import { setReponse } from '../../modules/gestionInteractif.js'

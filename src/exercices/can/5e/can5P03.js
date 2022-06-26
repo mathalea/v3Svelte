@@ -1,3 +1,5 @@
+export const uuid = '4d419'
+export const ref = 'can5P03'
 import Exercice from '../../Exercice.js'
 import { calcul, choice, texNombrec, randint, texPrix } from '../../../modules/outils.js'
 export const titre = 'Résoudre un problème de proportionnalité'

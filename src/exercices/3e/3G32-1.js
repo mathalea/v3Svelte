@@ -1,3 +1,5 @@
+export const uuid = '33ec3'
+export const ref = '3G32-1'
 import problemesTrigoLongueur from '../3e/3G32-0.js'
 export const titre = "Calcul d'un parallèle terrestre"
 export { interactifReady, interactifType } from '../3e/3G32-0.js'

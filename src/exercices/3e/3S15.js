@@ -1,3 +1,5 @@
+export const uuid = '252c8'
+export const ref = '3S15'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, ecritureParentheseSiNegatif, prenom, listeDeNotes, unMoisDeTemperature, nomDuMois, texNombre } from '../../modules/outils.js'
 import { setReponse } from '../../modules/gestionInteractif.js'

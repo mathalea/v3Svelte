@@ -1,3 +1,5 @@
+export const uuid = '6f6ee'
+export const ref = 'can6C08'
 import { choice, randint, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer le quart ou le tiers'

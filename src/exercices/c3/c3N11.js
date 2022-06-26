@@ -1,3 +1,5 @@
+export const uuid = '9a374'
+export const ref = 'c3N11'
 import LireAbscisseEntiere2d from '../6e/6N11.js'
 export { titre, amcReady, amcType, interactifType, interactifReady } from '../6e/6N11.js'
 /**

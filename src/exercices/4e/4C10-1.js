@@ -1,3 +1,5 @@
+export const uuid = '23a21'
+export const ref = '4C10-1'
 import SigneProduitQuotientRelatifs from './4C10-0.js'
 
 export const titre = 'Signe d\'un produit de nombres relatifs'

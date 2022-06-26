@@ -1,3 +1,5 @@
+export const uuid = 'fb881'
+export const ref = 'can5C15'
 import Exercice from '../../Exercice.js'
 import { randint, ecritureParentheseSiNegatif, texteEnCouleur, calcul, abs } from '../../../modules/outils.js'
 export const titre = 'Rechercher un nombre à ajouter'

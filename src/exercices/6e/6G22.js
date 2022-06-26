@@ -1,3 +1,5 @@
+export const uuid = 'e6c10'
+export const ref = '6G22'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, lettreDepuisChiffre, choice, couleurTab, miseEnEvidence, sp, rangeMinMax, numAlpha, enleveElement, combinaisonListes } from '../../modules/outils.js'
 import { point, mathalea2d, pointSurSegment, segment, polygoneAvecNom, labelPoint, droite, pointIntersectionDD, codeAngle, angleOriente, polyline } from '../../modules/2d.js'

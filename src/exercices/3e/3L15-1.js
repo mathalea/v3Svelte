@@ -1,3 +1,5 @@
+export const uuid = '308fb'
+export const ref = '3L15-1'
 import Exercice from '../Exercice.js'
 import { context } from '../../modules/context.js'// eslint-disable-next-line camelcase
 import { listeQuestionsToContenu, randint, choice, combinaisonListes } from '../../modules/outils.js'

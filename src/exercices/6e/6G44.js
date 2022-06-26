@@ -1,3 +1,5 @@
+export const uuid = '80a5e'
+export const ref = '6G44'
 import { mathalea2d } from '../../modules/2d.js'
 import { homothetie3d, point3d, polygone3d, prisme3d, pyramide3d, pyramideTronquee3d, translation3d, vecteur3d } from '../../modules/3d.js'
 import { context } from '../../modules/context.js'

@@ -1,3 +1,5 @@
+export const uuid = '5a8a7'
+export const ref = '6N12'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, combinaisonListes, texNombre, modalUrl } from '../../modules/outils.js'
 export const titre = 'Multiplier un entier par 10, 100, 1 000...'

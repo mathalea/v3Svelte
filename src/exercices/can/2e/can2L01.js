@@ -1,3 +1,5 @@
+export const uuid = 'a968f'
+export const ref = 'can2L01'
 import { choice, randint, texRacineCarree } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Déterminer le nombre de solutions d’une équation se ramenant à $x^2=a$'

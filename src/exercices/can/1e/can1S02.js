@@ -1,3 +1,5 @@
+export const uuid = 'f7a72'
+export const ref = 'can1S02'
 import Exercice from '../../Exercice.js'
 import { randint, choice, ecritureAlgebrique, calcul, texNombre, texFraction, arcenciel, miseEnEvidence, signe } from '../../../modules/outils.js'
 export const titre = 'Calculer un terme d’une suite récurrente'

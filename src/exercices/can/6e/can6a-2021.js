@@ -1,3 +1,5 @@
+export const uuid = '6efce'
+export const ref = 'can6a-2021'
 import Exercice from '../../Exercice.js'
 import { fraction } from '../../../modules/fractions.js'
 import {

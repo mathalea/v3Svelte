@@ -1,3 +1,5 @@
+export const uuid = '984cc'
+export const ref = 'can4C09'
 import Exercice from '../../Exercice.js'
 import { randint, choice, ecritureParentheseSiNegatif } from '../../../modules/outils.js'
 export const titre = 'Calculer des puissances de +/-2, 3, 4 ou 5'

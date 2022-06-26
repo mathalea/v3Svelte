@@ -1,3 +1,5 @@
+export const uuid = 'dcb22'
+export const ref = '3F21-2'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, combinaisonListes, ecritureAlgebrique, ecritureParentheseSiNegatif } from '../../modules/outils.js'
 import { fraction } from '../../modules/fractions.js'

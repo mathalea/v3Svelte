@@ -1,3 +1,5 @@
+export const uuid = '5c0b5'
+export const ref = '5G40-1'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, texteEnCouleurEtGras, combinaisonListes } from '../../modules/outils.js'
 export const titre = 'Citer les propriétés des parallélogrammes'

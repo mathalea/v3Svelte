@@ -1,3 +1,5 @@
+export const uuid = '952b2'
+export const ref = '2G10-2'
 import demonstrationsParallelogrammes from '../5e/5G42.js'
 export const titre = 'Natures de parallélogrammes'
 // export { interactifReady, interactifType } from '../5e/5G42.js'

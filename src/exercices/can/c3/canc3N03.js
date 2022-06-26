@@ -1,3 +1,5 @@
+export const uuid = '48687'
+export const ref = 'canc3N03'
 import { numTrie, randint } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Trouver le plus grand nombre entier'

@@ -1,3 +1,5 @@
+export const uuid = 'a653c'
+export const ref = 'can3C01'
 import { context } from '../../../modules/context'
 import { setReponse } from '../../../modules/gestionInteractif'
 import { ajouteChampTexteMathLive } from '../../../modules/interactif/questionMathLive'

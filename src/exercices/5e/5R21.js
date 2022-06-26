@@ -1,3 +1,5 @@
+export const uuid = 'bf4cf'
+export const ref = '5R21'
 import Exercice from '../Exercice.js'
 import { context } from '../../modules/context.js'
 import { listeQuestionsToContenu, randint, ecritureNombreRelatif, ecritureNombreRelatifc, ecritureAlgebrique, ecritureParentheseSiNegatif, nombreDeChiffresDansLaPartieEntiere, combinaisonListes } from '../../modules/outils.js'

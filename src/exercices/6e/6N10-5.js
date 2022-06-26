@@ -1,3 +1,5 @@
+export const uuid = 'ddf61'
+export const ref = '6N10-5'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, miseEnEvidence, texteEnCouleurEtGras, calcul, choice } from '../../modules/outils.js'
 import { mathalea2d, labyrinthe } from '../../modules/2d.js'

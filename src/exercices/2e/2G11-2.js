@@ -1,3 +1,5 @@
+export const uuid = '9c4e5'
+export const ref = '2G11-2'
 import ProblemesThales from '../3e/3G20-1.js'
 export const titre = 'Problèmes utilisant le théorème de Thalès'
 // export { interactifReady, interactifType } from '../3e/3G20-1.js'

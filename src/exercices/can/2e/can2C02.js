@@ -1,3 +1,5 @@
+export const uuid = '0384f'
+export const ref = 'can2C02'
 import Exercice from '../../Exercice.js'
 import { randint, calcul, choice } from '../../../modules/outils.js'
 export const titre = 'Calculer une différence de deux carrés'

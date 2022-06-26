@@ -1,3 +1,5 @@
+export const uuid = 'fad9c'
+export const ref = 'c3N22'
 import LireAbscisseDecimaleTroisFormes from '../6e/6N23-2.js'
 export const titre = 'Lire abscisse décimale sous trois formes'
 export { interactifReady, interactifType, amcReady, amcType } from '../6e/6N23-2.js'

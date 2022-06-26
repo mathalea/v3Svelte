@@ -1,3 +1,5 @@
+export const uuid = 'eff70'
+export const ref = 'can2L06'
 import Exercice from '../../Exercice.js'
 import { randint, choice } from '../../../modules/outils.js'
 export const titre = 'Développer avec les égalités remarquables'

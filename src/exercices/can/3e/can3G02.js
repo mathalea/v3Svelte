@@ -1,3 +1,5 @@
+export const uuid = 'dd911'
+export const ref = 'can3G02'
 import Transformations from '../../6e/_Transformations.js'
 export { interactifReady, interactifType } from '../../6e/_Transformations.js'
 export const titre = 'Trouver l’image d’un point par une  transformation 3e'

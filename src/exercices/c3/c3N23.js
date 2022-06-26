@@ -1,3 +1,5 @@
+export const uuid = '8b9de'
+export const ref = 'c3N23'
 import LireUneAbscisseAvecZoom from '../6e/6N23-3.js'
 export const titre = 'Lire abscisse décimale avec zoom'
 

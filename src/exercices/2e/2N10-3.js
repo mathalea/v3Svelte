@@ -1,3 +1,5 @@
+export const uuid = '46cc1'
+export const ref = '2N10-3'
 import PlacerPointsAbscissesFractionnaires from '../6e/6N21.js'
 export const titre = 'Utiliser les abscisses fractionnaires'
 export { interactifReady, interactifType } from '../6e/6N21.js'

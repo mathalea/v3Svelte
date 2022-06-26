@@ -1,3 +1,5 @@
+export const uuid = 'ce02e'
+export const ref = 'can5N02'
 import { calcul, randint, texNombrec, choice } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Passer de la fraction décimale à l’écriture décimale*'

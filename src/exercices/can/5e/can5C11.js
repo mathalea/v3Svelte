@@ -1,3 +1,5 @@
+export const uuid = '266c7'
+export const ref = 'can5C11'
 import { randint, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer une différence'

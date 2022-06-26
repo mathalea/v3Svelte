@@ -1,3 +1,5 @@
+export const uuid = '506d7'
+export const ref = 'can3C11'
 import { fraction } from '../../../modules/fractions'
 import { calcul, choice, randint, texNombre, texNombrec } from '../../../modules/outils'
 import Exercice from '../../Exercice'

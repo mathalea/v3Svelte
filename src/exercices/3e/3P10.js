@@ -1,3 +1,5 @@
+export const uuid = 'd8842'
+export const ref = '3P10'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, combinaisonListes, abs, calcul, texNombrec, texNombre, stringNombre, texPrix } from '../../modules/outils.js'
 import { setReponse } from '../../modules/gestionInteractif.js'

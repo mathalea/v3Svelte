@@ -1,3 +1,5 @@
+export const uuid = '50ae8'
+export const ref = '6M20'
 import { longueur, segment, mathalea2d, afficheLongueurSegment, afficheCoteSegment, codageAngleDroit, polygoneAvecNom, triangle2points1hauteur, point, rotation } from '../../modules/2d.js'
 import { combinaisonListesSansChangerOrdre, creerNomDePolygone, listeQuestionsToContenu, randint, shuffle, texNombre, calcul, arrondi, combinaisonListes } from '../../modules/outils.js'
 import Exercice from '../Exercice.js'

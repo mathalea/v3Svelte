@@ -1,3 +1,5 @@
+export const uuid = '1d4d9'
+export const ref = '4G12-2'
 import ConservationTransformation from '../5e/5G13.js'
 export const titre = 'Utiliser les propriétés de conservation du parallélisme, des longueurs et des angles'
 

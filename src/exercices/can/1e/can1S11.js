@@ -1,3 +1,5 @@
+export const uuid = '43117'
+export const ref = 'can1S11'
 import Exercice from '../../Exercice.js'
 import { randint, choice, ecritureAlgebrique, sp } from '../../../modules/outils.js'
 export const titre = 'Donner le résultat d’un programme Python'

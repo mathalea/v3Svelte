@@ -1,3 +1,5 @@
+export const uuid = '18490'
+export const ref = '5C12'
 import { context } from '../../modules/context.js'
 import { setReponse } from '../../modules/gestionInteractif.js'
 import { ajouteChampTexteMathLive } from '../../modules/interactif/questionMathLive.js'

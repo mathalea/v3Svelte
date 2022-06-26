@@ -1,3 +1,5 @@
+export const uuid = '0a8af'
+export const ref = 'can2F02'
 import Exercice from '../../Exercice.js'
 import {
   randint, ecritureParentheseSiNegatif,

@@ -1,3 +1,5 @@
+export const uuid = 'b5558'
+export const ref = 'can4P01'
 import { calcul, choice, randint, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Résoudre un problème de robinets'

@@ -1,3 +1,5 @@
+export const uuid = '04436'
+export const ref = 'canPredef5-1'
 import Exercice from '../../Exercice.js'
 import { listeQuestionsToContenu, randint, calcul, texNombrec, choice, texNombre, sp, shuffle, texPrix, combinaisonListesSansChangerOrdre } from '../../../modules/outils.js'
 import { ajouteChampTexteMathLive } from '../../../modules/interactif/questionMathLive.js'

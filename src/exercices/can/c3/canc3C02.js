@@ -1,3 +1,5 @@
+export const uuid = 'ee558'
+export const ref = 'canc3C02'
 import { choice, randint } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer à partir d’une décomposition'

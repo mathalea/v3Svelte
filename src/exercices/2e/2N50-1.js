@@ -1,3 +1,5 @@
+export const uuid = '09610'
+export const ref = '2N50-1'
 import MettreEnEquationSansResoudre from '../4e/4L13-0.js'
 export const titre = 'Mettre en équation un problème sans objectif de résolution'
 // export { interactifReady, interactifType } from '../4e/4L13-0.js'

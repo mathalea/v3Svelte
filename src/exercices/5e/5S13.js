@@ -1,3 +1,5 @@
+export const uuid = '969c4'
+export const ref = '5S13'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, arrondi, texNombre, calcul, prenom, tirerLesDes, listeDeNotes, joursParMois, unMoisDeTemperature, nomDuMois, texFraction } from '../../modules/outils.js'
 import { ajouteChampTexteMathLive } from '../../modules/interactif/questionMathLive.js'

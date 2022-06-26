@@ -1,3 +1,5 @@
+export const uuid = 'acdc4'
+export const ref = 'can1F07'
 import Exercice from '../../Exercice.js'
 import { choice, randint, ecritureAlgebrique, reduirePolynomeDegre3, reduireAxPlusB, rienSi1, ecritureParentheseSiNegatif, texNombre, simplificationDeFractionAvecEtapes } from '../../../modules/outils.js'
 import Decimal from 'decimal.js'

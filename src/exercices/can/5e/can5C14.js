@@ -1,3 +1,5 @@
+export const uuid = '398db'
+export const ref = 'can5C14'
 import Exercice from '../../Exercice.js'
 import { randint, calcul, choice, texNombrec, texteEnCouleur } from '../../../modules/outils.js'
 export const titre = 'Diviser avec des décimaux'

@@ -1,3 +1,5 @@
+export const uuid = '4845c'
+export const ref = '2N51-4'
 import ExerciceEquation1 from '../4e/4L20.js'
 export const titre = 'Équations du premier degré'
 export { interactifReady, interactifType } from '../4e/4L20.js'

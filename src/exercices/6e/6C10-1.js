@@ -1,3 +1,5 @@
+export const uuid = '1b6f8'
+export const ref = '6C10-1'
 import TablesDeMultiplications from './_Tables_de_multiplications.js'
 
 export const titre = 'Réviser les tables de multiplication'

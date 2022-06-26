@@ -1,3 +1,5 @@
+export const uuid = '52c77'
+export const ref = 'can6P02'
 import { calcul, choice, randint, texPrix } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Utiliser une proportionnalité*'

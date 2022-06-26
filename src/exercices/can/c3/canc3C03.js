@@ -1,3 +1,5 @@
+export const uuid = '22320'
+export const ref = 'canc3C03'
 import Exercice from '../../Exercice.js'
 import { randint, choice, miseEnEvidence } from '../../../modules/outils.js'
 export const titre = 'Trouver le nombre dans une table de multiplication '

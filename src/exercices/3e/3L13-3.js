@@ -1,3 +1,5 @@
+export const uuid = '914cb'
+export const ref = '3L13-3'
 import { codeSegments, homothetie, mathalea2d, point, polygone, polygoneAvecNom, segment, texteParPosition } from '../../modules/2d'
 import { setReponse } from '../../modules/gestionInteractif'
 import { ajouteChampTexteMathLive } from '../../modules/interactif/questionMathLive'

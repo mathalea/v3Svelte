@@ -1,3 +1,5 @@
+export const uuid = 'bd9fa'
+export const ref = 'can3S05'
 import Exercice from '../../Exercice.js'
 import { randint, choice, texFractionReduite, texNombrec, sp, texteEnCouleur, calcul } from '../../../modules/outils.js'
 export const titre = 'Calculer une moyenne'

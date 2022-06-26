@@ -1,3 +1,5 @@
+export const uuid = '14124'
+export const ref = 'can2C05'
 import identitesCalculs from '../../3e/3L11-5.js'
 export { interactifReady, interactifType } from '../../3e/3L11-5.js'
 

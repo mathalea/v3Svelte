@@ -1,3 +1,5 @@
+export const uuid = 'af28a'
+export const ref = '6N12-1'
 import MultiplierUnNombreParPuissanceDeDix from './6C30-6.js'
 export { interactifReady, interactifType, amcReady, amcType } from './6C30-6.js'
 export const titre = 'Par combien multiplier un entier pour que le chiffre des unités devienne le chiffre des ...'

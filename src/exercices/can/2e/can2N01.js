@@ -1,3 +1,5 @@
+export const uuid = 'b90c7'
+export const ref = 'can2N01'
 import Exercice from '../../Exercice.js'
 import { randint, choice, sp, texNombrec, texteEnCouleur, calcul } from '../../../modules/outils.js'
 export const titre = 'Utiliser les intervalles'

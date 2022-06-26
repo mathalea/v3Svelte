@@ -1,3 +1,5 @@
+export const uuid = '9de89'
+export const ref = '2F31-2'
 import Exercice from '../Exercice.js'
 import { context } from '../../modules/context.js'
 import { tableauDeVariation, mathalea2d } from '../../modules/2d.js'

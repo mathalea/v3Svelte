@@ -1,3 +1,5 @@
+export const uuid = '96d2e'
+export const ref = '2N30-7'
 export const titre = 'Problèmes additifs et de comparaison sur les fractions'
 
 // eslint-disable-next-line import/first

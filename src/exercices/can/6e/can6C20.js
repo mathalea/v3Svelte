@@ -1,3 +1,5 @@
+export const uuid = '6ae7f'
+export const ref = 'can6C20'
 import { calcul, choice, randint, texNombrec, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Trouver le complément à 1'

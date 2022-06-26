@@ -1,3 +1,5 @@
+export const uuid = '1cd21'
+export const ref = 'c3C12'
 import DernierChiffre from '../6e/6C34.js'
 export const titre = 'Dernier chiffre d\'un calcul'
 export { interactifReady, interactifType, amcReady, amcType } from '../6e/6C34.js'

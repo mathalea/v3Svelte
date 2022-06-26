@@ -1,3 +1,5 @@
+export const uuid = 'dd28e'
+export const ref = 'can2C06'
 import Exercice from '../../Exercice.js'
 import { choice, extraireRacineCarree } from '../../../modules/outils.js'
 export const titre = 'Simplifier des racines carrées'

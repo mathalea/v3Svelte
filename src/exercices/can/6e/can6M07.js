@@ -1,3 +1,5 @@
+export const uuid = '62b21'
+export const ref = 'can6M07'
 import { calcul, choice, miseEnEvidence, randint, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Compléter un volume au litre'

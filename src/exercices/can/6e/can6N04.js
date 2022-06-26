@@ -1,3 +1,5 @@
+export const uuid = 'c233d'
+export const ref = 'can6N04'
 import { droiteGraduee2, mathalea2d } from '../../../modules/2d'
 import { context } from '../../../modules/context'
 import FractionEtendue from '../../../modules/FractionEtendue'

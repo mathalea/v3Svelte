@@ -1,3 +1,5 @@
+export const uuid = 'd57f1'
+export const ref = '5R10-0'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, combinaisonListesSansChangerOrdre, texNombre, miseEnEvidence, texteEnCouleur, tableauColonneLigne, combinaisonListes } from '../../modules/outils.js'
 export const titre = 'Trouver l\'opposé d\'un nombre relatif'

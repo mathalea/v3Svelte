@@ -1,3 +1,5 @@
+export const uuid = '0d05c'
+export const ref = 'can6S01'
 import { mathalea2d, repere2, traceBarreHorizontale } from '../../../modules/2d'
 import { prenom, randint } from '../../../modules/outils'
 import Exercice from '../../Exercice'

@@ -1,3 +1,5 @@
+export const uuid = 'b76e1'
+export const ref = 'can5C12'
 import { obtenirListeFractionsIrreductibles } from '../../../modules/fractions'
 import { calcul, choice, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'

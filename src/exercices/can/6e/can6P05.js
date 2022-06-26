@@ -1,3 +1,5 @@
+export const uuid = '38756'
+export const ref = 'can6P05'
 import AppliquerUnPourcentage from './can6P04.js'
 export { interactifReady, interactifType, amcReady, amcType } from './can6P04.js'
 export const titre = 'Appliquer un pourcentage (bis)'

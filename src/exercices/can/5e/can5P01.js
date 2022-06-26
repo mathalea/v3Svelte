@@ -1,3 +1,5 @@
+export const uuid = '0ef69'
+export const ref = 'can5P01'
 import Exercice from '../../Exercice.js'
 import { randint, calcul, choice, texNombrec, texNombre, texteEnCouleur } from '../../../modules/outils.js'
 export const titre = 'Calculer un prix après une évolution en pourcentage'
