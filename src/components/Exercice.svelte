@@ -33,6 +33,9 @@
   function handleNewSettings(event: CustomEvent) {
     if (event.detail.nbQuestions) exercice.nbQuestions = (event.detail.nbQuestions)
     if (event.detail.sup !== undefined) exercice.sup = (event.detail.sup)
+    if (event.detail.sup2 !== undefined) exercice.sup2 = (event.detail.sup2)
+    if (event.detail.sup3 !== undefined) exercice.sup3 = (event.detail.sup3)
+    if (event.detail.sup4 !== undefined) exercice.sup4 = (event.detail.sup4)
     updateDisplay()
   }
 
@@ -84,13 +87,13 @@
   </h1>
   {#if visible}
     {#if contenuVisible}
-      <div>{@html contenu}</div>
+      <div class="ml-5">{@html contenu}</div>
     {:else}
-      <div>{@html correction}</div>
+      <div class="ml-5">{@html correction}</div>
     {/if}
   {/if}
   {#if parametresVisible}
-  <div transition:fade class="mt-3">
+  <div transition:fade class="mt-3 ml-5">
     <Settings exercice={exercice} on:reglages={handleNewSettings}/>
   </div>
   {/if}

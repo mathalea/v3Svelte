@@ -7,8 +7,8 @@
   import { listeExercices } from "./store";
 
   const exercice1 = {
-    directory: "5e",
-    filename: "5L14-6",
+    directory: "6e",
+    filename: "6C30-0",
     nbQuestions: 3,
   };
   const exercice2 = {
@@ -27,7 +27,7 @@
 </script>
 
 <Header />
-<main>
+<main class="ml-10">
   {#each $listeExercices as exercice, i (exercice)}
     <div animate:flip={{ duration: (d) => 30 * Math.sqrt(d) }}>
       <Exercice
