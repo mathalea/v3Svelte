@@ -22,6 +22,7 @@
   let contenuVisible = true
   let correctionVisible = true
   let parametresVisible = false
+  let interactif = false
   let contenu: string = ''
   let correction: string = ''
 
@@ -59,6 +60,7 @@
   function updateDisplay() {
     if (exercice.seed === undefined) exercice.seed = randomInt(1, 9999).toString()
     seedrandom(exercice.seed, { global: true })
+    exercice.interactif = interactif
     exercice.nouvelleVersion()
     contenu = exercice.contenu
     correction = exercice.contenuCorrection
@@ -71,6 +73,12 @@
     if (nbQuestions) exercice.nbQuestions = nbQuestions
     updateDisplay()
   })
+
+  function switchInteractif () {
+    interactif = !interactif
+    exercice.interactif = interactif
+    updateDisplay()
+  }
 </script>
 
 <div bind:this="{divExercice}">
@@ -79,13 +87,14 @@
       Exercice {indiceExercice + 1}
     </div>
     <div class="flex justify-end">
+      <button type="button" on:click="{switchInteractif}"><i class="bx ml-6 {interactif ? 'bxs-mouse' : 'bx-mouse'}"></i></button>
       <button type="button" on:click="{() => {visible = !visible}}"><i class="bx ml-6 {visible ? 'bx-hide' : 'bx-show'}"></i></button>
       <button type="button" on:click="{() => {parametresVisible = !parametresVisible}}"><i class="bx ml-6 {parametresVisible ? 'bxs-cog' : 'bx-cog'}"></i></button>
       <button type="button" on:click="{newData}"><i class="bx bx-refresh ml-6"></i></button>
       <button type="button" on:click="{remove}"><i class="bx bx-trash ml-6"></i></button>
       <BoutonMonter indice={indiceExercice} />
       <BoutonDescendre indice={indiceExercice} indiceLastExercice={indiceLastExercice} />
-      <button class="flew flex-row items-center w-32" type="button" on:click="{transitionContenuCorrection}">
+      <button class="flex flex-row items-center w-32" type="button" on:click="{transitionContenuCorrection}">
           <i class="bx ml-6 {contenuVisible ? 'bxs-toggle-left' : 'bxs-toggle-right'}">
             <span class="font-thin text-sm">
               {correctionVisible ? 'Correction' : 'Consigne'}
