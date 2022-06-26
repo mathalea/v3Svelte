@@ -3,16 +3,15 @@
     export let text = ''
     export let indice: number
 
-    let thisChips: HTMLDivElement
-    function erase() {
+    function remove() {
         listeExercices.update( l => [...l.slice(0, indice), ...l.slice(indice + 1)])
     }
 </script>
 
-<div class="inline-flex flex-wrap justify-center space-x-2 mb-10" bind:this={thisChips}>
+<div class="inline-flex flex-wrap justify-center space-x-2 mb-10">
     <span class="px-4 py-2 rounded-full text-gray-500 bg-gray-200 font-semibold cursor-default text-sm flex align-center w-max active:bg-gray-300 transition duration-300 ease">
         {text}
-        <button class="bg-transparent hover focus:outline-none cursor-pointer" on:click={erase}>
+        <button class="bg-transparent hover focus:outline-none cursor-pointer" on:click={remove}>
             <svg
                 aria-hidden="true"
                 focusable="false"

@@ -1,13 +1,14 @@
 <script lang="ts">
-  import { afterUpdate, onMount, tick } from 'svelte'
+  import { afterUpdate, onMount } from 'svelte'
   import { fade } from 'svelte/transition'
   import seedrandom from 'seedrandom'
-  import BoutonMonter from './BoutonMonter.svelte'
-  import BoutonDescendre from './BoutonDescendre.svelte'
   import { Mathalea } from '../Mathalea'
   import type Exercice from '../exercices/ExerciceTs'
-  import Settings from './Settings.svelte'
+  import { listeExercices } from './store'
   import { randomInt } from 'mathjs'
+  import BoutonMonter from './BoutonMonter.svelte'
+  import BoutonDescendre from './BoutonDescendre.svelte'
+  import Settings from './Settings.svelte'
 
   export let directory: string
   export let filename: string
@@ -51,6 +52,10 @@
     updateDisplay()
   }
 
+  function remove() {
+        listeExercices.update( l => [...l.slice(0, indiceExercice), ...l.slice(indiceExercice + 1)])
+  }
+
   function updateDisplay() {
     if (exercice.seed === undefined) exercice.seed = randomInt(1, 9999).toString()
     seedrandom(exercice.seed, { global: true })
@@ -77,6 +82,7 @@
       <button type="button" on:click="{() => {visible = !visible}}"><i class="bx ml-6 {visible ? 'bx-hide' : 'bx-show'}"></i></button>
       <button type="button" on:click="{() => {parametresVisible = !parametresVisible}}"><i class="bx ml-6 {parametresVisible ? 'bxs-cog' : 'bx-cog'}"></i></button>
       <button type="button" on:click="{newData}"><i class="bx bx-refresh ml-6"></i></button>
+      <button type="button" on:click="{remove}"><i class="bx bx-trash ml-6"></i></button>
       <BoutonMonter indice={indiceExercice} />
       <BoutonDescendre indice={indiceExercice} indiceLastExercice={indiceLastExercice} />
       <button class="flew flex-row items-center w-32" type="button" on:click="{transitionContenuCorrection}">

@@ -1,6 +1,7 @@
 <script lang="ts">
+    import Chips from './chips.svelte'
+
     import { listeExercices } from './store'
-    import Chips from './Chips.svelte'
 
     let input: HTMLInputElement
     let listeId = []
