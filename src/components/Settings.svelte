@@ -39,3 +39,8 @@ import { afterUpdate, createEventDispatcher } from 'svelte';
     {exercice.besoinFormulaireCaseACocher[0]} : <input type="checkbox" bind:checked={sup} on:change={nouveauxReglages}>
   </div>
 {/if}
+{#if exercice.besoinFormulaireNumerique}
+  <div>
+    {exercice.besoinFormulaireNumerique[0]} : <input type="number" min="1" max={exercice.besoinFormulaireNumerique[1]} title={exercice.besoinFormulaireNumerique[2] || ''} bind:value={sup} on:change={nouveauxReglages} class="w-12">
+  </div>
+{/if}

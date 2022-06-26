@@ -15,7 +15,7 @@
   };
   const exercice2 = {
     directory: "6e",
-    filename: "6C11",
+    filename: "6C13",
     nbQuestions: 3,
   };
   const exercice3 = {
