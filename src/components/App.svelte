@@ -1,7 +1,5 @@
 <script lang="ts">
-  import { tick } from "svelte";
   import { flip } from "svelte/animate";
-  import { Mathalea } from "../Mathalea";
 
   import Exercice from "./Exercice.svelte";
   import Header from "./Header.svelte";
@@ -24,25 +22,18 @@
     nbQuestions: 3,
   };
 
-  let mesExercices;
-
-  listeExercices.subscribe(async (liste) => {
-    mesExercices = liste;
-    await tick();
-    Mathalea.renderDiv(document.querySelector("#app"));
-  });
 
   listeExercices.set([exercice1, exercice2, exercice3]);
 </script>
 
 <Header />
 <main>
-  {#each mesExercices as exercice, i (exercice)}
+  {#each $listeExercices as exercice, i (exercice)}
     <div animate:flip={{ duration: (d) => 30 * Math.sqrt(d) }}>
       <Exercice
         {...exercice}
         indiceExercice={i}
-        indiceLastExercice={mesExercices.length}
+        indiceLastExercice={$listeExercices.length}
       />
     </div>
   {/each}
