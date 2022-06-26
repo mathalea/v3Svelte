@@ -24,12 +24,15 @@
   let contenu: string = ''
   let correction: string = ''
 
+
+
   afterUpdate(() => {
     Mathalea.renderDiv(divExercice)
   })
 
   function handleNewSettings(event: CustomEvent) {
     if (event.detail.nbQuestions) exercice.nbQuestions = (event.detail.nbQuestions)
+    if (event.detail.sup !== undefined) exercice.sup = (event.detail.sup)
     updateDisplay()
   }
 
@@ -56,6 +59,7 @@
 
   onMount(async () => {
     exercice = await Mathalea.load(directory, filename)
+    // Nombre de questions transmis par App.svelte
     if (nbQuestions) exercice.nbQuestions = nbQuestions
     updateDisplay()
   })
@@ -87,7 +91,7 @@
   {/if}
   {#if parametresVisible}
   <div transition:fade class="mt-3">
-    <Settings nbQuestions={nbQuestions} on:reglages={handleNewSettings}/>
+    <Settings exercice={exercice} on:reglages={handleNewSettings}/>
   </div>
   {/if}
 </div>

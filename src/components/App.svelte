@@ -9,8 +9,8 @@
   import { listeExercices } from "./store";
 
   const exercice1 = {
-    directory: "6e",
-    filename: "6M10",
+    directory: "5e",
+    filename: "5L14-6",
     nbQuestions: 3,
   };
   const exercice2 = {
