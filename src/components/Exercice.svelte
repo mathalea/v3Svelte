@@ -77,12 +77,8 @@
       <button type="button" on:click="{() => {visible = !visible}}"><i class="bx ml-6 {visible ? 'bx-hide' : 'bx-show'}"></i></button>
       <button type="button" on:click="{() => {parametresVisible = !parametresVisible}}"><i class="bx ml-6 {parametresVisible ? 'bxs-cog' : 'bx-cog'}"></i></button>
       <button type="button" on:click="{newData}"><i class="bx bx-refresh ml-6"></i></button>
-      {#if indiceExercice > 0}
-        <BoutonMonter indice="{indiceExercice}" />
-      {/if}
-      {#if indiceExercice < indiceLastExercice - 1}
-        <BoutonDescendre indice="{indiceExercice}" />
-      {/if}
+      <BoutonMonter indice={indiceExercice} />
+      <BoutonDescendre indice={indiceExercice} indiceLastExercice={indiceLastExercice} />
       <button class="flew flex-row items-center w-32" type="button" on:click="{transitionContenuCorrection}">
           <i class="bx ml-6 {contenuVisible ? 'bxs-toggle-left' : 'bxs-toggle-right'}">
             <span class="font-thin text-sm">
