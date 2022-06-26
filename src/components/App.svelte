@@ -27,7 +27,7 @@
 </script>
 
 <Header />
-<main class="ml-10">
+<main class="flex-grow px-10">
   {#each $listeExercices as exercice, i (exercice)}
     <div animate:flip={{ duration: (d) => 30 * Math.sqrt(d) }}>
       <Exercice

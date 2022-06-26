@@ -69,31 +69,39 @@
 </script>
 
 <div bind:this="{divExercice}">
-  <h1 class="border-b border-gray-300 text-orange-600 font-semibold text-left pl-4 text-xl mt-4 pb-2 flex flex-row items-center">
-    Exercice {indiceExercice + 1}
-    <button type="button" on:click="{() => {visible = !visible}}"><i class="bx ml-6 {visible ? 'bx-hide' : 'bx-show'}"></i></button>
-    <button type="button" on:click="{() => {parametresVisible = !parametresVisible}}"><i class="bx ml-6 {parametresVisible ? 'bxs-cog' : 'bx-cog'}"></i></button>
-    <button type="button" on:click="{newData}"><i class="bx bx-refresh ml-6"></i></button>
-    {#if indiceExercice > 0}
-      <BoutonMonter indice="{indiceExercice}" />
-    {/if}
-    {#if indiceExercice < indiceLastExercice - 1}
-      <BoutonDescendre indice="{indiceExercice}" />
-    {/if}
-    <button type="button" on:click="{transitionContenuCorrection}">
-        <i class="bx ml-6 {contenuVisible ? 'bxs-toggle-left' : 'bxs-toggle-right'}">
-        {correctionVisible ? 'Correction' : 'Consigne'}
-    </button>
+  <h1 class="border-b border-gray-300 text-orange-600 font-semibold text-left pl-4 text-xl mt-4 pb-2 flex flex-row justify-between items-center">
+    <div class="flex justify-start">
+      Exercice {indiceExercice + 1}
+    </div>
+    <div class="flex justify-end">
+      <button type="button" on:click="{() => {visible = !visible}}"><i class="bx ml-6 {visible ? 'bx-hide' : 'bx-show'}"></i></button>
+      <button type="button" on:click="{() => {parametresVisible = !parametresVisible}}"><i class="bx ml-6 {parametresVisible ? 'bxs-cog' : 'bx-cog'}"></i></button>
+      <button type="button" on:click="{newData}"><i class="bx bx-refresh ml-6"></i></button>
+      {#if indiceExercice > 0}
+        <BoutonMonter indice="{indiceExercice}" />
+      {/if}
+      {#if indiceExercice < indiceLastExercice - 1}
+        <BoutonDescendre indice="{indiceExercice}" />
+      {/if}
+      <button class="flew flex-row items-center w-32" type="button" on:click="{transitionContenuCorrection}">
+          <i class="bx ml-6 {contenuVisible ? 'bxs-toggle-left' : 'bxs-toggle-right'}">
+            <span class="font-thin text-sm">
+              {correctionVisible ? 'Correction' : 'Consigne'}
+            </span>
+      </button>
+    </div>
   </h1>
-  {#if visible}
-    {#if contenuVisible}
-      <div class="ml-5">{@html contenu}</div>
-    {:else}
-      <div class="ml-5">{@html correction}</div>
+  <p class="pl-4">
+    {#if visible}
+      {#if contenuVisible}
+        <div class="ml-5">{@html contenu}</div>
+      {:else}
+        <div class="ml-5">{@html correction}</div>
+      {/if}
     {/if}
-  {/if}
+  </p>
   {#if parametresVisible}
-  <div transition:fade class="mt-3 ml-5">
+  <div transition:fade class="mt-3">
     <Settings exercice={exercice} on:reglages={handleNewSettings}/>
   </div>
   {/if}
