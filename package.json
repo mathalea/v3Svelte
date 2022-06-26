@@ -13,6 +13,7 @@
     "@cortex-js/compute-engine": "^0.6.0",
     "@svgdotjs/svg.js": "^3.1.2",
     "algebrite": "^1.4.0",
+    "boxicons": "^2.1.2",
     "decimal.js": "^10.3.1",
     "earcut": "^2.2.3",
     "instrumenpoche": "git+https://git.sesamath.net/sesamath/instrumenpoche.git",
