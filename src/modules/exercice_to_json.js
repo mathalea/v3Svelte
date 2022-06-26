@@ -3,6 +3,7 @@
 
 const fs = require('fs')
 const path = require('path')
+const { uuidFromRef, urlFromUuid, listeChapitresDuNiveau, listeExosDuChapitre, listeExosAvecTag, toObjet, toMap, collecteUuidsDico } = require('./fileTools')
 const requireImport = require('esm')(module)
 const isVerbose = /-(-verbode|v)/.test(process.argv)
 const logIfVerbose = (...args) => { if (isVerbose) console.log(...args) }
@@ -13,44 +14,6 @@ const referentiel2022File = path.resolve(jsDir, 'modules', 'referentiel2022.json
 let dictionnaire = new Map()
 let referentiel2022 = new Map()
 let uuidsToUrl = new Map()
-
-/**
- * @author Sylvain Chambon
- * @param {object} obj
- * @returns {Map}
- */
-function toMap (obj) {
-  const dico = new Map()
-  for (const cle of Object.keys(obj)) {
-    if (obj[cle] instanceof Object) {
-      if (obj[cle] instanceof Array) {
-        dico.set(cle, obj[cle])
-      } else {
-        dico.set(cle, toMap(obj[cle]))
-      }
-    } else {
-      dico.set(cle, obj[cle])
-    }
-  }
-  return dico
-}
-
-/**
- *
- * @param {Map} dico
- * @returns {object}
- */
-function toObjet (dico) {
-  const obj = {}
-  for (const [cle, valeur] of dico) {
-    if (valeur instanceof Map) {
-      obj[cle] = toObjet(valeur)
-    } else {
-      obj[cle] = valeur
-    }
-  }
-  return obj
-}
 
 /**
  * Crée une Uuid de 5 caractères hexadécimaux (1M de possibilités)
@@ -101,99 +64,9 @@ function getAllFiles (dir) {
   })
   return files
 }
-/***************************************************/
-/** ************ fonctions de recherche *************/
-/***************************************************/
-/**
- *
- * @param {string} ref : la référence cherchée dans le référentiel2022
- * @returns {string} l'uuid de l'exercice dont la référence dans le référentiel2022 est ref
- */
-function uuidFromRef (ref) {
-  if (!(referentiel2022 instanceof Map)) {
-    console.log('referentiel2022 non valide ou non initialisé')
-    return ''
-  }
-  for (const [niv, chaps] of referentiel2022) {
-    for (const [chap, exos] of chaps) {
-      if (exos.get(ref)) return exos.get(ref)
-    }
-  }
-  return ''
-}
-/**
- *
- * @param {string} uuid : l'uuid cherchée
- * @returns {string} la référence correspondante dans le référentiel2022
- */
-function urlFromUuid (uuid) {
-  if (!(uuidsToUrl instanceof Map)) {
-    console.log('dictionnaire uurlToUuid non valide ou non initialisé')
-    return ''
-  }
-  const cheminFichier = uuidsToUrl.get(uuid)
-  if (cheminFichier) return cheminFichier[0] + '/' + cheminFichier[1]
-  else return ''
-}
-/**
- *
- * @param {string} level : le niveau ('1e', '6e', ...) duquel on veut la liste des références (can comprises)
- * @returns {array} la liste des uuids des exercices du niveau charché.
- */
-function listeChapitresDuNiveau (level) {
-  if (!(referentiel2022 instanceof Map)) {
-    console.log('referentiel2022 non valide ou non initialisé')
-    return []
-  }
-  const chaps = referentiel2022.get(level)
-  const listeChapitres = []
-  if (chaps) {
-    chaps.forEach((value, key, map) => listeChapitres.push(key))
-  }
-  return listeChapitres
-}
-/**
- *
- * @param {string} chap : le chapitre ('1AN', '1E1', '6C1', ...) dont on veut la liste des exercices
- * @returns la liste des uuids des exercices du chapitre cherché
- */
-function listeExosDuChapitre (chap) {
-  const listeExos = []
-  if (!(referentiel2022 instanceof Map)) {
-    console.log('referentiel2022 non valide ou non initialisé')
-    return listeExos
-  }
-  for (const [niv, chaps] of referentiel2022) {
-    if (chaps.get(chap)) {
-      chaps.get(chap).forEach((value, key) => listeExos.push([key, value]))
-    }
-  }
-  return listeExos
-}
-/**
- *
- * @param {string} tag : Le mot clé cherché dans les thèmes d'exercice
- * @returns la liste des uuids des exercices qui ont le mot clé dans leur thèmes
- */
-function listeExosAvecTag (tag) {
-  const listeExos = []
-  if (!(dictionnaire instanceof Map)) {
-    console.log('dictionnaire des exercices disponibles non valide ou non initialisé')
-    return listeExos
-  }
-  for (const [niv, chaps] of dictionnaire) {
-    for (const [chap, exos] of chaps) {
-      exos.forEach((value, key, exos) => {
-        try {
-          if (value.get('themes').includes(tag)) listeExos.push(key)
-        } catch (error) {
-          console.log(`erreur avec le chapitre ${chap} et l'uuid ${key}`, error)
-        }
-      })
-    }
-  }
-  return listeExos
-}
+// *****************************************************/
+// ***************** Fonctions outils ******************/
+// *****************************************************/
 
 function ecrireUuidDansFichier (uuid, name, file) {
   let fichier = fs.readFileSync(file, 'utf-8')
@@ -205,15 +78,6 @@ function ecrireUuidDansFichier (uuid, name, file) {
     console.log(`Le fichier ${file} n'a pas pu être ouvert en lecture`)
     return false
   }
-}
-function collecteUuidsDico (dico) {
-  let listeUUID = []
-  dico.forEach((groupeSousNiveau, niveauID) => {
-    groupeSousNiveau.forEach((groupeExos, sousNiveauID) => {
-      listeUUID = [...listeUUID, ...groupeExos.keys()]
-    })
-  })
-  return listeUUID
 }
 
 function ajouteExoReferentiel ({ uuid, name, level, chap, referentiel }) {
@@ -405,30 +269,6 @@ function buildJsonExercicesOfLevel (level) { // level contient la première lett
   const dicoLevelFile = path.resolve('src', 'modules', `exercicesDisponiblesNiveau${level}Referentiel2022.json`)
   fs.writeFileSync(dicoLevelFile, JSON.stringify(dicoLevel, null, 2))
 }
-/**
- *
- * @param {string} exercice
- * @returns {object} {level, chap, isCan, ref}
- * @author Jean-Claude Lhote
- */
-function extraitLevelExercice (exercice) {
-  let exo = exercice
-  const structure = { level: '', chap: '', isCan: false, ref: '' }
-  if (exo.substring(0, 3) === 'can') {
-    structure.isCan = true
-    exo = exo.substring(3)
-  }
-  if (['1', '2', '3', '4', '5', '6', 'T'].indexOf(exo[0]) !== -1) {
-    structure.level = exo.substring(0, 1) + 'e'
-    exo = exo.substring(1)
-  } else {
-    structure.level = exo.substring(0, 2)
-    exo = exo.substring(2)
-  }
-  structure.chap = exo.substring(0, 1)
-  structure.ref = exo
-  return structure
-}
 
 // main script
 builJsonDictionnaireExercices()
@@ -445,11 +285,11 @@ buildJsonExercicesOfLevel('PE')
 buildJsonExercicesOfLevel('Ex')
 buildJsonExercicesOfLevel('c3')
 */
-console.log(uuidFromRef('4C35'))
-console.log(urlFromUuid('17927'))
-console.log(listeChapitresDuNiveau('1e'))
-console.log(listeExosDuChapitre('4G1'))
-console.log(listeExosAvecTag('Pythagore'))
+console.log(uuidFromRef('4C35', referentiel2022))
+console.log(urlFromUuid('17927', uuidsToUrl))
+console.log(listeChapitresDuNiveau('1e', referentiel2022))
+console.log(listeExosDuChapitre('4G1', referentiel2022))
+console.log(listeExosAvecTag('Pythagore', dictionnaire))
 // buildJsonExercicesOfLevel('Te')
 
 /* const donneesJSON = fs.readFileSync(path.resolve('src', 'modules', 'exercicesDisponiblesReferentiel2022.json'));
