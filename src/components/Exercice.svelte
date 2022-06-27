@@ -9,6 +9,7 @@
   import BoutonMonter from './BoutonMonter.svelte'
   import BoutonDescendre from './BoutonDescendre.svelte'
   import Settings from './Settings.svelte'
+  import { exerciceInteractif } from '../modulesv2/gestionInteractif'
 
   export let directory: string
   export let filename: string
@@ -30,6 +31,7 @@
 
   afterUpdate(() => {
     Mathalea.renderDiv(divExercice)
+    if (interactif) exerciceInteractif(exercice)
   })
 
   function handleNewSettings(event: CustomEvent) {
@@ -71,6 +73,7 @@
     exercice = await Mathalea.load(directory, filename)
     // Nombre de questions transmis par App.svelte
     if (nbQuestions) exercice.nbQuestions = nbQuestions
+    exercice.numeroExercice = indiceExercice
     updateDisplay()
   })
 
@@ -105,7 +108,7 @@
   <p class="pl-4">
     {#if visible}
       {#if contenuVisible}
-        <div class="ml-5">{@html contenu}</div>
+        <div class="ml-5" id="exercice{indiceExercice}">{@html contenu}</div>
       {:else}
         <div class="ml-5">{@html correction}</div>
       {/if}

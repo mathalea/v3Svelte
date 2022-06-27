@@ -1,6 +1,5 @@
 <script lang="ts">
   import { flip } from "svelte/animate"
-
   import Exercice from "./Exercice.svelte"
   import Header from "./Header.svelte"
   import Footer from "./Footer.svelte"

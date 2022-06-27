@@ -5,6 +5,8 @@
  * @author Rémi Angot
  */
 export default class Exercice {
+id: string
+numeroExercice: number
 titre: string
 sup: any
 sup2: any

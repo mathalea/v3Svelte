@@ -19,9 +19,13 @@ export class Mathalea {
       // cf https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#globs-only-go-one-level-deep
       const module = await import(`./exercices/${directory}/${filename}.js`)
       const exercice: Promise<Exercice> = new module.default()
+      ;['titre', 'amcReady', 'amcType', 'interactifType', 'interactifReady'].forEach((p) => {
+        if (module[p] !== undefined) exercice[p] = module[p]
+      })
+      exercice.id = filename
       return exercice
     } catch (error) {
-      console.log(`Chargement de l\'exercice ${directory}/${filename} impossible`)
+      console.log(`Chargement de l'exercice ${directory}/${filename} impossible`)
       const exercice = new Exercice()
       exercice.contenu = `<h3>La référence ${directory}/${filename} n'existe pas !</h3>`
       return exercice
