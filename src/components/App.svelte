@@ -5,6 +5,7 @@
   import Footer from "./Footer.svelte"
   import { listeExercices } from "./store"
   import InputListeExercices from "./InputListeExercices.svelte"
+  import Recherche from "./Recherche.svelte"
 
   const exercice1 = {
     directory: "6e",
@@ -45,6 +46,7 @@
 <Header />
 <main class="flex-grow px-10 py-10">
   <InputListeExercices />
+  <Recherche />
   {#each $listeExercices as exercice, i (exercice)}
     <div animate:flip={{ duration: (d) => 30 * Math.sqrt(d) }}>
       <Exercice {...exercice} indiceExercice={i} indiceLastExercice={$listeExercices.length} />
