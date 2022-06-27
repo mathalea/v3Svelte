@@ -1,7 +1,7 @@
 <script>
 </script>
 
-<footer class="w-full bg-white h-12 flex flex-row-reverse items-center  sticky bottom-0 opacity-100">
+<footer class="w-full bg-white h-12 flex flex-row-reverse items-center bottom-0 opacity-100">
   <img class="px-6" style="height: 30px" src="/src/assets/images/logo2.png" alt="Logo Coopmaths 2" />
   <a class="pr-6 font-thin" href="https://coopmaths.fr/twitter"> @CoopMaths_fr</a>
   <svg class="h-5 w-5 text-black" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

@@ -92,24 +92,25 @@
 </script>
 
 <div bind:this={divExercice}>
-  <h1 class="border-b border-gray-300 text-orange-600 font-semibold text-left pl-4 text-xl mt-4 pb-2 flex flex-row justify-between items-center">
-    <div class="flex justify-start" id="exercice{indiceExercice}">
-      Exercice {indiceExercice + 1} - {titre}
+  <h1 class="border-b border-gray-300 text-orange-600 pl-4 mt-4 pb-2 flex flex-col lg:flex-row lg:justify-between lg:items-center">
+    <div class="flex flex-col lg:flex-row lg:justify-start lg:items-center" id="exercice{indiceExercice}">
+      <div class="flex font-bold">Exercice {indiceExercice + 1}</div>
+      <div class="flex font-normal text-sm lg:text-normal"><span class="invisible lg:visible mx-1 font-bold">&middot;</span>{titre}</div>
     </div>
-    <div class="flex justify-end">
-      <button type="button" on:click={switchInteractif}><i class="bx ml-6 {interactif ? 'bxs-mouse' : 'bx-mouse'}" /></button>
+    <div class="flex justify-start text-normal mt-1 lg:justify-end lg:text-xl">
+      <button type="button" on:click={switchInteractif}><i class="bx ml-2 {interactif ? 'bxs-mouse' : 'bx-mouse'}" /></button>
       <button type="button" on:click={() => (visible = !visible)}>
-        <i class="bx ml-6 {visible ? 'bx-hide' : 'bx-show'}" />
+        <i class="bx ml-2 {visible ? 'bx-hide' : 'bx-show'}" />
       </button>
       <button type="button" on:click={() => (parametresVisible = !parametresVisible)}>
-        <i class="bx ml-6 {parametresVisible ? 'bxs-cog' : 'bx-cog'}" />
+        <i class="bx ml-2 {parametresVisible ? 'bxs-cog' : 'bx-cog'}" />
       </button>
-      <button type="button" on:click={newData}><i class="bx bx-refresh ml-6" /></button>
-      <button type="button" on:click={remove}><i class="bx bx-trash ml-6" /></button>
+      <button type="button" on:click={newData}><i class="bx bx-refresh ml-2" /></button>
+      <button type="button" on:click={remove}><i class="bx bx-trash ml-2" /></button>
       <BoutonMonter indice={indiceExercice} />
       <BoutonDescendre indice={indiceExercice} {indiceLastExercice} />
       <button class="flew flex-row items-center w-32" type="button" on:click={transitionContenuCorrection}>
-        <i class="bx ml-6 {contenuVisible ? 'bxs-toggle-left' : 'bxs-toggle-right'}"> <span class="font-thin text-sm"> {correctionVisible ? "Correction" : "Consigne"} </span> </i></button
+        <i class="bx ml-2 {contenuVisible ? 'bxs-toggle-left' : 'bxs-toggle-right'}"> <span class="font-thin text-sm"> {correctionVisible ? "Correction" : "Consigne"} </span> </i></button
       >
     </div>
   </h1>
