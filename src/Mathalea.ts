@@ -19,7 +19,8 @@ export class Mathalea {
       // L'import dynamique ne peut descendre que d'un niveau, les sous-répertoires de directory ne sont pas pris en compte
       // cf https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#globs-only-go-one-level-deep
       const module = await import(`./exercices/${directory}/${filename}.js`)
-      const exercice: Promise<Exercice> = new module.default()
+      const ClasseExercice = module.default
+      const exercice: Promise<Exercice> = new ClasseExercice()
       ;['titre', 'amcReady', 'amcType', 'interactifType', 'interactifReady'].forEach((p) => {
         if (module[p] !== undefined) exercice[p] = module[p]
       })
