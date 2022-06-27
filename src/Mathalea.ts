@@ -1,4 +1,5 @@
-import { renderMathInElement } from 'mathlive'
+import renderMathInElement from 'katex/dist/contrib/auto-render.js'
+import 'katex/dist/katex.min.css'
 import Exercice from './exercices/ExerciceTs'
 
 export type Settings = { sup?: boolean | string | number, sup2?: boolean | string | number, sup3?: boolean | string | number, sup4?: boolean | string | number, nbQuestions?: number, seed?: string }
@@ -51,15 +52,27 @@ export class Mathalea {
   }
 
   static renderDiv (div: HTMLDivElement): void {
-    // Si on veut remplacer MathLive par KaTeX, il suffira de le modifier ici
+    // KaTeX à remplacer par MathLive ?
+    // renderMathInElement(div, {
+    //   TeX: {
+    //     delimiters: {
+    //       display: [['\\(', '\\)']],
+    //       inline: [['$', '$']]
+    //     }
+    //   },
+    //   fontsDirectory: '/fonts'
+    // })
+
     renderMathInElement(div, {
-      TeX: {
-        delimiters: {
-          display: [['\\(', '\\)']],
-          inline: [['$', '$']]
-        }
-      },
-      fontsDirectory: '/fonts'
+      delimiters: [
+        { left: '\\[', right: '\\]', display: true },
+        { left: '$', right: '$', display: false }
+      ],
+      preProcess: (chaine) => chaine.replaceAll(String.fromCharCode(160), '\\,'),
+      throwOnError: true,
+      errorColor: '#CC0000',
+      strict: 'warn',
+      trust: false
     })
   }
 }
