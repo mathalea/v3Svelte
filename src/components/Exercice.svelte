@@ -28,7 +28,7 @@
         <BoutonMonter indice={indiceExercice} />
       {/if}
       {#if indiceExercice < indiceLastExercice - 1}
-        <BoutonDescendre indice={indiceExercice} />
+        <BoutonDescendre indice={indiceExercice} indiceLastExercice={indiceLastExercice} />
       {/if}
       <button
         class="flew flex-row items-center w-32"
@@ -94,7 +94,6 @@
   let titre: string;
   let consigne: string;
   let consigneCorrection: string;
-  let introduction: string;
   let listeQuestions: string[] = [];
   let listeCorrections: string[] = [];
 
