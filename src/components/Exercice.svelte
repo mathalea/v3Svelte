@@ -21,15 +21,10 @@
           class="bx ml-6 {parametresVisible ? 'bxs-cog' : 'bx-cog'}"
         /></button
       >
-      <button type="button" on:click={newData}
-        ><i class="bx bx-refresh ml-6" /></button
-      >
-      {#if indiceExercice > 0}
-        <BoutonMonter indice={indiceExercice} />
-      {/if}
-      {#if indiceExercice < indiceLastExercice - 1}
-        <BoutonDescendre indice={indiceExercice} indiceLastExercice={indiceLastExercice} />
-      {/if}
+      <button type="button" on:click={newData}><i class="bx bx-refresh ml-6" /></button>
+      <button type="button" on:click="{remove}"><i class="bx bx-trash ml-6"></i></button>
+      <BoutonMonter indice={indiceExercice} />
+      <BoutonDescendre indice={indiceExercice} indiceLastExercice={indiceLastExercice} />
       <button
         class="flew flex-row items-center w-32"
         type="button"
@@ -68,6 +63,7 @@
 <script lang="ts">
   import { afterUpdate, onMount, tick } from "svelte";
   import { fade } from "svelte/transition";
+  import { listeExercices } from './store'
   import seedrandom from "seedrandom";
   import BoutonMonter from "./BoutonMonter.svelte";
   import BoutonDescendre from "./BoutonDescendre.svelte";
@@ -120,6 +116,10 @@
     const seed = (Math.random() * 1000).toString();
     exercice.seed = seed;
     updateDisplay();
+  }
+
+  function remove() {
+        listeExercices.update( l => [...l.slice(0, indiceExercice), ...l.slice(indiceExercice + 1)])
   }
 
   function updateDisplay() {
