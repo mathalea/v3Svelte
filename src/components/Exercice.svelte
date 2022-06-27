@@ -2,10 +2,11 @@
   <h1
     class="border-b border-gray-300 text-orange-600 font-semibold text-left pl-4 text-xl mt-4 pb-2 flex flex-row justify-between items-center"
   >
-    <div class="flex justify-start">
+    <div class="flex justify-start" id="exercice{indiceExercice}">
       Exercice {indiceExercice + 1} - {titre}
     </div>
     <div class="flex justify-end">
+      <button type="button" on:click="{switchInteractif}"><i class="bx ml-6 {interactif ? 'bxs-mouse' : 'bx-mouse'}"></i></button>
       <button
         type="button"
         on:click={() => {
@@ -43,11 +44,13 @@
     </div>
   </h1>
   {#if visible}
+    <div id="exercice{indiceExercice}">
     {#if contenuVisible}
       <Contenu chapeau={consigne} entrees={listeQuestions} />
     {:else}
       <Contenu chapeau={consigneCorrection} entrees={listeCorrections} />
     {/if}
+    </div>
   {/if}
 
   {#if parametresVisible}
@@ -72,6 +75,8 @@
   import Settings from "./Settings.svelte";
   import { randomInt } from "mathjs";
   import Contenu from "./Contenu.svelte";
+  import { exerciceInteractif } from '../modulesv2/gestionInteractif'
+
 
   export let directory: string;
   export let filename: string;
@@ -85,8 +90,7 @@
   let contenuVisible = true;
   let correctionVisible = true;
   let parametresVisible = false;
-  let contenu: string = "";
-  let correction: string = "";
+  let interactif = false
   let titre: string;
   let consigne: string;
   let consigneCorrection: string;
@@ -95,6 +99,7 @@
 
   afterUpdate(() => {
     Mathalea.renderDiv(divExercice);
+    if (interactif) exerciceInteractif(exercice)
   });
 
   function handleNewSettings(event: CustomEvent) {
@@ -126,9 +131,8 @@
     if (exercice.seed === undefined)
       exercice.seed = randomInt(1, 9999).toString();
     seedrandom(exercice.seed, { global: true });
+    exercice.interactif = interactif
     exercice.nouvelleVersion();
-    contenu = exercice.contenu;
-    correction = exercice.contenuCorrection;
     titre = exercice.titre;
     listeQuestions = [...exercice.listeQuestions];
     listeCorrections = [...exercice.listeCorrections];
@@ -140,6 +144,13 @@
     exercice = await Mathalea.load(directory, filename);
     // Nombre de questions transmis par App.svelte
     if (nbQuestions) exercice.nbQuestions = nbQuestions;
+    exercice.numeroExercice = indiceExercice
     updateDisplay();
   });
+
+  function switchInteractif () {
+    interactif = !interactif
+    exercice.interactif = interactif
+    updateDisplay()
+  }
 </script>

@@ -5,27 +5,27 @@
  * @author Rémi Angot
  */
 export default class Exercice {
-id: string
-numeroExercice: number
-titre: string
-sup: any
-sup2: any
-sup3: any
-sup4: any
-seed?: string
-boutonAide: boolean | HTMLButtonElement
-consigne: string
-consigneCorrection: string
-introduction: string
-listeQuestions: string[]
-listeCorrections: string[]
-contenu: string
-contenuCorrection: string
-autoCorrection: object[]
-tableauSolutionsDuQcm: object[]
-spacing: number
-spacingCorr: number
-pasDeVersionLatex: boolean
+  id: string
+  numeroExercice: number
+  titre: string
+  sup: any
+  sup2: any
+  sup3: any
+  sup4: any
+  seed?: string
+  boutonAide: boolean | HTMLButtonElement
+  consigne: string
+  consigneCorrection: string
+  introduction: string
+  listeQuestions: string[]
+  listeCorrections: string[]
+  contenu: string
+  contenuCorrection: string
+  autoCorrection: object[]
+  tableauSolutionsDuQcm: object[]
+  spacing: number
+  spacingCorr: number
+  pasDeVersionLatex: boolean
   listePackages: string[]
   consigneModifiable: boolean
   nbQuestionsModifiable: boolean
@@ -67,7 +67,7 @@ pasDeVersionLatex: boolean
 
   listeArguments: string[] // Variable servant à comparer les exercices pour ne pas avoir deux exercices identiques
 
-  nouvelleVersion(): void {
+  nouvelleVersion (): void {
 
   }
 
