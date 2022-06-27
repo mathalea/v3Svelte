@@ -43,7 +43,7 @@
 </script>
 
 <Header />
-<main class="flex-grow px-10 py-10">
+<main class="flex-grow px-1 pt-2 md:p-10">
   <InputListeExercices />
   {#each $listeExercices as exercice, i (exercice)}
     <div animate:flip={{ duration: (d) => 30 * Math.sqrt(d) }}>

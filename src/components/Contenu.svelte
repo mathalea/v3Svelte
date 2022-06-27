@@ -5,7 +5,7 @@
   export let entrees: string[]
 </script>
 
-<article>
+<article class="text-2xl md:text-base">
   <!-- Consigne -->
   <Consigne consigne={chapeau} />
   <!-- Liste des questions -->

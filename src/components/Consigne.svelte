@@ -2,7 +2,7 @@
   export let consigne: string
 </script>
 
-<p class="text-base leading-relaxed mt-2  ml-5 text-gray-800">
+<p class="leading-relaxed mt-2  ml-5 text-gray-800">
   {@html consigne}
 </p>
 
