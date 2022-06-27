@@ -47,20 +47,14 @@
       >
     </div>
   </h1>
-  <p class="pl-4">
-    {#if visible}
-      {#if contenuVisible}
-        <div class="ml-5">{@html contenu}</div>
-      {:else}
-        <div class="ml-5">{@html correction}</div>
-      {/if}
+  {#if visible}
+    {#if contenuVisible}
+      <Contenu chapeau={consigne} entrees={listeQuestions} />
+    {:else}
+      <Contenu chapeau={consigneCorrection} entrees={listeCorrections} />
     {/if}
-  </p>
-  <ul>
-    {#each listeQuestions as question}
-      <li>{@html question}</li>
-    {/each}
-  </ul>
+  {/if}
+
   {#if parametresVisible}
     <div transition:fade class="mt-3">
       <Settings {exercice} on:reglages={handleNewSettings} />
@@ -81,6 +75,7 @@
   import type Exercice from "../exercices/ExerciceTs";
   import Settings from "./Settings.svelte";
   import { randomInt } from "mathjs";
+  import Contenu from "./Contenu.svelte";
 
   export let directory: string;
   export let filename: string;
@@ -98,6 +93,7 @@
   let correction: string = "";
   let titre: string;
   let consigne: string;
+  let consigneCorrection: string;
   let introduction: string;
   let listeQuestions: string[] = [];
   let listeCorrections: string[] = [];
@@ -138,6 +134,7 @@
     listeQuestions = [...exercice.listeQuestions];
     listeCorrections = [...exercice.listeCorrections];
     consigne = exercice.consigne;
+    consigneCorrection = exercice.consigneCorrection;
   }
 
   onMount(async () => {
