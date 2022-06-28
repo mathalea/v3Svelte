@@ -3,9 +3,16 @@
   export let liste: string[]
 </script>
 
-<ul class="list-decimal list-inside mt-2 ml-6 marker:text-orange-500 marker:font-bold">
+<ul class="list-decimal list-inside mt-2 mx-2 lg:mx-6 marker:text-orange-500 marker:font-bold">
   {#each liste as item}
-    <li><ItemListe textItem={item.replace(/\\dotfill/g, '..............................').replace(/\\not=/g, '≠').replace(/\\ldots/g, '....')} /></li>
+    <li class="mb-2">
+      <ItemListe
+        textItem={item
+          .replace(/\\dotfill/g, "..............................")
+          .replace(/\\not=/g, "≠")
+          .replace(/\\ldots/g, "....")}
+      />
+    </li>
   {/each}
 </ul>
 

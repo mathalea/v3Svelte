@@ -2,6 +2,6 @@
   export let textItem: string
 </script>
 
-<span class="mb-2">{@html textItem}</span>
+<span>{@html textItem}</span>
 
 <style></style>
