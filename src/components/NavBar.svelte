@@ -23,7 +23,7 @@
             Référentiels<i class="ml-2 bx bx-caret-down" />
           </button>
           <!-- menu dropdown referentiel -->
-          <div class="lg:absolute bg-orange-600 right-0 pt-3 pb-3 {referentielsMenuOpen ? 'flex flex-col' : 'hidden'} lg:w-32">
+          <div class="lg:absolute bg-orange-600 right-0 pt-3 pb-3 {referentielsMenuOpen ? 'flex flex-col' : 'hidden'} lg:w-32" use:clickOutside on:outclick={() => (referentielsMenuOpen = false)}>
             <ul class="space-y-2 w-full">
               <li>
                 <a href={"#"} class="w-full flex px-2 py-1 ml-4 lg:ml-0 font-medium text-white hover:text-gray-100 hover:bg-orange-500">Sixième</a>
@@ -54,7 +54,7 @@
             Professeurs <i class="ml-2 bx bx-caret-down" />
           </button>
           <!-- menu dropdown professeurs -->
-          <div class="lg:absolute bg-orange-600 right-0 pt-3 pb-3 {professeursMenuOpen ? 'flex flex-col' : 'hidden'} lg:w-48">
+          <div class="lg:absolute bg-orange-600 right-0 pt-3 pb-3 {professeursMenuOpen ? 'flex flex-col' : 'hidden'} lg:w-48" use:clickOutside on:outclick={() => (professeursMenuOpen = false)}>
             <ul class="space-y-2 w-full">
               <li>
                 <a href={"#"} class="w-full flex px-2 py-1 ml-4 lg:ml-0 font-medium text-white hover:text-gray-100 hover:bg-orange-500">Exercices en ligne</a>
@@ -88,7 +88,7 @@
             À propos<i class="ml-2 bx bx-caret-down" />
           </button>
           <!-- menu dropdown referentiel -->
-          <div class="lg:absolute bg-orange-600 right-0 pt-3 pb-3 {aProposMenuOpen ? 'flex flex-col' : 'hidden'} lg:w-32">
+          <div class="lg:absolute bg-orange-600 right-0 pt-3 pb-3 {aProposMenuOpen ? 'flex flex-col' : 'hidden'} lg:w-32" use:clickOutside on:outclick={() => (aProposMenuOpen = false)}>
             <ul class="space-y-2 w-full">
               <li>
                 <a href={"#"} class="w-full flex px-2 py-1 ml-4 lg:ml-0 font-medium text-white hover:text-gray-100 hover:bg-orange-500">Objectifs généraux</a>
