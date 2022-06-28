@@ -7,7 +7,6 @@
   import { listeExercices } from "./store"
   import InputListeExercices from "./InputListeExercices.svelte"
   import Recherche from "./Recherche.svelte"
-  import NavBar from "./NavBar.svelte"
 
   const exercice1 = {
     directory: "6e",
