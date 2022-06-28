@@ -36,9 +36,16 @@
 </script>
 
 <h3 class="font-bold">Paramètres</h3>
+{#if !exercice.nbQuestionsModifiable && !exercice.besoinFormulaireCaseACocher && !exercice.besoinFormulaireNumerique && !exercice.besoinFormulaireTexte}
+<div class='italic'>
+  Cet exercice ne peut pas être paramétré.
+</div>
+{/if}
+{#if exercice.nbQuestionsModifiable}
 <div>
   Nombre de questions : <input type="number" bind:value={nbQuestions} on:change={nouveauxReglages} class="w-12" />
 </div>
+{/if}
 {#if exercice.besoinFormulaireCaseACocher}
   <div>
     {exercice.besoinFormulaireCaseACocher[0]} : <input type="checkbox" bind:checked={sup} on:change={nouveauxReglages} />
