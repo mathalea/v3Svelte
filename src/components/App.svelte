@@ -2,10 +2,12 @@
   import { flip } from "svelte/animate"
   import Exercice from "./Exercice.svelte"
   import Header from "./Header.svelte"
+  import NavBar from "./NavBar.svelte"
   import Footer from "./Footer.svelte"
   import { listeExercices } from "./store"
   import InputListeExercices from "./InputListeExercices.svelte"
   import Recherche from "./Recherche.svelte"
+  import NavBar from "./NavBar.svelte"
 
   const exercice1 = {
     directory: "6e",
@@ -43,7 +45,8 @@
   // listeExercices.set([exercice1]);
 </script>
 
-<Header />
+<!-- <Header /> -->
+<NavBar />
 <main class="flex-grow px-1 pt-2 md:p-10">
   <InputListeExercices />
   <Recherche />
