@@ -2,6 +2,7 @@
   import { flip } from "svelte/animate"
   import Exercice from "./Exercice.svelte"
   import Header from "./Header.svelte"
+  import NavBar from "./NavBar.svelte"
   import Footer from "./Footer.svelte"
   import { listeExercices } from "./store"
   import InputListeExercices from "./InputListeExercices.svelte"
@@ -43,8 +44,9 @@
   // listeExercices.set([exercice1]);
 </script>
 
-<Header />
-<main class="flex-grow px-10 py-10">
+<!-- <Header /> -->
+<NavBar />
+<main class="flex-grow px-1 pt-2 md:p-10">
   <InputListeExercices />
   <Recherche />
   {#each $listeExercices as exercice, i (exercice)}
