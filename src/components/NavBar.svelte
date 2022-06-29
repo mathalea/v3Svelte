@@ -1,7 +1,6 @@
 <script>
   import NavBarMenu from "./NavBarMenu.svelte"
   let navBarVisible = false
-  $: menuGeneralOuvert = navBarVisible
   const menus = {
     referentiels: {
       titre: "Référentiels",
