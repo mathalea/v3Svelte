@@ -3,7 +3,7 @@
   export let liste: string[]
 </script>
 
-<ul class="list-decimal list-inside mt-2 mx-2 lg:mx-6 marker:text-orange-500 marker:font-bold">
+<ul class="list-decimal list-inside mt-2 mx-2 lg:mx-6 marker:text-coopmaths marker:font-bold">
   {#each liste as item}
     <li class="mb-2">
       <ItemListe
