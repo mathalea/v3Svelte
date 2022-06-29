@@ -1,7 +1,8 @@
 <script>
   import NavBarMenu from "./NavBarMenu.svelte"
   let navBarVisible = false
-  let menus = {
+  $: menuGeneralOuvert = navBarVisible
+  const menus = {
     referentiels: {
       titre: "Référentiels",
       entrees: ["Sixième", "Cinquième", "Quatrième", "Troisième", "Seconde", "CRPE"],
@@ -42,16 +43,16 @@
     <div class="w-full mt-2 lg:inline-flex lg:w-auto lg:mt-0 {navBarVisible ? 'flex' : 'hidden'}">
       <ul class="flex flex-col w-full space-y-2 lg:w-auto lg:flex-row lg:space-x-2 lg:space-y-0">
         <li>
-          <NavBarMenu {...menus.referentiels} />
+          <NavBarMenu {...menus.referentiels} bind:navBarVisible />
         </li>
         <li>
           <a href={"#"} class="flex px-4 py-2 text-xl font-medium text-white hover:text-orange-200 rounded-sm">Calcul mental</a>
         </li>
         <li>
-          <NavBarMenu {...menus.professeurs} />
+          <NavBarMenu {...menus.professeurs} bind:navBarVisible />
         </li>
         <li>
-          <NavBarMenu {...menus.aPropos} />
+          <NavBarMenu {...menus.aPropos} bind:navBarVisible />
         </li>
       </ul>
     </div>
