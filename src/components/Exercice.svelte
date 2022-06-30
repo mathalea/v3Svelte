@@ -11,6 +11,8 @@
   import { randomInt } from "mathjs"
   import Contenu from "./Contenu.svelte"
   import { exerciceInteractif } from "../modulesv2/gestionInteractif"
+  import { openModal } from "svelte-modals"
+  import ExoZoomModal from "./ExoZoomModal.svelte"
 
   export let directory: string
   export let filename: string
@@ -89,6 +91,12 @@
     exercice.interactif = interactif
     updateDisplay()
   }
+
+  // Gestion des modals
+  // openModal(ExoZoomModal, { title: "Some title", message: "Done !" })
+  function handleExoZoomClick(indiceExo, chapeau, entrees) {
+    openModal(ExoZoomModal, { titre: "Exercice " + (indiceExo + 1), chapeau: chapeau, entrees: entrees })
+  }
 </script>
 
 <div bind:this={divExercice} class="mt-10">
@@ -98,6 +106,7 @@
       <div class="flex font-normal text-lg lg:text-normal"><span class="invisible lg:visible mx-1 font-bold">&middot;</span>{titre}</div>
     </div>
     <div class="flex justify-start text-normal mt-1 lg:justify-end lg:text-xl">
+      <button type="button" on:click={handleExoZoomClick(indiceExercice, consigne, listeQuestions)}><i class="ml-2 bx bx-zoom-in" /></button>
       <button type="button" on:click={switchInteractif}><i class="bx ml-2 {interactif ? 'bxs-mouse' : 'bx-mouse'}" /></button>
       <button type="button" on:click={() => (visible = !visible)}>
         <i class="bx ml-2 {visible ? 'bx-hide' : 'bx-show'}" />
