@@ -1,6 +1,5 @@
 const config = {
   content: ["./src/**/*.{html,js,svelte,ts}", "./node_modules/tw-elements/dist/js/**/*.js"],
-
   theme: {
     extend: {
       colors: {

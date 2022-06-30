@@ -105,8 +105,8 @@
       <div class="flex font-bold text-3xl md:text-lg">Exercice {indiceExercice + 1}</div>
       <div class="flex font-normal text-lg lg:text-normal"><span class="invisible lg:visible mx-1 font-bold">&middot;</span>{titre}</div>
     </div>
-    <div class="flex justify-start text-normal mt-1 lg:justify-end lg:text-xl">
-      <button type="button" on:click={handleExoZoomClick(indiceExercice, consigne, listeQuestions)}><i class="ml-2 bx bx-zoom-in" /></button>
+    <div class="flex justify-start items-center text-normal mt-1 lg:justify-end lg:text-xl">
+      <button class="hidden lg:inline-flex" type="button" on:click={handleExoZoomClick(indiceExercice, consigne, listeQuestions)}><i class="ml-2 bx bx-zoom-in" /></button>
       <button type="button" on:click={switchInteractif}><i class="bx ml-2 {interactif ? 'bxs-mouse' : 'bx-mouse'}" /></button>
       <button type="button" on:click={() => (visible = !visible)}>
         <i class="bx ml-2 {visible ? 'bx-hide' : 'bx-show'}" />
