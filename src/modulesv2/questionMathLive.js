@@ -2,10 +2,9 @@ import { ComputeEngine } from '@cortex-js/compute-engine'
 import FractionEtendue from '../modules/FractionEtendue.js'
 import { number } from 'mathjs'
 import Grandeur from '../modules/Grandeur.js'
-import { context } from '../modules/context.js'
-import { afficheScore } from '../modules/gestionInteractif.js'
-import { gestionCan } from '../modules/interactif/gestionCan'
 import { sp, texteExposant } from '../modules/outils.js'
+import { context } from '../modules/context'
+import { afficheScore } from './gestionInteractif.js'
 
 export function verifQuestionMathLive (exercice, i) {
   const engine = new ComputeEngine()
@@ -24,7 +23,7 @@ export function verifQuestionMathLive (exercice, i) {
   try {
     // Ici on va s'occuper de ce champTexte qui pose tant de problèmes
     champTexte = document.getElementById(`champTexteEx${exercice.numeroExercice}Q${i}`)
-    if (champTexte === {} || champTexte === undefined) champTexte = { value: '' }
+    if (champTexte === undefined) champTexte = { value: '' }
     let resultat = 'KO'
     let ii = 0
     while ((resultat === 'KO') && (ii < reponses.length)) {
@@ -312,40 +311,28 @@ export function ajouteChampFractionMathLive (exercice, i, numerateur = false, de
 }
 
 /**
- * Lorsque l'évènement 'exercicesAffiches' est lancé par mathalea.js
- * on vérifie la présence du bouton de validation d'id btnValidationEx{i} créé par listeQuestionsToContenu
- * et on y ajoute un listenner pour vérifier les réponses saisies dans les math-field
- * @param {object} exercice
+ * Fonction créé pour la v3 qui va lancer la vérification de chacune des questions
+ * Afficher le score dans le divScore
+ * Rendre inutilisable le buttonScore
+ * @param {Exercice} exercice 
+ * @param {HTMLDivElement} divScore 
+ * @param {HTMLButtonElement} divButton 
  */
-export function exerciceMathLive (exercice) {
-  // On vérifie le type si jamais il a été changé après la création du listenner (voir 5R20)
-  if (exercice.interactifType === 'mathLive') {
-    if (context.vue === 'can') {
-      gestionCan(exercice)
+export function verifExerciceMathLive (exercice, divScore, divButton) {
+  let nbBonnesReponses = 0
+  let nbMauvaisesReponses = 0
+  const besoinDe2eEssai = false
+  let resultat
+  for (const i in exercice.autoCorrection) {
+    resultat = verifQuestionMathLive(exercice, i)
+    if (resultat === 'OK') {
+      nbBonnesReponses++
+    } else {
+      nbMauvaisesReponses++ // Il reste à gérer le 2e essai
     }
-    const button = document.querySelector(`#btnValidationEx${exercice.numeroExercice}-${exercice.id}`)
-    if (button) {
-      if (!button.hasMathaleaListener) {
-        button.addEventListener('click', event => {
-          let nbBonnesReponses = 0
-          let nbMauvaisesReponses = 0
-          const besoinDe2eEssai = false
-          let resultat
-          for (const i in exercice.autoCorrection) {
-            resultat = verifQuestionMathLive(exercice, i)
-            if (resultat === 'OK') {
-              nbBonnesReponses++
-            } else {
-              nbMauvaisesReponses++ // Il reste à gérer le 2e essai
-            }
-          }
-          if (!besoinDe2eEssai) {
-            button.classList.add('disabled')
-            afficheScore(exercice, nbBonnesReponses, nbMauvaisesReponses)
-          }
-        })
-        button.hasMathaleaListener = true
-      }
-    }
+  }
+  if (!besoinDe2eEssai) {
+    divButton.classList.add('cursor-not-allowed', 'opacity-50', 'pointer-events-none')
+    afficheScore(exercice, nbBonnesReponses, nbMauvaisesReponses, divScore)
   }
 }

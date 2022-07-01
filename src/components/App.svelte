@@ -61,8 +61,7 @@
     nbQuestions: 1,
   }
 
-  listeExercices.set([exercice7, exercice8, exercice9, exercice1, exercice2, exercice3, exercice4, exercice5, exercice6])
-  // listeExercices.set([exercice1]);
+  listeExercices.set([exercice1, exercice2, exercice3, exercice4, exercice5, exercice6, exercice7, exercice8, exercice9,])
 </script>
 
 <!-- <Header /> -->
