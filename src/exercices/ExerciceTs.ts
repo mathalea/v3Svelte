@@ -65,6 +65,8 @@ export default class Exercice {
   besoinFormulaire4CaseACocher: boolean | any[]
   mg32Editable: boolean
 
+  typeExercice: string
+
   listeArguments: string[] // Variable servant à comparer les exercices pour ne pas avoir deux exercices identiques
 
   nouvelleVersion (): void {

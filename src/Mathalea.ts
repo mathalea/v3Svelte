@@ -18,14 +18,30 @@ export class Mathalea {
     try {
       // L'import dynamique ne peut descendre que d'un niveau, les sous-répertoires de directory ne sont pas pris en compte
       // cf https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#globs-only-go-one-level-deep
-      const module = await import(`./exercices/${directory}/${filename}.js`)
-      const ClasseExercice = module.default
-      const exercice: Promise<Exercice> = new ClasseExercice()
-      ;['titre', 'amcReady', 'amcType', 'interactifType', 'interactifReady'].forEach((p) => {
-        if (module[p] !== undefined) exercice[p] = module[p]
-      })
-      exercice.id = filename
-      return exercice
+      if (directory !== 'exercicesStatiques') {
+        const module = await import(`./exercices/${directory}/${filename}.js`)
+        const ClasseExercice = module.default
+        const exercice: Promise<Exercice> = new ClasseExercice()
+        ;['titre', 'amcReady', 'amcType', 'interactifType', 'interactifReady'].forEach((p) => {
+          if (module[p] !== undefined) exercice[p] = module[p]
+        })
+        ;(await exercice).id = filename
+        return exercice
+      } else {
+        const exercice: Exercice = new Exercice()
+        if (filename.includes('dnb')) {
+          (await exercice).titre = 'Exercice type DNB'
+        }
+        if (filename.includes('e3c')) {
+          (await exercice).titre = 'Exercice type E3C'
+        }
+        if (filename.includes('bac')) {
+          (await exercice).titre = 'Exercice type BAC'
+        }
+        ;(await exercice).consigne = `<img src="./src/${directory}/${filename}.png" width="50%"></img>`
+        ;(await exercice).consigneCorrection = `<img src="./src/${directory}/${filename}_cor.png" width="50%"></img>`
+        return exercice
+      }
     } catch (error) {
       console.log(`Chargement de l'exercice ${directory}/${filename} impossible`)
       const exercice = new Exercice()
