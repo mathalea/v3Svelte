@@ -1,16 +1,18 @@
 // @ts-nocheck
 /* eslint-disable no-unused-vars */
+import * as tsImport from 'ts-import'
+import * as fs from 'fs'
+import * as path from 'path'
+import { createRequire } from 'module'
+import { uuidFromRef, urlFromUuid, listeChapitresDuNiveau, listeExosDuChapitre, listeExosAvecTag, toObjet, toMap, collecteUuidsFromDico } from './fileTools.js'
+import { rejects } from 'assert'
 
-const fs = require('fs')
-const path = require('path')
-const { uuidFromRef, urlFromUuid, listeChapitresDuNiveau, listeExosDuChapitre, listeExosAvecTag, toObjet, toMap, collecteUuidsDico } = require('./fileTools')
-const requireImport = require('esm')(module)
 const isVerbose = /-(-verbode|v)/.test(process.argv)
 const logIfVerbose = (...args) => { if (isVerbose) console.log(...args) }
-const jsDir = path.resolve(__dirname, '..')
-const dictFile = path.resolve(jsDir, 'modules', 'exercicesDisponiblesReferentiel2022.json')
-const uuidToUrlFile = path.resolve(jsDir, 'modules', 'uuidsToUrl.json')
-const referentiel2022File = path.resolve(jsDir, 'modules', 'referentiel2022.json')
+// const jsDir = '../' // path.resolve('./src')
+const dictFile = './src/modules/exercicesDisponiblesReferentiel2022.json' // path.resolve(jsDir, 'modules', 'exercicesDisponiblesReferentiel2022.json')
+const uuidToUrlFile = './src/modules//uuidsToUrl.json' // path.resolve(jsDir, 'modules', 'uuidsToUrl.json')
+const referentiel2022File = './src/modules/referentiel2022.json' // path.resolve(jsDir, 'modules', 'referentiel2022.json')
 let dictionnaire = new Map()
 let referentiel2022 = new Map()
 let uuidsToUrl = new Map()
@@ -55,15 +57,16 @@ function getAllFiles (dir) {
   const files = []
   fs.readdirSync(dir).forEach(entry => {
     if (entry === 'Exercice.js' || entry === 'ExerciceTs.ts') return
-    const fullEntry = path.join(dir, entry)
+    const fullEntry = dir + entry // path.join(dir, entry)
     if (fs.statSync(fullEntry).isDirectory()) {
-      getAllFiles(fullEntry).forEach(file => files.push(file))
+      getAllFiles(dir + entry + '/').forEach(file => files.push(file))
     } else if ((/\.js$/.test(entry) || (/\.ts$/.test(entry))) && !/^_/.test(entry)) {
       files.push(fullEntry)
     } // sinon on ignore
   })
   return files
 }
+
 // *****************************************************/
 // ***************** Fonctions outils ******************/
 // *****************************************************/
@@ -73,7 +76,7 @@ function ecrireUuidDansFichier (uuid, name, file) {
   if (fichier) {
     fichier = `export const uuid = '${uuid}'\nexport const ref = '${name}'\n` + fichier
     fs.writeFileSync(file, fichier, 'utf-8')
-    return false
+    return true
   } else {
     console.log(`Le fichier ${file} n'a pas pu être ouvert en lecture`)
     return false
@@ -97,6 +100,7 @@ function ajouteExoReferentiel ({ uuid, name, level, chap, referentiel }) {
   }
   refChap.set(name, uuid)
 }
+
 function ajouteExoDico ({ uuid = '', name = '', titre = '', level = '', chap = '', themes = [], tags = {}, datePublication = '', dateModification = '', dico }) {
   if (!(dico instanceof Map)) {
     console.log('dictionnaire non valide')
@@ -119,95 +123,25 @@ function ajouteExoDico ({ uuid = '', name = '', titre = '', level = '', chap = '
 function mettreAJourFichierDico (file, dico) {
   const objDico = toObjet(dico)
   const contenuFichier = JSON.stringify(objDico, null, 2)
-  const dictFile = path.resolve('src', 'modules', file)
+  const dictFile = `./${file}` // path.resolve('src', 'modules', file)
   fs.writeFileSync(dictFile, contenuFichier, 'utf-8')
 }
 
-/**
- * Fonction qui génère ou maintient à jour le dictionnaire de tous les exercices.
- * Elle parcourt l'ensemble des fichiers exercice
- * vérifie si la constante uuid existe (signe que l'exercice est déjà dans le dictionnaire)
- * Si elle existe, on passe au fichier suivant
- * Sinon, on génère une uuid nouvelle qu'on écrit dans le fichier : export const uuid = 'xxxxx' à la première ligne
- * Puis on ajoute l'exercice dans le dictionnaire avec son uuid
- * En même temps, on alimente le fichier uuidToUrl.json qui stocke les url des fichiers référencés par leur uuid.
- * @author Jean-Claude Lhote
- */
-function builJsonDictionnaireExercices () {
-  // on charge le dictionnaire si il existe et on génère la liste des UUID déjà prises
-  let listOfUuids = []
-  // On prépare les fichiers que l'on va alimenter : listOfUuids, dictionnaire, uuidsToUrl
-  if (fs.existsSync(dictFile)) {
-    const contenuFichierDico = fs.readFileSync(dictFile, 'utf-8')
-    if (contenuFichierDico === '') {
-      console.log('Le fichier est vide ou n\'existe pas')
-      dictionnaire = new Map()
-    } else {
-      dictionnaire = toMap(JSON.parse(contenuFichierDico))
-      listOfUuids = collecteUuidsDico(dictionnaire)
-    }
-  } else {
-    dictionnaire = new Map()
-  }
-  if (fs.existsSync(uuidToUrlFile)) {
-    uuidsToUrl = toMap(JSON.parse(fs.readFileSync(uuidToUrlFile, 'utf-8')))
-  } else {
-    uuidsToUrl = new Map()
-  }
-  if (fs.existsSync(referentiel2022File)) {
-    referentiel2022 = toMap(JSON.parse(fs.readFileSync(referentiel2022File, 'utf-8')))
-  } else {
-    referentiel2022 = new Map()
-  }
-  // On charge la liste des exercices
-  const exercicesDir = path.resolve(jsDir, 'exercices')
-  const prefixLength = jsDir.length
-  const exercicesList = getAllFiles(exercicesDir)
-  let uuid, module
-  for (const file of exercicesList) {
-    if (file.indexOf('beta') !== -1) continue
-    if (file.indexOf('Prof') !== -1) continue
-    const name = path.basename(file, path.extname(file))
-    let titre, isAmcReady, isInteractifReady
-    const isCan = file.indexOf('\\can\\') !== -1
-    let level, chap
-    let themes, datePublication, dateModification
+function gereModuleJs (module, file, name, dictionnaire, referentiel2022, uuidsToUrl, listOfUuids, isCan) {
+  if (module.uuid === undefined) {
+    let uuid, level, chap, titre, isAmcReady, isInteractifReady, themes, datePublication, dateModification
     try {
-      module = requireImport(file)
-    } catch (error) { // error sans doute du à l'usage de typescript... On cherche les paramètres dans le texte du fichier.
-      module = fs.readFileSync(file, 'utf8')
-      if (module.indexOf('export const uuid =') === -1) {
-        do {
-          uuid = createUuid()
-        } while (listOfUuids.indexOf(uuid) !== -1)
-        let chunks = /export const titre *= *(['"])([^'"]+)\1/.exec(module)
-        titre = chunks[2]
-        isAmcReady = /export +const +amcReady *= *true/.test(module)
-        isInteractifReady = /export +const +interactifReady *= *true/.test(module)
-        chunks = /export const themes *= *(['"])([^'"]+)\1/.exec(module)
-        themes = chunks ? chunks[2] : []
-        chunks = /export const dateDePublication *= *(['"])([^'"]+)\1/.exec(module)
-        datePublication = chunks ? chunks[2] : ''
-        chunks = /export const dateModificationImportante *= *(['"])([^'"]+)\1/.exec(module)
-        dateModification = chunks ? chunks[2] : ''
-        console.log(`Problème dans ${name} : import impossible, on gère avec des chaînes de caractères`)
-      } else continue
-    }
-    if (typeof module !== 'string' && module.uuid !== undefined) continue
-    if (typeof module !== 'string') {
-      try {
-        do {
-          uuid = createUuid()
-        } while (listOfUuids.indexOf(uuid) !== -1)
-        titre = module.titre
-        isAmcReady = Boolean(module.amcReady)
-        isInteractifReady = Boolean(module.interactifReady)
-        themes = module.themes ? module.themes : []
-        datePublication = module.dateDePulication
-        dateModification = module.dateDeModificationImportante
-      } catch (error) {
-        console.log(`Erreur avec ${name} : ${error}`)
-      }
+      do {
+        uuid = createUuid()
+      } while (listOfUuids.indexOf(uuid) !== -1)
+      titre = module.titre
+      isAmcReady = Boolean(module.amcReady)
+      isInteractifReady = Boolean(module.interactifReady)
+      themes = module.themes ? module.themes : []
+      datePublication = module.dateDePulication
+      dateModification = module.dateDeModificationImportante
+    } catch (error) {
+      console.log(`Erreur avec ${name} : ${error}`)
     }
     if (isCan) {
       if (['1', '2', '3', '4', '5', '6', 'T'].indexOf(name[3]) !== -1) {
@@ -239,9 +173,129 @@ function builJsonDictionnaireExercices () {
       uuidsToUrl.set(uuid, [level, name])
     }
   }
-  mettreAJourFichierDico('exercicesDisponiblesReferentiel2022.json', dictionnaire)
-  mettreAJourFichierDico('uuidsToUrl.json', uuidsToUrl)
-  mettreAJourFichierDico('referentiel2022.json', referentiel2022)
+  return true
+}
+function gereModuleTs (module, file, name, dictionnaire, referentiel2022, uuidsToUrl, listOfUuids, isCan) {
+  if (module.uuid === undefined) {
+    let uuid, level, chap, titre, isAmcReady, isInteractifReady, themes, datePublication, dateModification
+    try {
+      do {
+        uuid = createUuid()
+      } while (listOfUuids.indexOf(uuid) !== -1)
+      titre = module.titre
+      isAmcReady = Boolean(module.amcReady)
+      isInteractifReady = Boolean(module.interactifReady)
+      themes = module.themes ? module.themes : []
+      datePublication = module.dateDePulication
+      dateModification = module.dateDeModificationImportante
+    } catch (error) {
+      console.log(`Erreur avec ${name} : ${error}`)
+    }
+    if (isCan) {
+      if (['1', '2', '3', '4', '5', '6', 'T'].indexOf(name[3]) !== -1) {
+        level = name[3] + 'e'
+        chap = name.substring(3, 5)
+      } else {
+        level = name.substring(3, 5)
+        chap = name.substring(3, 6)
+      }
+    } else {
+      if (['1', '2', '3', '4', '5', '6', 'T'].indexOf(name[0]) !== -1) {
+        level = name[0] + 'e'
+        chap = name.substring(0, 3)
+      } else if (name.substring(0, 7) === 'techno1') {
+        level = name.substring(0, 7)
+        chap = name.substring(7, 8)
+      } else {
+        level = name[0] + name[1]
+        chap = name.substring(0, 4)
+      }
+    }
+    const tags = { AMC: !!isAmcReady, Interactif: !!isInteractifReady, Can: !!isCan }
+    ecrireUuidDansFichier(uuid, name, file)
+    ajouteExoDico({ uuid, name, titre, level, chap, themes, tags, datePublication, dateModification, dico: dictionnaire })
+    ajouteExoReferentiel({ uuid, name, level, chap, referentiel: referentiel2022 })
+    if (isCan) {
+      uuidsToUrl.set(uuid, [`can/${level}`, name])
+    } else {
+      uuidsToUrl.set(uuid, [level, name])
+    }
+  }
+  return true
+}
+
+/**
+ * Fonction qui génère ou maintient à jour le dictionnaire de tous les exercices.
+ * Elle parcourt l'ensemble des fichiers exercice
+ * vérifie si la constante uuid existe (signe que l'exercice est déjà dans le dictionnaire)
+ * Si elle existe, on passe au fichier suivant
+ * Sinon, on génère une uuid nouvelle qu'on écrit dans le fichier : export const uuid = 'xxxxx' à la première ligne
+ * Puis on ajoute l'exercice dans le dictionnaire avec son uuid
+ * En même temps, on alimente le fichier uuidToUrl.json qui stocke les url des fichiers référencés par leur uuid.
+ * @author Jean-Claude Lhote
+ */
+function builJsonDictionnaireExercices () {
+  // on charge le dictionnaire si il existe et on génère la liste des UUID déjà prises
+  let listOfUuids = []
+  // On prépare les fichiers que l'on va alimenter : listOfUuids, dictionnaire, uuidsToUrl
+  if (fs.existsSync(dictFile)) {
+    const contenuFichierDico = fs.readFileSync(dictFile, 'utf-8')
+    if (contenuFichierDico === '') {
+      console.log('Le fichier est vide ou n\'existe pas')
+      dictionnaire = new Map()
+    } else {
+      dictionnaire = toMap(JSON.parse(contenuFichierDico))
+      listOfUuids = collecteUuidsFromDico(dictionnaire)
+    }
+  } else {
+    dictionnaire = new Map()
+  }
+  if (fs.existsSync(uuidToUrlFile)) {
+    uuidsToUrl = toMap(JSON.parse(fs.readFileSync(uuidToUrlFile, 'utf-8')))
+  } else {
+    uuidsToUrl = new Map()
+  }
+  if (fs.existsSync(referentiel2022File)) {
+    referentiel2022 = toMap(JSON.parse(fs.readFileSync(referentiel2022File, 'utf-8')))
+  } else {
+    referentiel2022 = new Map()
+  }
+  // On charge la liste des exercices
+  const exercicesDir = '../exercices/' // path.resolve('src', 'exercices')
+  //  const prefixLength = jsDir.length
+  const exercicesList = getAllFiles(exercicesDir)
+  const promesses = []
+  for (const file of exercicesList) {
+    if (file.indexOf('beta') !== -1) continue
+    if (file.indexOf('Prof') !== -1) continue
+    const name = path.basename(file, path.extname(file))
+    const isCan = file.indexOf('\\can\\') !== -1
+    const promesse = import(file)
+      .then(
+        (module) => gereModuleJs(module, file, name, dictionnaire, referentiel2022, uuidsToUrl, listOfUuids, isCan)
+        /* (erreur) => {
+          console.log('erreur avec ', file, ' : ', erreur.message)
+          return false
+        } */)
+      .catch(error => {
+        console.log(file, ' : ', error.message)
+        console.log('Je charge le fichier avec tsImport\n')
+        tsImport.load(file)
+          .then(module => gereModuleTs(module, file, name, dictionnaire, referentiel2022, uuidsToUrl, listOfUuids, isCan))
+          .catch(error => console.log(`Erreur dans import de : ${file} \n ${error.message}`))
+      }
+      )
+    promesses.push(promesse)
+  }
+  Promise.all(promesses)
+    .then(() => {
+      mettreAJourFichierDico('exercicesDisponiblesReferentiel2022.json', dictionnaire)
+      mettreAJourFichierDico('uuidsToUrl.json', uuidsToUrl)
+      mettreAJourFichierDico('referentiel2022.json', referentiel2022)
+    })
+    .catch(error => {
+      console.log(' Il y a une erreur avec le Promise.All : ', error.message)
+    })
 }
 /**
  * Fonction qui extrait les exercices d'un niveau pour créer un dictionnaire de ce niveau
@@ -266,7 +320,7 @@ function buildJsonExercicesOfLevel (level) { // level contient la première lett
   }
 
   const dicoLevel = Object.fromEntries(listeExos)
-  const dicoLevelFile = path.resolve('src', 'modules', `exercicesDisponiblesNiveau${level}Referentiel2022.json`)
+  const dicoLevelFile = `./exercicesDisponiblesNiveau${level}Referentiel2022.json`// path.resolve('src', 'modules', `exercicesDisponiblesNiveau${level}Referentiel2022.json`)
   fs.writeFileSync(dicoLevelFile, JSON.stringify(dicoLevel, null, 2))
 }
 
@@ -285,18 +339,5 @@ buildJsonExercicesOfLevel('PE')
 buildJsonExercicesOfLevel('Ex')
 buildJsonExercicesOfLevel('c3')
 */
-console.log(uuidFromRef('4C35', referentiel2022))
-console.log(urlFromUuid('17927', uuidsToUrl))
-console.log(listeChapitresDuNiveau('1e', referentiel2022))
-console.log(listeExosDuChapitre('4G1', referentiel2022))
-console.log(listeExosAvecTag('Pythagore', dictionnaire))
+
 // buildJsonExercicesOfLevel('Te')
-
-/* const donneesJSON = fs.readFileSync(path.resolve('src', 'modules', 'exercicesDisponiblesReferentiel2022.json'));
-let donnees = JSON.parse(donneesJSON);
-
-const dictionnaire = toMap(donnees);
-console.log(dictionnaire.get("b5f8a"))
-*/
-// console.log(dictionnaire.get("15446").get("tags").get("AMC"));
-// console.log(toObjet(dictionnaire));

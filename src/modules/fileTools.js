@@ -131,7 +131,7 @@ export function listeExosAvecTag (tag, dico) {
   }
   return listeExos
 }
-export function collecteUuidsDico (dico) {
+export function collecteUuidsFromDico (dico) {
   let listeUUID = []
   dico.forEach((groupeSousNiveau, niveauID) => {
     groupeSousNiveau.forEach((groupeExos, sousNiveauID) => {
