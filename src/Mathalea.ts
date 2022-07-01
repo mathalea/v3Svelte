@@ -28,18 +28,21 @@ export class Mathalea {
         ;(await exercice).id = filename
         return exercice
       } else {
-        const exercice: Exercice = new Exercice()
+        const exercicePromise: Exercice = new Exercice()
+        const exercice = await exercicePromise
         if (filename.includes('dnb')) {
-          (await exercice).titre = 'Exercice type DNB'
+          exercice.titre = 'Exercice type DNB'
         }
         if (filename.includes('e3c')) {
-          (await exercice).titre = 'Exercice type E3C'
+          exercice.titre = 'Exercice type E3C'
         }
         if (filename.includes('bac')) {
-          (await exercice).titre = 'Exercice type BAC'
+          exercice.titre = 'Exercice type BAC'
         }
-        ;(await exercice).consigne = `<img src="./src/${directory}/${filename}.png" width="50%"></img>`
-        ;(await exercice).consigneCorrection = `<img src="./src/${directory}/${filename}_cor.png" width="50%"></img>`
+        exercice.consigne = `<img src="./src/${directory}/${filename}.png" width="50%"></img>`
+        exercice.consigneCorrection = `<img src="./src/${directory}/${filename}_cor.png" width="50%"></img>`
+        exercice.typeExercice = 'statique'
+        exercice.interactifReady = false
         return exercice
       }
     } catch (error) {

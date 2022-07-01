@@ -47,6 +47,7 @@ export default class Exercice {
 
   interactif: boolean
   interactifObligatoire: boolean
+  interactifReady: boolean
 
   besoinFormulaireNumerique: boolean | any[]
   besoinFormulaireTexte: boolean | any[]
