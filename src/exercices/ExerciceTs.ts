@@ -47,6 +47,7 @@ export default class Exercice {
 
   interactif: boolean
   interactifObligatoire: boolean
+  interactifReady: boolean
 
   besoinFormulaireNumerique: boolean | any[]
   besoinFormulaireTexte: boolean | any[]
@@ -64,6 +65,8 @@ export default class Exercice {
   besoinFormulaire4Texte: boolean | any[]
   besoinFormulaire4CaseACocher: boolean | any[]
   mg32Editable: boolean
+
+  typeExercice: string
 
   listeArguments: string[] // Variable servant à comparer les exercices pour ne pas avoir deux exercices identiques
 

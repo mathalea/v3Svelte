@@ -7,7 +7,6 @@
     let kDown = false;
 
     function on_key_down(event) {
-        console.log(event.key)
         if (event.repeat) return;
         switch (event.key) {
             case "Control":
