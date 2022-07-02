@@ -59,7 +59,7 @@ function getAllFiles (dir) {
     const fullEntry = path.join(dir + path.sep, entry)
     if (fs.statSync(fullEntry).isDirectory()) {
       getAllFiles(fullEntry).forEach(file => files.push(file))
-    } else if ((/\.js$/.test(entry) || (/\.ts$/.test(entry))) && !/^_/.test(entry)) {
+    } else if (/\.js$/.test(entry) && !/^_/.test(entry)) {
       files.push(fullEntry)
     } // sinon on ignore
   })
@@ -279,6 +279,7 @@ async function builJsonDictionnaireExercices () {
         (module) => gereModuleJs(module, file, name, dictionnaire, referentiel2022, uuidsToUrl, listOfUuids, isCan)
       )
       .catch(error => {
+        console.log(file.substring(file.length - 2))
         if (file.substring(file.length - 2) !== 'ts') console.error(error)
         /* tsImport.load(file)
           .then(module => gereModuleTs(module, file, name, dictionnaire, referentiel2022, uuidsToUrl, listOfUuids, isCan))
