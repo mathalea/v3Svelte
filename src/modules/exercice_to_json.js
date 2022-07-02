@@ -265,9 +265,7 @@ async function builJsonDictionnaireExercices () {
   }
 
   // On charge la liste des exercices
-  console.log(path.resolve())
   const exercicesDir = path.relative(path.resolve('.'), path.resolve('..', 'exercices'))
-  console.log(exercicesDir)
   //  const prefixLength = jsDir.length
   const exercicesList = getAllFiles(exercicesDir)
   const promesses = []
@@ -276,8 +274,7 @@ async function builJsonDictionnaireExercices () {
     if (file.indexOf('Prof') !== -1) continue
     const name = path.basename(file, path.extname(file))
     const isCan = file.includes('can')
-    console.log(file)
-    const promesse = import(file)
+    const promesse = import(file.replace('\\', '/'))
       .then(
         (module) => gereModuleJs(module, file, name, dictionnaire, referentiel2022, uuidsToUrl, listOfUuids, isCan)
       )

@@ -1,9 +1,9 @@
-import { context } from '../context'
-import { addElement, get } from '../dom'
-import { verifQuestionCliqueFigure } from './cliqueFigure'
-import { isUserIdOk } from './isUserIdOk'
-import { verifQuestionMathLive } from './questionMathLive'
-import { verifQuestionQcm } from './questionQcm'
+import { context } from '../context.js'
+import { addElement, get } from '../dom.js'
+import { verifQuestionCliqueFigure } from './cliqueFigure.js'
+import { isUserIdOk } from './isUserIdOk.js'
+import { verifQuestionMathLive } from './questionMathLive.js'
+import { verifQuestionQcm } from './questionQcm.js'
 
 export function gestionCan (exercice) {
   context.nbBonnesReponses = 0
@@ -65,7 +65,7 @@ export function afficheScoreCan (exercice, nbBonnesReponses, nbMauvaisesReponses
   // const exercice = { id: 'can', sup: document.location.href + 'serie=' + context.graine }
   const divScore = addElement(document.querySelector('#menuEval'), 'div', { className: 'score', id: 'scoreTotal' })
   divScore.innerHTML = `Résultat : ${nbBonnesReponses} / ${nbBonnesReponses + nbMauvaisesReponses}`
-  window.parent.postMessage({ url: window.location.href, graine: context.graine, titre: exercice.titre, nbBonnesReponses: nbBonnesReponses, nbMauvaisesReponses: nbMauvaisesReponses }, '*')
+  window.parent.postMessage({ url: window.location.href, graine: context.graine, titre: exercice.titre, nbBonnesReponses, nbMauvaisesReponses }, '*')
   // Arrête le timer
   if (context.timer) {
     clearInterval(context.timer)

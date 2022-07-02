@@ -1,4 +1,4 @@
-import { texNombre2 } from '../../modules/outils.js'
+import { texNombre2 } from '../../modules/outils.js''
 import { round } from 'mathjs'
 /**
   * @class for coordinates
