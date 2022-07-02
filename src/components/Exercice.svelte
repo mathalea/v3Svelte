@@ -11,7 +11,7 @@
   import { randomInt } from 'mathjs';
   import Contenu from './Contenu.svelte';
   import { loadMathLive } from '../modules/loaders';
-  import { exerciceInteractif } from '../modulesv2/gestionInteractif';
+  import { exerciceInteractif } from '../interactif/interactif';
 
   export let directory: string;
   export let filename: string;
