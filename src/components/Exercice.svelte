@@ -11,7 +11,7 @@
   import { randomInt } from "mathjs"
   import Contenu from "./Contenu.svelte"
   import { exerciceInteractif } from "../modulesv2/gestionInteractif"
-  // import { openModal } from "svelte-modals"
+  import { openModal } from "svelte-modals"
   // import ExoZoomModal from "./ExoZoomModal.svelte"
 
   export let directory: string
@@ -113,7 +113,7 @@
       <button type="button" on:click={() => (parametresVisible = !parametresVisible)}>
         <i class="bx ml-2 {parametresVisible ? 'bxs-cog' : 'bx-cog'}" />
       </button>
-      <button type="button" on:click={newData}><i class="bx bx-refresh ml-2 {(exercice?.typeExercice === 'statique') ? 'invisible' :''}" /></button>
+      <button type="button" on:click={newData}><i class="bx bx-refresh ml-2 {exercice?.typeExercice === 'statique' ? 'invisible' : ''}" /></button>
       <button type="button" on:click={remove}><i class="bx bx-trash ml-2" /></button>
       <BoutonMonter indice={indiceExercice} />
       <BoutonDescendre indice={indiceExercice} {indiceLastExercice} />
