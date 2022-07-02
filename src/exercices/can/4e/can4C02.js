@@ -1,5 +1,3 @@
-export const uuid = 'a7291'
-export const ref = 'can4C02'
 import { fraction, obtenirListeFractionsIrreductibles } from '../../../modules/fractions'
 import { choice, texFractionReduite } from '../../../modules/outils'
 import Exercice from '../../Exercice'

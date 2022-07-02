@@ -1,5 +1,3 @@
-export const uuid = '96637'
-export const ref = 'can5C21'
 import { randint, texNombre, choice, arrondi } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer la somme de décimaux qui se marient'

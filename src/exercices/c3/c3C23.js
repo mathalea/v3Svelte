@@ -1,5 +1,3 @@
-export const uuid = '090ed'
-export const ref = 'c3C23'
 import Exercice from '../Exercice.js'
 import { choice, randint } from '../../modules/outils.js'
 import FractionX from '../../modules/FractionEtendue.js'

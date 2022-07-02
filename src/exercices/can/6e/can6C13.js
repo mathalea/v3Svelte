@@ -1,5 +1,3 @@
-export const uuid = '92558'
-export const ref = 'can6C13'
 import { randint, texNombre, choice, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 import Decimal from 'decimal.js' // ici j'importe la classe Decimal qui va me permettre de créer de tels nombres et d'utiliser leur méthodes de calcul exactes.

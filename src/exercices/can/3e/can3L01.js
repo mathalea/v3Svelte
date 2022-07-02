@@ -1,5 +1,3 @@
-export const uuid = 'd2ca0'
-export const ref = 'can3L01'
 import { randint, texFraction } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Résoudre une équation du type ax=b'

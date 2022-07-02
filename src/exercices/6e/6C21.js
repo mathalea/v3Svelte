@@ -1,5 +1,3 @@
-export const uuid = '965a1'
-export const ref = '6C21'
 import DivisionsEuclidiennes from './6C11.js'
 export { interactifReady } from './6C11.js'
 export { interactifType } from './6C11.js'

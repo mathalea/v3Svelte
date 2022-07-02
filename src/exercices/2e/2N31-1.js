@@ -1,5 +1,3 @@
-export const uuid = '2e085'
-export const ref = '2N31-1'
 import NotationScientifique from '../4e/4C32.js'
 export const titre = 'Notation scientifique'
 export { amcReady, amcType } from '../4e/4C32.js'

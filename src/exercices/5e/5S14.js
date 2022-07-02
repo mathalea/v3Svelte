@@ -1,5 +1,3 @@
-export const uuid = '4d3d6'
-export const ref = '5S14'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, arrondi, texNombre, listeDeNotes, joursParMois, unMoisDeTemperature, nomDuMois, texFraction, personne, prenomF } from '../../modules/outils.js'
 import { getVueFromUrl } from '../../modules/gestionUrl.js'

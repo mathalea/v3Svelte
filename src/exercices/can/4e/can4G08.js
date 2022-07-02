@@ -1,5 +1,3 @@
-export const uuid = 'bb367'
-export const ref = 'can4G08'
 import Exercice from '../../Exercice.js'
 import { randint, calcul, choice, texNombrec, texFractionReduite } from '../../../modules/outils.js'
 import {

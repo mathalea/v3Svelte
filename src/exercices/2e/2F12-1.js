@@ -1,5 +1,3 @@
-export const uuid = '428c6'
-export const ref = '2F12-1'
 import Exercice from '../Exercice.js'
 import {
   listeQuestionsToContenu, texFractionReduite, texNombre,

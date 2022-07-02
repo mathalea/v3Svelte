@@ -1,5 +1,3 @@
-export const uuid = '7d792'
-export const ref = 'can3F09'
 import Exercice from '../../Exercice.js'
 import { randint, listeQuestionsToContenuSansNumero, choice, sp, calcul, texFraction, rienSi1, ecritureAlgebrique, pgcd, ecritureParentheseSiNegatif } from '../../../modules/outils.js'
 import { ajouteChampTexteMathLive } from '../../../modules/interactif/questionMathLive.js'

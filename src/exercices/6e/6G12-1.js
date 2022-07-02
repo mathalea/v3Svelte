@@ -1,5 +1,3 @@
-export const uuid = 'fdf94'
-export const ref = '6G12-1'
 import Exercice from '../Exercice.js'
 import { context } from '../../modules/context.js'
 import { listeQuestionsToContenu, randint, combinaisonListes, arrondi, texNombre, texteEnCouleur, numAlpha, stringNombre } from '../../modules/outils.js'
@@ -116,10 +114,10 @@ export default class ParalleleEtPerpendiculaires extends Exercice {
           F = point(E.x, B.y)
           s1 = segment(B, F, 'red')
           s1.epaisseur = 2
-          s1.pointilles = true
+          s1.pointilles = 5
           s2 = segment(F, E, 'blue')
           s2.epaisseur = 2
-          s2.pointilles = true
+          s2.pointilles = 5
           dC = droiteParPointEtPerpendiculaire(C, d)
           dD = droiteParPointEtPerpendiculaire(D, d)
           BB = rotation(A, B, 90)

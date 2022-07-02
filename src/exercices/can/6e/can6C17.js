@@ -1,5 +1,3 @@
-export const uuid = 'acd3f'
-export const ref = 'can6C17'
 import { calcul, randint, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer la fraction d’une quantité'

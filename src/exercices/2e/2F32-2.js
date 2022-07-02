@@ -1,5 +1,3 @@
-export const uuid = '17439'
-export const ref = '2F32-2'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, combinaisonListes, randint, arrondi, texNombre, inferieurouegal, superieurouegal, texteEnCouleurEtGras, miseEnEvidence, enleveDoublonNum, numTrie } from '../../modules/outils.js'
 import { antecedentInterpole, graphiqueInterpole, imageInterpolee, mathalea2d, point, repere2, segment, texteParPosition, tracePoint } from '../../modules/2d.js'
@@ -91,11 +89,11 @@ export default function LecturesGraphiques () {
           texteCorr = `Le minimum de $f$ est $${minimum[1]}$ et il est atteint en $x=${minimum[0]}$.`
           if (this.correctionDetaillee) {
             s[0] = segment(minimum[0] * 3, 0, minimum[0] * 3, minimum[1] * 2)
-            s[0].pointilles = true
+            s[0].pointilles = 5
             s[0].color = 'blue'
             s[1] = segment(minimum[0] * 3, minimum[1] * 2, 0, minimum[1] * 2)
             s[1].color = 'red'
-            s[1].pointilles = true
+            s[1].pointilles = 5
             s[2] = tracePoint(point(minimum[0] * 3, minimum[1] * 2), 'red')
             texteCorr += mathalea2d({ xmin: -13.5, ymin: -9, xmax: 13.5, ymax: 9, scale: 0.5 }, r, graph, s, origine)
           }
@@ -108,11 +106,11 @@ export default function LecturesGraphiques () {
           texteCorr = `Le maximum de $f$ est $${maximum[1]}$ et il est atteint en $x=${maximum[0]}$.`
           if (this.correctionDetaillee) {
             s[0] = segment(maximum[0] * 3, 0, maximum[0] * 3, maximum[1] * 2)
-            s[0].pointilles = true
+            s[0].pointilles = 5
             s[0].color = 'blue'
             s[1] = segment(maximum[0] * 3, maximum[1] * 2, 0, maximum[1] * 2)
             s[1].color = 'red'
-            s[1].pointilles = true
+            s[1].pointilles = 5
             s[2] = tracePoint(point(maximum[0] * 3, maximum[1] * 2), 'red')
             texteCorr += mathalea2d({ xmin: -13.5, ymin: -9, xmax: 13.5, ymax: 9, scale: 0.5 }, r, graph, s, origine)
           }
@@ -133,11 +131,11 @@ export default function LecturesGraphiques () {
           texteCorr = `$f(${texNombre(x0)})=${texNombre(y0)}$.`
           if (this.correctionDetaillee) {
             s[0] = segment(0, y0 * 2, x0 * 3, y0 * 2)
-            s[0].pointilles = true
+            s[0].pointilles = 5
             s[0].color = 'blue'
             s[1] = segment(x0 * 3, y0 * 2, x0 * 3, 0)
             s[1].color = 'red'
-            s[1].pointilles = true
+            s[1].pointilles = 5
             s[2] = tracePoint(point(x0 * 3, y0 * 2), 'red')
             texteCorr += mathalea2d({ xmin: -13.5, ymin: -9, xmax: 13.5, ymax: 9, scale: 0.5 }, r, graph, s, origine)
           }
@@ -161,11 +159,11 @@ export default function LecturesGraphiques () {
           texteCorr = `Le plus petit antécédent à $0,1$ près de $${texNombre(y0)}$ est $${miseEnEvidence(texNombre(arrondi(x0, 1)))}$.`
           if (this.correctionDetaillee) {
             s[0] = segment(-15, y0 * 2, 15, y0 * 2)
-            s[0].pointilles = true
+            s[0].pointilles = 5
             s[0].color = 'blue'
             s[1] = segment(x0 * 3, y0 * 2, x0 * 3, 0)
             s[1].color = 'red'
-            s[1].pointilles = true
+            s[1].pointilles = 5
             texteCorr += mathalea2d({ xmin: -13.5, ymin: -9, xmax: 13.5, ymax: 9, scale: 0.5 }, r, graph, s, origine)
           }
           break
@@ -188,11 +186,11 @@ export default function LecturesGraphiques () {
           texteCorr = `Le plus grand antécédent de $${texNombre(y0)}$ à $0,1$ près est $${miseEnEvidence(texNombre(arrondi(x0, 1)))}$.`
           if (this.correctionDetaillee) {
             s[0] = segment(-15, y0 * 2, 15, y0 * 2)
-            s[0].pointilles = true
+            s[0].pointilles = 5
             s[0].color = 'blue'
             s[1] = segment(x0 * 3, y0 * 2, x0 * 3, 0)
             s[1].color = 'red'
-            s[1].pointilles = true
+            s[1].pointilles = 5
             texteCorr += mathalea2d({ xmin: -13.5, ymin: -9, xmax: 13.5, ymax: 9, scale: 0.5 }, r, graph, s, origine)
           }
           break
@@ -235,13 +233,13 @@ export default function LecturesGraphiques () {
           reponses[i] = antecedentTrouve
           if (this.correctionDetaillee) {
             s[0] = segment(-15, y0 * 2, 15, y0 * 2)
-            s[0].pointilles = true
+            s[0].pointilles = 5
             s[0].color = 'blue'
             for (let l = 0; l < antecedentTrouve; l++) {
               s[l * 2 + 1] = tracePoint(point(antecedents[l] * 3, y0 * 2), 'red')
               s[l * 2 + 1].epaisseur = 2
               s[l * 2 + 2] = segment(antecedents[l] * 3, 0, antecedents[l] * 3, y0 * 2)
-              s[l * 2 + 2].pointilles = true
+              s[l * 2 + 2].pointilles = 5
               s[l * 2 + 2].color = 'red'
             }
             texteCorr += mathalea2d({ xmin: -13.5, ymin: -9, xmax: 13.5, ymax: 9, scale: 0.5 }, r, graph, s, origine)

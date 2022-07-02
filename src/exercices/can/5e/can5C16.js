@@ -1,5 +1,3 @@
-export const uuid = '72eeb'
-export const ref = 'can5C16'
 import Exercice from '../../Exercice.js'
 import { randint, texNombrec, choice, calcul } from '../../../modules/outils.js'
 export const titre = 'Calculer astucieusement avec une factorisation'

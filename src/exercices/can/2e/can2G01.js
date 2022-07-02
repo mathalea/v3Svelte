@@ -1,5 +1,3 @@
-export const uuid = '76ff2'
-export const ref = 'can2G01'
 import { choice } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 import FractionEtendue from '../../../modules/FractionEtendue.js'

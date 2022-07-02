@@ -1,5 +1,3 @@
-export const uuid = '148a0'
-export const ref = '6N24-1'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, texNombre, texFraction, calcul } from '../../modules/outils.js'
 

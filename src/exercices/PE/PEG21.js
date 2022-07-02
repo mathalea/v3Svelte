@@ -1,5 +1,3 @@
-export const uuid = 'cb6fa'
-export const ref = 'PEG21'
 import Exercice from '../Exercice.js'
 import { choice, listeQuestionsToContenu, texteGras } from '../../modules/outils.js'
 import { cercle, droite, longueur, milieu, point, pointAdistance, pointIntersectionLC } from '../../modules/2d.js'

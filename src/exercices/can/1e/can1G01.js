@@ -1,5 +1,3 @@
-export const uuid = '79a7e'
-export const ref = 'can1G01'
 import CosEtsin from '../../1e/1G10.js'
 export { interactifReady, interactifType } from '../../1e/1G10.js'
 export const titre = 'Déterminer les valeurs remarquables du cosinus et sinus'

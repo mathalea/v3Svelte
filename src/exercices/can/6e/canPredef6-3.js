@@ -1,5 +1,3 @@
-export const uuid = '4bced'
-export const ref = 'canPredef6-3'
 import Exercice from '../../Exercice.js'
 import { listeQuestionsToContenu, randint, calcul, pgcd, texNombrec, choice, texNombre, sp, shuffle, texPrix, combinaisonListesSansChangerOrdre, range1 } from '../../../modules/outils.js'
 import FractionEtendue from '../../../modules/FractionEtendue.js'
@@ -57,7 +55,7 @@ export default function CourseAuxNombres6e (numeroExercice) {
     const listeIndex = combinaisonListesSansChangerOrdre(questions, this.nbQuestions)
     const fruits = [
       ['pêches', 4, 10, 30],
-      ['Noix', 5, 4, 13],
+      ['noix', 5, 4, 13],
       ['cerises', 6, 11, 20],
       ['pommes', 2, 20, 40],
       ['framboises', 15, 1, 5],

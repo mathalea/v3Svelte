@@ -1,5 +1,3 @@
-export const uuid = '2c987'
-export const ref = '4G20-1'
 import Pythagore2D from './4G20.js'
 // 4G20-1
 export const titre = 'Donner ou compléter une égalité de Pythagore'

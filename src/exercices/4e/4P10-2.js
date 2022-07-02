@@ -1,5 +1,3 @@
-export const uuid = 'd2513'
-export const ref = '4P10-2'
 import EqResolvantesThales from '../3e/3L13-2.js'
 export const titre = 'Déterminer une quatrième proportionnelle dans un tableau'
 

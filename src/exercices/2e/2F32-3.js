@@ -1,5 +1,3 @@
-export const uuid = '33a3c'
-export const ref = '2F32-3'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, sp, combinaisonListes, numAlpha } from '../../modules/outils.js'
 import { tableauDeVariation, mathalea2d } from '../../modules/2d.js'

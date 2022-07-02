@@ -1,5 +1,3 @@
-export const uuid = '618c9'
-export const ref = 'can4C06'
 import Exercice from '../../Exercice.js'
 import { randint, calcul } from '../../../modules/outils.js'
 export const titre = 'Trouver le nombre de nombres entiers entre deux valeurs'

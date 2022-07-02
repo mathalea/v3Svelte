@@ -1,5 +1,3 @@
-export const uuid = 'f6edb'
-export const ref = '4G52'
 import { labelPoint, mathalea2d, tracePoint } from '../../modules/2d.js'
 import { context } from '../../modules/context.js'
 import { lettreDepuisChiffre, listeQuestionsToContenu, miseEnEvidence, randint } from '../../modules/outils.js'

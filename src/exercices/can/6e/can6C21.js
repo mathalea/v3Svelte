@@ -1,5 +1,3 @@
-export const uuid = '84ce4'
-export const ref = 'can6C21'
 import { calcul, randint, texNombrec, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Trouver le complément à 1*'

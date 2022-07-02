@@ -1,5 +1,3 @@
-export const uuid = '384ca'
-export const ref = '2N20-5'
 import ExerciceDecomposerEnFacteursPremiers from '../5e/5A13.js'
 export const titre = 'Décomposition en facteurs premiers'
 export const dateDeModifImportante = '2/11/2021'

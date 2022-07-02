@@ -1,5 +1,3 @@
-export const uuid = '32643'
-export const ref = '3G20'
 import Thales2D from '../4e/_Thales2D.js'
 export { interactifReady, interactifType, amcReady, amcType, titre } from '../4e/_Thales2D.js'
 

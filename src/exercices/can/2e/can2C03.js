@@ -1,5 +1,3 @@
-export const uuid = 'f9696'
-export const ref = 'can2C03'
 import Exercice from '../../Exercice.js'
 import { randint, calcul, choice, texNombrec, abs, ecritureParentheseSiNegatif, sp } from '../../../modules/outils.js'
 export const titre = 'Calculer avec  des puissances'

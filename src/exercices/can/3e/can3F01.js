@@ -1,6 +1,4 @@
-export const uuid = 'e57f2'
-export const ref = 'can3F01'
-import { courbeSpline, mathalea2d, repere2 } from '../../../modules/2d'
+import { courbeSpline, mathalea2d, repere2 } from '../../../modules/2d.js'
 import { splineCatmullRom } from '../../../modules/fonctionsMaths'
 import { randint } from '../../../modules/outils'
 import Exercice from '../../Exercice'

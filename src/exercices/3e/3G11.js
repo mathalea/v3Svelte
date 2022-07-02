@@ -1,5 +1,3 @@
-export const uuid = 'aaac4'
-export const ref = '3G11'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choisitLettresDifferentes, lettreDepuisChiffre, arcenciel, texNombre } from '../../modules/outils.js'
 import { point, tracePoint, labelPoint, segment, dansLaCibleCarree, cibleCarree, homothetie, longueur, mathalea2d } from '../../modules/2d.js'

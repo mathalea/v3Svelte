@@ -1,5 +1,3 @@
-export const uuid = '7d356'
-export const ref = 'can6C06'
 import { calcul, choice, randint, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Diviser par 9'

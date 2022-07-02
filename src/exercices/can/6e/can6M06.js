@@ -1,5 +1,3 @@
-export const uuid = '04ea0'
-export const ref = 'can6M06'
 import { calcul, creerNomDePolygone, randint, texNombrec, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 import {

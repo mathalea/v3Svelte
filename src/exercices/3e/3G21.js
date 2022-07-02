@@ -1,5 +1,3 @@
-export const uuid = '47097'
-export const ref = '3G21'
 import Exercice from '../Exercice.js'
 import Decimal from 'decimal.js'
 import { context } from '../../modules/context.js'

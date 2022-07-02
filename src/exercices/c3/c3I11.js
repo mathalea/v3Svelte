@@ -1,5 +1,3 @@
-export const uuid = 'dd59f'
-export const ref = 'c3I11'
 /* eslint-disable camelcase */
 import Exercice from '../Exercice.js'
 import { context } from '../../modules/context.js'
@@ -246,6 +244,6 @@ export default function NoteLaCouleurC3 () {
   }
   this.besoinFormulaireNumerique = ['Type de plateau', 4, '1 : Plateau couleur sans numéro\n2 : Plateau couleur avec numéros\n3 : Plateau noir et blanc avec nom des couleurs\n4 : Plateau noir et blanc avec numéros']
   this.besoinFormulaire2CaseACocher = ['Graduations', true]
-  this.besoinFormulaire3Numerique = ['Nombre de couleurs (Maximmum 6)', 6]
+  this.besoinFormulaire3Numerique = ['Nombre de couleurs (Maximum 6)', 6]
   this.besoinFormulaire4CaseACocher = ['Plateau de jeu original', false]
 }

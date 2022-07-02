@@ -1,5 +1,3 @@
-export const uuid = '2aece'
-export const ref = 'can6C16'
 import { calcul, randint, texNombrec, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer le double ou la moitié'

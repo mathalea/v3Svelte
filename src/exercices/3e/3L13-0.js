@@ -1,5 +1,3 @@
-export const uuid = '06919'
-export const ref = '3L13-0'
 import ExerciceEquationASolutionEntiere from '../4e/4L20-0.js'
 
 export { interactifReady, interactifType, amcReady, amcType, titre } from '../4e/4L20-0.js'

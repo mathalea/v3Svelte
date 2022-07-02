@@ -1,5 +1,3 @@
-export const uuid = 'e2557'
-export const ref = 'can6M03'
 import { calcul, contraindreValeur, randint, texNombre } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Convertir en mètres'

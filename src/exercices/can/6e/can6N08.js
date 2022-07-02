@@ -1,5 +1,3 @@
-export const uuid = '367be'
-export const ref = 'can6N08'
 import { calcul, choice, randint, texNombrec } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Déterminer le nombre de centaines, dizaines'

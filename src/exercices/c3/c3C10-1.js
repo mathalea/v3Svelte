@@ -1,5 +1,3 @@
-export const uuid = 'cb281'
-export const ref = 'c3C10-1'
 import TablesDeMultiplications from '../6e/_Tables_de_multiplications.js'
 export const titre = 'Tables de multiplications'
 export { interactifReady, interactifType, amcReady, amcType } from '../6e/_Tables_de_multiplications.js'

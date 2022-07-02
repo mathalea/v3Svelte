@@ -1,5 +1,3 @@
-export const uuid = '33dc9'
-export const ref = 'can5C02'
 import { calcul, randint, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer une somme d’entiers'

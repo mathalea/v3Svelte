@@ -1,5 +1,3 @@
-export const uuid = '1e768'
-export const ref = 'can6N11'
 import sommmeFractionsDecimales from '../../6e/6N10-6.js'
 export { interactifReady, interactifType, amcType, amcReady } from '../../6e/6N10-6.js'
 export const titre = 'Ecrire sous forme d\'une fraction décimale'

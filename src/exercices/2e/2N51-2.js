@@ -1,5 +1,3 @@
-export const uuid = '52065'
-export const ref = '2N51-2'
 import TrouverErreurResolEqDeg1 from '../4e/4L15-0.js'
 export const titre = 'Trouver l\'erreur dans une résolution d\'équation du premier degré'
 // export { interactifReady, interactifType } from '../4e/4L15-0.js'

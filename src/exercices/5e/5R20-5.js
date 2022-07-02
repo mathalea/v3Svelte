@@ -1,5 +1,3 @@
-export const uuid = '91178'
-export const ref = '5R20-5'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, combinaisonListes, ecritureAlgebrique } from '../../modules/outils.js'
 export const titre = 'Additions de deux entiers relatifs dans un tableau à double entrée'

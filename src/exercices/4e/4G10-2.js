@@ -1,5 +1,3 @@
-export const uuid = '6ffc0'
-export const ref = '4G10-2'
 import Exercice from '../Exercice.js'
 import { randint, listeQuestionsToContenu, choisitLettresDifferentes } from '../../modules/outils.js'
 import { afficheLongueurSegment, codageAngleDroit, droite, droiteParPointEtPerpendiculaire, labelPoint, mathalea2d, point, pointAdistance, pointIntersectionDD, pointSurDroite, polygoneAvecNom, segment, translation2Points, triangle2points2longueurs, vecteur } from '../../modules/2d.js'
@@ -100,7 +98,7 @@ export default class nomExercice extends Exercice {
       // Perpendiculaire
       anim.tempo = 0.5
       anim.couleur = 'red'
-      anim.pointilles = true
+      anim.pointilles = 5
       anim.equerreDeplacer(pied)
       anim.equerreMontrer()
       anim.equerreRotation(AA)

@@ -1,5 +1,3 @@
-export const uuid = '540d7'
-export const ref = 'canc3D02'
 import { cercle, mathalea2d, point, rotation, segment, texteParPosition } from '../../../modules/2d.js'
 import { context } from '../../../modules/context.js'
 import { calcul, choice, personne, randint } from '../../../modules/outils.js'

@@ -1,5 +1,3 @@
-export const uuid = 'a4780'
-export const ref = '4L12'
 import Exercice from '../Exercice.js'
 import { randint, listeQuestionsToContenu, texteGras, texteEnCouleurEtGras, miseEnEvidence } from '../../modules/outils.js'
 export const titre = 'Démontrer l\'équivalence de deux programmes de calcul'

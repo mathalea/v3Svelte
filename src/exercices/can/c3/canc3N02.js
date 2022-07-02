@@ -1,6 +1,4 @@
-export const uuid = '18600'
-export const ref = 'canc3N02'
-import { droiteGraduee2, mathalea2d } from '../../../modules/2d'
+import { droiteGraduee2, mathalea2d } from '../../../modules/2d.js'
 import { randint, texNombre, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Trouver un nombre sur une droite graduée'

@@ -1,5 +1,3 @@
-export const uuid = '4de73'
-export const ref = 'can2C07'
 import Exercice from '../../Exercice.js'
 import { extraireRacineCarree, choice } from '../../../modules/outils.js'
 export const titre = 'Calculer avec une racine carrée'

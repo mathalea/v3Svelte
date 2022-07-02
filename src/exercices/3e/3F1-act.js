@@ -1,5 +1,3 @@
-export const uuid = '5eb9e'
-export const ref = '3F1-act'
 import Exercice from '../Exercice.js'
 import { context } from '../../modules/context.js'
 import { listeQuestionsToContenu, randint, combinaisonListesSansChangerOrdre, texNombre, nombreAvecEspace, modalPdf, modalVideo, listeDiviseurs, tikzMachineMaths, tikzMachineDiag, katexPopup, numAlpha, machineMathsVideo, infoMessage, lampeMessage } from '../../modules/outils.js'

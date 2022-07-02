@@ -1,5 +1,3 @@
-export const uuid = 'f4048'
-export const ref = '2N30-4'
 export const titre = 'Diviser des fractions'
 
 // eslint-disable-next-line import/first

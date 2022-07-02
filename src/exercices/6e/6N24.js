@@ -1,5 +1,3 @@
-export const uuid = 'a97a5'
-export const ref = '6N24'
 import ExerciceConversions from './_Exercice_conversions.js'
 export const titre = 'Utiliser les préfixes multiplicateurs et diviseurs (milli à kilo)'
 export { interactifReady, interactifType, amcReady, amcType } from './_Exercice_conversions.js'

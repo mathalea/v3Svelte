@@ -1,5 +1,3 @@
-export const uuid = '6de7e'
-export const ref = '2G11-1'
 import ProblemesPythagore from '../4e/4G22.js'
 export const titre = 'Problèmes utilisant le théorème de Pythagore'
 // export { interactifReady, interactifType } from '../4e/4G22.js'

@@ -1,5 +1,3 @@
-export const uuid = '2cfa4'
-export const ref = '5M20'
 import CalculDeVolumes from '../6e/6M30.js'
 
 export const titre = 'Calculs de volumes'

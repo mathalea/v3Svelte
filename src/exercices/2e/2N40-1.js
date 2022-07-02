@@ -1,5 +1,3 @@
-export const uuid = 'd0192'
-export const ref = '2N40-1'
 import TraduireUnProgrammeDeCalcul from '../5e/5L10-2.js'
 export const titre = 'Traduire un programme de calcul par une expression littérale'
 export { interactifReady, interactifType } from '../5e/5L10-2.js'

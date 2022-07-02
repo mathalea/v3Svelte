@@ -1,5 +1,3 @@
-export const uuid = 'caf0f'
-export const ref = 'can1L08'
 import Exercice from '../../Exercice.js'
 import { randint, ecritureAlgebriqueSauf1, reduireAxPlusB, rienSi1, ecritureParentheseSiNegatif } from '../../../modules/outils.js'
 export const titre = 'Déterminer un coefficient dans un développement*'

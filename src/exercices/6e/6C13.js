@@ -1,5 +1,3 @@
-export const uuid = 'bbeae'
-export const ref = '6C13'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenuSansNumero, randint, combinaisonListes, numAlpha, rangeMinMax, contraindreValeur, compteOccurences } from '../../modules/outils.js'
 import choisirExpressionNumerique from '../5e/_choisirExpressionNumerique.js'

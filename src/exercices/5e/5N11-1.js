@@ -1,5 +1,3 @@
-export const uuid = '2ff0d'
-export const ref = '5N11-1'
 import TableauxEtPourcentages from './_Tableaux_et_pourcentages.js'
 
 export const titre = 'Tableaux et pourcentages - prix constant'

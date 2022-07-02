@@ -1,5 +1,3 @@
-export const uuid = '24fa1'
-export const ref = '2F10-5'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, reduireAxPlusB, choice, texFractionReduite, itemize, obtenirListeFacteursPremiers, texNombre2 } from '../../modules/outils.js'
 import { resoudre } from '../../modules/outilsMathjs.js'

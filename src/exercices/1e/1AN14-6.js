@@ -1,5 +1,3 @@
-export const uuid = '29311'
-export const ref = '1AN14-6'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, combinaisonListes, lettreMinusculeDepuisChiffre, rienSi1, prettyTex } from '../../modules/outils.js'
 import { Polynome } from '../../modules/fonctionsMaths.js'

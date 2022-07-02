@@ -1,5 +1,3 @@
-export const uuid = 'c5cb7'
-export const ref = '4L11'
 import FactoriserParNombreOux from '../3e/3L11-4.js'
 export const titre = 'Factoriser une expression littérale'
 export { interactifReady, interactifType, amcReady, amcType } from '../3e/3L11-4.js'

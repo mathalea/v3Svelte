@@ -1,5 +1,3 @@
-export const uuid = '4fd9a'
-export const ref = 'can6C28'
 import Exercice from '../../Exercice.js'
 import { choice, texNombrec, calcul } from '../../../modules/outils.js'
 export const titre = 'Résoudre un problème de fraction'

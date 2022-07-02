@@ -1,5 +1,3 @@
-export const uuid = '14ce4'
-export const ref = '4L14-1'
 import TesterSiUnNombreEstSolutionDUneEquation from './4L14-0.js'
 
 export const titre = 'Tester si un nombre est solution d\'une équation du premier degré'

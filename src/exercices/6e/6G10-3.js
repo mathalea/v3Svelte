@@ -1,5 +1,3 @@
-export const uuid = '458da'
-export const ref = '6G10-3'
 import Exercice from '../Exercice.js'
 import { combinaisonListes, enleveElement, lettreDepuisChiffre, listeQuestionsToContenu, randint, shuffle } from '../../modules/outils.js'
 import { demiDroite, droite, labelPoint, mathalea2d, point, segmentAvecExtremites } from '../../modules/2d.js'

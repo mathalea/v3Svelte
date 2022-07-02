@@ -1,5 +1,3 @@
-export const uuid = '7dbdb'
-export const ref = 'canc3D03'
 import { choice, randint } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Ajouter des durées'

@@ -1,5 +1,3 @@
-export const uuid = 'bb53c'
-export const ref = 'can3C06'
 import Exercice from '../../Exercice.js'
 import { randint, calcul, choice, ecritureParentheseSiNegatif, abs } from '../../../modules/outils.js'
 export const titre = 'Calculer avec des carrés/priorité opératoire'

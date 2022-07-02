@@ -1,5 +1,3 @@
-export const uuid = 'bbe09'
-export const ref = 'can2F01'
 import Exercice from '../../Exercice.js'
 import {
   randint, calcul, choice, ecritureParentheseSiNegatif, texNombrec,

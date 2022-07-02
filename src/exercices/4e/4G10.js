@@ -1,5 +1,3 @@
-export const uuid = '802e6'
-export const ref = '4G10'
 import Transformations from '../6e/_Transformations.js'
 export const titre = 'Trouver l\'image d\'un point par une symétrie axiale ou centrale ou par une translation'
 export { interactifReady, interactifType, amcReady, amcType } from '../6e/_Transformations.js'

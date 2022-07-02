@@ -1,5 +1,3 @@
-export const uuid = 'bf024'
-export const ref = 'can2N02'
 import Exercice from '../../Exercice.js'
 import { randint, choice, texNombrec } from '../../../modules/outils.js'
 export const titre = 'Déterminer le plus petit ensemble de nombres'

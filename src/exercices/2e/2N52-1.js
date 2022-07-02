@@ -1,5 +1,3 @@
-export const uuid = '41584'
-export const ref = '2N52-1'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, combinaisonListes, reduireAxPlusB, texteEnCouleur, choice, ecritureAlgebrique, ecritureParentheseSiNegatif } from '../../modules/outils.js'
 import { fraction, obtenirListeFractionsIrreductiblesFaciles } from '../../modules/fractions.js'

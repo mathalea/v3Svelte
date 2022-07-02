@@ -1,5 +1,3 @@
-export const uuid = '60afe'
-export const ref = '4G40-1'
 import ArrondirUneValeur from '../6e/6N31-3.js'
 export const titre = 'Encadrer puis arrondir une valeur comprenant un cosinus'
 

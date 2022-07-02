@@ -1,5 +1,3 @@
-export const uuid = '49845'
-export const ref = 'can3P01'
 import Exercice from '../../Exercice.js'
 import { randint, reduireAxPlusB, ecritureParentheseSiNegatif, sp } from '../../../modules/outils.js'
 export const titre = 'Utiliser la proportionnalité sur une expression algébrique'

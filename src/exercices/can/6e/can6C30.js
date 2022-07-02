@@ -1,5 +1,3 @@
-export const uuid = '188ad'
-export const ref = 'can6C30'
 import { choice, randint, texNombre, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 import Decimal from 'decimal.js'

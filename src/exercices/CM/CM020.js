@@ -1,5 +1,3 @@
-export const uuid = 'e0ea6'
-export const ref = 'CM020'
 import Exercice from '../Exercice.js'
 import { contraindreValeur, listeQuestionsToContenu } from '../../modules/outils.js'
 import TrouverSolutionMathador from './_TrouverSolutionMathador.js'

@@ -1,5 +1,3 @@
-export const uuid = '0f55f'
-export const ref = 'can3F06'
 import Exercice from '../../Exercice.js'
 import { randint, choice, ecritureParentheseSiNegatif, texFractionReduite, abs } from '../../../modules/outils.js'
 export const titre = 'Déterminer le coefficient d’une fonction affine'

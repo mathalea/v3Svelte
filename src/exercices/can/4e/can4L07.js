@@ -1,5 +1,3 @@
-export const uuid = '5ab19'
-export const ref = 'can4L07'
 import Exercice from '../../Exercice.js'
 import { randint, calcul, printlatex, texNombre, rienSi1, choice, ecritureAlgebrique, signe, ecritureParentheseSiNegatif } from '../../../modules/outils.js'
 export const titre = 'Réduire une expression littérale'

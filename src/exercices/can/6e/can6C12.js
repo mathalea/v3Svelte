@@ -1,5 +1,3 @@
-export const uuid = 'f73d4'
-export const ref = 'can6C12'
 import { calcul, choice, randint } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer le double ou le triple'

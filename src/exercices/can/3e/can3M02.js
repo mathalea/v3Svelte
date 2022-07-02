@@ -1,5 +1,3 @@
-export const uuid = '2884b'
-export const ref = 'can3M02'
 import { shuffle, randint, calcul, texteExposant, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer un volume de pyramide'

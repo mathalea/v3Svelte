@@ -1,5 +1,3 @@
-export const uuid = 'a8072'
-export const ref = 'can4P02'
 import { calcul, choice, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Résoudre un problème de vitesse'

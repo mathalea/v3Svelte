@@ -1,5 +1,3 @@
-export const uuid = '39b38'
-export const ref = '6G26'
 import SerieDeTransformations from '../4e/4G12.js'
 export const titre = 'Trouver les symétries axiales successives dans un damier'
 export { interactifReady, interactifType, amcReady, amcType } from '../4e/4G12.js'

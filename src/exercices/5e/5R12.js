@@ -1,5 +1,3 @@
-export const uuid = '36c99'
-export const ref = '5R12'
 import ReperagePointDuPlan from './5R12-2.js'
 export const titre = 'Déterminer les coordonnées (positives) d\'un point'
 

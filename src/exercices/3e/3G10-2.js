@@ -1,5 +1,3 @@
-export const uuid = 'a1c9d'
-export const ref = '3G10-2'
 import Transformations from '../6e/_Transformations.js'
 export { interactifReady, interactifType, amcReady, amcType } from '../6e/_Transformations.js'
 export const titre = 'Trouver l\'image d\'un point par une transformation choisie aléatoirement'

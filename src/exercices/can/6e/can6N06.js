@@ -1,5 +1,3 @@
-export const uuid = 'a87ce'
-export const ref = 'can6N06'
 import { arrondi, calcul, randint, texNombre, choice } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Arrondir au dixième ou au centième'

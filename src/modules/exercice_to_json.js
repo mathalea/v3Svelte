@@ -8,9 +8,9 @@ import { uuidFromRef, urlFromUuid, listeChapitresDuNiveau, listeExosDuChapitre, 
 const isVerbose = /-(-verbode|v)/.test(process.argv)
 const logIfVerbose = (...args) => { if (isVerbose) console.log(...args) }
 // const jsDir = '../' // path.resolve('./src')
-const dictFile = path.resolve('src/modules', 'exercicesDisponiblesReferentiel2022.json')
-const uuidToUrlFile = path.resolve('src/modules', 'uuidsToUrl.json')
-const referentiel2022File = './src/modules/referentiel2022.json'
+const dictFile = path.resolve('.', 'exercicesDisponiblesReferentiel2022.json')
+const uuidToUrlFile = path.resolve('.', 'uuidsToUrl.json')
+const referentiel2022File = path.resolve('.', 'referentiel2022.json')
 let dictionnaire
 let referentiel2022
 let uuidsToUrl
@@ -38,6 +38,7 @@ function getAllFilesOfDir (dir) {
   fs.readdirSync(dir).forEach(entry => {
     if (entry === 'Exercice.js' || entry === 'ExerciceTs.ts' || entry === 'beta' || entry === 'Profs') return
     const fullEntry = path.join(dir, entry)
+    console.log(fullEntry)
     if (!fs.statSync(fullEntry).isDirectory()) {
       if ((/\.js$/.test(entry) || (/\.ts$/.test(entry))) && !/^_/.test(entry)) {
         files.push(fullEntry)
@@ -55,9 +56,9 @@ function getAllFiles (dir) {
   const files = []
   fs.readdirSync(dir).forEach(entry => {
     if (entry === 'Exercice.js' || entry === 'ExerciceTs.ts') return
-    const fullEntry = dir + entry // path.join(dir, entry)
+    const fullEntry = path.join(dir + path.sep, entry)
     if (fs.statSync(fullEntry).isDirectory()) {
-      getAllFiles(dir + entry + '/').forEach(file => files.push(file))
+      getAllFiles(fullEntry).forEach(file => files.push(file))
     } else if ((/\.js$/.test(entry) || (/\.ts$/.test(entry))) && !/^_/.test(entry)) {
       files.push(fullEntry)
     } // sinon on ignore
@@ -122,7 +123,7 @@ function ajouteExoDico ({ uuid = '', name = '', titre = '', level = '', chap = '
 function mettreAJourFichierDico (file, dico) {
   const objDico = toObjet(dico)
   const contenuFichier = JSON.stringify(objDico, null, 2)
-  const dictFile = path.resolve('src/modules', file)
+  const dictFile = path.resolve('.', file)
   fs.writeFileSync(dictFile, contenuFichier, 'utf-8')
 }
 
@@ -233,7 +234,7 @@ function gereModuleTs (module, file, name, dictionnaire, referentiel2022, uuidsT
  * En même temps, on alimente le fichier uuidToUrl.json qui stocke les url des fichiers référencés par leur uuid.
  * @author Jean-Claude Lhote
  */
-function builJsonDictionnaireExercices () {
+async function builJsonDictionnaireExercices () {
   // on charge le dictionnaire si il existe et on génère la liste des UUID déjà prises
   let listOfUuids = []
   // On prépare les fichiers que l'on va alimenter : listOfUuids, dictionnaire, uuidsToUrl
@@ -264,7 +265,9 @@ function builJsonDictionnaireExercices () {
   }
 
   // On charge la liste des exercices
-  const exercicesDir = path.resolve('src', 'exercices')
+  console.log(path.resolve())
+  const exercicesDir = path.relative(path.resolve('.'), path.resolve('..', 'exercices'))
+  console.log(exercicesDir)
   //  const prefixLength = jsDir.length
   const exercicesList = getAllFiles(exercicesDir)
   const promesses = []
@@ -273,6 +276,7 @@ function builJsonDictionnaireExercices () {
     if (file.indexOf('Prof') !== -1) continue
     const name = path.basename(file, path.extname(file))
     const isCan = file.includes('can')
+    console.log(file)
     const promesse = import(file)
       .then(
         (module) => gereModuleJs(module, file, name, dictionnaire, referentiel2022, uuidsToUrl, listOfUuids, isCan)

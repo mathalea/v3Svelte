@@ -1,5 +1,3 @@
-export const uuid = '94bdb'
-export const ref = '6P13'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, combinaisonListes, randint, lampeMessage, prenomF, prenomM, calcul, texPrix, texteEnCouleurEtGras, numAlpha, nombreDeChiffresDansLaPartieDecimale, sp, choice, arrondi } from '../../modules/outils.js'
 import { setReponse } from '../../modules/gestionInteractif.js'

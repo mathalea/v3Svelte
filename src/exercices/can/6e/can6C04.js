@@ -1,5 +1,3 @@
-export const uuid = '0d52b'
-export const ref = 'can6C04'
 import { calcul, randint, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Ajouter 10n + 9'

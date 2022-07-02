@@ -1,5 +1,3 @@
-export const uuid = '26c93'
-export const ref = 'can6C05'
 import { calcul, choice, randint, texNombre, texNombrec, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Multiplier astucieusement'

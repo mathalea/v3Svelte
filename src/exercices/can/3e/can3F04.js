@@ -1,5 +1,3 @@
-export const uuid = '0f07d'
-export const ref = 'can3F04'
 import CalculsImagesFonctions from '../../3e/3F10-2.js'
 export { interactifReady, interactifType, amcReady, amcType } from '../../3e/3F10-2.js'
 export const titre = 'Calculer un antécédent par une fonction linéaire'

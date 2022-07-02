@@ -1,5 +1,3 @@
-export const uuid = '2c6d1'
-export const ref = '3G32-4'
 import problemesTrigoLongueur from '../3e/3G32-0.js'
 export const titre = "Calculer la hauteur d'une montagne"
 export { interactifReady, interactifType } from '../3e/3G32-0.js'

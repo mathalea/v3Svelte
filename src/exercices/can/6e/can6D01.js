@@ -1,5 +1,3 @@
-export const uuid = 'f2486'
-export const ref = 'can6D01'
 import { calcul, randint } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Convertir des Heures/minutes en minutes'

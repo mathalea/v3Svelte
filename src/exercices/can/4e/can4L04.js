@@ -1,5 +1,3 @@
-export const uuid = '93003'
-export const ref = 'can4L04'
 import Exercice from '../../Exercice.js'
 import { randint, calcul, ecritureAlgebrique, texteEnCouleur } from '../../../modules/outils.js'
 export const titre = 'Calculer une expression pour une valeur particulière'

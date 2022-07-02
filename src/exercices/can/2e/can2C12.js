@@ -1,5 +1,3 @@
-export const uuid = 'ad93d'
-export const ref = 'can2C12'
 import Exercice from '../../Exercice.js'
 import { randint, choice, texNombrec, sp, calcul, shuffle } from '../../../modules/outils.js'
 export const titre = 'Déterminer un taux global d’évolution'

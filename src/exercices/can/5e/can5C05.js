@@ -1,5 +1,3 @@
-export const uuid = '7d22b'
-export const ref = 'can5C05'
 import { randint, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer un quotient entier'

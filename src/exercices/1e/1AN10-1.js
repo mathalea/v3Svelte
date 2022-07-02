@@ -1,5 +1,3 @@
-export const uuid = 'fdfd3'
-export const ref = '1AN10-1'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, combinaisonListes, ecritureAlgebrique, randint, ecritureParentheseSiNegatif, ecritureAlgebriqueSauf1, contraindreValeur, reduireAxPlusB } from '../../modules/outils.js'
 import { } from '../../modules/2d.js'

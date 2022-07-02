@@ -1,5 +1,3 @@
-export const uuid = '75a4e'
-export const ref = '3F13'
 /* eslint-disable no-sequences */
 import Exercice from '../Exercice.js'
 import Decimal from 'decimal.js'

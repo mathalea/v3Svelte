@@ -1,5 +1,3 @@
-export const uuid = '49a7e'
-export const ref = '2N41-1'
 import FactoriserUneExpression3e from '../3e/3L11-6.js'
 export const titre = 'Factoriser une expression complexe'
 export { interactifReady, interactifType } from '../3e/3L11-6.js'

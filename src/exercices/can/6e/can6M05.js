@@ -1,5 +1,3 @@
-export const uuid = '30dbc'
-export const ref = 'can6M05'
 import { calcul, choice, randint, texNombre, texteEnCouleur, texNombrec } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Convertir des m$^3$ et litres'

@@ -1,5 +1,3 @@
-export const uuid = '8f81b'
-export const ref = '6G24-2'
 import ConstruireParSymetrie from '../6e/_Construire_par_symetrie.js'
 export const titre = 'Construire le symétrique d\'une figure par rapport à une droite (cas simples)'
 export const dateDeModificationImportante = '14/11/2021'

@@ -1,5 +1,3 @@
-export const uuid = 'cad68'
-export const ref = '3L12'
 import Exercice from '../Exercice.js'
 import {
     randint,

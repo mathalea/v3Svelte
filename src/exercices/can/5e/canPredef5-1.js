@@ -1,5 +1,3 @@
-export const uuid = '04436'
-export const ref = 'canPredef5-1'
 import Exercice from '../../Exercice.js'
 import { listeQuestionsToContenu, randint, calcul, texNombrec, choice, texNombre, sp, shuffle, texPrix, combinaisonListesSansChangerOrdre } from '../../../modules/outils.js'
 import { ajouteChampTexteMathLive } from '../../../modules/interactif/questionMathLive.js'
@@ -34,7 +32,7 @@ export default function CourseAuxNombres5e (numeroExercice) {
     let a, b, c, d, resultat, propositions
     const fruits = [
       ['pêches', 4, 10, 30],
-      ['Noix', 5, 4, 13],
+      ['noix', 5, 4, 13],
       ['cerises', 6, 11, 20],
       ['pommes', 2, 20, 40],
       ['framboises', 15, 1, 5],

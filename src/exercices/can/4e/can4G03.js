@@ -1,5 +1,3 @@
-export const uuid = 'e5b26'
-export const ref = 'can4G03'
 import Exercice from '../../Exercice.js'
 import { randint, choice, creerNomDePolygone, texNombrec, texteEnCouleur, extraireRacineCarree, texRacineCarree } from '../../../modules/outils.js'
 import {

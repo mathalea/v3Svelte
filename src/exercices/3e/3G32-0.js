@@ -1,5 +1,3 @@
-export const uuid = 'f6fce'
-export const ref = '3G32-0'
 import Exercice from '../Exercice.js'
 import { context } from '../../modules/context.js'
 import { listeQuestionsToContenu, randint, numAlpha, stringNombre, combinaisonListes, texNombre, arrondi, texFractionReduite, creerNomDePolygone, choice, sp, lettreDepuisChiffre, rangeMinMax, contraindreValeur, compteOccurences, nombreDeChiffresDe, nombreDeChiffresDansLaPartieDecimale } from '../../modules/outils.js'

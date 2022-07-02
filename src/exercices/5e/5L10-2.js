@@ -1,5 +1,3 @@
-export const uuid = '8eae6'
-export const ref = '5L10-2'
 import { propositionsQcm } from '../../modules/interactif/questionQcm.js'
 import { ecritureParentheseSiNegatif, listeQuestionsToContenu, randint, combinaisonListes, itemize } from '../../modules/outils.js'
 import Exercice from '../Exercice.js'

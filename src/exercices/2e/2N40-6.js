@@ -1,5 +1,3 @@
-export const uuid = '32d52'
-export const ref = '2N40-6'
 import identitesCalculs from '../3e/3L11-5.js'
 export { interactifReady, interactifType } from '../3e/3L11-5.js'
 // export { amcReady, amcType } from '../3e/3L11-5.js'

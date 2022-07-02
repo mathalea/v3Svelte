@@ -1,5 +1,3 @@
-export const uuid = 'aeb0b'
-export const ref = '2G21-1'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice } from '../../modules/outils.js'
 import { mathalea2d, point, tracePoint, vecteur, polygoneAvecNom, translation, pointAdistance, longueur, homothetie, latexParPoint, similitude, translationAnimee } from '../../modules/2d.js'
@@ -78,9 +76,9 @@ export default function SommeDeVecteurs () {
         anim.compasDeplacer(translation(M, u))
         anim.compasTracerArcCentrePoint(translation(M, u), B)
         anim.crayonMontrer(B)
-        anim.tracer(translation(M, u), { couleur: 'blue', pointilles: true })
+        anim.tracer(translation(M, u), { couleur: 'blue', pointilles: 5 })
         anim.crayonDeplacer(M)
-        anim.tracer(A, { couleur: 'blue', pointilles: true })
+        anim.tracer(A, { couleur: 'blue', pointilles: 5 })
         anim.tracer(B, { vecteur: true, couleur: 'blue' })
         anim.crayonMasquer()
       }
@@ -93,9 +91,9 @@ export default function SommeDeVecteurs () {
       anim.compasDeplacer(translation(N, v))
       anim.compasTracerArcCentrePoint(translation(N, v), C)
       anim.crayonMontrer(C)
-      anim.tracer(translation(N, v), { couleur: 'green', pointilles: true })
+      anim.tracer(translation(N, v), { couleur: 'green', pointilles: 5 })
       anim.crayonDeplacer(N)
-      anim.tracer(B, { couleur: 'green', pointilles: true })
+      anim.tracer(B, { couleur: 'green', pointilles: 5 })
       anim.tracer(C, { vecteur: true, couleur: 'green' })
       anim.crayonMasquer()
       anim.compasMasquer()

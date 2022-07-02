@@ -1,5 +1,3 @@
-export const uuid = '5146d'
-export const ref = 'PEG22'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, texteGras } from '../../modules/outils.js'
 import { longueur, point, pointAdistance, pointSurSegment, similitude } from '../../modules/2d.js'

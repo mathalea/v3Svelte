@@ -1,5 +1,3 @@
-export const uuid = '5a989'
-export const ref = 'canExC02'
 import Exercice from '../../Exercice.js'
 import { randint } from '../../../modules/outils.js'
 import { complex, multiply } from 'mathjs'

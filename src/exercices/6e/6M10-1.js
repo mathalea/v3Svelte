@@ -1,5 +1,3 @@
-export const uuid = '36b6b'
-export const ref = '6M10-1'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, contraindreValeur, combinaisonListes, texteExposant, texNombre, texteEnCouleurEtGras, miseEnEvidence, stringNombre, arrondi } from '../../modules/outils.js'
 import { latexParCoordonnees, mathalea2d, point, polygone, segment, texteParPositionEchelle } from '../../modules/2d.js'
@@ -108,12 +106,12 @@ export default function ProblemesAiresRectangles () {
     const objets = []
     for (let i = 0; i < typeDeGrille[0] + 1; i++) {
       segTemp = segment(xBordures[i], 0, xBordures[i], yBordures[typeDeGrille[1]])
-      segTemp.pointilles = true
+      segTemp.pointilles = 5
       objets.push(segTemp)
     }
     for (let i = 0; i < typeDeGrille[1] + 1; i++) {
       segTemp = segment(0, yBordures[i], xBordures[typeDeGrille[0]], yBordures[i])
-      segTemp.pointilles = true
+      segTemp.pointilles = 5
       objets.push(segTemp)
     }
     return objets

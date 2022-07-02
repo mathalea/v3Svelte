@@ -1,5 +1,3 @@
-export const uuid = '517d6'
-export const ref = 'can3C08'
 import Exercice from '../../Exercice.js'
 import { randint, choice, texNombrec, texteEnCouleur, calcul, ecritureParentheseSiNegatif } from '../../../modules/outils.js'
 export const titre = 'Calculer avec un programme de calcul'

@@ -1,5 +1,3 @@
-export const uuid = '64caf'
-export const ref = '4L10-1'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, combinaisonListes, ecritureAlgebrique, ecritureParentheseSiNegatif, ecritureParentheseSiMoins, lettreDepuisChiffre } from '../../modules/outils.js'
 export const titre = 'Réduire, si possible, une expression littérale simple'

@@ -1,5 +1,3 @@
-export const uuid = 'a7d6f'
-export const ref = 'HPC100'
 /* eslint-disable no-unused-vars */
 /* eslint-disable no-sequences */
 /* eslint-disable no-unexpected-multiline */

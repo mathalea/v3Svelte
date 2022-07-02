@@ -1,5 +1,3 @@
-export const uuid = '7b5d6'
-export const ref = 'can6P03'
 import { calcul, randint, texNombrec, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Déterminer le nombre de km avec une vitesse'

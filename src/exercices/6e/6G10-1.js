@@ -1,5 +1,3 @@
-export const uuid = '28670'
-export const ref = '6G10-1'
 import Exercice from '../Exercice.js'
 import { combinaisonListes, listeQuestionsToContenu, randint, choice, creerNomDePolygone, calcul } from '../../modules/outils.js'
 import { mathalea2d, point, tracePointSurDroite, droite, demiDroite, labelPoint, segment } from '../../modules/2d.js'

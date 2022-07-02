@@ -1,5 +1,3 @@
-export const uuid = '51d4a'
-export const ref = 'can5P02'
 import Exercice from '../../Exercice.js'
 import { calcul, choice, texNombrec, randint, texNombre, texFractionReduite, texteEnCouleur, simplificationDeFractionAvecEtapes } from '../../../modules/outils.js'
 export const titre = 'Déterminer (ou calculer avec) un pourcentage de proportion'

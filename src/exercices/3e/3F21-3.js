@@ -1,5 +1,3 @@
-export const uuid = '3161b'
-export const ref = '3F21-3'
 import Exercice from '../Exercice.js'
 import { ecritureAlgebrique, listeQuestionsToContenu, randint, rienSi1, texNombre, stringNombre, sp, choice } from '../../modules/outils.js'
 import { mathalea2d, repere2, cercle, point, segment, milieu, texteParPoint, droite } from '../../modules/2d.js'
@@ -68,10 +66,10 @@ export default function PenteEtOrdonneeOrigineDroite () {
     t2.color = '#f15929'
 
     s1.epaisseur = 3
-    s1.pointilles = true
+    s1.pointilles = 5
     s1.color = '#f15929'
     s2.epaisseur = 3
-    s2.pointilles = true
+    s2.pointilles = 5
     s2.color = '#f15929'
 
     const nomFonction = choice(['f', 'g', 'h', 'f_1', 'f_2', 'f_3'])

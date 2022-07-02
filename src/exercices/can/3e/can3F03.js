@@ -1,5 +1,3 @@
-export const uuid = 'bcfb2'
-export const ref = 'can3F03'
 import CalculsImagesFonctions from '../../3e/3F10-2.js'
 export { interactifReady, interactifType, amcReady, amcType } from '../../3e/3F10-2.js'
 export const titre = 'Calculer une image par une fonction affine'

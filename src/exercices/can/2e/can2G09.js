@@ -1,5 +1,3 @@
-export const uuid = '4b84f'
-export const ref = 'can2G09'
 import Exercice from '../../Exercice.js'
 import { randint, choice, sp } from '../../../modules/outils.js'
 export const titre = 'Déterminer le coefficient de colinéarité entre deux vecteurs'

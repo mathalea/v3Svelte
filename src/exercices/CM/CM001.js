@@ -1,5 +1,3 @@
-export const uuid = '41332'
-export const ref = 'CM001'
 import TablesDeMultiplications from '../6e/_Tables_de_multiplications.js'
 
 export const titre = 'Tables de multiplication'

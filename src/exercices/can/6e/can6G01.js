@@ -1,5 +1,3 @@
-export const uuid = 'be3e5'
-export const ref = 'can6G01'
 import Transformations from '../../6e/_Transformations.js'
 export { interactifReady, interactifType, amcType, amcReady } from '../../6e/_Transformations.js'
 export const titre = 'Trouver le symétrique d’un point'

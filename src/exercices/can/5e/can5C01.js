@@ -1,5 +1,3 @@
-export const uuid = '27e95'
-export const ref = 'can5C01'
 import { calcul, randint, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer un produit d’entiers'

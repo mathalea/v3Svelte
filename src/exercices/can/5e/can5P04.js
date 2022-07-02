@@ -1,5 +1,3 @@
-export const uuid = '35d9d'
-export const ref = 'can5P04'
 import Exercice from '../../Exercice.js'
 import { randint, calcul, choice, texNombrec, texteEnCouleur } from '../../../modules/outils.js'
 export const titre = 'Calculer avec une proportion'

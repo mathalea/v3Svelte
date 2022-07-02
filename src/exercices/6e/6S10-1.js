@@ -1,5 +1,3 @@
-export const uuid = 'f3e50'
-export const ref = '6S10-1'
 import Exercice from '../Exercice.js'
 import { premiereLettreEnMajuscule, texcolors, combinaisonListes, choice, randint, listeQuestionsToContenu, numAlpha, calcul } from '../../modules/outils.js'
 import { traceGraphiqueCartesien, segment, mathalea2d, arc, point, rotation, motifs, tracePoint, vecteur, translation, carre, texteParPosition, repere2, traceBarre, cercleCentrePoint } from '../../modules/2d.js'

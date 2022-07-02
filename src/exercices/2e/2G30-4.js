@@ -1,5 +1,3 @@
-export const uuid = 'fd9ae'
-export const ref = '2G30-4'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, combinaisonListes, randint, ecritureAlgebrique, ecritureParentheseSiNegatif, ecritureAlgebriqueSauf1, reduireAxPlusB } from '../../modules/outils.js'
 export const titre = 'Déterminer une équation cartésienne de droite à partir d\'un point et d\'un vecteur directeur.'

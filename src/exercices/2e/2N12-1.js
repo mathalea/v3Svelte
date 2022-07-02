@@ -1,5 +1,3 @@
-export const uuid = '1c7b5'
-export const ref = '2N12-1'
 import EncadrerFractionEntre2Entiers from '../6e/6N20-1.js'
 export const titre = 'Encadrer une fraction entre deux nombres entiers'
 export { interactifReady, interactifType, amcType, amcReady } from '../6e/6N20-1.js'

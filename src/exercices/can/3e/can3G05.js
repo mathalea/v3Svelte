@@ -1,5 +1,3 @@
-export const uuid = '6306c'
-export const ref = 'can3G05'
 import Exercice from '../../Exercice.js'
 import { choice, creerNomDePolygone, randint } from '../../../modules/outils.js'
 import {

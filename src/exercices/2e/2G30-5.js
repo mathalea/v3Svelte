@@ -1,5 +1,3 @@
-export const uuid = 'ad8f1'
-export const ref = '2G30-5'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, ecritureParentheseSiNegatif, ecritureAlgebrique } from '../../modules/outils.js'
 export const titre = 'Déterminer une équation cartésienne à partir d\'un point et de la pente.'

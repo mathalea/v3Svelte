@@ -1,5 +1,3 @@
-export const uuid = '24861'
-export const ref = 'canc3C06'
 import { calcul, choice, randint, texNombre } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Trouver le nombre manquant dans une somme'

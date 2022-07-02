@@ -1,5 +1,3 @@
-export const uuid = 'cfee1'
-export const ref = '4L16'
 import DeterminerDerniereOperationExpressionLitterale from '../5e/5L14-4.js'
 export const titre = 'Déterminer si ces expressions sont des sommes, des différences, des produits ou des quotients'
 

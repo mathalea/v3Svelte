@@ -1,5 +1,3 @@
-export const uuid = 'edcf1'
-export const ref = '5R12-2'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenuSansNumero, creerCouples, randint, calcul, lettreDepuisChiffre, texNombre, shuffle2tableaux } from '../../modules/outils.js'
 import { mathalea2d, point, repere2, labelPoint, tracePoint } from '../../modules/2d.js'

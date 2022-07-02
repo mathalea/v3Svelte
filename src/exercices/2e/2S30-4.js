@@ -1,5 +1,3 @@
-export const uuid = '7ac25'
-export const ref = '2S30-4'
 import FonctionsProbabilite2 from '../3e/3S20.js'
 export const titre = 'Calculer des probabilités dans une expérience aléatoire à deux épreuves'
 // export { interactifReady, interactifType, amcReady, amcType } from '../3e/3S20.js'

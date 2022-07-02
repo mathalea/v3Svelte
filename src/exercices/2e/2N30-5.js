@@ -1,5 +1,3 @@
-export const uuid = 'ff71d'
-export const ref = '2N30-5'
 export const titre = 'Fractions et priorités opératoires'
 
 // eslint-disable-next-line import/first

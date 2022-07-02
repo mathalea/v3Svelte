@@ -1,5 +1,3 @@
-export const uuid = '33090'
-export const ref = 'can4C01'
 import { choice, ecritureAlgebrique, ecritureParentheseSiNegatif, randint } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Utiliser les priorités opératoires avec des relatifs'

@@ -1,5 +1,3 @@
-export const uuid = 'a19f9'
-export const ref = 'can6C07'
 import { calcul, randint, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Trouver le reste d’une division par 3'

@@ -1,5 +1,3 @@
-export const uuid = 'eaa72'
-export const ref = 'can6P04'
 import { calcul, choice, randint, texNombre, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Appliquer un pourcentage'

@@ -1,5 +1,3 @@
-export const uuid = '3bfc3'
-export const ref = '6M23'
 import ExerciceConversionsAires from './_Exercice_conversions_aires.js'
 export const titre = 'Convertir des aires'
 

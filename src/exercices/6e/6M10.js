@@ -1,5 +1,3 @@
-export const uuid = '1e817'
-export const ref = '6M10'
 import ExercicePerimetresEtAires from './_Exercice_perimetres_et_aires.js'
 export const titre = 'Calculer des périmètres et des aires de figures usuelles'
 export { interactifReady, interactifType, amcReady, amcType } from './_Exercice_perimetres_et_aires.js'

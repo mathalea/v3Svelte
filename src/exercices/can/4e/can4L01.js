@@ -1,5 +1,3 @@
-export const uuid = '096cb'
-export const ref = 'can4L01'
 import ExerciceEquationASolutionEntiere from '../../4e/4L20-0.js'
 export { interactifReady, interactifType, amcReady, amcType } from '../../4e/4L20-0.js'
 export const titre = 'Résoudre une équation x+a=b ou ax=b'

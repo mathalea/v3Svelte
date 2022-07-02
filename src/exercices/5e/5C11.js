@@ -1,5 +1,3 @@
-export const uuid = 'e2e37'
-export const ref = '5C11'
 import EcrireUneExpressionNumerique from './_Ecrire_une_expression_numerique.js'
 export const titre = 'Traduire une phrase par une expression'
 export const dateDeModificationImportante = '25/03/2022'

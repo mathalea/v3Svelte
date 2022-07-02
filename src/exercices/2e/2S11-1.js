@@ -1,5 +1,3 @@
-export const uuid = '25c3a'
-export const ref = '2S11-1'
 import CoefficientEvolution from '../3e/3P10-1.js'
 export const titre = 'Calculer un CM à partir d\'un taux d\'évolution et inversement'
 export { interactifReady, interactifType } from '../3e/3P10-1.js'

@@ -1,5 +1,3 @@
-export const uuid = 'ee515'
-export const ref = '6G23-3'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, calcul, creerNomDePolygone, texNombre, contraindreValeur } from '../../modules/outils.js'
 import { point, pointSurSegment, pointIntersectionDD, droite, segment, rotation, longueur } from '../../modules/2d.js'

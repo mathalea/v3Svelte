@@ -1,5 +1,3 @@
-export const uuid = '477a9'
-export const ref = 'can5C10'
 import ExerciceDecomposerEnFacteursPremiers from '../../5e/5A13.js'
 export { interactifReady, interactifType } from '../../5e/5A13.js'
 export const titre = 'Décomposer en produit de facteurs premiers'

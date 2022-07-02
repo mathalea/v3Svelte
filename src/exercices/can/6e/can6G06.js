@@ -1,5 +1,3 @@
-export const uuid = 'fd770'
-export const ref = 'can6G06'
 import NombreDeFacesEtDAretes from '../../6e/6G44.js'
 export const titre = 'Compter les arêtes et les faces'
 export { interactifReady, interactifType, amcReady, amcType } from '../../6e/6G44.js'

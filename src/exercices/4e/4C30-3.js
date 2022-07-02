@@ -1,5 +1,3 @@
-export const uuid = '23ff4'
-export const ref = '4C30-3'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, combinaisonListes, texNombre, puissanceEnProduit } from '../../modules/outils.js'
 export const titre = 'Écriture décimale ou fractionnaire d\'une puissance'

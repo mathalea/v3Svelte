@@ -1,5 +1,3 @@
-export const uuid = '9701d'
-export const ref = '6G10-2'
 import UtiliserLeCodagePourDecrire from './_Utiliser_le_codage_pour_decrire.js'
 export const titre = 'Utiliser le codage pour décrire une figure'
 

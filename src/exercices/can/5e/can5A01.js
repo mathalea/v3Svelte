@@ -1,6 +1,4 @@
-export const uuid = 'cc377'
-export const ref = 'can5A01'
-import { scratchblock } from '../../../modules/2d'
+import { scratchblock } from '../../../modules/2d.js'
 import { setReponse } from '../../../modules/gestionInteractif'
 import { ajouteChampTexteMathLive } from '../../../modules/interactif/questionMathLive'
 import { propositionsQcm } from '../../../modules/interactif/questionQcm'

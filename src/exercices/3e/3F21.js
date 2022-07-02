@@ -1,5 +1,3 @@
-export const uuid = '2dd9b'
-export const ref = '3F21'
 import LectureExpressionFonctionsAffines from './3F21-1.js'
 export const titre = 'Déterminer une fonction linéaire'
 

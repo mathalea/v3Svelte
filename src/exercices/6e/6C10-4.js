@@ -1,5 +1,3 @@
-export const uuid = '73046'
-export const ref = '6C10-4'
 /* eslint-disable camelcase */
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, nombreDeChiffresDansLaPartieEntiere, randint, texNombre } from '../../modules/outils.js'

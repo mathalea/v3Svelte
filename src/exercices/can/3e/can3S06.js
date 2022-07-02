@@ -1,5 +1,3 @@
-export const uuid = 'a8f23'
-export const ref = 'can3S06'
 import Exercice from '../../Exercice.js'
 import { randint, texFractionReduite, sp } from '../../../modules/outils.js'
 export const titre = 'Déterminer le rang d’une médiane'

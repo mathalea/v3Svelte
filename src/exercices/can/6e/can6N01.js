@@ -1,5 +1,3 @@
-export const uuid = 'e3724'
-export const ref = 'can6N01'
 import { calcul, randint, texNombre, texteEnCouleur, choice } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Recomposer un entier'

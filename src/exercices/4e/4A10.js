@@ -1,5 +1,3 @@
-export const uuid = 'e14ea'
-export const ref = '4A10'
 import PremierOuPas from '../3e/3A11.js'
 export const titre = 'Nombre premier ou pas'
 export { interactifReady, interactifType, amcReady, amcType } from '../3e/3A11.js'

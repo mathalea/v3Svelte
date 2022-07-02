@@ -1,5 +1,3 @@
-export const uuid = '3ca8e'
-export const ref = 'can3C10'
 import Exercice from '../../Exercice.js'
 import { randint, choice, texNombrec } from '../../../modules/outils.js'
 export const titre = 'Encadrer avec des puissances de 10'

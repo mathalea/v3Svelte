@@ -1,5 +1,3 @@
-export const uuid = 'e4f72'
-export const ref = '5L14-5'
 import CalculerLaValeurDUneExpressionLitterale from './5L14.js'
 export const titre = 'Calculer la valeur d\'une expression littérale de degré 1 à 1 inconnue'
 

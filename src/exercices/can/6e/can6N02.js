@@ -1,5 +1,3 @@
-export const uuid = '70f92'
-export const ref = 'can6N02'
 import { randint } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Recomposer un entier (bis)'

@@ -1,5 +1,3 @@
-export const uuid = 'e83a7'
-export const ref = 'can3L02'
 import { ecritureAlgebrique, randint, texFraction } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Résoudre une équation du type ax+b=0'

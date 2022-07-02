@@ -1,5 +1,3 @@
-export const uuid = 'b6078'
-export const ref = '6N13'
 import ExerciceConversions from './_Exercice_conversions.js'
 
 export const titre = 'Convertir des longueurs, masses, capacités, prix ou unités informatiques'

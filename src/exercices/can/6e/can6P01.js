@@ -1,5 +1,3 @@
-export const uuid = 'fbef4'
-export const ref = 'can6P01'
 import { calcul, randint, texNombre, texNombrec } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Utiliser une proportionnalité'
@@ -21,7 +19,7 @@ export default function ProportionnaliteSimple () {
   this.optionsChampTexte = { texteApres: ' €' }
   const fruits = [
     ['pêches', 4, 10, 30],
-    ['Noix', 5, 4, 13],
+    ['noix', 5, 4, 13],
     ['cerises', 6, 11, 20],
     ['pommes', 2, 20, 40],
     ['framboises', 15, 1, 5],

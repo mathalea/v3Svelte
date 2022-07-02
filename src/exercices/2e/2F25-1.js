@@ -1,5 +1,3 @@
-export const uuid = '10c25'
-export const ref = '2F25-1'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, combinaisonListes, texFractionReduite } from '../../modules/outils.js'
 import { courbe2, latexParCoordonnees, mathalea2d, point, repere2, segment, tracePoint } from '../../modules/2d.js'
@@ -90,10 +88,10 @@ export default function EtudierGraphiqueParite () {
           s2 = segment(-x, -a * x, -x, 0, 'red')
           s3 = segment(-x, -a * x, 0, -a * x, 'red')
           s4 = segment(x, a * x, 0, a * x, 'red')
-          s1.pointilles = true
-          s2.pointilles = true
-          s3.pointilles = true
-          s4.pointilles = true
+          s1.pointilles = 5
+          s2.pointilles = 5
+          s3.pointilles = 5
+          s4.pointilles = 5
           s1.epaisseur = 2
           s2.epaisseur = 2
           s3.epaisseur = 2
@@ -134,10 +132,10 @@ export default function EtudierGraphiqueParite () {
           s2 = segment(-x, a * x * x + b, -x, 0, 'red')
           s3 = segment(-x, a * x * x + b, 0, a * x * x + b, 'red')
           s4 = segment(x, a * x * x + b, 0, a * x * x + b, 'red')
-          s1.pointilles = true
-          s2.pointilles = true
-          s3.pointilles = true
-          s4.pointilles = true
+          s1.pointilles = 5
+          s2.pointilles = 5
+          s3.pointilles = 5
+          s4.pointilles = 5
           s1.epaisseur = 2
           s2.epaisseur = 2
           s3.epaisseur = 2
@@ -179,10 +177,10 @@ export default function EtudierGraphiqueParite () {
           s2 = segment(-x, a * (-x - b) * (-x - b) + c, -x, 0, 'red')
           s3 = segment(-x, a * (-x - b) * (-x - b) + c, 0, a * (-x - b) * (-x - b) + c, 'red')
           s4 = segment(x, a * (x - b) * (x - b) + c, 0, a * (x - b) * (x - b) + c, 'red')
-          s1.pointilles = true
-          s2.pointilles = true
-          s3.pointilles = true
-          s4.pointilles = true
+          s1.pointilles = 5
+          s2.pointilles = 5
+          s3.pointilles = 5
+          s4.pointilles = 5
           s1.epaisseur = 2
           s2.epaisseur = 2
           s3.epaisseur = 2
@@ -225,10 +223,10 @@ export default function EtudierGraphiqueParite () {
           s2 = segment(-x, 1 / (-a * x + b), -x, 0, 'red')
           s3 = segment(-x, 1 / (-a * x + b), 0, 1 / (-a * x + b), 'red')
           s4 = segment(x, 1 / (a * x + b), 0, 1 / (a * x + b), 'red')
-          s1.pointilles = true
-          s2.pointilles = true
-          s3.pointilles = true
-          s4.pointilles = true
+          s1.pointilles = 5
+          s2.pointilles = 5
+          s3.pointilles = 5
+          s4.pointilles = 5
           s1.epaisseur = 2
           s2.epaisseur = 2
           s3.epaisseur = 2
@@ -267,10 +265,10 @@ export default function EtudierGraphiqueParite () {
           s2 = segment(-x, -1 / (a * x), -x, 0, 'red')
           s3 = segment(-x, -1 / (a * x), 0, -1 / (a * x), 'red')
           s4 = segment(x, 1 / (a * x), 0, 1 / (a * x), 'red')
-          s1.pointilles = true
-          s2.pointilles = true
-          s3.pointilles = true
-          s4.pointilles = true
+          s1.pointilles = 5
+          s2.pointilles = 5
+          s3.pointilles = 5
+          s4.pointilles = 5
           s1.epaisseur = 2
           s2.epaisseur = 2
           s3.epaisseur = 2

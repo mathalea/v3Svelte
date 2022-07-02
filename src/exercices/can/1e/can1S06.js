@@ -1,5 +1,3 @@
-export const uuid = '8da71'
-export const ref = 'can1S06'
 import Exercice from '../../Exercice.js'
 import { randint, choice, ecritureAlgebrique, ecritureParentheseSiNegatif } from '../../../modules/outils.js'
 export const titre = 'Donner la forme explicite d’une suite arithmétique/géométrique'

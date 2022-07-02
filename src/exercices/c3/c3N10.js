@@ -1,5 +1,3 @@
-export const uuid = '89469'
-export const ref = 'c3N10'
 import EcrireNombresEntiers from '../6e/6N10.js'
 export const titre = 'Écrire un nombre en chiffres ou en lettres'
 

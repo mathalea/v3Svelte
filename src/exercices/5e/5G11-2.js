@@ -1,5 +1,3 @@
-export const uuid = 'acd6e'
-export const ref = '5G11-2'
 import ConstruireParSymetrie from '../6e/_Construire_par_symetrie.js'
 export const titre = 'Construire l\'image d\'une figure par symétrie centrale'
 export const dateDeModificationImportante = '14/11/2021'

@@ -1,5 +1,3 @@
-export const uuid = '34468'
-export const ref = 'can5C08'
 import { choice, randint } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer le prochain multiple de 3 ou de 9'

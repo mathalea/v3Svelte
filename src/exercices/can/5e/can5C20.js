@@ -1,5 +1,3 @@
-export const uuid = '17a26'
-export const ref = 'can5C20'
 import { randint, texNombre, texteEnCouleur, arrondi } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Soustraire deux décimaux*'

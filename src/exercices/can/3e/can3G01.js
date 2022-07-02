@@ -1,5 +1,3 @@
-export const uuid = '98fbf'
-export const ref = 'can3G01'
 import { choice, randint } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer et utiliser un agrandissement/réduction'

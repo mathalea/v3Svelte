@@ -1,5 +1,3 @@
-export const uuid = 'e4476'
-export const ref = 'can5P06'
 import Exercice from '../../Exercice.js'
 import { randint, texNombrec, choice, calcul, texFraction } from '../../../modules/outils.js'
 export const titre = 'Ecrire sous la forme d’un pourcentage'

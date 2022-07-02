@@ -1,5 +1,3 @@
-export const uuid = 'f5aa7'
-export const ref = '6C23'
 import CalculsFractionsSimples from '../c3/c3C23.js'
 export const amcType = 'AMCNum'
 export const amcReady = true

@@ -1,5 +1,3 @@
-export const uuid = 'adb4e'
-export const ref = '3G30-1'
 import Exercice from '../Exercice.js'
 import { context } from '../../modules/context.js'
 import { mathalea2d, point, similitude, longueur, polygone, rotation, codageAngleDroit, nommePolygone, segment, texteSurSegment, droite, projectionOrtho, pointSurSegment, texteParPoint, afficheMesureAngle, fixeBordures } from '../../modules/2d.js'

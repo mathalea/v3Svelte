@@ -1,5 +1,3 @@
-export const uuid = '599ed'
-export const ref = '6G21'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, shuffle, combinaisonListes, calcul, creerNomDePolygone, stringNombre } from '../../modules/outils.js'
 import { point, pointAdistance, droite, droiteParPointEtPerpendiculaire, polygoneAvecNom, cercle, pointIntersectionLC, pointIntersectionCC, traceCompas, codageAngleDroit, afficheLongueurSegment, mathalea2d } from '../../modules/2d.js'

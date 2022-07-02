@@ -1,5 +1,3 @@
-export const uuid = '08a90'
-export const ref = '5A13'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, choice, compareNombres, texNombre, combinaisonListes, texFactorisation, texteEnCouleurEtGras } from '../../modules/outils.js'
 import { setReponse } from '../../modules/gestionInteractif.js'

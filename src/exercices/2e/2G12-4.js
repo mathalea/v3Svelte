@@ -1,5 +1,3 @@
-export const uuid = '80c50'
-export const ref = '2G12-4'
 import Exercice from '../Exercice.js'
 import { axes, mathalea2d, point, polygoneAvecNom, repere2 } from '../../modules/2d.js'
 import { extraireRacineCarree, listeQuestionsToContenu, randint, choice, combinaisonListes, ecritureParentheseSiNegatif, fractionSimplifiee, texNombre } from '../../modules/outils.js'

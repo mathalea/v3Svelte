@@ -1,6 +1,4 @@
-export const uuid = '37af7'
-export const ref = 'can6N07'
-import { droiteGraduee2, mathalea2d } from '../../../modules/2d'
+import { droiteGraduee2, mathalea2d } from '../../../modules/2d.js'
 import { calcul, choice, texNombre } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Lire l\'abscisse décimale d\'un point sur une droite graduée'

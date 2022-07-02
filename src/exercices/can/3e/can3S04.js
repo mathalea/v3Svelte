@@ -1,5 +1,3 @@
-export const uuid = '3dfd8'
-export const ref = 'can3S04'
 import Exercice from '../../Exercice.js'
 import { randint, prenom, texNombre, listeDeNotes, sp } from '../../../modules/outils.js'
 export const titre = 'Calculer une étendue'

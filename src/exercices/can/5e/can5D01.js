@@ -1,5 +1,3 @@
-export const uuid = '8c80e'
-export const ref = 'can5D01'
 import { setReponse } from '../../../modules/gestionInteractif'
 import { ajouteChampTexteMathLive } from '../../../modules/interactif/questionMathLive'
 import { calcul, choice, listeQuestionsToContenu, randint, sp, texNombrec, texFractionReduite } from '../../../modules/outils'

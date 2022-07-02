@@ -1,5 +1,3 @@
-export const uuid = '62657'
-export const ref = '2S20-4'
 import CalculerEtendues from '../3e/3S15.js'
 export const titre = 'Calculer des étendues'
 export { interactifReady, interactifType } from '../3e/3S15.js'

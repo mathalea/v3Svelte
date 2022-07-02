@@ -1,5 +1,3 @@
-export const uuid = 'a8065'
-export const ref = 'can6C01'
 import { context } from '../../../modules/context'
 import { propositionsQcm } from '../../../modules/interactif/questionQcm'
 import { calcul, listeQuestionsToContenu, randint, texNombre, texNombrec, texteEnCouleur } from '../../../modules/outils'

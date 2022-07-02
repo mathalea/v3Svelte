@@ -1,5 +1,3 @@
-export const uuid = 'e230a'
-export const ref = '4S20'
 import FonctionsProbabilite1 from '../5e/5S21.js'
 export const titre = 'Utiliser le vocabulaire des probabilités'
 export const dateDePublication = '03/04/2022'

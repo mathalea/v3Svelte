@@ -1,5 +1,3 @@
-export const uuid = '8d452'
-export const ref = 'can6M09'
 import Exercice from '../../Exercice.js'
 import { calcul, choice, randint, texNombrec } from '../../../modules/outils.js'
 export const titre = 'Calculer des longueurs à partir des périmètres'

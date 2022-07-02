@@ -1,5 +1,3 @@
-export const uuid = 'bcaa7'
-export const ref = 'can3L05'
 import Exercice from '../../Exercice.js'
 import { randint, choice } from '../../../modules/outils.js'
 export const titre = 'Calculer le produit des solutions d’une équation produit nul'

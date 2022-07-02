@@ -1,5 +1,3 @@
-export const uuid = '1f365'
-export const ref = '4C20-1'
 import ExerciceComparerQuatreFractions from '../5e/5N14-2.js'
 export const titre = 'Comparer quatre fractions (dénominateurs multiples) et un nombre entier'
 

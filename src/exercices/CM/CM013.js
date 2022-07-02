@@ -1,5 +1,3 @@
-export const uuid = '89b0d'
-export const ref = 'CM013'
 import Exercice from '../Exercice.js'
 import { setReponse } from '../../modules/gestionInteractif.js'
 

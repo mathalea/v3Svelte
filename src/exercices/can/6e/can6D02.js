@@ -1,5 +1,3 @@
-export const uuid = '5655a'
-export const ref = 'can6D02'
 import { calcul, randint } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Chercher un reste en minutes'

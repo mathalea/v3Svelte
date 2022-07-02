@@ -1,5 +1,3 @@
-export const uuid = '52c77'
-export const ref = 'can6P02'
 import { calcul, choice, randint, texPrix } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Utiliser une proportionnalité*'
@@ -22,7 +20,7 @@ export default function ProportionnaliteCompliquee () {
   this.consigne = ''
   const fruits = [
     ['pêches', 4, 10, 30],
-    ['Noix', 5, 4, 13],
+    ['noix', 5, 4, 13],
     ['cerises', 6, 11, 20],
     ['pommes', 2, 20, 40],
     ['framboises', 15, 1, 5],

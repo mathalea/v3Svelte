@@ -1,5 +1,3 @@
-export const uuid = '8d18c'
-export const ref = 'c3C13-1'
 import QuestionsMasses from '../6e/6C12-1'
 export const titre = 'Résoudre des problèmes de masses'
 export const interactifReady = true

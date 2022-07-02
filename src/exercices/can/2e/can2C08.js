@@ -1,5 +1,3 @@
-export const uuid = 'cf8ef'
-export const ref = 'can2C08'
 import Exercice from '../../Exercice.js'
 import { choice, extraireRacineCarree, ecritureParentheseSiNegatif } from '../../../modules/outils.js'
 export const titre = 'Calculer avec une racine carrée*'

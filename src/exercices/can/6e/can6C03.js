@@ -1,5 +1,3 @@
-export const uuid = '6f58c'
-export const ref = 'can6C03'
 import { calcul, randint, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Rechercher un terme dans une somme'

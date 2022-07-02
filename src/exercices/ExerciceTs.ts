@@ -10,7 +10,6 @@ sup: any
 sup2: any
 sup3: any
 sup4: any
-seed?: string
 boutonAide: boolean | HTMLButtonElement
 consigne: string
 consigneCorrection: string
@@ -48,7 +47,7 @@ pasDeVersionLatex: boolean
 
   besoinFormulaireNumerique: boolean | any[]
   besoinFormulaireTexte: boolean | any[]
-  besoinFormulaireCaseACocher: boolean | string[]
+  besoinFormulaireCaseACocher: boolean | any[]
 
   besoinFormulaire2Numerique: boolean | any[]
   besoinFormulaire2Texte: boolean | any[]
@@ -64,10 +63,6 @@ pasDeVersionLatex: boolean
   mg32Editable: boolean
 
   listeArguments: string[] // Variable servant à comparer les exercices pour ne pas avoir deux exercices identiques
-
-  nouvelleVersion(): void {
-
-  }
 
   constructor () {
   // ////////////////////////////////////////////////
@@ -177,7 +172,7 @@ pasDeVersionLatex: boolean
    */
   }
 
-  questionJamaisPosee (i: number, ...args: (number | boolean | string)[]) {
+  questionJamaisPosee (i, ...args) {
     if (i === 0) this.listeArguments = []
     let argsConcatenes = ''
     for (const arg of args) {

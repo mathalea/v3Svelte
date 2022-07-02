@@ -1,5 +1,3 @@
-export const uuid = 'cac7d'
-export const ref = 'can1L06'
 import Exercice from '../../Exercice.js'
 import { randint, ecritureAlgebriqueSauf1, ecritureAlgebrique, reduireAxPlusB } from '../../../modules/outils.js'
 export const titre = 'Déterminer une forme canonique'

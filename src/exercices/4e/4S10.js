@@ -1,5 +1,3 @@
-export const uuid = 'ac7ee'
-export const ref = '4S10'
 import ConstruireUnDiagramme from '../5e/5S12.js'
 export const titre = 'Construire un diagramme'
 

@@ -1,5 +1,3 @@
-export const uuid = 'd6b51'
-export const ref = '5L12-1'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, combinaisonListesSansChangerOrdre, texteEnCouleur } from '../../modules/outils.js'
 export const titre = 'Réduire un produit et une somme à partir des mêmes éléments algébriques pour distinguer la différence'

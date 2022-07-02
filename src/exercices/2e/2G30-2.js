@@ -1,5 +1,3 @@
-export const uuid = 'ad385'
-export const ref = '2G30-2'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, texFraction, texFractionReduite, pgcd, ecritureParentheseSiNegatif } from '../../modules/outils.js'
 export const titre = 'Déterminer une équation réduite de droite'

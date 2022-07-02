@@ -1,5 +1,3 @@
-export const uuid = '50565'
-export const ref = '4G20-5'
 import ArrondirUneValeur from '../6e/6N31-3.js'
 export const titre = 'Trouver la valeur arrondie d\'une racine carrée'
 

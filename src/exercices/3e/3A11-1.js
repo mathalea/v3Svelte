@@ -1,5 +1,3 @@
-export const uuid = '6775a'
-export const ref = '3A11-1'
 import Exercice from '../Exercice.js'
 import { context } from '../../modules/context.js'
 import { listeQuestionsToContenu, randint, shuffle, combinaisonListesSansChangerOrdre, nombreAvecEspace, texteEnCouleurEtGras, itemize, modalPdf, modalVideo, cribleEratostheneN, warnMessage } from '../../modules/outils.js'

@@ -1,5 +1,3 @@
-export const uuid = 'd7701'
-export const ref = '2G23-2'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, ecritureParentheseSiNegatif, ecritureAlgebrique } from '../../modules/outils.js'
 import { repere2, mathalea2d, point, vecteur, nomVecteurParPosition, texteParPosition, longueur, homothetie, latexParPoint } from '../../modules/2d.js'

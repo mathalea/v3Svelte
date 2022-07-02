@@ -1,5 +1,3 @@
-export const uuid = '4526e'
-export const ref = 'can6C15'
 import { context } from '../../../modules/context'
 import FractionEtendue from '../../../modules/FractionEtendue'
 import { pgcd, randint } from '../../../modules/outils'

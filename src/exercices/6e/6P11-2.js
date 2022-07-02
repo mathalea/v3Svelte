@@ -1,5 +1,3 @@
-export const uuid = '7e9e9'
-export const ref = '6P11-2'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, combinaisonListes, choice, randint, prenom, texPrix, texNombre, texNombrec, miseEnEvidence, texMasse, stringNombre } from '../../modules/outils.js'
 import { mathalea2d, tableau } from '../../modules/2d.js'

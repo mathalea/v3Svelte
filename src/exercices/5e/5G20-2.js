@@ -1,5 +1,3 @@
-export const uuid = 'ed3b3'
-export const ref = '5G20-2'
 import TracerTriangle2Angles from '../6e/6G23-2.js'
 export const titre = 'Tracer un triangle dont on connaît une longueur et 2 angles'
 

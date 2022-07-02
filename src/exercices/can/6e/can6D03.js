@@ -1,5 +1,3 @@
-export const uuid = '81fef'
-export const ref = 'can6D03'
 import { prenomM, randint, texteEnCouleur } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Calculer une durée en minutes'

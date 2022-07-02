@@ -1,5 +1,3 @@
-export const uuid = '5a367'
-export const ref = 'can6C10'
 import { randint } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Connaître les tables de multiplication (de 5 à 9)'

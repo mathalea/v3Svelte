@@ -1,5 +1,3 @@
-export const uuid = 'd3230'
-export const ref = '3L14-1'
 import ResoudreUneEquationProduitNul from './3L14.js'
 
 // 3L14-1

@@ -1,5 +1,3 @@
-export const uuid = '9b7b3'
-export const ref = 'can2L07'
 import Exercice from '../../Exercice.js'
 import { randint, choice } from '../../../modules/outils.js'
 export const titre = 'Factoriser une expression'

@@ -1,5 +1,3 @@
-export const uuid = 'dfe8d'
-export const ref = 'can6M04'
 import { calcul, choice, randint, texNombre, texteEnCouleur, texNombrec } from '../../../modules/outils'
 import Exercice from '../../Exercice'
 export const titre = 'Convertir en tous sens'

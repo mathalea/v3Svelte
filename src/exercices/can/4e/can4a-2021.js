@@ -1,5 +1,3 @@
-export const uuid = '29431'
-export const ref = 'can4a-2021'
 import Exercice from '../../Exercice.js'
 import { fraction, obtenirListeFractionsIrreductibles } from '../../../modules/fractions.js'
 import {

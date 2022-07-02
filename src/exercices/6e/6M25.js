@@ -1,5 +1,3 @@
-export const uuid = '17dc9'
-export const ref = '6M25'
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, combinaisonListes } from '../../modules/outils.js'
 export const titre = 'Connaître le cours sur le périmètre et l\'aire'

@@ -1,5 +1,3 @@
-export const uuid = '8acbb'
-export const ref = '2N13-1'
 import ArrondirUneValeur from '../6e/6N31-3.js'
 export const titre = 'Arrondir une valeur'
 export { interactifReady, interactifType, amcType, amcReady } from '../6e/6N31-3.js'

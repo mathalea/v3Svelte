@@ -1,5 +1,3 @@
-export const uuid = '07b92'
-export const ref = 'can6G03'
 import DenombrerCubes from '../../6e/6G43.js'
 export { interactifReady, interactifType, amcReady, amcType } from '../../6e/6G43.js'
 export const titre = 'Compter les cubes manquants'
