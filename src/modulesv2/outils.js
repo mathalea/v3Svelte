@@ -3,16 +3,15 @@ import { texteParPosition } from './2d.js'
 import { fraction } from './fractions.js'
 import Algebrite from 'algebrite'
 import { format, evaluate, isPrime, gcd, round, equal, Fraction, isInteger } from 'mathjs'
-import { loadScratchblocks } from './loaders.js'
+import { loadScratchblocks } from './loaders'
 import { context } from './context.js'
 import { setReponse } from './gestionInteractif.js'
 import { getVueFromUrl } from './gestionUrl.js'
 import FractionX from './FractionEtendue.js'
 import { elimineDoublons } from './interactif/questionQcm.js'
-import pkg from 'decimal.js'
-const { Decimal } = pkg
+import { Decimal } from 'decimal.js'
 
-const math = { format, evaluate }
+const math = { format: format, evaluate: evaluate }
 const epsilon = 0.000001
 
 /**
@@ -36,7 +35,7 @@ export function interactivite (exercice) {
 export function listeQuestionsToContenu (exercice) {
   if (context.isHtml) {
     exercice.contenu = htmlConsigne(exercice.consigne) + htmlParagraphe(exercice.introduction) + htmlEnumerate(exercice.listeQuestions, exercice.spacing, 'question', `exercice${exercice.numeroExercice}Q`, exercice.tailleDiaporama)
-    if ((exercice.interactif) || getVueFromUrl() === 'eval') {
+    if ((exercice.interactif && exercice.interactifReady) || getVueFromUrl() === 'eval') {
       exercice.contenu += `<button class="inline-block px-6 py-2.5 mr-10 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out checkReponses" type="submit" style="margin-bottom: 20px; margin-top: 20px" id="btnValidationEx${exercice.numeroExercice}-${exercice.id}">Vérifier les réponses</button>`
     }
     exercice.contenuCorrection = htmlParagraphe(exercice.consigneCorrection) + htmlEnumerate(exercice.listeCorrections, exercice.spacingCorr, 'correction', `correction${exercice.numeroExercice}Q`, exercice.tailleDiaporama)
@@ -122,7 +121,7 @@ export function listeQuestionsToContenuSansNumero (exercice, retourCharriot = tr
   } else {
     if (context.isHtml) {
       exercice.contenu = htmlConsigne(exercice.consigne) + htmlParagraphe(exercice.introduction) + htmlEnumerate(exercice.listeQuestions, exercice.spacing, 'question', `exercice${exercice.numeroExercice}Q`, exercice.tailleDiaporama, 'sansNumero')
-      if ((exercice.interactif) || getVueFromUrl() === 'eval') {
+      if ((exercice.interactif && exercice.interactifReady) || getVueFromUrl() === 'eval') {
         exercice.contenu += `<button class="ui blue button checkReponses" type="submit" style="margin-bottom: 20px; margin-top: 20px" id="btnValidationEx${exercice.numeroExercice}-${exercice.id}">Vérifier les réponses</button>`
       }
       exercice.contenuCorrection = htmlParagraphe(exercice.consigneCorrection) + htmlEnumerate(exercice.listeCorrections, exercice.spacingCorr, 'correction', `correction${exercice.numeroExercice}Q`, exercice.tailleDiaporama, 'sansNumero')
@@ -2153,7 +2152,7 @@ class Personne {
  * le 14/03/2021
  */
 export function personne ({ prenom = '', genre = '', pronom = '' } = {}) {
-  return new Personne({ prenom, genre, pronom })
+  return new Personne({ prenom: prenom, genre: genre, pronom: pronom })
 }
 
 /**

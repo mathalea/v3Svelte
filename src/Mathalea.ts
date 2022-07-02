@@ -1,4 +1,5 @@
-import { renderMathInElement } from 'mathlive'
+import renderMathInElement from 'katex/dist/contrib/auto-render.js'
+import 'katex/dist/katex.min.css'
 import Exercice from './exercices/ExerciceTs'
 
 export type Settings = { sup?: boolean | string | number, sup2?: boolean | string | number, sup3?: boolean | string | number, sup4?: boolean | string | number, nbQuestions?: number, seed?: string }
@@ -17,11 +18,35 @@ export class Mathalea {
     try {
       // L'import dynamique ne peut descendre que d'un niveau, les sous-répertoires de directory ne sont pas pris en compte
       // cf https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#globs-only-go-one-level-deep
-      const module = await import(`./exercices/${directory}/${filename}.js`)
-      const exercice: Promise<Exercice> = new module.default()
-      return exercice
+      if (directory !== 'exercicesStatiques') {
+        const module = await import(`./exercices/${directory}/${filename}.js`)
+        const ClasseExercice = module.default
+        const exercice: Promise<Exercice> = new ClasseExercice()
+        ;['titre', 'amcReady', 'amcType', 'interactifType', 'interactifReady'].forEach((p) => {
+          if (module[p] !== undefined) exercice[p] = module[p]
+        })
+        ;(await exercice).id = filename
+        return exercice
+      } else {
+        const exercicePromise: Exercice = new Exercice()
+        const exercice = await exercicePromise
+        if (filename.includes('dnb')) {
+          exercice.titre = 'Exercice type DNB'
+        }
+        if (filename.includes('e3c')) {
+          exercice.titre = 'Exercice type E3C'
+        }
+        if (filename.includes('bac')) {
+          exercice.titre = 'Exercice type BAC'
+        }
+        exercice.consigne = `<img src="./src/${directory}/${filename}.png" width="50%"></img>`
+        exercice.consigneCorrection = `<img src="./src/${directory}/${filename}_cor.png" width="50%"></img>`
+        exercice.typeExercice = 'statique'
+        exercice.interactifReady = false
+        return exercice
+      }
     } catch (error) {
-      console.log(`Chargement de l\'exercice ${directory}/${filename} impossible`)
+      console.log(`Chargement de l'exercice ${directory}/${filename} impossible`)
       const exercice = new Exercice()
       exercice.contenu = `<h3>La référence ${directory}/${filename} n'existe pas !</h3>`
       return exercice
@@ -47,15 +72,27 @@ export class Mathalea {
   }
 
   static renderDiv (div: HTMLDivElement): void {
-    // Si on veut remplacer MathLive par KaTeX, il suffira de le modifier ici
+    // KaTeX à remplacer par MathLive ?
+    // renderMathInElement(div, {
+    //   TeX: {
+    //     delimiters: {
+    //       display: [['\\(', '\\)']],
+    //       inline: [['$', '$']]
+    //     }
+    //   },
+    //   fontsDirectory: '/fonts'
+    // })
+
     renderMathInElement(div, {
-      TeX: {
-        delimiters: {
-          display: [['\\(', '\\)']],
-          inline: [['$', '$']]
-        }
-      },
-      fontsDirectory: '/fonts'
+      delimiters: [
+        { left: '\\[', right: '\\]', display: true },
+        { left: '$', right: '$', display: false }
+      ],
+      preProcess: (chaine) => chaine.replaceAll(String.fromCharCode(160), '\\,'),
+      throwOnError: true,
+      errorColor: '#CC0000',
+      strict: 'warn',
+      trust: false
     })
   }
 }

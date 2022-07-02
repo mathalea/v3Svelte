@@ -1,11 +1,9 @@
 /* global $ */
 
-import { get } from '../dom.js'
-import { messageFeedback } from '../messages.js'
-import { shuffleJusqua } from '../outils.js'
-import { context } from '../context.js'
-import { gestionCan } from './gestionCan.js'
-import { afficheScore } from '../gestionInteractif.js'
+import { get } from '../modules/dom'
+import { messageFeedback } from '../modules/messages'
+import { shuffleJusqua } from '../modules/outils.js'
+import { context } from '../modules/context.js'
 
 export function verifQuestionQcm (exercice, i) {
   let resultat
@@ -187,43 +185,4 @@ export function elimineDoublons (propositions) { // fonction qui va éliminer le
     }
   }
   return doublonsTrouves
-}
-
-/**
- * Lorsque l'évènement 'exercicesAffiches' est lancé par mathalea.js
- * on vérifie la présence du bouton de validation d'id btnValidationEx{i} créé par listeQuestionsToContenu
- * et on y ajoute un listenner pour vérifier les réponses cochées
- * @param {object} exercice
- */
-export function exerciceQcm (exercice) {
-  document.addEventListener('exercicesAffiches', () => {
-    // On active les checkbox
-    $('.ui.checkbox').checkbox()
-    // On vérifie le type si jamais il a été changé après la création du listenner (voir 5R20)
-    if (exercice.interactifType === 'qcm') {
-      if (context.vue === 'can') {
-        gestionCan(exercice)
-      }
-      const button = document.querySelector(`#btnValidationEx${exercice.numeroExercice}-${exercice.id}`)
-      if (button) {
-        if (!button.hasMathaleaListener) {
-          button.addEventListener('click', event => {
-            let nbQuestionsValidees = 0
-            let nbQuestionsNonValidees = 0
-            for (let i = 0; i < exercice.autoCorrection.length; i++) {
-              const resultat = verifQuestionQcm(exercice, i)
-              resultat === 'OK' ? nbQuestionsValidees++ : nbQuestionsNonValidees++
-            }
-            const uichecks = document.querySelectorAll(`.ui.checkbox.ex${exercice.numeroExercice}`)
-            uichecks.forEach(function (uicheck) {
-              uicheck.classList.add('read-only')
-            })
-            button.classList.add('disabled')
-            afficheScore(exercice, nbQuestionsValidees, nbQuestionsNonValidees)
-          })
-          button.hasMathaleaListener = true
-        }
-      }
-    }
-  })
 }
