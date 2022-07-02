@@ -11,6 +11,7 @@
   let sup3
   let sup4
   let premierUpdate = true
+  // pour récupérer les tooltips de l'exercice
   let formNum1
   let formNum2
   let formNum3
@@ -39,10 +40,20 @@
       sup4,
     })
   }
-
+  /**
+   * Transforme le tableau des tooltips d'un exercice en un objet
+   * constitué d'un titre (celui du paramètre) et soit d'un tableau
+   * des options, soit d'un nombre correspond à la valeur maximale.
+   * <i>Référence :</i> commentaire du fichier Exercice.ts sur la propriété
+   * <code>besoinFormulaireNumérique</code> (<code>false</code>
+   * sinon this.besoinFormulaireNumerique = [texte, max, tooltip facultatif])
+   * @param {string[]} entreesFormulaire Typiquement la valeur de la propriété
+   * <code>besoinFormulaireNumérique</code>
+   * @author sylvain chambon
+   */
   function parseFormEntries(entreesFormulaire: string[]) {
     let entrees = [...entreesFormulaire]
-    let titre = entrees.shift() // le titre du formulaire est le 1er elt
+    let titre = entrees.shift() // le titre du paramètre est le 1er elt
     let champs: string[] | number
     if (entrees.length > 1) {
       // il y a une liste de tooltips qui deviendront les entrées
@@ -56,7 +67,7 @@
     }
     return { titre, champs }
   }
-
+  // fabrication des objets correspondant aux paramètres numériques.
   if (exercice.besoinFormulaireNumerique) {
     formNum1 = parseFormEntries(exercice.besoinFormulaireNumerique)
   }
