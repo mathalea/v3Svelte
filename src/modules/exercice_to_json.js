@@ -1,21 +1,19 @@
 // @ts-nocheck
 /* eslint-disable no-unused-vars */
-import * as tsImport from 'ts-import'
-import * as fs from 'fs'
-import * as path from 'path'
-import { createRequire } from 'module'
+import tsImport from 'ts-import'
+import fs from 'fs'
+import path from 'path'
 import { uuidFromRef, urlFromUuid, listeChapitresDuNiveau, listeExosDuChapitre, listeExosAvecTag, toObjet, toMap, collecteUuidsFromDico } from './fileTools.js'
-import { rejects } from 'assert'
 
 const isVerbose = /-(-verbode|v)/.test(process.argv)
 const logIfVerbose = (...args) => { if (isVerbose) console.log(...args) }
 // const jsDir = '../' // path.resolve('./src')
-const dictFile = './src/modules/exercicesDisponiblesReferentiel2022.json' // path.resolve(jsDir, 'modules', 'exercicesDisponiblesReferentiel2022.json')
-const uuidToUrlFile = './src/modules//uuidsToUrl.json' // path.resolve(jsDir, 'modules', 'uuidsToUrl.json')
-const referentiel2022File = './src/modules/referentiel2022.json' // path.resolve(jsDir, 'modules', 'referentiel2022.json')
-let dictionnaire = new Map()
-let referentiel2022 = new Map()
-let uuidsToUrl = new Map()
+const dictFile = path.resolve('src/modules', 'exercicesDisponiblesReferentiel2022.json')
+const uuidToUrlFile = path.resolve('src/modules', 'uuidsToUrl.json')
+const referentiel2022File = './src/modules/referentiel2022.json'
+let dictionnaire
+let referentiel2022
+let uuidsToUrl
 
 /**
  * Crée une Uuid de 5 caractères hexadécimaux (1M de possibilités)
@@ -74,7 +72,8 @@ function getAllFiles (dir) {
 function ecrireUuidDansFichier (uuid, name, file) {
   let fichier = fs.readFileSync(file, 'utf-8')
   if (fichier) {
-    fichier = `export const uuid = '${uuid}'\nexport const ref = '${name}'\n` + fichier
+    const parts = fichier.split('export default')
+    fichier = parts[0] + `export const uuid = '${uuid}'\nexport const ref = '${name}'\n` + 'export default' + parts[1]
     fs.writeFileSync(file, fichier, 'utf-8')
     return true
   } else {
@@ -123,7 +122,7 @@ function ajouteExoDico ({ uuid = '', name = '', titre = '', level = '', chap = '
 function mettreAJourFichierDico (file, dico) {
   const objDico = toObjet(dico)
   const contenuFichier = JSON.stringify(objDico, null, 2)
-  const dictFile = `./${file}` // path.resolve('src', 'modules', file)
+  const dictFile = path.resolve('src/modules', file)
   fs.writeFileSync(dictFile, contenuFichier, 'utf-8')
 }
 
@@ -238,30 +237,34 @@ function builJsonDictionnaireExercices () {
   // on charge le dictionnaire si il existe et on génère la liste des UUID déjà prises
   let listOfUuids = []
   // On prépare les fichiers que l'on va alimenter : listOfUuids, dictionnaire, uuidsToUrl
-  if (fs.existsSync(dictFile)) {
-    const contenuFichierDico = fs.readFileSync(dictFile, 'utf-8')
-    if (contenuFichierDico === '') {
-      console.log('Le fichier est vide ou n\'existe pas')
-      dictionnaire = new Map()
-    } else {
-      dictionnaire = toMap(JSON.parse(contenuFichierDico))
-      listOfUuids = collecteUuidsFromDico(dictionnaire)
-    }
-  } else {
+  let contenuFichierDico
+  try {
+    contenuFichierDico = await import(dictFile)
+    dictionnaire = toMap(JSON.parse(contenuFichierDico))
+    listOfUuids = collecteUuidsFromDico(dictionnaire)
+  } catch (error) {
     dictionnaire = new Map()
+    listOfUuids = new Map()
   }
-  if (fs.existsSync(uuidToUrlFile)) {
-    uuidsToUrl = toMap(JSON.parse(fs.readFileSync(uuidToUrlFile, 'utf-8')))
-  } else {
+
+  let fichierUuidsToUrl
+  try {
+    fichierUuidsToUrl = await import(uuidToUrlFile)
+    uuidsToUrl = toMap(JSON.parse(fichierUuidsToUrl))
+  } catch (error) {
     uuidsToUrl = new Map()
   }
-  if (fs.existsSync(referentiel2022File)) {
-    referentiel2022 = toMap(JSON.parse(fs.readFileSync(referentiel2022File, 'utf-8')))
-  } else {
+
+  let fichierReferentiel
+  try {
+    fichierReferentiel = await import(referentiel2022File)
+    referentiel2022 = toMap(JSON.parse(fichierReferentiel))
+  } catch (error) {
     referentiel2022 = new Map()
   }
+
   // On charge la liste des exercices
-  const exercicesDir = '../exercices/' // path.resolve('src', 'exercices')
+  const exercicesDir = path.resolve('src', 'exercices')
   //  const prefixLength = jsDir.length
   const exercicesList = getAllFiles(exercicesDir)
   const promesses = []
@@ -269,14 +272,11 @@ function builJsonDictionnaireExercices () {
     if (file.indexOf('beta') !== -1) continue
     if (file.indexOf('Prof') !== -1) continue
     const name = path.basename(file, path.extname(file))
-    const isCan = file.indexOf('\\can\\') !== -1
+    const isCan = file.includes('can')
     const promesse = import(file)
       .then(
         (module) => gereModuleJs(module, file, name, dictionnaire, referentiel2022, uuidsToUrl, listOfUuids, isCan)
-        /* (erreur) => {
-          console.log('erreur avec ', file, ' : ', erreur.message)
-          return false
-        } */)
+      )
       .catch(error => {
         console.log(file, ' : ', error.message)
         console.log('Je charge le fichier avec tsImport\n')
