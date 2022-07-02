@@ -29,7 +29,7 @@
   }
 </script>
 
-<nav class="bg-coopmaths sticky top-0">
+<nav class="bg-coopmaths top-0">
   <!-- container -->
   <div class="container flex flex-wrap px-4 py-2 mx-auto lg:space-x-6 lg:items-center">
     <!-- logo -->
