@@ -7,8 +7,6 @@ export const titre = 'Utiliser le codage pour décrire une figure'
  * @author Jean-Claude Lhote
  * Référence 6G10-2
  */
-export const uuid = 'b988b'
-export const ref = '6G10-2'
 export default function UtiliserLeCodagePourDecrire6e () {
   UtiliserLeCodagePourDecrire.call(this)
   this.titre = titre

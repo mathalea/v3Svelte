@@ -17,8 +17,6 @@ export const amcType = 'AMCNum'
  * Relecture : Décembre 2021 par EE
  */
 
-export const uuid = 'dfa6f'
-export const ref = '6N10-3'
 export default function chiffreNombreDe () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = 1

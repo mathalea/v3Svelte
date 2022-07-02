@@ -16,8 +16,6 @@ export const interactifType = 'mathLive'
  * Référence 6C11-1
  * Relecture : Novembre 2021 par EE
  */
-export const uuid = '80ce0'
-export const ref = '6C11-1'
 export default function DivisionsEuclidiennesEgalite () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

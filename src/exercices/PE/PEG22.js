@@ -10,8 +10,6 @@ export const dateDePublication = '1/11/2021'
  * @author Rémi Angot
  * Référence PEG22
 */
-export const uuid = 'fc5f0'
-export const ref = 'PEG22'
 export default function RacineCarrAvecTheoremePythagore () {
   Exercice.call(this)
   this.typeExercice = 'IEP'

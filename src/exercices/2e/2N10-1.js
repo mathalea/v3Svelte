@@ -7,8 +7,6 @@ export const dateDeModifImportante = '27/10/2021'
  *
  * @author Jean-Claude Lhote
  */
-export const uuid = '76a74'
-export const ref = '2N10-1'
 export default function LireAbscisseDecimale2nde () {
   LireAbscisseDecimaleBis2d.call(this)
   this.niveau = 2

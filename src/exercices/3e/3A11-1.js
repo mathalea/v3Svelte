@@ -15,8 +15,6 @@ export const amcType = 'qcmMono'
  * variante de 3A11 avec les critères par 7 et 11 en plus
  * @author Sébastien Lozano
  */
-export const uuid = '2f542'
-export const ref = '3A11-1'
 export default function PremierOuPasCriterePar7Par11 () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()

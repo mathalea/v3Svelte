@@ -7,8 +7,6 @@ export const dateDePublication = '28/10/2021'
  * @author Jean-Claude Lhote
  * référence 5G11-5 réglage de 3G10-1
  */
-export const uuid = 'd30dc'
-export const ref = '5G11-5'
 export default function SymetriesEtCoordonnees5e () {
   TransformationsDuPlanEtCoordonnees.call(this)
   this.sup = 2

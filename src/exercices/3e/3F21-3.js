@@ -13,8 +13,6 @@ export const interactifType = 'mathLive'
  * @author Rémi Angot
  * Référence
 */
-export const uuid = 'e9a3d'
-export const ref = '3F21-3'
 export default function PenteEtOrdonneeOrigineDroite () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

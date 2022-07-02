@@ -6,8 +6,6 @@ import { point3d, droite3d, vecteur3d, arete3d, sphere3d, rotation3d, rotationV3
 
 export const titre = 'Repérage sur la sphère'
 
-export const uuid = '1a3f6'
-export const ref = '3G40'
 export default function ReperageSurLaSphere () {
   'use strict'
   Exercice.call(this)

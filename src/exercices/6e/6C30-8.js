@@ -16,8 +16,6 @@ export const dateDePublication = '08/12/2021'
  * Publié le 08/12/2021
  * Référence 6C30-8
  */
-export const uuid = 'd5672'
-export const ref = '6C30-8'
 export default function DiviserPar101001000 () {
   'use strict'
   Exercice.call(this)

@@ -7,8 +7,6 @@ export { interactifReady, interactifType, amcReady, amcType } from '../5e/5N14.j
  * reference 4C20
  * Publié le 14/08/2021
  */
-export const uuid = '2d5d5'
-export const ref = '4C20'
 export default function ExerciceComparerDeuxFractions4e () {
   ExerciceComparerDeuxFractions.call(this)
   this.titre = titre

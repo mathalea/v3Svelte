@@ -16,8 +16,6 @@ export const amcType = 'AMCNum'
  * @author Jean-Claude Lhote
  * référence 6N33-0
  */
-export const uuid = '3c1d2'
-export const ref = '6N33-0'
 export default function FractionDuneQuantite () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 5

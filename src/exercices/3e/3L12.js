@@ -29,8 +29,6 @@ export const interactifType = 'mathLive'
  * Ajout Mélange des questions Matthieu Devillers
  * 3L12
  */
-export const uuid = '1301d'
-export const ref = '3L12'
 export default function FactoriserIdentitesRemarquables3() {
     'use strict'
     Exercice.call(this) // Héritage de la classe Exercice()

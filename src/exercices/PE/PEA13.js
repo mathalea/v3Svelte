@@ -12,8 +12,6 @@ export const dateDePublication = '2/11/2021'
 * @author Rémi Angot
 */
 
-export const uuid = '9af2a'
-export const ref = 'PEA13'
 export default function MultiplicationsBaseN () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.video = 'pkp9e8XDH3M'

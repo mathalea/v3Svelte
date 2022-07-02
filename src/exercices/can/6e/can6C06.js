@@ -11,8 +11,6 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can6C06
  */
-export const uuid = 'e6162'
-export const ref = 'can6C06'
 export default function DivisionPar9 () {
   Exercice.call(this)
   this.typeExercice = 'simple'

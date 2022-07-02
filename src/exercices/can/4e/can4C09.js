@@ -11,8 +11,6 @@ export const amcType = 'AMCNum'
  * Publié le 22/10/2021
  * Référence can4C09
 */
-export const uuid = 'cb91c'
-export const ref = 'can4C09'
 export default function PuissancesDe2345 () {
   Exercice.call(this)
   this.typeExercice = 'simple'

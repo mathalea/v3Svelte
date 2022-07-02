@@ -7,8 +7,6 @@ export { amcReady, amcType } from '../3e/3G32-0.js'
  * @author Guillaume Valmont
  * reference 3G32-1
  */
-export const uuid = '13968'
-export const ref = '3G32-1'
 export default function calculParalleleTerrestre () {
   problemesTrigoLongueur.call(this)
   this.titre = titre

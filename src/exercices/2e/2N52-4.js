@@ -8,8 +8,6 @@ export const titre = 'Résoudre des équations se ramenant au produit-nul.'
 * @author Stéphane Guyon
 * 2N52-4 (ex 2L12-2)
 */
-export const uuid = 'e25d1'
-export const ref = '2N52-4'
 export default function Equationspresqueproduitnulle () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()

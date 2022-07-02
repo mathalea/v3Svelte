@@ -11,8 +11,6 @@ export const interactifType = 'mathLive'
 * @author Matthieu Devillers très très largement inspiré par Jean-Claude Lhote
 * 2N41-5, ex 2L12-3
 */
-export const uuid = '18b61'
-export const ref = '2N41-5'
 export default function DevelopperIdentitesRemarquables4 () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()

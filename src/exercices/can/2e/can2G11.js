@@ -13,8 +13,6 @@ export const dateDeModifImportante = '03/01/2022'
  * @author Gilles Mora
  * Référence
 */
-export const uuid = '0191c'
-export const ref = 'can2G11'
 export default function RelationChasles2 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1

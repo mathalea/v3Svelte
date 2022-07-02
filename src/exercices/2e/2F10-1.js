@@ -14,8 +14,6 @@ export const amcType = 'qcmMono'
 * @author Stéphane Guyon
 * 2F20
 */
-export const uuid = 'a0f9e'
-export const ref = '2F10-1'
 export default function Reconnaitrefonctionaffine () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()

@@ -10,8 +10,6 @@ export const interactifType = 'mathLive'
  * Référence can4G05
  * Date de publication sptembre 2021
 */
-export const uuid = '0c8d5'
-export const ref = 'can4G05'
 export default function DiagonaleCarre () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !

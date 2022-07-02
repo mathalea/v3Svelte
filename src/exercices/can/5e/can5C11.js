@@ -11,8 +11,6 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can5C11
  */
-export const uuid = 'd51fe'
-export const ref = 'can5C11'
 export default function DifferenceNegative () {
   Exercice.call(this)
   this.nbQuestions = 1

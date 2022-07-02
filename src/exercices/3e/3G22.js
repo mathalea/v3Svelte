@@ -9,8 +9,6 @@ export const titre = 'Connaître les effets des agrandissements/réductions sur 
 * @author Jean-Claude Lhote
 * 3G22
 */
-export const uuid = '9371d'
-export const ref = '3G22'
 export default function AgrandissementReduction () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()

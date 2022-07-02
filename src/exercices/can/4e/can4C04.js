@@ -11,8 +11,6 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can4C04
  */
-export const uuid = 'a30be'
-export const ref = 'can4C04'
 export default function RegleDesSignes () {
   Exercice.call(this)
   this.typeExercice = 'simple'

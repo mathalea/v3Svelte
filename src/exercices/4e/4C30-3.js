@@ -7,8 +7,6 @@ export const titre = 'Écriture décimale ou fractionnaire d\'une puissance'
  * @author Rémi Angot
 * Référence 4C30-3
  */
-export const uuid = 'b7099'
-export const ref = '4C30-3'
 export default function EcritureDecimalePuissance () {
   Exercice.call(this)
   this.titre = titre

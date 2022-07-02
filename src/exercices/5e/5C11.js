@@ -5,8 +5,6 @@ export const dateDeModificationImportante = '25/03/2022'
  * @author Jean-Claude Lhote
  * Référence 5C11
  */
-export const uuid = '789a9'
-export const ref = '5C11'
 export default function TraduireUnePhraseParUneExpression () {
   EcrireUneExpressionNumerique.call(this)
   this.version = 1

@@ -11,8 +11,6 @@ export const interactifType = 'mathLive'
  * * Travailler des résultats automatisés
  * @author Sébastien Lozano
  */
-export const uuid = 'a1740'
-export const ref = '4C30'
 export default function PuissancesDeDix () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()

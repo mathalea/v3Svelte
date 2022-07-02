@@ -9,8 +9,6 @@ export const titre = 'Ranger une liste de nombres entiers dans l\'ordre croissan
 * @author Sébastien Lozano
 */
 
-export const uuid = '1a622'
-export const ref = '6N11-4'
 export default function RangerOrdreCroissantDecroissant () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.beta = false

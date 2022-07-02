@@ -6,8 +6,6 @@ export const titre = 'Traduire une phrase par une expression et la calculer'
  * @author Jean-Claude Lhote
  * Référence 5C12-1
  */
-export const uuid = '3243a'
-export const ref = '5C12-1'
 export default function TraduireUnePhraseParUneExpressionEtCalculer () {
   EcrireUneExpressionNumerique.call(this)
   this.version = 3

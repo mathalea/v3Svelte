@@ -7,8 +7,6 @@ export const dateDePublication = '16/05/2022'
  * @author Guillaume Valmont
  * reference 4G12-2
  */
-export const uuid = 'f51a0'
-export const ref = '4G12-2'
 export default class ConservationTransformation4e extends ConservationTransformation {
   constructor () {
     super()

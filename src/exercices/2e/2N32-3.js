@@ -7,8 +7,6 @@ export const titre = 'Écrire le nombre proposé sous la forme $a\\sqrt{b}$'
  * 2N32-3, ex 2N11
  * @author Stéphane Guyon
  */
-export const uuid = '8cbca'
-export const ref = '2N32-3'
 export default function ExtraireUnCarreParfaitDUneRacineCarree () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = 'Ecrire le nombre proposé sous la forme $a\\sqrt{b}$'

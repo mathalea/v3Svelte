@@ -11,8 +11,6 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can4L04
 */
-export const uuid = '57b73'
-export const ref = 'can4L04'
 export default function SubstitutionRelatif () {
   Exercice.call(this)
   this.typeExercice = 'simple'

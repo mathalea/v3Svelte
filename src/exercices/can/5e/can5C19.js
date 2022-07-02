@@ -11,8 +11,6 @@ export const dateDePublication = '09/05/2022'
  *
  *
  */
-export const uuid = '43da7'
-export const ref = 'can5C19'
 export default function Soustraire2Decimaux () {
   Exercice.call(this)
   this.nbQuestions = 1

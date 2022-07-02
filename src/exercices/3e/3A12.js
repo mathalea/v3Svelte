@@ -7,8 +7,6 @@ export const titre = 'Fractions irréductibles'
  * 3A12 - Fractions irreductibles
  * @author Sébastien Lozano
  */
-export const uuid = 'dd0b1'
-export const ref = '3A12'
 export default function FractionsIrreductibles () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()

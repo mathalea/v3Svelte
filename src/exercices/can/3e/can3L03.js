@@ -11,8 +11,6 @@ export const amcType = 'AMCNum'
   * Créé pendant l'été 2021
  * Référence can3L03
 */
-export const uuid = '6cac1'
-export const ref = 'can3L03'
 export default function EquationAXPlusBEgalC () {
   Exercice.call(this)
   this.typeExercice = 'simple'

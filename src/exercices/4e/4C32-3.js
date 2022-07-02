@@ -9,8 +9,6 @@ export const titre = 'Problèmes avec des puissances de 10 et des conversions'
  * Référence 4C32-3
  * 2021-02-05
 */
-export const uuid = 'df89b'
-export const ref = '4C32-3'
 export default function ProblemesPuissancesDe10EtConversions () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

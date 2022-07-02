@@ -14,8 +14,6 @@ export const titre = 'Lecture graphique d\'éléments caractéristiques d\'un tr
  * - les 3 trucs précédents
  * référence 1E12-1
  */
-export const uuid = '9c087'
-export const ref = '1E12-1'
 export default function LireElementsCarac () {
   Exercice.call(this)
   this.consigne = 'Lecture graphique'

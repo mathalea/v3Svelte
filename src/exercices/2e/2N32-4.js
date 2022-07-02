@@ -12,8 +12,6 @@ export const interactifType = 'mathLive'
  * 2N32-4, ex 2N11-1
  * @author Stéphane Guyon
  */
-export const uuid = '42839'
-export const ref = '2N32-4'
 export default function SimplifierUneSommeDeRacinesCarrees () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

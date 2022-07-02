@@ -13,8 +13,6 @@ export const amcType = 'AMCHybride'
  * 6N14
  * Relecture : Novembre 2021 par EE
  */
-export const uuid = '5a053'
-export const ref = '6N14'
 export default function RepresenterUneFraction () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''

@@ -7,8 +7,6 @@ export const titre = 'Existence d\'une racine carrée'
  * 2N32-1, ex 2N10
  * @author Stéphane Guyon
  */
-export const uuid = '16a8a'
-export const ref = '2N32-1'
 export default function ExistenceDUneRacineCarree () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

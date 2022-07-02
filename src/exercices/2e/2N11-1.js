@@ -9,8 +9,6 @@ export const titre = 'Associer un intervalle de  $\\mathbb{R}$ à une inéquatio
  * 2N11-1, ex 2N24
  * @Stéphane Guyon
  */
-export const uuid = '8d1e7'
-export const ref = '2N11-1'
 export default function IntervallesDeR () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

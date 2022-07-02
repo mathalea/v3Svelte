@@ -13,8 +13,6 @@ export const titre = 'Trouver l\'équation d\'une parabole'
  * 3) connaissant les deux racines et un autre point de passage à coordonnées entières
  * référence 1E12
  */
-export const uuid = '8090b'
-export const ref = '1E12'
 export default function TrouverEquationParabole () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

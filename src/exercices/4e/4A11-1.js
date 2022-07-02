@@ -6,8 +6,6 @@ export { interactifReady, interactifType } from '../3e/3A11-2.js'
  * @author Guillaume Valmont
  * reference 4A11-1
  */
-export const uuid = '56831'
-export const ref = '4A11-1'
 export default function decompositionFacteursPremiers4e () {
   decompositionFacteursPremiers.call(this)
   this.titre = titre

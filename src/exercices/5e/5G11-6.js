@@ -16,8 +16,6 @@ export const amcType = 'AMCOpenNum'
  * @author Jean-Claude Lhote
  * Publié le 18/12/2021
  */
-export const uuid = '1582d'
-export const ref = '5G11-6'
 export default function CompleterParSymetrie5e () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''

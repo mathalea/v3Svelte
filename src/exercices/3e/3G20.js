@@ -6,8 +6,6 @@ export { interactifReady, interactifType, amcReady, amcType, titre } from '../4e
  * @author Rémi Angot
  * Référence 3G20
 */
-export const uuid = '7d1a2'
-export const ref = '3G20'
 export default function Thales2D3e () {
   Thales2D.call(this)
   this.sup = 2

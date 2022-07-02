@@ -7,8 +7,6 @@ export const titre = 'Écrire un nombre en chiffres ou en lettres'
  * @author Jean-Claude Lhote
  * Référence 6N10
  */
-export const uuid = '90be6'
-export const ref = 'c3N10'
 export default function EcrireEntiersCycle3 () {
   EcrireNombresEntiers.call(this)
   this.sup2 = 0

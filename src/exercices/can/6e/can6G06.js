@@ -7,8 +7,6 @@ export { interactifReady, interactifType, amcReady, amcType } from '../../6e/6G4
  * Créé le 7/11/2021
  * Référence 6G44 clone à 4 question de can6G06
  */
-export const uuid = '6c999'
-export const ref = 'can6G06'
 export default function NombreDeFacesEtDAretesExo () {
   NombreDeFacesEtDAretes.call(this)
   this.titre = titre

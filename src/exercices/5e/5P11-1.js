@@ -12,8 +12,6 @@ export const interactifType = 'mathLive'
  * @author Rémi Angot
  * Référence 5P11-1
 */
-export const uuid = 'd3201'
-export const ref = '5P11-1'
 export default function VitesseDistanceTemps () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

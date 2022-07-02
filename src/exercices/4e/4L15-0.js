@@ -8,8 +8,6 @@ export const titre = 'Trouver l\'erreur dans une résolution d\'équation du pre
  * * 4L15-0
  * @author Sébastien Lozano
  */
-export const uuid = 'aef10'
-export const ref = '4L15-0'
 export default function TrouverErreurResolEqDeg1 () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()

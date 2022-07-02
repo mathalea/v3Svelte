@@ -11,9 +11,7 @@ export const interactifType = 'mathLive'
  * Résoudre un problème de proportionnalité avec linéarité via tableau
  * @Mireille Gain, 30 mai 2021
  * Référence 6P11-2
-*/export const uuid = '23220'
-export const ref = '6P11-2'
-export default function ProportionnaliteParLineariteTableau () {
+*/export default function ProportionnaliteParLineariteTableau () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'On considère que les situations suivantes, sauf cas flagrant, sont des situations de proportionnalité. <br>On demande de les résoudre à l\'aide d\'un tableau.'
   this.nbQuestions = 5

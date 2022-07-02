@@ -7,8 +7,6 @@ export const dateDePublication = '01/06/2022'
 /*!
  * @author Stéphane et cie
  */
-export const uuid = 'af006'
-export const ref = 'can1G01'
 export default class CosEtsinsCAN extends CosEtsin {
   constructor () {
     super()

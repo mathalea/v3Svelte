@@ -10,8 +10,6 @@ export const dateDeModifImportante = '26/11/2021'
 * Ajout d'un paramètre pour afficher quelques fois le signe des nombres positif par Guillaume Valmont le 26/11/2021
 */
 
-export const uuid = '7070c'
-export const ref = '5R10-0'
 export default function TrouverOppose () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()

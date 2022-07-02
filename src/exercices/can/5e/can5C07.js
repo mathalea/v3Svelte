@@ -11,8 +11,6 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can5C07
  */
-export const uuid = 'fb0a8'
-export const ref = 'can5C07'
 export default function PrioriteOperatoire5e () {
   Exercice.call(this)
   this.nbQuestions = 1

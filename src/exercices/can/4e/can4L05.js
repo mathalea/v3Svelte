@@ -9,8 +9,6 @@ export const amcType = 'AMCNum'
 /*!
  * @author Gilles Mora
  */
-export const uuid = '1538d'
-export const ref = 'can4L05'
 export default function DeveloppementNiveau1 () {
   Exercice.call(this)
   this.typeExercice = 'simple'

@@ -13,8 +13,6 @@ export const amcType = 'AMCHybride'
 * Relecture : Novembre 2021 par EE
 */
 
-export const uuid = '2400f'
-export const ref = '6G25-1'
 export default function SymetrieAxialePavageTriangulaire () {
   'use strict'
   Exercice.call(this)

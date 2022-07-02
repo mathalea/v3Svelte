@@ -11,8 +11,6 @@ export { amcReady, amcType } from '../6e/6S10.js'
  * Publié le 08/08/2021
  * Fix export interactif et AMC Sébastien LOZANO
  */
-export const uuid = '553df'
-export const ref = '5S11'
 export default function LectureDiagrammeBarre5e () {
   LectureDiagrammeBarre.call(this)
   // this.titre = titre

@@ -16,8 +16,6 @@ export const interactifType = 'mathLive'
  * * décliné en can2C05 => 10/10/2021
  * @author Sébastien Lozano
  */
-export const uuid = '0ec6a'
-export const ref = '3L11-5'
 export default function identitesCalculs () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.debug = false // pour avoir la correction et l'enoncé en même temps

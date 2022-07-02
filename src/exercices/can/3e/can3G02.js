@@ -7,8 +7,6 @@ export const titre = 'Trouver l’image d’un point par une  transformation 3e'
  * Créé pendant l'été 2021
  * Référence can3G02
  */
-export const uuid = '0c43b'
-export const ref = 'can3G02'
 export default function ImageD1Point () {
   Transformations.call(this)
   this.nbQuestions = 1

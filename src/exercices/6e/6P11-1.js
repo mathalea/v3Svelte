@@ -16,8 +16,6 @@ export const dateDeModifImportante = '23/02/2022'
  * @author Sébastien Lozano (et Eric Elter pour divers enrichissements)
  */
 
-export const uuid = '37b09'
-export const ref = '6P11-1'
 export default function ProportionnaliteParLineariteBis () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.beta = false

@@ -19,8 +19,6 @@ export const amcReady = false // AMC : pour l'instant on ne peut pas tester une 
 * Rendre interactif Laurence Candille
 * 3L13-1
 */
-export const uuid = 'b0fc3'
-export const ref = '3L13-1'
 export default function ExerciceEquation1Tiret2 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

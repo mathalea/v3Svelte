@@ -8,8 +8,6 @@ export { interactifReady, interactifType, amcReady, amcType } from '../6e/_Trans
  * référence 4G10
  * Pas de version LaTeX
  */
-export const uuid = 'a746a'
-export const ref = '4G10'
 export default function Transformations4e () {
   Transformations.call(this)
   this.sup = 3

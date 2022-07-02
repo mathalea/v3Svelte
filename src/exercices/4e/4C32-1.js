@@ -14,8 +14,6 @@ export const interactifReady = true
  * @author Jean-Claude Lhote
  * 4C32-1
  */
-export const uuid = 'd1db5'
-export const ref = '4C32-1'
 export default function CalculsAvecPuissancesDeDix () {
   Exercice.call(this)
   this.sup = 1

@@ -9,8 +9,6 @@ export { interactifReady, interactifType, amcReady, amcType } from '../6e/_Trans
  * Pas de version LaTeX
  * Relecture : Novembre 2021 par EE
  */
-export const uuid = '8209f'
-export const ref = '6G24'
 export default function Transformations6e () {
   Transformations.call(this)
   this.sup = 1

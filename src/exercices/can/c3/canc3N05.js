@@ -12,8 +12,6 @@ export const dateDePublication = '16/11/2021'
  * Date de publication septembre 2021
  * Référence canc3C02
  */
-export const uuid = 'e0b3a'
-export const ref = 'canc3N05'
 export default function CompositionDeNombreDecimalC3 () {
   Exercice.call(this)
   this.typeExercice = 'simple'

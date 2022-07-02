@@ -11,8 +11,6 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can5C08
  */
-export const uuid = '33efc'
-export const ref = 'can5C08'
 export default function ProchainMultipleDeTroisOuDeNeuf () {
   Exercice.call(this)
   this.nbQuestions = 1

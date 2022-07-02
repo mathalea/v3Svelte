@@ -23,8 +23,6 @@ export const titre = 'Résoudre une inéquation-produit'
  * 2N61-2, ex 2L14-1
  * 17/07/2021
  */
-export const uuid = '32f4c'
-export const ref = '2N61-2'
 export default function ExerciceInequationProduit () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.spacing = 2 // Espace entre deux lignes

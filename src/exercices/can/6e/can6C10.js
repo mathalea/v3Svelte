@@ -11,8 +11,6 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can6C10
  */
-export const uuid = 'e028f'
-export const ref = 'can6C10'
 export default function Tables5A9 () {
   Exercice.call(this)
   this.typeExercice = 'simple'

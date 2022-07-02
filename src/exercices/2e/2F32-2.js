@@ -15,8 +15,6 @@ export const amcType = 'AMCHybride'
  * @author
  * Référence
 */
-export const uuid = 'fba7f'
-export const ref = '2F32-2'
 export default function LecturesGraphiques () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''

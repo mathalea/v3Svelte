@@ -7,8 +7,6 @@ export const titre = 'Décomposer en produit de facteurs premiers'
  * Créé pendant l'été 2021
  * Référence can5C10
  */
-export const uuid = 'c57e2'
-export const ref = 'can5C10'
 export default function DecomposerFacteursPremierSimple () {
   ExerciceDecomposerEnFacteursPremiers.call(this)
   this.nbQuestions = 1

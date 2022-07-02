@@ -14,8 +14,6 @@ export const dateDePublication = '28/11/2021' // La date de publication initiale
  * @author Frédéric PIOU
  * Référence
 */
-export const uuid = '85a70'
-export const ref = '3G13'
 export default function calculsHomothetie () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''

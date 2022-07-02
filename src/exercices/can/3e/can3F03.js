@@ -7,8 +7,6 @@ export const titre = 'Calculer une image par une fonction affine'
   * Créé pendant l'été 2021
  * Référence can3F03
 */
-export const uuid = 'df5a8'
-export const ref = 'can3F03'
 export default function CalculImageParFonctionAffine () {
   CalculsImagesFonctions.call(this)
   this.nbQuestions = 1

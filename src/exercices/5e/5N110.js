@@ -16,8 +16,6 @@ export const amcType = 'AMCNum'
 * Date août 2021
 * 5N110
 */
-export const uuid = '11712'
-export const ref = '5N110'
 export default function VariationEnPourcentages () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

@@ -14,8 +14,6 @@ export const dateDeModifImportante = '18/06/2022'
  * Référence 4C36
  * Reformulation de l'énoncé et ajout de problèmes avec des puissances de 10 par Guillaume Valmont le 18/06/2022
 */
-export const uuid = '54452'
-export const ref = '4C36'
 export default class nomExercice extends Exercice {
   constructor () {
     super()

@@ -11,8 +11,6 @@ export const titre = 'Égalités entre fractions simples'
  * @author Rémi Angot
  * 5N13-2 et 6N41
  */
-export const uuid = '8f88b'
-export const ref = '5N13-2'
 export default function EgalitesEntreFractions5e () {
   EgalitesEntreFractions.call(this)
   this.titre = titre

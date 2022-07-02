@@ -13,8 +13,6 @@ export const dateDePublication = '16/02/2022' // La date de publication initiale
  * @author Gilles Mora
  * Référence
 */
-export const uuid = 'bb78a'
-export const ref = 'can1S04'
 export default function NatureSuiteRec () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1

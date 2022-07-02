@@ -15,8 +15,6 @@ export const amcType = 'AMCHybride'
  * 6N20
  * Relecture : Novembre 2021 par EE
  */
-export const uuid = '8abe7'
-export const ref = '6N20'
 export default function ExerciceFractionsDecomposer () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne =

@@ -12,8 +12,6 @@ export const amcType = 'AMCNum'
  * Date de publication septembre 2021
  * Référence can6N01
  */
-export const uuid = '89b4e'
-export const ref = 'canc3N02'
 export default function SuiteSurDroiteGraduee () {
   Exercice.call(this)
   this.typeExercice = 'simple'

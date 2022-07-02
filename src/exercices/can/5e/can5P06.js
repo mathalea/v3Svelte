@@ -13,8 +13,6 @@ export const dateDePublication = '19/12/2021' // La date de publication initiale
  * @author Gilles Mora
  * Référence
 */
-export const uuid = 'fc812'
-export const ref = 'can5P06'
 export default function EcrirePourcentage () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !

@@ -7,8 +7,6 @@ export const titre = 'Encadrer puis arrondir une valeur comprenant un cosinus'
  * référence 4G40-1
  */
 
-export const uuid = 'fa9b6'
-export const ref = '4G40-1'
 export default function ArrondirUneValeur4e () {
   ArrondirUneValeur.call(this)
   this.titre = titre

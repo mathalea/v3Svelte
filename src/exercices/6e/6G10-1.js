@@ -9,8 +9,6 @@ export const titre = 'Donner description et notation de droites, segments et dem
  * @author Rémi Angot
  * Référence 6G10-1
  */
-export const uuid = '2bc13'
-export const ref = '6G10-1'
 export default function DescriptionSegmentDroiteDemiDroite () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

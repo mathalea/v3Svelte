@@ -13,8 +13,6 @@ export const amcType = 'AMCNum'
  * @author Rémi Angot
  * Référence CM016
 */
-export const uuid = 'f4bbe'
-export const ref = 'CM016'
 export default function DiviserPar101001000 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Calculer'

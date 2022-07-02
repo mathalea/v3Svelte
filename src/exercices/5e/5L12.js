@@ -15,8 +15,6 @@ export const titre = 'Réduire une expression littérale'
 * @author Rémi Angot
 * 5L12
 */
-export const uuid = 'fabf9'
-export const ref = '5L12'
 export default function ReduireUneExpressionLitterale () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

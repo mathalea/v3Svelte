@@ -12,8 +12,6 @@ export const titre = 'Comparer quatre fractions (dénominateurs multiples) et un
 * 5N14-2
 * Ajout du paramètre d'inclusion de nombres négatifs le 14/08/2021 : Guillaume Valmont
 */
-export const uuid = '29c67'
-export const ref = '5N14-2'
 export default function ExerciceComparerQuatreFractions () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = "Ranger les nombres suivants dans l'ordre croissant."

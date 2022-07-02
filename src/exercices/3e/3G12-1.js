@@ -8,8 +8,6 @@ export { interactifReady, interactifType, amcReady, amcType } from '../6e/_Pavag
  * @author Jean-Claude Lhote
  * référence 3G12-1
  */
-export const uuid = 'ee225'
-export const ref = '3G12-1'
 export default function PavagesEtRotation () {
   PavagesEtTransformations.call(this)
   this.titre = titre

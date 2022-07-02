@@ -10,8 +10,6 @@ export const dateDePublication = '04/03/2022'
  * @author Gilles Mora
  * Référence can2L08
 */
-export const uuid = '06c0b'
-export const ref = 'can2L08'
 export default function ResoudreEquationAvecQuotient () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !

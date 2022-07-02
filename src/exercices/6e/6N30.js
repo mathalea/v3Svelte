@@ -15,8 +15,6 @@ export const amcType = 'AMCOpen'
  * @author Jean-Claude Lhote et Rémi Angot
  * référence 6N30
  */
-export const uuid = '46c38'
-export const ref = '6N30'
 export default function LireAbscisseDecimale () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = "Lire l'abscisse de chacun des points suivants."
