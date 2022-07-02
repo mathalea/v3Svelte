@@ -5,9 +5,9 @@ const config = {
       colors: {
         coopmaths: {
           DEFAULT: "#F15929",
-          lightest: "FF8C5C",
+          lightest: "#FF8C5C",
           light: "#FF7343",
-          dark: "D84010",
+          dark: "#D84010",
           darkest: "#BE2600",
         },
       },

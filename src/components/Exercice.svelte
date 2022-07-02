@@ -1,6 +1,7 @@
 <script lang="ts">
   import { afterUpdate, onMount, tick } from "svelte"
-  import { fade } from "svelte/transition"
+  import { fade, fly, slide } from "svelte/transition"
+  import { backInOut, linear } from "svelte/easing"
   import { listeExercices } from "./store"
   import seedrandom from "seedrandom"
   import BoutonMonter from "./BoutonMonter.svelte"
@@ -35,6 +36,9 @@
   let listeCorrections: string[] = []
   let spacing: number
   let spacingCorr: number
+
+  // transitions options
+  let transitionOptions = { duration: 300, easing: linear }
 
   afterUpdate(() => {
     Mathalea.renderDiv(divExercice)
@@ -128,30 +132,31 @@
       >
     </div>
   </h1>
-  {#if visible}
-    <div id="exercice{indiceExercice}">
-      {#if contenuVisible}
-        <Contenu chapeau={consigne} entrees={listeQuestions} {spacing} />
-      {:else}
-        <Contenu chapeau={consigneCorrection} entrees={listeCorrections} spacing={spacingCorr} />
-      {/if}
-      {#if exercice?.interactif}
-        <button
-          class="inline-block px-6 py-2.5 mr-10 my-5 ml-6 bg-coopmaths text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-coopmaths-dark hover:shadow-lg focus:bg-coopmaths-dark focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out checkReponses"
-          type="submit"
-          on:click={verifExercice}
-          bind:this={buttonScore}>Vérifier les réponses</button
-        >
-        <div bind:this={divScore} />
-      {/if}
-    </div>
-  {/if}
-
-  {#if parametresVisible}
-    <div transition:fade class="mt-3">
-      <Settings {exercice} on:reglages={handleNewSettings} />
-    </div>
-  {/if}
+  <div class="flex flex-col-reverse lg:flex-row space-x-4 items-start">
+    {#if parametresVisible}
+      <div in:fly={{ ...transitionOptions, x: -400 }} out:fly={{ ...transitionOptions, x: -400 }} class="mt-3">
+        <Settings {exercice} on:reglages={handleNewSettings} />
+      </div>
+    {/if}
+    {#if visible}
+      <div class="grow " id="exercice{indiceExercice}">
+        {#if contenuVisible}
+          <Contenu chapeau={consigne} entrees={listeQuestions} {spacing} />
+        {:else}
+          <Contenu chapeau={consigneCorrection} entrees={listeCorrections} spacing={spacingCorr} />
+        {/if}
+        {#if exercice?.interactif}
+          <button
+            class="inline-block px-6 py-2.5 mr-10 my-5 ml-6 bg-coopmaths text-white font-medium text-xs leading-tight uppercase rounded shadow-md transform hover:scale-110 hover:bg-coopmaths-dark hover:shadow-lg focus:bg-coopmaths-dark focus:shadow-lg focus:outline-none focus:ring-0 active:bg-coopmaths-dark active:shadow-lg transition duration-150 ease-in-out checkReponses"
+            type="submit"
+            on:click={verifExercice}
+            bind:this={buttonScore}>Vérifier les réponses</button
+          >
+          <div bind:this={divScore} />
+        {/if}
+      </div>
+    {/if}
+  </div>
 </div>
 
 <style>
