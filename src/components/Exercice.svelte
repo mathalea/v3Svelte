@@ -133,13 +133,20 @@
     </div>
   </h1>
   <div class="flex flex-col-reverse lg:flex-row space-x-4 items-start">
-    {#if parametresVisible}
+    <!-- {#if parametresVisible}
       <div in:fly={{ ...transitionOptions, x: -400 }} out:fly={{ ...transitionOptions, x: -400 }} class="mt-3">
         <Settings {exercice} on:reglages={handleNewSettings} />
       </div>
-    {/if}
+    {/if} -->
     {#if visible}
-      <div class="grow " id="exercice{indiceExercice}">
+      <div class="bg-gray-100 {parametresVisible ? 'w-1/4' : 'w-0'} h-full duration-500">
+        <div class="overflow-hidden">
+          {#if parametresVisible}
+            <Settings {exercice} on:reglages={handleNewSettings} />
+          {/if}
+        </div>
+      </div>
+      <div id="exercice{indiceExercice}">
         {#if contenuVisible}
           <Contenu chapeau={consigne} entrees={listeQuestions} {spacing} />
         {:else}
