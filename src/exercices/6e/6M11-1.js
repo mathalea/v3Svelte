@@ -20,6 +20,8 @@ export const interactifReady = true
  * @author Rémi Angot
  * Référence 6M11
  */
+export const uuid = '314d6'
+export const ref = '6M11-1'
 export default function PerimetreOuAireDeCarresRectanglesTriangles () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

@@ -17,6 +17,8 @@ export const titre = 'Note la couleur (scratch)'
 /**
  * Fonction exercice.
  */
+export const uuid = '14fea'
+export const ref = '6I11'
 export default function NoteLaCouleur6e () {
   'use strict'
   Exercice.call(this)

@@ -6,6 +6,8 @@ export const titre = 'Construire un triangle aux instruments'
  * reference 5G20-0
  * Publié le 21/08/2021
  */
+export const uuid = '92055'
+export const ref = '5G20-0'
 export default function ConstruireUnTriangle5e () {
   ConstruireUnTriangle.call(this)
   this.titre = titre

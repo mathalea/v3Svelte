@@ -10,6 +10,8 @@ export const amcType = 'AMCNum'
 /*!
  * @author Gilles Mora
  */
+export const uuid = 'c1d07'
+export const ref = 'can3C11'
 export default function SimplifieFractionOuRacinesCarrees () {
   Exercice.call(this)
   this.typeExercice = 'simple'

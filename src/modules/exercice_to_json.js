@@ -133,7 +133,7 @@ function gereModuleJs (module, file, name, dictionnaire, referentiel2022, uuidsT
     try {
       do {
         uuid = createUuid()
-      } while (listOfUuids.indexOf(uuid) !== -1)
+      } while (listOfUuids.get(uuid) !== undefined)
       titre = module.titre
       isAmcReady = Boolean(module.amcReady)
       isInteractifReady = Boolean(module.interactifReady)
@@ -181,7 +181,7 @@ function gereModuleTs (module, file, name, dictionnaire, referentiel2022, uuidsT
     try {
       do {
         uuid = createUuid()
-      } while (listOfUuids.indexOf(uuid) !== -1)
+      } while (listOfUuids.get(uuid) !== undefined)
       titre = module.titre
       isAmcReady = Boolean(module.amcReady)
       isInteractifReady = Boolean(module.interactifReady)
@@ -280,10 +280,10 @@ async function builJsonDictionnaireExercices () {
       )
       .catch(error => {
         console.log(file, ' : ', error.message)
-        console.log('Je charge le fichier avec tsImport\n')
-        tsImport.load(file)
+        /* tsImport.load(file)
           .then(module => gereModuleTs(module, file, name, dictionnaire, referentiel2022, uuidsToUrl, listOfUuids, isCan))
           .catch(error => console.log(`Erreur dans import de : ${file} \n ${error.message}`))
+          */
       }
       )
     promesses.push(promesse)

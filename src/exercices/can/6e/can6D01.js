@@ -11,6 +11,8 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can6D01
  */
+export const uuid = 'fbd31'
+export const ref = 'can6D01'
 export default function ConversionHeuresEtMinutesVersMinutes () {
   Exercice.call(this)
   this.typeExercice = 'simple'

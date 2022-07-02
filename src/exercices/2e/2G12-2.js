@@ -8,6 +8,8 @@ export const titre = 'Déterminer les coordonnées milieu d\'un segment dans un 
  * 2G12-2
  * @author Stéphane Guyon
  */
+export const uuid = 'ae8d1'
+export const ref = '2G12-2'
 export default function Milieu () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

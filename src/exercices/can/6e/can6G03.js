@@ -7,6 +7,8 @@ export const titre = 'Compter les cubes manquants'
  * Créé pendant l'été 2021
  * Référence can6G03
  */
+export const uuid = '23bcb'
+export const ref = 'can6G03'
 export default function CompterLesCubes () {
   DenombrerCubes.call(this)
   this.nbQuestions = 1

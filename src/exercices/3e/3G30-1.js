@@ -22,6 +22,8 @@ export const interactifType = 'mathLive'
  * janvier 2021
  * Rendu interactif et AMC par EE (Mars 2022)
  */
+export const uuid = '9310c'
+export const ref = '3G30-1'
 export default function ExprimerCosSinTan () {
   Exercice.call(this)
   this.titre = titre

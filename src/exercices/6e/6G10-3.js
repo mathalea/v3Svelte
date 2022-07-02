@@ -13,6 +13,8 @@ export const interactifType = ['cliqueFigure']
  * @author ANGOT Rémi (Ajout AMC par Eric Elter)
  * Référence
 */
+export const uuid = '4e4d6'
+export const ref = '6G10-3'
 export default function cliqueFigure () {
   Exercice.call(this)
   this.nbQuestions = 3

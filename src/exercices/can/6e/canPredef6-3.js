@@ -17,6 +17,8 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can Predef6-3
 */
+export const uuid = '9946e'
+export const ref = 'canPredef6-3'
 export default function CourseAuxNombres6e (numeroExercice) {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 30

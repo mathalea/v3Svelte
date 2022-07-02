@@ -8,6 +8,8 @@ export const dateDePublication = '4/12/2021'
  * Créé le 4/12/2021
  * Référence 5G12-3 clone Symétries de 4G12-1
  */
+export const uuid = 'a3102'
+export const ref = '5G12-3'
 export default function TrouverLaTransformations5e () {
   TrouverLaTransformations.call(this)
   this.titre = titre

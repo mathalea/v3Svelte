@@ -13,6 +13,8 @@ export const dateDePublication = '20/11/2021'
  * @author Jean-Claude Lhote
  * Référence canc3C05
  */
+export const uuid = '4e947'
+export const ref = 'canc3C05'
 export default function PariteDunNombre () {
   Exercice.call(this)
   this.nbQuestions = 1

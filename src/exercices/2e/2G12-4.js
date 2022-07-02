@@ -7,6 +7,8 @@ export const titre = 'Déterminer la nature d\'un polygone'
  * 2G12
  * @author Stéphane Guyon
  */
+export const uuid = 'eb55d'
+export const ref = '2G12-4'
 export default function NaturePolygone () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

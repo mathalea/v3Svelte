@@ -14,6 +14,8 @@ export const dateDePublication = '12/12/2021'
 * @author Rémi Angot
 * 3L11-7
 */
+export const uuid = '9c01d'
+export const ref = '3L11-7'
 export default function CarreDoubleDistributivite () {
   Exercice.call(this)
   this.titre = titre

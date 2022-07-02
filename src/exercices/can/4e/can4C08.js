@@ -11,6 +11,8 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can4C08
 */
+export const uuid = '46c4e'
+export const ref = 'can4C08'
 export default function SommePuissancesDeDix () {
   Exercice.call(this)
   this.typeExercice = 'simple'

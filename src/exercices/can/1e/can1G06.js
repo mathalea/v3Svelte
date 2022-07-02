@@ -1,7 +1,7 @@
 import Exercice from '../../Exercice.js'
 import { randint, choice, texNombre } from '../../../modules/outils.js'
 import {
-  mathalea2d, point, labelPoint, afficheLongueurSegment, codageAngleDroit, afficheMesureAngle, codeSegment, pointAdistance, polygone, milieu, segment
+  mathalea2d, point, labelPoint, afficheLongueurSegment, codageAngleDroit, afficheMesureAngle, codageSegment, pointAdistance, polygone, milieu, segment
 } from '../../../modules/2d.js'
 import Decimal from 'decimal.js'
 import FractionX from '../../../modules/FractionEtendue.js'
@@ -15,6 +15,8 @@ export const dateDePublication = '27/06/2022'
  * Référence can1G06
  *
 */
+export const uuid = 'a1fd0'
+export const ref = 'can1G06'
 export default function ProduitScalaireFiguresClassiques () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -50,7 +52,7 @@ export default function ProduitScalaireFiguresClassiques () {
         objets.push(labelPoint(A, B, C, D), a1, a2, a3, poly)
         if (choix === 'a') {
           this.question = 'Calculer $\\overrightarrow{AB}\\cdot \\overrightarrow{AD}$.<br>'
-          this.question += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
+          this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
           if (angle === 30) {
             this.correction = `
       $\\begin{aligned}
@@ -85,7 +87,7 @@ export default function ProduitScalaireFiguresClassiques () {
         if (choix === 'b') {
           if (choice([true, false])) {
             this.question = 'Calculer $\\overrightarrow{AB}\\cdot \\overrightarrow{DC}$.<br>'
-            this.question += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
+            this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
 
             this.correction = `
     Les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{DC}$ sont colinéaires et de même sens.<br>
@@ -93,7 +95,7 @@ export default function ProduitScalaireFiguresClassiques () {
             this.reponse = b * b
           } else {
             this.question = 'Calculer $\\overrightarrow{AB}\\cdot \\overrightarrow{CD}$.<br>'
-            this.question += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
+            this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
 
             this.correction = `
       Les vecteurs $\\overrightarrow{AB}$ et $\\overrightarrow{CD}$ sont colinéaires et de sens contraires.<br>
@@ -124,11 +126,11 @@ export default function ProduitScalaireFiguresClassiques () {
         xmax = Math.max(A.x, B.x, C.x, D.x) + 1
         ymax = Math.max(A.y, B.y, C.y, D.y) + 1
 
-        objets.push(labelPoint(A, B, C, D, I), a1, a2, poly, segment(I, D), codeSegment(A, I, '||'), codeSegment(I, B, '||'))
+        objets.push(labelPoint(A, B, C, D, I), a1, a2, poly, segment(I, D), codageSegment(A, I, '||'), codageSegment(I, B, '||'))
         if (choix === 'a') {
           this.question = `$ABCD$ est un carré. $I$ est le milieu de $[AB]$.<br>
           Calculer $\\overrightarrow{AB}\\cdot ${choixb ? '\\overrightarrow{AD}' : '\\overrightarrow{CB}'}$.<br>`
-          this.question += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
+          this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
 
           this.correction = `Les vecteurs $\\overrightarrow{AB}$ et $${choixb ? '\\overrightarrow{AD}' : '\\overrightarrow{CB}'}$ sont orthogonaux, on en déduit : $\\overrightarrow{AB}\\cdot ${choixb ? '\\overrightarrow{AD}' : '\\overrightarrow{CB}'}=0$.
      `
@@ -138,7 +140,7 @@ export default function ProduitScalaireFiguresClassiques () {
         if (choix === 'b') {
           this.question = `$ABCD$ est un carré. $I$ est le milieu de $[AB]$.<br>
           Calculer $\\overrightarrow{DA}\\cdot \\overrightarrow{DI}$.<br>`
-          this.question += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
+          this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
 
           this.correction = `Le projeté orthogonal de $I$ sur $(DA)$ est $A$. Ainsi : <br>
           $\\overrightarrow{DA}\\cdot \\overrightarrow{DI}=\\overrightarrow{DA}\\cdot \\overrightarrow{DA}=${a}^2=${a ** 2}$.
@@ -149,7 +151,7 @@ export default function ProduitScalaireFiguresClassiques () {
         if (choix === 'c') {
           this.question = `$ABCD$ est un carré. $I$ est le milieu de $[AB]$.<br>
           Calculer $\\overrightarrow{AB}\\cdot \\overrightarrow{ID}$.<br>`
-          this.question += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
+          this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
 
           this.correction = `Le projeté orthogonal de $D$ sur $(AB)$ est $A$. Ainsi : <br>
           $\\overrightarrow{AB}\\cdot \\overrightarrow{ID}=\\overrightarrow{AB}\\cdot \\overrightarrow{IA}$.<br>
@@ -162,7 +164,7 @@ export default function ProduitScalaireFiguresClassiques () {
         if (choix === 'd') {
           this.question = `$ABCD$ est un carré. $I$ est le milieu de $[AB]$.<br>
           Calculer $\\overrightarrow{BI}\\cdot \\overrightarrow{ID}$.<br>`
-          this.question += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
+          this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
 
           this.correction = `Le projeté orthogonal de $D$ sur $(AB)$ est $A$. Ainsi : <br>
           $\\overrightarrow{BI}\\cdot \\overrightarrow{ID}=\\overrightarrow{BI}\\cdot \\overrightarrow{IA}$.<br>
@@ -175,7 +177,7 @@ export default function ProduitScalaireFiguresClassiques () {
         if (choix === 'e') {
           this.question = `$ABCD$ est un carré. $I$ est le milieu de $[AB]$.<br>
           Calculer $\\overrightarrow{BC}\\cdot  ${choixb ? '\\overrightarrow{ID}' : '\\overrightarrow{DI}'}$.<br>`
-          this.question += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
+          this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
 
           this.correction = `Le projeté orthogonal de $I$ sur $(BC)$ est $B$. Celui de $D$ sur $(BC)$ est $C$.  Ainsi : <br>
           $\\overrightarrow{BC}\\cdot ${choixb ? '\\overrightarrow{ID}' : '\\overrightarrow{DI}'}=\\overrightarrow{BC}\\cdot ${choixb ? '\\overrightarrow{BC}' : '\\overrightarrow{CB}'}$.<br>
@@ -212,7 +214,7 @@ export default function ProduitScalaireFiguresClassiques () {
         if (choix === 'a') {
           this.question = `$ABCD$ est un trapèze rectangle.<br>
           Calculer $\\overrightarrow{AB}\\cdot ${choixb ? '\\overrightarrow{AD}' : '\\overrightarrow{DA}'}$.<br>`
-          this.question += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
+          this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
 
           this.correction = `Les vecteurs $\\overrightarrow{AB}$ et $${choixb ? '\\overrightarrow{AD}' : '\\overrightarrow{DA}'}$ sont orthogonaux. <br>
           Donc $\\overrightarrow{AB}\\cdot ${choixb ? '\\overrightarrow{AD}' : '\\overrightarrow{DA}'}=0$.
@@ -223,7 +225,7 @@ export default function ProduitScalaireFiguresClassiques () {
         if (choix === 'b') {
           this.question = `$ABCD$ est un trapèze rectangle.<br>
           Calculer $\\overrightarrow{AB}\\cdot \\overrightarrow{BC}$.<br>`
-          this.question += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
+          this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
 
           this.correction = `Le projeté orthogonal du point $C$ sur $(AB)$ est le point $H$ tel que $BH=${a - b}$.<br>
          On a :  $\\overrightarrow{AB}\\cdot \\overrightarrow{BC}=\\overrightarrow{AB}\\cdot \\overrightarrow{BH}$ avec $\\overrightarrow{AB}$ et  $\\overrightarrow{BH}$ colinéaires de sens contraire.<br>
@@ -234,7 +236,7 @@ export default function ProduitScalaireFiguresClassiques () {
         if (choix === 'c') {
           this.question = `$ABCD$ est un trapèze rectangle.<br>
           Calculer $\\overrightarrow{AB}\\cdot ${choixb ? '\\overrightarrow{DC}' : '\\overrightarrow{CD}'}$.<br>`
-          this.question += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
+          this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
 
           this.correction = `Les vecteurs $\\overrightarrow{AB}$ et  $${choixb ? '\\overrightarrow{DC}' : '\\overrightarrow{CD}'}$ sont colinéaires ${choixb ? 'même sens' : 'sens contraire'}.<br>
          On a :  $\\overrightarrow{AB}\\cdot ${choixb ? '\\overrightarrow{DC}' : '\\overrightarrow{CD}'}=${a}\\times ${choixb ? `${b}` : `(-${b})`}=${choixb ? `${a * b}` : `${-a * b}`}$ 
@@ -281,7 +283,7 @@ export default function ProduitScalaireFiguresClassiques () {
         if (choix === 'a') {
           this.question = `$ABCDEF$ est un hexagone régulier de centre $O$.<br>
           Calculer $\\overrightarrow{OA}\\cdot ${choixb ? '\\overrightarrow{OB}' : '\\overrightarrow{OF}'}$.<br>`
-          this.question += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
+          this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
 
           this.correction = ` $ABCDEF$ est un hexagone régulier, donc les six triangles sont équilatéraux.<br>
           $\\begin{aligned}
@@ -296,7 +298,7 @@ export default function ProduitScalaireFiguresClassiques () {
         if (choix === 'b') {
           this.question = `$ABCDEF$ est un hexagone régulier de centre $O$.<br>
           Calculer $\\overrightarrow{ED}\\cdot ${choixb ? '\\overrightarrow{OC}' : '\\overrightarrow{OF}'}$.<br>`
-          this.question += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
+          this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
 
           this.correction = ` $ABCDEF$ est un hexagone régulier, donc les six triangles sont équilatéraux.<br>
           Les vecteurs $\\overrightarrow{ED}$ et $${choixb ? '\\overrightarrow{OC}' : '\\overrightarrow{OF}'}$ sont colinéaires ${choixb ? 'de même sens' : 'de sens contraire'}.<br>
@@ -309,7 +311,7 @@ Ainsi, $\\overrightarrow{ED}\\cdot ${choixb ? '\\overrightarrow{OC}' : '\\overri
         if (choix === 'c') {
           this.question = `$ABCDEF$ est un hexagone régulier de centre $O$.<br>
             Calculer $\\overrightarrow{OC}\\cdot ${choixb ? '\\overrightarrow{OA}' : '\\overrightarrow{OE}'}$.<br>`
-          this.question += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
+          this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
 
           this.correction = ` $ABCDEF$ est un hexagone régulier, donc les six triangles sont équilatéraux.<br>
             $\\begin{aligned}
@@ -324,7 +326,7 @@ Ainsi, $\\overrightarrow{ED}\\cdot ${choixb ? '\\overrightarrow{OC}' : '\\overri
         if (choix === 'd') {
           this.question = `$ABCDEF$ est un hexagone régulier de centre $O$.<br>
             Calculer $\\overrightarrow{OC}\\cdot ${choixb ? '\\overrightarrow{BD}' : '\\overrightarrow{DB}'}$.<br>`
-          this.question += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
+          this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
 
           this.correction = ` $ABCDEF$ est un hexagone régulier, donc les six triangles sont équilatéraux.<br>
            $OBCD$ est un losange (4 côtés de même longueur). Ses diagonales sont donc perpendiculaires. On en déduit : <br>
@@ -335,7 +337,7 @@ Ainsi, $\\overrightarrow{ED}\\cdot ${choixb ? '\\overrightarrow{OC}' : '\\overri
         if (choix === 'e') {
           this.question = `$ABCDEF$ est un hexagone régulier de centre $O$.<br>
             Calculer $\\overrightarrow{DE}\\cdot \\overrightarrow{DA}$.<br>`
-          this.question += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
+          this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
 
           this.correction = ` $ABCDEF$ est un hexagone régulier, donc les six triangles sont équilatéraux.<br>
             $\\begin{aligned}
@@ -350,7 +352,7 @@ Ainsi, $\\overrightarrow{ED}\\cdot ${choixb ? '\\overrightarrow{OC}' : '\\overri
         if (choix === 'f') {
           this.question = `$ABCDEF$ est un hexagone régulier de centre $O$.<br>
             Calculer $\\overrightarrow{OB}\\cdot ${choixb ? '\\overrightarrow{EB}' : '\\overrightarrow{BE}'}$.<br>`
-          this.question += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
+          this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
 
           this.correction = ` $ABCDEF$ est un hexagone régulier, donc les six triangles sont équilatéraux.<br>
             Les vecteurs $\\overrightarrow{OB}$ et $${choixb ? '\\overrightarrow{EB}' : '\\overrightarrow{BE}'}$ sont colinéaires ${choixb ? 'de même sens' : 'de sens contraire'}.<br>

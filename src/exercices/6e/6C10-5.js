@@ -15,6 +15,8 @@ export const titre = 'Parcourir un labyrinthe de multiples'
  * Relecture : Janvier 2022 par EE
  */
 
+export const uuid = '36675'
+export const ref = '6C10-5'
 export default function ExerciceLabyrintheMultiples () {
   'use strict'
   Exercice.call(this)

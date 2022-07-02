@@ -7,6 +7,8 @@ export const dateDePublication = '01/06/2022'
 /*!
  * @author Stéphane et cie
  */
+export const uuid = 'f99f6'
+export const ref = 'can1G03'
 export default function AnglesAssociesCAN () {
   MesurePrincipal.call(this)
   this.nbQuestions = 1

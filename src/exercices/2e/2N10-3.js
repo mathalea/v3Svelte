@@ -7,6 +7,8 @@ export const dateDeModifImportante = '27/10/2021'
  *
  * @author Jean-Claude Lhote
  */
+export const uuid = 'cfe83'
+export const ref = '2N10-3'
 export default function PlacerPointsAbscissesFractionnaires2nde () {
   PlacerPointsAbscissesFractionnaires.call(this)
   this.sup = 5

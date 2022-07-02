@@ -10,6 +10,8 @@ export const amcType = 'AMCNum'
  * @author Gilles Mora
  * Réference : can4L06
  */
+export const uuid = '23d01'
+export const ref = 'can4L06'
 export default function CalculSubstitution () {
   Exercice.call(this)
   this.typeExercice = 'simple'

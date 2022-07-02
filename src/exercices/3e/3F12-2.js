@@ -19,6 +19,8 @@ export const interactifType = 'mathLive'
 * @author Rémi Angot
 * 3F12-2
 */
+export const uuid = 'f690d'
+export const ref = '3F12-2'
 export default function ImageFonctionAlgebrique () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

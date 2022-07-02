@@ -16,6 +16,8 @@ export const interactifType = 'mathLive'
  * Référence 1AN14-4
  */
 
+export const uuid = 'b2870'
+export const ref = '1AN14-4'
 export default function DeriveeProduit () {
   Exercice.call(this)
   this.titre = titre
