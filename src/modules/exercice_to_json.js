@@ -279,7 +279,7 @@ async function builJsonDictionnaireExercices () {
         (module) => gereModuleJs(module, file, name, dictionnaire, referentiel2022, uuidsToUrl, listOfUuids, isCan)
       )
       .catch(error => {
-        console.log(file, ' : ', error.message)
+        if (file.substring(file.length - 2) !== 'ts') console.error(error)
         /* tsImport.load(file)
           .then(module => gereModuleTs(module, file, name, dictionnaire, referentiel2022, uuidsToUrl, listOfUuids, isCan))
           .catch(error => console.log(`Erreur dans import de : ${file} \n ${error.message}`))
