@@ -10,6 +10,8 @@ export const interactifType = 'mathLive'
  * Référence can2P02
  * Date de publication septembre 2021
 */
+export const uuid = '06465'
+export const ref = 'can2P02'
 export default function Denombrement () {
   Exercice.call(this)
   this.typeExercice = 'simple'

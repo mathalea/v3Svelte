@@ -8,6 +8,8 @@ export const titre = 'Nature de parallélogrammes'
  * @author
  * Référence 5G42
 */
+export const uuid = 'b078c'
+export const ref = '5G42'
 export default function demonstrationsParallelogrammes () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

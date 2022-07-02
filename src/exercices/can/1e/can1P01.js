@@ -18,6 +18,8 @@ export const amcType = 'AMCNum'
  * @author Jean-Claude Lhote
  * Référence can2P03
 */
+export const uuid = '9e37f'
+export const ref = 'can1P01'
 export default function CalculProbaArbre2e () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = true

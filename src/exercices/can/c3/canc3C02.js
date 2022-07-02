@@ -11,6 +11,8 @@ export const amcType = 'AMCNum'
  * Date de publication septembre 2021
  * Référence canc3C02
  */
+export const uuid = 'f3205'
+export const ref = 'canc3C02'
 export default function CompositionDeNombreEntier () {
   Exercice.call(this)
   this.typeExercice = 'simple'

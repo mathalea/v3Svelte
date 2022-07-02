@@ -14,6 +14,8 @@ export const amcType = 'AMCNum'
  * @author Rémi Angot
  * Référence 6C32
  */
+export const uuid = '8f7f9'
+export const ref = '6C32'
 export default function ProblemeCourse () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

@@ -13,6 +13,8 @@ export const titre = 'Lire les antécédents d\'un nombre à partir d\'un graphi
 * @author Rémi Angot
 * 3F13
 */
+export const uuid = '5ef7b'
+export const ref = '3F13'
 export default function AntecedentGraphique () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

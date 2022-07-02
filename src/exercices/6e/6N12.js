@@ -7,6 +7,8 @@ export const titre = 'Multiplier un entier par 10, 100, 1 000...'
  * @author Rémi Angot
  * Référence 6N12
  */
+export const uuid = '045a0'
+export const ref = '6N12'
 export default function MultiplierEntierPar101001000 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Calculer :'

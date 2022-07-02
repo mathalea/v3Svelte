@@ -15,6 +15,8 @@ export const dateDeModifImportante = '08/05/2022'
  * Ajout de la possibilité de choisir le nombre de questions par Guillaume Valmont le 08/05/2022
  * Référence 5M10
  **/
+export const uuid = 'd4437'
+export const ref = '5M10'
 export default function AireDuParallelogramme () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

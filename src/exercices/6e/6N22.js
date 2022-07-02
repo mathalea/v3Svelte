@@ -18,6 +18,8 @@ export const amcType = 'AMCNum'
  * @author Rémi Angot
  * Référence 6N22
 */
+export const uuid = '33cde'
+export const ref = '6N22'
 export default function FractionsCalculsSimples () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Calculer.'

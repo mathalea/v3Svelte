@@ -12,6 +12,8 @@ export const amcType = 'AMCNum'
  * Référence can6C23
  * Date de publication
 */
+export const uuid = '01da2'
+export const ref = 'can6C23'
 export default function CalculAvec99 () {
   Exercice.call(this)
   this.typeExercice = 'simple'

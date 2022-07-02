@@ -16,6 +16,8 @@ export const dateDePublication = '26/10/2020'
  * @author Jean-Claude Lhote
  * Relecture : Novembre 2021 par EE
  */
+export const uuid = '79e0f'
+export const ref = '6G32-1'
 export default function SymetrieAxialeConservation1 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

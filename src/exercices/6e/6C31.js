@@ -25,6 +25,8 @@ export const titre = 'Effectuer divisions décimales'
  * @author Rémi Angot
  * Référence 6C31
  */
+export const uuid = 'fd9ac'
+export const ref = '6C31'
 export default function DivisionDecimale () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

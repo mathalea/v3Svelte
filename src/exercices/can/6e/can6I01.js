@@ -13,6 +13,8 @@ export const titre = 'Noter la couleur (scratch)'
  * Publié le 11/04/2021
  * @author Jean-Claude Lhote
  */
+export const uuid = '8ff93'
+export const ref = 'can6I01'
 export default function CanNoteLaCouleur6 () {
   'use strict'
   Exercice.call(this)

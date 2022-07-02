@@ -9,6 +9,8 @@ export const titre = 'Mettre en équation un problème sans objectif de résolut
  * * 4L13-0
  * @author Sébastien Lozano
  */
+export const uuid = '5cb9c'
+export const ref = '4L13-0'
 export default function MettreEnEquationSansResoudre () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()

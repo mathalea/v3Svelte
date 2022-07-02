@@ -10,6 +10,8 @@ export const dateDePublication = '16/05/2022'
  * @author Guillaume Valmont
  * Référence 4G10-2
 */
+export const uuid = 'bc810'
+export const ref = '4G10-2'
 export default class nomExercice extends Exercice {
   constructor () {
     super()

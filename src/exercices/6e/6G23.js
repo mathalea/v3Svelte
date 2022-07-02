@@ -12,6 +12,8 @@ export const amcType = 'AMCOpen'
  * @author Jean-Claude Lhote
  * Référence 6G23
  */
+export const uuid = '0f4f2'
+export const ref = '6G23'
 export default function ConstruireUnAngle () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

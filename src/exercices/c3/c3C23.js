@@ -12,6 +12,8 @@ export const dateDeModifImportante = '27/01/2022'
  * @author Rémi Angot
  * Référence c3c23
 */
+export const uuid = 'a3d99'
+export const ref = 'c3C23'
 export default function CalculsFractionsSimples () {
   Exercice.call(this)
   this.typeExercice = 'simple'

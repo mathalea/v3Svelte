@@ -7,6 +7,8 @@ export const titre = 'Problèmes d\'évenements récurrents'
  * reference 3A12-2
  * 30/10/2021
  */
+export const uuid = 'e81e9'
+export const ref = '3A12-2'
 export default function ProblemesEvenementsRecurrents3e () {
   ProblemesEvenementsRecurrents.call(this)
   this.titre = titre

@@ -13,6 +13,8 @@ export const dateDeModifImportante = '24/10/2021' // Une date de modification im
  * @author
  * Référence
 */
+export const uuid = '83341'
+export const ref = '1P10'
 export default function ProbabilitésConditionnelles () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''

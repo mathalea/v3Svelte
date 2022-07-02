@@ -12,6 +12,8 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can4G01
 */
+export const uuid = 'ca53c'
+export const ref = 'can4G01'
 export default function LongueurPythagore () {
   Exercice.call(this)
   this.typeExercice = 'simple'

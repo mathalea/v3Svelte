@@ -8,6 +8,8 @@ export const titre = 'Équations du type x/a=b/c (v2)'
  *
  * @author Sébastien LOZANO
  */
+export const uuid = 'ba876'
+export const ref = '2N51-3v2'
 export default function EqResolvantesThales2nde () {
   EqResolvantesThales.call(this)
 }

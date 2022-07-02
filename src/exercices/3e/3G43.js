@@ -9,6 +9,8 @@ export const interactifType = ['qcm', 'mathLive']
 /**
  * @author Jean-claude Lhote
  */
+export const uuid = '45fca'
+export const ref = '3G43'
 export default function CalculDeVolumes3e () {
   CalculDeVolumes.call(this)
   this.titre = titre

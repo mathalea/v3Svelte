@@ -10,6 +10,8 @@ export const titre = 'Problèmes avec le théorème de Thalès'
 * @author Rémi Angot
 * 3G20-1
 */
+export const uuid = 'e298c'
+export const ref = '3G20-1'
 export default function ProblemesThales () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

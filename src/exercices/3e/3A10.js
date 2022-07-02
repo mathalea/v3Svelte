@@ -9,6 +9,8 @@ export const titre = 'Division Euclidienne - Diviseurs - Multiples'
  * Exercice bilan
  * @author Sébastien Lozano
  */
+export const uuid = '9bb4c'
+export const ref = '3A10'
 export default function DivisionEuclidienneMultiplesDiviseursCriteres () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()

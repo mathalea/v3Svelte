@@ -6,6 +6,8 @@ export const dateDeModificationImportante = '14/11/2021'
  * Référence 5G10-2
  * @author Jean-Claude Lhote
  */
+export const uuid = '3d3fb'
+export const ref = '5G10-2'
 export default class SymetrieAxialeFigure5e extends ConstruireParSymetrie {
   constructor () {
     super()

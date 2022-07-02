@@ -3,6 +3,8 @@ import { listeQuestionsToContenu, texNombre2, arrondi, sp, personnes, personne, 
 
 export const titre = 'Problèmes de ratio'
 
+export const uuid = '70fe4'
+export const ref = '5N15'
 export default function ProblemeDeRatio () {
   'use strict'
   Exercice.call(this)
