@@ -33,6 +33,8 @@
   let consigneCorrection: string;
   let listeQuestions: string[] = [];
   let listeCorrections: string[] = [];
+  let spacing: number
+  let spacingCorr: number
 
   afterUpdate(() => {
     Mathalea.renderDiv(divExercice);
@@ -80,6 +82,8 @@
     listeCorrections = [...exercice.listeCorrections];
     consigne = exercice.consigne;
     consigneCorrection = exercice.consigneCorrection;
+    spacing = exercice.spacing
+    spacingCorr = exercice.spacingCorr
   }
 
   onMount(async () => {
@@ -125,9 +129,9 @@
   {#if visible}
     <div id="exercice{indiceExercice}">
       {#if contenuVisible}
-        <Contenu chapeau="{consigne}" entrees="{listeQuestions}" />
+        <Contenu chapeau="{consigne}" entrees="{listeQuestions}" spacing="{spacing}" />
       {:else}
-        <Contenu chapeau="{consigneCorrection}" entrees="{listeCorrections}" />
+        <Contenu chapeau="{consigneCorrection}" entrees="{listeCorrections}" spacing="{spacingCorr}" />
       {/if}
       {#if exercice?.interactif}
         <button
