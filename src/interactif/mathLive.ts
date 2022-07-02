@@ -1,11 +1,7 @@
 import { ComputeEngine } from '@cortex-js/compute-engine'
-import FractionEtendue from '../modules/FractionEtendue.js'
-import { number } from 'mathjs'
-import Grandeur from '../modules/Grandeur.js'
-import { sp, texteExposant } from '../modules/outils.js'
-import { context } from '../modules/context'
-import { afficheScore } from './gestionInteractif.js'
-import Exercice from '../exercices/ExerciceTs'
+import Grandeur from '../modules/Grandeur'
+import FractionEtendue from '../modules/FractionEtendue'
+import { texteExposant } from '../modules/outils'
 
 export function verifQuestionMathLive (exercice, i) {
   const engine = new ComputeEngine()
@@ -26,9 +22,9 @@ export function verifQuestionMathLive (exercice, i) {
     champTexte = document.getElementById(`champTexteEx${exercice.numeroExercice}Q${i}`)
     if (champTexte === undefined) champTexte = { value: '' }
     let resultat = 'KO'
-    let ii = 0
-    while ((resultat === 'KO') && (ii < reponses.length)) {
-      reponse = reponses[ii]
+    let j = 0
+    while ((resultat === 'KO') && (j < reponses.length)) {
+      reponse = reponses[j]
       switch (formatInteractif) {
         case 'Num':
           num = parseInt(champTexte.value.replace(',', '.'))
@@ -49,7 +45,7 @@ export function verifQuestionMathLive (exercice, i) {
           }
           break
         case 'calcul':
-        // Le format par défaut
+          // Le format par défaut
           saisie = champTexte.value.replace(',', '.')
           // La réponse est transformée en chaine compatible avec engine.parse()
           reponse = reponse.toString().replaceAll(',', '.').replaceAll('dfrac', 'frac')
@@ -74,7 +70,7 @@ export function verifQuestionMathLive (exercice, i) {
           }
           if (engine.parse(reponse).canonical.isSame(engine.parse(saisie).canonical)) {
             saisie = saisie.split('\\times')
-            if (number(saisie[0]) >= 1 && number(saisie[0]) < 10) { resultat = 'OK' }
+            if (Number(saisie[0]) >= 1 && Number(saisie[0]) < 10) { resultat = 'OK' }
           }
           break
         case 'texte':
@@ -106,7 +102,7 @@ export function verifQuestionMathLive (exercice, i) {
           if (saisieParsee.isEqual(fReponse) && saisieParsee.json[1] < fReponse.json[1]) resultat = 'OK'
           break
         case 'fractionEgale': // Pour les exercices de calcul où on attend une fraction peu importe son écriture (3/4 ou 300/400 ou 30 000/40 000...)
-        // Si l'utilisateur entre un nombre décimal n, on transforme en n/1
+          // Si l'utilisateur entre un nombre décimal n, on transforme en n/1
           saisie = champTexte.value.replace(',', '.') // On remplace la virgule éventuelle par un point.
           if (!isNaN(parseFloat(saisie))) {
             const newFraction = new FractionEtendue(parseFloat(saisie))
@@ -179,8 +175,8 @@ export function verifQuestionMathLive (exercice, i) {
               }
             }
           } else {
-          // Dans tous ces cas on est sûr que le format n'est pas bon
-          // Toutefois la valeur peut l'être donc on vérifie
+            // Dans tous ces cas on est sûr que le format n'est pas bon
+            // Toutefois la valeur peut l'être donc on vérifie
             nombreSaisi = saisie
             nombreAttendu = reponse.split('^')
             mantisseReponse = nombreAttendu[0]
@@ -222,18 +218,20 @@ export function verifQuestionMathLive (exercice, i) {
 
           break
       }
-      ii++
+
+      j++
     }
+    console.log(resultat)
     if (resultat === 'OK') {
       spanReponseLigne.innerHTML = '😎'
       spanReponseLigne.style.fontSize = 'large'
       if (champTexte !== undefined) champTexte.readOnly = true
     } else if (resultat === 'essaieEncoreAvecUneSeuleUnite') {
       spanReponseLigne.innerHTML = '<em>Il faut saisir une valeur numérique et une seule unité (' +
-    (reponse.uniteDeReference.indexOf('^') > 0
-      ? reponse.uniteDeReference.split('^')[0] + texteExposant(reponse.uniteDeReference.split('^')[1])
-      : reponse.uniteDeReference) +
-    ' par exemple).</em>'
+        (reponse.uniteDeReference.indexOf('^') > 0
+          ? reponse.uniteDeReference.split('^')[0] + texteExposant(reponse.uniteDeReference.split('^')[1])
+          : reponse.uniteDeReference) +
+        ' par exemple).</em>'
       spanReponseLigne.style.color = '#f15929'
       spanReponseLigne.style.fontWeight = 'bold'
     } else if (resultat === 'essaieEncorePuissance') {
@@ -247,7 +245,7 @@ export function verifQuestionMathLive (exercice, i) {
     }
     return resultat
   } catch (error) {
-    window.notify(`Erreur dans verif QuestionMathLive : ${error} <br> Avec les métadonnées : `, { champTexteValue: champTexte._slotValue, exercice: exercice.id, i, autoCorrection: exercice.autoCorrection[i], formatInteractif, spanReponseLigne })
+    // window.notify(`Erreur dans verif QuestionMathLive : ${error} <br> Avec les métadonnées : `, { champTexteValue: champTexte._slotValue, exercice: exercice.id, i, autoCorrection: exercice.autoCorrection[i], formatInteractif, spanReponseLigne })
   }
 }
 
@@ -268,73 +266,3 @@ function saisieToGrandeur (saisie) {
     }
   }
 }
-
-export function ajouteChampTexteMathLive (exercice, i, style = '', { texteApres = '', texte = '', tailleExtensible = false } = {}) {
-  if (context.isHtml && exercice.interactif) {
-    if (style === '') {
-      return `<label>${texte}</label><math-field virtual-keyboard-mode=manual id="champTexteEx${exercice.numeroExercice}Q${i}"></math-field>${texteApres ? '<span>' + texteApres + '</span>' : ''}<span id="resultatCheckEx${exercice.numeroExercice}Q${i}"></span>`
-    } else if (tailleExtensible) {
-      return `<label>${sp()}${texte}${sp()}</label><table style="text-align:center;font-size: small;font-family:Arial,Times,serif;display:inline;height:1px;"><tr><td style="position: relative; top: 27px; left: 0px;padding:0px 0px 5px;margin:0px"><math-field virtual-keyboard-mode=manual id="champTexteEx${exercice.numeroExercice}Q${i}"></math-field>${texteApres ? '<span>' + texteApres + '</span>' : ''} </td></tr></table><span id="resultatCheckEx${exercice.numeroExercice}Q${i}"></span>`
-    } else return `<label>${texte}</label><math-field virtual-keyboard-mode=manual class="${style}" id="champTexteEx${exercice.numeroExercice}Q${i}"></math-field>${texteApres ? '<span>' + texteApres + '</span>' : ''} <span id="resultatCheckEx${exercice.numeroExercice}Q${i}"></span>`
-  } else {
-    return ''
-  }
-}
-
-/** Crée une fraction avec 1 ou 2 champs de réponse et autant de feedbacks.
- * Si seul le numérateur ou le dénominateur sont utilisés pour la fraction, l'autre est précisé.
- * numerateur = false signifie qu'il y a un champ de saisie pour le numérateur.
- * denominateur = 100 signifie que le dénominateur est déjà renseigné à 100.
- * Dans ce cas, on utilise le format Interactif correspondant : 'Num' ou 'Den'
- * Si les deux champs sont à saisir, on utilise deux réponses de formatInteractif 'calcul'.
- */
-export function ajouteChampFractionMathLive (exercice, i, numerateur = false, denominateur = 100, style = '', { texte = '', texteApres = '' } = {}) {
-  let code = ''
-  if (context.isHtml && exercice.interactif) {
-    code += `<label>${texte}</label><table style="border-collapse:collapse;text-align:center;font-size: small;font-family:Arial,Times,serif;display:inline;"><tr><td style="padding:0px 0px 5px;margin:0px;border-bottom:1px solid #000;">`
-    if (!numerateur) {
-      code += `<math-field virtual-keyboard-mode=manual id="champTexteEx${exercice.numeroExercice}Q${i}"></math-field></td><td><span id="resultatCheckEx${exercice.numeroExercice}Q${i}"></span>`
-      i++
-    } else {
-      code += `${numerateur} `
-    }
-    code += '</td></tr><tr><td width=50px style="padding:0px;margin:0px;">'
-    if (!denominateur) {
-      code += `<math-field virtual-keyboard-mode=manual id="champTexteEx${exercice.numeroExercice}Q${i}"></math-field></td><td><span id="resultatCheckEx${exercice.numeroExercice}Q${i}"></span>`
-    } else {
-      code += `${denominateur}`
-    }
-    code += `</td></tr></table> ${texteApres ? '<span>' + texteApres + '</span>' : ''}`
-    return code
-  } else {
-    return ''
-  }
-}
-
-/**
- * Fonction créé pour la v3 qui va lancer la vérification de chacune des questions
- * Afficher le score dans le divScore
- * Rendre inutilisable le buttonScore
- * @param {Exercice} exercice
- * @param {HTMLDivElement} divScore
- * @param {HTMLButtonElement} divButton
- */
-export function verifExerciceMathLive (exercice, divScore, divButton) {
-  let nbBonnesReponses = 0
-  let nbMauvaisesReponses = 0
-  const besoinDe2eEssai = false
-  let resultat
-  for (const i in exercice.autoCorrection) {
-    resultat = verifQuestionMathLive(exercice, i)
-    if (resultat === 'OK') {
-      nbBonnesReponses++
-    } else {
-      nbMauvaisesReponses++ // Il reste à gérer le 2e essai
-    }
-  }
-  if (!besoinDe2eEssai) {
-    divButton.classList.add('cursor-not-allowed', 'opacity-50', 'pointer-events-none')
-    afficheScore(exercice, nbBonnesReponses, nbMauvaisesReponses, divScore)
-  }
-}
-

@@ -2,7 +2,7 @@ import { context } from '../modules/context.js'
 import { addElement, get, setStyles } from '../modules/dom.js'
 import { exerciceCliqueFigure } from '../modules/interactif/cliqueFigure.js'
 import { exerciceListeDeroulante } from '../modules/interactif/questionListeDeroulante.js'
-import { exerciceMathLive } from './questionMathLive.js'
+import { verifExerciceMathLive } from './questionMathLive.js'
 import { exerciceQcm } from '../modules/interactif/questionQcm.js'
 import { isUserIdOk } from '../modules/interactif/isUserIdOk.js'
 import { gestionCan } from '../modules/interactif/gestionCan.js'
@@ -10,19 +10,19 @@ import FractionX from '../modules/FractionEtendue.js'
 import Grandeur from '../modules/Grandeur.js'
 import { ComputeEngine } from '@cortex-js/compute-engine'
 
-export function exerciceInteractif (exercice) {
+export function exerciceInteractif (exercice, divScore, buttonScore) {
   if (exercice.interactifType === 'qcm')exerciceQcm(exercice)
   if (exercice.interactifType === 'listeDeroulante')exerciceListeDeroulante(exercice)
   if (exercice.interactifType === 'cliqueFigure')exerciceCliqueFigure(exercice)
   if (exercice.interactifType === 'custom') exerciceCustom(exercice)
   // Pour les exercices de type custom, on appelle la méthode correctionInteractive() définie dans l'exercice
-  if (exercice.interactifType === 'mathLive') exerciceMathLive(exercice)
+  if (exercice.interactifType === 'mathLive') verifExerciceMathLive(exercice, divScore, buttonScore)
   if (exercice.interactifType === undefined) exerciceNonInteractif(exercice)
 }
 
 /**
  *
- * @param {Exercice} exercice
+ * @param exercice
  * @param {number} i
  * @param {*} param2
  * @returns {string} code HTML du champ texte avec identifiant champTexteEx__Q__ et le span pour le résultat de la question
@@ -46,7 +46,7 @@ export function ajouteChampTexte (exercice, i, { texte = '', texteApres = '', in
  * Précise la réponse attendue
  * @param {'objet exercice'} exercice
  * @param {'numero de la question'} i
- * @param {'array || number'} a
+ * @param {'array || number'} valeurs
  */
 
 export function setReponse (exercice, i, valeurs, { digits = 0, decimals = 0, signe = false, exposantNbChiffres = 0, exposantSigne = false, approx = 0, aussiCorrect, digitsNum, digitsDen, basePuissance, exposantPuissance, baseNbChiffres, milieuIntervalle, formatInteractif = 'calcul' } = {}) {
@@ -63,7 +63,7 @@ export function setReponse (exercice, i, valeurs, { digits = 0, decimals = 0, si
   } else {
     reponses = [valeurs] // ici, valeurs n'est pas un tableau mais on le met dans reponses sous forme de tableau
     if (valeurs.num === undefined) {
-      signe = valeurs < 0 ? true : signe // on teste si elle est négative, si oui, on force la case signe pour AMC
+      signe = (valeurs < 0) ? true : signe // on teste si elle est négative, si oui, on force la case signe pour AMC
     } else {
       signe = valeurs.signe === -1 ? true : signe // si c'est une fraction, alors on regarde son signe (valeur -1, 0 ou 1)
     }
@@ -140,7 +140,7 @@ export function setReponse (exercice, i, valeurs, { digits = 0, decimals = 0, si
   if (exercice.autoCorrection[i].reponse === undefined) {
     exercice.autoCorrection[i].reponse = {}
   }
-  exercice.autoCorrection[i].reponse.param = { digits: digits, decimals: decimals, signe: signe, exposantNbChiffres: exposantNbChiffres, exposantSigne: exposantSigne, approx: approx, aussiCorrect: aussiCorrect, digitsNum: digitsNum, digitsDen: digitsDen, basePuissance: basePuissance, exposantPuissance: exposantPuissance, milieuIntervalle: milieuIntervalle, baseNbChiffres: baseNbChiffres, formatInteractif: formatInteractif }
+  exercice.autoCorrection[i].reponse.param = { digits, decimals, signe, exposantNbChiffres, exposantSigne, approx, aussiCorrect, digitsNum, digitsDen, basePuissance, exposantPuissance, milieuIntervalle, baseNbChiffres, formatInteractif }
   exercice.autoCorrection[i].reponse.valeur = reponses
 }
 
@@ -266,7 +266,7 @@ export function exerciceNonInteractif (exercice) {
   })
 }
 
-export function afficheScore (exercice, nbBonnesReponses, nbMauvaisesReponses) {
+export function afficheScore (exercice, nbBonnesReponses, nbMauvaisesReponses, divScore) {
   if (context.vue === 'exMoodle') {
     const hauteurExercice = window.document.querySelector('section').scrollHeight + 20
     if (!new URLSearchParams(window.location.search).get('moodleJson')) {
@@ -300,18 +300,15 @@ export function afficheScore (exercice, nbBonnesReponses, nbMauvaisesReponses) {
     }
   } else {
     // Envoie un message post avec le nombre de réponses correctes
-    window.parent.postMessage({ url: window.location.href, graine: context.graine, titre: exercice.titre, nbBonnesReponses: nbBonnesReponses, nbMauvaisesReponses: nbMauvaisesReponses }, '*')
+    window.parent.postMessage({ url: window.location.href, graine: context.graine, titre: exercice.titre, nbBonnesReponses, nbMauvaisesReponses }, '*')
   }
   if (context.timer) {
     clearInterval(context.timer)
     // ToDo à sauvegarder dans les résultats
     // const tempsRestant = document.getElementById('timer').innerText
   }
-  const divExercice = get(`exercice${exercice.numeroExercice}`)
-  let divScore = get(`score${exercice.numeroExercice}`, false)
   // Appel Fecth via une fonction est-ce que c'est ça qui multiplie les appels ?
   isUserIdOk(exercice, nbBonnesReponses, nbMauvaisesReponses)
-  if (!divScore) divScore = addElement(divExercice, 'div', { className: 'score', id: `score${exercice.numeroExercice}` })
   divScore.innerHTML = `${nbBonnesReponses} / ${nbBonnesReponses + nbMauvaisesReponses}`
   divScore.style.color = '#f15929'
   divScore.style.fontWeight = 'bold'
