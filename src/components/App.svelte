@@ -56,7 +56,11 @@
     filename: "bac_2021_01_sujet0_1",    
   }
 
-  listeExercices.set([exercice1, exercice2, exercice3, exercice4, exercice5, exercice6, exercice7, exercice8, exercice9,])
+  const exercice10 = {
+    directory: "exercicesStatiques",
+    filename: "crpe_2019-g5-pb-1",    
+  }
+  listeExercices.set([exercice1, exercice2, exercice3, exercice4, exercice5, exercice6, exercice7, exercice8, exercice9, exercice10])
 </script>
 
 <!-- <Header /> -->
