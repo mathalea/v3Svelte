@@ -39,10 +39,15 @@ export class Mathalea {
         if (filename.includes('bac')) {
           exercice.titre = 'Exercice type BAC'
         }
-        exercice.consigne = `<img src="./src/${directory}/${filename}.png" width="50%"></img>`
-        exercice.consigneCorrection = `<img src="./src/${directory}/${filename}_cor.png" width="50%"></img>`
+        const cutFilename = filename.split('_')
+        const type = cutFilename[0]
+        const year = cutFilename[1]
+        const subDir = `${type}/${year}/tex/png`
+        exercice.consigne = `<img src="./src/${directory}/${subDir}/${filename}.png" width="50%"></img>`
+        exercice.consigneCorrection = `<img src="./src/${directory}/${subDir}/${filename}_cor.png" width="50%"></img>`
         exercice.typeExercice = 'statique'
         exercice.interactifReady = false
+        exercice.nbQuestionsModifiable = false
         return exercice
       }
     } catch (error) {

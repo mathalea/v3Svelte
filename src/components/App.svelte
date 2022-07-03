@@ -41,24 +41,18 @@
   }
 
   const exercice7 = {
-    directory: "exercicesStatiques",
-    filename: "dnb/2021/tex/png/dnb_2021_06_ameriquenord_1",
-    typeExercice: "dnb",
-    nbQuestions: 1,
+    directory: "exercicesStatiques",    
+    filename: "dnb_2021_06_ameriquenord_1",    
   }
 
   const exercice8 = {
     directory: "exercicesStatiques",
-    filename: "e3c/2021/tex/png/e3c_2021_01_specimen1_1",
-    typeExercice: "e3c",
-    nbQuestions: 1,
+    filename: "e3c_2021_01_specimen1_1",    
   }
 
   const exercice9 = {
     directory: "exercicesStatiques",
-    filename: "bac/2021/tex/png/bac_2021_01_sujet0_1",
-    typeExercice: "bac",
-    nbQuestions: 1,
+    filename: "bac_2021_01_sujet0_1",    
   }
 
   listeExercices.set([exercice1, exercice2, exercice3, exercice4, exercice5, exercice6, exercice7, exercice8, exercice9,])
