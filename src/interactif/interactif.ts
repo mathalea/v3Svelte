@@ -74,7 +74,6 @@ function verifExerciceCustom (exercice: Exercice, divScore: HTMLDivElement, butt
   setStyles(eltFeedback, 'marginBottom: 20px')
   if (eltFeedback) eltFeedback.innerHTML = ''
   // On utilise la correction définie dans l'exercice
-  console.log(buttonScore, eltFeedback, exercice.exoCustomResultat)
   if (exercice.exoCustomResultat) {
     for (let i = 0; i < exercice.nbQuestions; i++) {
       exercice.correctionInteractive(i) === 'OK' ? nbBonnesReponses++ : nbMauvaisesReponses++
