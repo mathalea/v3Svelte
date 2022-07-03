@@ -5,7 +5,7 @@
   export let entrees: string[]
   export let spacing: number
   export let indiceExercice: number
-  export let type: 'enonce' | 'correction'
+  export let type: "enonce" | "correction"
 </script>
 
 <article class="text-2xl lg:text-base">

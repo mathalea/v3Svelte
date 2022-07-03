@@ -16,7 +16,10 @@
   let formNum2
   let formNum3
   let formNum4
-
+  let formText1
+  let formText2
+  let formText3
+  let formText4
   afterUpdate(async () => {
     // On ne remplit les champs que la première fois
     if (exercice && premierUpdate) {
@@ -51,7 +54,7 @@
    * <code>besoinFormulaireNumérique</code>
    * @author sylvain chambon
    */
-  function parseFormEntries(entreesFormulaire: string[]) {
+  function parseFormNumerique(entreesFormulaire: string[]) {
     let entrees = [...entreesFormulaire]
     let titre = entrees.shift() // le titre du paramètre est le 1er elt
     let champs: string[] | number
@@ -69,20 +72,47 @@
   }
   // fabrication des objets correspondant aux paramètres numériques.
   if (exercice.besoinFormulaireNumerique) {
-    formNum1 = parseFormEntries(exercice.besoinFormulaireNumerique)
+    formNum1 = parseFormNumerique(exercice.besoinFormulaireNumerique)
   }
   if (exercice.besoinFormulaire2Numerique) {
-    formNum2 = parseFormEntries(exercice.besoinFormulaire2Numerique)
+    formNum2 = parseFormNumerique(exercice.besoinFormulaire2Numerique)
   }
   if (exercice.besoinFormulaire3Numerique) {
-    formNum3 = parseFormEntries(exercice.besoinFormulaire3Numerique)
+    formNum3 = parseFormNumerique(exercice.besoinFormulaire3Numerique)
   }
   if (exercice.besoinFormulaire4Numerique) {
-    formNum4 = parseFormEntries(exercice.besoinFormulaire4Numerique)
+    formNum4 = parseFormNumerique(exercice.besoinFormulaire4Numerique)
+  }
+
+  function parseFormTexte(entreesFormulaire) {
+    let entrees = [...entreesFormulaire]
+    let titre = entrees.shift() // le titre du formulaire est le 1er elt
+    let champs = entrees.pop().split("\n")
+    let consigne = champs.shift() // premier éléments est la consigne
+    let champsDecortiques = []
+    champs.forEach((entree) => {
+      // avant ' : ' c'est la valeur d'activation et après c'est le paramètre
+      let parties = entree.split(" : ")
+      champsDecortiques.push({ parametre: parties[1], valeur: parties[0] })
+    })
+    return { titre, consigne, champsDecortiques }
+  }
+  // fabrication des objets correspondant aux paramètres texte.
+  if (exercice.besoinFormulaireTexte) {
+    formText1 = parseFormTexte(exercice.besoinFormulaireTexte)
+  }
+  if (exercice.besoinFormulaire2Texte) {
+    formText2 = parseFormTexte(exercice.besoinFormulaire2Texte)
+  }
+  if (exercice.besoinFormulaire3Texte) {
+    formText3 = parseFormTexte(exercice.besoinFormulaire3Texte)
+  }
+  if (exercice.besoinFormulaire4Texte) {
+    formText4 = parseFormTexte(exercice.besoinFormulaire4Texte)
   }
 </script>
 
-<div class="bg-gray-100 text-2xl lg:text-base ml-2 lg:mx-4 flex flex-col space-y-4 p-3 rounded-md">
+<div class="text-2xl lg:text-base ml-2 lg:mx-4 space-y-4 p-3 rounded-md">
   <h3 class="text-coopmaths font-bold">Paramètres</h3>
   {#if !exercice.nbQuestionsModifiable && !exercice.besoinFormulaireCaseACocher && !exercice.besoinFormulaireNumerique && !exercice.besoinFormulaireTexte}
     <div class="italic">Cet exercice ne peut pas être paramétré.</div>
@@ -132,8 +162,21 @@
   {/if}
   {#if exercice.besoinFormulaireTexte}
     <div>
-      <label class=" text-coopmaths-lightest" for="formText1">{exercice.besoinFormulaireTexte[0]} :</label>
-      <input name="formText1" type="text" class="w-16 border-2" data-bs-toggle="tooltip" title={exercice.besoinFormulaireTexte[1] || ""} bind:value={sup} on:change={nouveauxReglages} />
+      <!-- <label class=" text-coopmaths-lightest" for="formText1">{formText1.titre} :</label> -->
+      <!-- <input name="formText1" type="text" class="w-16 border-2" data-bs-toggle="tooltip" title={exercice.besoinFormulaireTexte[1] || ""} bind:value={sup} on:change={nouveauxReglages} /> -->
+      <form action="">
+        <fieldset>
+          <legend class="text-coopmaths-lightest">{formText1.titre}<button class="ml-2 text-xl duration-75"><i class="bx bxs-edit" /></button></legend>
+          <div class="flex flex-col  ml-3 mt-1">
+            {#each formText1.champsDecortiques as entree, i}
+              <div class="flew-row space-x-2">
+                <input type="checkbox" name="paramText1-{i + 1}" value={entree.valeur} id="paramText1-{i + 1}-option" />
+                <label for="paramText1-{i + 1}">{entree.parametre}</label>
+              </div>
+            {/each}
+          </div>
+        </fieldset>
+      </form>
     </div>
   {/if}
 

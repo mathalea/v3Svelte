@@ -132,38 +132,33 @@
       >
     </div>
   </h1>
-  <div class="flex flex-col-reverse lg:flex-row space-x-4 items-start">
-    <!-- {#if parametresVisible}
-      <div in:fly={{ ...transitionOptions, x: -400 }} out:fly={{ ...transitionOptions, x: -400 }} class="mt-3">
-        <Settings {exercice} on:reglages={handleNewSettings} />
+
+  {#if visible}
+    <div class="flex">
+      <div class="bg-gray-100 {parametresVisible ? 'w-1/4' : 'w-0'} flex flex-col duration-500">
+        {#if parametresVisible}
+          <Settings {exercice} on:reglages={handleNewSettings} />
+        {/if}
       </div>
-    {/if} -->
-    {#if visible}
-      <div class="bg-gray-100 {parametresVisible ? 'w-1/4' : 'w-0'} h-full duration-500">
-        <div class="overflow-hidden">
-          {#if parametresVisible}
-            <Settings {exercice} on:reglages={handleNewSettings} />
-          {/if}
-        </div>
-      </div>
-      <div id="exercice{indiceExercice}">
+      <div class="flex flex-col relative" id="exercice{indiceExercice}">
         {#if contenuVisible}
-          <Contenu chapeau={consigne} entrees={listeQuestions} {spacing} {indiceExercice} type={'enonce'} />
+          <Contenu chapeau={consigne} entrees={listeQuestions} {spacing} {indiceExercice} type={"enonce"} />
         {:else}
-          <Contenu chapeau={consigneCorrection} entrees={listeCorrections} spacing={spacingCorr} {indiceExercice} type={'correction'} />
+          <Contenu chapeau={consigneCorrection} entrees={listeCorrections} spacing={spacingCorr} {indiceExercice} type={"correction"} />
         {/if}
         {#if exercice?.interactif}
           <button
             class="inline-block px-6 py-2.5 mr-10 my-5 ml-6 bg-coopmaths text-white font-medium text-xs leading-tight uppercase rounded shadow-md transform hover:scale-110 hover:bg-coopmaths-dark hover:shadow-lg focus:bg-coopmaths-dark focus:shadow-lg focus:outline-none focus:ring-0 active:bg-coopmaths-dark active:shadow-lg transition duration-150 ease-in-out checkReponses"
             type="submit"
             on:click={verifExercice}
-            bind:this={buttonScore}>Vérifier les réponses</button
-          >
+            bind:this={buttonScore}
+            >Vérifier les réponses
+          </button>
           <div bind:this={divScore} />
         {/if}
       </div>
-    {/if}
-  </div>
+    </div>
+  {/if}
 </div>
 
 <style>
