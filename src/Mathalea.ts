@@ -39,9 +39,20 @@ export class Mathalea {
         if (filename.includes('bac')) {
           exercice.titre = 'Exercice type BAC'
         }
+        if (filename.includes('crpe')) {
+          exercice.titre = 'Exercice type CRPE'
+        }
         const cutFilename = filename.split('_')
-        const type = cutFilename[0]
-        const year = cutFilename[1]
+        let type, year
+        if (filename.includes('dnb') || filename.includes('e3c') || filename.includes('bac')) {
+          type = cutFilename[0]
+          year = cutFilename[1]
+        }
+        if (filename.includes('crpe')) {
+          type = cutFilename[0]
+          year = cutFilename[1].split('-')[0]
+        }
+
         const subDir = `${type}/${year}/tex/png`
         exercice.consigne = `<img src="./src/${directory}/${subDir}/${filename}.png" width="50%"></img>`
         exercice.consigneCorrection = `<img src="./src/${directory}/${subDir}/${filename}_cor.png" width="50%"></img>`
