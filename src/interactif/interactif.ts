@@ -1,11 +1,12 @@
 import type Exercice from '../exercices/ExerciceTs'
 import { verifQuestionMathLive } from './mathLive'
 import { verifQuestionQcm } from './qcm'
+import { verifQuestionListeDeroulante } from './questionListeDeroulante'
 
 export function exerciceInteractif (exercice: Exercice, divScore: HTMLDivElement, buttonScore: HTMLButtonElement) {
   if (exercice.interactifType === 'mathLive') verifExerciceMathLive(exercice, divScore, buttonScore)
   if (exercice.interactifType === 'qcm') verifExerciceQcm(exercice, divScore, buttonScore)
-//   if (exercice.interactifType === 'listeDeroulante')exerciceListeDeroulante(exercice)
+  if (exercice.interactifType === 'listeDeroulante')verifExerciceListeDeroulante(exercice, divScore, buttonScore)
 //   if (exercice.interactifType === 'cliqueFigure')exerciceCliqueFigure(exercice)
 //   if (exercice.interactifType === 'custom') exerciceCustom(exercice)
 //   // Pour les exercices de type custom, on appelle la méthode correctionInteractive() définie dans l'exercice
@@ -31,8 +32,6 @@ function verifExerciceMathLive (exercice: Exercice, divScore: HTMLDivElement, di
 }
 
 function verifExerciceQcm (exercice: Exercice, divScore: HTMLDivElement, divButton: HTMLButtonElement) {
-  // On active les checkbox
-  // $('.ui.checkbox').checkbox()
   // On vérifie le type si jamais il a été changé après la création du listenner (voir 5R20)
   let nbQuestionsValidees = 0
   let nbQuestionsNonValidees = 0
@@ -44,6 +43,20 @@ function verifExerciceQcm (exercice: Exercice, divScore: HTMLDivElement, divButt
   uichecks.forEach(function (uicheck) {
     uicheck.classList.add('read-only')
   })
+  afficheScore(exercice, nbQuestionsValidees, nbQuestionsNonValidees, divScore, divButton)
+}
+
+function verifExerciceListeDeroulante (exercice: Exercice, divScore: HTMLDivElement, divButton: HTMLButtonElement) {
+  let nbQuestionsValidees = 0
+  let nbQuestionsNonValidees = 0
+  const uiselects = document.querySelectorAll(`.ui.dropdown.ex${exercice.numeroExercice}`)
+  uiselects.forEach(function (uiselect) {
+    uiselect.classList.add('disabled')
+  })
+  for (let i = 0; i < exercice.nbQuestions; i++) {
+    const resultat = verifQuestionListeDeroulante(exercice, i)
+    resultat === 'OK' ? nbQuestionsValidees++ : nbQuestionsNonValidees++
+  }
   afficheScore(exercice, nbQuestionsValidees, nbQuestionsNonValidees, divScore, divButton)
 }
 

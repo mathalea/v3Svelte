@@ -84,7 +84,7 @@
     titre = exercice.titre
     listeQuestions = [...exercice.listeQuestions]
     listeCorrections = [...exercice.listeCorrections]
-    consigne = exercice.consigne
+    consigne = exercice.consigne + exercice.introduction
     consigneCorrection = exercice.consigneCorrection
     spacing = exercice.spacing
     spacingCorr = exercice.spacingCorr
@@ -148,9 +148,9 @@
       </div>
       <div id="exercice{indiceExercice}">
         {#if contenuVisible}
-          <Contenu chapeau={consigne} entrees={listeQuestions} {spacing} />
+          <Contenu chapeau={consigne} entrees={listeQuestions} {spacing} {indiceExercice} type={'enonce'} />
         {:else}
-          <Contenu chapeau={consigneCorrection} entrees={listeCorrections} spacing={spacingCorr} />
+          <Contenu chapeau={consigneCorrection} entrees={listeCorrections} spacing={spacingCorr} {indiceExercice} type={'correction'} />
         {/if}
         {#if exercice?.interactif}
           <button
