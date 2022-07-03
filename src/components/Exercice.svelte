@@ -1,7 +1,6 @@
 <script lang="ts">
-  import { afterUpdate, onMount, tick } from "svelte"
-  import { fade, fly, slide } from "svelte/transition"
-  import { backInOut, linear } from "svelte/easing"
+  import { afterUpdate, onMount } from "svelte"
+  import { linear } from "svelte/easing"
   import { listeExercices } from "./store"
   import seedrandom from "seedrandom"
   import BoutonMonter from "./BoutonMonter.svelte"
@@ -12,7 +11,7 @@
   import { randomInt } from "mathjs"
   import Contenu from "./Contenu.svelte"
   import { loadMathLive } from "../modules/loaders"
-  import { exerciceInteractif } from "../interactif/interactif"
+  import { exerciceInteractif, prepareExerciceCliqueFigure } from "../interactif/interactif"
 
   export let directory: string
   export let filename: string
@@ -44,10 +43,12 @@
     Mathalea.renderDiv(divExercice)
     if (interactif) {
       loadMathLive()
-
       // Evènement indispensable pour pointCliquable par exemple
       const exercicesAffiches = new window.Event('exercicesAffiches', { bubbles: true })
       document.dispatchEvent(exercicesAffiches)
+      if (exercice.interactifType === 'cliqueFigure') {
+      prepareExerciceCliqueFigure(exercice)
+    }
     }
   })
 
