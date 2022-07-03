@@ -1,3 +1,4 @@
+import { addElement, get, setStyles } from '../modules/dom'
 import type Exercice from '../exercices/ExerciceTs'
 import { verifQuestionMathLive } from './mathLive'
 import { verifQuestionQcm } from './qcm'
@@ -7,8 +8,8 @@ export function exerciceInteractif (exercice: Exercice, divScore: HTMLDivElement
   if (exercice.interactifType === 'mathLive') verifExerciceMathLive(exercice, divScore, buttonScore)
   if (exercice.interactifType === 'qcm') verifExerciceQcm(exercice, divScore, buttonScore)
   if (exercice.interactifType === 'listeDeroulante')verifExerciceListeDeroulante(exercice, divScore, buttonScore)
-//   if (exercice.interactifType === 'cliqueFigure')exerciceCliqueFigure(exercice)
-//   if (exercice.interactifType === 'custom') exerciceCustom(exercice)
+  //   if (exercice.interactifType === 'cliqueFigure')exerciceCliqueFigure(exercice)
+  if (exercice.interactifType === 'custom') verifExerciceCustom(exercice, divScore, buttonScore)
 //   // Pour les exercices de type custom, on appelle la méthode correctionInteractive() définie dans l'exercice
 //   if (exercice.interactifType === undefined) exerciceNonInteractif(exercice)
 }
@@ -58,6 +59,33 @@ function verifExerciceListeDeroulante (exercice: Exercice, divScore: HTMLDivElem
     resultat === 'OK' ? nbQuestionsValidees++ : nbQuestionsNonValidees++
   }
   afficheScore(exercice, nbQuestionsValidees, nbQuestionsNonValidees, divScore, divButton)
+}
+
+function verifExerciceCustom (exercice: Exercice, divScore: HTMLDivElement, buttonScore: HTMLButtonElement) {
+  let nbBonnesReponses = 0
+  let nbMauvaisesReponses = 0
+  // Le get est non strict car on sait que l'élément n'existe pas à la première itération de l'exercice
+  let eltFeedback = get(`feedbackEx${exercice.numeroExercice}`, false)
+  // On ajoute le div pour le feedback
+  if (!eltFeedback) {
+    const eltExercice = get(`exercice${exercice.numeroExercice}`)
+    eltFeedback = addElement(eltExercice, 'div', { id: `feedbackEx${exercice.numeroExercice}` })
+  }
+  setStyles(eltFeedback, 'marginBottom: 20px')
+  if (eltFeedback) eltFeedback.innerHTML = ''
+  // On utilise la correction définie dans l'exercice
+  console.log(buttonScore, eltFeedback, exercice.exoCustomResultat)
+  if (exercice.exoCustomResultat) {
+    for (let i = 0; i < exercice.nbQuestions; i++) {
+      exercice.correctionInteractive(i) === 'OK' ? nbBonnesReponses++ : nbMauvaisesReponses++
+    }
+    afficheScore(exercice, nbBonnesReponses, nbMauvaisesReponses, divScore, buttonScore)
+  } else {
+    for (let i = 0; i < exercice.nbQuestions; i++) {
+      exercice.correctionInteractive(i) === 'OK' ? nbBonnesReponses++ : nbMauvaisesReponses++
+    }
+    afficheScore(exercice, nbBonnesReponses, nbMauvaisesReponses, divScore, buttonScore)
+  }
 }
 
 function afficheScore (exercice: Exercice, nbBonnesReponses: number, nbMauvaisesReponses: number, divScore: HTMLDivElement, divButton: HTMLButtonElement) {

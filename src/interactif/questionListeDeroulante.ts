@@ -1,14 +1,14 @@
+import type Exercice from '../exercices/ExerciceTs'
 import { context } from '../modules/context'
 import { addElement, get, setStyles } from '../modules/dom'
 
-export function verifQuestionListeDeroulante (exercice, i) {
+export function verifQuestionListeDeroulante (exercice: Exercice, i: number) {
   // Le get est non strict car on sait que l'élément n'existe pas à la première itération de l'exercice
   let eltFeedback = get(`resultatCheckEx${exercice.numeroExercice}Q${i}`, false)
   console.log(eltFeedback)
   // On ajoute le div pour le feedback
   if (!eltFeedback) {
-    const eltExercice = document.querySelector(`#exercice${exercice.numeroExercice}Q${i}`)
-    console.log(eltExercice)
+    const eltExercice = (document.querySelector(`#exercice${exercice.numeroExercice}Q${i}`)) as HTMLElement
     if (eltExercice) eltFeedback = addElement(eltExercice, 'div', { id: `resultatCheckEx${exercice.numeroExercice}Q${i}` })
   }
   setStyles(eltFeedback, 'marginBottom: 20px')
