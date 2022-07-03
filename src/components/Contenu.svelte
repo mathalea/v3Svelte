@@ -6,7 +6,7 @@
   export let spacing: number
 </script>
 
-<article class="text-2xl md:text-base">
+<article class="text-2xl lg:text-base">
   <!-- Consigne -->
   <Consigne consigne={chapeau} />
   <!-- Liste des questions -->
