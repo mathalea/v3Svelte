@@ -3,6 +3,8 @@
 
   import type Exercice from "src/exercices/ExerciceTs"
   import { afterUpdate, createEventDispatcher } from "svelte"
+  import Liste from "./Liste.svelte"
+  import Curseur from "./Curseur.svelte"
 
   export let exercice
   let nbQuestions: number
@@ -20,6 +22,7 @@
   let formText2
   let formText3
   let formText4
+  let parametresText1
   afterUpdate(async () => {
     // On ne remplit les champs que la première fois
     if (exercice && premierUpdate) {
@@ -110,6 +113,27 @@
   if (exercice.besoinFormulaire4Texte) {
     formText4 = parseFormTexte(exercice.besoinFormulaire4Texte)
   }
+
+  function parametresTexteChangent(listeParametres) {
+    console.log(sup + " ; " + listeParametres)
+    exercice.sup = listeParametres.join("-")
+    console.log(sup)
+    nouveauxReglages
+  }
+
+  function onSubmit(e) {
+    const formData = new FormData(e.target)
+
+    const data = []
+    for (let field of formData) {
+      const [key, value] = field
+      for (let i = 0; i < parseInt(value); i++) {
+        data.push(key.charAt(key.length - 1))
+      }
+    }
+    parametresText1 = data.join("-")
+    console.log(data.join("-"))
+  }
 </script>
 
 <div class="text-2xl lg:text-base ml-2 lg:mx-4 space-y-4 p-3 rounded-md">
@@ -164,18 +188,20 @@
     <div>
       <!-- <label class=" text-coopmaths-lightest" for="formText1">{formText1.titre} :</label> -->
       <!-- <input name="formText1" type="text" class="w-16 border-2" data-bs-toggle="tooltip" title={exercice.besoinFormulaireTexte[1] || ""} bind:value={sup} on:change={nouveauxReglages} /> -->
-      <form action="">
+      <form on:submit|preventDefault={onSubmit}>
         <fieldset>
-          <legend class="text-coopmaths-lightest">{formText1.titre}<button class="ml-2 text-xl duration-75"><i class="bx bxs-edit" /></button></legend>
+          <legend class="text-coopmaths-lightest">{formText1.titre}<button type="submit" class="ml-2 text-xl duration-75"><i class="bx bxs-edit" /></button></legend>
           <div class="flex flex-col  ml-3 mt-1">
             {#each formText1.champsDecortiques as entree, i}
               <div class="flew-row space-x-2">
-                <input type="checkbox" name="paramText1-{i + 1}" value={entree.valeur} id="paramText1-{i + 1}-option" />
-                <label for="paramText1-{i + 1}">{entree.parametre}</label>
+                <!-- <input type="checkbox" name="paramText1-{i + 1}" bind:group={parametresText1} value={entree.valeur} id="paramText1-{i + 1}-option" />
+                <label for="paramText1-{i + 1}">{entree.parametre}</label> -->
+                <Curseur titre={entree.parametre} montant={0} identifiant={["paramText1-", i + 1, "-curseur"].join("")} nom={["paramText1-idNum-", entree.valeur].join("")} max={nbQuestions} />
               </div>
             {/each}
           </div>
         </fieldset>
+        <p>Valeurs : {parametresText1}</p>
       </form>
     </div>
   {/if}
