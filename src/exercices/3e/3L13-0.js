@@ -11,8 +11,6 @@ export { interactifReady, interactifType, amcReady, amcType, titre } from '../4e
  * @author Rémi Angot
  * 4L20 et 3L13
  */
-export const uuid = '32683'
-export const ref = '3L13-0'
 export default function EquationPremierDegreSolutionsEntieres () {
   ExerciceEquationASolutionEntiere.call(this) // Héritage de la classe Exercice()
 

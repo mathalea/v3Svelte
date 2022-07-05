@@ -11,8 +11,6 @@ export const interactifType = 'mathLive'
  * Référence can3C07
  * Date de publication sptembre 2021
 */
-export const uuid = '4ccfc'
-export const ref = 'can2C09'
 export default function MilieuEntre1EtFraction () {
   Exercice.call(this)
   this.typeExercice = 'simple'

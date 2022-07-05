@@ -14,8 +14,6 @@ export const interactifType = 'mathLive'
  * @author Rémi Angot
  * Référence CM003
  */
-export const uuid = '0c62a'
-export const ref = 'CM003'
 export default function TablesMultiplicationsDivisions (
   tablesParDefaut = '2-3-4-5-6-7-8-9'
 ) {

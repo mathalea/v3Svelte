@@ -18,8 +18,6 @@ export const dateDeModifImportante = '07/11/2021'
  * 6N10-1
  * Relecture : Novembre 2021 par EE
  */
-export const uuid = 'fa95c'
-export const ref = '6N10-1'
 export default function ExerciceNumerationEntier () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 5

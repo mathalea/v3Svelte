@@ -12,8 +12,6 @@ export const amcType = 'AMCNum'
  * Créé le 2/11/2021
  * Référence can6G04
  */
-export const uuid = 'f166d'
-export const ref = 'can6G04'
 export default function ProblemesDeLongueurs () {
   Exercice.call(this)
   this.nbQuestions = 1

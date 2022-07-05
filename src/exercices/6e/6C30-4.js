@@ -15,8 +15,6 @@ export const titre = 'Multiplier par 0,1 ; 0,01 ; 0,001 (placer la virgule)'
  * Référence 6C30-4
  * Relecture : Décembre 2021 par EE
  */
-export const uuid = 'a6d29'
-export const ref = '6C30-4'
 export default function PlacerLaVirgule () {
   'use strict'
   Exercice.call(this)

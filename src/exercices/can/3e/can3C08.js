@@ -10,8 +10,6 @@ export const interactifType = 'mathLive'
  * Référence
  * Date de publication
 */
-export const uuid = 'e1e58'
-export const ref = 'can3C08'
 export default function ProgrammeCalcul () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !

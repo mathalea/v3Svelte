@@ -9,8 +9,6 @@ export const titre = 'Probabilités simples'
  * Référence 5S21-1
  * Publié le 1/5/2021
 */
-export const uuid = 'aa634'
-export const ref = '5S21-1'
 export default function ProbabilitesSimples () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = 'Probabilités simples'

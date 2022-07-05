@@ -12,8 +12,6 @@ export const dateDeModifImportante = '24/10/2021' // Une date de modification im
  * @author
  * Référence
 */
-export const uuid = 'e4ac3'
-export const ref = '1AN10-1'
 export default function tauxvariation () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''

@@ -8,8 +8,6 @@ export { interactifReady, interactifType } from '../3e/3P10-1.js'
  *
  * @author Sébastien LOZANO
  */
-export const uuid = '96eef'
-export const ref = '2S11-1'
 export default function CoefficientEvolution2nde () {
   CoefficientEvolution.call(this)
 }

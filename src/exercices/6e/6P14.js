@@ -18,8 +18,6 @@ export const dateDePublication = '13/03/2022'
  * @author Eric Elter
  * Référence 6P14
 */
-export const uuid = '2c116'
-export const ref = '6P14'
 export default function agrandirReduireFigure () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

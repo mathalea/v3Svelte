@@ -9,8 +9,6 @@ export const titre = 'Résoudre un problème en utilisant des fractions'
  * * 5N20-0
  * @author Sébastien Lozano
  */
-export const uuid = 'be025'
-export const ref = '5N20-0'
 export default function ProblemesAdditifsFractions5e () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.debug = false

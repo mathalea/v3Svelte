@@ -9,8 +9,6 @@ export const titre = 'Représentation graphique d\'une fonction affine'
 * @author Stéphane Guyon
 * 2F10-3
 */
-export const uuid = 'e89fd'
-export const ref = '2F10-3'
 export default function representerfonctionaffine () {
   Exercice.call(this)
   this.titre = titre

@@ -11,8 +11,6 @@ export const dateDePublication = '20/11/2021'
  * @author Jean-Claude Lhote
  * Référence canc3C06
  */
-export const uuid = 'f730b'
-export const ref = 'canc3C06'
 export default function ComplementAuDixiemeOuALaDizaine () {
   Exercice.call(this)
   this.typeExercice = 'simple'

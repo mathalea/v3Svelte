@@ -7,8 +7,6 @@ export const titre = 'Constructibilité des triangles via les angles'
  * 5G31-1
  * @author Sébastien Lozano
  */
-export const uuid = 'f454f'
-export const ref = '5G31-1'
 export default function ConstructibiliteDesTrianglesAngles () {
   this.beta = ''// ici this.beta peut prendre la valeur 'beta' ou '', tous les autres this.beta sont devenus des this.debug
   this.exo = this.beta + '5G31-1'

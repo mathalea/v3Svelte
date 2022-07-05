@@ -22,8 +22,6 @@ export const dateDePublication = '3/12/2021'
  * publié le 03/12/2021
  */
 
-export const uuid = '77251'
-export const ref = '4G12'
 export default function SerieDeTransformations () {
   Exercice.call(this)
   this.nbQuestions = 1

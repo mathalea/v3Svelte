@@ -11,8 +11,6 @@ export const amcType = 'AMCNum'
  * Publié le 15/09/2021
  * Référence can6M07
  */
-export const uuid = 'bb204'
-export const ref = 'can6M07'
 export default function CompleterVolumeAuLitre () {
   Exercice.call(this)
   this.typeExercice = 'simple'

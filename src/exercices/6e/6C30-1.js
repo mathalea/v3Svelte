@@ -24,8 +24,6 @@ export const dateDeModifImportante = '12/12/2021'
  * Relecture : Décembre 2021 par EE
  *
  */
-export const uuid = 'a78fa'
-export const ref = '6C30-1'
 export default function MultiplierDecimauxPar101001000 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

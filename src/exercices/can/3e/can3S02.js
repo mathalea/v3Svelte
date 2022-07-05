@@ -10,8 +10,6 @@ export const interactifType = 'mathLive'
  * Référence
  * Date de publication
 */
-export const uuid = 'bbd2d'
-export const ref = 'can3S02'
 export default function ProbaEvenementContraire () {
   Exercice.call(this)
   this.typeExercice = 'simple'

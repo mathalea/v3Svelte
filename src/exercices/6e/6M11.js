@@ -20,8 +20,6 @@ export const interactifReady = true
  * @author Rémi Angot
  * Référence 6M11
  */
-export const uuid = '822ef'
-export const ref = '6M11'
 export default function AireCarresRectanglesTriangles () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

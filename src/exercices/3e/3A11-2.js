@@ -17,8 +17,6 @@ export const titre = 'Décomposition en facteurs premiers d\'un entier'
  * type 3 : un gros premiers au delà de 1000 et inférieur à 2 000
  * @author Sébastien Lozano
  */
-export const uuid = 'e161e'
-export const ref = '3A11-2'
 export default function decompositionFacteursPremiers () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()

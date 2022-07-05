@@ -13,8 +13,6 @@ export const amcType = 'qcmMono'
  * Créé pendant l'été 2021
  * Référence can6C01
  */
-export const uuid = '2dc19'
-export const ref = 'can6C01'
 export default function OrdreDeGrandeur () {
   Exercice.call(this)
   this.nbQuestions = 1

@@ -12,8 +12,6 @@ export const titre = 'Résoudre une équation du second degré à partir de la f
  * @author Stéphane Guyon
  * Référence 1E11
 */
-export const uuid = '053e0'
-export const ref = '1E11-4'
 export default function Resolutionavecformecanonique () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

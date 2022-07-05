@@ -15,8 +15,6 @@ export const dateDePublication = '09/06/2022' // La date de publication initiale
  * @author Gilles Mora
  * Référence can1L04
 */
-export const uuid = '62b84'
-export const ref = 'can1F04'
 export default function LectureGraphiqueParaboleB () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1

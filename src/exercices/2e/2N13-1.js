@@ -7,8 +7,6 @@ export const dateDeModifImportante = '27/10/2021'
  *
  * @author Jean-Claude Lhote
  */
-export const uuid = '717e9'
-export const ref = '2N13-1'
 export default function ArrondirUneValeur2nde () {
   ArrondirUneValeur.call(this)
   this.sup = 5

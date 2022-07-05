@@ -26,8 +26,6 @@ export const dateDePublication = '18/11/2021' // La date de publication initiale
  * @author Mireille Gain, s'inspirant de 6C31
  * Référence 6N23-6
  */
-export const uuid = '92fe1'
-export const ref = '6N23-6'
 export default function DivisionFraction () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

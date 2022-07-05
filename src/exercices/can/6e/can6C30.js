@@ -13,8 +13,6 @@ export const dateDePublication = '04/03/2022'
  *
  *
  */
-export const uuid = '1d7a8'
-export const ref = 'can6C30'
 export default function MultiplierDeuxDecimaux () {
   Exercice.call(this)
   this.nbQuestions = 1

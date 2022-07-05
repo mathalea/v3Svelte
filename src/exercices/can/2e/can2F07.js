@@ -19,8 +19,6 @@ export const dateDeModifImportante = '24/10/2021' // Une date de modification im
  * @author Gilles Mora
  * Référence
 */
-export const uuid = 'c933b'
-export const ref = 'can2F07'
 export default function ExtremumsTableau () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1

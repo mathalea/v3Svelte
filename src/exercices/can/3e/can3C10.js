@@ -10,8 +10,6 @@ export const interactifType = 'mathLive'
  * Référence can3C10
  * Date de publication 18/10/2021
 */
-export const uuid = 'dca13'
-export const ref = 'can3C10'
 export default function EncadrementAvecPuissancesDe10 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !

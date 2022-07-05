@@ -12,8 +12,6 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can5C12
  */
-export const uuid = '23154'
-export const ref = 'can5C12'
 export default function FractionDEntierQuiVaBien () {
   Exercice.call(this)
   this.typeExercice = 'simple'

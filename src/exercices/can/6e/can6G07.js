@@ -17,8 +17,6 @@ export const amcType = 'AMCNum'
  * @author Jean-Claude Lhote
  * Publié le 18/12/2021
  */
-export const uuid = '38de3'
-export const ref = 'can6G07'
 export default function CompleterParSymetrieCan () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''

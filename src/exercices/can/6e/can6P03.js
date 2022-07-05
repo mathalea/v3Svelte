@@ -11,8 +11,6 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can6P03
  */
-export const uuid = '25fc1'
-export const ref = 'can6P03'
 export default function QuestionDeVitesse () {
   Exercice.call(this)
   this.typeExercice = 'simple'

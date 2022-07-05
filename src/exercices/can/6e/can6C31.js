@@ -11,8 +11,6 @@ export const dateDePublication = '09/05/2022'
  *
  *
  */
-export const uuid = '9b33e'
-export const ref = 'can6C31'
 export default function SoustraireEntierDecimal () {
   Exercice.call(this)
   this.nbQuestions = 1

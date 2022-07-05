@@ -8,8 +8,6 @@ export { interactifReady, interactifType } from '../3e/3L12.js'
  *
  * @author Sébastien LOZANO
  */
-export const uuid = '10334'
-export const ref = '2N41-2'
 export default function FactoriserIdentitesRemarquables32nde () {
   FactoriserIdentitesRemarquables3.call(this)
 }

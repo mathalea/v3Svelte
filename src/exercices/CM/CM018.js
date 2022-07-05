@@ -13,8 +13,6 @@ export const amcType = 'AMCNum'
  * @author Rémi Angot
  * Référence CM018
 */
-export const uuid = '3e1d8'
-export const ref = 'CM018'
 export default function SommeDeDeuxNombresMariesEtUnEntier () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Calculer'

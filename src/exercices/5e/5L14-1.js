@@ -5,8 +5,6 @@ export const titre = 'Calculer une expression littérale pour les valeurs donné
  * @author Jean-Claude Lhote
   * Référence 5L14-1
 */
-export const uuid = '17d51'
-export const ref = '5L14-1'
 export default function CalculerUneExpressionLitterale () {
   EcrireUneExpressionNumerique.call(this)
   this.version = 4

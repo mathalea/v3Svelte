@@ -8,8 +8,6 @@ export { interactifReady, interactifType } from '../5e/5L14.js'
  * @author Sébastien Lozano
  */
 
-export const uuid = 'b5c08'
-export const ref = '2N40-2'
 export default function CalculerLaValeurDUneExpressionLitterale2e () {
   CalculerLaValeurDUneExpressionLitterale.call(this)
 }

@@ -14,8 +14,6 @@ export const amcType = 'AMCHybride'
  * @author Stéphane Guyon
  * 2G30-1, ex 2G50
 */
-export const uuid = 'a78b3'
-export const ref = '2G30-1'
 export default function CoefficientDirecteurDeDroite () {
   Exercice.call(this) // Héritage de la classe Exercice()
 

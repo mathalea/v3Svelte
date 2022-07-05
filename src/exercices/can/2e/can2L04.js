@@ -12,8 +12,6 @@ export const interactifType = 'mathLive'
  * Référence
  * Date de publication
 */
-export const uuid = 'cec56'
-export const ref = 'can2L04'
 export default function CoordonneesPointIntersectionAxeOrdonneesDroite () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1

@@ -9,8 +9,6 @@ export const titre = 'Résoudre les équations produit-nul'
 * 2N52-1, ex 2L12
 * publié le 6/02/2021
 */
-export const uuid = 'e575b'
-export const ref = '2N52-1'
 export default function EquationsProduitsNuls2 () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()

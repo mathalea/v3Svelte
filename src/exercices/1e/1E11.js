@@ -8,8 +8,6 @@ export const titre = 'Résoudre une équation du second degré'
  * @author Rémi Angot
  * Référence 1E11
 */
-export const uuid = 'cee3f'
-export const ref = '1E11'
 export default function ResoudreEquationDegre2 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

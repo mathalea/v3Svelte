@@ -10,8 +10,6 @@ export const dateDePublication = '25/10/2021'
  * @author Gilles Mora
  * Référence can4P04
 */
-export const uuid = 'e066f'
-export const ref = 'can4P04'
 export default function ProportionnaliteNotes () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !

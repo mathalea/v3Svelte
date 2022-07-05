@@ -13,8 +13,6 @@ export const dateDePublication = '19/02/2022' // La date de publication initiale
  * @author Gilles Mora
  * Référence
 */
-export const uuid = '29fe1'
-export const ref = 'can1S10'
 export default function SensVariationSuite () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1

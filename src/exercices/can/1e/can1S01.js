@@ -13,8 +13,6 @@ export const dateDePublication = '14/02/2022' // La date de publication initiale
  * @author Gilles Mora (exercice en partie repris de Gaelle Morvan (1N10))
  * Référence
 */
-export const uuid = '9284d'
-export const ref = 'can1S01'
 export default function CalculTermeSuiteExp () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !

@@ -10,8 +10,6 @@ export const interactifType = 'mathLive'
  * Référence
  * Date de publication
 */
-export const uuid = 'f76ee'
-export const ref = 'can5L01'
 export default function MoitiePlusOuMoinsUn () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !

@@ -18,8 +18,6 @@ export const dateDePublication = '04/11/2021'
  * @author Eric Elter (inspiré par Aude Duvold)
  * Référence 6C30-6
  */
-export const uuid = '3442f'
-export const ref = '6C30-6'
 export default function MultiplierUnNombreParPuissanceDeDix () {
   'use strict'
   Exercice.call(this)

@@ -9,8 +9,6 @@ export { interactifReady, interactifType, amcReady, amcType } from '../6e/6C11.j
  *
  * @author Jean-Claude Lhote
  */
-export const uuid = '10d37'
-export const ref = 'c3C11'
 export default function DivisionCycle3 () {
   DivisionsEuclidiennes.call(this)
   this.sup = 0

@@ -14,8 +14,6 @@ export const amcType = 'AMCHybride'
 /**
 
 */
-export const uuid = 'e3b38'
-export const ref = '2F10-2'
 export default function lecturefonctionaffine () {
   Exercice.call(this)
   this.titre = titre

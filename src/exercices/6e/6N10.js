@@ -20,8 +20,6 @@ export const dateDePublication = '19/09/2021'
  * Référence 6N10
  * Relecture : Novembre 2021 par EE
 */
-export const uuid = 'c1548'
-export const ref = '6N10'
 export default function EcrirePetitsNombresEntiers () {
   Exercice.call(this)
   this.nbQuestions = 5

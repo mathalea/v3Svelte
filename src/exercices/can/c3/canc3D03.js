@@ -9,8 +9,6 @@ export const dateDePublication = '20/11/2021'
  * @author Jean-Claude Lhote
  * Référence canc3D03
  */
-export const uuid = '2a50e'
-export const ref = 'canc3D03'
 export default function AjouterDesDurees () {
   Exercice.call(this)
   this.typeExercice = 'simple'

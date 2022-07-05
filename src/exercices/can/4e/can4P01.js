@@ -11,8 +11,6 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can4P01
  */
-export const uuid = 'd286c'
-export const ref = 'can4P01'
 export default function ProblemesDeRobinets () {
   Exercice.call(this)
   this.typeExercice = 'simple'

@@ -17,8 +17,6 @@ export const titre = 'Problèmes d\'évenements récurrents'
  * Référence 4A12
  * 30/10/2021
 */
-export const uuid = '582ca'
-export const ref = '4A12'
 export default function ProblemesEvenementsRecurrents () {
   Exercice.call(this)
   this.nbQuestions = 1

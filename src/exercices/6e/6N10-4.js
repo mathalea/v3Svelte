@@ -9,8 +9,6 @@ export const titre = 'Écrire correctement les grands nombres entiers'
  * 6N10-4
  * Relecture : Novembre 2021 par EE
  */
-export const uuid = '87591'
-export const ref = '6N10-4'
 export default function EcrireNombresEntiersFormates () {
   Exercice.call(this)
   this.nbQuestions = 5

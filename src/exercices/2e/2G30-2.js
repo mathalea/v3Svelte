@@ -7,8 +7,6 @@ export const titre = 'Déterminer une équation réduite de droite'
  * @author Stéphane Guyon
  * Référence 2G30-2, ex 2G50-1
 */
-export const uuid = 'bd893'
-export const ref = '2G30-2'
 export default function EquationReduiteDeDroites () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

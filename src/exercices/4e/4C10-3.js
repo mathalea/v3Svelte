@@ -14,8 +14,6 @@ export const interactifType = 'mathLive'
 * @author Rémi Angot
 * 4C10-3
 */
-export const uuid = 'bd780'
-export const ref = '4C10-3'
 export default function ExerciceMultiplicationsRelatifs (max = 10) {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = max

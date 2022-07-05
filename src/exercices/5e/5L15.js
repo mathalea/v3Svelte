@@ -13,8 +13,6 @@ export const titre = 'Tester une égalité'
 * @author Rémi Angot
 * 5L15
 */
-export const uuid = '62b63'
-export const ref = '5L15'
 export default function TesterUneEgalite () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

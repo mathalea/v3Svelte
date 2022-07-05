@@ -12,8 +12,6 @@ export const amcType = 'AMCHybride'
  * @author Gilles Mora
  */
 export const dateDePublication = '22/06/2022'
-export const uuid = 'bdf4d'
-export const ref = 'can2G16'
 export default function VecteursCol () {
   Exercice.call(this)
   this.typeExercice = 'simple'

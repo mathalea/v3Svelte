@@ -21,8 +21,6 @@ export const interactifType = 'mathLive'
  * @author Rémi Angot
  * 6N23-1
  */
-export const uuid = '89347'
-export const ref = '6N23-1'
 export default function ExerciceDifferentesEcrituresNombresDecimaux () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = "Compléter l'égalité puis donner l'écriture décimale."

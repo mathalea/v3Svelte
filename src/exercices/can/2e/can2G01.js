@@ -12,8 +12,6 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can2G01
  */
-export const uuid = '52cc2'
-export const ref = 'can2G01'
 export default function AgrandissementReductionGFraction () {
   Exercice.call(this)
   this.typeExercice = 'simple'
