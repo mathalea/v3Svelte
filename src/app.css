@@ -73,3 +73,40 @@ input[type="range"]:focus::-moz-range-track {
     background: #ccc;
   }
 }
+
+/* Internet Explorer */
+input[type="range"]::-ms-track {
+  /* width: 300px; */
+  height: 10px;
+
+  /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+  background: transparent;
+
+  /*leave room for the larger thumb to overflow with a transparent border */
+  border-color: transparent;
+  border-width: 6px 0;
+
+  /*remove default tick marks*/
+  color: transparent;
+}
+input[type="range"]::-ms-fill-lower {
+  background: #777;
+  border-radius: 0px;
+}
+input[type="range"]::-ms-fill-upper {
+  background: #ddd;
+  border-radius: 0px;
+}
+input[type="range"]::-ms-thumb {
+  border: none;
+  height: 10px;
+  width: 16px;
+  border-radius: 0%;
+  background: #ff8c5c;
+}
+input[type="range"]:focus::-ms-fill-lower {
+  background: #888;
+}
+input[type="range"]:focus::-ms-fill-upper {
+  background: #ccc;
+}
