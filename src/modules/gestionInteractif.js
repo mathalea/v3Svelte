@@ -45,12 +45,12 @@ export function ajouteChampTexte (exercice, i, { texte = '', texteApres = '', in
 
 /**
  * Précise la réponse attendue
- * @param {'objet exercice'} exercice
- * @param {'numero de la question'} i
- * @param {'array || number'} a
+ * @param {Exercice} exercice
+ * @param {number} i
+ * @param {array || number} a
  */
 
-export function setReponse (exercice, i, valeurs, { digits = 0, decimals = 0, signe = false, exposantNbChiffres = 0, exposantSigne = false, approx = 0, aussiCorrect, digitsNum, digitsDen, basePuissance, exposantPuissance, baseNbChiffres, milieuIntervalle, formatInteractif = 'calcul' } = {}) {
+export function setReponse (exercice, i, valeurs, { digits = 0, formatInteractif = 'calcul', decimals = 0, signe = false, exposantNbChiffres = 0, exposantSigne = false, approx = 0, aussiCorrect = undefined, digitsNum = undefined, digitsDen = undefined, basePuissance = undefined, exposantPuissance = undefined, baseNbChiffres = undefined, milieuIntervalle = undefined } = {}) {
   let reponses = []
 
   if (Array.isArray(valeurs)) {

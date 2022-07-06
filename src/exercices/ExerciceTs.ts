@@ -6,6 +6,8 @@
  */
 export default class Exercice {
 titre: string
+numeroExercice: number
+id: number
 sup: any
 sup2: any
 sup3: any
@@ -41,7 +43,7 @@ pasDeVersionLatex: boolean
   correctionDetaillee: boolean
   correctionIsCachee: boolean
   video: string
-
+  interactifType: string
   interactif: boolean
   interactifObligatoire: boolean
 

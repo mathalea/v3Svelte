@@ -50,7 +50,7 @@ export function verifQuestionMathLive (exercice, i) {
           // La réponse est transformée en chaine compatible avec engine.parse()
           reponse = reponse.toString().replaceAll(',', '.').replaceAll('dfrac', 'frac')
           saisie = saisie.replace(/\((\+?-?\d+)\)/, '$1') // Pour les nombres négatifs, supprime les parenthèses
-          if (engine.parse(reponse).canonical.isSame(engine.parse(saisie).canonical)) {
+          if (engine.parse(reponse).canonical?.isSame(engine.parse(saisie).canonical)) {
             resultat = 'OK'
           }
           break
@@ -108,7 +108,7 @@ export function verifQuestionMathLive (exercice, i) {
             const newFraction = new FractionEtendue(parseFloat(saisie))
             saisieParsee = engine.parse(`${newFraction.toLatex().replace('dfrac', 'frac')}`).canonical
           } else {
-            saisieParsee = engine.parse(saisie).canonical
+            saisieParsee = engine.parse(saisie)?.canonical
           }
           fReponse = engine.parse(reponse.texFSD.replace('dfrac', 'frac')).canonical
           if (saisieParsee) {

@@ -13,7 +13,7 @@ export const interactifType = 'mathLive'
  * @author Rémi Angot
  * Référence 4C35
 */
-export default class nomExercice extends Exercice {
+export default class PuissanceDecimaleOuFractionnaire extends Exercice {
   constructor () {
     super()
     this.titre = titre

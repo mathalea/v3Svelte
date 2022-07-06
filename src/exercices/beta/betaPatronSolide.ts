@@ -243,8 +243,6 @@ class FauxPatrons {
   }
 }
 export default class PatronsSolides extends Exercice {
-    sup: string
-    besoinFormulaireTexte: string[]
     constructor () {
       super()
       this.sup = '1-2-3' // Cette ligne est très importante pour faire faire un exercice simple !
