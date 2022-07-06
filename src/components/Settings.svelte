@@ -147,11 +147,11 @@
     </div>
   {/if}
   {#if exercice.besoinFormulaireCaseACocher}
-    <div>
-      <label class="text-coopmaths-lightest" for="check1">
+    <div class="form-check">
+      <label class="form-check-label text-coopmaths-lightest" for="check1">
         {exercice.besoinFormulaireCaseACocher[0]} :
       </label>
-      <input name="check1" type="checkbox" class="w-16 border-2 text-coopmaths-lightest" bind:checked={sup} on:change={nouveauxReglages} />
+      <input name="check1" type="checkbox" class="form-check-input checkbox-primary" bind:checked={sup} on:change={nouveauxReglages} />
     </div>
   {/if}
   {#if exercice.besoinFormulaireNumerique}
@@ -208,9 +208,9 @@
 
   <!-- sup2 -->
   {#if exercice.besoinFormulaire2CaseACocher}
-    <div>
-      <label class=" text-coopmaths-lightest" for="check2">{exercice.besoinFormulaire2CaseACocher[0]} : </label>
-      <input name="check2" type="checkbox" class="w-16 border-2 text-coopmaths-lightest" bind:checked={sup2} on:change={nouveauxReglages} />
+    <div class="form-check">
+      <label class="form-check-label text-coopmaths-lightest" for="check2">{exercice.besoinFormulaire2CaseACocher[0]} : </label>
+      <input name="check2" type="checkbox" class="form-check-input checkbox-primary" bind:checked={sup2} on:change={nouveauxReglages} />
     </div>
   {/if}
   {#if exercice.besoinFormulaire2Numerique}
@@ -252,9 +252,9 @@
 
   <!-- sup3 -->
   {#if exercice.besoinFormulaire3CaseACocher}
-    <div>
-      <label class="text-coopmaths-lightest" for="check3">{exercice.besoinFormulaire3CaseACocher[0]} : </label>
-      <input name="check3" type="checkbox" class="w-16 border-2" bind:checked={sup3} on:change={nouveauxReglages} />
+    <div class="form-check">
+      <label class="form-check-label text-coopmaths-lightest" for="check3">{exercice.besoinFormulaire3CaseACocher[0]} : </label>
+      <input name="check3" type="checkbox" class="form-check-input checkbox-primary" bind:checked={sup3} on:change={nouveauxReglages} />
     </div>
   {/if}
   {#if exercice.besoinFormulaire3Numerique}
@@ -296,9 +296,9 @@
 
   <!-- sup4 -->
   {#if exercice.besoinFormulaire4CaseACocher}
-    <div>
-      <label class="text-coopmaths-lightest" for="check4">{exercice.besoinFormulaire4CaseACocher[0]} : </label>
-      <input name="check4" type="checkbox" class="w-16 border-2" bind:checked={sup4} on:change={nouveauxReglages} />
+    <div class="form-check">
+      <label class="form-check-label text-coopmaths-lightest" for="check4">{exercice.besoinFormulaire4CaseACocher[0]} : </label>
+      <input name="check4" type="checkbox" class="form-check-input checkbox-primary" bind:checked={sup4} on:change={nouveauxReglages} />
     </div>
   {/if}
   {#if exercice.besoinFormulaire4Numerique}
