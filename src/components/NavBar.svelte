@@ -1,6 +1,6 @@
 <script>
   import NavBarMenu from "./NavBarMenu.svelte"
-  let navBarVisible = false
+  let isNavBarVisible = false
   const menus = {
     referentiels: {
       titre: "Référentiels",
@@ -35,23 +35,23 @@
     <!-- logo -->
     <a href={"#"} class="inline-flex p-2 text-2xl font-bold text-white uppercase tracking-wider">Coopmaths</a>
     <!-- bouton menu -->
-    <button class=" lg:hidden inline-flex ml-auto items-center justify-center text-white font-bold text-xl" on:click={() => (navBarVisible = !navBarVisible)}>
+    <button class=" lg:hidden inline-flex ml-auto items-center justify-center text-white font-bold text-xl" on:click={() => (isNavBarVisible = !isNavBarVisible)}>
       <i class="bx bx-menu" />
     </button>
     <!-- menu -->
-    <div class="w-full mt-2 lg:inline-flex lg:w-auto lg:mt-0 {navBarVisible ? 'flex' : 'hidden'}">
+    <div class="w-full mt-2 lg:inline-flex lg:w-auto lg:mt-0 {isNavBarVisible ? 'flex' : 'hidden'}">
       <ul class="flex flex-col w-full space-y-2 lg:w-auto lg:flex-row lg:space-x-2 lg:space-y-0">
         <li>
-          <NavBarMenu {...menus.referentiels} bind:navBarVisible />
+          <NavBarMenu {...menus.referentiels} bind:isNavBarVisible />
         </li>
         <li>
           <a href={"#"} class="flex px-4 py-2 text-xl font-medium text-white hover:text-orange-200 rounded-sm">Calcul mental</a>
         </li>
         <li>
-          <NavBarMenu {...menus.professeurs} bind:navBarVisible />
+          <NavBarMenu {...menus.professeurs} bind:isNavBarVisible />
         </li>
         <li>
-          <NavBarMenu {...menus.aPropos} bind:navBarVisible />
+          <NavBarMenu {...menus.aPropos} bind:isNavBarVisible />
         </li>
       </ul>
     </div>
