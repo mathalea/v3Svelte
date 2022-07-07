@@ -4,7 +4,14 @@ import { get } from '../modules/dom'
 import { messageFeedback } from '../modules/messages'
 import { shuffleJusqua } from '../modules/outils.js'
 import { context } from '../modules/context.js'
-
+type specifier = {
+  backgroundColor?: string
+  fonctsize?: string
+}
+interface reponseLigne extends Element {
+  checked?: boolean
+  style?: specifier | string
+}
 export function verifQuestionQcm (exercice, i) {
   let resultat
   const monRouge = 'rgba(217, 30, 24, 0.5)'
@@ -18,11 +25,11 @@ export function verifQuestionQcm (exercice, i) {
   for (let k = 0; k < exercice.autoCorrection[i].propositions.length; k++) {
     if (exercice.autoCorrection[i].propositions[k].statut) nbBonnesReponsesAttendues++
   }
-  const spanReponseLigne = document.querySelector(`#resultatCheckEx${exercice.numeroExercice}Q${i}`)
+  const spanReponseLigne: reponseLigne = document.querySelector(`#resultatCheckEx${exercice.numeroExercice}Q${i}`)
   let aucuneMauvaiseReponseDonnee = true
   exercice.autoCorrection[i].propositions.forEach((proposition, indice) => {
-    const label = document.querySelector(`#labelEx${exercice.numeroExercice}Q${i}R${indice}`)
-    const check = document.querySelector(`#checkEx${exercice.numeroExercice}Q${i}R${indice}`)
+    const label: reponseLigne = document.querySelector(`#labelEx${exercice.numeroExercice}Q${i}R${indice}`)
+    const check: reponseLigne  = document.querySelector(`#checkEx${exercice.numeroExercice}Q${i}R${indice}`)
     if (proposition.statut) {
       if (check.checked) {
         nbBonnesReponses++

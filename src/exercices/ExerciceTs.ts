@@ -7,7 +7,9 @@
 export default class Exercice {
 titre: string
 numeroExercice: number
-id: number
+id: string
+typeExercice: string
+seed: string
 sup: any
 sup2: any
 sup3: any
@@ -46,6 +48,7 @@ pasDeVersionLatex: boolean
   interactifType: string
   interactif: boolean
   interactifObligatoire: boolean
+  interactifReady: boolean
 
   besoinFormulaireNumerique: boolean | any[]
   besoinFormulaireTexte: boolean | any[]

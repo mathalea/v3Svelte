@@ -11138,7 +11138,7 @@ export function codeTikz (fenetreMathalea2d, scale, mainlevee, ...objets) {
  */
 
 export function mathalea2d (
-  { xmin = 0, ymin = 0, xmax = 15, ymax = 6, pixelsParCm = 20, scale = 1, zoom = 1, optionsTikz, mainlevee = false, amplitude = 1, style = 'display: block', id = '' } = {},
+  { xmin = 0, ymin = 0, xmax = 15, ymax = 6, pixelsParCm = 20, scale = 1, zoom = 1, optionsTikz = '', mainlevee = false, amplitude = 1, style = 'display: block', id = '' } = {},
   ...objets
 ) {
   let code = ''

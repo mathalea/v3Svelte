@@ -35,7 +35,7 @@ export default class PuissanceDecimaleOuFractionnaire extends Exercice {
     const typesDeQuestions = (this.sup) ? typeQuestionsDisponibles : ['puissance0', 'puissance1', 'puissancePos', 'puissanceNeg', 'puissancePos', 'puissanceNeg', 'puissancePos', 'puissanceNeg', 'puissancePos', 'puissanceNeg']
     const listeTypeQuestions = combinaisonListes(typesDeQuestions, this.nbQuestions)
     let texte: string, texteCorr : string
-    let a: number, n : number, reponse: FractionX
+    let a: number, n : number, reponse: any
     for (let i = 0, cpt = 0; i < this.nbQuestions && cpt < 50;) {
       switch (listeTypeQuestions[i]) {
         case 'puissancePos':

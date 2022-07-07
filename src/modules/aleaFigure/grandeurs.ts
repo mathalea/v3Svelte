@@ -1,7 +1,8 @@
 import { texNombre2 } from '../outils.js'
-import { simplify, parse, unit, max, add, subtract, abs, log10, random, round } from 'mathjs'
+import { simplify, parse, unit, max, add, subtract, abs, log10, random, round, MathNode, OperatorNode, isConstantNode, AccessorNode, ArrayNode, OperatorNodeOp, OperatorNodeFn, ParenthesisNode, ConstantNode, OperatorNodeCtor } from 'mathjs'
 import { aleaName } from '../outilsMathjs.js'
 import { GVGraphicObject, GVPoint } from './elements'
+
 /**
   * Grandeur, methods for operations
   *
@@ -51,9 +52,9 @@ export class GVGrandeur {
      const calcul = parse(unit(this.toFixed + this.unit).multiply(unit(a.toFixed + a.unit)).toString())
      return new GVGrandeur(
        expression,
-       parseFloat(calcul.isConstantNode ? calcul.toString() : calcul.args[0].toString()),
+       parseFloat(isConstantNode(calcul) ? calcul.toString() : calcul.args[0].toString()),
        this.precision + a.precision,
-       calcul.isConstantNode ? '' : calcul.args[1].toString()
+       isConstantNode(calcul) ? '' : calcul.args[1].toString()
      )
    }
 
@@ -62,9 +63,9 @@ export class GVGrandeur {
      const calcul = parse(unit(this.toFixed + this.unit).divide(unit(a.toFixed + a.unit)).toString())
      return new GVGrandeur(
        expression,
-       parseFloat(calcul.isConstantNode ? calcul.toString() : calcul.args[0].toString()),
+       parseFloat(isConstantNode(calcul) ? calcul.toString() : calcul.args[0].toString()),
        this.precision - a.precision,
-       calcul.isConstantNode ? '' : calcul.args[1].toString()
+       isConstantNode(calcul) ? '' : calcul.args[1].toString()
      )
    }
 
@@ -73,9 +74,9 @@ export class GVGrandeur {
      const calcul = parse(add(unit(this.toFixed + this.unit), unit(a.toFixed + a.unit)).toString())
      return new GVGrandeur(
        expression,
-       parseFloat(calcul.isConstantNode ? calcul.toString() : calcul.args[0].toString()),
+       parseFloat(isConstantNode(calcul) ? calcul.toString() : calcul.args[0].toString()),
        max(this.precision, a.precision),
-       calcul.isConstantNode ? '' : calcul.args[1].toString()
+       isConstantNode(calcul) ? '' : calcul.args[1].toString()
      )
    }
 
@@ -84,9 +85,9 @@ export class GVGrandeur {
      const calcul = parse(subtract(unit(this.toFixed + this.unit), unit(a.toFixed + a.unit)).toString())
      return new GVGrandeur(
        expression,
-       parseFloat(calcul.isConstantNode ? calcul.toString() : calcul.args[0].toString()),
+       parseFloat(isConstantNode(calcul) ? calcul.toString() : calcul.args[0].toString()),
        max(this.precision, a.precision),
-       calcul.isConstantNode ? '' : calcul.args[1].toString()
+       isConstantNode(calcul) ? '' : calcul.args[1].toString()
      )
    }
 

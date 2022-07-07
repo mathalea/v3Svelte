@@ -4,7 +4,7 @@ import { context } from '../context.js'
 import { GVCartesian, GVCoordinates, GVPolar } from './coordinates'
 import { aleaName } from '../outilsMathjs.js'
 import { dot, round, cross, MathArray, Matrix } from 'mathjs'
-import { latexParCoordonnees, latexParPoint, tracePoint, point, labelPoint } from '../2d.js'
+import { latexParCoordonnees, latexParPoint, tracePoint, point, labelPoint, ObjetMathalea2D } from '../2d.js'
 import { circularPermutation, getDimensions } from './outils'
 /**
   * @class
@@ -77,10 +77,10 @@ export class GVPoint extends GVGraphicObject {
    r: number
    theta: number
    ggb: string
-   dot: string
+   dot: any
    labelPoints: [GVPoint, GVPoint, GVPoint]
    label: boolean = false
-   M2D: string
+   M2D: any
    constructor (arg1: GVCoordinates | number, arg2: number = 0) {
      super()
      if (arg1 instanceof GVCoordinates) {
@@ -97,7 +97,7 @@ export class GVPoint extends GVGraphicObject {
      this.r = this.polarCoordinates.r
      this.theta = this.polarCoordinates.theta
      this.ggb = `${this.name} = (${this.x},${this.y})`
-     this.M2D = point(this.x, this.y)
+     this.M2D = point(this.x, this.y,'','above right')
    }
 
    getPolarCoordinates (): GVCartesian {
@@ -178,7 +178,7 @@ export class GVPoint extends GVGraphicObject {
    }
 
    showName (scaleppc: number = 1): string {
-     let label: string
+     let label: any
      const splitname = this.name.split('_')
      let nameFormat = splitname.length === 1 ? splitname[0] : `${splitname[0]}_{${splitname[1]}}`
      if (this.labelPoints !== undefined) {
@@ -218,8 +218,7 @@ export class GVPoint extends GVGraphicObject {
      const splitname = this.name.split('_')
      let nameFormat = splitname.length === 1 ? splitname[0] : `${splitname[0]}_{${splitname[1]}}`
      if (context.isHtml) nameFormat = `$${nameFormat}$`
-     const newPoint = point(this.x, this.y, nameFormat, 'above')
-     this.dot = tracePoint(newPoint)
+     this.dot = tracePoint(point(this.x, this.y, nameFormat, 'above'))
      return this
    }
 
@@ -379,7 +378,7 @@ export class GVSegment extends GVLine {
    }
 
    showLabel (scaleppc: number = 1) {
-     let label: string
+     let label: any
      const P = new GVPoint((this.A.x + this.B.x) / 2, (this.A.y + this.B.y) / 2)
      if (context.isHtml) {
        label = latexParPoint(this.name, point(P.x, P.y, '', 'center'), 'black', 50, 8, '')

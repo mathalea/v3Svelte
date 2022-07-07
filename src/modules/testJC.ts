@@ -1,7 +1,10 @@
-export declare class FractionX {
+import type { Fraction } from 'mathjs'
+import type  { ObjetMathalea2D }  from './2d.js'
+interface FractionX {
+    constructor(any): FractionX
    num: number
    den: number
-    tyoe: string
+    type: string
 numIrred: number
 denIrred: number
 pourcentage: number
@@ -40,7 +43,7 @@ inferieurlarge (f2:FractionX):boolean
 estUneSimplification (f2:FractionX):boolean
 sommeFraction (f2:FractionX):FractionX
 produitFraction (f2:FractionX):FractionX
-produitFractions (...fractionX): FractionX
+produitFractions (...FractionX): FractionX
 texProduitFraction (f2:FractionX): string
 puissanceFraction (n:number): FractionX
 inverse (): FractionX | number
@@ -51,8 +54,8 @@ texSimplificationAvecEtapes (): string
 fractionDecimale (): FractionX | number
 texRacineCarree (detaillee: boolean): string
 racineCarree (): FractionX
-representationIrred (x: number, y: number, rayon:number, depart: number, type:string, couleur:string, unite0:number, unite1:number, scale:number, label:string): ObjetMathalea2d[]
-representation (x: number, y: number, rayon:number, depart: number, type:string, couleur:string, unite0:number, unite1:number, scale:number, label:string): ObjetMathalea2d[]
+representationIrred (x: number, y: number, rayon:number, depart: number, type:string, couleur:string, unite0:number, unite1:number, scale:number, label:string): ObjetMathalea2D[]
+representation (x: number, y: number, rayon:number, depart: number, type:string, couleur:string, unite0:number, unite1:number, scale:number, label:string): ObjetMathalea2D[]
 texArrayReponsesCoupleDeFractionsEgalesEtSimplifiees (n1: number, d1:number, n2:number, d2:number): string[]
 texArrayReponsesFractionsEgalesEtSimplifiees (n: number, d:number) : string[]
 texArrayReponsesCoupleDeFractions (n1:number, d1:number, n2:number, d2:number, egalesEtSimplifiees:boolean): string[]

@@ -831,7 +831,7 @@ export function isDecimal (value) {
 
 /**
  * Find if there is a SymbolNode in the node
- * @param {Mathnode} node
+ * @param {import('mathjs').MathNodeCommon} node
  * @returns {boolean}
  */
 function isContentSymbolNode (node) {
@@ -1366,7 +1366,7 @@ export function calculExpression2 (expression = '4/3+5/6', factoriser = false, d
 
 /**
  * Retourne des noms de points (ou des objets) dans un ordre aléatoire.
- * @param {string|Array} names // Liste des lettres sous format string ou array
+ * @param {string|Array|number} names // Liste des lettres sous format string ou array
  * @param {number} n // Nombre de lettres à retourner
  * @param {string|Array} result // S'il n'y a qu'un seul nom en sortie c'est un string sinon c'est un array
  * @remarque // Les lettres Q,W,X,Y,Z ont été exclues par défaut
