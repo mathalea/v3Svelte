@@ -135,12 +135,7 @@
 
   {#if visible}
     <div class="flex">
-      <div class="bg-gray-100 {parametresVisible ? 'w-1/4' : 'w-0'} flex flex-col duration-500">
-        {#if parametresVisible}
-          <Settings {exercice} on:reglages={handleNewSettings} />
-        {/if}
-      </div>
-      <div class="flex flex-col relative" id="exercice{indiceExercice}">
+      <div class="flex flex-col relative {parametresVisible ? 'w-3/4' : 'w-full'} duration-500" id="exercice{indiceExercice}">
         {#if contenuVisible}
           <Contenu chapeau={consigne} entrees={listeQuestions} {spacing} {indiceExercice} type={"enonce"} />
         {:else}
@@ -155,6 +150,11 @@
             >Vérifier les réponses
           </button>
           <div bind:this={divScore} />
+        {/if}
+      </div>
+      <div class="bg-gray-100 {parametresVisible ? 'w-1/4' : 'w-0'} flex flex-col duration-500">
+        {#if parametresVisible}
+          <Settings {exercice} on:reglages={handleNewSettings} />
         {/if}
       </div>
     </div>

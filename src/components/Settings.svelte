@@ -23,6 +23,7 @@
   let formText3
   let formText4
   let parametresText1
+
   afterUpdate(async () => {
     // On ne remplit les champs que la première fois
     if (exercice && premierUpdate) {
