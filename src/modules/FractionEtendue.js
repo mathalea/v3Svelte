@@ -309,7 +309,7 @@ export default class FractionX extends Fraction {
  */
     let estIrreductible
     definePropRo(this, 'estIrreductible', () => {
-      if (!estIrreductible) estIrreductible = gcd(this.num, this.den) === 1
+      if (!estIrreductible) estIrreductible = gcd(this.num, this.den) === 1 && this.den !== 1
       return estIrreductible
     })
 
