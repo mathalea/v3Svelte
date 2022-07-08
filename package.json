@@ -24,6 +24,7 @@
     "mathlive": "^0.69.11",
     "mathsteps": "github:mathalea/mathsteps",
     "seedrandom": "^3.0.5",
+    "ts-import": "4.0.0-beta.2",
     "tw-elements": "1.0.0-alpha12"
   },
   "devDependencies": {

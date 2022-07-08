@@ -1,5 +1,3 @@
-/* global $ */
-
 import { get } from '../modules/dom'
 import { messageFeedback } from '../modules/messages'
 import { shuffleJusqua } from '../modules/outils.js'
@@ -35,12 +33,15 @@ export function verifQuestionQcm (exercice, i) {
         nbBonnesReponses++
         if (aucuneMauvaiseReponseDonnee) {
           indiceFeedback = indice
+          // @ts-ignore
           label.style.backgroundColor = monVert
         }
       } else { // Bonnes réponses non cochées
+        // @ts-ignore
         label.style.backgroundColor = monVert
       }
     } else if (check.checked === true) {
+      // @ts-ignore
       label.style.backgroundColor = monRouge
       nbMauvaisesReponses++
       indiceFeedback = indice
@@ -56,6 +57,7 @@ export function verifQuestionQcm (exercice, i) {
     typeFeedback = 'error'
     resultat = 'KO'
   }
+  // @ts-ignore
   spanReponseLigne.style.fontSize = 'large'
   if (indiceFeedback > -1 && exercice.autoCorrection[i].propositions[indiceFeedback].feedback) {
     const eltFeedback = get(`feedbackEx${exercice.numeroExercice}Q${i}`, false)

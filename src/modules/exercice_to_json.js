@@ -328,18 +328,18 @@ function buildJsonExercicesOfLevel (level) { // level contient la première lett
 
 // main script
 builJsonDictionnaireExercices()
-/* buildJsonExercicesOfLevel('1e')
-buildJsonExercicesOfLevel('2e')
-buildJsonExercicesOfLevel('3e')
-buildJsonExercicesOfLevel('4e')
-buildJsonExercicesOfLevel('5e')
-buildJsonExercicesOfLevel('6e')
-buildJsonExercicesOfLevel('techno1')
-buildJsonExercicesOfLevel('CM')
-buildJsonExercicesOfLevel('HP')
-buildJsonExercicesOfLevel('PE')
-buildJsonExercicesOfLevel('Ex')
-buildJsonExercicesOfLevel('c3')
-*/
+// buildJsonExercicesOfLevel('1e')
+// buildJsonExercicesOfLevel('2e')
+// buildJsonExercicesOfLevel('3e')
+// buildJsonExercicesOfLevel('4e')
+// buildJsonExercicesOfLevel('5e')
+// buildJsonExercicesOfLevel('6e')
+// buildJsonExercicesOfLevel('techno1')
+// buildJsonExercicesOfLevel('CM')
+// buildJsonExercicesOfLevel('HP')
+// buildJsonExercicesOfLevel('PE')
+// buildJsonExercicesOfLevel('Ex')
+// buildJsonExercicesOfLevel('c3')
+//
 
 // buildJsonExercicesOfLevel('Te')

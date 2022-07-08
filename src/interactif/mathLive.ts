@@ -50,6 +50,7 @@ export function verifQuestionMathLive (exercice, i) {
           // La réponse est transformée en chaine compatible avec engine.parse()
           reponse = reponse.toString().replaceAll(',', '.').replaceAll('dfrac', 'frac')
           saisie = saisie.replace(/\((\+?-?\d+)\)/, '$1') // Pour les nombres négatifs, supprime les parenthèses
+          // @ts-ignore
           if (engine.parse(reponse).canonical?.isSame(engine.parse(saisie).canonical)) {
             resultat = 'OK'
           }
@@ -59,6 +60,7 @@ export function verifQuestionMathLive (exercice, i) {
           // La réponse est ici arrondie en fonction de reponse.param.decimals
           reponse = Number(reponse.toString().replaceAll(',', '.')).toFixed(exercice.autoCorrection[i].reponse.param.decimals)
           saisie = saisie.replace(/\((\+?-?\d+)\)/, '$1') // Pour les nombres négatifs, supprime les parenthèses
+          // @ts-ignore
           if (engine.parse(reponse).isSame(engine.parse(saisie))) {
             resultat = 'OK'
           }
@@ -68,6 +70,7 @@ export function verifQuestionMathLive (exercice, i) {
           if (typeof reponse === 'string') {
             reponse = reponse.replace(',', '.').replace('{.}', '.')
           }
+          // @ts-ignore
           if (engine.parse(reponse).canonical.isSame(engine.parse(saisie).canonical)) {
             saisie = saisie.split('\\times')
             if (Number(saisie[0]) >= 1 && Number(saisie[0]) < 10) { resultat = 'OK' }
@@ -108,8 +111,10 @@ export function verifQuestionMathLive (exercice, i) {
             const newFraction = new FractionEtendue(parseFloat(saisie))
             saisieParsee = engine.parse(`${newFraction.toLatex().replace('dfrac', 'frac')}`).canonical
           } else {
+            // @ts-ignore
             saisieParsee = engine.parse(saisie)?.canonical
           }
+          // @ts-ignore
           fReponse = engine.parse(reponse.texFSD.replace('dfrac', 'frac')).canonical
           if (saisieParsee) {
             if (saisieParsee.isEqual(fReponse)) resultat = 'OK'
@@ -118,6 +123,7 @@ export function verifQuestionMathLive (exercice, i) {
         case 'fraction': // Pour les exercices où l'on attend un écriture donnée d'une fraction
           saisie = champTexte.value.replace(',', '.')
           if (!isNaN(parseFloat(saisie))) {
+            // @ts-ignore
             saisieParsee = engine.parse(new FractionEtendue(saisie, 1).texFSD)
           } else {
             saisieParsee = engine.parse(saisie.replace('frac', 'dfrac').replace('ddfrac', 'dfrac'))
@@ -224,6 +230,7 @@ export function verifQuestionMathLive (exercice, i) {
     console.log(resultat)
     if (resultat === 'OK') {
       spanReponseLigne.innerHTML = '😎'
+      // @ts-ignore
       spanReponseLigne.style.fontSize = 'large'
       if (champTexte !== undefined) champTexte.readOnly = true
     } else if (resultat === 'essaieEncoreAvecUneSeuleUnite') {
@@ -232,14 +239,19 @@ export function verifQuestionMathLive (exercice, i) {
           ? reponse.uniteDeReference.split('^')[0] + texteExposant(reponse.uniteDeReference.split('^')[1])
           : reponse.uniteDeReference) +
         ' par exemple).</em>'
+        // @ts-ignore
       spanReponseLigne.style.color = '#f15929'
+      // @ts-ignore
       spanReponseLigne.style.fontWeight = 'bold'
     } else if (resultat === 'essaieEncorePuissance') {
       spanReponseLigne.innerHTML = '<br><em>Attention, la réponse est mathématiquement correcte mais n\'a pas le format demandé.</em>'
+      // @ts-ignore
       spanReponseLigne.style.color = '#f15929'
+      // @ts-ignore
       spanReponseLigne.style.fontWeight = 'bold'
     } else {
       spanReponseLigne.innerHTML = '☹️'
+      // @ts-ignore
       spanReponseLigne.style.fontSize = 'large'
       if (champTexte !== undefined) champTexte.readOnly = true
     }
