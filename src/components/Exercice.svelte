@@ -23,11 +23,11 @@
   let divExercice: HTMLDivElement
   let divScore: HTMLDivElement
   let buttonScore: HTMLButtonElement
-  let visible = true
-  let contenuVisible = true
-  let correctionVisible = true
-  let parametresVisible = false
-  let interactif = false
+  let isVisible = true
+  let isContenuVisible = true
+  let isCorrectionVisible = true
+  let isParametresVisible = false
+  let isInteractif = false
   let titre: string
   let consigne: string
   let consigneCorrection: string
@@ -40,7 +40,7 @@
   // let transitionOptions = { duration: 300, easing: linear }
 
   afterUpdate(async () => {
-    if (interactif) {
+    if (isInteractif) {
       loadMathLive()
       // Evènement indispensable pour pointCliquable par exemple
       const exercicesAffiches = new window.Event('exercicesAffiches', { bubbles: true })
@@ -69,10 +69,10 @@
   }
 
   async function transitionContenuCorrection() {
-    correctionVisible = !correctionVisible
-    contenuVisible = !contenuVisible
+    isCorrectionVisible = !isCorrectionVisible
+    isContenuVisible = !isContenuVisible
 
-    if (correctionVisible) {
+    if (isCorrectionVisible) {
       window.localStorage.setItem(`${exercice.id}|${exercice.seed}`, true)
     }
   }
@@ -94,7 +94,7 @@
   function updateDisplay() {
     if (exercice.seed === undefined) exercice.seed = randomInt(1, 9999).toString()
     seedrandom(exercice.seed, { global: true })
-    exercice.interactif = interactif
+    exercice.interactif = isInteractif
     exercice.nouvelleVersion()
     titre = exercice.titre
     listeQuestions = [...exercice.listeQuestions]
@@ -114,8 +114,8 @@
   })
 
   function switchInteractif() {
-    interactif = !interactif
-    exercice.interactif = interactif
+    isInteractif = !isInteractif
+    exercice.interactif = isInteractif
     updateDisplay()
   }
 
@@ -131,32 +131,32 @@
       <div class="flex font-normal text-lg lg:text-normal"><span class="invisible lg:visible mx-1 font-bold">&middot;</span>{titre}</div>
     </div>
     <div class="flex justify-start text-normal mt-1 lg:justify-end lg:text-xl">
-      <button type="button" on:click={switchInteractif}><i class="bx ml-2 {interactif ? 'bxs-mouse' : 'bx-mouse'} {!exercice?.interactifReady ? 'invisible' : ''}" /></button>
-      <button type="button" on:click={() => (visible = !visible)}>
-        <i class="bx ml-2 {visible ? 'bx-hide' : 'bx-show'}" />
+      <button type="button" on:click={switchInteractif}><i class="bx ml-2 {isInteractif ? 'bxs-mouse' : 'bx-mouse'} {!exercice?.interactifReady ? 'invisible' : ''}" /></button>
+      <button type="button" on:click={() => (isVisible = !isVisible)}>
+        <i class="bx ml-2 {isVisible ? 'bx-hide' : 'bx-show'}" />
       </button>
-      <button type="button" on:click={() => (parametresVisible = !parametresVisible)}>
-        <i class="bx ml-2 {parametresVisible ? 'bxs-cog' : 'bx-cog'}" />
+      <button type="button" on:click={() => (isParametresVisible = !isParametresVisible)}>
+        <i class="bx ml-2 {isParametresVisible ? 'bxs-cog' : 'bx-cog'}" />
       </button>
       <button type="button" on:click={newData}><i class="bx bx-refresh ml-2 {exercice?.typeExercice === 'statique' ? 'invisible' : ''}" /></button>
       <button type="button" on:click={remove}><i class="bx bx-trash ml-2" /></button>
       <BoutonMonter indice={indiceExercice} />
       <BoutonDescendre indice={indiceExercice} {indiceLastExercice} />
       <button class="flew flex-row items-center w-32" type="button" on:click={transitionContenuCorrection}>
-        <i class="bx ml-2 {contenuVisible ? 'bxs-toggle-left' : 'bxs-toggle-right'}"> <span class="font-thin text-sm"> {correctionVisible ? "Correction" : "Consigne"} </span> </i></button
+        <i class="bx ml-2 {isContenuVisible ? 'bxs-toggle-left' : 'bxs-toggle-right'}"> <span class="font-thin text-sm"> {isCorrectionVisible ? "Correction" : "Consigne"} </span> </i></button
       >
     </div>
   </h1>
 
-  {#if visible}
+  {#if isVisible}
     <div class="flex">
-      <div class="flex flex-col relative {parametresVisible ? 'w-3/4' : 'w-full'} duration-500" id="exercice{indiceExercice}">
-        {#if contenuVisible}
+      <div class="flex flex-col relative {isParametresVisible ? 'w-3/4' : 'w-full'} duration-500" id="exercice{indiceExercice}">
+        {#if isContenuVisible}
           <Contenu chapeau={consigne} entrees={listeQuestions} {spacing} {indiceExercice} type={"enonce"} />
         {:else}
           <Contenu chapeau={consigneCorrection} entrees={listeCorrections} spacing={spacingCorr} {indiceExercice} type={"correction"} />
         {/if}
-        {#if exercice?.interactif && !correctionVisible && contenuVisible}
+        {#if exercice?.interactif && !isCorrectionVisible && isContenuVisible}
           <button
             class="inline-block px-6 py-2.5 mr-10 my-5 ml-6 bg-coopmaths text-white font-medium text-xs leading-tight uppercase rounded shadow-md transform hover:scale-110 hover:bg-coopmaths-dark hover:shadow-lg focus:bg-coopmaths-dark focus:shadow-lg focus:outline-none focus:ring-0 active:bg-coopmaths-dark active:shadow-lg transition duration-150 ease-in-out checkReponses"
             type="submit"
@@ -167,8 +167,8 @@
           <div bind:this={divScore} />
         {/if}
       </div>
-      <div class="bg-gray-100 {parametresVisible ? 'w-1/4' : 'w-0'} flex flex-col duration-500">
-        {#if parametresVisible}
+      <div class="bg-gray-100 {isParametresVisible ? 'w-1/4' : 'w-0'} flex flex-col duration-500">
+        {#if isParametresVisible}
           <Settings {exercice} on:reglages={handleNewSettings} />
         {/if}
       </div>
