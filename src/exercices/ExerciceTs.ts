@@ -50,21 +50,21 @@ export default class Exercice {
   interactifReady: boolean
   interactifType: string
 
-  besoinFormulaireNumerique: boolean | any[]
-  besoinFormulaireTexte: boolean | any[]
+  besoinFormulaireNumerique: false | string[]
+  besoinFormulaireTexte: false | string[]
   besoinFormulaireCaseACocher: boolean | string[]
 
-  besoinFormulaire2Numerique: boolean | any[]
-  besoinFormulaire2Texte: boolean | any[]
-  besoinFormulaire2CaseACocher: boolean | any[]
+  besoinFormulaire2Numerique: false | string[]
+  besoinFormulaire2Texte: false | string[]
+  besoinFormulaire2CaseACocher: false | string[]
 
-  besoinFormulaire3Numerique: boolean | any[]
-  besoinFormulaire3Texte: boolean | any[]
-  besoinFormulaire3CaseACocher: boolean | any[]
+  besoinFormulaire3Numerique: false | string[]
+  besoinFormulaire3Texte: false | string[]
+  besoinFormulaire3CaseACocher: false | string[]
 
-  besoinFormulaire4Numerique: boolean | any[]
-  besoinFormulaire4Texte: boolean | any[]
-  besoinFormulaire4CaseACocher: boolean | any[]
+  besoinFormulaire4Numerique: false | string[]
+  besoinFormulaire4Texte: false | string[]
+  besoinFormulaire4CaseACocher: false | string[]
   mg32Editable: boolean
 
   typeExercice: string

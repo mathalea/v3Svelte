@@ -1,17 +1,14 @@
 <script lang="ts">
-  // import { parse, string } from "mathjs"
-
   import type Exercice from "src/exercices/ExerciceTs"
   import { afterUpdate, createEventDispatcher } from "svelte"
-  // import Liste from "./Liste.svelte"
   import Curseur from "./Curseur.svelte"
 
   export let exercice: Exercice
   let nbQuestions: number
-  let sup: string
-  let sup2: string
-  let sup3: string
-  let sup4: string
+  let sup: string | boolean
+  let sup2: string | boolean
+  let sup3: string | boolean
+  let sup4: string | boolean
   let premierUpdate: boolean = true
 
   // pour récupérer les tooltips de l'exercice
