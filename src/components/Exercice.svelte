@@ -1,6 +1,5 @@
 <script lang="ts">
   import { afterUpdate, onMount, tick } from "svelte"
-  import { linear } from "svelte/easing"
   import { listeExercices } from "./store"
   import seedrandom from "seedrandom"
   import BoutonMonter from "./BoutonMonter.svelte"
@@ -73,7 +72,7 @@
     isContenuVisible = !isContenuVisible
 
     if (isCorrectionVisible) {
-      window.localStorage.setItem(`${exercice.id}|${exercice.seed}`, true)
+      window.localStorage.setItem(`${exercice.id}|${exercice.seed}`, 'true')
     }
   }
 

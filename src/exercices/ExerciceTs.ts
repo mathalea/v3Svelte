@@ -48,6 +48,7 @@ export default class Exercice {
   interactif: boolean
   interactifObligatoire: boolean
   interactifReady: boolean
+  interactifType: string
 
   besoinFormulaireNumerique: boolean | any[]
   besoinFormulaireTexte: boolean | any[]
