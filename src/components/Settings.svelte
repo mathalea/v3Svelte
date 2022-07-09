@@ -8,21 +8,20 @@
 
   export let exercice
   let nbQuestions: number
-  let sup
-  let sup2
-  let sup3
-  let sup4
+  let sup: string
+  let sup2: string
+  let sup3: string
+  let sup4: string
   let premierUpdate = true
   // pour récupérer les tooltips de l'exercice
-  let formNum1
-  let formNum2
-  let formNum3
-  let formNum4
-  let formText1
-  let formText2
-  let formText3
-  let formText4
-  let parametresText1
+  let formNum1: string[]
+  let formNum2: string[]
+  let formNum3: string[]
+  let formNum4: string[]
+  let formText1: string[]
+  let formText2: string[]
+  let formText3: string[]
+  let formText4: string[]
 
   afterUpdate(async () => {
     // On ne remplit les champs que la première fois
@@ -48,7 +47,7 @@
     })
   }
   /**
-   * Transforme le tableau des tooltips d'un exercice en un objet
+   * Transforme le tableau des tooltips d'un paramètre type numérique en un objet
    * constitué d'un titre (celui du paramètre) et soit d'un tableau
    * des options, soit d'un nombre correspond à la valeur maximale.
    * <i>Référence :</i> commentaire du fichier Exercice.ts sur la propriété
@@ -88,7 +87,18 @@
     formNum4 = parseFormNumerique(exercice.besoinFormulaire4Numerique)
   }
 
-  function parseFormTexte(entreesFormulaire) {
+  /**
+   * Transforme le tableau des tooltips d'un paramètre type texte en un objet
+   * constitué d'un titre (celui du paramètre), de la consigne (sur quoi influe
+   * le paramètre) et d'un tableau des options.
+   * <i>Référence :</i> commentaire du fichier Exercice.ts sur la propriété
+   * <code>besoinFormulaireTexte</code> (<code>false</code>
+   * sinon this.besoinFormulaireTexte = [texte, tooltip])
+   * @param {string[]} entreesFormulaire Typiquement la valeur de la propriété
+   * <code>besoinFormulaireTexte</code>
+   * @author sylvain chambon
+   */
+  function parseFormTexte(entreesFormulaire: string[]) {
     let entrees = [...entreesFormulaire]
     let titre = entrees.shift() // le titre du formulaire est le 1er elt
     let champs = entrees.pop().split("\n")
@@ -115,25 +125,42 @@
     formText4 = parseFormTexte(exercice.besoinFormulaire4Texte)
   }
 
-  function parametresTexteChangent(listeParametres) {
-    console.log(sup + " ; " + listeParametres)
-    exercice.sup = listeParametres.join("-")
-    console.log(sup)
-    nouveauxReglages
-  }
-
+  /**
+   * Appliquer les nouveaux réglages lorsque le bouton de validation
+   * du formulaire des paramètres texte est cliqué
+   * @param {HTMLFormElement} e
+   * @author sylvain chambon
+   */
   function onSubmit(e) {
     const formData = new FormData(e.target)
-
+    console.log(e.target.name)
     const data = []
+    // chaque formulaire est nommé 'formTextX' où X est l'indice du sup
+    let indiceSup = e.target.name.charAt(e.target.name.length - 1)
     for (let field of formData) {
       const [key, value] = field
+      // chaque curseur est nommé 'paramTextX-idNumY'
+      // où 'X' est le numéro du besoinFormulaireTextX
+      // et 'Y' l'indice correspondant au paramètre
       for (let i = 0; i < parseInt(value); i++) {
         data.push(key.charAt(key.length - 1))
       }
     }
-    parametresText1 = data.join("-")
-    console.log(data.join("-"))
+    switch (indiceSup) {
+      case "1":
+        sup = data.join("-")
+        break
+      case "2":
+        sup2 = data.join("-")
+        break
+      case "3":
+        sup3 = data.join("-")
+        break
+      case "4":
+        sup4 = data.join("-")
+        break
+    }
+    nouveauxReglages()
   }
 </script>
 
@@ -187,22 +214,17 @@
   {/if}
   {#if exercice.besoinFormulaireTexte}
     <div>
-      <!-- <label class=" text-coopmaths-lightest" for="formText1">{formText1.titre} :</label> -->
-      <!-- <input name="formText1" type="text" class="w-16 border-2" data-bs-toggle="tooltip" title={exercice.besoinFormulaireTexte[1] || ""} bind:value={sup} on:change={nouveauxReglages} /> -->
-      <form on:submit|preventDefault={onSubmit}>
+      <form id="formText1" name="formText1" on:submit|preventDefault={onSubmit}>
         <fieldset>
           <legend class="text-coopmaths-lightest">{formText1.titre}<button type="submit" class="ml-2 text-xl duration-75"><i class="bx bxs-edit" /></button></legend>
           <div class="flex flex-col  ml-3 mt-1">
             {#each formText1.champsDecortiques as entree, i}
               <div class="flew-row space-x-2">
-                <!-- <input type="checkbox" name="paramText1-{i + 1}" bind:group={parametresText1} value={entree.valeur} id="paramText1-{i + 1}-option" />
-                <label for="paramText1-{i + 1}">{entree.parametre}</label> -->
                 <Curseur titre={entree.parametre} montant={0} identifiant={["paramText1-", i + 1, "-curseur"].join("")} nom={["paramText1-idNum-", entree.valeur].join("")} max={nbQuestions} />
               </div>
             {/each}
           </div>
         </fieldset>
-        <p>Valeurs : {parametresText1}</p>
       </form>
     </div>
   {/if}
@@ -246,8 +268,18 @@
   {/if}
   {#if exercice.besoinFormulaire2Texte}
     <div>
-      <label class="text-coopmaths-lightest" for="formText2">{exercice.besoinFormulaire2Texte[0]} :</label>
-      <input name="formText2" type="text" class="w-16 border-2" data-bs-toggle="tooltip" title={exercice.besoinFormulaire2Texte[1] || ""} bind:value={sup2} on:change={nouveauxReglages} />
+      <form id="formText2" name="formText2" on:submit|preventDefault={onSubmit}>
+        <fieldset>
+          <legend class="text-coopmaths-lightest">{formText2.titre}<button type="submit" class="ml-2 text-xl duration-75"><i class="bx bxs-edit" /></button></legend>
+          <div class="flex flex-col  ml-3 mt-1">
+            {#each formText2.champsDecortiques as entree, i}
+              <div class="flew-row space-x-2">
+                <Curseur titre={entree.parametre} montant={0} identifiant={["paramText2-", i + 1, "-curseur"].join("")} nom={["paramText2-idNum-", entree.valeur].join("")} max={nbQuestions} />
+              </div>
+            {/each}
+          </div>
+        </fieldset>
+      </form>
     </div>
   {/if}
 
@@ -290,8 +322,18 @@
   {/if}
   {#if exercice.besoinFormulaire3Texte}
     <div>
-      <label class="text-coopmaths-lightest" for="formText3">{exercice.besoinFormulaire3Texte[0]} :</label>
-      <input name="formText3" type="text" class="w-16 border-2" data-bs-toggle="tooltip" title={exercice.besoinFormulaire3Texte[1] || ""} bind:value={sup3} on:change={nouveauxReglages} />
+      <form id="formText3" name="formText3" on:submit|preventDefault={onSubmit}>
+        <fieldset>
+          <legend class="text-coopmaths-lightest">{formText3.titre}<button type="submit" class="ml-2 text-xl duration-75"><i class="bx bxs-edit" /></button></legend>
+          <div class="flex flex-col  ml-3 mt-1">
+            {#each formText3.champsDecortiques as entree, i}
+              <div class="flew-row space-x-2">
+                <Curseur titre={entree.parametre} montant={0} identifiant={["paramText3-", i + 1, "-curseur"].join("")} nom={["paramText3-idNum-", entree.valeur].join("")} max={nbQuestions} />
+              </div>
+            {/each}
+          </div>
+        </fieldset>
+      </form>
     </div>
   {/if}
 
@@ -334,8 +376,18 @@
   {/if}
   {#if exercice.besoinFormulaire4Texte}
     <div>
-      <label class="text-coopmaths-lightest" for="formText4">{exercice.besoinFormulaire4Texte[0]} :</label>
-      <input name="formText4" type="text" class="w-16 border-2" data-bs-toggle="tooltip" title={exercice.besoinFormulaire4Texte[1] || ""} bind:value={sup4} on:change={nouveauxReglages} />
+      <form id="formText4" name="formText4" on:submit|preventDefault={onSubmit}>
+        <fieldset>
+          <legend class="text-coopmaths-lightest">{formText4.titre}<button type="submit" class="ml-2 text-xl duration-75"><i class="bx bxs-edit" /></button></legend>
+          <div class="flex flex-col  ml-3 mt-1">
+            {#each formText4.champsDecortiques as entree, i}
+              <div class="flew-row space-x-2">
+                <Curseur titre={entree.parametre} montant={0} identifiant={["paramText4-", i + 1, "-curseur"].join("")} nom={["paramText4-idNum-", entree.valeur].join("")} max={nbQuestions} />
+              </div>
+            {/each}
+          </div>
+        </fieldset>
+      </form>
     </div>
   {/if}
 </div>
