@@ -1,32 +1,31 @@
-<script lang='ts'>
-	import { createEventDispatcher } from 'svelte';
+<script lang="ts">
+	import { createEventDispatcher } from 'svelte'
 
-	const dispatch = createEventDispatcher();
-	const close = () => dispatch('close');
+	const dispatch = createEventDispatcher()
+	const close = () => dispatch('close')
 
-	let modal;
+	let modal: HTMLDivElement
 
-	function handle_keydown (e:KeyboardEvent) {
+	function handle_keydown(e: KeyboardEvent) {
 		if (e.key === 'Escape') {
-			close();
-			return;
+			close()
+			return
 		}
-	};
-
+	}
 </script>
 
-<svelte:window on:keydown={handle_keydown}/>
+<svelte:window on:keydown="{handle_keydown}" />
 
-<div class="modal-background" on:click={close}></div>
+<div class="modal-background" on:click="{close}"></div>
 
-<div class="modal" role="dialog" aria-modal="true" bind:this={modal}>
-	<slot name="header"></slot>
-	<hr>
-	<slot></slot>
-	<hr>
+<div class="modal" role="dialog" aria-modal="true" bind:this="{modal}">
+	<slot name="header" />
+	<hr />
+	<slot />
+	<hr />
 
 	<!-- svelte-ignore a11y-autofocus -->
-	<button autofocus on:click={close} >Fermer</button>
+	<button autofocus on:click="{close}">Fermer</button>
 </div>
 
 <style>
@@ -36,7 +35,7 @@
 		left: 0;
 		width: 100%;
 		height: 100%;
-		background: rgba(0,0,0,0.3);
+		background: rgba(0, 0, 0, 0.3);
 	}
 
 	.modal {
@@ -47,7 +46,7 @@
 		max-width: 32em;
 		max-height: calc(100vh - 4em);
 		overflow: auto;
-		transform: translate(-50%,-50%);
+		transform: translate(-50%, -50%);
 		padding: 1em;
 		border-radius: 0.2em;
 		background: white;

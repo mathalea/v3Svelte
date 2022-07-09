@@ -5,7 +5,7 @@
     referentiels: {
       titre: "Référentiels",
       entrees: ["Sixième", "Cinquième", "Quatrième", "Troisième", "Seconde", "CRPE"],
-      menuOuvert: false,
+      isMenuOpen: false,
     },
     professeurs: {
       titre: "Professeurs",
@@ -19,12 +19,12 @@
         "Outils",
         "Scores des éleves",
       ],
-      menuOuvert: false,
+      isMenuOpen: false,
     },
     aPropos: {
       titre: "À Propos",
       entrees: ["Objectifs généraux", "Présentation du logiciel", "Nous contacter", "Documentation pour les développeurs"],
-      menuOuvert: false,
+      isMenuOpen: false,
     },
   }
 </script>
