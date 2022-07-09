@@ -1,27 +1,38 @@
 <script lang="ts">
-  import { parse } from "mathjs"
+  // import { parse, string } from "mathjs"
 
   import type Exercice from "src/exercices/ExerciceTs"
   import { afterUpdate, createEventDispatcher } from "svelte"
-  import Liste from "./Liste.svelte"
+  // import Liste from "./Liste.svelte"
   import Curseur from "./Curseur.svelte"
 
-  export let exercice
+  export let exercice: Exercice
   let nbQuestions: number
   let sup: string
   let sup2: string
   let sup3: string
   let sup4: string
-  let premierUpdate = true
+  let premierUpdate: boolean = true
+
   // pour récupérer les tooltips de l'exercice
-  let formNum1: string[]
-  let formNum2: string[]
-  let formNum3: string[]
-  let formNum4: string[]
-  let formText1: string[]
-  let formText2: string[]
-  let formText3: string[]
-  let formText4: string[]
+  type FormNumerique = {
+    titre: string
+    champs: string | string[]
+  }
+  let formNum1: FormNumerique
+  let formNum2: FormNumerique
+  let formNum3: FormNumerique
+  let formNum4: FormNumerique
+
+  type FormText = {
+    titre: string
+    consigne: string
+    champsDecortiques: any[]
+  }
+  let formText1: FormText
+  let formText2: FormText
+  let formText3: FormText
+  let formText4: FormText
 
   afterUpdate(async () => {
     // On ne remplit les champs que la première fois
@@ -58,9 +69,9 @@
    * @author sylvain chambon
    */
   function parseFormNumerique(entreesFormulaire: string[]) {
-    let entrees = [...entreesFormulaire]
-    let titre = entrees.shift() // le titre du paramètre est le 1er elt
-    let champs: string[] | number
+    let entrees: string[] = [...entreesFormulaire]
+    let titre: string = entrees.shift() // le titre du paramètre est le 1er elt
+    let champs: string[] | string
     if (entrees.length > 1) {
       // il y a une liste de tooltips qui deviendront les entrées
       champs = entrees
@@ -99,14 +110,14 @@
    * @author sylvain chambon
    */
   function parseFormTexte(entreesFormulaire: string[]) {
-    let entrees = [...entreesFormulaire]
-    let titre = entrees.shift() // le titre du formulaire est le 1er elt
-    let champs = entrees.pop().split("\n")
-    let consigne = champs.shift() // premier éléments est la consigne
-    let champsDecortiques = []
+    let entrees: string[] = [...entreesFormulaire]
+    let titre: string = entrees.shift() // le titre du formulaire est le 1er elt
+    let champs: string[] = entrees.pop().split("\n")
+    let consigne: string = champs.shift() // premier éléments est la consigne
+    let champsDecortiques: any[] = []
     champs.forEach((entree) => {
       // avant ' : ' c'est la valeur d'activation et après c'est le paramètre
-      let parties = entree.split(" : ")
+      let parties: string[] = entree.split(" : ")
       champsDecortiques.push({ parametre: parties[1], valeur: parties[0] })
     })
     return { titre, consigne, champsDecortiques }
@@ -128,15 +139,15 @@
   /**
    * Appliquer les nouveaux réglages lorsque le bouton de validation
    * du formulaire des paramètres texte est cliqué
-   * @param {HTMLFormElement} e
+   * @param {SubmitEvent} e
    * @author sylvain chambon
    */
-  function onSubmit(e) {
-    const formData = new FormData(e.target)
-    console.log(e.target.name)
-    const data = []
+  function onSubmit(e: SubmitEvent) {
+    const formData = new FormData(e.target as HTMLFormElement)
+    const data: string[] = []
     // chaque formulaire est nommé 'formTextX' où X est l'indice du sup
-    let indiceSup = e.target.name.charAt(e.target.name.length - 1)
+    const { name } = e.target as HTMLButtonElement
+    let indiceSup: string = name.charAt(name.length - 1)
     for (let field of formData) {
       const [key, value] = field
       // chaque curseur est nommé 'paramTextX-idNumY'
