@@ -135,3 +135,12 @@ et un fichier `settings.json` de VS Codium qui ressemble à ça :
   }
 }
 ```
+
+## Svelte
+
+### Passer un paramètre à une fonction
+
+```javascript
+on:curseurNotif={submitOnSliderChange("formText1"}         // don't work
+on:curseurNotif={() => submitOnSliderChange("formText1")}  // works
+```

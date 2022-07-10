@@ -134,17 +134,14 @@
   }
 
   /**
-   * Appliquer les nouveaux réglages lorsque le bouton de validation
-   * du formulaire des paramètres texte est cliqué
-   * @param {SubmitEvent} e
+   *
+   * @param {string} formId id du formulaire
    * @author sylvain chambon
    */
-  function onSubmit(e: SubmitEvent) {
-    const formData = new FormData(e.target as HTMLFormElement)
+  function submitOnSliderChange(formId: string) {
+    const e: HTMLFormElement = document.getElementById(formId as string)
+    const formData = new FormData(e as HTMLFormElement)
     const data: string[] = []
-    // chaque formulaire est nommé 'formTextX' où X est l'indice du sup
-    const { name } = e.target as HTMLButtonElement
-    let indiceSup: string = name.charAt(name.length - 1)
     for (let field of formData) {
       const [key, value] = field
       // chaque curseur est nommé 'paramTextX-idNumY'
@@ -154,7 +151,8 @@
         data.push(key.charAt(key.length - 1))
       }
     }
-    switch (indiceSup) {
+    // chaque formulaire est nommé 'formTextX' où X est l'indice du sup
+    switch (formId.charAt(formId.length - 1)) {
       case "1":
         sup = data.join("-")
         break
@@ -222,13 +220,20 @@
   {/if}
   {#if exercice.besoinFormulaireTexte}
     <div>
-      <form id="formText1" name="formText1" on:submit|preventDefault={onSubmit}>
+      <form id="formText1" name="formText1">
         <fieldset>
-          <legend class="text-coopmaths-lightest">{formText1.titre}<button type="submit" class="ml-2 text-xl duration-75"><i class="bx bxs-edit" /></button></legend>
+          <legend class="text-coopmaths-lightest">{formText1.titre}</legend>
           <div class="flex flex-col  ml-3 mt-1">
             {#each formText1.champsDecortiques as entree, i}
               <div class="flew-row space-x-2">
-                <Curseur titre={entree.parametre} montant={0} identifiant={["paramText1-", i + 1, "-curseur"].join("")} nom={["paramText1-idNum-", entree.valeur].join("")} max={nbQuestions} />
+                <Curseur
+                  on:curseurNotif={() => submitOnSliderChange("formText1")}
+                  titre={entree.parametre}
+                  montant={0}
+                  identifiant={["paramText1-", i + 1, "-curseur"].join("")}
+                  nom={["paramText1-idNum-", entree.valeur].join("")}
+                  max={nbQuestions}
+                />
               </div>
             {/each}
           </div>
@@ -276,13 +281,20 @@
   {/if}
   {#if exercice.besoinFormulaire2Texte}
     <div>
-      <form id="formText2" name="formText2" on:submit|preventDefault={onSubmit}>
+      <form id="formText2" name="formText2">
         <fieldset>
-          <legend class="text-coopmaths-lightest">{formText2.titre}<button type="submit" class="ml-2 text-xl duration-75"><i class="bx bxs-edit" /></button></legend>
+          <legend class="text-coopmaths-lightest">{formText2.titre}</legend>
           <div class="flex flex-col  ml-3 mt-1">
             {#each formText2.champsDecortiques as entree, i}
               <div class="flew-row space-x-2">
-                <Curseur titre={entree.parametre} montant={0} identifiant={["paramText2-", i + 1, "-curseur"].join("")} nom={["paramText2-idNum-", entree.valeur].join("")} max={nbQuestions} />
+                <Curseur
+                  on:curseurNotif={() => submitOnSliderChange("formText2")}
+                  titre={entree.parametre}
+                  montant={0}
+                  identifiant={["paramText2-", i + 1, "-curseur"].join("")}
+                  nom={["paramText2-idNum-", entree.valeur].join("")}
+                  max={nbQuestions}
+                />
               </div>
             {/each}
           </div>
@@ -330,13 +342,20 @@
   {/if}
   {#if exercice.besoinFormulaire3Texte}
     <div>
-      <form id="formText3" name="formText3" on:submit|preventDefault={onSubmit}>
+      <form id="formText3" name="formText3">
         <fieldset>
-          <legend class="text-coopmaths-lightest">{formText3.titre}<button type="submit" class="ml-2 text-xl duration-75"><i class="bx bxs-edit" /></button></legend>
+          <legend class="text-coopmaths-lightest">{formText3.titre}</legend>
           <div class="flex flex-col  ml-3 mt-1">
             {#each formText3.champsDecortiques as entree, i}
               <div class="flew-row space-x-2">
-                <Curseur titre={entree.parametre} montant={0} identifiant={["paramText3-", i + 1, "-curseur"].join("")} nom={["paramText3-idNum-", entree.valeur].join("")} max={nbQuestions} />
+                <Curseur
+                  on:curseurNotif={() => submitOnSliderChange("formText3")}
+                  titre={entree.parametre}
+                  montant={0}
+                  identifiant={["paramText3-", i + 1, "-curseur"].join("")}
+                  nom={["paramText3-idNum-", entree.valeur].join("")}
+                  max={nbQuestions}
+                />
               </div>
             {/each}
           </div>
@@ -384,13 +403,20 @@
   {/if}
   {#if exercice.besoinFormulaire4Texte}
     <div>
-      <form id="formText4" name="formText4" on:submit|preventDefault={onSubmit}>
+      <form id="formText4" name="formText4">
         <fieldset>
-          <legend class="text-coopmaths-lightest">{formText4.titre}<button type="submit" class="ml-2 text-xl duration-75"><i class="bx bxs-edit" /></button></legend>
+          <legend class="text-coopmaths-lightest">{formText4.titre}</legend>
           <div class="flex flex-col  ml-3 mt-1">
             {#each formText4.champsDecortiques as entree, i}
               <div class="flew-row space-x-2">
-                <Curseur titre={entree.parametre} montant={0} identifiant={["paramText4-", i + 1, "-curseur"].join("")} nom={["paramText4-idNum-", entree.valeur].join("")} max={nbQuestions} />
+                <Curseur
+                  on:curseurNotif={() => submitOnSliderChange("formText4")}
+                  titre={entree.parametre}
+                  montant={0}
+                  identifiant={["paramText4-", i + 1, "-curseur"].join("")}
+                  nom={["paramText4-idNum-", entree.valeur].join("")}
+                  max={nbQuestions}
+                />
               </div>
             {/each}
           </div>
