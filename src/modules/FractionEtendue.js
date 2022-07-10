@@ -1,8 +1,23 @@
 import { arrondi, obtenirListeFacteursPremiers, quotientier, extraireRacineCarree, fractionSimplifiee, listeDiviseurs, pgcd, nombreDeChiffresDansLaPartieDecimale, calcul, miseEnEvidence, ecritureParentheseSiNegatif, signeMoinsEnEvidence, texNombre } from './outils.js'
 import { point, vecteur, segment, carre, cercle, arc, translation, rotation, texteParPosition } from './2d.js'
-import { Fraction, equal, largerEq, subtract, add, abs, multiply, gcd, larger, smaller, round, lcm, max, min, pow } from 'mathjs'
 import { fraction } from './fractions.js'
-
+import { create, all } from 'mathjs'
+const math = create(all)
+const equal = math.equal
+const largerEq = math.largerEq
+const add = math.add
+const abs = math.abs
+const Fraction = math.Fraction
+const multiply = math.multiply
+const gcd = math.gcd
+const larger = math.larger
+const smaller = math.smaller
+const pow = math.pow
+const min = math.min
+const max = math.max
+const lcm = math.lcm
+const round = math.round
+const subtract = math.subtract
 // Fonction écrite par Daniel Caillibaud pour créer ajouter les propriétés à la première utilisation de celles-ci.
 const definePropRo = (obj, prop, get) => {
   Object.defineProperty(obj, prop, {

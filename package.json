@@ -8,7 +8,7 @@
     "build": "vite build",
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
-    "builddicos": "tsc > journal.log && cd ./built/modules && node exercice_to_json.js >journal2.json"
+    "builddicos": "tsc > journal.log && cd ./built/modules && node --report-dir=./ --report-compact --report-filename=journal2.log exercice_to_json.js"
   },
   "dependencies": {
     "@cortex-js/compute-engine": "^0.6.0",

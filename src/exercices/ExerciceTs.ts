@@ -5,28 +5,28 @@
  * @author Rémi Angot
  */
 export default class Exercice {
-titre: string
-numeroExercice: number
-id: string
-typeExercice: string
-seed: string
-sup: any
-sup2: any
-sup3: any
-sup4: any
-boutonAide: boolean | HTMLButtonElement
-consigne: string
-consigneCorrection: string
-introduction: string
-listeQuestions: string[]
-listeCorrections: string[]
-contenu: string
-contenuCorrection: string
-autoCorrection: object[]
-tableauSolutionsDuQcm: object[]
-spacing: number
-spacingCorr: number
-pasDeVersionLatex: boolean
+  titre: string
+  numeroExercice: number
+  id: string
+  typeExercice: string
+  seed: string
+  sup: any
+  sup2: any
+  sup3: any
+  sup4: any
+  boutonAide: boolean | HTMLButtonElement
+  consigne: string
+  consigneCorrection: string
+  introduction: string
+  listeQuestions: string[]
+  listeCorrections: string[]
+  contenu: string
+  contenuCorrection: string
+  autoCorrection: object[]
+  tableauSolutionsDuQcm: object[]
+  spacing: number
+  spacingCorr: number
+  pasDeVersionLatex: boolean
   listePackages: string[]
   consigneModifiable: boolean
   nbQuestionsModifiable: boolean

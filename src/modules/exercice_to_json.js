@@ -1,6 +1,5 @@
 // @ts-nocheck
 /* eslint-disable no-unused-vars */
-import tsImport from 'ts-import'
 import fs from 'fs'
 import path from 'path'
 import { uuidFromRef, urlFromUuid, listeChapitresDuNiveau, listeExosDuChapitre, listeExosAvecTag, toObjet, toMap, collecteUuidsFromDico } from './fileTools.js'
@@ -175,54 +174,6 @@ function gereModuleJs (module, file, name, dictionnaire, referentiel2022, uuidsT
   }
   return true
 }
-function gereModuleTs (module, file, name, dictionnaire, referentiel2022, uuidsToUrl, listOfUuids, isCan) {
-  if (module.uuid === undefined) {
-    let uuid, level, chap, titre, isAmcReady, isInteractifReady, themes, datePublication, dateModification
-    try {
-      do {
-        uuid = createUuid()
-      } while (listOfUuids.get(uuid) !== undefined)
-      titre = module.titre
-      isAmcReady = Boolean(module.amcReady)
-      isInteractifReady = Boolean(module.interactifReady)
-      themes = module.themes ? module.themes : []
-      datePublication = module.dateDePulication
-      dateModification = module.dateDeModificationImportante
-    } catch (error) {
-      console.log(`Erreur avec ${name} : ${error}`)
-    }
-    if (isCan) {
-      if (['1', '2', '3', '4', '5', '6', 'T'].indexOf(name[3]) !== -1) {
-        level = name[3] + 'e'
-        chap = name.substring(3, 5)
-      } else {
-        level = name.substring(3, 5)
-        chap = name.substring(3, 6)
-      }
-    } else {
-      if (['1', '2', '3', '4', '5', '6', 'T'].indexOf(name[0]) !== -1) {
-        level = name[0] + 'e'
-        chap = name.substring(0, 3)
-      } else if (name.substring(0, 7) === 'techno1') {
-        level = name.substring(0, 7)
-        chap = name.substring(7, 8)
-      } else {
-        level = name[0] + name[1]
-        chap = name.substring(0, 4)
-      }
-    }
-    const tags = { AMC: !!isAmcReady, Interactif: !!isInteractifReady, Can: !!isCan }
-    ecrireUuidDansFichier(uuid, name, file)
-    ajouteExoDico({ uuid, name, titre, level, chap, themes, tags, datePublication, dateModification, dico: dictionnaire })
-    ajouteExoReferentiel({ uuid, name, level, chap, referentiel: referentiel2022 })
-    if (isCan) {
-      uuidsToUrl.set(uuid, [`can/${level}`, name])
-    } else {
-      uuidsToUrl.set(uuid, [level, name])
-    }
-  }
-  return true
-}
 
 /**
  * Fonction qui génère ou maintient à jour le dictionnaire de tous les exercices.
@@ -281,10 +232,6 @@ async function builJsonDictionnaireExercices () {
       .catch(error => {
         console.log(file.substring(file.length - 2))
         if (file.substring(file.length - 2) !== 'ts') console.error(error)
-        /* tsImport.load(file)
-          .then(module => gereModuleTs(module, file, name, dictionnaire, referentiel2022, uuidsToUrl, listOfUuids, isCan))
-          .catch(error => console.log(`Erreur dans import de : ${file} \n ${error.message}`))
-          */
       }
       )
     promesses.push(promesse)
