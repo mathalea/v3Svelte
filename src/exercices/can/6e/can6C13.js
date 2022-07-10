@@ -18,7 +18,7 @@ export default function FSomme2Decimaux () {
   this.formatChampTexte = 'largeur15 inline'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c, d, e
     if (choice([true, false])) {
       a = randint(3, 9)

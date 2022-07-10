@@ -17,7 +17,7 @@ export default function PrioriteOperatoire5e () {
   this.tailleDiaporama = 2
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(5, 9)
     const b = 20 - a
     const c = randint(3, 9)

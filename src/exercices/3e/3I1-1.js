@@ -67,7 +67,7 @@ function Syracuse ({ N }) {
 };
 
 function syracuse ({ N = '1' }) {
-  return new Syracuse({ N: N })
+  return new Syracuse({ N })
 };
 
 export default function ConjectureDeSyracuse () {
@@ -90,7 +90,7 @@ export default function ConjectureDeSyracuse () {
   //  this.sup3 = false; // A décommenter : valeur par défaut d'un troisième paramètre
 
   // c'est ici que commence le code de l'exercice cette fonction crée une copie de l'exercice
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.boutonAide = modalYoutube(
       numeroExercice,
       'https://youtu.be/aRe4ARtQiJY',

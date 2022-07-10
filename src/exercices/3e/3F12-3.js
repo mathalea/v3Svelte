@@ -31,7 +31,7 @@ export default function TableauDeValeurs () {
   this.sup = 5 // niveau de difficulté
   this.correctionDetailleeDisponible = true
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.spacing = this.interactif ? 2 : 1
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

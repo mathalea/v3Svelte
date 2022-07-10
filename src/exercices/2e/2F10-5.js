@@ -24,7 +24,7 @@ export default function signefonctionaffine () {
   this.sup2 = false
   this.listePackages = ['tkz-tab']
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.listeQuestions = []
     this.listeCorrections = []

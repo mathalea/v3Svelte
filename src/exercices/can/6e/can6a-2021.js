@@ -33,7 +33,7 @@ export default function SujetCAN2021Sixieme () {
   this.nbCols = 1
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const nbQ1 = min(round(this.nbQuestions * 10 / 30), 10) // Choisir d'un nb de questions de niveau 1 parmi les 8 possibles.
@@ -578,7 +578,7 @@ export default function SujetCAN2021Sixieme () {
           reponse = arrondi(2 * a + b + c, 1)
           texte = `Quel est le périmètre de cette figure ? <br>
             `
-          texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 30, mainlevee: false, amplitude: 0.5, scale: 0.8, style: 'margin: auto' }, objets)
+          texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 30, mainlevee: false, amplitude: 0.5, scale: 0.8, style: 'margin: auto' }, objets)
           texteCorr = `Le périmètre est donné par la somme des quatre longueurs : $${texNombre(a, 1)}\\times 2+${texNombre(b, 1)}+${texNombre(c, 1)}=${texNombre(2 * a + b + c, 1)}$ cm.`
           setReponse(this, index, reponse, { formatInteractif: 'calcul' })
           if (this.interactif) {

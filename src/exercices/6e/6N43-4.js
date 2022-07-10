@@ -24,7 +24,7 @@ export default function DivisibleDiviseurMultiple () {
   this.video = '' // Id YouTube ou url
   this.listePackages = 'xlop'
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

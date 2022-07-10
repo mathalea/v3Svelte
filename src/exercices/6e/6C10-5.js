@@ -36,7 +36,7 @@ export default function ExerciceLabyrintheMultiples () {
     this.sup2 = 13
     this.sup3 = 4
   }
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeCorrections = []
     this.listeQuestions = []
     this.autoCorrection = []

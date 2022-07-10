@@ -21,7 +21,7 @@ export default function ResoudreEquationDegre2 () {
   this.spacingCorr = 3
   this.sup = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = Number(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

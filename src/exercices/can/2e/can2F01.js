@@ -20,7 +20,7 @@ export default function CalculImageSecondDegre () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let x, a, b, c, d, expression
     switch (choice(['a', 'b', 'c', 'd'])) { //,
       case 'a':

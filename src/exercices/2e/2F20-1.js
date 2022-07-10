@@ -22,7 +22,7 @@ export default function PointSurCourbe () {
   this.spacing = 1
   this.nbQuestions = 2
   this.nbQuestionsModifiable = true
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     this.sup = parseInt(this.sup)
     this.listeQuestions = [] // Liste de questions

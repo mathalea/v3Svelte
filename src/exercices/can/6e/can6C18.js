@@ -17,7 +17,7 @@ export default function ResteDivisionEuclidienne () {
   this.nbQuestions = 1
   this.tailleDiaporama = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c, d, q, r
     if (choice([true, false])) {
       a = randint(7, 9)

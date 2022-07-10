@@ -16,7 +16,7 @@ export default function EcritureDecimalePuissance () {
   this.nbColsCorr = 2
   this.sup = 3 // exposants positifs et négatifs par défaut
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = Number(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

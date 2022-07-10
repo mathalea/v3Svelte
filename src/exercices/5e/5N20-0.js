@@ -26,7 +26,7 @@ export default function ProblemesAdditifsFractions5e () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.debug) {
       typesDeQuestionsDisponibles = [0]
     } else {

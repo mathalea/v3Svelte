@@ -22,7 +22,7 @@ export default function FractionCommeFacteurManquant () {
   this.formatInteractif = 'fractionEgale'
   this.consigne = ''
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b
     do {
       a = randint(2, 25)

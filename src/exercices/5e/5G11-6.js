@@ -23,7 +23,7 @@ export default function CompleterParSymetrie5e () {
   this.nbCols = 1
   this.nbColsCorr = 1
   this.sup2 = 1
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.interactif) this.consigne = 'Placer les points en cliquant, puis vérifier la réponse.'
     this.sup2 = contraindreValeur(1, 4, this.sup2, 1)
     this.listeQuestions = [] // Liste de questions

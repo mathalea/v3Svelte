@@ -18,7 +18,7 @@ export default function PartagerSelonUnRatio () {
   this.sup = 1
   this.correctionDetailleeDisponible = true
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

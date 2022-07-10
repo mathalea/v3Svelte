@@ -18,7 +18,7 @@ export default function DoubleOuBienMoitie () {
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a = randint(2, 4) * 10 + randint(1, 9)
     if (choice([true, false])) {
       this.reponse = a << 1

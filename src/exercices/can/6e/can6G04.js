@@ -18,7 +18,7 @@ export default function ProblemesDeLongueurs () {
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
   this.optionsChampTexte = { texteApres: ' cm' }
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const objets = []
     const pointsSurDE = []
     const pointsSurAB = []

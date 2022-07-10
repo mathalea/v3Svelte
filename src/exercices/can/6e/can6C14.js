@@ -17,7 +17,7 @@ export default function Somme4EntiersQuiSeMarient () {
   this.formatChampTexte = 'largeur15 inline'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(1, 9)
     const b = randint(1, 9, a)
     const c = randint(3, 7) * 10

@@ -33,7 +33,7 @@ export default function Pythagore2D () {
   this.video = 'M9sceJ8gzNc'
   this.besoinFormulaire2Numerique = ['Côté', 3, '1 : Hypoténuse\n2 : Côté de l\'angle droit\n3 : Mélange']
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.sup) {
       this.sup = parseInt(this.sup)
     }
@@ -101,7 +101,7 @@ export default function Pythagore2D () {
       }
 
       if (!context.isHtml) { texte = '~\\\\' }
-      texte += mathalea2d({ xmin: xmin, xmax: xmax, ymin: ymin, ymax: ymax, scale: 0.6, style: 'display: block' }, mesObjetsATracer)
+      texte += mathalea2d({ xmin, xmax, ymin, ymax, scale: 0.6, style: 'display: block' }, mesObjetsATracer)
       if (this.sup === 2) {
         if (listeTypeDeQuestions[i] === 'AB') {
           texte += `<br>$${A.nom + B.nom}^2=\\ldots$`

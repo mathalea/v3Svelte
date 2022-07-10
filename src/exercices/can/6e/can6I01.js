@@ -33,7 +33,7 @@ export default function CanNoteLaCouleur6 () {
   this.correctionDetailleeDisponible = true
   this.correctionDetaillee = true
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     const damier = [
       ['Vert', 'Orange', 'Rose', 'Noir', 'Orange', 'Blanc'],
       ['Noir', 'Rouge', 'Rose', 'Vert', 'Orange', 'Rose'],

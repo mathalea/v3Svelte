@@ -29,7 +29,7 @@ export default function NomExercice () {
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.besoinFormulaireTexte = ['nombre a : ', '']
   this.besoinFormulaire2Texte = ['nombre b : ', '']
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeCorrections = []
     this.listeQuestions = []
     Decimal.precision = 40

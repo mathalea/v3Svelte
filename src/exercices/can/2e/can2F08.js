@@ -23,7 +23,7 @@ export default function EncadrerTableau () {
   this.tailleDiaporama = 1.3
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let question1, correction1, ligne1

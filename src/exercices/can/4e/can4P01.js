@@ -16,7 +16,7 @@ export default function ProblemesDeRobinets () {
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur25 inline'
   this.nbQuestions = 1
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = choice([2, 3, 4, 5, 6, 10]) // nombre de secondes pour remplir un litre
     const b = calcul(60 / a) // nombres de litres/min
     const c = randint(2, b - 1) % 10 // volume du seau à remplir

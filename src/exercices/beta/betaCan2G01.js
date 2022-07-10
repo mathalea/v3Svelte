@@ -19,7 +19,7 @@ export default function PerimetreCarreRectangle () {
   this.nbQuestions = 1
   this.nbQuestionsModifiable = false
   this.interactifType = ''
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     this.autoCorrection[0] = {}
     let a, b, question, correction, reponse, monQcm

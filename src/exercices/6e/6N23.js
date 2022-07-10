@@ -23,7 +23,7 @@ export default function ExerciceEcritureDecimaleApartirDeFractionDecimale () {
   this.spacingCorr = 2
   this.nbQuestions = 8
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

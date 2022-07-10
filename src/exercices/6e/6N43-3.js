@@ -49,7 +49,7 @@ export default function ExerciceVraiFauxDivisibleMultipleDiviseur () {
     return result
   }
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.sup2 = parseInt(this.sup2)
     this.listeQuestions = [] // Liste de questions

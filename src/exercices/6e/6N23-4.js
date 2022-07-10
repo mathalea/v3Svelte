@@ -28,7 +28,7 @@ export default function NombreDecimalOraliseDeDifferentesManieres () {
   this.besoinFormulaireTexte = ['Type des textes', ' Choix séparés par des tirets\n1 : 3 unités, 5 dixièmes et 8 centièmes\n2 : 3 unités et 5 centièmes\n3 : 5 dixièmes\n4 : 128/10\n5 : 8+5/100+7/100\n6 : Mélange']
   this.sup = 6
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

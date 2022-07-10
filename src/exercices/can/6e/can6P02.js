@@ -29,7 +29,7 @@ export default function ProportionnaliteCompliquee () {
     ['bananes', 1.5, 15, 25]
   ]
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(0, 7) // index du fruit
     const b = calcul(fruits[a][1] * (1 + choice([-1, 1]) * randint(1, 3) * 0.1)) // prix au kg
     const c = Math.round(randint(fruits[a][2], fruits[a][3] / 10)) // nombre de kg première valeur

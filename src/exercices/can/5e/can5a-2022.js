@@ -35,7 +35,7 @@ export default function SujetCAN2022cinquieme () {
   this.nbCols = 1
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const nbQ1 = min(round(this.nbQuestions * 10 / 30), 10) // Choisir d'un nb de questions de niveau 1 parmi les 7 possibles.
@@ -783,8 +783,8 @@ export default function SujetCAN2022cinquieme () {
           reponse = arrondi(c / (d + 1), 1)
           texte = `Quelle est la distance du point $A$ à la droite $(BC)$ ? <br>
             `
-          texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 20, mainlevee: false, amplitude: 0.5, scale: 0.7, style: 'margin: auto' }, objets)
-          texteCorr = mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 15, mainlevee: false, amplitude: 0.5, scale: 0.7, style: 'margin: auto' }, objets, s2, traceH, droite(B, C),
+          texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 20, mainlevee: false, amplitude: 0.5, scale: 0.7, style: 'margin: auto' }, objets)
+          texteCorr = mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 15, mainlevee: false, amplitude: 0.5, scale: 0.7, style: 'margin: auto' }, objets, s2, traceH, droite(B, C),
             texteParPosition(`${reponse}  cm`, milieu(A, H).x - 0.9, milieu(A, H).y, 'milieu', 'black', 1, 'middle', true), labelPoint(H))
           texteCorr += `<br>La distance du point $A$ à la droite $(BC)$ est donnée par la longueur $AH$ : $${texNombre(reponse, 1)}$ cm`
 

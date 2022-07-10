@@ -25,7 +25,7 @@ export default function VitesseDistanceTemps () {
   this.video = '' // Id YouTube ou url
   this.consigneCorrection = ' À vitesse constante, la distance et le temps du trajet sont proportionnels. On peut donc utiliser la technique du produit en croix.'
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

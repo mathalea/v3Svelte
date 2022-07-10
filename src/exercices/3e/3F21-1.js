@@ -34,7 +34,7 @@ export default function LectureExpressionFonctionsAffines () {
   this.amcReady = amcReady
   this.amcType = amcType
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     let explain = ''
     let k = Math.pow(2, parseInt(this.sup) - 1)
     let nbDroites = parseInt(this.sup2)

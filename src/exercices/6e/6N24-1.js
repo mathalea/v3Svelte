@@ -16,7 +16,7 @@ export default function ExerciceMultiplierOuDiviserUnNombreEntierPar101001000 ()
   this.spacing = 2
   this.spacingCorr = 2
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

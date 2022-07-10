@@ -19,7 +19,7 @@ export default function VolumePaveSimple () {
   this.nbQuestions = 1
   this.sup = 1
   this.tailleDiaporama = 2
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const l = randint(2, 5)
     const L = randint(2, 4)
     const h = randint(2, 6, [l, L])

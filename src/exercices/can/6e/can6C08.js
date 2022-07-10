@@ -17,7 +17,7 @@ export default function QuartOuTiers () {
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(5, 10)
     let b
     if (choice([true, false])) {

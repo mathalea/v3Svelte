@@ -23,7 +23,7 @@ export default function CalculFonctionDeriveeFctRef () {
 
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a; let b
     switch (choice([1, 2])) { //
       case 1:// a/x

@@ -17,7 +17,7 @@ export default function ResteDivisionPar3 () {
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const b = randint(1, 9)
     const c = randint(0, 9)
     const d = randint(0, 9, [b, c])

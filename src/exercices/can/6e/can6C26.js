@@ -19,7 +19,7 @@ export default function MultiplierDiviserPar10Par100Par1000 () {
   this.tailleDiaporama = 2
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, den, resultat
     switch (choice([1, 2, 3])) { //, 2, 3
       case 1:// multiplier par 10, 100 ou 1000

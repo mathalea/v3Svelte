@@ -18,7 +18,7 @@ export default function DeterminantVecteur () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const vx = randint(-5, 5)
     const vy = randint(-5, 5)
     const ux = randint(-5, 5, 0)

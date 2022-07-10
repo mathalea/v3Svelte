@@ -31,7 +31,7 @@ export default function ComparerDecimaux () {
   this.nbCols = 2
   this.nbColsCorr = 2
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

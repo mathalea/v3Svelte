@@ -19,7 +19,7 @@ export default function NombreSolutionsSecondDegre () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c, d, maFraction
     switch (choice([1, 2])) {
       case 1 :

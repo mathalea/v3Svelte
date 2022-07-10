@@ -32,7 +32,7 @@ export default function UnitesDeVolumesEtDeCapacite (niveau = 1) {
   this.nbQuestions = 8
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

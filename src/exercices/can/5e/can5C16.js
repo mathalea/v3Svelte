@@ -17,7 +17,7 @@ export default function CalculAstucieuxAvecFactorisation () {
   this.tailleDiaporama = 2
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c, d
     switch (choice(['a', 'b', 'c', 'c', 'd', 'e'])) { //
       case 'a':

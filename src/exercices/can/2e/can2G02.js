@@ -20,7 +20,7 @@ export default function CalculCotePythagore () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const nom = creerNomDePolygone(3, ['QD'])
     const a = randint(1, 5)//
     const b = randint(6, 10)//
@@ -40,7 +40,7 @@ export default function CalculCotePythagore () {
       texteParPosition('x', milieu(B, C).x, milieu(B, C).y + 0.3, 'milieu', 'black', 1, 'middle', true)
     )
     this.question = 'Sur cette figure $x=\\sqrt{a}$ avec $a=$<br>'
-    this.question += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 25, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
+    this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 25, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
     this.correction = ` En utilisant le théorème de Pythagore, on a :<br>
         $${nom[0]}${nom[1]}^2+${nom[1]}${nom[2]}^2=${nom[0]}${nom[2]}^2$, soit
         $${nom[1]}${nom[2]}^2=${nom[0]}${nom[2]}^2-${nom[0]}${nom[1]}^2$. <br>

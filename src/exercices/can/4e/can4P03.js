@@ -16,7 +16,7 @@ export default function QuatriemeProportionnelle () {
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
   this.nbQuestions = 1
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(1, 6)
     const b = randint(4, 8, a) * 2
     const c = choice([2, 3, 4, 5])

@@ -18,7 +18,7 @@ export default function LongueurPythagore () {
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
   this.optionsChampTexte = { texteApres: ' cm' }
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const triplet = choice([
 
       [6, 8, 10],

@@ -25,7 +25,7 @@ export default function VocabulaireDesTriangles () {
 
   let typeDeQuestionsDisponibles
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.sup = parseInt(this.sup)
     if (this.classe === 6) {
       if (this.sup === 1) {

@@ -23,7 +23,7 @@ export default function OpposeExpression () {
   this.spacing = context.isHtml ? 3 : 2
   this.nbQuestions = 6
   this.tailleDiaporama = 3
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const typesDeQuestionsDisponibles = ['-(ax+b)', '-(ax2+bx+c)']

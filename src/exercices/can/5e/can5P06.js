@@ -21,7 +21,7 @@ export default function EcrirePourcentage () {
   this.formatChampTexte = 'largeur15 inline'
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, fraction, n, d
     const listeFractions1 = [[1, 2], [1, 4], [3, 4], [1, 5], [2, 5], [3, 5], [4, 5],
       [1, 10], [3, 10], [7, 10], [9, 10], [3, 25], [9, 25], [13, 25], [9, 50], [17, 50], [9, 20], [3, 20], [17, 20]]

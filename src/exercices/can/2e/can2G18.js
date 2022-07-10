@@ -24,7 +24,7 @@ export default function LectureGraphiqueVecteurRepere () {
 
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let texte, texteCorr, xa, ya, k1, k2, o, r1, A, B, vAB, xmin, xmax, ymin, ymax, nomvAB, AB
@@ -70,7 +70,7 @@ export default function LectureGraphiqueVecteurRepere () {
       })
 
       texte = 'Lire les coordonnées du vecteur $\\vec{u}$.<br> '
-      texte += mathalea2d({ xmin: xmin, xmax: xmax, ymin: ymin, ymax: ymax, style: 'display: inline', pixelsParCm: 30, scale: 0.5 },
+      texte += mathalea2d({ xmin, xmax, ymin, ymax, style: 'display: inline', pixelsParCm: 30, scale: 0.5 },
         r1, o, AB, nomvAB
       )
 

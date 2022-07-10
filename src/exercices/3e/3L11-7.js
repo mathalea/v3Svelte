@@ -28,7 +28,7 @@ export default function CarreDoubleDistributivite () {
   this.sup = true
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

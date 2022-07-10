@@ -17,7 +17,7 @@ export default function ProgrammeCalcul () {
   this.formatChampTexte = 'largeur15 inline'
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   // ${texNombrec(ecritureParenthesesSiNegatif(a / 5 - e))}^2=${texNombrec((a / 5 - e) * (a / 5 - e))}$
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = calcul(randint(2, 9) * 5)
     const b = calcul(randint(2, 9) * 4)
     const c = calcul(randint(2, 9) * 3)

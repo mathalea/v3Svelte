@@ -17,7 +17,7 @@ export default function PariteDunNombre () {
   Exercice.call(this)
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     let a, b, c, d, e, f, g, texte, texteCorr

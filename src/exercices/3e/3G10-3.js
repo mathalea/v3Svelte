@@ -19,7 +19,7 @@ export default function ConstruireRotationPoint3e () {
   this.nbCols = 1
   this.nbColsCorr = 1
   this.sup = 3
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let nontrouve, assezloin, cible
     const angle = randint(-8, 8, 0) * 10
     this.listeQuestions = [] // Liste de questions

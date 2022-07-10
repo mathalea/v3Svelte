@@ -17,7 +17,7 @@ export default function RecomposerEntierSimple () {
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(20, 70)
     const b = randint(20, 70, a)
     this.reponse = a * 100 + b

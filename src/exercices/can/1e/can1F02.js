@@ -20,7 +20,7 @@ export default function SecondDegreVariations () {
   this.nbQuestions = 1
 
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     this.spacing = 1

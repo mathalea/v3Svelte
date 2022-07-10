@@ -22,7 +22,7 @@ export default function TrouverEquationDeParabole () {
   this.sup = 1
   this.correctionDetailleeDisponible = true
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let typesDeQuestionsDisponibles
@@ -114,10 +114,10 @@ export default function TrouverEquationDeParabole () {
       const ymin = 0 | Math.min(-1, -1 + (a > 0 ? -d / 4 / a : Math.min(g(xmin + 1), g(xmax - 1)))) // ymin pour parabole (valeur entière)
       const ymax = 0 | Math.max(1, 1 + (a < 0 ? -d / 4 / a : Math.max(g(xmin + 1), g(xmax - 1)))) // ymax pour parabole
 
-      const r = repere({ xmin: xmin, xmax: xmax, ymin: ymin, ymax: ymax })
+      const r = repere({ xmin, xmax, ymin, ymax })
 
       const cg = courbe(g, xmin, xmax)
-      texteCorr += mathalea2d({ xmin: xmin, xmax: xmax, ymin: ymin, ymax: ymax, pixelsParCm: 30, scale: 0.8 }, r, cg)
+      texteCorr += mathalea2d({ xmin, xmax, ymin, ymax, pixelsParCm: 30, scale: 0.8 }, r, cg)
 
       if (this.listeQuestions.indexOf(texte) === -1) {
         // Si la question n'a jamais été posée, on en crée une autre

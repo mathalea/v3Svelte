@@ -11,7 +11,7 @@ export default function UtiliserLeCodagePourDecrire () {
   this.nbColsCorr = 1
   this.sup = 1
   this.sup2 = 1
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let typesDeQuestionsDisponibles
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

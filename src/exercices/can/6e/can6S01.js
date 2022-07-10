@@ -21,7 +21,7 @@ export default function LectureDiagrammeBarre () {
     ['voitures', 'un garage', ['berline', 'utilitaire', 'cross over']],
     ['vêtements', 'une armoire', ['chemises', 'T-shirts', 'pulls']]]
   const quidam = prenom()
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const objets = []
 
     const n = randint(0, 2)

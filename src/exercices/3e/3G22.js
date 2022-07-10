@@ -25,7 +25,7 @@ export default function AgrandissementReduction () {
   this.sup2 = 1
   this.pasDeVersionLatex = false
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = []
     this.listeCorrections = []
     let texte, texteCorr, r, r2, h1, h2, h3, c, c2, kprime

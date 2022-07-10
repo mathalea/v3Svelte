@@ -20,7 +20,7 @@ export default function NombreAPlacer () {
   this.sup3 = false
   this.titre = titre
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.contenu = ''
     let texte = ''
     const noms = choisitLettresDifferentes(5, 'QFN')

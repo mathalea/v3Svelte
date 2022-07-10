@@ -1,7 +1,7 @@
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, combinaisonListes, ecritureAlgebrique, ecritureAlgebriqueSauf1, lettreMinusculeDepuisChiffre, rienSi1 } from '../../modules/outils.js'
 import { simplify, parse, derivative } from 'mathjs'
-const math = { simplify: simplify, parse: parse, derivative: derivative }
+const math = { simplify, parse, derivative }
 export const titre = 'Calculs de dérivées'
 
 /**
@@ -22,7 +22,7 @@ export default function CalculsDeDerives () {
   reglesDeSimplifications.splice(reglesDeSimplifications.findIndex(rule => rule.l === 'n1*n2 + n2'), 1)
   reglesDeSimplifications.splice(reglesDeSimplifications.findIndex(rule => rule.l === 'n1*n3 + n2*n3'), 1)
   //    reglesDeSimplifications.push({l:"-(n1*v^2)",r:"-n1*v^2"})
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = Number(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

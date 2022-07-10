@@ -22,7 +22,7 @@ export default function ComplementAUneDizaine () {
   this.nbColsCorr = 2
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

@@ -22,7 +22,7 @@ export default function TauxGlobal () {
   this.optionsChampTexte = { texteApres: ' $\\%$' }
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, coeffG
     let listeCalculs = []
 

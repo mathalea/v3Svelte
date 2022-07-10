@@ -17,7 +17,7 @@ export default function DifferenceEntiers5e () {
   this.tailleDiaporama = 2
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const b = randint(41, 69, [50, 60])
     const a = randint(2, 30) + 100
     this.reponse = calcul(a - b)

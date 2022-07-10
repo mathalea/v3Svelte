@@ -26,7 +26,7 @@ export default function ConservationTransformation () {
   this.nbCols = 1
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     context.fenetreMathalea2d = [-6, -6, 6, 6]
     this.listeQuestions = []
     this.listeCorrections = []
@@ -176,7 +176,7 @@ export default function ConservationTransformation () {
       const ymin = Math.min(A.y, B.y, C.y, D.x, E.x, imageA.y, imageB.y, imageC.y) - 2
       const ymax = Math.max(A.y, B.y, C.y, D.x, E.x, imageA.y, imageB.y, imageC.y) + 2
       // paramètres de la fenêtre Mathalea2d pour l'énoncé normal
-      paramsEnonce = { xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 20, scale: 1 }
+      paramsEnonce = { xmin, ymin, xmax, ymax, pixelsParCm: 20, scale: 1 }
       // paramètres de la fenêtre Mathalea2d pour la correction
       paramsCorrection = paramsEnonce
       // On ajoute les noms des droites si besoin

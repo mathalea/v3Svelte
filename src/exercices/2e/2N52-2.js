@@ -20,7 +20,7 @@ export default function FactoriserIdentitesRemarquables2 () {
   this.sup = 1
   this.spacingCorr = 3
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

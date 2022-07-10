@@ -23,7 +23,7 @@ export default function CalculCoeffDir () {
 
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a; let f
     switch (choice([1, 1, 2, 2, 3, 3, 4])) { //
       case 1:// x^2

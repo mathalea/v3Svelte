@@ -15,7 +15,7 @@ export default function DeveloppementNiveau1 () {
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.date = 1635092507483
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.formatChampTexte = 'largeur15 inline'
     let a, b, k, inconnue
     switch (randint(1, 2)) {

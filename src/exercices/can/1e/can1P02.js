@@ -15,7 +15,7 @@ export const amcType = 'AMCNum'
 /**
  * On donne un arbre de probabilité et lit une probabilité sur l'arbre
  * @author Gilles Mora
- 
+
 */
 export default function LectureProbabilite () {
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -28,7 +28,7 @@ export default function LectureProbabilite () {
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

@@ -29,7 +29,7 @@ export default function EncadrerUnEntierParDeuxEntiersConsecutifs () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.beta) {
       typesDeQuestionsDisponibles = [0, 1, 2, 3, 4, 5]
     } else {

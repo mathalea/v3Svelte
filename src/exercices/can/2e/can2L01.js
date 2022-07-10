@@ -16,7 +16,7 @@ export default function EquationPlusMoinsX2PlusAEgalB () {
   this.typeExercice = 'simple'
   this.nbQuestions = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(1, 20)
     const b = randint(1, 20)
     switch (choice(['a', 'b', 'c', 'd'])) { //

@@ -38,7 +38,7 @@ export default function CalculDeLongueur () {
     this.spacingCorr = 2
   }
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     this.listeQuestions = []
     this.listeCorrections = []

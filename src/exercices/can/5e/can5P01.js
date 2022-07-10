@@ -17,7 +17,7 @@ export default function PoucentageE () {
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur25 inline'
   this.optionsChampTexte = { texteApres: ' €' }
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, n
     switch (choice(['a', 'b', 'c', 'd', 'e'])) { //,
       case 'a':

@@ -16,7 +16,7 @@ export default function FractionDecimaleEcritureDecimale2 () {
   this.tailleDiaporama = 1
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c
     switch (choice(['a', 'b'])) { //,
       case 'a':

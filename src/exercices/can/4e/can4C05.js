@@ -19,7 +19,7 @@ export default function SommeFractionsCompatibles () {
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
   this.formatInteractif = 'fractionEgale'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = choice(obtenirListeFractionsIrreductibles())
     const c = choice([2, 4])
     const b = fraction(1, a.d * c)

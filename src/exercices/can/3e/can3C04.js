@@ -19,7 +19,7 @@ export default function SommeEntierEtFractionIrred () {
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
   this.formatInteractif = 'fraction'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const maFraction = choice(obtenirListeFractionsIrreductibles())
     const a = randint(1, 4)
     const b = maFraction[0]

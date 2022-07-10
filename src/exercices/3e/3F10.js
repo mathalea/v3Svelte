@@ -23,7 +23,7 @@ export default function ImageAntecedentDepuisTableauOuFleche () {
   this.nbColsCorr = 1
   this.nbQuestions = 4
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const a = randint(-20, 20)

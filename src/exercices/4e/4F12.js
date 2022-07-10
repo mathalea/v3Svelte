@@ -21,7 +21,7 @@ export default function ExploiterRepresentationGraphique () {
   this.nbQuestionsModifiable = false
   this.sup = 4
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

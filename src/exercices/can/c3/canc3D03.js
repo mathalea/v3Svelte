@@ -18,7 +18,7 @@ export default function AjouterDesDurees () {
   if (!this.interactif) {
     this.question += ' .... minutes'
   }
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(1, 2)
     const b = choice([choice([10, 20, 30]), randint(1, 5) * 5, randint(11, 29, 20), 30])
     const c = randint(1, 3)

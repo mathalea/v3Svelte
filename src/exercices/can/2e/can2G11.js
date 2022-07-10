@@ -18,7 +18,7 @@ export default function RelationChasles2 () {
   this.nbQuestions = 1
   this.spacing = 3
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     let texte, texteCorr, n

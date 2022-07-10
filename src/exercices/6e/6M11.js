@@ -36,7 +36,7 @@ export default function AireCarresRectanglesTriangles () {
   this.nbQuestions = 1
   this.nbQuestionsModifiable = false
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     let texte = ''; let texteCorr = ''
     const nom = creerNomDePolygone(11, 'QD')
     this.listeQuestions = []

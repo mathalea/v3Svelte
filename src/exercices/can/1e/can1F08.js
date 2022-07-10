@@ -23,7 +23,7 @@ export default function CalculFonctionDeriveeAffine () {
   this.tailleDiaporama = 2
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let m, p, f
     switch (choice([1, 2, 3])) { //
       case 1:// mx+p

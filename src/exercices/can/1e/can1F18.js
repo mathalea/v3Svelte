@@ -22,7 +22,7 @@ export default function CalculFonctionDeriveeAsurU () {
 
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a; let m; let p
     switch (choice([1, 2, 3])) {
       case 1:// //a/(mx+p)

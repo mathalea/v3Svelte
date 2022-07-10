@@ -16,7 +16,7 @@ export default function EncadrementAvecPuissancesDe10 () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a
     const choix = choice(['$a$', '$b$'])
     switch (choice(['a', 'b', 'c', 'd', 'e'])) {

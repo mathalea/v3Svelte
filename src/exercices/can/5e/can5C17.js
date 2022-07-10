@@ -15,7 +15,7 @@ export default function EntierPlusFractionVersDecimal () {
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c, maFraction, maFraction2
     let resultat
     this.formatChampTexte = 'largeur15 inline'

@@ -16,7 +16,7 @@ export default function FormeCanonique () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const alpha = randint(-3, 3, [0])
     const beta = randint(-5, 5, [0])
     const b = -2 * alpha

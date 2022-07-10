@@ -20,7 +20,7 @@ export default function VecteursCol () {
   this.formatInteractif = 'fractionEgale'
   this.consigne = ''
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(3, 10) // abscisse de C
     const b = randint(1, a - 1)// abscisse de B l'abscisse de A est 0
     const noms = choisitLettresDifferentes(3, 'O', true)

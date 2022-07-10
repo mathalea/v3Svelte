@@ -20,7 +20,7 @@ export default function Variationsapartirtableau () {
   this.video = '' // Id YouTube ou url
   this.listePackages = ['tkz-tab']
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

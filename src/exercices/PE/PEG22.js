@@ -17,7 +17,7 @@ export default function RacineCarrAvecTheoremePythagore () {
   this.nbQuestionsModifiable = false
   this.sup = 2
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     let AB, BC, r
     AB = randint(2, 5)
     BC = randint(2, 5)

@@ -20,7 +20,7 @@ export default function Perimetre () {
   this.nbQuestions = 1
 
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const nom = creerNomDePolygone(4, ['QD'])
     const a = randint(3, 6)//
     const c = randint(3, 5) + randint(3, 9) / 10
@@ -48,7 +48,7 @@ export default function Perimetre () {
       texteParPosition(`$${texNombrec(d)}\\text{m}$`, milieu(C, D).x, milieu(C, D).y + 0.5, 'milieu', 'black', 1, 'middle', true))
 
     this.question = `Quel est le périmètre de ce quadrilatère $${nom}$ ?<br>` +
-     mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 20, mainlevee: true, amplitude: 0.5, scale: 0.5, style: 'margin: auto' }, objets)
+     mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 20, mainlevee: true, amplitude: 0.5, scale: 0.5, style: 'margin: auto' }, objets)
     this.reponse = a + b + c + d
     this.correction = ` Le périmètre est : $${texNombrec(a + b + c + d)}$ m.`
     this.optionsChampTexte = { texteApres: ' m' }

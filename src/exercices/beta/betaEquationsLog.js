@@ -20,7 +20,7 @@ export default function EquationAvecUnLogarithme () {
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
   context.isHtml ? (this.spacingCorr = 2) : (this.spacingCorr = 1.5)
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const typesDeQuestionsDisponibles = ['lnu=lnv', '2lnu=lnv', 'lnu+lnv=lnw']

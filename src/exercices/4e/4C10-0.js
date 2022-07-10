@@ -29,7 +29,7 @@ export default function SigneProduitQuotientRelatifs () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     this.sup = Number(this.sup) // attention le formulaire renvoie un string, on a besoin d'un number pour le switch !
     if (this.exo === this.beta + '4C10-1') {

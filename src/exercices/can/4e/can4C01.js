@@ -17,7 +17,7 @@ export default function PrioriteOperatoireEtRelatifs () {
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur25 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a = randint(-12, 12, 0)
     const b = randint(-4, 4, [-1, 0, 1])
     const c = randint(2, 6)

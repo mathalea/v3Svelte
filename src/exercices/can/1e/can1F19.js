@@ -22,7 +22,7 @@ export default function CalculFonctionDeriveeQuotient () {
 
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let m; let p; let a
     switch (choice([1, 2, 3, 4, 5, 6, 7])) {
       case 1:// //mx+p+a/x

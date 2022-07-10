@@ -46,7 +46,7 @@ export default function ExerciceConversionsVolumes (niveau = 1) {
     }
     return a
   }
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.interactifType = parseInt(this.sup3) === 2 ? 'mathLive' : 'qcm'
     this.autoCorrection = []
     this.listeQuestions = [] // Liste de questions

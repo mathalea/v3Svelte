@@ -21,7 +21,7 @@ export default function PositionsDeDroites () {
 
   const typeQuestionsDisponibles = ['type1', 'type1', 'type2'] // On créé 2 types de questions
   const listeTypeQuestions = combinaisonListes(typeQuestionsDisponibles, this.nbQuestions) // Tous les types de questions sont posés mais l'ordre diffère à chaque "cycle"
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

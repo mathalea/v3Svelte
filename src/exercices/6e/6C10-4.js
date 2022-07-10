@@ -22,7 +22,7 @@ export default function ExerciceTablesAdditions (max = 20) {
   this.spacing = 2
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

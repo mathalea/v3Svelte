@@ -29,7 +29,7 @@ export default function Perimetre_aire_et_portions_de_disques (pa = 3) {
   this.nbQuestions = 1
   this.nbQuestionsModifiable = false
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.sup = parseInt(this.sup)
     this.listeCorrections = [] // Liste de questions corrigées
     this.listeQuestions = []

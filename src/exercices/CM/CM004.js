@@ -27,7 +27,7 @@ export default function QuatreOperations () {
   this.listePackages = 'xlop'
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

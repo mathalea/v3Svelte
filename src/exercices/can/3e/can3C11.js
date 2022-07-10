@@ -15,7 +15,7 @@ export default function SimplifieFractionOuRacinesCarrees () {
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, n, k, maFraction
     let resultat
     this.formatChampTexte = 'largeur15 inline'

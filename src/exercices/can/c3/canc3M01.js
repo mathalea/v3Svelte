@@ -19,7 +19,7 @@ export default function TrouverLaBonneUnite () {
   this.typeExercice = 'simple'
   this.formatInteractif = 'texte'
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const prefixes = [[10, 'd'], [100, 'c'], [1000, 'm'], [10, 'da'], [100, 'h'], [1000, 'k']]
     const unite = choice(['g', 'm', 'L'])
     const typeDeQuestion = randint(0, 5)

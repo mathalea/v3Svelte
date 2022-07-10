@@ -27,7 +27,7 @@ export default function NommerUnAngle () {
   this.sup = 2
   this.sup2 = 1
   this.sup3 = false
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

@@ -28,7 +28,7 @@ export default function PourcentageDunNombre () {
   this.sup = 1
   this.interactif = false
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let listePourcentages = []
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

@@ -17,7 +17,7 @@ export default function MutliplierParN0N () {
   this.tailleDiaporama = 2
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(2, 4)
     const b = randint(9, 24, [10, 20])
     this.reponse = calcul(101 * a * b)

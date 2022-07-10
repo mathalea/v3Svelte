@@ -28,7 +28,7 @@ export default function lecturefonctionaffine () {
   this.spacingCorr = 1
   this.sup = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     this.autoCorrection = []

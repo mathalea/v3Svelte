@@ -35,7 +35,7 @@ export default function PerimetreOuAireDeCarresRectanglesTriangles () {
   context.isHtml ? (this.spacingCorr = 3) : (this.spacingCorr = 2)
   this.nbQuestions = 1
   this.nbQuestionsModifiable = false
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     let texte = ''; let texteCorr = ''
     const nom = creerNomDePolygone(11, 'QD')
     this.listeQuestions = []

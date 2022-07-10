@@ -18,7 +18,7 @@ export default function LireUneDuree () {
   this.tailleDiaporama = 1
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let h1, m1, h2, m2, enonce
     const matinOuSoir = choice(['matin', 'soir'])
     const quidam = personne()

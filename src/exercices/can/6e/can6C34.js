@@ -18,7 +18,7 @@ export default function PyramideAdd3EtagesBaseInconnue () {
   this.formatChampTexte = 'largeur15 inline'
   this.typeExercice = 'simple'
   this.tailleDiaporama = 2
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const pyr = new Pyramide({ operation: '+', nombreEtages: 3, rangeData: [2, 5], exclusions: [0] })
     pyr.isVisible = [[true], [false, false], [false, true, true]]
     this.question = `Chaque case contient la somme des deux cases sur lesquelles elle repose. Quel est le nombre qui correspond à * ?<br>

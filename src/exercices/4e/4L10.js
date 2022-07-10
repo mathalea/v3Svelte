@@ -35,7 +35,7 @@ export default function ExerciceDevelopper (difficulte = 1) {
   this.nbColsCorr = 1
   this.sup2 = true
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

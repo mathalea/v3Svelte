@@ -18,7 +18,7 @@ export default function PoucentageP2 () {
   this.nbQuestions = 1
   this.tailleDiaporama = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const listeCarac = [['filles', 'Elles'], ['garçons', 'Ils'], ['sportifs', 'Ils'], ['musiciens', 'Ils']]
     const listeCarac2 = [['maisons', 'T2'], ['maisons', 'T3'], ['appartements', 'T2'], ['appartements', 'T3']
     ]

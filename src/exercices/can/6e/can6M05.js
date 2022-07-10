@@ -16,7 +16,7 @@ export default function ConversionM3EtLitres () {
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, resultat
     switch (choice(['a', 'b'])) {
       case 'a':

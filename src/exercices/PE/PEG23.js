@@ -17,7 +17,7 @@ export default function ProduitDeDeuxLongueurs () {
   this.nbQuestionsModifiable = false
   this.sup = 1
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     const anim = new Alea2iep()
     const unite = this.sup
     const a = this.sup2 === undefined ? randint(2, 5) : this.sup2

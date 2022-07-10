@@ -21,7 +21,7 @@ export default function LectureGraphiqueFonctionAffine2 () {
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
   this.formatInteractif = 'calcul'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const o = texteParPosition('O', -0.3, -0.3, 'milieu', 'black', 1)
     let s1, s2, t
     const a = randint(-5, 5, [0, 4]) // numérateut coefficient directeur non nul

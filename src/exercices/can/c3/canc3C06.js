@@ -17,7 +17,7 @@ export default function ComplementAuDixiemeOuALaDizaine () {
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b
     if (choice([true, false])) { // décimal ou entier ?
       a = calcul((randint(1, 5) * 10 + randint(1, 9) / 10))

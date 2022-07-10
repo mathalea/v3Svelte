@@ -28,7 +28,7 @@ export default function ExerciceNumerationEntier () {
   this.sup3 = 3
   this.sup4 = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup3 = Number(this.sup3)
     this.sup4 = Number(this.sup4)
     this.listeQuestions = [] // Liste de questions

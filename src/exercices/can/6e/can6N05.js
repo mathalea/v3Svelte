@@ -18,7 +18,7 @@ export default function ChiffreDes () {
   this.formatChampTexte = 'largeur15 inline'
   this.consigne = ''
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(1, 3)
     const b = randint(1, 9, a)
     const c = randint(1, 9, [a, b])

@@ -20,7 +20,7 @@ export default function ReduireExp () {
   this.tailleDiaporama = 2
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.formatChampTexte = 'largeur15 inline'
     let a, b, c, choix, d, e
     switch (randint(1, 3)) {

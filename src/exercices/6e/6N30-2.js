@@ -28,7 +28,7 @@ export default function PlacerPointsSurAxe () {
     return (abs0 + (x - abs0) * 3 * pas1)
   }
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.sup = parseInt(this.sup)
     // numeroExercice est 0 pour l'exercice 1
     const pointsSolutions = []

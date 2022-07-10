@@ -16,7 +16,7 @@ export default function Determinerequationcartesienneavecpente () {
   this.sup = 1 // Niveau de difficulté
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     for (let i = 0, xA, yA, m, texte, texteCorr, cpt = 0; i < this.nbQuestions && cpt < 50;) {

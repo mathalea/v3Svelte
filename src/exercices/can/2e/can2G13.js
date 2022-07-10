@@ -16,7 +16,7 @@ export default function NormeVecteur () {
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, nom, reduction
     switch (choice(['a'])) {
       case 'a':

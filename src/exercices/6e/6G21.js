@@ -24,7 +24,7 @@ export default function ConstruireUnTriangle () {
   this.besoinFormulaire2CaseACocher = ['Ne pas montrer de schéma']
   this.sup2 = false
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     this.autoCorrection = []

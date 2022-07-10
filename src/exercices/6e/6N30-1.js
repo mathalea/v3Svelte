@@ -31,7 +31,7 @@ export default function LireAbscisseDecimaleBis2d () {
   this.interactif = false
   this.niveau = 6
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     // numeroExercice est 0 pour l'exercice 1
     let QuestionsDisponibles
     if (!this.sup) { // Si aucune liste n'est saisie

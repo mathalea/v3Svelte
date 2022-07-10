@@ -19,7 +19,7 @@ export default function CoordonneesSommetParabole () {
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(-10, 10, [0, -1, 1])
     const b = randint(-5, 5, 0)
     const c = randint(-5, 5)

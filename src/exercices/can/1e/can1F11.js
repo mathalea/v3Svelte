@@ -16,7 +16,7 @@ export default function DeriveePoly3 () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c, d
     switch (choice([1, 2, 3, 4, 5, 6])) { //
       case 1:// troisième degre ax^3+bx^2+cx+d

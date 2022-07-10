@@ -18,7 +18,7 @@ export default function CalculsDeProbabilites () {
   this.nbQuestions = 1
   // this.formatInteractif = 'fraction'
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(2, 4)
     const b = choice([2, 3])
     const c = choice([2, 3, 11, 12])

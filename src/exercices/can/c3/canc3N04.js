@@ -19,7 +19,7 @@ export default function ArrondiUnite () {
   this.formatChampTexte = 'largeur15 inline'
   this.consigne = ''
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(1, 20)
     const b = randint(0, 9, 5)
     const c = randint(0, 9, b)

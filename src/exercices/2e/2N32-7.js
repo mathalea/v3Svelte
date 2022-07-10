@@ -16,7 +16,7 @@ export default function Rendreentier () {
   this.nbColsCorr = 2
   this.sup = 2 //
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.sup2 = parseInt(this.sup2)
     this.listeQuestions = [] // Liste de questions
@@ -46,7 +46,7 @@ export default function Rendreentier () {
         texteCorr += '<br>Ici, il faut donc multiplier le numérateur et le dénominateur de la fraction par '
         texteCorr += ` $ ${c}${ecritureAlgebrique(-d)}\\sqrt{${b}}$.<br>`
         texteCorr += `<br>$\\begin{aligned}A&=\\dfrac{ ${a} }{${c}${ecritureAlgebrique(d)}\\sqrt{${b}}}\\\\`
- 
+
         texteCorr += `&=\\dfrac{ ${a}\\times (${c}${ecritureAlgebrique(-d)}\\sqrt{${b}}) }{(${c}${ecritureAlgebrique(d)}\\sqrt{${b}})(${c}${ecritureAlgebrique(-d)}\\sqrt{${b}})}\\\\`
         texteCorr += `&=\\dfrac{ ${a * c} ${ecritureAlgebrique(-a * d)}\\sqrt{${b}}}{(${c})^2-\\left(${abs(d)}\\sqrt{${b}}\\right)^2}\\\\ `
         texteCorr += `&=\\dfrac{ ${a * c} ${ecritureAlgebriqueSauf1(-a * d)}\\sqrt{${b}}}{${(c * c)}-(${d * d}\\times${b})}\\\\`
@@ -65,7 +65,7 @@ export default function Rendreentier () {
       }
       if (this.sup === 3) {
         d = randint(2, 9)
-       
+
         texte = `$A=\\dfrac{ ${a} }{${c}${ecritureAlgebrique(d)}\\sqrt{x}} $ définie sur $D=\\left]${texFractionReduite(c ** 2, d ** 2)};+\\infty\\right[$`
         texteCorr = 'Pour lever l\'irrationnalité du dénominateur d\'une fraction,  la stratégie consiste à utiliser sa "quantité conjuguée" pour faire apparaître l\'identité remarquable $a^2-b^2$ au dénominateur.'
         texteCorr += '<br>Ici, il faut donc multiplier le numérateur et le dénominateur de la fraction par '

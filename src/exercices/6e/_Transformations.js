@@ -27,7 +27,7 @@ export default function Transformations () {
   this.sup = 1
 
   context.isHtml ? (this.spacingCorr = 2.5) : (this.spacingCorr = 1.5)
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let choixTransformation; let nbImages
     // Ci-dessous, on évite le point O comme point et comme nom de point.
     const nomPointsTranslationDejaUtilises = [15]; const pointsDejaUtilises = [44]

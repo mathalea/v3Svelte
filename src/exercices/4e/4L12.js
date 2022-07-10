@@ -32,7 +32,7 @@ export default function NomExercice () {
     $${(nombreATester + B1) * B2} ${signeB3} ${B3} = ${miseEnEvidence((nombreATester + B1) * B2 + B3)}$ <br><br>`
   }
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = []
     this.listeCorrections = []
     this.autoCorrection = []

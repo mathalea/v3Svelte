@@ -17,7 +17,7 @@ export default function SommeDecimaux () {
   this.formatChampTexte = 'largeur15 inline'
   this.typeExercice = 'simple'
   this.tailleDiaporama = 2
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c, e, f, g, k
     const choix = randint(1, 3)
     if (choix === 1) {

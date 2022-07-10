@@ -31,7 +31,7 @@ export default function PerimetreOuAireDeFiguresComposees () {
   this.nbQuestions = 1
   this.nbQuestionsModifiable = true
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = []
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

@@ -23,7 +23,7 @@ export default function DecompositionNombreDecimal () {
   this.nbColsCorr = 1
   this.sup = 7
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

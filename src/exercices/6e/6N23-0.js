@@ -25,7 +25,7 @@ export default function EcrireNombresDecimal () {
   this.sup = 1
   this.sup2 = 1
   this.sup3 = 3
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let formatEcriture = []
     if (parseInt(this.sup) === 1) {
       formatEcriture = combinaisonListes([true], this.nbQuestions)

@@ -21,7 +21,7 @@ export default function ProblemesGrandeursComposees () {
   context.isHtml ? (this.spacingCorr = 3) : (this.spacingCorr = 2)
   this.sup = false
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     // let listeIndex_disponibles=[1,2,3,4,5,6,7,8,9,10,11,12,13,14];

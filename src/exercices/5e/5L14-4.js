@@ -19,7 +19,7 @@ export default function DeterminerDerniereOperationExpressionLitterale () {
   this.sup2 = false // si false alors utilisation de nombres entiers, si true alors utilisation de nombres à un chiffre après la virgule.
   this.consigne = 'Déterminer la dernière opération à effectuer s\'il fallait faire le calcul pour des valeurs données de $x$ et de $y$.'
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

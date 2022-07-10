@@ -28,7 +28,7 @@ export default function OrdreDeGrandeurOperationsDecimaux () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.beta) {
       typesDeQuestionsDisponibles = [0]
     } else {

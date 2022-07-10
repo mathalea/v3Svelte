@@ -36,7 +36,7 @@ export default function EcrirePetitsNombresEntiers () {
   this.tailleDiaporama = 3
   this.video = ''
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let typeDeConsigne = []
     if (parseInt(this.sup3) === 1) {
       this.consigne = 'Écrire le nombre en lettres.'

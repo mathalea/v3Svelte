@@ -29,7 +29,7 @@ export default function LireUnDiagramme () {
   this.sup2 = 5
 
   //  this.sup2 = false;
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup2 = parseInt(this.sup2)
     this.listeQuestions = []
     this.listeCorrections = []

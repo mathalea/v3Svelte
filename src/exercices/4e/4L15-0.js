@@ -34,7 +34,7 @@ export default function TrouverErreurResolEqDeg1 () {
 
   let typeDeQuestionsDisponibles
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.debug) {
       typeDeQuestionsDisponibles = [1, 2, 3, 4, 5]
     } else {
@@ -115,11 +115,11 @@ export default function TrouverErreurResolEqDeg1 () {
         { // case 1 --> ax+b=d+cx  erreur à l'étape 1 on passe cx de l'autre côté
           pronom: currentGenreEtPrenom.pronom,
           prenom: currentGenreEtPrenom.prenom,
-          a: a,
-          b: b,
-          c: c,
-          d: d,
-          inc: inc,
+          a,
+          b,
+          c,
+          d,
+          inc,
           eq: `$${a}${inc} ${signeDansEq(b).signe} ${b} = ${d} ${signeDansEq(c).signe} ${c}${inc}$`,
           et1: `${texteGras('Étape 1 :')} $${a}${inc} ${signeDansEq(c).signe} ${c}${inc} ${signeDansEq(b).signe} ${b} = ${d} $`, // l'erreur est là, on passe de l'autre côté d'où l'oubli du chgt de signe
           et2: `${texteGras('Étape 2 :')} $${a}${inc} ${signeDansEq(c).signe} ${c}${inc} = ${d} ${signeDansEq(-b).signe} ${-b} $`,
@@ -150,11 +150,11 @@ export default function TrouverErreurResolEqDeg1 () {
         { // case 2 --> ax+b=d+cx  erreur à l'étape 2 on passe b de l'autre côté
           pronom: currentGenreEtPrenom.pronom,
           prenom: currentGenreEtPrenom.prenom,
-          a: a,
-          b: b,
-          c: c,
-          d: d,
-          inc: inc,
+          a,
+          b,
+          c,
+          d,
+          inc,
           eq: `$${a}${inc} ${signeDansEq(b).signe} ${b} = ${d} ${signeDansEq(c).signe} ${c}${inc}$`,
           et1: `${texteGras('Étape 1 :')} $${a}${inc} ${signeDansEq(-c).signe} ${-c}${inc} ${signeDansEq(b).signe} ${b} = ${d}$`,
           et2: `${texteGras('Étape 2 :')} $${a}${inc} ${signeDansEq(-c).signe} ${-c}${inc} = ${d} ${signeDansEq(b).signe} ${b}$`, // l'erreur est là on passe de l'autre côté
@@ -185,11 +185,11 @@ export default function TrouverErreurResolEqDeg1 () {
         { // case 3 --> ax+b=cx+d  erreur à l'étape 2 on passe cx de l'autre côté
           pronom: currentGenreEtPrenom.pronom,
           prenom: currentGenreEtPrenom.prenom,
-          a: a,
-          b: b,
-          c: c,
-          d: d,
-          inc: inc,
+          a,
+          b,
+          c,
+          d,
+          inc,
           eq: `$${a}${inc} ${signeDansEq(b).signe} ${b} = ${c}${inc} ${signeDansEq(d).signe} ${d} $`,
           et1: `${texteGras('Étape 1 :')} $${a}${inc} = ${c}${inc} ${signeDansEq(d).signe} ${d} ${signeDansEq(-b).signe} ${-b}$`,
           et2: `${texteGras('Étape 2 :')} $${a}${inc} ${signeDansEq(c).signe} ${c}${inc} = ${d} ${signeDansEq(-b).signe} ${-b}$`, // l'erreur est là on passe de l'autre côté
@@ -220,11 +220,11 @@ export default function TrouverErreurResolEqDeg1 () {
         { // case 4 --> ax+b=cx+d  erreur à l'étape 1 on passe b de l'autre côté
           pronom: currentGenreEtPrenom.pronom,
           prenom: currentGenreEtPrenom.prenom,
-          a: a,
-          b: b,
-          c: c,
-          d: d,
-          inc: inc,
+          a,
+          b,
+          c,
+          d,
+          inc,
           eq: `$${a}${inc} ${signeDansEq(b).signe} ${b} = ${c}${inc} ${signeDansEq(d).signe} ${d} $`,
           et1: `${texteGras('Étape 1 :')} $${a}${inc} = ${c}${inc} ${signeDansEq(d).signe} ${d} ${signeDansEq(b).signe} ${b}$`, // l'erreur est là on passe de l'autre côté
           et2: `${texteGras('Étape 2 :')} $${a}${inc} ${signeDansEq(-c).signe} ${-c}${inc} = ${d} ${signeDansEq(b).signe} ${b}$`,
@@ -255,11 +255,11 @@ export default function TrouverErreurResolEqDeg1 () {
         { // case 5 --> ax+b=cx+d  erreur à l'étape 4 on soustrait au lieu de diviser
           pronom: currentGenreEtPrenom.pronom,
           prenom: currentGenreEtPrenom.prenom,
-          a: a,
-          b: b,
-          c: c,
-          d: d,
-          inc: inc,
+          a,
+          b,
+          c,
+          d,
+          inc,
           eq: `$${a}${inc} ${signeDansEq(b).signe} ${b} = ${c}${inc} ${signeDansEq(d).signe} ${d} $`,
           et1: `${texteGras('Étape 1 :')} $${a}${inc} = ${c}${inc} ${signeDansEq(d).signe} ${d} ${signeDansEq(-b).signe} ${-b}$`,
           et2: `${texteGras('Étape 2 :')} $${a}${inc} ${signeDansEq(-c).signe} ${-c}${inc} = ${d} ${signeDansEq(-b).signe} ${-b}$`,

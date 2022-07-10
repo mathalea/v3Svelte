@@ -18,7 +18,7 @@ export default function PoucentageP2 () {
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur25 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c, d, n, u
     const fruits = [
       ['pêches', 3.5, 10, 30], ['noix', 4.5, 4, 13], ['cerises', 5.5, 11, 20], ['pommes', 2.5, 20, 40],

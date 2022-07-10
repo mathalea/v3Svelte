@@ -26,7 +26,7 @@ export default function NotationScientifique () {
   this.nbQuestions = 5
   this.interactif = false
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     Decimal.toExpNeg = -15
     Decimal.toExpPos = 20
     let reponse

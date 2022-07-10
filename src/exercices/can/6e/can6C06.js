@@ -17,7 +17,7 @@ export default function DivisionPar9 () {
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const b = randint(2, 9)
     let a
     switch (choice([1, 2, 3])) {

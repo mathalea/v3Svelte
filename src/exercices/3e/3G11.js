@@ -22,7 +22,7 @@ export default function ConstruireHomothetiePoint3e () {
   this.sup = 3
   this.typeExercice = 'IEP'
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     let nontrouve, assezloin, cible, s
     const anim = new Alea2iep()
     const k = randint(-4, 4, [0, -2, 2]) / 2

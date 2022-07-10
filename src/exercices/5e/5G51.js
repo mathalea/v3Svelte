@@ -19,7 +19,7 @@ export default function RepresenterUnSolide5e () {
   this.sup = 1
   this.sup2 = 1
   this.classe = 5
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let typesDeQuestionsDisponibles
     this.sup = parseInt(this.sup)
     if (this.sup === 3) { typesDeQuestionsDisponibles = [1, 2] } else if (this.sup === 5) { typesDeQuestionsDisponibles = [1, 2, 4] } else if (this.sup === 7) { typesDeQuestionsDisponibles = [1, 2, 4, 6] } else { typesDeQuestionsDisponibles = [parseInt(this.sup)] }

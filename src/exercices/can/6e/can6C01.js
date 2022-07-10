@@ -17,7 +17,7 @@ export default function OrdreDeGrandeur () {
   Exercice.call(this)
   this.nbQuestions = 1
   this.tailleDiaporama = 2
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     const a = randint(3, 7)

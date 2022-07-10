@@ -26,7 +26,7 @@ export default function ProblemeCourse () {
   this.nbColsCorr = 1
   this.sup = false
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

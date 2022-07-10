@@ -31,7 +31,7 @@ export default function MettreEnEquationSansResoudre () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.debug) {
       typesDeQuestionsDisponibles = [1]
     } else {
@@ -122,7 +122,7 @@ export default function MettreEnEquationSansResoudre () {
       // on prépare l'objet polygone
       const polygone = {
         nb_cotes: n,
-        unite: unite,
+        unite,
         article: myPolyName(n).article,
         nom: myPolyName(n).name,
         let_cote: inc,

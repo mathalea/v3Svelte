@@ -30,7 +30,7 @@ export default function ReconnaitreQuadrilatereParticulier () {
   this.correctionDetailleeDisponible = true
   context.isHtml ? this.correctionDetaillee = true : this.correctionDetaillee = false
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     if (this.interactif) this.consigne = 'Cocher toutes les réponses possibles.'

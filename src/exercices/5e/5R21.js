@@ -34,7 +34,7 @@ export default function ExerciceSoustractionsRelatifs (max = 20) {
   this.correctionDetailleeDisponible = true
   this.correctionDetaillee = true
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

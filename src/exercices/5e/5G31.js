@@ -39,7 +39,7 @@ export default function ExerciceAnglesTriangles () {
     if (a1 + a2 <= 180) { return 180 - (a1 + a2) } else { return -1 }
   }
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

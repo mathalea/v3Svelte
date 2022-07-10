@@ -29,7 +29,7 @@ export default function TracerAvecScratch () {
   this.nbQuestions = 3
   this.debug = false
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.debug) {
       typesDeQuestionsDisponibles = [1, 2, 3, 4, 5]
     } else {

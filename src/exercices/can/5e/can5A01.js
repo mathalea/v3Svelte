@@ -23,7 +23,7 @@ export default function RepetitionScratch () {
   this.listePackages = 'scratch3'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let prog = '\\begin{scratch}[print,fill,blocks,scale=0.8]\n \\blockinit{quand \\greenflag est cliqué}\n '
     prog += "\\blockpen{stylo en position d'écriture}\n"
     const b = choice([[120, 'triangle équilatéral'], [90, 'carré'], [72, 'pentagone régulier'], [60, 'hexagone régulier'], [45, 'octogone régulier'], [40, 'énéagone régulier'], [36, 'décagone régulier']])

@@ -26,7 +26,7 @@ export default function SymetrieAxialeConservation1 () {
   this.nbColsCorr = 1
   this.sup = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     const typesDeQuestionsDisponibles = ['Segment', 'Droite', '1/2droite', 'Triangle', 'Angle']
     const points = []; const traces = []; const nom = []; let alternance

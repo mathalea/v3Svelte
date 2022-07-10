@@ -18,7 +18,7 @@ export default function ConstruireUnTriangleAvecCible () {
   this.classe = 6
   this.typeExercice = 'IEP'
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let IEP
     let xMin
     let yMax

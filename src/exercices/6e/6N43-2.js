@@ -25,7 +25,7 @@ export default function TableauCriteresDeDivisibilite () {
   this.nbCols = 1
   this.sup = false
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.modeQcm = this.interactif
     this.autoCorrection = []
     if (!this.modeQcm) {

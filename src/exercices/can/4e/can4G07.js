@@ -20,7 +20,7 @@ export default function CalculLongueurThalesMilieu () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, A, B, C, D, E, objets, nom
     if (choice([true, false])) {
       nom = creerNomDePolygone(5, ['QD'])

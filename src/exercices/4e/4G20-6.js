@@ -26,7 +26,7 @@ export default function CalculValeurApprocheeRacineCarree () {
   this.besoinFormulaireNumerique = ['Avec ou sans calculatrice', 3, '1 : Avec calculatrice\n2 : Sans calculatrice\n3 : Mélange']
   this.sup = 3
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.autoCorrection = []
     this.listeQuestions = []
     this.listeCorrections = []

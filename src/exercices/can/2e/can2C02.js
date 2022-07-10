@@ -18,7 +18,7 @@ export default function CalculAstucieuxAvecDifferenceCarre () {
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(15, 40)
     const b = a + 1
     if (choice([true, false])) {

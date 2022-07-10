@@ -22,7 +22,7 @@ export default function EcritureDecimaleApresPuissancesDeDix () {
   this.nbColsCorr = 2
   this.tailleDiaporama = 3
   this.video = ''
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = []
     this.listeCorrections = []
     this.autoCorrection = []

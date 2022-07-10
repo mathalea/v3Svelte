@@ -23,7 +23,7 @@ export default function ConversionHeuresMinutesOuMinutesEtSecondes (can = false)
   this.correctionDetailleeDisponible = true
   this.correctionDetaillee = false
   this.sup = 1
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = contraindreValeur(1, 3, this.sup, 1)
     this.listeQuestions = []
     this.listeCorrections = []

@@ -18,7 +18,7 @@ export default function CoordonneesVecteur2 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(-6, 6, [0, 1, -1])
     const b = randint(2, 10)
     if (choice([true, false])) {

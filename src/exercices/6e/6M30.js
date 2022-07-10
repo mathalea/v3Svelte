@@ -33,7 +33,7 @@ export default function CalculDeVolumes () {
   this.interactifType = interactifType
   this.sup3 = 2
   this.sup4 = 8
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.consigne = this.interactif ? '' : "Calculer, en détaillant, le volume des solides donnés. Arrondir à l'unité."
     this.interactifType = this.sup3 === 2 ? 'mathLive' : 'qcm'
     this.autoCorrection = []

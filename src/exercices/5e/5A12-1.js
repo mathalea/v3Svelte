@@ -32,7 +32,7 @@ export default function PremierOuPas5e () {
   this.sup = 1
   this.listePackages = 'bclogo'
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     let typesDeQuestions
     if (context.isHtml) { // les boutons d'aide uniquement pour la version html
       // this.boutonAide = '';

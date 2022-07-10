@@ -22,7 +22,7 @@ export default function RepresenterUnSolide4e () {
   this.sup = 1
   this.sup2 = 1
   this.classe = 4
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = Number(this.sup)
     this.sup2 = Number(this.sup2)
     let typesDeQuestionsDisponibles

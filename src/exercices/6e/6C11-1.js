@@ -27,7 +27,7 @@ export default function DivisionsEuclidiennesEgalite () {
   this.nbQuestions = 4
   this.sup = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

@@ -16,7 +16,7 @@ export default function RecomposerEntier () {
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(2, 5)
     const b = randint(2, 9)
     const c = randint(2, 9)

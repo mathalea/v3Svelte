@@ -17,7 +17,7 @@ export default function SommeEntiers5e () {
   this.tailleDiaporama = 2
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const b = randint(51, 89, [60, 70, 80])
     const a = randint(2, 39, [10, 20, 30]) + 100
     this.reponse = calcul(a + b)

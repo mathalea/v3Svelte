@@ -20,7 +20,7 @@ export default function CalculHypotenusePythagore () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   let a, b
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const nom = creerNomDePolygone(3, ['QD'])
     a = randint(2, 7)//
     b = randint(3, 7)//
@@ -41,7 +41,7 @@ export default function CalculHypotenusePythagore () {
           texteParPosition(`${texNombrec(b)}`, milieu(B, C).x + 0.2, milieu(B, C).y, 'milieu', 'black', 1, 'middle', true)
         )
         this.question = 'Sur cette figure $x=\\sqrt{a}$ avec $a=$<br>'
-        this.question += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 22, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
+        this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 22, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
         this.correction = ` En utilisant le théorème de Pythagore, on a :<br>
         $${nom[0]}${nom[1]}^2+${nom[1]}${nom[2]}^2=${nom[0]}${nom[2]}^2$, soit
         $${a}^2+${b}^2=x^2$, d'où $x=\\sqrt{${a}^2+${b}^2}=\\sqrt{${a ** 2 + b ** 2}}$

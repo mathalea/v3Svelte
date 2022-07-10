@@ -17,7 +17,7 @@ export default function Division5e () {
   this.tailleDiaporama = 2
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(11, 15)
     const b = randint(3, 6)
     const c = a * b

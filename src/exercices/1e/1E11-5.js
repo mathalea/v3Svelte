@@ -21,7 +21,7 @@ export default function Resolutionavecdelta () {
   this.nbColsCorr = 1
   this.spacingCorr = 3
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     if (this.interactif) {

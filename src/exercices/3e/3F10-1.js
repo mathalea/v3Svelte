@@ -25,7 +25,7 @@ export default function VocabulaireNotationsFonctions () {
   this.nbQuestions = 3
   this.nbQuestionsModifiable = true
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     this.sup = parseInt(this.sup)
     this.listeQuestions = [] // Liste de questions
@@ -106,7 +106,7 @@ export default function VocabulaireNotationsFonctions () {
       }
 
       this.autoCorrection[i] = {
-        enonce: enonce,
+        enonce,
         options: { ordered: false, vertical: true },
         propositions: []
       }

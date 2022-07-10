@@ -30,7 +30,7 @@ export default function Thales2D () {
   this.correctionDetailleeDisponible = true
   this.correctionDetaillee = false
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let listeDeNomsDePolygones = []

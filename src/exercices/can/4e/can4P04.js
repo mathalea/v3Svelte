@@ -16,7 +16,7 @@ export default function ProportionnaliteNotes () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let b, n
     const a = choice([30, 40, 50, 60, 80, 100])
 

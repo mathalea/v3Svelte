@@ -24,7 +24,7 @@ export default function LaBonneUnite () {
     ['girafe', 40, 50, 'dm'],
     ['coline', 75, 150, 'm']
   ]
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     const unites = ['cm', 'dm', 'm']

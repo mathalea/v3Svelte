@@ -17,7 +17,7 @@ export default function QuestionDeVitesse () {
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
   this.optionsChampTexte = { texteApres: ' km' }
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(2, 6) * 20
     const b = randint(1, 6)
     this.reponse = calcul(a * (b + 0.5))

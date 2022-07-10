@@ -26,7 +26,7 @@ export default function PavagesMathalea2d () {
   this.correctionDetaillee = false
   this.correctionDetailleeDisponible = true
   context.isHtml ? (this.spacingCorr = 2.5) : (this.spacingCorr = 1.5)
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const objets = []
     let Nx, Ny // nombres de dalles en x et en y
     if (!this.sup2) { // On fixe le nombre de dalles en x et en y

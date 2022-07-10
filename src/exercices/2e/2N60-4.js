@@ -27,7 +27,7 @@ export default function ExerciceInequation1 () {
   this.sup2 = 4 // Choix du type d'inéquation
   this.nbQuestions = 6
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let listeTypeDeQuestions

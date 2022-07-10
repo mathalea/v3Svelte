@@ -14,7 +14,7 @@ export default function SommeDeVecteurs () {
   this.nbCols = 2
   this.nbColsCorr = 2
   this.sup = 1 //
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let u, v, A, B, C, xU, yU, xV, yV, p, U, V, M, N, UU, VV, posLabelA

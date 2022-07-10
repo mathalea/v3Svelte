@@ -16,7 +16,7 @@ export default function Discriminant () {
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(1, 5) * choice([-1, 1, 1, 1])
     const b = randint(-5, 5)
     const c = randint(-5, 5)

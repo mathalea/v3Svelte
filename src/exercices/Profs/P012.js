@@ -20,7 +20,7 @@ export default function Camemberts () {
   this.sup2 = '5' // nombre de disques par ligne
   this.titre = titre
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let nbParts, nbDisques
     if (this.sup === '') {
       this.sup = '2-3-4-5'

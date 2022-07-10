@@ -26,7 +26,7 @@ export default function MesurerUnAngleAvecRapporteur () {
   this.sup2 = 7
   this.sup3 = 4
   this.sup4 = false
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

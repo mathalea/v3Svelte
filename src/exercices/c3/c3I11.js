@@ -33,7 +33,7 @@ export default function NoteLaCouleurC3 () {
   this.correctionDetailleeDisponible = true
   this.correctionDetaillee = true
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     const damier = [
       ['Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc'],
       ['Blanc', 'Noir', 'Orange', 'Rouge', 'Orange', 'Jaune', 'Rouge', 'Jaune', 'Rose', 'Blanc'],

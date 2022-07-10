@@ -22,7 +22,7 @@ export default function AbscisseFractionnaire () {
   this.formatInteractif = 'fractionEgale'
   this.consigne = ''
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(2, 6) // dénominateur
     let b = randint(2, a * 4 - 1)
     do {

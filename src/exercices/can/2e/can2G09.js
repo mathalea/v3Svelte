@@ -18,7 +18,7 @@ export default function VecteursColineaires () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const p = choice([-2, 2, 3, 4, -4, -3])
     const ux = randint(1, 5)
     const uy = randint(1, 5)

@@ -18,7 +18,7 @@ export default function DoubleOuTripleDecimal () {
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(1, 3)
     const b = randint(1, 9, a)
     const e = a * 10 + b

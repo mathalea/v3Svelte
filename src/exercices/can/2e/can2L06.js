@@ -16,7 +16,7 @@ export default function DevelopperEgalitesRemarquables () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const inconnue = choice(['x', 'y'])
     const a = randint(1, 9)
     const b = randint(2, 5)

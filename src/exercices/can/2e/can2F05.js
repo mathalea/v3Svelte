@@ -19,7 +19,7 @@ export default function AntecedentFonctionRacine () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const m = randint(2, 5)
     const p = calcul(randint(1, 4) * m)
     const a = calcul(randint(5, 10) * m)

@@ -21,7 +21,7 @@ export default function Tiers () {
   this.sup = 1 // niveau de difficulté
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

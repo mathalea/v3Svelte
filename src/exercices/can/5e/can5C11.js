@@ -17,7 +17,7 @@ export default function DifferenceNegative () {
   this.tailleDiaporama = 2
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(8, 15)
     const b = randint(18, 30)
     this.question = `$${a}-${b}=$`

@@ -24,7 +24,7 @@ export default function CalculFonctionDeriveeAffine2 () {
   this.formatInteractif = 'fractionEgale'
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const listeFractions = [[2, 5], [-2, 3], [-3, 4], [5, 7], [-3, 7],
       [3, 5], [4, 5], [-2, 7], [-7, 9], [-4, 9], [4, 7], [2, 11], [-3, 11], [8, 9], [6, 7], [-8, 3], [-7, 3], [2, 15], [-2, 15], [3, 17], [-3, 10]]
     const listeFractions2 = [[2, 5], [2, 3], [3, 4], [5, 7], [3, 7],

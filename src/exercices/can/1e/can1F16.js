@@ -22,7 +22,7 @@ export default function LectureGraphiqueTangente () {
   this.formatChampTexte = 'largeur15 inline'
   this.tailleDiaporama = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let f; let r1; let r2; let alpha; let beta; let F; let o; let nbre; let courbef; let courbefp
     switch (choice([1, 2])) { //
       case 1:// second degré (x-alpha)^2+beta

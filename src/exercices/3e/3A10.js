@@ -27,7 +27,7 @@ export default function DivisionEuclidienneMultiplesDiviseursCriteres () {
   this.sup2 = '10'
   this.sup3 = 13
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     const nbChiffresMax = combinaisonListesSansChangerOrdre(this.sup.toString().split('-'), this.nbQuestions)
     const nbDiviseursMax = combinaisonListesSansChangerOrdre(this.sup2.toString().split('-'), this.nbQuestions)
     this.sup3 = contraindreValeur(2, 16, parseFloat(this.sup3), 10)

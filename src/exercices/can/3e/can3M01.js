@@ -16,7 +16,7 @@ export default function CarreAire () {
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, c
     switch (choice(['a', 'b'])) {
       case 'a':

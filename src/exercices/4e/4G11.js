@@ -25,7 +25,7 @@ export default function PavageEtTranslation2d () {
   this.sup2 = false // On cache les centres par défaut.
   this.sup3 = 7
   context.isHtml ? (this.spacingCorr = 2.5) : (this.spacingCorr = 1.5)
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = Number(this.sup)
     this.sup3 = Number(this.sup3)
     const videcouples = function (tableau) {

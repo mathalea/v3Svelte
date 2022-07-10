@@ -21,7 +21,7 @@ export default function ConstructionsParallelogrammesParticuliers () {
   this.sup = 1
   this.correctionDetaillee = false
   this.correctionDetailleeDisponible = true
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

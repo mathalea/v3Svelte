@@ -30,7 +30,7 @@ export default function TransformationsDuPlanEtCoordonnees () {
   this.sup2 = false // on mélange les transformation par défaut
 
   context.isHtml ? this.spacingCorr = 2.5 : this.spacingCorr = 1.5
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     const objetsEnonce = []
     const objetsCorrection = []
     let enonceAmc = ''

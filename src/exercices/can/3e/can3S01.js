@@ -19,7 +19,7 @@ export default function CalculProbaSimple () {
   this.formatChampTexte = 'largeur15 inline'
   this.formatInteractif = 'fractionEgale'
   const parfums = ['au citron', 'à la fraise', 'à la menthe', "à l'orange", 'à la cerise', 'à la framboise', 'au cassis']
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(3, 10)
     const k = choice([1, 3, 4, 9])
     const parfum1 = choice(parfums)

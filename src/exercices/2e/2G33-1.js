@@ -17,7 +17,7 @@ export default function alignementdetroispoints () {
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
   // this.consigne = 'Déterminer si les points donnés ci-dessous, sont ou non, alignés. <br> <i>On demande une démonstration en lien avec les équations de droites</i>'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

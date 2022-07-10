@@ -30,7 +30,7 @@ export default function GraphiquesEtProportionnalite2 () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.debug) {
       typesDeQuestionsDisponibles = [1]
     } else {
@@ -70,8 +70,8 @@ export default function GraphiquesEtProportionnalite2 () {
           ymin: 0,
           ymax: Math.floor((situation.qte_max * situation.prix_unitaire + yscale) / yscale) * yscale,
           xmax: situation.qte_max,
-          xscale: xscale,
-          yscale: yscale,
+          xscale,
+          yscale,
           legendeX: situation.legendeX,
           legendeY: situation.legendeY,
           grilleSecondaireVisible: true,

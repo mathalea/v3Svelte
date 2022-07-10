@@ -17,7 +17,7 @@ export default function ProduitScalaireCoordonnees () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const ux = randint(-10, 10)
     const uy = randint(-10, 10, 0)
     const vx = randint(-10, 10, 0)

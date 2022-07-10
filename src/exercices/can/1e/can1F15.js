@@ -24,7 +24,7 @@ export default function LectureGraphiqueNombreDerivee () {
   this.tailleDiaporama = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   const listeFractions = [[1, 1], [1, 2], [1, 3], [1, 4], [2, 1], [2, 3], [3, 4], [3, 2], [4, 3], [5, 3], [5, 4]]
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let b; let f; let r; let alpha; let beta; let a; let F; let o; let nbre; let tang; let frac; let fraction = []
     switch (choice([1, 2, 3, 4, 5])) { //
       case 1:

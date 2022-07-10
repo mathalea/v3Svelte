@@ -25,7 +25,7 @@ export default function ProblemesEvenementsRecurrents () {
   this.correctionDetailleeDisponible = true
   this.interactif = false
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = []
     this.listeCorrections = []
     this.autoCorrection = []

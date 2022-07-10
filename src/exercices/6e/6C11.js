@@ -39,7 +39,7 @@ export default function DivisionsEuclidiennes () {
   this.nbQuestions = 4
   this.listePackages = 'xlop'
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

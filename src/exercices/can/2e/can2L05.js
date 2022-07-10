@@ -16,7 +16,7 @@ export default function SolutionInequationQCM () {
   this.nbQuestions = 1
   this.spacing = 3
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     this.date = 1635094684684

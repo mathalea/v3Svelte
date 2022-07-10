@@ -23,7 +23,7 @@ export default function variationPolynomeDegre3 () {
   this.listePackages = 'tkz-tab'
   this.typeExercice = 'XCas'
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

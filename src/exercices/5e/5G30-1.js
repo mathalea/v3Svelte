@@ -26,7 +26,7 @@ export default function EgaliteDAngles () {
   this.nbCols = 1
   this.nbColsCorr = 1
   this.titre = titre
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.listeQuestions = []
     this.listeCorrections = []

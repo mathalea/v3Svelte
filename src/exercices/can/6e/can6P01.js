@@ -27,7 +27,7 @@ export default function ProportionnaliteSimple () {
     ['citrons', 1.5, 15, 30],
     ['bananes', 1.5, 15, 25]
   ]
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(0, 7)
     const b = fruits[a][1]
     const c = randint(fruits[a][2], fruits[a][3])

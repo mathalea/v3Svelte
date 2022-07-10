@@ -17,7 +17,7 @@ export default function ValeursDecimalesFractions () {
   this.formatChampTexte = 'largeur15 inline'
   this.typeExercice = 'simple'
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b
     switch (choice([1, 2, 3, 4])) {
       case 1:

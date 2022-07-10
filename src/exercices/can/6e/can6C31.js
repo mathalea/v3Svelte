@@ -17,7 +17,7 @@ export default function SoustraireEntierDecimal () {
   this.formatChampTexte = 'largeur15 inline'
   this.typeExercice = 'simple'
   this.tailleDiaporama = 2
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, u, d, c
     switch (choice([1, 2])) {
       case 1:// 5-2,6 par ex

@@ -25,7 +25,7 @@ export default function PuissancesDeDix () {
   this.correctionDetailleeDisponible = true
   this.nbColsCorr = 1
   this.sup = 1
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.sup = Number(this.sup)
     let typesDeQuestions
     this.boutonAide = modalPdf(

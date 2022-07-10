@@ -311,7 +311,7 @@ export default function ProblemesAiresRectangles () {
     return [texte, texteCorr, reponse]
   }
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // tableau contenant la liste des questions
     this.listeCorrections = []
     this.autoCorrection = []

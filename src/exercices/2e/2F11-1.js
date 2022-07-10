@@ -35,7 +35,7 @@ export default function ImageFonctionsRefs () {
   this.nbColsCorr = 2
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     this.autoCorrection = []
@@ -78,9 +78,9 @@ export default function ImageFonctionsRefs () {
           } else {
             nombre = this.can ? choice([1, 2, 4, 5, 10]) : Math.pow(2, randint(0, 5)) * Math.pow(5, randint(0, 5))
           }
-          Math.random() < 0.25 && (nombre = arrondi(1 / nombre,6))
+          Math.random() < 0.25 && (nombre = arrondi(1 / nombre, 6))
           Math.random() < 0.5 && (nombre *= -1)
-          solution = arrondi(1 / nombre,6)
+          solution = arrondi(1 / nombre, 6)
           texteCorr = `$${nom}(${texNombre(nombre)}) = ${texFraction(1, nombre)} = ${texNombre(solution)}$`
           break
       }

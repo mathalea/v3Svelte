@@ -17,7 +17,7 @@ export default function SigneFonctionAffine () {
   this.date = 1635094684684
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     let texte, texteCorr, monQcm, a, b, n, maFraction

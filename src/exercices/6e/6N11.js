@@ -28,7 +28,7 @@ export default function LireAbscisseEntiere2d () {
   this.sup = 4
   this.interactif = false
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     // numeroExercice est 0 pour l'exercice 1
     let typesDeQuestions
     this.listeQuestions = []

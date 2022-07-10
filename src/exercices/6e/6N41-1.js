@@ -31,7 +31,7 @@ export default function ExerciceLabyrintheFractionsEgales () {
     this.sup2 = 4
   }
   const tailleChiffre = 0.7
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeCorrections = []
     this.listeQuestions = []
     this.autoCorrection = []

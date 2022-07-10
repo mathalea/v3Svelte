@@ -23,7 +23,7 @@ export default function FractionsIrreductibles () {
   this.listePackages = 'bclogo'
   this.sup = true
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     let typesDeQuestions
     if (context.isHtml) { // les boutons d'aide uniquement pour la version html
       // this.boutonAide = '';

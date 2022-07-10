@@ -19,7 +19,7 @@ export default function LireAbscisseDecimaleDeFraction () {
   this.formatChampTexte = 'largeur15 inline'
   this.consigne = ''
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a
     switch (choice([1, 2])) { //
       case 1:// droite graduée     /4 resultat décimal

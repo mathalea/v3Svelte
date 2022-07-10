@@ -30,7 +30,7 @@ export default function VocabulaireDivisionEuclidienne () {
   this.sup3 = 1
   this.sup4 = 3
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.consigne = 'En utilisant le vocabulaire associé à la division euclidienne, détermine, '
     this.consigne += this.nbQuestions === 1 ? "pour l'égalité proposée, " : 'pour chaque égalité proposée, '
     this.consigne += 'le mot adapté au nombre désigné.'

@@ -46,7 +46,7 @@ export default function identitesCalculs () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     // une fonction pour gérer un \hfill dans la sortie LaTeX
     function myhfill () {
       if (context.isHtml) {
@@ -137,9 +137,9 @@ export default function identitesCalculs () {
       const situations = [
         {
           lettre: lettres,
-          a: a,
+          a,
           b: bSomme,
-          coeff: coeff,
+          coeff,
           a_coeff: a * coeff,
           operations: [{ str: '+', nb: 1 }, { str: '+', nb: 1 }],
           facteurs: [{ str: `${texNombre(a * coeff)}+${bSomme}`, nb: texNombre(a * coeff + bSomme) }, { str: `${texNombre(a * coeff)}+${bSomme}`, nb: texNombre(a * coeff + bSomme) }],
@@ -155,9 +155,9 @@ export default function identitesCalculs () {
         },
         {
           lettre: lettres,
-          a: a,
+          a,
           b: bDifference,
-          coeff: coeff,
+          coeff,
           a_coeff: a * coeff,
           operations: [{ str: '-', nb: -1 }, { str: '-', nb: -1 }],
           facteurs: [{ str: `${texNombre(a * coeff)}-${bDifference}`, nb: texNombre(a * coeff - bDifference) }, { str: `${texNombre(a * coeff)}-${bDifference}`, nb: texNombre(a * coeff - bDifference) }],
@@ -173,7 +173,7 @@ export default function identitesCalculs () {
         },
         {
           lettre: lettres,
-          a: a,
+          a,
           b: bSomDif,
           coeff: coeffSomDif,
           a_coeff: a * coeffSomDif,

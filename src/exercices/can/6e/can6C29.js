@@ -24,7 +24,7 @@ export default function Partage () {
     ['Trois', 'trois', 3], ['Quatre', 'quatre', 4], ['Cinq', 'cinq', 5],
     ['Six', 'six', 6], ['Sept', 'sept', 7], ['Huit', 'huit', 8], ['Neuf', 'neuf', 9]]
   let nombre, a, b, prix, n
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     nombre = choice(nbrePers)
     a = nombre[0]
     b = nombre[1]

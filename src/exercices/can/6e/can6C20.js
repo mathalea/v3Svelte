@@ -17,7 +17,7 @@ export default function ComplementAUn () {
   this.formatChampTexte = 'largeur15 inline'
   this.typeExercice = 'simple'
   this.tailleDiaporama = 2
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a
     switch (choice([1, 2, 3])) {
       case 1:

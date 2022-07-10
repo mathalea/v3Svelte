@@ -23,7 +23,7 @@ export default function ConversionsDeDurees () {
   this.spacing = 2
   this.nbQuestions = 5
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

@@ -25,7 +25,7 @@ export default function CompleterParSymetrie6e () {
   this.sup = 1
   this.sup2 = 1
   this.sup3 = true
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = contraindreValeur(1, 5, this.sup, 1)
     this.sup2 = contraindreValeur(1, 4, this.sup2, 1)
     this.listeQuestions = [] // Liste de questions

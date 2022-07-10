@@ -19,7 +19,7 @@ export default function PoucentageP2 () {
   this.formatChampTexte = 'largeur15 inline'
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, u
     switch (choice(['a', 'a', 'b', 'c', 'c'])) {
       case 'a':

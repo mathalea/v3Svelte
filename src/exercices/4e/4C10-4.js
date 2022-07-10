@@ -23,7 +23,7 @@ export default function ExerciceQuotientsRelatifs () {
   this.spacing = 2
   this.nbQuestions = 6
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const listeTypeDeQuestions = combinaisonListes(['-+', '+-', '--', '++'], this.nbQuestions)

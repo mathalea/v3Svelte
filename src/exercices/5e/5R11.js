@@ -32,7 +32,7 @@ export default function LireAbscisseRelative () {
     return (abs0 + (x - abs0) * 3 * pas1)
   }
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     let typesDeQuestions
     this.listeQuestions = []
     this.listeCorrections = []

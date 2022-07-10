@@ -23,7 +23,7 @@ export default function CalculerUnPourcentage () {
   this.nbCols = 1
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const typesDeQuestionsDisponibles = [1, 2, 3]
     const listeChoix = combinaisonListes(typesDeQuestionsDisponibles, this.nbQuestions)
     this.listeQuestions = [] // Liste de questions

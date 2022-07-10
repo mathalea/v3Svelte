@@ -36,7 +36,7 @@ export default function CalculDAngle () {
     this.spacingCorr = 2
   }
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     this.autoCorrection = []

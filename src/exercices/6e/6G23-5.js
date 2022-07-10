@@ -23,7 +23,7 @@ export default function CalculerUnAngle () {
   this.consigne = ''
   this.nbQuestions = 5
   this.sup = 15
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

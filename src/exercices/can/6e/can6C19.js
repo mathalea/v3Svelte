@@ -17,7 +17,7 @@ export default function ComplementACent () {
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
   this.typeExercice = 'simple'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(11, 49, [20, 30, 40])
     this.question = `$100-${a}=$`
     this.correction = `$100-${a}=${100 - a}$`

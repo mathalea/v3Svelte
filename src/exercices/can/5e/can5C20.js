@@ -17,7 +17,7 @@ export default function Soustraire2Decimaux2 () {
   this.formatChampTexte = 'largeur15 inline'
   this.typeExercice = 'simple'
   this.tailleDiaporama = 2
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(2, 9)
     const b = randint(1, a - 1)
     const d1 = randint(1, 6)

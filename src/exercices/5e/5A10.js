@@ -30,7 +30,7 @@ export default function ListeDesDiviseurs5e () {
   this.sup2 = '6-6-6'
   this.sup3 = 10
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let typesDeQuestions
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

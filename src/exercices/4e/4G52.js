@@ -24,7 +24,7 @@ export default function ReperagePaveDroit () {
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
 
-  this.nouvelleVersion = function () { // c'est ici que les données sont relatives
+  this.nouvelleVersion = () => { // c'est ici que les données sont relatives
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.introduction = '' // consigne avant les question y mettre le dessin + texte

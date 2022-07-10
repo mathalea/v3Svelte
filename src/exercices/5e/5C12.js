@@ -22,7 +22,7 @@ export default function CalculerUneExpressionNumerique () {
   this.sup2 = false // si false alors utilisation de nombres entiers (calcul mental), si true alors utilisation de nombres à un chiffre après la virgule.
   this.sup3 = true
   this.sup4 = false
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     let typesDeQuestionsDisponibles = []
     let reponse

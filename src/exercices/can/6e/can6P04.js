@@ -18,7 +18,7 @@ export default function AppliquerUnPourcentage () {
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
   this.bis = false
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, p
     switch (this.bis ? choice([4, 5, 6]) : choice([1, 2, 3])) {
       case 1:// prende 10%

@@ -37,7 +37,7 @@ export default function Proportions () {
   this.spacing = 1
   this.spacingCorr = 2
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

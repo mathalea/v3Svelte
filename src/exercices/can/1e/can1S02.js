@@ -21,7 +21,7 @@ export default function CalculTermeSuiteRec () {
   this.tailleDiaporama = 2
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, k, u, listeFractions1, fraction1, n1, d1
     switch (choice(['a', 'b', 'c', 'd', 'e'])) { //
       case 'a':// suite arithmétique

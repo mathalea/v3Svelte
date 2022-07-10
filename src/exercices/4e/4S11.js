@@ -29,7 +29,7 @@ export default function DeterminerDesMedianes () {
   this.sup = 1
   this.listePackages = 'bclogo'
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

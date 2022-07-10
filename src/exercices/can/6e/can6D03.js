@@ -18,7 +18,7 @@ export default function CalculDureeMinutes () {
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
   this.optionsChampTexte = { texteApres: ' minutes' }
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(13, 15)
     const b = a + 1
     const c = randint(1, 4) * 10

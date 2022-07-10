@@ -37,7 +37,7 @@ export default function EcrireUneExpressionLitterale () {
   this.besoinFormulaireCaseACocher = ['Inclure l\'inverse d\'un nombre']
   this.sup = true
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

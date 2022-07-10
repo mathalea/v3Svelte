@@ -23,7 +23,7 @@ export default function Can10Questions6N1 () {
   this.nbCols = 1
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let questions = []

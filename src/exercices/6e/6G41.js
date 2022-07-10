@@ -25,7 +25,7 @@ export default function RepresenterUnSolide () {
   this.amcReady = amcReady
   this.amcType = amcType
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     let typeDeQuestionsDisponibles
 
@@ -351,7 +351,7 @@ export default function RepresenterUnSolide () {
         this.listeQuestions.push(enonce + '<br>')
         this.listeCorrections.push(correction + '<br>')
         // Pour AMC question AmcOpen
-        this.autoCorrection[i] = { enonce: enonce, propositions: [{ texte: correction, statut: 3, feedback: '' }] }
+        this.autoCorrection[i] = { enonce, propositions: [{ texte: correction, statut: 3, feedback: '' }] }
         i++
       }
       cpt++

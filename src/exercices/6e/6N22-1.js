@@ -30,7 +30,7 @@ export default function RapportsSurUnSegment () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.beta) {
       typesDeQuestionsDisponibles = [0, 1]
     } else {

@@ -33,7 +33,7 @@ export default function ExerciceEquation1Tiret2 () {
   this.nbQuestions = 3
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

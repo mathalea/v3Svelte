@@ -24,7 +24,7 @@ export default function TracerTriangle2Angles () {
   this.sup = false
   this.sup3 = 0 // Type de question
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

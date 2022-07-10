@@ -16,7 +16,7 @@ export default function CalculerUneExpressionLitteralePythagore () {
   this.nbColsCorr = 2
   this.video = ''
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     let a, b, n, s, d, racs, racd, miracs, miracd

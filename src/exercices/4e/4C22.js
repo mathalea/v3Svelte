@@ -33,7 +33,7 @@ export default function ExerciceMultiplierFractions () {
   this.nbQuestions = 5
   this.nbColsCorr = 1
   this.sup2 = false // méthode
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

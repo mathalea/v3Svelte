@@ -30,7 +30,7 @@ export default function FractionsCalculsSimples () {
   this.correctionDetaillee = true
   this.correctionDetailleeDisponible = true
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     if (this.correctionDetaillee) this.nbColsCorr = 1
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

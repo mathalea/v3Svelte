@@ -23,7 +23,7 @@ export default function ExerciceComparerQuatreFractions () {
 
   this.besoinFormulaireCaseACocher = ['Inclure des nombres négatifs']
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

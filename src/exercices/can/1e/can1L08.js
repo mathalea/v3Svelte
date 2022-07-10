@@ -17,7 +17,7 @@ export default function DeveloppementCoeff2 () {
   this.tailleDiaporama = 2
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c, d
     a = randint(-3, 3, [0])
     b = randint(-3, 3, [0])

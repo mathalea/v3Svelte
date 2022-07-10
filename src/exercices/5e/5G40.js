@@ -24,7 +24,7 @@ export default function ConstructionsParallelogrammes () {
   this.correctionDetaillee = false
   this.correctionDetailleeDisponible = true
   this.typeExercice = 'IEP'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = [] // Tous les types de questions sont posés mais l'ordre diffère à chaque "cycle"

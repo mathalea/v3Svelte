@@ -19,7 +19,7 @@ export default function OpposeDeFraction () {
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur25 inline'
   this.formatInteractif = 'fractionEgale'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = choice(obtenirListeFractionsIrreductibles())
     const c = a.d
     let b, d, e
