@@ -42,20 +42,20 @@
     if (isInteractif) {
       loadMathLive()
       // Evènement indispensable pour pointCliquable par exemple
-      const exercicesAffiches = new window.Event('exercicesAffiches', { bubbles: true })
+      const exercicesAffiches = new window.Event("exercicesAffiches", { bubbles: true })
       document.dispatchEvent(exercicesAffiches)
-      if (exercice.interactifType === 'cliqueFigure') {
-      prepareExerciceCliqueFigure(exercice)
+      if (exercice.interactifType === "cliqueFigure") {
+        prepareExerciceCliqueFigure(exercice)
+      }
+      // Ne pas être noté sur un exercice dont on a déjà vu la correction
+      if (window.localStorage.getItem(`${exercice.id}|${exercice.seed}`)) {
+        newData()
+      }
     }
-    // Ne pas être noté sur un exercice dont on a déjà vu la correction
-    if (window.localStorage.getItem(`${exercice.id}|${exercice.seed}`)) {
-      newData()
-    } 
-  }
-  if (exercice) {
-    await tick()
-    Mathalea.renderDiv(divExercice)
-  }
+    if (exercice) {
+      await tick()
+      Mathalea.renderDiv(divExercice)
+    }
   })
 
   function handleNewSettings(event: CustomEvent) {
@@ -72,7 +72,7 @@
     isContenuVisible = !isContenuVisible
 
     if (isCorrectionVisible) {
-      window.localStorage.setItem(`${exercice.id}|${exercice.seed}`, 'true')
+      window.localStorage.setItem(`${exercice.id}|${exercice.seed}`, "true")
     }
   }
 
@@ -129,7 +129,7 @@
       <div class="flex font-bold text-3xl md:text-lg">Exercice {indiceExercice + 1}</div>
       <div class="flex font-normal text-lg lg:text-normal"><span class="invisible lg:visible mx-1 font-bold">&middot;</span>{titre}</div>
     </div>
-    <div class="flex justify-start text-normal mt-1 lg:justify-end lg:text-xl">
+    <div class="flex justify-start text-normal mt-1 text-3xl lg:justify-end lg:text-xl">
       <button type="button" on:click={switchInteractif}><i class="bx ml-2 {isInteractif ? 'bxs-mouse' : 'bx-mouse'} {!exercice?.interactifReady ? 'invisible' : ''}" /></button>
       <button type="button" on:click={() => (isVisible = !isVisible)}>
         <i class="bx ml-2 {isVisible ? 'bx-hide' : 'bx-show'}" />
@@ -148,8 +148,8 @@
   </h1>
 
   {#if isVisible}
-    <div class="flex">
-      <div class="flex flex-col relative {isParametresVisible ? 'w-3/4' : 'w-full'} duration-500" id="exercice{indiceExercice}">
+    <div class="flex flex-col-reverse lg:flex-row">
+      <div class="flex flex-col relative {isParametresVisible ? 'w-full lg:w-3/4' : 'w-full'} duration-500" id="exercice{indiceExercice}">
         {#if isContenuVisible}
           <Contenu chapeau={consigne} entrees={listeQuestions} {spacing} {indiceExercice} type={"enonce"} />
         {:else}
@@ -166,7 +166,7 @@
           <div bind:this={divScore} />
         {/if}
       </div>
-      <div class="bg-gray-100 {isParametresVisible ? 'w-1/4' : 'w-0'} flex flex-col duration-500">
+      <div class="bg-gray-100 {isParametresVisible ? 'visible lg:w-1/4' : 'hidden lg:w-0'} flex flex-col duration-500">
         {#if isParametresVisible}
           <Settings {exercice} on:reglages={handleNewSettings} />
         {/if}
