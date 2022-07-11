@@ -111,4 +111,17 @@ export class Mathalea {
       trust: false
     })
   }
+
+  static updateUrl (listeExercices) {
+    const url = new URL(window.location.href)
+    for (const ex of listeExercices) {
+      url.searchParams.append('ex', ex.filename)
+      url.searchParams.append('n', ex.nbQuestions)
+      if (ex.sup !== undefined) url.searchParams.append('s', ex.sup)
+      if (ex.sup2 !== undefined) url.searchParams.append('s2', ex.sup2)
+      if (ex.sup3 !== undefined) url.searchParams.append('s3', ex.sup3)
+      if (ex.sup4 !== undefined) url.searchParams.append('s4', ex.sup4)
+    }
+    window.history.pushState({}, '', url)
+  }
 }

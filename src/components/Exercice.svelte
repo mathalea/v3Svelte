@@ -15,6 +15,10 @@
   export let directory: string
   export let filename: string
   export let nbQuestions = undefined
+  export let sup = undefined
+  export let sup2 = undefined
+  export let sup3 = undefined
+  export let sup4 = undefined
   export let indiceExercice: number
   export let indiceLastExercice: number
 
@@ -59,12 +63,33 @@
   })
 
   function handleNewSettings(event: CustomEvent) {
-    if (event.detail.nbQuestions) exercice.nbQuestions = event.detail.nbQuestions
-    if (event.detail.sup !== undefined) exercice.sup = event.detail.sup
-    if (event.detail.sup2 !== undefined) exercice.sup2 = event.detail.sup2
-    if (event.detail.sup3 !== undefined) exercice.sup3 = event.detail.sup3
-    if (event.detail.sup4 !== undefined) exercice.sup4 = event.detail.sup4
+    if (event.detail.nbQuestions) {
+      nbQuestions = event.detail.nbQuestions
+      exercice.nbQuestions = nbQuestions
+      $listeExercices[indiceExercice].nbQuestions = nbQuestions
+    }
+    if (event.detail.sup) {
+      sup = event.detail.sup
+      exercice.sup = sup
+      $listeExercices[indiceExercice].sup = sup
+    }
+    if (event.detail.sup2) {
+      sup2 = event.detail.sup2
+      exercice.sup2 = sup2
+      $listeExercices[indiceExercice].sup2 = sup2
+    }
+    if (event.detail.sup3) {
+      sup3 = event.detail.sup3
+      exercice.sup3 = sup3
+      $listeExercices[indiceExercice].sup3 = sup3
+    }
+    if (event.detail.sup4) {
+      sup4 = event.detail.sup4
+      exercice.sup4 = sup4
+      $listeExercices[indiceExercice].sup4 = sup4
+    }
     updateDisplay()
+    Mathalea.updateUrl($listeExercices)
   }
 
   async function transitionContenuCorrection() {
@@ -108,6 +133,10 @@
     exercice = await Mathalea.load(directory, filename)
     // Nombre de questions transmis par App.svelte
     if (nbQuestions) exercice.nbQuestions = nbQuestions
+    if (sup) exercice.sup = sup
+    if (sup2) exercice.sup2 = sup2
+    if (sup3) exercice.sup3 = sup3
+    if (sup4) exercice.sup4 = sup4
     exercice.numeroExercice = indiceExercice
     updateDisplay()
   })
@@ -168,7 +197,7 @@
       </div>
       <div class="bg-gray-100 {isParametresVisible ? 'w-1/4' : 'w-0'} flex flex-col duration-500">
         {#if isParametresVisible}
-          <Settings {exercice} on:reglages={handleNewSettings} />
+          <Settings {exercice} on:settings={handleNewSettings} />
         {/if}
       </div>
     </div>

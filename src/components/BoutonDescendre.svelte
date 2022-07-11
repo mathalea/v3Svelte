@@ -1,4 +1,6 @@
 <script lang="ts">
+import { Mathalea } from '../Mathalea'
+
   import { listeExercices, moveExercice } from "./store"
   export let indice: number
   export let indiceLastExercice: number
@@ -6,6 +8,7 @@
     listeExercices.update((l) => {
       return moveExercice(l, indice, indice + 1)
     })
+    Mathalea.updateUrl($listeExercices)
   }
 </script>
 

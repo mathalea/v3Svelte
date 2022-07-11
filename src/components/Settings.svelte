@@ -45,8 +45,8 @@
 
   const dispatch = createEventDispatcher()
 
-  function nouveauxReglages() {
-    dispatch("reglages", {
+  function newSettings() {
+    dispatch("settings", {
       nbQuestions,
       sup,
       sup2,
@@ -168,7 +168,7 @@
         sup4 = data.join("-")
         break
     }
-    nouveauxReglages()
+    newSettings()
   }
 </script>
 
@@ -179,7 +179,7 @@
   {/if}
   {#if exercice.nbQuestionsModifiable}
     <div>
-      <span class="text-coopmaths-lightest">Nombre de questions :</span> <input type="number" bind:value={nbQuestions} on:change={nouveauxReglages} class="w-16 border-2" />
+      <span class="text-coopmaths-lightest">Nombre de questions :</span> <input type="number" bind:value={nbQuestions} on:change={newSettings} class="w-16 border-2" />
     </div>
   {/if}
   {#if exercice.besoinFormulaireCaseACocher}
@@ -187,7 +187,7 @@
       <label class="form-check-label text-coopmaths-lightest" for="check1">
         {exercice.besoinFormulaireCaseACocher[0]} :
       </label>
-      <input name="check1" type="checkbox" class="form-check-input checkbox-primary" bind:checked={sup} on:change={nouveauxReglages} />
+      <input name="check1" type="checkbox" class="form-check-input checkbox-primary" bind:checked={sup} on:change={newSettings} />
     </div>
   {/if}
   {#if exercice.besoinFormulaireNumerique}
@@ -195,7 +195,7 @@
       <div class="flex flex-col">
         <form action="">
           <label class="text-coopmaths-lightest" for="formNum1">{formNum1.titre}</label>
-          <select class="flex flex-auto" name="formNum1" id="formNum1-select" bind:value={sup} on:change={nouveauxReglages}>
+          <select class="flex flex-auto" name="formNum1" id="formNum1-select" bind:value={sup} on:change={newSettings}>
             {#each formNum1.champs as entree, i}
               <option value={i + 1}>{entree}</option>
             {/each}
@@ -215,7 +215,7 @@
           data-bs-toggle="tooltip"
           title={exercice.besoinFormulaireNumerique[2] || ""}
           bind:value={sup}
-          on:change={nouveauxReglages}
+          on:change={newSettings}
         />
       </div>
     {/if}
@@ -241,7 +241,7 @@
   {#if exercice.besoinFormulaire2CaseACocher}
     <div class="form-check">
       <label class="form-check-label text-coopmaths-lightest" for="check2">{exercice.besoinFormulaire2CaseACocher[0]} : </label>
-      <input name="check2" type="checkbox" class="form-check-input checkbox-primary" bind:checked={sup2} on:change={nouveauxReglages} />
+      <input name="check2" type="checkbox" class="form-check-input checkbox-primary" bind:checked={sup2} on:change={newSettings} />
     </div>
   {/if}
   {#if exercice.besoinFormulaire2Numerique}
@@ -249,7 +249,7 @@
       <div class="flex flex-col">
         <form action="">
           <label class="text-coopmaths-lightest" for="formNum2">{formNum2.titre}</label>
-          <select class="flex flex-auto" name="formNum2" id="formNum2-select" bind:value={sup2} on:change={nouveauxReglages}>
+          <select class="flex flex-auto" name="formNum2" id="formNum2-select" bind:value={sup2} on:change={newSettings}>
             {#each formNum2.champs as entree, i}
               <option value={i + 1}>{entree}</option>
             {/each}
@@ -269,7 +269,7 @@
           data-bs-toggle="tooltip"
           title={exercice.besoinFormulaire2Numerique[2] || ""}
           bind:value={sup2}
-          on:change={nouveauxReglages}
+          on:change={newSettings}
         />
       </div>
     {/if}
@@ -295,7 +295,7 @@
   {#if exercice.besoinFormulaire3CaseACocher}
     <div class="form-check">
       <label class="form-check-label text-coopmaths-lightest" for="check3">{exercice.besoinFormulaire3CaseACocher[0]} : </label>
-      <input name="check3" type="checkbox" class="form-check-input checkbox-primary" bind:checked={sup3} on:change={nouveauxReglages} />
+      <input name="check3" type="checkbox" class="form-check-input checkbox-primary" bind:checked={sup3} on:change={newSettings} />
     </div>
   {/if}
   {#if exercice.besoinFormulaire3Numerique}
@@ -303,7 +303,7 @@
       <div class="flex flex-col">
         <form action="">
           <label class="text-coopmaths-lightest" for="formNum3">{formNum3.titre}</label>
-          <select class="flex flex-auto" name="formNum3" id="formNum3-select" bind:value={sup3} on:change={nouveauxReglages}>
+          <select class="flex flex-auto" name="formNum3" id="formNum3-select" bind:value={sup3} on:change={newSettings}>
             {#each formNum3.champs as entree, i}
               <option value={i + 1}>{entree}</option>
             {/each}
@@ -323,7 +323,7 @@
           data-bs-toggle="tooltip"
           title={exercice.besoinFormulaire3Numerique[2] || ""}
           bind:value={sup3}
-          on:change={nouveauxReglages}
+          on:change={newSettings}
         />
       </div>
     {/if}
@@ -349,7 +349,7 @@
   {#if exercice.besoinFormulaire4CaseACocher}
     <div class="form-check">
       <label class="form-check-label text-coopmaths-lightest" for="check4">{exercice.besoinFormulaire4CaseACocher[0]} : </label>
-      <input name="check4" type="checkbox" class="form-check-input checkbox-primary" bind:checked={sup4} on:change={nouveauxReglages} />
+      <input name="check4" type="checkbox" class="form-check-input checkbox-primary" bind:checked={sup4} on:change={newSettings} />
     </div>
   {/if}
   {#if exercice.besoinFormulaire4Numerique}
@@ -357,7 +357,7 @@
       <div class="flex flex-col">
         <form action="">
           <label class="text-coopmaths-lightest" for="formNum4">{formNum4.titre}</label>
-          <select class="flex flex-auto" name="formNum4" id="formNum4-select" bind:value={sup4} on:change={nouveauxReglages}>
+          <select class="flex flex-auto" name="formNum4" id="formNum4-select" bind:value={sup4} on:change={newSettings}>
             {#each formNum4.champs as entree, i}
               <option value={i + 1}>{entree}</option>
             {/each}
@@ -377,7 +377,7 @@
           data-bs-toggle="tooltip"
           title={exercice.besoinFormulaire4Numerique[2] || ""}
           bind:value={sup4}
-          on:change={nouveauxReglages}
+          on:change={newSettings}
         />
       </div>
     {/if}
