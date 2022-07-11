@@ -42,3 +42,36 @@ Je n'ai pas contrôlé les exercices en version beta
 - **P013** : ?
 - **P014** : ?
 - **P016** : ?
+
+## Exercices ayant `besoinFormulaire2Texte`
+
+- **3F13-2** : correct (commenté)
+- **3G32-0** : consigne regroupé sur une seule ligne
+- **5A10** : ? + pb d'affichage sur les nombres supérieurs à 999.
+- **6C12-3** : retrait du `\n` en fin de ligne
+- **6N10** : correct
+- **6P11** : correct
+- **6P12** : correct
+- **CM020** : ?
+- **P007** : ?
+- **P008** : ?
+- **P009** : ? formulaire texte en formulaire numérique mais `P009` inconnu dans la base... _à vérifier_
+- **P011** : ?
+- **P012** : ?
+- **P014** : ?
+
+## Exercices ayant `besoinFormulaire3Texte`
+
+- **5L12-2** : correct
+- **5L14-4** : correct
+- **6G23-3** : correct (mais pb d'affichage dans **v3Svelte**)
+- **P011** : ?
+
+## Exercices ayant `besoinFormulaire4Texte`
+
+- **2G11-5** : correct (espace ajouté avant les deux points)
+- **3G43** : correct
+- **4G53** : correct
+- **5M20** : correct
+- **6M10-1** : ?
+- **6M30** : correct
