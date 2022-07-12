@@ -11,15 +11,15 @@ import { circularPermutation, getDimensions } from './outils'
   * @classdesc Graphic object like Point, Line, Segment etc.
   */
 export class GVGraphicObject {
-  visible: boolean
-  public _name: string
-  color: string = 'black'
+  visible /** boolean */
+  _name /** string */
+  color /** string */ = 'black'
   constructor () {
     this.visible = false
     this.name = ''
   }
 
-  aleaName (...name: (string | GVGraphicObject)[]) {
+  aleaName (...name /** (string | GVGraphicObject)[] */) {
     this.name = aleaName(name.map(x => {
       if (x instanceof GVGraphicObject) {
         return x.name
@@ -42,7 +42,7 @@ export class GVGraphicObject {
     * Move this right to figures
     * @param figures
     */
-  moveRight (...figures: GVGraphicObject[]) {
+  moveRight (...figures/** GVGraphicObject[] */) {
     const [xmin1, ymin1, xmax1, ymax1] = getDimensions(this)
     const [xmin2, ymin2, xmax2, ymax2] = getDimensions(...figures)
     const P1 = new GVPoint(xmin1, ymin1)
@@ -51,7 +51,7 @@ export class GVGraphicObject {
     this.move(t.add(new GVVector(4, 0)).sub(new GVVector(0, (ymax2 - ymin2 + ymax1 - ymin1) / 2)))
   }
 
-  move (V: GVVector) {
+  move (V /** GVVctor */) {
     if (this instanceof GVPoint) {
       this.x = this.add(V).x
       this.y = this.add(V).y
@@ -68,20 +68,20 @@ export class GVGraphicObject {
   * @classdesc Caracteristics of a point in an euclidean plan
   */
 export class GVPoint extends GVGraphicObject {
-  coordinates: GVCoordinates
-  polarCoordinates: GVPolar
-  cartesianCoordinates: GVCartesian
-  type: string
-  x: number
-  y: number
-  r: number
-  theta: number
-  ggb: string
-  dot: any
-  labelPoints: [GVPoint, GVPoint, GVPoint]
-  label: boolean = false
-  M2D: any
-  constructor (arg1: GVCoordinates | number, arg2: number = 0) {
+  coordinates /** GVCoordinates */
+  polarCoordinates /** GVPolar */
+  cartesianCoordinates /** GVCartesian */
+  type /** string */
+  x /** number */
+  y /** number */
+  r /** number */
+  theta /** number */
+  ggb /** string */
+  dot /** any */
+  labelPoints /** [GVPoint, GVPoint, GVPoint] */
+  label /** boolean */ = false
+  M2D /** any */
+  constructor (arg1/** GVCoordinates | number */, arg2 /** number */ = 0) {
     super()
     if (arg1 instanceof GVCoordinates) {
       this.coordinates = arg1
@@ -100,7 +100,7 @@ export class GVPoint extends GVGraphicObject {
     this.M2D = point(this.x, this.y, '', 'above right')
   }
 
-  getPolarCoordinates (): GVCartesian {
+  getPolarCoordinates ()/** GVCartesian */ {
     return this.coordinates.getPolarCoordinates()
   }
 
@@ -116,7 +116,7 @@ export class GVPoint extends GVGraphicObject {
     return -round(this.y * coeff, 3)
   }
 
-  getRotate (O: GVPoint, angle: number) {
+  getRotate (O /** GVPoint */, angle /** number */) {
     return new GVPoint(
       new GVCartesian(
         (this.x - O.x) * Math.cos(angle) - (this.y - O.y) * Math.sin(angle) + O.x,
@@ -124,30 +124,30 @@ export class GVPoint extends GVGraphicObject {
       ))
   }
 
-  add (X: GVVector | GVPoint): GVPoint {
+  add (X /** GVVctor | GVPoint */) /** GVPoint */ {
     return new GVPoint(new GVCartesian(this.x + X.x, this.y + X.y))
   }
 
-  sub (X: GVVector | GVPoint): GVPoint {
+  sub (X /** GVVctor | GVPoint */) /** GVPoint */ {
     return new GVPoint(new GVCartesian(this.x - X.x, this.y - X.y))
   }
 
-  multiply (k: number): GVPoint {
+  multiply (k /** number */) /** GVPoint */ {
     return new GVPoint(new GVCartesian(this.x * k, this.y * k))
   }
 
-  divide (k: number): GVPoint {
+  divide (k /** number */) /** GVPoint */ {
     return new GVPoint(new GVCartesian(this.x / k, this.y / k))
   }
 
-  getBarycentriqueCoords (A: GVPoint, B: GVPoint, C: GVPoint): number[] {
-    const a: number = determinant(B.sub(this), C.sub(this))
-    const b:number = determinant(C.sub(this), A.sub(this))
-    const c: number = determinant(A.sub(this), B.sub(this))
+  getBarycentriqueCoords (A /** GVPoint */, B /** GVPoint */, C /** GVPoint */) /** number[] */ {
+    const a /** number */ = determinant(B.sub(this), C.sub(this))
+    const b /** number */ = determinant(C.sub(this), A.sub(this))
+    const c /** number */ = determinant(A.sub(this), B.sub(this))
     return [a, b, c]
   }
 
-  isInTriangle (A: GVPoint, B: GVPoint, C: GVPoint): boolean {
+  isInTriangle (A /** GVPoint */, B /** GVPoint */, C /** GVPoint */) /** boolean */ {
     return Math.min(...this.getBarycentriqueCoords(A, B, C)) > 0 || Math.max(...this.getBarycentriqueCoords(A, B, C)) < 0
   }
 
@@ -156,11 +156,11 @@ export class GVPoint extends GVGraphicObject {
     * @param P
     * @returns {GVPoint}
     */
-  getSymetric (P: GVPoint): GVPoint {
+  getSymetric (P /** GVPoint */) /** GVPoint */ {
     return barycentre([this, P], [2, -1])
   }
 
-  getHomothetic (O: GVPoint, k: number) {
+  getHomothetic (O /** GVPoint */, k /** number */) {
     return new GVPoint(
       new GVCartesian(
         k * this.x + (1 - k) * O.x,
@@ -177,8 +177,8 @@ export class GVPoint extends GVGraphicObject {
     return `${this.name} = (${this.x},${this.y})`
   }
 
-  showName (scaleppc: number = 1): string {
-    let label: any
+  showName (scaleppc /** number */ = 1) /** string */ {
+    let label /** any */
     const splitname = this.name.split('_')
     let nameFormat = splitname.length === 1 ? splitname[0] : `${splitname[0]}_{${splitname[1]}}`
     if (this.labelPoints !== undefined) {
@@ -188,7 +188,7 @@ export class GVPoint extends GVGraphicObject {
       const v1 = P1.sub(S).getVector().getNormed()
       const v3 = P3.sub(S).getVector().getNormed()
       const corr = new GVVector(0, -0.3 * scaleppc)
-      let P: GVPoint
+      let P /** GVPoint */
       if (v1.colinear(v3)) { // Colinéaires
         P = S.add(v1.getNormal().multiply(scaleppc * 0.4)).add(corr)
       } else { // Non colinéaires
@@ -231,10 +231,10 @@ export class GVPoint extends GVGraphicObject {
   get name () { return this._name }
 }
 export class GVVector {
-  x: number = 0
-  y: number = 0
-  norme: number
-  constructor (arg1: number | GVPoint, arg2: number | GVPoint) {
+  x /** number */ = 0
+  y /** number */ = 0
+  norme /** number */
+  constructor (arg1 /** number | GVPoint */, arg2 /** number | GVPoint */) {
     if (typeof arg1 === 'number' && typeof arg2 === 'number') {
       this.x = arg1
       this.y = arg2
@@ -250,36 +250,36 @@ export class GVVector {
     return new GVVector(this.x / xy, this.y / xy)
   }
 
-  getNormal (): GVVector {
+  getNormal () /** GVVctor */ {
     return new GVVector(-this.y, this.x)
   }
 
-  add (X: GVVector | GVPoint): GVVector {
+  add (X /** GVVctor | GVPoint */) /** GVVctor */ {
     return new GVVector(this.x + X.x, this.y + X.y)
   }
 
-  sub (X: GVVector | GVPoint): GVVector {
+  sub (X /** GVVctor | GVPoint */) /** GVVctor */ {
     return new GVVector(this.x - X.x, this.y - X.y)
   }
 
-  multiply (k: number): GVVector {
+  multiply (k /** number */) /** GVVctor */ {
     return new GVVector(this.x * k, this.y * k)
   }
 
-  neg (): GVVector {
+  neg () /** GVVctor */ {
     return new GVVector(-this.x, -this.y)
   }
 
-  dot (X: GVVector | GVPoint): number {
+  dot (X /** GVVctor | GVPoint */) /** number */ {
     return dot([this.x, this.y], [X.x, X.y])
   }
 
-  cross (X: GVVector | GVPoint): MathArray | Matrix {
+  cross (X /** GVVctor | GVPoint */)/** MathArray | Matrix */ {
     const Cross = cross([this.x, this.y, 0], [X.x, X.y, 0])
     return Cross
   }
 
-  colinear (V: GVVector): boolean {
+  colinear (V /** GVVctor */) /** boolean */ {
     return parseFloat(cross([this.x, this.y, 0], [V.x, V.y, 0])[2].toFixed(15)) === 0
   }
 }
@@ -288,17 +288,17 @@ export class GVVector {
     * @classdesc Caracteristics of a line in an euclidean plan (ax+by=c)
     */
 export class GVLine extends GVGraphicObject {
-  direction: GVVector
-  A: GVPoint
-  B: GVPoint
-  type: string
-  a: number = 0
-  b: number = 0
-  c: number = 0
-  ggb: string
+  direction /** GVVctor */
+  A /** GVPoint */
+  B /** GVPoint */
+  type /** string */
+  a /** number */ = 0
+  b /** number */ = 0
+  c /** number */ = 0
+  ggb /** string */
   // Une droite sera définie par deux points distincts ou un point et une direction
   // Il faudrait deux constructeurs ?
-  constructor (A: GVPoint, B: GVPoint | GVVector) {
+  constructor (A /** GVPoint */, B /** GVPoint | GVVector */) {
     super()
     this.direction = B instanceof GVVector ? B : new GVVector(B.x - A.x, B.y - A.y)
     this.A = A
@@ -308,11 +308,11 @@ export class GVLine extends GVGraphicObject {
     this.ggb = `${this.name}: ${this.a}*x+${this.b}*y=${this.c})`
   }
 
-  getYPoint (x: number) {
+  getYPoint (x /** number */) {
     return this.b === 0 ? undefined : (this.c - this.a * x) / this.b
   }
 
-  getXPoint (y: number) {
+  getXPoint (y /** number */) {
     return this.a === 0 ? undefined : (this.c - this.b * y) / this.a
   }
 
@@ -323,7 +323,7 @@ export class GVLine extends GVGraphicObject {
     this.c = this.a * this.A.x + this.b * this.A.y
   }
 
-  getIntersect (L: GVLine): GVPoint {
+  getIntersect (L/** GVLine */) /** GVPoint */ {
     const delta = L.a * this.b - this.a * L.b
     if (delta.toFixed(15) !== '0') {
       const deltax = -(L.b * this.c - this.b * L.c)
@@ -333,7 +333,7 @@ export class GVLine extends GVGraphicObject {
     }
   }
 
-  getPerpendicularLine (P: GVPoint) {
+  getPerpendicularLine (P /** GVPoint */) {
     return new GVLine(P, this.direction.getNormal())
   }
 
@@ -342,7 +342,7 @@ export class GVLine extends GVGraphicObject {
     * @param P
     * @returns {GVPoint}
     */
-  getSymetric (P: GVPoint): GVPoint {
+  getSymetric (P /** GVPoint */) /** GVPoint */ {
     return barycentre([this.getIntersect(this.getPerpendicularLine(P)), P], [2, -1])
   }
 
@@ -353,10 +353,10 @@ export class GVLine extends GVGraphicObject {
 
   get name () { return this._name }
 }
-export function determinant (X: GVVector | GVPoint, Y: GVVector | GVPoint): number {
+export function determinant (X /** GVVctor | GVPoint */, Y /** GVVctor | GVPoint */) /** number */ {
   return X.x * Y.y - X.y * Y.x
 }
-export function barycentre (P: GVPoint[], a: number[]): GVPoint {
+export function barycentre (P /** GVPoint[] */, a /** number[] */) /** GVPoint */ {
   const pointsPonderes = P.map((x, i) => x.multiply(a[i]))
   return pointsPonderes.reduce((accumulator, curr) => accumulator.add(curr)).divide(a.reduce((accumulator, curr) => accumulator + curr))
 }
@@ -365,11 +365,11 @@ export function barycentre (P: GVPoint[], a: number[]): GVPoint {
     * @classdesc Caracteristics of a segment in an euclidean plan
     */
 export class GVSegment extends GVLine {
-  label: boolean
-  text: string = ''
-  textColor: string = 'black'
-  direct: boolean = true
-  constructor (A: GVPoint, B: GVPoint) {
+  label /** boolean */
+  text /** string */ = ''
+  textColor /** string */ = 'black'
+  direct /** boolean */ = true
+  constructor (A /** GVPoint */, B /** GVPoint */) {
     super(A, B)
     this.type = 'Segment'
     this.A = A
@@ -378,8 +378,8 @@ export class GVSegment extends GVLine {
     this.getEquation()
   }
 
-  showLabel (scaleppc: number = 1) {
-    let label: any
+  showLabel (scaleppc /** number */ = 1) {
+    let label /** any */
     const P = new GVPoint((this.A.x + this.B.x) / 2, (this.A.y + this.B.y) / 2)
     if (context.isHtml) {
       label = latexParPoint(this.name, point(P.x, P.y, '', 'center'), 'black', 50, 8, '')
@@ -397,13 +397,13 @@ export class GVSegment extends GVLine {
     * @classdesc Caracteristics of a circle in an euclidean plan
     */
 export class GVCircle extends GVGraphicObject {
-  A: GVPoint // center
-  B: GVPoint | number
-  type: string
-  a: number = 0
-  b: number = 0
-  r: number = 0
-  constructor (A: GVPoint, B: GVPoint | number) {
+  A /** GVPoint */ // center
+  B /** GVPoint | number */
+  type /** string */
+  a /** number */ = 0
+  b /** number */ = 0
+  r /** number */ = 0
+  constructor (A /** GVPoint */, B /** GVPoint | number */) {
     super()
     this.type = 'Circle'
     this.A = A
@@ -411,7 +411,7 @@ export class GVCircle extends GVGraphicObject {
     this.r = B instanceof GVPoint ? Math.sqrt((A.x - B.x) ** 2 + (A.y - B.y) ** 2) : B
   }
 
-  getPoint (theta: number): GVPoint {
+  getPoint (theta /** number */) /** GVPoint */ {
     return new GVPoint(
       new GVCartesian(
         this.A.x + this.r * Math.cos(theta),
@@ -425,19 +425,19 @@ export class GVCircle extends GVGraphicObject {
     * @classdesc Caracteristics of an angle
     */
 export class GVAngle extends GVGraphicObject {
-  A: GVPoint
-  B: GVPoint
-  C: GVPoint
-  angle: number
-  type: string
-  direct: boolean
-  vBA: GVVector
-  vBC: GVVector
-  right: boolean = false
-  fillColor: string = 'none'
-  fillOpacity: number = 0.2
-  rayon: boolean = true
-  constructor (A: GVPoint, B: GVPoint, C: GVPoint) {
+  A /** GVPoint */
+  B /** GVPoint */
+  C /** GVPoint */
+  angle /** number */
+  type /** string */
+  direct /** boolean */
+  vBA /** GVVctor */
+  vBC /** GVVctor */
+  right /** boolean */ = false
+  fillColor /** string */ = 'none'
+  fillOpacity /** number */ = 0.2
+  rayon /** boolean */ = true
+  constructor (A /** GVPoint */, B /** GVPoint */, C /** GVPoint */) {
     super()
     this.type = 'Angle'
     const vA = new GVVector(A.x, A.y)
@@ -455,7 +455,7 @@ export class GVAngle extends GVGraphicObject {
     this.direct = cross([vBA.x, vBA.y, 0], [vBC.x, vBC.y, 0])[2] > 0
   }
 
-  scale (scale: number) {
+  scale (scale /** number */) {
     const vBA = this.vBA.multiply(scale)
     const vBC = this.vBC.multiply(scale)
     this.A = this.B.add(vBA)
@@ -467,11 +467,10 @@ export class GVAngle extends GVGraphicObject {
     * @classdesc Caracteristics of an angle
     */
 export class GVPolygon extends GVGraphicObject {
-  vertices: GVPoint[]
-  showLabels: boolean = true
-  constructor (...args: GVPoint[]) {
+  showLabels /** boolean */ = true
+  constructor (...args /** GVPoint[] */) {
     super()
-    this.vertices = args
+    this.vertices /** GVPoint[] */= args
     this.name = circularPermutation(args.map(x => x.name)).join('')
   }
 
@@ -490,10 +489,10 @@ export class GVPolygon extends GVGraphicObject {
     * @classdesc Caracteristics of a triangle
     */
 export class GVRectangle extends GVPolygon {
-  longueur: number
-  largeur: number
-  ratio: number
-  constructor (...args: GVPoint[]) {
+  longueur /** number */
+  largeur /** number */
+  ratio /** number */
+  constructor (...args /** GVPoint[] */) {
     super(...args)
     const [A, B, C, D] = args
     const dimensions = [Math.sqrt((A.x - B.x) ** 2 + (A.y - B.y) ** 2), Math.sqrt((C.x - B.x) ** 2 + (C.y - B.y) ** 2)].sort()
@@ -507,7 +506,7 @@ export class GVRectangle extends GVPolygon {
     * @classdesc Caracteristics of a triangle
     */
 export class GVTriangle extends GVPolygon {
-  constructor (...args: GVPoint[]) {
+  constructor (...args /** GVPoint[] */) {
     super(...args)
   }
 }

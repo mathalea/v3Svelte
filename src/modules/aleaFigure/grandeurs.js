@@ -1,22 +1,21 @@
 import { texNombre2 } from '../outils.js'
 import { simplify, parse, unit, max, add, subtract, abs, log10, random, round, isConstantNode } from 'mathjs'
 import { aleaName } from '../outilsMathjs.js'
-import { GVGraphicObject, GVPoint } from './elements'
+import { GVGraphicObject } from './elements.js'
 
 /**
   * Grandeur, methods for operations
   *
   */
 export class GVGrandeur {
-  // @ts-ignore
-  value: number
-  precision: number
-  unit: string
-  toFixed: number
-  nameAndValue: string
-  private _name: string
-  calcul: string
-  constructor (name: string | GVPoint[], value: number, precision:number = 1, unit: string = '') {
+  value /** number */
+  precision /** number */
+  unit /** string */
+  toFixed /** number */
+  nameAndValue /** string */
+  _name /** string */
+  calcul /** string */
+  constructor (name /** string | GVPoint[] */, value /** number */, precision /** number */ = 1, unit /** string */ = '') {
     this.value = round(value, precision)
     this.precision = precision
     this.unit = unit
@@ -24,7 +23,7 @@ export class GVGrandeur {
     this.name = name
   }
 
-  set name (newname: string | GVPoint[]) {
+  set name (newname /** string | GVPoint[] */) {
     if (typeof newname === 'string') {
       this._name = newname
     } else {
@@ -38,7 +37,7 @@ export class GVGrandeur {
     return `{${texNombre2(this.toFixed).replace(',', '{,}')}~${this.unit.replace('deg', '\\degree')}}`.replace('~\\degree', '\\degree')
   }
 
-  aleaName (...name: (string | GVGraphicObject)[]) {
+  aleaName (...name/** (string | GVGraphicObject)[] */) {
     this.name = aleaName(name.map(x => {
       if (x instanceof GVGraphicObject) {
         return x.name
@@ -48,7 +47,7 @@ export class GVGrandeur {
     }), name.length).join('')
   }
 
-  multiply (a: GVGrandeur) {
+  multiply (a /** GVGrandeur */) {
     const expression = simplify([this.name, a.name].filter(x => x !== '').join('*').replaceAll('{', '(').replaceAll('}', ')')).toString()
     const calcul = parse(unit(this.toFixed + this.unit).multiply(unit(a.toFixed + a.unit)).toString())
     // @ts-ignore
@@ -62,7 +61,7 @@ export class GVGrandeur {
     )
   }
 
-  divide (a: GVGrandeur) {
+  divide (a /** GVGrandeur */) {
     const expression = simplify([this.name, a.name].filter(x => x !== '').join('/').replaceAll('{', '(').replaceAll('}', ')')).toString()
     const calcul = parse(unit(this.toFixed + this.unit).divide(unit(a.toFixed + a.unit)).toString())
     return new GVGrandeur(
@@ -75,7 +74,7 @@ export class GVGrandeur {
     )
   }
 
-  add (a: GVGrandeur) {
+  add (a /** GVGrandeur */) {
     const expression = simplify([this.name, a.name].filter(x => x !== '').join('+').replaceAll('{', '(').replaceAll('}', ')')).toString()
     const calcul = parse(add(unit(this.toFixed + this.unit), unit(a.toFixed + a.unit)).toString())
     return new GVGrandeur(
@@ -88,7 +87,7 @@ export class GVGrandeur {
     )
   }
 
-  subtract (a: GVGrandeur) {
+  subtract (a /** GVGrandeur */) {
     const expression = simplify([this.name, a.name].filter(x => x !== '').join('-').replaceAll('{', '(').replaceAll('}', ')')).toString()
     const calcul = parse(subtract(unit(this.toFixed + this.unit), unit(a.toFixed + a.unit)).toString())
     return new GVGrandeur(
@@ -101,7 +100,7 @@ export class GVGrandeur {
     )
   }
 
-  hypotenuse (a: GVGrandeur) {
+  hypotenuse (a /** GVGrandeur */) {
     return a.pow(2).add(this.pow(2)).sqrt()
   }
 
@@ -110,7 +109,7 @@ export class GVGrandeur {
     * @param {number} n // Integer
     * @returns {GVGrandeur}
     */
-  pow (n: number): GVGrandeur {
+  pow (n /** number */) /** GVGrandeur */ {
     return new GVGrandeur(this.name + '^{' + n + '}', Math.pow(this.toFixed, n), n * this.precision, this.unit + '^' + n)
   }
 
@@ -119,11 +118,11 @@ export class GVGrandeur {
     * @param n // Integer
     * @returns {GVGrandeur}
     */
-  sqrt (): GVGrandeur {
+  sqrt () /** GVGrandeur */ {
     return new GVGrandeur('\\sqrt{' + this.name + '}', Math.pow(this.toFixed, 0.5), Math.floor(0.5 * this.precision), 'cm')
   }
 
-  abs (): GVGrandeur {
+  abs () /** GVGrandeur */ {
     return new GVGrandeur(
       this._name,
       abs(this.value),
@@ -132,7 +131,7 @@ export class GVGrandeur {
     )
   }
 
-  neg (): GVGrandeur {
+  neg () /** GVGrandeur */ {
     return new GVGrandeur(
       '-' + this.name,
       -this.value,
@@ -141,7 +140,7 @@ export class GVGrandeur {
     )
   }
 
-  to (newUnit: string): GVGrandeur {
+  to (newUnit /** string */) /** GVGrandeur */ {
     const thenumber = abs(unit(this.value, this.unit))
     const conversion = abs(thenumber.to(newUnit))
     // @ts-ignore
@@ -164,7 +163,7 @@ export class GVGrandeur {
   * @param {string} unit
   * @returns {GVGrandeur}
   */
-export function qrandom (nmin: number = 0, nmax: number = 1, digit: number = max(0, -log10(abs(nmax - nmin))), name: string = '', unit: string = ''): GVGrandeur {
+export function qrandom (nmin /** number */ = 0, nmax /** number */ = 1, digit /** number */ = max(0, -log10(abs(nmax - nmin))), name /** string */ = '', unit /** string */ = '') /** GVGrandeur */ {
   return new GVGrandeur(
     name,
     round(random(nmin, nmax), max(digit, 0)),

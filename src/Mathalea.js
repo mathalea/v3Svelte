@@ -2,7 +2,7 @@ import renderMathInElement from 'katex/dist/contrib/auto-render.js'
 import 'katex/dist/katex.min.css'
 import Exercice from './exercices/ExerciceTs'
 
-export type Settings = { sup?: boolean | string | number, sup2?: boolean | string | number, sup3?: boolean | string | number, sup4?: boolean | string | number, nbQuestions?: number, seed?: string }
+// export type Settings = { sup?: boolean | string | number, sup2?: boolean | string | number, sup3?: boolean | string | number, sup4?: boolean | string | number, nbQuestions?: number, seed?: string }
 
 /**
  * Ensemble de méthodes statiques pourgérer les exercices
@@ -14,21 +14,21 @@ export class Mathalea {
  * @param {string} url
  * @returns {Promise<Exercice>} exercice
  */
-  static async load (directory: string, filename: string): Promise<Exercice> {
+  static async load (directory /** string */, filename /** string */) /** Promise<Exercice> */ {
     try {
       // L'import dynamique ne peut descendre que d'un niveau, les sous-répertoires de directory ne sont pas pris en compte
       // cf https://github.com/rollup/plugins/tree/master/packages/dynamic-import-vars#globs-only-go-one-level-deep
       if (directory !== 'exercicesStatiques') {
         const module = await import(`./exercices/${directory}/${filename}.js`)
         const ClasseExercice = module.default
-        const exercice: Promise<Exercice> = new ClasseExercice()
+        const exercice /** Promise<Exercice> */= new ClasseExercice()
         ;['titre', 'amcReady', 'amcType', 'interactifType', 'interactifReady'].forEach((p) => {
           if (module[p] !== undefined) exercice[p] = module[p]
         })
         ;(await exercice).id = filename
         return exercice
       } else {
-        const exercicePromise: Exercice = new Exercice()
+        const exercicePromise /** Exercice */= new Exercice()
         const exercice = await exercicePromise
         if (filename.includes('dnb')) {
           exercice.titre = 'Exercice type DNB'
@@ -59,7 +59,7 @@ export class Mathalea {
    * @param {Promise<Exercice>} promiseExercice
    * @param {Settings }settings
    */
-  static async changeSettings (promiseExercice: Promise<Exercice>, settings?: Settings): Promise<void> {
+  static async changeSettings (promiseExercice/**  Promise<Exercice> */, settings)/** Promise<void> */ {
     const exercice = await promiseExercice
     if (settings !== undefined) {
       if (settings.sup !== undefined) exercice.sup = settings.sup
@@ -71,7 +71,7 @@ export class Mathalea {
     }
   }
 
-  static renderDiv (div: HTMLDivElement): void {
+  static renderDiv (div/** HTMLDivElement */)/** void */ {
     // KaTeX à remplacer par MathLive ?
     // renderMathInElement(div, {
     //   TeX: {

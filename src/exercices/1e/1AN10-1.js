@@ -1,4 +1,4 @@
-import Exercice from '../ExerciceTs'
+import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, combinaisonListes, ecritureAlgebrique, randint, ecritureParentheseSiNegatif, ecritureAlgebriqueSauf1, contraindreValeur, reduireAxPlusB } from '../../modules/outils.js'
 import { } from '../../modules/2d.js'
 export const titre = 'Nombre dérivé de fonctions de références'
@@ -10,26 +10,22 @@ export const dateDeModifImportante = '24/10/2021' // Une date de modification im
 /**
  * Description didactique de l'exercice
  * @author
- * @type {VoidFunction}
- * @instance Exercice
  * Référence
 */
-export default class Tauxvariation extends Exercice {
+export default function Tauxvariation () {
   // Exercice.call(this) // Héritage de la classe Exercice()
-  constructor () {
-    super()
-    this.consigne = ''
-    this.besoinFormulaireNumerique = ['Type de fonctions ', 5, '1 : Fonction affine 2 : Fonction carré 3: Fonction inverse 4: Fonction racine carrée 5: Méli-mélo']
+  Exercice.call(this)
+  this.consigne = ''
+  this.besoinFormulaireNumerique = ['Type de fonctions ', 5, '1 : Fonction affine 2 : Fonction carré 3: Fonction inverse 4: Fonction racine carrée 5: Méli-mélo']
 
-    this.nbQuestions = 1 // Nombre de questions par défaut
-    this.nbCols = 2 // Uniquement pour la sortie LaTeX
-    this.nbColsCorr = 2 // Uniquement pour la sortie LaTeX
-    this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
-    this.video = '' // Id YouTube ou url
+  this.nbQuestions = 1 // Nombre de questions par défaut
+  this.nbCols = 2 // Uniquement pour la sortie LaTeX
+  this.nbColsCorr = 2 // Uniquement pour la sortie LaTeX
+  this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
+  this.video = '' // Id YouTube ou url
   // this.sup = parseInt(this.sup)
-  }
 
-  nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 
