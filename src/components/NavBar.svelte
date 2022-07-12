@@ -38,7 +38,7 @@
   }
 </script>
 
-<nav class="relative bg-coopmaths top-0">
+<nav class="bg-coopmaths sticky z-50 top-0">
   <!-- container -->
   <div class="flex flex-wrap w-full mx-auto lg:space-x-6 lg:items-center">
     <!-- bouton menu -->
@@ -47,7 +47,7 @@
         <i class="bx bx-menu" />
       </button>
       <!-- logo -->
-      <a href={"#"} class="inline-flex p-2 text-2xl font-bold text-white uppercase tracking-wider">Coopmaths</a>
+      <a href={"#"} class="inline-flex p-2 text-2xl font-extrabold text-white uppercase tracking-wider">Coopmaths</a>
     </div>
     <!-- menu -->
     <div class="flex flex-col mt-2 lg:inline-flex lg:grow lg:flex-row lg:mt-0 {isNavBarVisible ? 'flex' : 'hidden'}">
@@ -56,7 +56,7 @@
           <NavBarMenu {...menus.referentiels} bind:isNavBarVisible />
         </li>
         <li>
-          <a href={"#"} class="bg-coopmaths hover:bg-coopmaths-light text-white text-xl font-medium relative block py-6 px-2 lg:p-6 items-center">Calcul mental</a>
+          <a href={"#"} class="bg-coopmaths hover:bg-coopmaths-light text-white text-xl font-extrabold relative block py-6 px-2 lg:p-6 items-center">Calcul mental</a>
         </li>
         <li>
           <NavBarMenu {...menus.professeurs} bind:isNavBarVisible />
