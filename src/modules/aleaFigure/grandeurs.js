@@ -50,13 +50,13 @@ export class GVGrandeur {
   multiply (a /** GVGrandeur */) {
     const expression = simplify([this.name, a.name].filter(x => x !== '').join('*').replaceAll('{', '(').replaceAll('}', ')')).toString()
     const calcul = parse(unit(this.toFixed + this.unit).multiply(unit(a.toFixed + a.unit)).toString())
-    // @ts-ignore
+
     return new GVGrandeur(
       expression,
-      // @ts-ignore
+
       parseFloat(isConstantNode(calcul) ? calcul.toString() : calcul.args[0].toString()),
       this.precision + a.precision,
-      // @ts-ignore
+
       isConstantNode(calcul) ? '' : calcul.args[1].toString()
     )
   }
@@ -66,10 +66,10 @@ export class GVGrandeur {
     const calcul = parse(unit(this.toFixed + this.unit).divide(unit(a.toFixed + a.unit)).toString())
     return new GVGrandeur(
       expression,
-      // @ts-ignore
+
       parseFloat(isConstantNode(calcul) ? calcul.toString() : calcul.args[0].toString()),
       this.precision - a.precision,
-      // @ts-ignore
+
       isConstantNode(calcul) ? '' : calcul.args[1].toString()
     )
   }
@@ -79,10 +79,10 @@ export class GVGrandeur {
     const calcul = parse(add(unit(this.toFixed + this.unit), unit(a.toFixed + a.unit)).toString())
     return new GVGrandeur(
       expression,
-      // @ts-ignore
+
       parseFloat(isConstantNode(calcul) ? calcul.toString() : calcul.args[0].toString()),
       max(this.precision, a.precision),
-      // @ts-ignore
+
       isConstantNode(calcul) ? '' : calcul.args[1].toString()
     )
   }
@@ -92,10 +92,10 @@ export class GVGrandeur {
     const calcul = parse(subtract(unit(this.toFixed + this.unit), unit(a.toFixed + a.unit)).toString())
     return new GVGrandeur(
       expression,
-      // @ts-ignore
+
       parseFloat(isConstantNode(calcul) ? calcul.toString() : calcul.args[0].toString()),
       max(this.precision, a.precision),
-      // @ts-ignore
+
       isConstantNode(calcul) ? '' : calcul.args[1].toString()
     )
   }
@@ -143,11 +143,11 @@ export class GVGrandeur {
   to (newUnit /** string */) /** GVGrandeur */ {
     const thenumber = abs(unit(this.value, this.unit))
     const conversion = abs(thenumber.to(newUnit))
-    // @ts-ignore
+
     const precision = Math.max(0, this.precision - log10(parse(conversion.toString()).args[0].value / parse(thenumber.toString()).args[0].value))
     return new GVGrandeur(
       this.name,
-      // @ts-ignore
+
       parse(conversion.toString()).args[0].value,
       precision,
       newUnit

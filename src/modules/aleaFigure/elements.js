@@ -218,7 +218,7 @@ export class GVPoint extends GVGraphicObject {
     const splitname = this.name.split('_')
     let nameFormat = splitname.length === 1 ? splitname[0] : `${splitname[0]}_{${splitname[1]}}`
     if (context.isHtml) nameFormat = `$${nameFormat}$`
-    // @ts-ignore
+
     this.dot = tracePoint(point(this.x, this.y, nameFormat, 'above'))
     return this
   }

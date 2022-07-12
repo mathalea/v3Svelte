@@ -1,8 +1,8 @@
-// @ts-nocheck
 /* eslint-disable no-unused-vars */
 import fs from 'fs'
 import path from 'path'
 import { uuidFromRef, urlFromUuid, listeChapitresDuNiveau, listeExosDuChapitre, listeExosAvecTag, toObjet, toMap, collecteUuidsFromDico } from './fileTools.js'
+heck
 
 const isVerbose = /-(-verbode|v)/.test(process.argv)
 const logIfVerbose = (...args) => { if (isVerbose) console.log(...args) }
