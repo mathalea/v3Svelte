@@ -5,7 +5,6 @@ import Grandeur from '../modules/Grandeur.js'
 import { sp, texteExposant } from '../modules/outils.js'
 import { context } from '../modules/context'
 import { afficheScore } from './gestionInteractif.js'
-import Exercice from '../exercices/ExerciceTs'
 
 export function verifQuestionMathLive (exercice, i) {
   const engine = new ComputeEngine()
@@ -337,4 +336,3 @@ export function verifExerciceMathLive (exercice, divScore, divButton) {
     afficheScore(exercice, nbBonnesReponses, nbMauvaisesReponses, divScore)
   }
 }
-
