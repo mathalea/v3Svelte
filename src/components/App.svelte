@@ -31,7 +31,7 @@
     try {
       const reponse = await import("../dicos/exosDispo.json")
       dico = toMap(reponse)
-      return dico.get("default").get("6e")
+      return dico.get("default")
     } catch (error) {
       console.error(`Impossible de récupérer les listes : ${error}`)
     }
@@ -90,6 +90,13 @@
   }
   listeExercices.set([exercice1, exercice2, exercice3, exercice4, exercice5, exercice6, exercice7, exercice8, exercice9, exercice10])
   // listeExercices.set([exercice3])
+
+  import data from "../dicos/exosDispo.json"
+  import NiveauListeExos from "./NiveauListeExos.svelte"
+  for (const prop in data) {
+    console.log(`${prop}`)
+  }
+  const dictionnaire = toMap(data)
 </script>
 
 <div class="h-screen">
@@ -99,19 +106,31 @@
   <main class="flex h-full">
     <!-- side menu -->
     <aside class="flex flex-col bg-gray-100 w-1/3 p-4 border-r-2 border-r-coopmaths-light overflow-hidden h-full">
-      <div class="flex-none block">
+      <div class="flex-none block overflow-y-scroll overscroll-auto h-full">
         <!-- <InputListeExercices />
         <Recherche /> -->
         <h2 class="font-bold text-xl">Liste des exercices</h2>
-        {#await construireListeExos()}
+        <!-- {#await construireListeExos()}
           Loading
         {:then entrees}
           <ul>
-            {#each Array.from(entrees.keys()) as entree}
-              <li>{entree}</li>
+            {#each Array.from(entrees, ([cle, obj]) => ({ cle, obj })) as entree}
+              <li>{entree.cle}</li>
+              <ul class="ml-2">
+                {#each Array.from(entree.obj, ([cle, obj]) => ({ cle, obj })) as sousEntree}
+                  <li>{sousEntree.cle}</li>
+                {/each}
+              </ul>
             {/each}
           </ul>
-        {/await}
+        {/await} -->
+        <ul class="ml-2">
+          {#each Array.from(dictionnaire, ([cle, obj]) => ({ cle, obj })) as entree}
+            <li>
+              <NiveauListeExos nom={entree.cle} entrees={entree.obj} />
+            </li>
+          {/each}
+        </ul>
       </div>
     </aside>
     <!-- content -->
