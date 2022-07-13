@@ -8,9 +8,9 @@
   import { listeExercices } from "./store"
   import InputListeExercices from "./InputListeExercices.svelte"
   import Recherche from "./Recherche.svelte"
-  import data from "../dicos/exosDispo.json"
   import NiveauListeExos from "./NiveauListeExos.svelte"
   import liste from "../dicos/listeIdsNoms.json"
+  import referentiel from "../dicos/referentiel2022.json"
   // import { Modals, closeModal } from "svelte-modals"
 
   const exercice1 = {
@@ -93,7 +93,8 @@
       console.error(`Impossible de récupérer les listes : ${error}`)
     }
   }
-  const dictionnaire = toMap(data)
+  const dictionnaire = toMap(referentiel)
+
   function retrouverNomNiveau(idNiveau: string) {
     if (liste[idNiveau]) {
       return liste[idNiveau]
@@ -131,7 +132,7 @@
         <ul class="ml-2">
           {#each Array.from(dictionnaire, ([cle, obj]) => ({ cle, obj })) as entree}
             <li>
-              <NiveauListeExos nom={retrouverNomNiveau(entree.cle)} entrees={entree.obj} />
+              <NiveauListeExos chemin={[entree.cle]} nom={retrouverNomNiveau(entree.cle)} entrees={entree.obj} />
             </li>
           {/each}
         </ul>
