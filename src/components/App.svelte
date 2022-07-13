@@ -8,34 +8,10 @@
   import { listeExercices } from "./store"
   import InputListeExercices from "./InputListeExercices.svelte"
   import Recherche from "./Recherche.svelte"
+  import data from "../dicos/exosDispo.json"
+  import NiveauListeExos from "./NiveauListeExos.svelte"
+  import liste from "../dicos/listeIdsNoms.json"
   // import { Modals, closeModal } from "svelte-modals"
-
-  function toMap(obj: any): Map {
-    let dico = new Map()
-    for (let cle of Object.keys(obj)) {
-      if (obj[cle] instanceof Object) {
-        if (obj[cle] instanceof Array) {
-          dico.set(cle, obj[cle])
-        } else {
-          dico.set(cle, toMap(obj[cle]))
-        }
-      } else {
-        dico.set(cle, obj[cle])
-      }
-    }
-    return dico
-  }
-
-  async function construireListeExos() {
-    let dico: Map
-    try {
-      const reponse = await import("../dicos/exosDispo.json")
-      dico = toMap(reponse)
-      return dico.get("default")
-    } catch (error) {
-      console.error(`Impossible de récupérer les listes : ${error}`)
-    }
-  }
 
   const exercice1 = {
     directory: "6e",
@@ -91,12 +67,40 @@
   listeExercices.set([exercice1, exercice2, exercice3, exercice4, exercice5, exercice6, exercice7, exercice8, exercice9, exercice10])
   // listeExercices.set([exercice3])
 
-  import data from "../dicos/exosDispo.json"
-  import NiveauListeExos from "./NiveauListeExos.svelte"
-  for (const prop in data) {
-    console.log(`${prop}`)
+  function toMap(obj: any): Map {
+    let dico = new Map()
+    for (let cle of Object.keys(obj)) {
+      if (obj[cle] instanceof Object) {
+        if (obj[cle] instanceof Array) {
+          dico.set(cle, obj[cle])
+        } else {
+          dico.set(cle, toMap(obj[cle]))
+        }
+      } else {
+        dico.set(cle, obj[cle])
+      }
+    }
+    return dico
+  }
+
+  async function construireListeExos() {
+    let dico: Map
+    try {
+      const reponse = await import("../dicos/exosDispo.json")
+      dico = toMap(reponse)
+      return dico.get("default")
+    } catch (error) {
+      console.error(`Impossible de récupérer les listes : ${error}`)
+    }
   }
   const dictionnaire = toMap(data)
+  function retrouverNomNiveau(idNiveau: string) {
+    if (liste[idNiveau]) {
+      return liste[idNiveau]
+    } else {
+      return idNiveau
+    }
+  }
 </script>
 
 <div class="h-screen">
@@ -127,14 +131,13 @@
         <ul class="ml-2">
           {#each Array.from(dictionnaire, ([cle, obj]) => ({ cle, obj })) as entree}
             <li>
-              <NiveauListeExos nom={entree.cle} entrees={entree.obj} />
+              <NiveauListeExos nom={retrouverNomNiveau(entree.cle)} entrees={entree.obj} />
             </li>
           {/each}
         </ul>
       </div>
     </aside>
     <!-- content -->
-
     <div class="flex-1 flex flex-col p-6 overflow-hidden h-full">
       <div class="flex-1 overflow-y-scroll overscroll-auto">
         {#each $listeExercices as exercice, i (exercice)}
