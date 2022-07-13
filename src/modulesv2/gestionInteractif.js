@@ -8,7 +8,8 @@ import { isUserIdOk } from '../modules/interactif/isUserIdOk.js'
 import { gestionCan } from '../modules/interactif/gestionCan.js'
 import FractionX from '../modules/FractionEtendue.js'
 import Grandeur from '../modules/Grandeur.js'
-import { ComputeEngine } from '@cortex-js/compute-engine'
+import pkg from '@cortex-js/compute-engine'
+const { ComputeEngine } = pkg
 
 export function exerciceInteractif (exercice, divScore, buttonScore) {
   if (exercice.interactifType === 'qcm')exerciceQcm(exercice)

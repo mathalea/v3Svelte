@@ -1,7 +1,8 @@
 import { ordreDeGrandeur, base10VersBaseN } from './outils.js'
-import { Decimal } from 'decimal.js'
+import pkg from 'decimal.js'
 import { mathalea2d, texteParPosition, segment } from './2d.js'
 import { context } from './context.js'
+const { Decimal } = pkg
 /**
  *
  * Pose une opération
