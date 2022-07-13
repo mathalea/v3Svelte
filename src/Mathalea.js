@@ -1,7 +1,6 @@
 import renderMathInElement from 'katex/dist/contrib/auto-render.js'
 import 'katex/dist/katex.min.css'
-import Exercice from './exercices/ExerciceTs'
-
+import Exercice from './exercices/Exercice.js'
 // export type Settings = { sup?: boolean | string | number, sup2?: boolean | string | number, sup3?: boolean | string | number, sup4?: boolean | string | number, nbQuestions?: number, seed?: string }
 
 /**
