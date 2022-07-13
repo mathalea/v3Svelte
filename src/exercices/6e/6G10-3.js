@@ -40,14 +40,14 @@ export default function cliqueFigure () {
         { id: `figure2Ex${this.numeroExercice}Q${i}`, solution: false },
         { id: `figure3Ex${this.numeroExercice}Q${i}`, solution: false }
       ]
-      const figSegment = mathalea2d({ xmin: -2, xmax: 6, ymin: -2, style: '', scale: 0.4, id: `figure0Ex${this.numeroExercice}Q${i}` }, labels, segmentAvecExtremites(A, B))
-      const figDroite = mathalea2d({ xmin: -2, xmax: 6, ymin: -2, style: '', scale: 0.4, id: `figure1Ex${this.numeroExercice}Q${i}` }, labels, segmentAvecExtremites(A, B), droite(A, B))
-      const figDemiDroite = mathalea2d({ xmin: -2, xmax: 6, ymin: -2, style: '', scale: 0.4, id: `figure2Ex${this.numeroExercice}Q${i}` }, labels, segmentAvecExtremites(A, B), demiDroite(A, B))
-      const figDemiDroite2 = mathalea2d({ xmin: -2, xmax: 6, ymin: -2, style: '', scale: 0.4, id: `figure3Ex${this.numeroExercice}Q${i}` }, labels, segmentAvecExtremites(A, B), demiDroite(B, A))
-      const figSegmentAMC = mathalea2d({ xmin: -2, xmax: 6, ymin: -2, style: '', scale: 0.3, id: `figure0Ex${this.numeroExercice}Q${i}` }, labels, segmentAvecExtremites(A, B))
-      const figDroiteAMC = mathalea2d({ xmin: -2, xmax: 6, ymin: -2, style: '', scale: 0.3, id: `figure1Ex${this.numeroExercice}Q${i}` }, labels, segmentAvecExtremites(A, B), droite(A, B))
-      const figDemiDroiteAMC = mathalea2d({ xmin: -2, xmax: 6, ymin: -2, style: '', scale: 0.3, id: `figure2Ex${this.numeroExercice}Q${i}` }, labels, segmentAvecExtremites(A, B), demiDroite(A, B))
-      const figDemiDroite2AMC = mathalea2d({ xmin: -2, xmax: 6, ymin: -2, style: '', scale: 0.3, id: `figure3Ex${this.numeroExercice}Q${i}` }, labels, segmentAvecExtremites(A, B), demiDroite(B, A))
+      const figSegment = mathalea2d({ xmin: -2, xmax: 6, ymin: -2, style: 'display: inline', scale: 0.4, id: `figure0Ex${this.numeroExercice}Q${i}` }, labels, segmentAvecExtremites(A, B))
+      const figDroite = mathalea2d({ xmin: -2, xmax: 6, ymin: -2, style: 'display: inline', scale: 0.4, id: `figure1Ex${this.numeroExercice}Q${i}` }, labels, segmentAvecExtremites(A, B), droite(A, B))
+      const figDemiDroite = mathalea2d({ xmin: -2, xmax: 6, ymin: -2, style: 'display: inline', scale: 0.4, id: `figure2Ex${this.numeroExercice}Q${i}` }, labels, segmentAvecExtremites(A, B), demiDroite(A, B))
+      const figDemiDroite2 = mathalea2d({ xmin: -2, xmax: 6, ymin: -2, style: 'display: inline', scale: 0.4, id: `figure3Ex${this.numeroExercice}Q${i}` }, labels, segmentAvecExtremites(A, B), demiDroite(B, A))
+      const figSegmentAMC = mathalea2d({ xmin: -2, xmax: 6, ymin: -2, style: 'display: inline', scale: 0.3, id: `figure0Ex${this.numeroExercice}Q${i}` }, labels, segmentAvecExtremites(A, B))
+      const figDroiteAMC = mathalea2d({ xmin: -2, xmax: 6, ymin: -2, style: 'display: inline', scale: 0.3, id: `figure1Ex${this.numeroExercice}Q${i}` }, labels, segmentAvecExtremites(A, B), droite(A, B))
+      const figDemiDroiteAMC = mathalea2d({ xmin: -2, xmax: 6, ymin: -2, style: 'display: inline', scale: 0.3, id: `figure2Ex${this.numeroExercice}Q${i}` }, labels, segmentAvecExtremites(A, B), demiDroite(A, B))
+      const figDemiDroite2AMC = mathalea2d({ xmin: -2, xmax: 6, ymin: -2, style: 'display: inline', scale: 0.3, id: `figure3Ex${this.numeroExercice}Q${i}` }, labels, segmentAvecExtremites(A, B), demiDroite(B, A))
       let figCorr
       let figCorrecteAMC
       const figIncorrectAMC = [figSegmentAMC, figDroiteAMC, figDemiDroiteAMC, figDemiDroite2AMC]
@@ -107,7 +107,7 @@ export default function cliqueFigure () {
 
       if (!context.isAmc) {
         texte += '<br>'
-        texteCorr = texte + mathalea2d({ xmin: -4, xmax: 6, ymin: -2, style: '', scale: 0.4, id: `figure3Ex${this.numeroExercice}Q${i}` }, labels, segmentAvecExtremites(A, B), figCorr)
+        texteCorr = texte + mathalea2d({ xmin: -4, xmax: 6, ymin: -2, style: 'display: inline', scale: 0.4, id: `figure3Ex${this.numeroExercice}Q${i}` }, labels, segmentAvecExtremites(A, B), figCorr)
         const figures = shuffle([figSegment, figDroite, figDemiDroite, figDemiDroite2])
         texte += figures.join('')
         if (this.interactif && context.isHtml) {

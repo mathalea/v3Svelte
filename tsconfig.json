@@ -16,7 +16,7 @@
      */
     "allowJs": true,
     "checkJs": false,
-    "isolatedModules": true,
+    "isolatedModules": true
   },
   "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte"],
   "exclude": ["./built/**/*"],

@@ -17,7 +17,7 @@
   function handleChange() {
     let newId = input.value
     const newExercice = {
-      directory: "6e",
+      directory: newId[0] + 'e',
       filename: newId,
     }
     listeExercices.update((l) => [...l, newExercice])

@@ -4,13 +4,15 @@
   export let chapeau: string
   export let entrees: string[]
   export let spacing: number
+  export let indiceExercice: number
+  export let type: "enonce" | "correction"
 </script>
 
-<article class="text-2xl md:text-base">
+<article class="text-2xl lg:text-base">
   <!-- Consigne -->
   <Consigne consigne={chapeau} />
   <!-- Liste des questions -->
-  <Liste liste={entrees} spacing={spacing} />
+  <Liste liste={entrees} {spacing} {indiceExercice} {type} />
 </article>
 
 <style></style>

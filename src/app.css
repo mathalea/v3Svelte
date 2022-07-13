@@ -2,3 +2,124 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@layer components {
+  .checkbox-primary {
+    @apply appearance-none ml-2 h-4 w-4 border-2 border-gray-400 bg-gray-100 rounded-sm checked:bg-coopmaths-lightest checked:border-coopmaths focus:outline-none transition duration-500 cursor-pointer;
+  }
+}
+
+/*
+..%%%%...%%..%%..%%%%%....%%%%...%%%%%%..%%..%%..%%%%%....%%%%..
+.%%..%%..%%..%%..%%..%%..%%......%%......%%..%%..%%..%%..%%.....
+.%%......%%..%%..%%%%%....%%%%...%%%%....%%..%%..%%%%%....%%%%..
+.%%..%%..%%..%%..%%..%%......%%..%%......%%..%%..%%..%%......%%.
+..%%%%....%%%%...%%..%%...%%%%...%%%%%%...%%%%...%%..%%...%%%%..
+*/
+/* Définition des thèmes pour les curseurs */
+/* source : https://brennaobrien.com/blog/2014/05/style-input-type-range-in-every-browser.html */
+
+/* Firefox */
+input[type="range"] {
+  /* fix for FF unable to apply focus style bug  */
+  border: 1px solid white;
+
+  /*required for proper track sizing in FF*/
+  /* width: 300px; */
+}
+input[type="range"]::-moz-range-track {
+  /* width: 300px; */
+  height: 10px;
+  background: #ddd;
+  border: none;
+}
+
+input[type="range"]::-moz-range-thumb {
+  border: none;
+  border-radius: 0px;
+  height: 10px;
+  width: 16px;
+  background: #ff8c5c;
+}
+
+/*hide the outline behind the border*/
+input[type="range"]:-moz-focusring {
+  outline: 1px solid white;
+  outline-offset: -1px;
+}
+
+input[type="range"]:focus::-moz-range-track {
+  background: #ccc;
+}
+
+/*Chrome*/
+@media screen and (-webkit-min-device-pixel-ratio: 0) {
+  input[type="range"] {
+    -webkit-appearance: none;
+  }
+
+  /* piste */
+  input[type="range"]::-webkit-slider-runnable-track {
+    /* width: 300px; */
+    height: 10px;
+    background: #ddd;
+    border: none;
+    /* border-radius: 3px; */
+  }
+
+  /*curseur lui-même */
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 10px;
+    width: 16px;
+    /* border-radius: 50%; */
+    background: #ff8c5c;
+    /* margin-top: -4px; */
+  }
+
+  input[type="range"]:focus {
+    outline: none;
+  }
+
+  input[type="range"]:focus::-webkit-slider-runnable-track {
+    background: #ccc;
+  }
+}
+
+/* Internet Explorer */
+input[type="range"]::-ms-track {
+  /* width: 300px; */
+  height: 10px;
+
+  /*remove bg colour from the track, we'll use ms-fill-lower and ms-fill-upper instead */
+  background: transparent;
+
+  /*leave room for the larger thumb to overflow with a transparent border */
+  border-color: transparent;
+  border-width: 6px 0;
+
+  /*remove default tick marks*/
+  color: transparent;
+}
+input[type="range"]::-ms-fill-lower {
+  background: #777;
+  border-radius: 0px;
+}
+input[type="range"]::-ms-fill-upper {
+  background: #ddd;
+  border-radius: 0px;
+}
+input[type="range"]::-ms-thumb {
+  border: none;
+  height: 10px;
+  width: 16px;
+  border-radius: 0%;
+  background: #ff8c5c;
+}
+input[type="range"]:focus::-ms-fill-lower {
+  background: #888;
+}
+input[type="range"]:focus::-ms-fill-upper {
+  background: #ccc;
+}

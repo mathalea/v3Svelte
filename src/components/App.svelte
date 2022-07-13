@@ -7,11 +7,12 @@
   import { listeExercices } from "./store"
   import InputListeExercices from "./InputListeExercices.svelte"
   import Recherche from "./Recherche.svelte"
+  // import { Modals, closeModal } from "svelte-modals"
 
   const exercice1 = {
     directory: "6e",
-    filename: "6C30-0",
-    nbQuestions: 3,
+    filename: "6G10-3",
+    nbQuestions: 2,
   }
   const exercice2 = {
     directory: "5e",
@@ -42,26 +43,24 @@
 
   const exercice7 = {
     directory: "exercicesStatiques",
-    filename: "dnb/2021/tex/png/dnb_2021_06_ameriquenord_1",
-    typeExercice: "dnb",
-    nbQuestions: 1,
+    filename: "dnb_2021_06_ameriquenord_1",
   }
 
   const exercice8 = {
     directory: "exercicesStatiques",
-    filename: "e3c/2021/tex/png/e3c_2021_01_specimen1_1",
-    typeExercice: "e3c",
-    nbQuestions: 1,
+    filename: "e3c_2021_01_specimen1_1",
   }
 
   const exercice9 = {
     directory: "exercicesStatiques",
-    filename: "bac/2021/tex/png/bac_2021_01_sujet0_1",
-    typeExercice: "bac",
-    nbQuestions: 1,
+    filename: "bac_2021_01_sujet0_1",
   }
 
-  listeExercices.set([exercice1, exercice2, exercice3, exercice4, exercice5, exercice6, exercice7, exercice8, exercice9,])
+  const exercice10 = {
+    directory: "exercicesStatiques",
+    filename: "crpe_2019-g5-pb-1",
+  }
+  listeExercices.set([exercice1, exercice2, exercice3, exercice4, exercice5, exercice6, exercice7, exercice8, exercice9, exercice10])
 </script>
 
 <!-- <Header /> -->
@@ -75,10 +74,22 @@
     </div>
   {/each}
 </main>
+<!-- Modals ne sont pas utilisés pour le moment
+<Modals>
+  <div slot="backdrop" class="backdrop" on:click={closeModal} />
+</Modals> -->
 <Footer />
 
 <style>
   :root {
     font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   }
+  /* .backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    background: rgba(0, 0, 0, 0.5);
+  } */
 </style>
