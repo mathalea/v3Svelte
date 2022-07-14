@@ -1,0 +1,146 @@
+{
+  "6N1": {
+    "titre": "Numération et fractions - Niveau 1",
+    "sousThemes": {
+      "6N10": "Connaitre le système décimal.",
+      "6N11": "Comparer, ranger, encadrer, repérer des grands nombres entiers.",
+      "6N12": "Multiplier un entier par 10, 100, 1 000…",
+      "6N13": "Utiliser les préfixes multiplicateurs (déca à kilo).",
+      "6N14": "Comprendre et utiliser la notion de fraction dans des cas simples."
+    }
+  },
+  "6N2": {
+    "titre": "Numération et fractions - Niveau 2",
+    "sousThemes": {
+      "6N20": "Faire le lien entre les fractions et les nombres entiers.",
+      "6N21": "Repérer et placer des fractions sur une demi-droite graduée (origine visible).",
+      "6N22": "Faire des calculs simples avec des fractions à l’aide d’un dessin.",
+      "6N23": "Comprendre et utiliser différentes écritures d’un nombre.",
+      "6N24": "Utiliser les préfixes multiplicateurs et diviseurs (milli à kilo)."
+    }
+  },
+  "6N3": {
+    "titre": "Numération et fractions - Niveau 3",
+    "sousThemes": {
+      "6N30": "Repérer et placer des nombres décimaux sur une demi-droite graduée adaptée.",
+      "6N31": "Comparer, ranger, encadrer, intercaler des nombres décimaux.",
+      "6N32": "Repérer et placer des fractions sur une demi-droite graduée (origine non visible).",
+      "6N33": "Calculer la fraction d’une quantité.",
+      "6N34": "Utiliser les préfixes multiplicateurs et diviseurs (milli à téra)."
+    }
+  },
+  "6N4": {
+    "titre": "Numération et fractions - Niveau 4",
+    "sousThemes": {
+      "6N40": "Repérer et placer des nombres décimaux sur une demi-droite graduée - niveau 2.",
+      "6N41": "Établir des égalités entre des fractions simples.",
+      "6N42": "Multiples et diviseurs des nombres d’usage courant.",
+      "6N43": "Critères de divisibilité."
+    }
+  },
+  "6C1": {
+    "titre": "Calculs - Niveau 1",
+    "sousThemes": {
+      "6C10": "Additionner, soustraire et multiplier des nombres entiers.",
+      "6C11": "Calculer des divisions euclidiennes simples.",
+      "6C12": "Résoudre des problèmes de niveau 1."
+    }
+  },
+  "6C2": {
+    "titre": "Calculs - Niveau 2",
+    "sousThemes": {
+      "6C20": "Additionner et soustraire des nombres décimaux.",
+      "6C21": "Calculer une division euclidienne de niveau 2.",
+      "6C22": "Résoudre des problèmes de niveau 2."
+    }
+  },
+  "6C3": {
+    "titre": "Calculs - Niveau 3",
+    "sousThemes": {
+      "6C30": "Multiplier des nombres décimaux.",
+      "6C31": "Effectuer une division décimale.",
+      "6C32": "Résoudre des problèmes de niveau 3"
+    }
+  },
+  "6G1": {
+    "titre": "Constructions géométriques - Niveau 1",
+    "sousThemes": {
+      "6G10": "Connaitre le vocabulaire et les notations des points, des droites, des segments, des demi-droites et des cercles.",
+      "6G11": "Tracer des perpendiculaires.",
+      "6G12": "Tracer des parallèles.",
+      "6G13": "Tracer des rectangles et des carrés de longueurs données.",
+      "6G14": "Exécuter un programme de construction de niveau 1."
+    }
+  },
+  "6G2": {
+    "titre": "Constructions géométriques - Niveau 2",
+    "sousThemes": {
+      "6G20": "Connaître le vocabulaire des polygones.",
+      "6G21": "Tracer un polygone avec le compas et l’équerre.",
+      "6G22": "Connaître le vocabulaire et les notations des angles.",
+      "6G23": "Utiliser le rapporteur pour tracer ou mesurer un angle",
+      "6G24": "Tracer le symétrique d’une figure.",
+      "6G25": "Tracer la médiatrice d’un segment."
+    }
+  },
+  "6G3": {
+    "titre": "Constructions géométriques - Niveau 3",
+    "sousThemes": {
+      "6G30": "Exécuter un programme de construction complexe.",
+      "6G31": "Agrandissement ou réduction de figures.",
+      "6G32": "Connaître et utiliser les propriétés de conservation de la symétrie axiale.",
+      "6G33": "Connaître et utiliser les propriétés des polygones particuliers."
+    }
+  },
+  "6M1": {
+    "titre": "Grandeurs et mesures - Niveau 1",
+    "sousThemes": {
+      "6M10": "Déterminer le périmètre d’un polygone.",
+      "6M11": "Déterminer l’aire d’un carré ou d’un rectangle (ou de figures composées de rectangles et carrés).",
+      "6M12": "Convertir des longueurs."
+    }
+  },
+  "6M2": {
+    "titre": "Grandeurs et mesures - Niveau 2",
+    "sousThemes": {
+      "6M20": "Déterminer l’aire d’un triangle.",
+      "6M21": "Déterminer l’aire d’un polygone par assemblage ou par découpage.",
+      "6M22": "Déterminer le périmètre ou l’aire d’un disque.",
+      "6M23": "Convertir des aires.",
+      "6M24": "Résoudre un problème en utilisant les périmètres et les aires."
+    }
+  },
+  "6M3": {
+    "titre": "Grandeurs et mesures - Niveau 3",
+    "sousThemes": {
+      "6M30": "Déterminer le volume d’un pavé droit.",
+      "6M31": "Convertir des volumes (et faire le lien avec les contenances)."
+    }
+  },
+  "6P1": {
+    "titre": "Proportionnalité",
+    "sousThemes": {
+      "6P10": "Reconnaitre des problèmes relevant de la proportionnalité.",
+      "6P11": "Résoudre un problème relevant de la proportionnalité avec les propriétés de linéarité.",
+      "6P12": "Calculer et utiliser un coefficient de proportionnalité.",
+      "6P13": "Appliquer un pourcentage.",
+      "6P14": "Reproduire une figure en respectant une échelle donnée.",
+      "6P15": "Résoudre un problème impliquant des échelles ou des vitesses."
+    }
+  },
+  "6S1": {
+    "titre": "Statistiques",
+    "sousThemes": {
+      "6S10": "Lire une représentation de données (tableaux ; diagrammes en bâtons, circulaires ou semi-circulaires ; graphiques cartésiens).",
+      "6S11": "Organiser des données en vue de les traiter."
+    }
+  },
+  "6E1": {
+    "titre": "Espace",
+    "sousThemes": {
+      "6E10": "Identifier les différents solides",
+      "6E11": "Mettre en relation les représentations d'un solide",
+      "6E12": "Connaître et utiliser les propriétés des solides"
+    }
+  }
+}

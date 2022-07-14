@@ -1,0 +1,162 @@
+Attendus et repères (officiel),
+https://cache.media.eduscol.education.fr/file/Attendus_et_reperes_C2-3-4/74/6/16-Maths-4e-attendus-eduscol_1114746.pdf,
+Nombres,
+4C30,Il utilise les puissances de 10 d’exposants positifs ou négatifs.
+4C32,"Il associe, dans le cas des nombres décimaux, écriture décimale, écriture fractionnaire et notation scientifique."
+4C31,Il utilise les préfixes de nano à giga.
+,Il utilise les carrés parfaits de 1 à 144.
+,Il connaît la définition de la racine carrée d’un nombre positif.
+4C33,Il utilise les puissances d’exposants strictement positifs d’un nombre pour simplifier l’écriture des produits.
+Comparaison de nombres,
+,Il utilise des puissances de 10 pour comparer des nombres.
+4C20,"Il compare, range et encadre des nombres rationnels (positifs ou négatifs)."
+,Il encadre la racine carrée d’un nombre positif entre deux entiers.
+,Il associe à des objets des ordres de grandeur en lien avec d’autres disciplines.
+"Pratiquer le calcul exact ou approché, mental, à la main ou instrumenté",
+4C10,"Il effectue avec des nombres décimaux relatifs, des produits et des quotients."
+4C21,"Il calcule avec les nombres rationnels : addition, soustraction, multiplication, division."
+4C22,Il utilise l’inverse pour calculer.
+4C24,Il résout des problèmes avec des nombres rationnels.
+,Il utilise la calculatrice pour déterminer une valeur approchée de la racine carrée d’un nombre positif.
+4G20,"Il utilise la racine carrée d’un nombre positif en lien avec des situations géométriques (théorème de Pythagore ; agrandissement, réduction et aires)."
+,Il utilise les ordres de grandeur pour vérifier ses résultats.
+Comprendre et utiliser les notions de divisibilité et de nombres premiers,
+,Il détermine la liste des nombres premiers inférieurs à 100.
+,Il décompose un nombre entier en produit de facteurs premiers.
+4C23,Il utilise les nombres premiers inférieurs à 100 pour reconnaître et produire des fractions égales ; pour simplifier des fractions.
+,Il modélise et résout des problèmes simples mettant en jeu les notions de divisibilité et de nombre premier.
+Utiliser le calcul littéral,
+,"Il identifie la structure d’une expression littérale (somme, produit)."
+4L10/4L11,"Il utilise la propriété de distributivité simple pour développer un produit, factoriser une somme ou réduire une expression littérale."
+4L12,Il démontre l’équivalence de deux programmes de calcul.
+4L13,Il introduit une lettre pour désigner une valeur inconnue et met un problème en équation.
+4L14,Il teste si un nombre est solution d’une équation.
+4L15,Il résout algébriquement une équation du premier degré.
+"Interpréter, représenter et traiter des données",
+4S10,"Il lit, interprète et représente des données sous forme de diagrammes circulaires."
+4S11,Il calcule et interprète la médiane d’une série de données de petit effectif total.
+Comprendre et utiliser des notions élémentaires de probabilités,
+4S20,"Il utilise le vocabulaire des probabilités : expérience aléatoire, issues, événement, probabilité, événement certain, événement impossible, événement contraire."
+4S21,Il reconnaît des événements contraires et s’en sert pour calculer des probabilités.
+4S22,Il calcule des probabilités.
+4S23,Il sait que la probabilité d’un événement est un nombre compris entre 0 et 1.
+4S23,Il exprime des probabilités sous diverses formes.
+Résoudre des problèmes de proportionnalité,
+4P10,Il reconnaît sur un graphique une situation de proportionnalité ou de non proportionnalité.
+4P11,Il calcule une quatrième proportionnelle par la procédure de son choix.
+4P12,Il utilise une formule liant deux grandeurs dans une situation de proportionnalité.
+4P13,Il résout des problèmes en utilisant la proportionnalité dans le cadre de la géométrie.
+Comprendre et utiliser la notion de fonction,
+4P20,Il produit une formule littérale représentant la dépendance de deux grandeurs.
+4P21,Il représente la dépendance de deux grandeurs par un graphique.
+4P22,Il utilise un graphique représentant la dépendance de deux grandeurs pour lire et interpréter différentes valeurs sur l’axe des abscisses ou l’axe des ordonnées.
+Calculer avec des grandeurs mesurables ; exprimer les résultats dans les unités adaptées,
+4G53,"Il calcule le volume d’une pyramide, d’un cône."
+,Il effectue des conversions d’unités sur des grandeurs composées.
+Comprendre l’effet de quelques transformations sur les figures géométriques,
+4P14,"Il utilise un rapport d’agrandissement ou de réduction pour calculer, des longueurs, des aires, des volumes."
+4P15,Il construit un agrandissement ou une réduction d’une figure donnée.
+4G12,"Il comprend l’effet d’une translation : conservation du parallélisme, des longueurs, des aires et des angles."
+Représenter l'espace,
+4G53,"Il utilise le vocabulaire du repérage : abscisse, ordonnée, altitude."
+4G53,Il se repère dans un pavé droit.
+4G5,"Il construit et met en relation une représentation en perspective cavalière et un patron d’une pyramide, d’un cône de révolution."
+Utiliser les notions de géométrie plane pour démontrer,
+,"À partir des cas d'égalités des triangles, il met en oeuvre un protocole de construction de figures."
+4G3,"À partir du théorème de Thalès et de sa réciproques dans la configuration des triangles emboités, il met en oeuvre un protocole de construction de figures."
+4G20/4G21,"À partir du théorème de Pythagore et de sa réciproque, il met en oeuvre un protocole de construction de figures."
+4G4,"À partir du cosinus d'un angle d'un triangle rectangle, il met en oeuvre un protocole de construction de figures."
+4G1,"À partir de la connaissance de l'effet d'une translation (conservation du parallélisme, des longueurs, des aires et des angles), il met en oeuvre un protocole de construction de figures."
+4G10,Il transforme une figure par translation.
+4G11,Il identifie des translations dans des frises et des pavages.
+4G1,"Il mobilise les connaissances des figures, des configurations et de la translation pour déterminer des grandeurs géométriques."
+4G12,"Il mène des raisonnements en utilisant des propriétés des figures, des configurations et de la translation."
+"Écrire, mettre au point, exécuter un programme",
+,Niveau 1
+, Il réalise des activités d’algorithmique débranchée.
+, Il met en ordre et/ou complète des blocs fournis par le professeur pour construire un programme simple sur un logiciel de programmation.
+, Il écrit un script de déplacement ou de construction géométrique utilisant des instructions conditionnelles et/ou la boucle « Répéter ... fois ».
+,Niveau 2
+, Il gère le déclenchement d'un script en réponse à un événement.
+, Il écrit une séquence d’instructions (condition « si ... alors » et boucle « répéter ... fois »).
+," Il intègre une variable dans un programme de déplacement, de construction géométrique ou de calcul."
+,Niveau 3
+, Il décompose un problème en sous-problèmes et traduit un sous-problème en créant un « bloc-personnalisé ».
+, Il construit une figure en créant un motif et en le reproduisant à l’aide d’une boucle.
+," Il utilise simultanément les boucles « Répéter ... fois », et « Répéter jusqu’à ... » ainsi que les instructions conditionnelles pour réaliser des figures, des programmes de calculs, des déplacements, des simulations d’expérience aléatoire."
+, Il écrit plusieurs scripts fonctionnant en parallèle pour gérer des interactions et créer des jeux.
+,
+Proposition de référentiel,
+Proposition de découpage (Rémi),
+C,"Calculs (relatifs, fractions, puissances)"
+A,Arithmétique ??????
+L,"Calcul littéral (calcul, équations)"
+P,Proportionnalité et fonctions
+S,Statistiques et probabilités
+M,"Mesure (volumes, grandeurs composées) ?????"
+G,"Géométrie (translation, Pythagore, Thalès, cosinus, démonstrations)"
+,
+,
+4C1 - Relatifs,
+4C10,Effectuer des produits ou des quotients avec des nombres relatifs.
+4C11,Calculer avec des nombres relatifs.
+4C2 - Fractions,
+4C20,"Comparer, ranger et encadrer des nombres rationnels (positifs ou négatifs)."
+4C21,Additionner ou soustraire des nombres relatifs en écriture fractionnaire.
+4C22,Multiplier ou diviser des nombres relatifs en écriture fractionnaire.
+4C23,Effectuer un calcul avec des nombres relatifs et fractionnaires.
+4C24,Utiliser les nombres premiers pour reconnaître et produire des fractions égales ; pour simplifier des fractions.
+4C25,Résoudre des problèmes avec des nombres rationnels.
+4C3 - Puissances,
+4C30,Utiliser les puissances de 10 d’exposants positifs ou négatifs.
+4C31,Utiliser les préfixes de nano à giga.
+4C32,"Associer, dans le cas des nombres décimaux, écriture décimale, écriture fractionnaire et notation scientifique."
+4C33,Utiliser les puissances d’exposants strictement positifs d’un nombre pour simplifier l’écriture des produits.
+4L1 - Calcul littéral,
+4L10,Utiliser la propriété de distributivité simple pour développer un produit ou réduire une expression littérale.
+4L11,Utiliser la propriété de distributivité simple pour factoriser une somme.
+4L12,Démontrer l’équivalence de deux programmes de calcul.
+4L13,Introduire une lettre pour désigner une valeur inconnue et mettre un problème en équation.
+4L14,Tester si un nombre est solution d’une équation.
+4L15,Cosinus 
+4S1 - Statistiques,
+4S10,"Lire, interpréter et représenter des données sous forme de diagrammes circulaires."
+4S11,Calculer et interpréter la médiane d’une série de données de petit effectif total.
+4S2 - Probabilités,
+4S20,"Utiliser le vocabulaire des probabilités : expérience aléatoire, issues, événement, probabilité, événement certain, événement impossible, événement contraire."
+4S21,Reconnaître des événements contraires et s’en servir pour calculer des probabilités.
+4S22,Calcule des probabilités.
+4S23,"Exprimer des probabilités sous diverses formes (nombre compris entre 0 et 1, pourcentage, fraction)."
+4P1 - Proportionnalité,
+4P10,Reconnaître sur un graphique une situation de proportionnalité ou de non proportionnalité.
+4P11,Calculer une quatrième proportionnelle par la procédure de son choix.
+4P12,Utiliser une formule liant deux grandeurs dans une situation de proportionnalité.
+4P13,Résoudre des problèmes en utilisant la proportionnalité dans le cadre de la géométrie.
+4P14,Construire un agrandissement ou une réduction d’une figure donnée.
+4P15,"Utiliser un rapport d’agrandissement ou de réduction pour calculer, des longueurs, des aires, des volumes."
+4F1 - Notion de fonction,
+4F10,Produire une formule littérale représentant la dépendance de deux grandeurs.
+4F11,Représenter la dépendance de deux grandeurs par un graphique.
+4F12,Utiliser un graphique représentant la dépendance de deux grandeurs pour lire et interpréter différentes valeurs sur l’axe des abscisses ou l’axe des ordonnées.
+4G1 - Translations,
+4G10,Transformer une figure par translation.
+4G11,Identifier des translations dans des frises et des pavages.
+4G12,"Comprendre et utiliser l’effet d’une translation : conservation du parallélisme, des longueurs, des aires et des angles."
+4G13,"Mener des raisonnements en utilisant des propriétés des figures, des configurations et de la translation."
+4G2 - Théorème de Pythagore,
+4G20,Calculer une longueur avec le théorème de Pythagore.
+4G21,Démontrer qu'un triangle est rectangle ou non.
+4G22,Résoudre un problème géométrique en ayant recours au théorème de Pythagore.
+4G3 - Théorème de Thalès,
+4G30,Calculer une longueur avec le théorème de Thalès.
+4G31,Démontrer que des droites sont parallèles avec le théorème de Thalès.
+4G32,Résoudre un problème géométrique en ayant recours aux théorèmes de Thalès et de Pythagore.
+4G4 - Cosinus d'un angle,
+4G40,Calculer une longueur avec le cosinus d'un angle.
+4G41,Calculer la mesure d'un angle à partir de son cosinus.
+4G42,Résoudre un problème géométrique.
+4G5 - Espace,
+4G50,Construire et mettre en relation une représentation en perspective cavalière et un patron d’une pyramide.
+4G51,Construire et mettre en relation une représentation en perspective cavalière et un patron d’un d’un cône de révolution.
+4G52,"Se repérer dans un pavé droit et utiliser le vocabulaire du repérage : abscisse, ordonnée, altitude."
+4G53,"Calculer le volume d’une pyramide, d’un cône."

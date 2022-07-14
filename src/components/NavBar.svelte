@@ -38,7 +38,7 @@
   }
 </script>
 
-<nav class="bg-coopmaths sticky z-50 top-0">
+<nav class="bg-coopmaths z-50">
   <!-- container -->
   <div class="flex flex-wrap w-full mx-auto lg:space-x-6 lg:items-center">
     <!-- bouton menu -->
