@@ -83,16 +83,6 @@
     return dico
   }
 
-  async function construireListeExos() {
-    let dico: Map
-    try {
-      const reponse = await import("../dicos/exosDispo.json")
-      dico = toMap(reponse)
-      return dico.get("default")
-    } catch (error) {
-      console.error(`Impossible de récupérer les listes : ${error}`)
-    }
-  }
   const dictionnaire = toMap(referentiel)
 
   function retrouverNomNiveau(idNiveau: string) {
@@ -110,29 +100,15 @@
   <TitrePage />
   <main class="flex h-full">
     <!-- side menu -->
-    <aside class="flex flex-col bg-gray-100 w-1/3 p-4 border-r-2 border-r-coopmaths-light overflow-hidden h-full">
+    <aside class="flex flex-col bg-gray-200 w-1/3 p-4 border-r-2 border-r-coopmaths-light overflow-hidden h-full">
       <div class="flex-none block overflow-y-scroll overscroll-auto h-full">
-        <!-- <InputListeExercices />
-        <Recherche /> -->
+        <!-- <InputListeExercices /> -->
+        <!-- <Recherche /> -->
         <h2 class="font-bold text-xl">Liste des exercices</h2>
-        <!-- {#await construireListeExos()}
-          Loading
-        {:then entrees}
-          <ul>
-            {#each Array.from(entrees, ([cle, obj]) => ({ cle, obj })) as entree}
-              <li>{entree.cle}</li>
-              <ul class="ml-2">
-                {#each Array.from(entree.obj, ([cle, obj]) => ({ cle, obj })) as sousEntree}
-                  <li>{sousEntree.cle}</li>
-                {/each}
-              </ul>
-            {/each}
-          </ul>
-        {/await} -->
-        <ul class="ml-2">
+        <ul>
           {#each Array.from(dictionnaire, ([cle, obj]) => ({ cle, obj })) as entree}
             <li>
-              <NiveauListeExos chemin={[entree.cle]} nom={retrouverNomNiveau(entree.cle)} entrees={entree.obj} />
+              <NiveauListeExos compteurImbrication={1} chemin={[entree.cle]} nom={retrouverNomNiveau(entree.cle)} entrees={entree.obj} />
             </li>
           {/each}
         </ul>
