@@ -9,13 +9,13 @@ const config = {
           lightest: "#FF8C5C",
           light: "#FF7343",
           dark: "#D84010",
-          darkest: "#BE2600",
-        },
-      },
-    },
+          darkest: "#BE2600"
+        }
+      }
+    }
   },
   variants: {
-    display: ["group-hover"],
+    display: ["group-hover"]
   },
   plugins: [
     require("tw-elements/dist/plugin"),
@@ -30,12 +30,12 @@ const config = {
 
           /* Safari and Chrome */
           "&::-webkit-scrollbar": {
-            display: "none",
-          },
-        },
+            display: "none"
+          }
+        }
       })
-    }),
-  ],
+    })
+  ]
 }
 
 module.exports = config

@@ -143,6 +143,10 @@
       "6E12": "Connaître et utiliser les propriétés des solides"
     }
   },
+  "6I1": {
+    "titre" : "Algorithmique",
+    "sousTitre": {}
+  },
   "5C1": {
     "titre": "Calculs - Niveau 1",
     "sousThemes": {
@@ -293,6 +297,10 @@
       "5G51": "Construire et mettre en relation une représentation en perspective cavalière et un patron d’un pavé droit, d’un cylindre."
     }
   },
+  "5I1": {
+    "titre" : "Algorithmique",
+    "sousTitre": {}
+  },
   "4A1": {
     "titre": "Arithmétique",
     "sousThemes": {
@@ -416,6 +424,10 @@
       "4G53": "Calculer le volume d’une pyramide, d’un cône."
     }
   },
+  "4I1": {
+    "titre" : "Algorithmique",
+    "sousTitre": {}
+  },
   "3L1": {
     "titre": "Calcul littéral",
     "sousThemes": {
@@ -524,5 +536,9 @@
       "3G42": "Calculer le volume d’une boule.",
       "3G43": "Calculer les volumes d’assemblages de solides étudiés au cours du cycle."
     }
+  },
+  "3I1": {
+    "titre" : "Algorithmique",
+    "sousTitre": {}
   }
 }

@@ -56,22 +56,30 @@
     })
     return response.get("titre")
   }
+
+  // on compte réactivement le nombre d'occurences
+  // de l'exercice dans la liste des sélectionnés
+  let selectedCount = 0
+  let listeCodes = []
+  $: {
+    listeCodes = []
+    for (const exo of $listeExercices) {
+      listeCodes.push(exo.filename)
+    }
+    listeCodes = listeCodes
+    const isPresent = (code) => code === exo.code
+    selectedCount = listeCodes.filter(isPresent).length
+  }
+
   /**
-   * Tester si un exercice est bien dans la liste des exercices sélectionnés
-   * (sur la base de la `listeExercices` présente dans le store)
-   * @param code nom de l'exercice (par exemple "6N11-5")
-   * @return `true` si le fichier est bien dans la liste (`false` sinon)
-   * @author sylvain chambon
+   * Ajouter l'exercice courant à la liste
    */
-  function isPartOfSelectedExercises(code: string) {
-    let liste = get(listeExercices)
-    let reponse = false
-    liste.forEach((exo) => {
-      if (code === exo.filename) {
-        reponse = true
-      }
-    })
-    return reponse
+  function addExerciseToList() {
+    const newExercise = {
+      directory: exo.code[0] + "e",
+      filename: exo.code,
+    }
+    listeExercices.update((list) => [...list, newExercise])
   }
 </script>
 
@@ -91,12 +99,15 @@
   
  -->
 <div class="relative flex flex-row items-center text-sm text-gray-600 bg-gray-400 ml-{nestedLevelCount * 2}">
-  <div class="flex-1 hover:bg-coopmaths-lightest cursor-pointer">
+  <div class="flex-1 hover:bg-coopmaths-lightest cursor-pointer" on:click={addExerciseToList}>
     <div class="ml-[3px] pl-2 bg-gray-200 hover:bg-gray-100 flex-1">
       <span class="font-bold">{exo.code} - </span>{codeToTitle([...pathToThisNode, exo.id])}
     </div>
   </div>
-  {#if isPartOfSelectedExercises(exo.code)}
-    <div class="absolute -left-4"><i class="text-coopmaths-lightest bx bxs-tag rotate-180" /></div>
+  {#if selectedCount >= 1}
+    <div class="absolute -left-4"><i class="text-coopmaths-lightest text-base bx bxs-message-alt -rotate-90" /></div>
+  {/if}
+  {#if selectedCount >= 2}
+    <div class="absolute -left-[12.5px] text-[0.6rem] font-bold text-white">{selectedCount}</div>
   {/if}
 </div>

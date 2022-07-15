@@ -179,3 +179,23 @@ async function construireListeExos() {
   }
 }
 ```
+
+```js
+/**
+   * Tester si un exercice est bien dans la liste des exercices sélectionnés
+   * (sur la base de la `listeExercices` présente dans le store)
+   * @param code nom de l'exercice (par exemple "6N11-5")
+   * @return `true` si le fichier est bien dans la liste (`false` sinon)
+   * @author sylvain chambon
+   */
+  function isPartOfSelectedExercises(code: string) {
+    let liste = get(listeExercices)
+    let reponse = false
+    liste.forEach((exo) => {
+      if (code === exo.filename) {
+        reponse = true
+      }
+    })
+    return reponse
+  }
+```
