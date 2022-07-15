@@ -94,7 +94,7 @@
   }
 </script>
 
-<div class="h-screen">
+<div class="h-screen  scrollbar-hide">
   <!-- <Header /> -->
   <NavBar />
   <TitrePage />

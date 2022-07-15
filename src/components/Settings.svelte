@@ -14,7 +14,7 @@
   // pour récupérer les tooltips de l'exercice
   type FormNumerique = {
     titre: string
-    champs: string | string[]
+    champs: string[] | string
   }
   let formNum1: FormNumerique
   let formNum2: FormNumerique
@@ -189,7 +189,7 @@
     </div>
   {/if}
   {#if exercice.besoinFormulaireNumerique}
-    {#if isNaN(formNum1.champs)}
+    {#if Array.isArray(formNum1.champs)}
       <div class="flex flex-col">
         <form action="">
           <label class="text-coopmaths-lightest" for="formNum1">{formNum1.titre}</label>
@@ -250,7 +250,7 @@
     </div>
   {/if}
   {#if exercice.besoinFormulaire2Numerique}
-    {#if isNaN(formNum2.champs)}
+    {#if Array.isArray(formNum2.champs)}
       <div class="flex flex-col">
         <form action="">
           <label class="text-coopmaths-lightest" for="formNum2">{formNum2.titre}</label>
@@ -311,7 +311,7 @@
     </div>
   {/if}
   {#if exercice.besoinFormulaire3Numerique}
-    {#if isNaN(formNum3.champs)}
+    {#if Array.isArray(formNum3.champs)}
       <div class="flex flex-col">
         <form action="">
           <label class="text-coopmaths-lightest" for="formNum3">{formNum3.titre}</label>
@@ -372,7 +372,7 @@
     </div>
   {/if}
   {#if exercice.besoinFormulaire4Numerique}
-    {#if isNaN(formNum4.champs)}
+    {#if Array.isArray(formNum4.champs)}
       <div class="flex flex-col">
         <form action="">
           <label class="text-coopmaths-lightest" for="formNum4">{formNum4.titre}</label>
