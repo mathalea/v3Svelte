@@ -293,6 +293,14 @@
       "5G51": "Construire et mettre en relation une représentation en perspective cavalière et un patron d’un pavé droit, d’un cylindre."
     }
   },
+  "4A1": {
+    "titre": "Arithmétique",
+    "sousThemes": {
+      "4A10": "Décomposer un nombre entier en produit de facteurs premiers (à la main, à l’aide d’un tableur ou d’un logiciel de programmation).",
+      "4A11": "Simplifier une fraction pour la rendre irréductible.",
+      "4A12": "Modéliser et résoudre des problèmes mettant en jeu la divisibilité (engrenages, conjonction de phénomènes...)."
+    }
+  },
   "4C1": {
     "titre": "Relatifs",
     "sousThemes": {

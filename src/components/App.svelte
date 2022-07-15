@@ -9,7 +9,7 @@
   import InputListeExercices from "./InputListeExercices.svelte"
   import Recherche from "./Recherche.svelte"
   import NiveauListeExos from "./NiveauListeExos.svelte"
-  import liste from "../dicos/listeIdsNoms.json"
+  import codeList from "../dicos/codeToLevelList.json"
   import referentiel from "../dicos/referentiel2022.json"
   // import { Modals, closeModal } from "svelte-modals"
 
@@ -67,6 +67,15 @@
   listeExercices.set([exercice1, exercice2, exercice3, exercice4, exercice5, exercice6, exercice7, exercice8, exercice9, exercice10])
   // listeExercices.set([exercice3])
 
+  /**
+   * Transforme un objet en arbre basé sur un type Map.
+   * Chaque propriété devient une clé et la valeur correspondante devient :
+   * - soit une valeur si la valeur de la propriété est un tableau
+   * - soit une autre map dans le cas contraire
+   * @param {any} obj
+   * @return {Map} l'arbre correspondant à l'objet
+   * @author sylvain chambon
+   */
   function toMap(obj: any): Map {
     let dico = new Map()
     for (let cle of Object.keys(obj)) {
@@ -83,13 +92,16 @@
     return dico
   }
 
-  const dictionnaire = toMap(referentiel)
-
-  function retrouverNomNiveau(idNiveau: string) {
-    if (liste[idNiveau]) {
-      return liste[idNiveau]
+  const refTree: Map = toMap(referentiel)
+  /**
+   * Retrouve le titre d'un niveau basé sur son
+   * @param levelId
+   */
+  function codeToLevelTitle(code: string) {
+    if (codeList[code]) {
+      return codeList[code]
     } else {
-      return idNiveau
+      return code
     }
   }
 </script>
@@ -106,9 +118,9 @@
         <!-- <Recherche /> -->
         <h2 class="font-bold text-xl">Liste des exercices</h2>
         <ul>
-          {#each Array.from(dictionnaire, ([cle, obj]) => ({ cle, obj })) as entree}
+          {#each Array.from(refTree, ([key, obj]) => ({ key, obj })) as item}
             <li>
-              <NiveauListeExos compteurImbrication={1} chemin={[entree.cle]} nom={retrouverNomNiveau(entree.cle)} entrees={entree.obj} />
+              <NiveauListeExos nestedLevelCount={1} pathToThisNode={[item.key]} levelTitle={codeToLevelTitle(item.key)} items={item.obj} />
             </li>
           {/each}
         </ul>
