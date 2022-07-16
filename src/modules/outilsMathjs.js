@@ -1,25 +1,24 @@
-import { context } from './context.js'
-import { texNombre2, obtenirListeFacteursPremiers } from './outils.js'
-import { all, create, format, number, SymbolNode, ConstantNode, OperatorNode, ParenthesisNode, simplify, parse, round } from 'mathjs'
-import { Node, Negative, solveEquation, simplifyExpression, factor } from 'mathsteps'
-import { getNewChangeNodes } from './Change.js'
-import pkg from 'decimal.js'
-const { Decimal } = pkg
+import { context } from "./context.js"
+import { texNombre2, obtenirListeFacteursPremiers } from "./outils.js"
+import { all, create, format, number, SymbolNode, ConstantNode, OperatorNode, ParenthesisNode, simplify, parse, round } from "mathjs"
+import { Node, Negative, solveEquation, simplifyExpression, factor } from "mathsteps"
+import { getNewChangeNodes } from "./Change.js"
+import { Decimal } from "decimal.js"
 
 const math = create(all)
 
 const emath = create(all)
 
-emath.config({ number: 'Fraction' })
+emath.config({ number: "Fraction" })
 
 const bmath = create(all)
 
-bmath.config({ number: 'BigNumber' })
+bmath.config({ number: "BigNumber" })
 
 function searchFirstNode (node, op) {
-  if (node.type === 'OperatorNode') {
+  if (node.type === "OperatorNode") {
     return searchFirstNode(node.args[0], node.op)
-  } else if (node.type === 'ParenthesisNode') {
+  } else if (node.type === "ParenthesisNode") {
     return searchFirstNode(node.content, node.op)
   } else {
     return { node, op }
@@ -27,9 +26,9 @@ function searchFirstNode (node, op) {
 }
 
 function searchLastNode (node, op) {
-  if (node.type === 'OperatorNode') {
+  if (node.type === "OperatorNode") {
     return searchLastNode(node.args[node.args.length - 1], node.op)
-  } else if (node.type === 'ParenthesisNode') {
+  } else if (node.type === "ParenthesisNode") {
     return searchLastNode(node.content, node.op)
   } else {
     return { node, op }
@@ -52,7 +51,7 @@ export function assignVariables (expression, variables) {
       }
     }
   )
-  return node.toString({ parenthesis: 'keep' })
+  return node.toString({ parenthesis: "keep" })
 }
 
 function transformNode (node, parent, oldNode, params = { suppr1: true, suppr0: true, supprPlusMoins: true }) {
@@ -64,7 +63,7 @@ function transformNode (node, parent, oldNode, params = { suppr1: true, suppr0: 
     * Retirer les parenthèses au dividende et diviseur d'un quotient
     * (n1)/(n2) devient n1/n2
     */
-    if (node.isOperatorNode && node.op === '/') {
+    if (node.isOperatorNode && node.op === "/") {
       if (node.args[0].isParenthesisNode) {
         node.args[0] = node.args[0].content
       }
@@ -76,30 +75,30 @@ function transformNode (node, parent, oldNode, params = { suppr1: true, suppr0: 
     * Transformer -2/n en -(2/n)
     * Ne touche pas à (-2)/(-n)
     */
-    if (node.isOperatorNode && node.op === '/') {
+    if (node.isOperatorNode && node.op === "/") {
       if (
-        node.args[0].type === 'OperatorNode' &&
-        node.args[0].fn === 'unaryMinus' &&
-        (node.args[0].args[0].type === 'ConstantNode' || node.args[0].args[0].type === 'SymbolNode') &&
+        node.args[0].type === "OperatorNode" &&
+        node.args[0].fn === "unaryMinus" &&
+        (node.args[0].args[0].type === "ConstantNode" || node.args[0].args[0].type === "SymbolNode") &&
         !(
-          node.args[1].type === 'OperatorNode' &&
-          node.args[1].fn === 'unaryMinus'
+          node.args[1].type === "OperatorNode" &&
+          node.args[1].fn === "unaryMinus"
         )
       ) {
-        let frac = Node.Creator.operator('/', [node.args[0].args[0], node.args[1]])
+        let frac = Node.Creator.operator("/", [node.args[0].args[0], node.args[1]])
         frac = Node.Creator.parenthesis(frac)
-        node = math.parse('-' + frac.toString())
+        node = math.parse("-" + frac.toString())
       }
     }
     /* (Flatten divisions comme dans Mathsteps)
     * Transformer (1/2*3)/4 en 1/2*(3/4)
     */
-    if (node.isOperatorNode && node.op === '/') {
-      if (node.args[0].isOperatorNode && node.args[0].op === '*') {
-        if (node.args[0].args[0].isOperatorNode && node.args[0].args[0].op === '/') {
-          const frac1 = Node.Creator.operator('/', node.args[0].args[0].args)
-          const frac2 = Node.Creator.operator('/', [node.args[0].args[1], node.args[1]])
-          node = Node.Creator.operator('*', [frac1, frac2])
+    if (node.isOperatorNode && node.op === "/") {
+      if (node.args[0].isOperatorNode && node.args[0].op === "*") {
+        if (node.args[0].args[0].isOperatorNode && node.args[0].args[0].op === "/") {
+          const frac1 = Node.Creator.operator("/", node.args[0].args[0].args)
+          const frac2 = Node.Creator.operator("/", [node.args[0].args[1], node.args[1]])
+          node = Node.Creator.operator("*", [frac1, frac2])
         }
       }
     }
@@ -107,32 +106,32 @@ function transformNode (node, parent, oldNode, params = { suppr1: true, suppr0: 
     * Transformer (n1)+(n2) en n1+n2
     * Utile si n1 et/ou n2 sont des unaryMinus ou des fractions
     */
-    if (node.isOperatorNode && node.op === '+') {
+    if (node.isOperatorNode && node.op === "+") {
       if (params.supprPlusMoins) {
         if (node.args[0].isParenthesisNode) node.args[0] = node.args[0].content
         if (node.args.length > 1 && node.args[1].isParenthesisNode) node.args[1] = node.args[1].content
       } else {
-        if (node.args[0].isParenthesisNode && node.args[0].content.toString()[0] !== '-' && node.args[0].content.toString()[0] !== '+') node.args[0] = node.args[0].content
-        if (node.args.length > 1 && node.args[1].isParenthesisNode && node.args[1].content.toString()[0] !== '-' && node.args[1].content.toString()[0] !== '+') node.args[1] = node.args[1].content
+        if (node.args[0].isParenthesisNode && node.args[0].content.toString()[0] !== "-" && node.args[0].content.toString()[0] !== "+") node.args[0] = node.args[0].content
+        if (node.args.length > 1 && node.args[1].isParenthesisNode && node.args[1].content.toString()[0] !== "-" && node.args[1].content.toString()[0] !== "+") node.args[1] = node.args[1].content
       }
     }
     /*
     * Transformer n+0 en n
     */
-    if (params.suppr0 && node.isOperatorNode && node.op === '+' && node.fn !== 'unaryPlus') {
-      if (node.args[1].toString() === '0') {
+    if (params.suppr0 && node.isOperatorNode && node.op === "+" && node.fn !== "unaryPlus") {
+      if (node.args[1].toString() === "0") {
         node = node.args[0]
       }
     }
     /*
     * Transformer n1+0*n2 en n1
     */
-    if (params.suppr0 && node.isOperatorNode && node.op === '+' && node.fn !== 'unaryPlus') {
+    if (params.suppr0 && node.isOperatorNode && node.op === "+" && node.fn !== "unaryPlus") {
       if (
         node.args[1].isOperatorNode &&
-        node.args[1].op === '*' &&
+        node.args[1].op === "*" &&
         (
-          node.args[1].args[0].toString() === '0'
+          node.args[1].args[0].toString() === "0"
         )
       ) {
         node = node.args[0]
@@ -141,21 +140,21 @@ function transformNode (node, parent, oldNode, params = { suppr1: true, suppr0: 
     /*
     * Transformer 1*n en n et -1*n en -n
     */
-    if (params.suppr1 && node.isOperatorNode && node.op === '*' && searchFirstNode(node.args[1]).node.type !== 'ConstantNode') {
-      if (node.args[0].toString() === '1') {
+    if (params.suppr1 && node.isOperatorNode && node.op === "*" && searchFirstNode(node.args[1]).node.type !== "ConstantNode") {
+      if (node.args[0].toString() === "1") {
         node = node.args[1]
-      } else if (node.args[0].toString() === '-1') {
-        node = math.parse('-' + node.args[1].toString())
+      } else if (node.args[0].toString() === "-1") {
+        node = math.parse("-" + node.args[1].toString())
       }
     }
     /*
     * Transformer n/1 en n et n/-1 en -n
     */
-    if (params.suppr1 && node.isOperatorNode && node.op === '/') {
-      if (node.args[1].toString() === '1') {
+    if (params.suppr1 && node.isOperatorNode && node.op === "/") {
+      if (node.args[1].toString() === "1") {
         node = node.args[0]
-      } else if (node.args[1].toString() === '-1') {
-        node = math.parse('-' + node.args[0].toString())
+      } else if (node.args[1].toString() === "-1") {
+        node = math.parse("-" + node.args[0].toString())
       }
     }
     /*
@@ -163,7 +162,7 @@ function transformNode (node, parent, oldNode, params = { suppr1: true, suppr0: 
     * Transformer --c en -(-c)
     * transformer n1-(n2/n3) en n1-n2/n3
     */
-    if (node.isOperatorNode && node.op === '-') { // Enlève les parenthèses au premier terme d'une soustraction et au second sous condition d'une /
+    if (node.isOperatorNode && node.op === "-") { // Enlève les parenthèses au premier terme d'une soustraction et au second sous condition d'une /
       if (node.args[0].isParenthesisNode) node.args[0] = node.args[0].content
       if (node.args.length === 1 && node.args[0].isConstantNode && node.args[0].value < 0) { // Pour corriger --3 en -(-3)
         node.args[0] = Node.Creator.parenthesis(node.args[0])
@@ -171,35 +170,35 @@ function transformNode (node, parent, oldNode, params = { suppr1: true, suppr0: 
       if (node.args.length === 2 && node.args[1].isConstantNode && node.args[1].value < 0) { // Pour corriger 7--3 en 7-(-3)
         node.args[1] = Node.Creator.parenthesis(node.args[1])
       }
-      if (node.args.length === 2 && node.args[1].isParenthesisNode && node.args[1].content.toString()[0] !== '-') node.args[1] = node.args[1].content
+      if (node.args.length === 2 && node.args[1].isParenthesisNode && node.args[1].content.toString()[0] !== "-") node.args[1] = node.args[1].content
       /*
       * Code à simplifier ?
       */
       if (
-        node.fn !== 'unaryMinus' && // On vérifie si c'est une vraie soustraction (avec deux termes)
+        node.fn !== "unaryMinus" && // On vérifie si c'est une vraie soustraction (avec deux termes)
     node.args[1].isParenthesisNode && // On vérifie que le second terme possède une parenthèse
     node.args[1].content.isOperatorNode && // On vérifie que le second terme contient une opération
     (
-      node.args[1].content.op === '/' || // On teste si cette opération est une division
+      node.args[1].content.op === "/" || // On teste si cette opération est une division
       (
-        node.args[1].content.op === '*' && // On teste si c'est une multiplication
+        node.args[1].content.op === "*" && // On teste si c'est une multiplication
         (
           !node.args[1].content.args[0].isOperatorNode || // Si le premier facteur n'est pas une opération
           (
             node.args[1].content.args[0].isOperatorNode && // Ou si c'est une opération
-            node.args[1].content.args[0].fn !== 'unaryMinus' // mais que le premier argument n'est pas -blabla
+            node.args[1].content.args[0].fn !== "unaryMinus" // mais que le premier argument n'est pas -blabla
           )
         )
       )
     )
       ) node.args[1] = node.args[1].content
     }
-    if (node.isOperatorNode && node.op === '*') { // Enlève les parenthèses aux deux facteurs d'une multiplication
+    if (node.isOperatorNode && node.op === "*") { // Enlève les parenthèses aux deux facteurs d'une multiplication
       if (node.args[0].isParenthesisNode && // On cherche à l'intérieur d'une parenthèse
     (
       !node.args[0].content.isOperatorNode || // Il ne faut pas d'opération
-      (node.args[0].content.isOperatorNode && node.args[0].content.op === '/') || // ou alors une divisions
-      (node.args[0].content.isOperatorNode && node.args[0].content.fn === 'unaryMinus' && params.supprPlusMoins) // ou alors un -n
+      (node.args[0].content.isOperatorNode && node.args[0].content.op === "/") || // ou alors une divisions
+      (node.args[0].content.isOperatorNode && node.args[0].content.fn === "unaryMinus" && params.supprPlusMoins) // ou alors un -n
     )
       ) { // Si l'une des conditions est vérifiée alors :
         node.args[0] = node.args[0].content // on enlève la parenthèse
@@ -210,12 +209,12 @@ function transformNode (node, parent, oldNode, params = { suppr1: true, suppr0: 
       !node.args[1].content.isOperatorNode ||
       (
         node.args[1].content.isOperatorNode &&
-        node.args[1].content.op === '/' &&
+        node.args[1].content.op === "/" &&
         !(
-          node.args[1].content.args[0].type === 'OperatorNode' &&
-          node.args[1].content.args[0].fn === 'unaryMinus' &&
-          node.args[1].content.args[0].args[0].type === 'ConstantNode' &&
-          !(node.args[1].content.args[1].type === 'OperatorNode' && node.args[1].content.args[1].fn === 'unaryMinus')
+          node.args[1].content.args[0].type === "OperatorNode" &&
+          node.args[1].content.args[0].fn === "unaryMinus" &&
+          node.args[1].content.args[0].args[0].type === "ConstantNode" &&
+          !(node.args[1].content.args[1].type === "OperatorNode" && node.args[1].content.args[1].fn === "unaryMinus")
         )
       )
     )) {
@@ -223,45 +222,45 @@ function transformNode (node, parent, oldNode, params = { suppr1: true, suppr0: 
         node.implicit = false
       }
     }
-    if (node.type === 'OperatorNode' && node.op === '*') { // Corrige n*-c en n*(-c)
-      if (node.args[1].toString()[0] === '-') {
+    if (node.type === "OperatorNode" && node.op === "*") { // Corrige n*-c en n*(-c)
+      if (node.args[1].toString()[0] === "-") {
         node.args[1] = Node.Creator.parenthesis(node.args[1])
       }
     }
     // Peut-être faut-il mettre à jour le mathjs de mathsteps car il semble que le code suivant ne fonctionne pas
     // dans mathsteps lorsqu'il est placé dans print.js de mathsteps
     // alors qu'il fonctionne avec la version mathjs de mathalea
-    if (node.isOperatorNode && node.op === '*') { // Multiplication implicite 2*x devient 2x et 2*(x+3) devient 2(x+3)
+    if (node.isOperatorNode && node.op === "*") { // Multiplication implicite 2*x devient 2x et 2*(x+3) devient 2(x+3)
       if ((node.args[1].isParenthesisNode || node.args[1].isSymbolNode) && !(searchLastNode(node.args[0]).node.isSymbolNode)) node.implicit = true
-      if (node.args[1].isOperatorNode && node.args[1].op === '^' && node.args[1].args[0].isSymbolNode) node.implicit = true
+      if (node.args[1].isOperatorNode && node.args[1].op === "^" && node.args[1].args[0].isSymbolNode) node.implicit = true
     }
-    if (node.isOperatorNode && node.op === '*') { // Multiplication explicite x*2 ou x*2/3
+    if (node.isOperatorNode && node.op === "*") { // Multiplication explicite x*2 ou x*2/3
       if (node.args[1].isConstantNode) node.implicit = false
       if (node.args[1].isOperatorNode && node.args[1].args[0].isConstantNode) node.implicit = false
-      if (node.args[1].isOperatorNode && node.args[1].op === '/') node.implicit = false
-      if (node.args[1].isOperatorNode && node.args[1].args[0].isOperatorNode && node.args[1].args[0].op === '/') node.implicit = false
-      if (node.args[1].isParenthesisNode && node.args[1].content.isOperatorNode && node.args[1].content.fn === 'unaryMinus') node.implicit = false
+      if (node.args[1].isOperatorNode && node.args[1].op === "/") node.implicit = false
+      if (node.args[1].isOperatorNode && node.args[1].args[0].isOperatorNode && node.args[1].args[0].op === "/") node.implicit = false
+      if (node.args[1].isParenthesisNode && node.args[1].content.isOperatorNode && node.args[1].content.fn === "unaryMinus") node.implicit = false
     }
     if (
       node.isParenthesisNode &&
       node.content.isOperatorNode &&
         (
-          (node.content.op === '*' || node.content.op === '^') &&
-          (node.content.toString()[0] !== '-')
+          (node.content.op === "*" || node.content.op === "^") &&
+          (node.content.toString()[0] !== "-")
         )
     ) {
       node = node.content
     }
-    if (node.isParenthesisNode && node.content.isOperatorNode && node.content.op === '/') node = node.content
-    if (node.isOperatorNode && node.fn === 'unaryMinus' && node.args[0].isParenthesisNode && node.args[0].content.isOperatorNode && node.args[0].content.op === '*') node.args[0] = node.args[0].content
-    if (node.isOperatorNode && node.fn === 'unaryMinus' && node.args[0].isOperatorNode && node.args[0].op === '*') node = Node.Creator.operator('*', [Negative.negate(node.args[0].args[0]), node.args[0].args[1]])
+    if (node.isParenthesisNode && node.content.isOperatorNode && node.content.op === "/") node = node.content
+    if (node.isOperatorNode && node.fn === "unaryMinus" && node.args[0].isParenthesisNode && node.args[0].content.isOperatorNode && node.args[0].content.op === "*") node.args[0] = node.args[0].content
+    if (node.isOperatorNode && node.fn === "unaryMinus" && node.args[0].isOperatorNode && node.args[0].op === "*") node = Node.Creator.operator("*", [Negative.negate(node.args[0].args[0]), node.args[0].args[1]])
     // n(c*n) = n*(c*n) Je ne sais plus pourquoi !
     if (
-      node.isOperatorNode && node.op === '*') {
+      node.isOperatorNode && node.op === "*") {
       const firstNode = searchFirstNode(node.args[1])
       if (
-        firstNode.node.type === 'ConstantNode' &&
-        firstNode.op === '*'
+        firstNode.node.type === "ConstantNode" &&
+        firstNode.op === "*"
       ) { node.implicit = false }
     }
     return transformNode(node, parent, oldNode, params)
@@ -275,7 +274,7 @@ function transformNode (node, parent, oldNode, params = { suppr1: true, suppr0: 
 function correctifNodeMathsteps (node) {
   node = node.transform(
     function (node, path, parent) {
-      if (node.type === 'ConstantNode') {
+      if (node.type === "ConstantNode") {
         return math.parse(node.value)
       }
       return node
@@ -301,8 +300,8 @@ export function toTex (node, params = { suppr1: true, suppr0: true, supprPlusMoi
   // On commence par convertir l'expression en arbre au format mathjs
   let comparator
   let sides = []
-  const comparators = ['=', '<', '>', '<=', '>=']
-  if (typeof node === 'string') {
+  const comparators = ["=", "<", ">", "<=", ">="]
+  if (typeof node === "string") {
     for (let i = 0; i < comparators.length; i++) {
       sides = node.split(comparators[i])
       if (sides.length > 1) {
@@ -327,7 +326,7 @@ export function toTex (node, params = { suppr1: true, suppr0: true, supprPlusMoi
     // transforme les (-3)^2 en -3^2
     node = correctifNodeMathsteps(node) // Convertit d'abord tous les ConstantNode au format mathjs
     // node = parse(node.toString({ parenthesis: 'all' })) // Permet d'utiliser correctement les implicit
-    node = parse(format(node, { notation: 'fixed' })) // Permet d'utiliser correctement les implicit
+    node = parse(format(node, { notation: "fixed" })) // Permet d'utiliser correctement les implicit
   }
   /* if (sides.length === 2) {
     const leftSide = toTex(sides[0], params)
@@ -339,7 +338,7 @@ export function toTex (node, params = { suppr1: true, suppr0: true, supprPlusMoi
     for (let i = 0; i < sides.length; i++) {
       members.push(toTex(sides[i], params))
     }
-    return members.join(comparator.replaceAll('>=', '\\geqslant').replaceAll('<=', '\\leqslant'))
+    return members.join(comparator.replaceAll(">=", "\\geqslant").replaceAll("<=", "\\leqslant"))
   }
   let nodeClone
   do { // À étudier, pour 79 et 85 et 50 cette boucle doit être maintenue
@@ -352,15 +351,15 @@ export function toTex (node, params = { suppr1: true, suppr0: true, supprPlusMoi
     )
   } while (node.toString() !== nodeClone.toString())
 
-  let nodeTex = node.toTex({ implicit: 'hide', parenthesis: 'keep', notation: 'fixed' }).replaceAll('\\cdot', '\\times').replaceAll('.', '{,}').replaceAll('\\frac', '\\dfrac')
+  let nodeTex = node.toTex({ implicit: "hide", parenthesis: "keep", notation: "fixed" }).replaceAll("\\cdot", "\\times").replaceAll(".", "{,}").replaceAll("\\frac", "\\dfrac")
 
-  nodeTex = nodeTex.replace(/\s*?\+\s*?-\s*?/g, ' - ')
+  nodeTex = nodeTex.replace(/\s*?\+\s*?-\s*?/g, " - ")
   // Mathjs ajoute de manière non contrôlée des \mathrm pour certaines ConstantNode
   // En attendant de comprendre on les enlève (au risque d'avoir les {} restantes)
-  nodeTex = nodeTex.replaceAll('\\mathrm', '')
+  nodeTex = nodeTex.replaceAll("\\mathrm", "")
   // Exclure les ~
-  nodeTex = nodeTex.replaceAll('~', '')
-  if (node.isConstantNode && node.value === undefined) nodeTex = ''
+  nodeTex = nodeTex.replaceAll("~", "")
+  if (node.isConstantNode && node.value === undefined) nodeTex = ""
   return nodeTex
 }
 
@@ -369,8 +368,8 @@ export function toString (node, params = { suppr1: true, suppr0: true, supprPlus
   // On commence par convertir l'expression en arbre au format mathjs
   let comparator
   let sides = []
-  const comparators = ['=', '<', '>', '<=', '>=']
-  if (typeof node === 'string') {
+  const comparators = ["=", "<", ">", "<=", ">="]
+  if (typeof node === "string") {
     for (let i = 0; i < comparators.length; i++) {
       sides = node.split(comparators[i])
       if (sides.length > 1) {
@@ -394,7 +393,7 @@ export function toString (node, params = { suppr1: true, suppr0: true, supprPlus
     // Mais il faut un pré-traitement car sinon le passage de mathsteps à mathjs
     // transforme les (-3)^2 en -3^2
     node = correctifNodeMathsteps(node) // Convertit d'abord tous les ConstantNode au format mathjs
-    node = parse(node.toString({ parenthesis: 'all' })) // Permet d'utiliser correctement les implicit
+    node = parse(node.toString({ parenthesis: "all" })) // Permet d'utiliser correctement les implicit
   }
   /* if (sides.length === 2) {
     const leftSide = toTex(sides[0], params)
@@ -406,7 +405,7 @@ export function toString (node, params = { suppr1: true, suppr0: true, supprPlus
     for (let i = 0; i < sides.length; i++) {
       members.push(toTex(sides[i], params))
     }
-    return members.join(comparator.replaceAll('>=', '\\geqslant').replaceAll('<=', '\\leqslant'))
+    return members.join(comparator.replaceAll(">=", "\\geqslant").replaceAll("<=", "\\leqslant"))
   }
   let nodeClone
   do { // À étudier, pour 79 et 85 et 50 cette boucle doit être maintenue
@@ -420,23 +419,23 @@ export function toString (node, params = { suppr1: true, suppr0: true, supprPlus
   } while (node.toString() !== nodeClone.toString())
 
   // if (node.isConstantNode && node.value === undefined) nodeTex = ''
-  return node.toString({ implicit: 'show', parenthesis: 'keep' }).replace(/\s*?\+\s*?-\s*?/g, ' - ')
+  return node.toString({ implicit: "show", parenthesis: "keep" }).replace(/\s*?\+\s*?-\s*?/g, " - ")
 }
 
-export function expressionLitterale (expression = '(a*x+b)*(c*x-d)', assignations = { a: 1, b: 2, c: 3, d: -6 }) {
+export function expressionLitterale (expression = "(a*x+b)*(c*x-d)", assignations = { a: 1, b: 2, c: 3, d: -6 }) {
   // Ne pas oublier le signe de la multiplication
-  return simplify(expression, [{ l: '1*n', r: 'n' }, { l: '-1*n', r: '-n' }, { l: 'n/1', r: 'n' }, { l: 'c/c', r: '1' }, { l: '0*v', r: '0' }, { l: '0+v', r: 'v' }], assignations)
+  return simplify(expression, [{ l: "1*n", r: "n" }, { l: "-1*n", r: "-n" }, { l: "n/1", r: "n" }, { l: "c/c", r: "1" }, { l: "0*v", r: "0" }, { l: "0+v", r: "v" }], assignations)
 }
 
-export function aleaExpression (expression = '(a*x+b)*(c*x-d)', assignations = { a: 1, b: 2, c: 3, d: -6 }) {
+export function aleaExpression (expression = "(a*x+b)*(c*x-d)", assignations = { a: 1, b: 2, c: 3, d: -6 }) {
   // const assignationsDecimales = Object.assign({}, assignations)
   const assignationsDecimales = Object.assign({}, aleaVariables(assignations))
   for (const v of Object.keys(assignationsDecimales)) {
-    if (typeof assignationsDecimales[v] !== 'number') {
+    if (typeof assignationsDecimales[v] !== "number") {
       assignationsDecimales[v] = assignationsDecimales[v].valueOf()
     }
   }
-  return assignVariables(expression, assignationsDecimales).toString({ parenthesis: 'keep' })
+  return assignVariables(expression, assignationsDecimales).toString({ parenthesis: "keep" })
   // return simplify(expression, [], assignationsDecimales).toString({ parenthesis: 'all' })
 }
 
@@ -458,7 +457,7 @@ export function aleaExpression (expression = '(a*x+b)*(c*x-d)', assignations = {
  * aleaVariables({a: true}) --> {a: Fraction} // Fraction est un objet de mathjs
  * @author Frédéric PIOU
  */
-export function aleaVariables (variables = { a: true, b: true, c: true, d: true }, params = { valueOf: true, format: false, type: 'number' }) {
+export function aleaVariables (variables = { a: true, b: true, c: true, d: true }, params = { valueOf: true, format: false, type: "number" }) {
   // Conservation de la graine aléatoire
   math.config({ randomSeed: context.graine })
   // Placer dans cet objet chacune des variables après calcul
@@ -472,36 +471,36 @@ export function aleaVariables (variables = { a: true, b: true, c: true, d: true 
     cpt++
     for (const v of Object.keys(variables)) { // On parcourt chaque variable
       switch (typeof variables[v]) {
-        case 'object':
+        case "object":
           break
-        case 'boolean': // On génère un nombre aléatoire non nul entre 1 et 10 si false et entre -10 et 10 si true
+        case "boolean": // On génère un nombre aléatoire non nul entre 1 et 10 si false et entre -10 et 10 si true
           assignations[v] = math.fraction( // On contraint le résultat à être une fraction
             math.evaluate(
-              '(pickRandom([-1,1]))^(n)*randomInt(1,10)',
+              "(pickRandom([-1,1]))^(n)*randomInt(1,10)",
               { n: variables[v] }
             )
           )
           break
-        case 'number': // On ne fait que le convertir en fraction
-          if (params.type === 'decimal') assignations[v] = math.bignumber(variables[v])
+        case "number": // On ne fait que le convertir en fraction
+          if (params.type === "decimal") assignations[v] = math.bignumber(variables[v])
           else assignations[v] = math.fraction(variables[v])
           break
-        case 'string':
+        case "string":
           // Parser l'expression
           // Parcourir le noeud et repérer les points sensibles (division, décimaux)
           try { // On tente les calculs exacts avec mathjs
-            if (params.type === 'decimal') assignations[v] = bmath.evaluate(variables[v], assignations)
+            if (params.type === "decimal") assignations[v] = bmath.evaluate(variables[v], assignations)
             else assignations[v] = emath.evaluate(variables[v], assignations)
           } catch { // Sinon on cherche à la transformer en fraction après coup
             try {
-              if (params.type === 'decimal') assignations[v] = math.bignumber(math.evaluate(variables[v], assignations))
+              if (params.type === "decimal") assignations[v] = math.bignumber(math.evaluate(variables[v], assignations))
               else assignations[v] = math.fraction(math.evaluate(variables[v], assignations))
             } catch { // Sinon on fait sans mais on revient à des nombres de type 'number'
               const values = Object.assign({}, assignations)
               for (const v of Object.keys(values)) {
                 values[v] = values[v].valueOf()
               }
-              if (params.type === 'decimal') assignations[v] = bmath.evaluate(variables[v], values)
+              if (params.type === "decimal") assignations[v] = bmath.evaluate(variables[v], values)
               else assignations[v] = math.evaluate(variables[v], values)
             }
           }
@@ -511,10 +510,10 @@ export function aleaVariables (variables = { a: true, b: true, c: true, d: true 
     // On teste maintenant si les contraintes sont vérifiées
     if (variables.test !== undefined) test = math.evaluate(variables.test, assignations)
   } while (!test && cpt < 1000)
-  if (cpt === 1000) window.notify('Attention ! 1000 essais dépassés.\n Trop de contraintes.\n Le résultat ne vérifiera pas le test.')
+  if (cpt === 1000) window.notify("Attention ! 1000 essais dépassés.\n Trop de contraintes.\n Le résultat ne vérifiera pas le test.")
   if (params.valueOf) {
     for (const v of Object.keys(assignations)) {
-      if (typeof assignations[v] !== 'number') {
+      if (typeof assignations[v] !== "number") {
         if (!(assignations[v] instanceof Decimal)) assignations[v] = assignations[v].valueOf()
       }
     }
@@ -573,7 +572,7 @@ export function calculer (expression, params) {
   // const commentaires = []
   const comments = []
   steps.forEach(function (step, i) {
-    const oldNode = step.oldNode !== null ? toTex(step.oldNode, params) : ''
+    const oldNode = step.oldNode !== null ? toTex(step.oldNode, params) : ""
     const newNode = toTex(step.newNode, params)
     if (newNode === oldNode) stepsExpression.pop()
     if (params.comment) {
@@ -612,34 +611,34 @@ export function calculer (expression, params) {
       }
     }
   })
-  if (params.mixed === true && steps[steps.length - 1].newNode.type === 'OperatorNode' &&
-  steps[steps.length - 1].newNode.op === '/' &&
-  steps[steps.length - 1].newNode.args[0].type === 'ConstantNode' &&
-  steps[steps.length - 1].newNode.args[1].type === 'ConstantNode' &&
+  if (params.mixed === true && steps[steps.length - 1].newNode.type === "OperatorNode" &&
+  steps[steps.length - 1].newNode.op === "/" &&
+  steps[steps.length - 1].newNode.args[0].type === "ConstantNode" &&
+  steps[steps.length - 1].newNode.args[1].type === "ConstantNode" &&
   (
     Math.abs(steps[steps.length - 1].newNode.args[0].value) > steps[steps.length - 1].newNode.args[1].value ||
     steps[steps.length - 1].newNode.args[0].value < 0
   )
   ) {
-    const plus = steps[steps.length - 1].newNode.args[0].value < 0 ? '-' : '+'
+    const plus = steps[steps.length - 1].newNode.args[0].value < 0 ? "-" : "+"
     stepsExpression.push(
-      '&=' + toTex(
+      "&=" + toTex(
         math.parse(
           math.fraction(
             steps[steps.length - 1].newNode.args[0].value,
             steps[steps.length - 1].newNode.args[1].value
-          ).toFraction(true).replace(' ', plus)
+          ).toFraction(true).replace(" ", plus)
         ), params
       )
     )
   }
   const texte = `Calculer $${expressionPrint}$.`
-  const texteCorr = `$\\begin{aligned}\n${stepsExpression.join('\\\\\n')}\n\\end{aligned}$`
+  const texteCorr = `$\\begin{aligned}\n${stepsExpression.join("\\\\\n")}\n\\end{aligned}$`
   return { result: steps.length > 0 ? steps[steps.length - 1].newNode.toString() : expressionPrint, printResult: steps.length > 0 ? toTex(steps[steps.length - 1].newNode, params.totex) : expressionPrint, netapes: stepsExpression.length, texteDebug: texte + texteCorr, texte, texteCorr, stepsLatex: stepsExpression, steps, commentaires: comments, printExpression: expressionPrint, name: params.name }
 }
 
-export function aleaEquation (equation = 'a*x+b=c*x-d', variables = { a: false, b: false, c: false, d: false, test: 'a>b or true' }, debug = false) { // Ne pas oublier le signe de la multiplication
-  const comparators = ['<=', '>=', '=', '<', '>']
+export function aleaEquation (equation = "a*x+b=c*x-d", variables = { a: false, b: false, c: false, d: false, test: "a>b or true" }, debug = false) { // Ne pas oublier le signe de la multiplication
+  const comparators = ["<=", ">=", "=", "<", ">"]
   const assignations = aleaVariables(variables, debug)
   for (const v of Object.keys(assignations)) {
     assignations[v] = number(assignations[v])
@@ -657,13 +656,13 @@ export function aleaEquation (equation = 'a*x+b=c*x-d', variables = { a: false, 
   const leftNode = expressionLitterale(sides[0], assignations, debug).toString()
   const rightNode = expressionLitterale(sides[1], assignations, debug).toString()
   if (debug) {
-    console.log('Equation à résoudre : ', `${leftNode}${comparator}${rightNode}`)
+    console.log("Equation à résoudre : ", `${leftNode}${comparator}${rightNode}`)
   }
   return `${leftNode}${comparator}${rightNode}`
 }
 
-export function resoudreEquation (equation = '5(x-7)=3(x+1)', debug = false) {
-  const comparators = ['<=', '>=', '=', '<', '>']
+export function resoudreEquation (equation = "5(x-7)=3(x+1)", debug = false) {
+  const comparators = ["<=", ">=", "=", "<", ">"]
   let comparator
   let sides
   for (let i = 0; i < comparators.length; i++) {
@@ -678,7 +677,7 @@ export function resoudreEquation (equation = '5(x-7)=3(x+1)', debug = false) {
   let equationPrint
   const steps = solveEquation(equation)
   if (debug) {
-    console.log('* steps :')
+    console.log("* steps :")
     console.log(steps)
   }
   const stepsNewEquation = []
@@ -687,14 +686,14 @@ export function resoudreEquation (equation = '5(x-7)=3(x+1)', debug = false) {
     const changement = step.changeType
     if (step.oldEquation !== null) {
       if (step.oldEquation.leftNode.toString() === step.newEquation.leftNode.toString() || step.oldEquation.rightNode.toString() === step.newEquation.rightNode.toString()) {
-        if (changement !== 'REMOVE_ADDING_ZEROS') repetition = (repetition + 1) % 3
+        if (changement !== "REMOVE_ADDING_ZEROS") repetition = (repetition + 1) % 3
       } else {
         repetition = 0
       }
     }
-    const oldLeftNode = step.oldEquation !== null ? toTex(step.oldEquation.leftNode) : ''
+    const oldLeftNode = step.oldEquation !== null ? toTex(step.oldEquation.leftNode) : ""
     let newLeftNode = toTex(step.newEquation.leftNode)
-    const oldRightNode = step.oldEquation !== null ? toTex(step.oldEquation.rightNode) : ''
+    const oldRightNode = step.oldEquation !== null ? toTex(step.oldEquation.rightNode) : ""
     let newRightNode = toTex(step.newEquation.rightNode)
     /* const oldLeftNode = step.oldEquation !== null ? printMS.latex(step.oldEquation.leftNode, false) : ''
     let newLeftNode = printMS.latex(step.newEquation.leftNode, false)
@@ -707,11 +706,11 @@ export function resoudreEquation (equation = '5(x-7)=3(x+1)', debug = false) {
     if (i === 0) {
       equationPrint = `${oldLeftNode}${step.newEquation.comparator}${oldRightNode}`
     }
-    const color = repetition === 2 ? 'black' : 'red'
+    const color = repetition === 2 ? "black" : "red"
     newLeftNode = `{\\color{${color}}${newLeftNode.replace(oldLeftNode, `{\\color{black}${oldLeftNode}}`)}}`
     newRightNode = `{\\color{${color}}${newRightNode.replace(oldRightNode, `{\\color{black}${oldRightNode}}`)}}`
     if (debug) console.log(newLeftNode + step.newEquation.comparator + newRightNode)
-    const stepChange = getNewChangeNodes(step).length > 0 ? toTex(parse(getNewChangeNodes(step)[0].toString(), { parenthesis: 'auto' })) : ''
+    const stepChange = getNewChangeNodes(step).length > 0 ? toTex(parse(getNewChangeNodes(step)[0].toString(), { parenthesis: "auto" })) : ""
     let commentaires = {
       MULTIPLY_BOTH_SIDES_BY_NEGATIVE_ONE: String.raw`\text{Multiplier les deux membres par }-1`,
       SUBTRACT_FROM_BOTH_SIDES: String.raw`\text{Soustraire }${stepChange}\text{ à chaque membre}`,
@@ -743,20 +742,20 @@ export function resoudreEquation (equation = '5(x-7)=3(x+1)', debug = false) {
         REMOVE_MULTIPLYING_BY_ONE: String.raw`\text{Retirer la multiplication par } 1`
       })
     }
-    if (commentaires[changement] === undefined) commentaires[changement] = ''
+    if (commentaires[changement] === undefined) commentaires[changement] = ""
     if (repetition === 2) {
       repetition = 0
       stepsNewEquation.pop()
-      if (changement !== 'REMOVE_ADDING_ZERO') stepsNewEquation.push(String.raw`${newLeftNode}&${step.newEquation.comparator}${newRightNode}&&${commentaires[changement]}`)
+      if (changement !== "REMOVE_ADDING_ZERO") stepsNewEquation.push(String.raw`${newLeftNode}&${step.newEquation.comparator}${newRightNode}&&${commentaires[changement]}`)
     } else {
-      if (changement !== 'REMOVE_ADDING_ZERO') stepsNewEquation.push(String.raw`${newLeftNode}&${step.newEquation.comparator}${newRightNode}&&${commentaires[changement]}`)
+      if (changement !== "REMOVE_ADDING_ZERO") stepsNewEquation.push(String.raw`${newLeftNode}&${step.newEquation.comparator}${newRightNode}&&${commentaires[changement]}`)
     }
-    if (debug) console.log('changement', commentaires[changement])
+    if (debug) console.log("changement", commentaires[changement])
   })
   let texte = String.raw`Résoudre $${equationPrint}$`
   const texteCorr = String.raw`
   $\begin{aligned}
-  ${stepsNewEquation.join('\\\\')}
+  ${stepsNewEquation.join("\\\\")}
   \end{aligned}$
   `
   if (debug) texte = texteCorr
@@ -769,47 +768,47 @@ export function commentStep (step, comments) {
   // const stepChange = getNewChangeNodes(step).length > 0 ? toTex(parse(getNewChangeNodes(step)[0].toString(), { parenthesis: 'auto' })) : ''
   const defaultComments = {
     CROSS_PRODUCT_EQUALITY: `Egalité des produits en croix si $${stepChange}$.`,
-    MULTIPLY_BOTH_SIDES_BY_NEGATIVE_ONE: 'Multiplier les deux membres par $-1$.',
+    MULTIPLY_BOTH_SIDES_BY_NEGATIVE_ONE: "Multiplier les deux membres par $-1$.",
     SUBTRACT_FROM_BOTH_SIDES: `Soustraire $${stepChange}$ à chaque membre.`,
     ADD_TO_BOTH_SIDES: `Ajouter $${stepChange}$ à chaque membre`,
     MULTIPLY_TO_BOTH_SIDES: `Multiplier chaque membre par $${stepChange}$.`,
     DIVIDE_FROM_BOTH_SIDES: `Diviser chaque membre par $${stepChange}$.`,
     MULTIPLY_BOTH_SIDES_BY_INVERSE_FRACTION: `Multiplier chaque membre par $${stepChange}$.`,
-    SWAP_SIDES: 'Echanger les deux membres.',
-    STATEMENT_IS_FALSE: 'L\'égalité est fausse.',
-    STATEMENT_IS_TRUE: 'L\'égalité est vraie.',
-    DISTRIBUTE: 'Distribution.',
-    SIMPLIFY_RIGHT_SIDE: 'Simplifier le membre de droite.',
-    SIMPLIFY_LEFT_SIDE: 'Simplifier le membre de gauche.',
-    COLLECT_AND_COMBINE_LIKE_TERMS: 'Regrouper et réduire les termes de même nature.',
-    SIMPLIFY_ARITHMETIC: 'Calcul arithmétique.',
-    SIMPLIFY_FRACTION: 'Simplifier une fraction.',
-    REMOVE_MULTIPLYING_BY_NEGATIVE_ONE: 'Calculer la multiplication par $-1$.',
-    REMOVE_ADDING_ZERO: 'Enlever des zéros.',
-    CANCEL_MINUSES: 'Annuler les signes moins.',
-    FIND_ROOTS: 'Trouver la (ou les) solution(s).',
-    SIMPLIFY_SIGNS: 'Simplifier le signe.',
-    MULTIPLY_BY_ZERO: 'Multiplication par zéro.',
-    ADD_FRACTIONS: 'Additionner des fractions.',
-    BREAK_UP_FRACTION: 'Séparer une fraction.',
-    CANCEL_TERMS: 'Annuler les termes.',
-    REMOVE_MULTIPLYING_BY_ONE: 'Retirer la multiplication par $1$.',
-    COLLECT_LIKE_TERMS: 'Regrouper les termes.',
-    MULTIPLY_DENOMINATORS: 'Calculer les dénominateurs.',
-    ADD_EXPONENT_OF_ONE: 'Ajouter l\'exposant 1.',
-    COLLECT_POLYNOMIAL_EXPONENTS: 'Ajouter l\'exposant 1.',
-    COMMON_DENOMINATOR: 'Obtenir le même dénominateur.',
-    MULTIPLY_NUMERATORS: 'Calculer.',
-    COMBINE_NUMERATORS: 'Combiner les numérateurs.',
-    ADD_NUMERATORS: 'Additionner les numérateurs.',
-    ADD_COEFFICIENT_OF_ONE: 'Ajouter le coefficient $1$',
-    GROUP_COEFFICIENTS: 'Regrouper les coefficients.',
-    FIND_GCD: 'Trouver le plus grand diviseur commun.',
-    CANCEL_GCD: 'Simplifier par le PGCD.',
-    MULTIPLY_FRACTIONS: 'Multiplier deux fractions.'
+    SWAP_SIDES: "Echanger les deux membres.",
+    STATEMENT_IS_FALSE: "L'égalité est fausse.",
+    STATEMENT_IS_TRUE: "L'égalité est vraie.",
+    DISTRIBUTE: "Distribution.",
+    SIMPLIFY_RIGHT_SIDE: "Simplifier le membre de droite.",
+    SIMPLIFY_LEFT_SIDE: "Simplifier le membre de gauche.",
+    COLLECT_AND_COMBINE_LIKE_TERMS: "Regrouper et réduire les termes de même nature.",
+    SIMPLIFY_ARITHMETIC: "Calcul arithmétique.",
+    SIMPLIFY_FRACTION: "Simplifier une fraction.",
+    REMOVE_MULTIPLYING_BY_NEGATIVE_ONE: "Calculer la multiplication par $-1$.",
+    REMOVE_ADDING_ZERO: "Enlever des zéros.",
+    CANCEL_MINUSES: "Annuler les signes moins.",
+    FIND_ROOTS: "Trouver la (ou les) solution(s).",
+    SIMPLIFY_SIGNS: "Simplifier le signe.",
+    MULTIPLY_BY_ZERO: "Multiplication par zéro.",
+    ADD_FRACTIONS: "Additionner des fractions.",
+    BREAK_UP_FRACTION: "Séparer une fraction.",
+    CANCEL_TERMS: "Annuler les termes.",
+    REMOVE_MULTIPLYING_BY_ONE: "Retirer la multiplication par $1$.",
+    COLLECT_LIKE_TERMS: "Regrouper les termes.",
+    MULTIPLY_DENOMINATORS: "Calculer les dénominateurs.",
+    ADD_EXPONENT_OF_ONE: "Ajouter l'exposant 1.",
+    COLLECT_POLYNOMIAL_EXPONENTS: "Ajouter l'exposant 1.",
+    COMMON_DENOMINATOR: "Obtenir le même dénominateur.",
+    MULTIPLY_NUMERATORS: "Calculer.",
+    COMBINE_NUMERATORS: "Combiner les numérateurs.",
+    ADD_NUMERATORS: "Additionner les numérateurs.",
+    ADD_COEFFICIENT_OF_ONE: "Ajouter le coefficient $1$",
+    GROUP_COEFFICIENTS: "Regrouper les coefficients.",
+    FIND_GCD: "Trouver le plus grand diviseur commun.",
+    CANCEL_GCD: "Simplifier par le PGCD.",
+    MULTIPLY_FRACTIONS: "Multiplier deux fractions."
   }
   comments = Object.assign(defaultComments, comments)
-  return (comments[changement] !== undefined) ? `\\text{${comments[changement].replaceAll('{stepChange}', `$${stepChange}$`)}}` : ''
+  return (comments[changement] !== undefined) ? `\\text{${comments[changement].replaceAll("{stepChange}", `$${stepChange}$`)}}` : ""
 }
 
 /**
@@ -819,10 +818,10 @@ export function commentStep (step, comments) {
  */
 export function isDecimal (value) {
   let f
-  if (typeof value === 'number') {
+  if (typeof value === "number") {
     f = math.fraction(value)
-  } else if (typeof value === 'string') {
-    f = math.fraction(value.replaceAll(' ', ''))
+  } else if (typeof value === "string") {
+    f = math.fraction(value.replaceAll(" ", ""))
   } else {
     f = value.clone()
   }
@@ -862,7 +861,7 @@ export function resoudre (equation, params) {
       'decimal' : decimal lorsque c'est possible, sinon fraction
       'fraction' : fraction (ou entier lorsque c'est possible)
   */
-  params = Object.assign({ comment: false, color: 'red', comments: {}, reduceSteps: true, formatSolution: 2, substeps: false, changeType: [], produitsencroix: false, verifications: false }, params)
+  params = Object.assign({ comment: false, color: "red", comments: {}, reduceSteps: true, formatSolution: 2, substeps: false, changeType: [], produitsencroix: false, verifications: false }, params)
   // Un bug de mathsteps ne permet pas de résoudre 2/x=2 d'où la ligne suivante qui permettait de le contourner
   // const equation0 = equation.replace(comparator, `+0${comparator}0+`)
   // A priori le traitement actuel n'occure plus ce bug (raison ?).
@@ -871,33 +870,33 @@ export function resoudre (equation, params) {
   let steps = params.substeps ? traverserEtapes(solveEquation(equation), params.changeType) : solveEquation(equation)
   // Rechercher une équation de la forme a/x=b/c ou a/b=c/x et utiliser l'égalité des produits en croix
   let newSteps = []
-  if (params.produitsencroix && steps[0].oldEquation.comparator === '=') {
+  if (params.produitsencroix && steps[0].oldEquation.comparator === "=") {
     let i = 0
     do {
       const leftNode = steps[i].oldEquation.leftNode.cloneDeep()
       const rightNode = steps[i].oldEquation.rightNode.cloneDeep()
-      if (leftNode.isOperatorNode && leftNode.fn === 'divide' && isContentSymbolNode(leftNode.args[1])) {
-        if (rightNode.isOperatorNode && rightNode.fn === 'divide') {
-          steps[i].newEquation.rightNode = new math.OperatorNode('*', 'multiply', [leftNode.args[0], rightNode.args[1]])
-          steps[i].newEquation.leftNode = new math.OperatorNode('*', 'multiply', [rightNode.args[0], leftNode.args[1]])
-          steps[i].changeType = 'CROSS_PRODUCT_EQUALITY'
+      if (leftNode.isOperatorNode && leftNode.fn === "divide" && isContentSymbolNode(leftNode.args[1])) {
+        if (rightNode.isOperatorNode && rightNode.fn === "divide") {
+          steps[i].newEquation.rightNode = new math.OperatorNode("*", "multiply", [leftNode.args[0], rightNode.args[1]])
+          steps[i].newEquation.leftNode = new math.OperatorNode("*", "multiply", [rightNode.args[0], leftNode.args[1]])
+          steps[i].changeType = "CROSS_PRODUCT_EQUALITY"
           const stepChanges = []
-          if (isContentSymbolNode(leftNode.args[1])) stepChanges.push(toTex(leftNode.args[1].toString()) + '\\neq 0')
-          if (isContentSymbolNode(rightNode.args[1])) stepChanges.push(toTex(rightNode.args[1].toString()) + '\\neq 0')
-          steps[i].stepChange = stepChanges.join('\\text{ et }')
+          if (isContentSymbolNode(leftNode.args[1])) stepChanges.push(toTex(leftNode.args[1].toString()) + "\\neq 0")
+          if (isContentSymbolNode(rightNode.args[1])) stepChanges.push(toTex(rightNode.args[1].toString()) + "\\neq 0")
+          steps[i].stepChange = stepChanges.join("\\text{ et }")
           const newEquation = steps[i].newEquation.ascii()
           newSteps = params.substeps ? traverserEtapes(solveEquation(newEquation), params.changeType) : solveEquation(newEquation)
           steps = steps.slice(0, i + 1).concat(newSteps)
         }
-      } else if (rightNode.isOperatorNode && rightNode.fn === 'divide' && isContentSymbolNode(rightNode.args[1])) {
-        if (leftNode.isOperatorNode && leftNode.fn === 'divide') {
-          steps[i].newEquation.rightNode = new math.OperatorNode('*', 'multiply', [rightNode.args[0], leftNode.args[1]])
-          steps[i].newEquation.leftNode = new math.OperatorNode('*', 'multiply', [leftNode.args[0], rightNode.args[1]])
-          steps[i].changeType = 'CROSS_PRODUCT_EQUALITY'
+      } else if (rightNode.isOperatorNode && rightNode.fn === "divide" && isContentSymbolNode(rightNode.args[1])) {
+        if (leftNode.isOperatorNode && leftNode.fn === "divide") {
+          steps[i].newEquation.rightNode = new math.OperatorNode("*", "multiply", [rightNode.args[0], leftNode.args[1]])
+          steps[i].newEquation.leftNode = new math.OperatorNode("*", "multiply", [leftNode.args[0], rightNode.args[1]])
+          steps[i].changeType = "CROSS_PRODUCT_EQUALITY"
           const stepChanges = []
-          if (isContentSymbolNode(leftNode.args[1])) stepChanges.push(toTex(leftNode.args[1].toString()) + '\\neq 0')
-          if (isContentSymbolNode(rightNode.args[1])) stepChanges.push(toTex(rightNode.args[1].toString()) + '\\neq 0')
-          steps[i].stepChange = stepChanges.join('\\text{ et }')
+          if (isContentSymbolNode(leftNode.args[1])) stepChanges.push(toTex(leftNode.args[1].toString()) + "\\neq 0")
+          if (isContentSymbolNode(rightNode.args[1])) stepChanges.push(toTex(rightNode.args[1].toString()) + "\\neq 0")
+          steps[i].stepChange = stepChanges.join("\\text{ et }")
           const newEquation = steps[i].newEquation.ascii()
           newSteps = params.substeps ? traverserEtapes(solveEquation(newEquation), params.changeType) : solveEquation(newEquation)
           steps = steps.slice(0, i + 1).concat(newSteps)
@@ -910,17 +909,17 @@ export function resoudre (equation, params) {
   let repetition = 0
   steps.forEach(function (step, i) {
     const changement = step.changeType
-    if (step.changeType !== 'CROSS_PRODUCT_EQUALITY') step.stepChange = getNewChangeNodes(step).length > 0 ? toTex(parse(getNewChangeNodes(step)[0].toString(), { parenthesis: 'auto' })) : ''
+    if (step.changeType !== "CROSS_PRODUCT_EQUALITY") step.stepChange = getNewChangeNodes(step).length > 0 ? toTex(parse(getNewChangeNodes(step)[0].toString(), { parenthesis: "auto" })) : ""
     if (step.oldEquation !== null) {
       if (params.reduceSteps && (step.oldEquation.leftNode.toString() === step.newEquation.leftNode.toString() || step.oldEquation.rightNode.toString() === step.newEquation.rightNode.toString())) {
-        if (changement !== 'REMOVE_ADDING_ZEROS') repetition = (repetition + 1) % 3
+        if (changement !== "REMOVE_ADDING_ZEROS") repetition = (repetition + 1) % 3
       } else {
         repetition = 0
       }
     }
-    const oldLeftNode = step.oldEquation !== null ? toTex(step.oldEquation.leftNode, params) : ''
+    const oldLeftNode = step.oldEquation !== null ? toTex(step.oldEquation.leftNode, params) : ""
     let newLeftNode = toTex(step.newEquation.leftNode, params)
-    const oldRightNode = step.oldEquation !== null ? toTex(step.oldEquation.rightNode, params) : ''
+    const oldRightNode = step.oldEquation !== null ? toTex(step.oldEquation.rightNode, params) : ""
     let newRightNode = toTex(step.newEquation.rightNode, params)
     const newEquationComparator = toTex(step.newEquation.comparator)
     if (i === 0) {
@@ -929,8 +928,8 @@ export function resoudre (equation, params) {
       stepsNewEquation.push(
         String.raw`${oldLeftNode}&${toTex(step.oldEquation.comparator)}${oldRightNode}`)
     }
-    if (params.color !== 'black') {
-      const color = repetition === 2 ? 'black' : params.color
+    if (params.color !== "black") {
+      const color = repetition === 2 ? "black" : params.color
       newLeftNode = `{\\color{${color}}${newLeftNode.replace(oldLeftNode, `{\\color{black}${oldLeftNode}}`)}}`
       newRightNode = `{\\color{${color}}${newRightNode.replace(oldRightNode, `{\\color{black}${oldRightNode}}`)}}`
     }
@@ -938,14 +937,14 @@ export function resoudre (equation, params) {
     if (repetition === 2) {
       repetition = 0
       stepsNewEquation.pop()
-      stepsNewEquation.push(`${newLeftNode}&${newEquationComparator}${newRightNode}${params.comment ? `&&${comment}` : ''}`)
+      stepsNewEquation.push(`${newLeftNode}&${newEquationComparator}${newRightNode}${params.comment ? `&&${comment}` : ""}`)
     } else {
-      stepsNewEquation.push(`${newLeftNode}&${newEquationComparator}${newRightNode}${params.comment ? `&&${comment}` : ''}`)
+      stepsNewEquation.push(`${newLeftNode}&${newEquationComparator}${newRightNode}${params.comment ? `&&${comment}` : ""}`)
     }
   })
   const lastEquation = steps[steps.length - 1].newEquation
   let answer = lastEquation.rightNode
-  if (params.formatSolution !== 'fraction' && !(answer.isConstantNode)) {
+  if (params.formatSolution !== "fraction" && !(answer.isConstantNode)) {
     try {
       // On ve tenter d'obtenir le résultat sous forme de fraction, si ce n'est pas possible on quitte le try
       answer = emath.evaluate(answer.eval())
@@ -953,7 +952,7 @@ export function resoudre (equation, params) {
       // On regarde si le résultat a un nombre fini de chiffres après la virgule et n'est pas un entier
       if (isDecimal(answer)) {
         answer = round(answer.valueOf(), 15) // convertit la fraction en nombre décimal en évitant les problèmes de float
-        if (params.formatSolution === 'decimal' || (typeof params.formatSolution === 'number' && answer.toString().split('.')[1].length <= params.formatSolution)) {
+        if (params.formatSolution === "decimal" || (typeof params.formatSolution === "number" && answer.toString().split(".")[1].length <= params.formatSolution)) {
           // On rajoute une étape de conversion de la fraction en nombre décimal
           stepsNewEquation.push(`${toTex(lastEquation.leftNode, params)}&${toTex(lastEquation.comparator + answer.toString())}`)
         }
@@ -962,7 +961,7 @@ export function resoudre (equation, params) {
   }
 
   const texte = `Résoudre $${printEquation}$.`
-  let texteCorr = `$\\begin{aligned}\n${stepsNewEquation.join('\\\\\n')}\n\\end{aligned}$`
+  let texteCorr = `$\\begin{aligned}\n${stepsNewEquation.join("\\\\\n")}\n\\end{aligned}$`
   const solution = {
     printDecimal: texNombre2(math.evaluate(steps[steps.length - 1].newEquation.ascii().split(steps[steps.length - 1].newEquation.comparator)[1])),
     decimal: math.evaluate(steps[steps.length - 1].newEquation.ascii().split(steps[steps.length - 1].newEquation.comparator)[1]),
@@ -1001,52 +1000,52 @@ export function resoudre (equation, params) {
   }
 }
 
-export function programmeCalcul (stepProg = ['+', '-', '*', '/', '^2', '2*x', '3*x', '-2*x', '-3*x', 'x^2', '-x^2', 'x', '-x', '*x', '/x'], nombreChoisi, debug = false) {
+export function programmeCalcul (stepProg = ["+", "-", "*", "/", "^2", "2*x", "3*x", "-2*x", "-3*x", "x^2", "-x^2", "x", "-x", "*x", "/x"], nombreChoisi, debug = false) {
   const rules = simplify.rules
-  rules[13] = { l: 'n', r: 'n' } // Pour éviter la factorisation
-  rules[14] = { l: 'n', r: 'n' } // Pour éviter la factorisation
+  rules[13] = { l: "n", r: "n" } // Pour éviter la factorisation
+  rules[14] = { l: "n", r: "n" } // Pour éviter la factorisation
   // rules.push({ l: 'n1+-n2', r: 'n1-n2' }) // Peut être utile pour des nombres négatifs
   const variables = {}
   variables.symbolsOp = Object.values(stepProg)
-  const symbolsOp = ['+', '-', '*', '/', '^2', '2*x', '3*x', '-2*x', '-3*x', 'x^2', '-x^2', 'x', '-x', '*x', '/x']
-  const op = ['+', '-', '*', '/', '^', '+', '+', '-', '-', '+', '-', '+', '-', '*', '/']
+  const symbolsOp = ["+", "-", "*", "/", "^2", "2*x", "3*x", "-2*x", "-3*x", "x^2", "-x^2", "x", "-x", "*x", "/x"]
+  const op = ["+", "-", "*", "/", "^", "+", "+", "-", "-", "+", "-", "+", "-", "*", "/"]
   const namesOp = [
-    'add', 'subtract', 'multiply', 'divide',
-    'pow',
-    'add', 'add',
-    'subtract', 'subtract',
-    'add', 'subtract',
-    'add', 'subtract',
-    'multiply', 'divide']
+    "add", "subtract", "multiply", "divide",
+    "pow",
+    "add", "add",
+    "subtract", "subtract",
+    "add", "subtract",
+    "add", "subtract",
+    "multiply", "divide"]
   const namesOpInv = {
-    add: 'subtract',
-    subtract: 'add',
-    multiply: 'divide',
-    divide: 'multiply'
+    add: "subtract",
+    subtract: "add",
+    multiply: "divide",
+    divide: "multiply"
   }
   const symbolsOpInv = {
-    add: '-',
-    subtract: '+',
-    multiply: '/',
-    divide: '*'
+    add: "-",
+    subtract: "+",
+    multiply: "/",
+    divide: "*"
   }
   const debutsPhrase = [
-    'Ajouter ', 'Soustraire ', 'Multiplier par ', 'Diviser par ',
-    'Elever au carré',
-    'Ajouter le double du nombre choisi', 'Ajouter le triple du nombre choisi',
-    'Soustraire le double du nombre choisi', 'Soustraire le triple du nombre choisi',
-    'Ajouter le carré du nombre choisi', 'Soustraire le carré du nombre choisi',
-    'Ajouter le nombre choisi', 'Soustraire le nombre choisi',
-    'Multiplier par le nombre choisi', 'Diviser par le nombre choisi'
+    "Ajouter ", "Soustraire ", "Multiplier par ", "Diviser par ",
+    "Elever au carré",
+    "Ajouter le double du nombre choisi", "Ajouter le triple du nombre choisi",
+    "Soustraire le double du nombre choisi", "Soustraire le triple du nombre choisi",
+    "Ajouter le carré du nombre choisi", "Soustraire le carré du nombre choisi",
+    "Ajouter le nombre choisi", "Soustraire le nombre choisi",
+    "Multiplier par le nombre choisi", "Diviser par le nombre choisi"
   ]
   const debutsPhraseInv = [
-    'Soustraire ', 'Ajouter ', 'Diviser par ', 'Multiplier par ',
-    'Prendre la racine carré',
-    'Soustraire le double du nombre choisi', 'Soustraire le triple du nombre choisi',
-    'Ajouter le double du nombre choisi', 'Ajouter le triple du nombre choisi',
-    'Soustraire le carré du nombre choisi', 'Ajouter le carré du nombre choisi',
-    'Soustraire le nombre choisi', 'Ajouter le nombre choisi',
-    'Diviser par le nombre choisi', 'Multiplier par le nombre choisi'
+    "Soustraire ", "Ajouter ", "Diviser par ", "Multiplier par ",
+    "Prendre la racine carré",
+    "Soustraire le double du nombre choisi", "Soustraire le triple du nombre choisi",
+    "Ajouter le double du nombre choisi", "Ajouter le triple du nombre choisi",
+    "Soustraire le carré du nombre choisi", "Ajouter le carré du nombre choisi",
+    "Soustraire le nombre choisi", "Ajouter le nombre choisi",
+    "Diviser par le nombre choisi", "Multiplier par le nombre choisi"
   ]
   const nombresAutorises1 = [1, 2, 3, 4, 5, 6, 7, 8, 9]
   const nombresAutorises2 = [2, 3, 4, 5, 6, 7, 8, 9]
@@ -1066,15 +1065,15 @@ export function programmeCalcul (stepProg = ['+', '-', '*', '/', '^2', '2*x', '3
   variables.op.forEach(function (n, i) {
     variables.op[i] = op[symbolsOp.indexOf(n)]
   })
-  const nodes = [new SymbolNode('x')]
+  const nodes = [new SymbolNode("x")]
   const nodesInv = []
-  const phrases = ['Choisir un nombre.']
-  const steps = ['x']
-  const stepsNode = [new SymbolNode('x')]
-  const stepsSimplified = ['x']
-  const stepsInv = ['x']
-  const stepsSimplifiedInv = ['x']
-  const phrasesInv = ['On obtient le nombre choisi.']
+  const phrases = ["Choisir un nombre."]
+  const steps = ["x"]
+  const stepsNode = [new SymbolNode("x")]
+  const stepsSimplified = ["x"]
+  const stepsInv = ["x"]
+  const stepsSimplifiedInv = ["x"]
+  const phrasesInv = ["On obtient le nombre choisi."]
   nombreChoisi = simplify(format(nombreChoisi))
   const resultatIntermediaire = [nombreChoisi]
   const calculIntermediaire = [nombreChoisi]
@@ -1087,37 +1086,37 @@ export function programmeCalcul (stepProg = ['+', '-', '*', '/', '^2', '2*x', '3
     const debutPhrase = variables.debutsPhrase[choix]
     const debutPhraseInv = variables.debutsPhraseInv[choix]
     const op = variables.op[choix]
-    let stepPrint = ''
+    let stepPrint = ""
     switch (symbolOp) {
-      case '/':
+      case "/":
         step = new ConstantNode(math.pickRandom(nombresAutorises2))
         break
-      case '*':
+      case "*":
         step = new ConstantNode(math.pickRandom(nombresAutorises2))
         break
-      case '^':
+      case "^":
         step = new ConstantNode(2)
         break
-      case '-':
+      case "-":
         step = new ConstantNode(math.pickRandom(nombresAutorises1))
         break
-      case '+':
+      case "+":
         step = new ConstantNode(math.pickRandom(nombresAutorises2))
         break
       default :
-        if (symbolOp[0] === '-') symbolOp = symbolOp.replace('-', '')
+        if (symbolOp[0] === "-") symbolOp = symbolOp.replace("-", "")
         step = parse(symbolOp)
     }
     stepsNode.push(step)
     if (step.isConstantNode) stepPrint = `$${step.toString()}$`
-    let nodeSimplifie = simplify(nodes[i - 1].toString({ parenthesis: 'keep' }), rules)
+    let nodeSimplifie = simplify(nodes[i - 1].toString({ parenthesis: "keep" }), rules)
     nodes.push(new OperatorNode(op, nameOp, [new ParenthesisNode(nodeSimplifie), step]))
     steps.push(toTex(nodes[i], { suppr1: false }, debug))
-    nodeSimplifie = simplify(nodes[i].toString({ parenthesis: 'auto' }), rules)
+    nodeSimplifie = simplify(nodes[i].toString({ parenthesis: "auto" }), rules)
     nodesInv.push(new OperatorNode(symbolsOpInv[nameOp], namesOpInv[nameOp], [new ParenthesisNode(nodeSimplifie), step]))
     stepsInv.push(toTex(nodesInv[i - 1], { suppr1: false }, debug))
     stepsSimplified.push(toTex(nodeSimplifie, { suppr1: false }, debug))
-    const nodeSimplifieInv = parse(nodesInv[i - 1].toString({ parenthesis: 'auto' }))
+    const nodeSimplifieInv = parse(nodesInv[i - 1].toString({ parenthesis: "auto" }))
     stepsSimplifiedInv.push(toTex(nodeSimplifieInv, { suppr1: false }, debug))
     phrases.push(debutPhrase + stepPrint)
     phrasesInv.push(debutPhraseInv + stepPrint)
@@ -1126,15 +1125,15 @@ export function programmeCalcul (stepProg = ['+', '-', '*', '/', '^2', '2*x', '3
       stepsSimplified.push(toTex(nodeSimplifie, { suppr1: false }, debug))
       stepsInv.push(toTex(nodesInv[i - 1], { suppr1: false }, debug))
       stepsSimplifiedInv.push(toTex(nodeSimplifie, { suppr1: false }, debug))
-      phrases.push('Ecrire le résultat')
+      phrases.push("Ecrire le résultat")
       // phrasesInv.push(debutPhraseInv + stepPrint)
-      phrasesInv.push('Résultat du programme')
+      phrasesInv.push("Résultat du programme")
     }
     if (i === longueur) {
       calculIntermediaire.push(calculIntermediaire[i - 1])
       resultatIntermediaire.push(calculIntermediaire[i - 1])
     } else if (i > 0) {
-      calculIntermediaire.push(new OperatorNode(variables.op[choix], nameOp, [resultatIntermediaire[i - 1], simplify(step, [{ l: 'n', r: 'n' }], { x: nombreChoisi })]))
+      calculIntermediaire.push(new OperatorNode(variables.op[choix], nameOp, [resultatIntermediaire[i - 1], simplify(step, [{ l: "n", r: "n" }], { x: nombreChoisi })]))
       resultatIntermediaire.push(simplify(calculIntermediaire[i], { x: nombreChoisi }))
     }
   }
@@ -1147,26 +1146,26 @@ export function programmeCalcul (stepProg = ['+', '-', '*', '/', '^2', '2*x', '3
       calculIntermediaireInv.push(calculIntermediaireInv[i])
       resultatIntermediaireInv.push(calculIntermediaireInv[i])
     } else if (i < longueur) {
-      calculIntermediaireInv.push(new OperatorNode(symbolsOpInv[nameOp], namesOpInv[nameOp], [resultatIntermediaireInv[i - 1], simplify(stepsNode[longueur - i], [{ l: 'n', r: 'n' }], { x: nombreChoisi })]))
+      calculIntermediaireInv.push(new OperatorNode(symbolsOpInv[nameOp], namesOpInv[nameOp], [resultatIntermediaireInv[i - 1], simplify(stepsNode[longueur - i], [{ l: "n", r: "n" }], { x: nombreChoisi })]))
       resultatIntermediaireInv.push(simplify(calculIntermediaireInv[i], { x: nombreChoisi }))
     }
   }
   return { phrases, steps, stepsSimplified, stepsInv, stepsSimplifiedInv, phrasesInv, nodes, stepProg, calculIntermediaire, resultatIntermediaire, calculIntermediaireInv, resultatIntermediaireInv }
 }
 
-export function traduireProgrammeCalcul (stepProg = ['+', '-', '*', '/', '^2', '2*x', '3*x', '-2*x', '-3*x', 'x^2', '-x^2', 'x', '-x', '*x', '/x'], nombreChoisi, debug = false) {
+export function traduireProgrammeCalcul (stepProg = ["+", "-", "*", "/", "^2", "2*x", "3*x", "-2*x", "-3*x", "x^2", "-x^2", "x", "-x", "*x", "/x"], nombreChoisi, debug = false) {
   const programme = programmeCalcul(stepProg, nombreChoisi, debug)
   const stepsSolutionDetaillee = Object.values(programme.phrases) // Clone de phrases pour ne pas être touchée par les modifications
   stepsSolutionDetaillee.forEach(function (step, i) {
-    stepsSolutionDetaillee[i] = '&\\bullet~\\text{' + programme.phrases[i] + '}&'
-    programme.phrases[i] = '&\\bullet~\\text{' + programme.phrases[i] + '}'
-    stepsSolutionDetaillee[i] += '&' + programme.steps[i]
-    if (programme.steps[i] !== programme.stepsSimplified[i]) stepsSolutionDetaillee[i] += '&=' + programme.stepsSimplified[i]
+    stepsSolutionDetaillee[i] = "&\\bullet~\\text{" + programme.phrases[i] + "}&"
+    programme.phrases[i] = "&\\bullet~\\text{" + programme.phrases[i] + "}"
+    stepsSolutionDetaillee[i] += "&" + programme.steps[i]
+    if (programme.steps[i] !== programme.stepsSimplified[i]) stepsSolutionDetaillee[i] += "&=" + programme.stepsSimplified[i]
   })
   let texte = String.raw` Voici un programme de calcul.
           <br>
           $\begin{aligned}
-          ${programme.phrases.join('\\\\')}
+          ${programme.phrases.join("\\\\")}
           \end{aligned}$
           <br>
           Notons $x$ le nombre choisi.
@@ -1176,20 +1175,20 @@ export function traduireProgrammeCalcul (stepProg = ['+', '-', '*', '/', '^2', '
   const texteCorr = String.raw`Solution détaillée
           <br>
           $\begin{aligned}
-          ${stepsSolutionDetaillee.join('\\\\')}
+          ${stepsSolutionDetaillee.join("\\\\")}
           \end{aligned}$`
   if (debug) texte = `${texte}<br>${texteCorr}`
   return { texte, texteCorr }
 }
 
-export function ecrireProgrammeCalcul (stepProg = ['+', '-', '*', '/', '^2', '2*x', '3*x', '-2*x', '-3*x', 'x^2', '-x^2', 'x', '-x', '*x', '/x'], nombreChoisi, debug = false) {
+export function ecrireProgrammeCalcul (stepProg = ["+", "-", "*", "/", "^2", "2*x", "3*x", "-2*x", "-3*x", "x^2", "-x^2", "x", "-x", "*x", "/x"], nombreChoisi, debug = false) {
   const programme = programmeCalcul(stepProg, nombreChoisi, debug)
   const stepsSolutionDetaillee = Object.values(programme.phrases) // Clone de phrases pour ne pas être touchée par les modifications
   stepsSolutionDetaillee.forEach(function (step, i) {
-    stepsSolutionDetaillee[i] = '&\\bullet~\\text{' + programme.phrases[i] + '}&'
-    programme.phrases[i] = '&\\bullet~\\text{' + programme.phrases[i] + '}'
-    stepsSolutionDetaillee[i] += '&' + programme.steps[i]
-    if (programme.steps[i] !== programme.stepsSimplified[i]) stepsSolutionDetaillee[i] += '&=' + programme.stepsSimplified[i]
+    stepsSolutionDetaillee[i] = "&\\bullet~\\text{" + programme.phrases[i] + "}&"
+    programme.phrases[i] = "&\\bullet~\\text{" + programme.phrases[i] + "}"
+    stepsSolutionDetaillee[i] += "&" + programme.steps[i]
+    if (programme.steps[i] !== programme.stepsSimplified[i]) stepsSolutionDetaillee[i] += "&=" + programme.stepsSimplified[i]
   })
   let texte = String.raw`Voici une expression. Ecrire le programme de calcul correspondant.
           <br>
@@ -1198,36 +1197,36 @@ export function ecrireProgrammeCalcul (stepProg = ['+', '-', '*', '/', '^2', '2*
   const texteCorr = String.raw`Solution détaillée
           <br>
           $\begin{aligned}
-          ${stepsSolutionDetaillee.join('\\\\')}
+          ${stepsSolutionDetaillee.join("\\\\")}
           \end{aligned}$`
   if (debug) texte = `${texte}<br>${texteCorr}`
   return { texte, texteCorr }
 }
 
-export function remonterProgrammeCalcul (stepProg = ['+', '-', '*', '/', '^2', '2*x', '3*x', '-2*x', '-3*x', 'x^2', '-x^2', 'x', '-x', '*x', '/x'], nombreChoisi, debug = false) {
+export function remonterProgrammeCalcul (stepProg = ["+", "-", "*", "/", "^2", "2*x", "3*x", "-2*x", "-3*x", "x^2", "-x^2", "x", "-x", "*x", "/x"], nombreChoisi, debug = false) {
   const programme = programmeCalcul(stepProg, nombreChoisi, debug)
   const stepsSolutionDetaillee = Object.values(programme.phrases) // Clone de phrases pour ne pas être touchée par les modifications
   const stepsSolutionDetailleeInv = Object.values(programme.phrases) // Clone de phrases pour ne pas être touchée par les modifications
   const longueur = stepsSolutionDetaillee.length
   stepsSolutionDetaillee.forEach(function (step, i) {
-    stepsSolutionDetaillee[i] = '&\\bullet~\\text{' + programme.phrases[i] + '}&'
-    programme.phrases[i] = '&\\bullet~\\text{' + programme.phrases[i] + '}'
-    stepsSolutionDetaillee[i] += '&' + programme.steps[i]
-    stepsSolutionDetailleeInv[i] = '&\\bullet~\\text{' + programme.phrasesInv[i] + '}&'
-    programme.phrasesInv[i] = '&\\bullet~\\text{' + programme.phrasesInv[i] + '}'
+    stepsSolutionDetaillee[i] = "&\\bullet~\\text{" + programme.phrases[i] + "}&"
+    programme.phrases[i] = "&\\bullet~\\text{" + programme.phrases[i] + "}"
+    stepsSolutionDetaillee[i] += "&" + programme.steps[i]
+    stepsSolutionDetailleeInv[i] = "&\\bullet~\\text{" + programme.phrasesInv[i] + "}&"
+    programme.phrasesInv[i] = "&\\bullet~\\text{" + programme.phrasesInv[i] + "}"
     if (i === 0) {
-      stepsSolutionDetailleeInv[i] += '&' + toTex(programme.resultatIntermediaireInv[longueur - 2])
+      stepsSolutionDetailleeInv[i] += "&" + toTex(programme.resultatIntermediaireInv[longueur - 2])
     } else if (i < stepsSolutionDetaillee.length - 1) {
-      stepsSolutionDetailleeInv[i] += '&' + toTex(programme.calculIntermediaireInv[longueur - 1 - i]) + '&&=' + toTex(programme.resultatIntermediaireInv[longueur - 1 - i])
+      stepsSolutionDetailleeInv[i] += "&" + toTex(programme.calculIntermediaireInv[longueur - 1 - i]) + "&&=" + toTex(programme.resultatIntermediaireInv[longueur - 1 - i])
     } else {
-      stepsSolutionDetailleeInv[i] += '&' + toTex(programme.resultatIntermediaireInv[0])
+      stepsSolutionDetailleeInv[i] += "&" + toTex(programme.resultatIntermediaireInv[0])
     }
   })
   nombreChoisi = simplify(format(nombreChoisi))
   let texte = String.raw`On obtient le nombre $${toTex(programme.resultatIntermediaireInv[0])}$ avec le programme suivant.
           <br>
           $\begin{aligned}
-          ${programme.phrases.join('\\\\')}
+          ${programme.phrases.join("\\\\")}
           \end{aligned}$
           <br>
           Quel était le nombre choisi ?
@@ -1235,7 +1234,7 @@ export function remonterProgrammeCalcul (stepProg = ['+', '-', '*', '/', '^2', '
   const texteCorr = String.raw`Solution détaillée
           <br>
           $\begin{aligned}
-          ${stepsSolutionDetailleeInv.reverse().join('\\\\')}
+          ${stepsSolutionDetailleeInv.reverse().join("\\\\")}
           \end{aligned}$
           <br>
           Le nombre choisi était donc $${toTex(nombreChoisi)}$.
@@ -1244,52 +1243,52 @@ export function remonterProgrammeCalcul (stepProg = ['+', '-', '*', '/', '^2', '
   return { texte, texteCorr }
 }
 
-export function appliquerProgrammeCalcul (stepProg = ['+', '-', '*', '/', '^2', '2*x', '3*x', '-2*x', '-3*x', 'x^2', '-x^2', 'x', '-x', '*x', '/x'], nombreChoisi, debug = false) {
+export function appliquerProgrammeCalcul (stepProg = ["+", "-", "*", "/", "^2", "2*x", "3*x", "-2*x", "-3*x", "x^2", "-x^2", "x", "-x", "*x", "/x"], nombreChoisi, debug = false) {
   const programme = programmeCalcul(stepProg, nombreChoisi, debug)
   const stepsSolutionDetaillee = Object.values(programme.phrases) // Clone de phrases pour ne pas être touchée par les modifications
   stepsSolutionDetaillee.forEach(function (step, i) {
-    stepsSolutionDetaillee[i] = '&\\bullet~\\text{' + programme.phrases[i] + '}&'
-    programme.phrases[i] = '&\\bullet~\\text{' + programme.phrases[i] + '}'
+    stepsSolutionDetaillee[i] = "&\\bullet~\\text{" + programme.phrases[i] + "}&"
+    programme.phrases[i] = "&\\bullet~\\text{" + programme.phrases[i] + "}"
     // stepsSolutionDetaillee[i] += '&' + programme.steps[i]
     if (i === 0) {
-      stepsSolutionDetaillee[i] += '&' + toTex(programme.resultatIntermediaire[0])
+      stepsSolutionDetaillee[i] += "&" + toTex(programme.resultatIntermediaire[0])
     } else if (i < stepsSolutionDetaillee.length - 1) {
-      stepsSolutionDetaillee[i] += '&' + toTex(programme.calculIntermediaire[i]) + '&&=' + toTex(programme.resultatIntermediaire[i])
+      stepsSolutionDetaillee[i] += "&" + toTex(programme.calculIntermediaire[i]) + "&&=" + toTex(programme.resultatIntermediaire[i])
     } else {
-      stepsSolutionDetaillee[i] += '&' + toTex(programme.resultatIntermediaire[i - 1])
+      stepsSolutionDetaillee[i] += "&" + toTex(programme.resultatIntermediaire[i - 1])
     }
   })
   nombreChoisi = simplify(format(nombreChoisi))
   let texte = String.raw`Choisir le nombre $${toTex(nombreChoisi)}$ et effectuer le programme de calcul suivant.
           <br>
           $\begin{aligned}
-          ${programme.phrases.join('\\\\')}
+          ${programme.phrases.join("\\\\")}
           \end{aligned}$
           <br>
           `
   const texteCorr = String.raw`Solution détaillée
           <br>
           $\begin{aligned}
-          ${stepsSolutionDetaillee.join('\\\\')}
+          ${stepsSolutionDetaillee.join("\\\\")}
           \end{aligned}$`
   if (debug) texte = `${texte}<br>${texteCorr}`
   return { texte, texteCorr }
 }
 
-export function calculExpression2 (expression = '4/3+5/6', factoriser = false, debug = false) {
+export function calculExpression2 (expression = "4/3+5/6", factoriser = false, debug = false) {
   const steps = factoriser ? traverserEtapes(factor(expression)) : traverserEtapes(simplifyExpression(expression))
   if (debug) {
-    console.log('* steps :')
+    console.log("* steps :")
     console.log(steps)
   }
   let repetition = 0
   const stepsExpression = []
-  let expressionPrint = ''
+  let expressionPrint = ""
   steps.forEach(function (step, i) {
     const changement = step.changeType
     if (step.oldNode !== null) {
       if (step.oldNode.toString() === step.newNode.toString()) {
-        if (changement !== 'REMOVE_ADDING_ZEROS') repetition = (repetition + 1) % 2
+        if (changement !== "REMOVE_ADDING_ZEROS") repetition = (repetition + 1) % 2
       } else {
         repetition = 0
       }
@@ -1298,7 +1297,7 @@ export function calculExpression2 (expression = '4/3+5/6', factoriser = false, d
       console.log(changement)
       console.log(step.newNode.toString())
     }
-    const oldNode = step.oldNode !== null ? toTex(step.oldNode, { suppr1: true }, debug) : ''
+    const oldNode = step.oldNode !== null ? toTex(step.oldNode, { suppr1: true }, debug) : ""
     const newNode = toTex(step.newNode, { suppr1: true }, debug)
     if (debug) {
       console.log(newNode.toString())
@@ -1349,15 +1348,15 @@ export function calculExpression2 (expression = '4/3+5/6', factoriser = false, d
         CANCEL_TERMS: String.raw`\text{Annuler les termes}`
       })
     }
-    if (commentaires[changement] === undefined) commentaires[changement] = ''
+    if (commentaires[changement] === undefined) commentaires[changement] = ""
     if (commentairesExclus[changement] === undefined) stepsExpression.push(String.raw`&=${newNode}`)
-    if (debug) console.log('changement', commentaires[changement])
+    if (debug) console.log("changement", commentaires[changement])
   })
   let texte = String.raw`Développer et réduire $${expressionPrint}$.`
   const texteCorr = String.raw`Simplifier $${expressionPrint}$.
   <br>
   $\begin{aligned}
-  ${expressionPrint}${stepsExpression.slice(stepsExpression.length - 4, stepsExpression.length).join('\\\\')}
+  ${expressionPrint}${stepsExpression.slice(stepsExpression.length - 4, stepsExpression.length).join("\\\\")}
   \end{aligned}$
   `
   if (debug) texte = texteCorr
@@ -1380,14 +1379,14 @@ export function calculExpression2 (expression = '4/3+5/6', factoriser = false, d
  * @returns {Array}
  */
 export function aleaName (names, n = names.length, result = []) {
-  if (typeof names === 'string') {
-    names = names.split('')
-  } else if (typeof names === 'number') {
+  if (typeof names === "string") {
+    names = names.split("")
+  } else if (typeof names === "number") {
     n = 0 + names
-    names = 'ABCDEFGHIJKLMNOPRSTUV'.split('')
+    names = "ABCDEFGHIJKLMNOPRSTUV".split("")
   } else if (Array.isArray(names) && names.length === 0) {
     n = 1
-    names = 'ABCDEFGHIJKLMNOPRSTUV'.split('')
+    names = "ABCDEFGHIJKLMNOPRSTUV".split("")
   }
   result.push(names.splice(Math.floor(Math.random() * names.length), 1)[0])
   if (result.length === n) {
