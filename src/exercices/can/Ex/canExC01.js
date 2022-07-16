@@ -13,6 +13,8 @@ export const dateDePublication = '26/10/2021'
  * @author Jean-Claude Lhote
  * Référence canExC01
 */
+export const uuid = 'fc168'
+export const ref = 'canExC01'
 export default function SommeDeComplexes () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1

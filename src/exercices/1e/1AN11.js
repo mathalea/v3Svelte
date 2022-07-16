@@ -11,6 +11,8 @@ export const dateDeModifImportante = '24/10/2021' // Une date de modification im
  * @author
  * Référence
 */
+export const uuid = '72976'
+export const ref = '1AN11'
 export default function equationdetangente () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''

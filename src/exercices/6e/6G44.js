@@ -16,6 +16,8 @@ export const amcType = 'AMCNum'
  * Créé le 3/11/2021
  * Référence can6G06
  */
+export const uuid = '5cb8e'
+export const ref = '6G44'
 export default function NombreDeFacesEtDAretes () {
   Exercice.call(this)
   this.nbQuestions = 4

@@ -24,6 +24,8 @@ export const dateDePublication = '9/12/2021'
 * * ajout de lignes pour l'export AMC par Jean-Claude Lhote
 * 2S10-1
 */
+export const uuid = '643c6'
+export const ref = '2S10-2'
 export default function Proportions () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

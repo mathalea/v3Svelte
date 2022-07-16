@@ -16,6 +16,8 @@ export const interactifType = 'mathLive'
  * 6N23-3
  * Ajout Interactivité et AMC : Janvier 2022 par EE
  */
+export const uuid = 'ba7b1'
+export const ref = '6N23-3'
 export default function LireUneAbscisseAvecZoom () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.niveau = 'sixième'

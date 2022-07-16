@@ -20,6 +20,8 @@ export const amcType = 'AMCNum'
  * @author Sébastien Lozano
  * 4C33-3
  */
+export const uuid = 'cd379'
+export const ref = '4C33-3'
 export default function PuissancesDUnRelatif2 () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()

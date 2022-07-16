@@ -70,6 +70,8 @@ function syracuse ({ N = '1' }) {
   return new Syracuse({ N })
 };
 
+export const uuid = 'c2cfa'
+export const ref = '3I1-1'
 export default function ConjectureDeSyracuse () {
   'use strict'
   Exercice.call(this)

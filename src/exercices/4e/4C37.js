@@ -15,6 +15,8 @@ export const dateDePublication = '30/06/2022' // La date de publication initiale
  * @author Delphine David
  * Référence 4C37
 */
+export const uuid = 'c1883'
+export const ref = '4C37'
 export default class SignePuissance extends Exercice {
   constructor () {
     super()

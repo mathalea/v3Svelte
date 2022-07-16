@@ -12,6 +12,8 @@ export const interactifType = 'mathLive'
  * Créé le 4/11/2021
  * Référence canc3D01
  */
+export const uuid = '62d10'
+export const ref = 'canc3D02'
 export default function LireUneDuree () {
   Exercice.call(this)
   this.nbQuestions = 1

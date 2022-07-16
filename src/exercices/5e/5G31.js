@@ -21,6 +21,8 @@ export const titre = 'Somme des angles dans un triangle'
 * @author Jean-Claude Lhote
 * Référence 5G31
 */
+export const uuid = 'f59fb'
+export const ref = '5G31'
 export default function ExerciceAnglesTriangles () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = 1

@@ -13,6 +13,8 @@ export const dateDePublication = '30/09/2021'
  * Référence can2G05
  * Date de publication sptembre 2021
 */
+export const uuid = '09e51'
+export const ref = 'can2G06'
 export default function CoeffDirecteurDroite () {
   Exercice.call(this)
   this.typeExercice = 'simple'

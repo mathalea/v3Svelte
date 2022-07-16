@@ -8,6 +8,8 @@ export { interactifReady, interactifType } from '../4e/4S11.js'
  *
  * @author Sébastien LOZANO
  */
+export const uuid = '5266e'
+export const ref = '2S20-2'
 export default function DeterminerDesMedianes2nde () {
   DeterminerDesMedianes.call(this)
 }

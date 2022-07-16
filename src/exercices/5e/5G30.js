@@ -3,6 +3,8 @@ import UtiliserLeCodagePourDecrire from '../6e/_Utiliser_le_codage_pour_decrire.
 // 5G30
 export const titre = 'Utiliser le codage pour décrire une figure'
 
+export const uuid = '7f469'
+export const ref = '5G30'
 export default function UtiliserLeCodagePourDecrire5e () {
   UtiliserLeCodagePourDecrire.call(this)
   this.titre = titre

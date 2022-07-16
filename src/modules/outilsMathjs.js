@@ -3,7 +3,9 @@ import { texNombre2, obtenirListeFacteursPremiers } from "./outils.js"
 import { all, create, format, number, SymbolNode, ConstantNode, OperatorNode, ParenthesisNode, simplify, parse, round } from "mathjs"
 import { Node, Negative, solveEquation, simplifyExpression, factor } from "mathsteps"
 import { getNewChangeNodes } from "./Change.js"
-import { Decimal } from "decimal.js"
+// import { Decimal } from "decimal.js"
+import pkg from "decimal.js"
+const { Decimal } = pkg
 
 const math = create(all)
 

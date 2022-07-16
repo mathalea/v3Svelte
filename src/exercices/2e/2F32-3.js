@@ -6,6 +6,8 @@ export const dateDePublication = '20/12/2021'
 /**
 * @author Gilles Mora
 */
+export const uuid = 'bb178'
+export const ref = '2F32-3'
 export default function LireUnTableauDevariations () {
   Exercice.call(this)
   this.consigne = ''

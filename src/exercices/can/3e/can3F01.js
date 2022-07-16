@@ -12,6 +12,8 @@ export const titre = 'Lire une image graphiquement'
   * Créé pendant l'été 2021
  * Référence can3F01
 */
+export const uuid = '75c07'
+export const ref = 'can3F01'
 export default function ImageSpline () {
   Exercice.call(this)
   this.typeExercice = 'simple'

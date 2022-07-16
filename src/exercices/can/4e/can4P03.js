@@ -11,6 +11,8 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can4P03
  */
+export const uuid = '57d32'
+export const ref = 'can4P03'
 export default function QuatriemeProportionnelle () {
   Exercice.call(this)
   this.typeExercice = 'simple'

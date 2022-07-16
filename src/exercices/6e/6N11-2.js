@@ -15,6 +15,8 @@ export const amcType = 'AMCOpen'
  * référence 6N11-2
  * Relecture : Novembre 2021 par EE
  */
+export const uuid = 'a7557'
+export const ref = '6N11-2'
 export default function PlacerUnPointAbscisseEntiere2d () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 5

@@ -10,6 +10,8 @@ export const interactifType = 'mathLive'
  * Référence can2N01
  * Date de publication 24/10/2021
 */
+export const uuid = '0aa9f'
+export const ref = 'can2N01'
 export default function Intervalles () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !

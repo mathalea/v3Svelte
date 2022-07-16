@@ -15,6 +15,8 @@ export const amcType = 'AMCHybride'
 /**
  * 6N23-2
  */
+export const uuid = '5fdef'
+export const ref = '6N23-2'
 export default function LireAbscisseDecimaleTroisFormes () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.niveau = 'sixième'

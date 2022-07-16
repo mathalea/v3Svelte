@@ -28,6 +28,8 @@ export const dateDeModifImportante = '16/11/2021'
  * Référence 6C35
  * Relecture : Novembre 2021 par EE
 */
+export const uuid = 'de3af'
+export const ref = '6C35'
 export default function ModelisationProblemes () {
   Exercice.call(this)
   this.titre = titre

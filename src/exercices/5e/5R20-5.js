@@ -8,6 +8,8 @@ export const titre = 'Additions de deux entiers relatifs dans un tableau à doub
 * @author Rémi Angot
 * 5R20-5
 */
+export const uuid = 'ab8be'
+export const ref = '5R20-5'
 export default function ExerciceTableauAdditionsRelatifs () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Calculer :'

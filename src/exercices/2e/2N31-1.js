@@ -8,6 +8,8 @@ export { interactifReady, interactifType } from '../4e/4C32.js'
  * @author Sébastien Lozano
  */
 
+export const uuid = '98f04'
+export const ref = '2N31-1'
 export default function NotationScientifique2e () {
   NotationScientifique.call(this)
 }

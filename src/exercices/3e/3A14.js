@@ -18,6 +18,8 @@ export const amcType = "AMCHybride"
  * Référence 3A14
  * Date août 2021
  */
+export const uuid = 'a3f64'
+export const ref = '3A14'
 export default function NomQuelconqueDeLaFonctionQuiCreeExercice() {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ""

@@ -13,6 +13,8 @@ export const titre = 'Dessiner avec scratch'
  * la fonction gère la sortie Latex ou html du code scratch
  */
 
+export const uuid = 'a17de'
+export const ref = '4I1'
 export default function TracerAvecScratch () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()

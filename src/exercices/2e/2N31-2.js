@@ -8,6 +8,8 @@ export { interactifReady, interactifType } from '../4e/4C33-1.js'
  * @author Sébastien Lozano
  */
 
+export const uuid = '0891a'
+export const ref = '2N31-2'
 export default function PuissancesDunRelatif12e () {
   PuissancesDunRelatif1.call(this)
 }

@@ -13,6 +13,8 @@ export const interactifType = 'mathLive'
 * @author Rémi Angot
 * 4C10-4
 */
+export const uuid = 'c8acd'
+export const ref = '4C10-4'
 export default function ExerciceQuotientsRelatifs () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = false

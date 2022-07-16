@@ -12,6 +12,8 @@ export const titre = 'Exercice de repérage dans un pavé droit'
  * Référence 4G52
  * publié 9/06/2021
 */
+export const uuid = '7900d'
+export const ref = '4G52'
 export default function ReperagePaveDroit () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

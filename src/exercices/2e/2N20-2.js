@@ -8,6 +8,8 @@ export const dateDeModifImportante = '29/10/2021'
  * @author Jean-Claude Lhote
  */
 
+export const uuid = '4d88d'
+export const ref = '2N20-2'
 export default function TableauCritereDeDivisibilite2nde () {
   TableauCriteresDeDivisibilite.call(this)
   this.sup = true

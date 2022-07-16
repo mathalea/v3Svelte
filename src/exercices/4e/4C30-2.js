@@ -1,20 +1,24 @@
-import Exercice from '../Exercice.js'
-import { context } from '../../modules/context.js'
-import { listeQuestionsToContenu, randint, combinaisonListes, texNombre, puissanceEnProduit, sp } from '../../modules/outils.js'
-import { setReponse } from '../../modules/gestionInteractif.js'
-import { ajouteChampTexteMathLive } from '../../modules/interactif/questionMathLive.js'
-import { Decimal } from 'decimal.js'
-export const titre = 'Écriture décimale d\'une puissance de 10'
+import Exercice from "../Exercice.js"
+import { context } from "../../modules/context.js"
+import { listeQuestionsToContenu, randint, combinaisonListes, texNombre, puissanceEnProduit, sp } from "../../modules/outils.js"
+import { setReponse } from "../../modules/gestionInteractif.js"
+import { ajouteChampTexteMathLive } from "../../modules/interactif/questionMathLive.js"
+// import { Decimal } from 'decimal.js'
+import pkg from "decimal.js"
+const { Decimal } = pkg
+export const titre = "Écriture décimale d'une puissance de 10"
 export const interactifReady = true
-export const interactifType = 'mathLive'
+export const interactifType = "mathLive"
 export const amcReady = true
-export const amcType = 'AMCNum'
+export const amcType = "AMCNum"
 
 /**
  * Donner l'écriture décimale d'une puissance de 10
  * @author Rémi Angot
 * Référence 4C30-2
  */
+export const uuid = '38c9c'
+export const ref = '4C30-2'
 export default function EcritureDecimalePuissanceDe10 () {
   Exercice.call(this)
   this.titre = titre
@@ -32,20 +36,20 @@ export default function EcritureDecimalePuissanceDe10 () {
 
     let listeTypeDeQuestions
     if (this.sup === 1) {
-      listeTypeDeQuestions = combinaisonListes(['+'], this.nbQuestions)
+      listeTypeDeQuestions = combinaisonListes(["+"], this.nbQuestions)
     }
     if (this.sup === 2) {
-      listeTypeDeQuestions = combinaisonListes(['-'], this.nbQuestions)
+      listeTypeDeQuestions = combinaisonListes(["-"], this.nbQuestions)
     }
     if (this.sup === 3) {
-      listeTypeDeQuestions = combinaisonListes(['+', '-'], this.nbQuestions)
+      listeTypeDeQuestions = combinaisonListes(["+", "-"], this.nbQuestions)
     }
     for (let i = 0, texte, texteCorr, n, cpt = 0; i < this.nbQuestions && cpt < 50;) {
       switch (listeTypeDeQuestions[i]) {
-        case '+':
+        case "+":
           n = randint(0, 10)
           texte = this.interactif
-            ? `$10^{${n}}${sp()}=$` + ajouteChampTexteMathLive(this, i, 'largeur15 inline')
+            ? `$10^{${n}}${sp()}=$` + ajouteChampTexteMathLive(this, i, "largeur15 inline")
             : `$10^{${n}}${sp()}=${sp()}\\dots$`
           setReponse(this, i, Decimal.pow(10, n))
           if (n < 2) {
@@ -58,10 +62,10 @@ export default function EcritureDecimalePuissanceDe10 () {
             }
           }
           break
-        case '-':
+        case "-":
           n = randint(1, 10)
           texte = this.interactif
-            ? `$10^{${-n}}${sp()}=$` + ajouteChampTexteMathLive(this, i, 'largeur15 inline')
+            ? `$10^{${-n}}${sp()}=$` + ajouteChampTexteMathLive(this, i, "largeur15 inline")
             : `$10^{${-n}}${sp()}=${sp()}\\dots$`
           setReponse(this, i, Decimal.pow(10, -n))
           if (context.isHtml) {
@@ -82,5 +86,5 @@ export default function EcritureDecimalePuissanceDe10 () {
     }
     listeQuestionsToContenu(this)
   }
-  this.besoinFormulaireNumerique = ['Niveau de difficulté', 3, '1 : Exposants positifs\n2 : Exposants négatifs\n3 : Mélange']
+  this.besoinFormulaireNumerique = ["Niveau de difficulté", 3, "1 : Exposants positifs\n2 : Exposants négatifs\n3 : Mélange"]
 }
