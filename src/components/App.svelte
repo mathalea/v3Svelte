@@ -4,9 +4,13 @@
   import Header from "./Header.svelte"
   import NavBar from "./NavBar.svelte"
   import Footer from "./Footer.svelte"
+  import TitrePage from "./TitrePage.svelte"
   import { listeExercices } from "./store"
   import InputListeExercices from "./InputListeExercices.svelte"
   import Recherche from "./Recherche.svelte"
+  import NiveauListeExos from "./NiveauListeExos.svelte"
+  import codeList from "../dicos/codeToLevelList.json"
+  import referentiel from "../dicos/referentiel2022.json"
   // import { Modals, closeModal } from "svelte-modals"
 
   const exercice1 = {
@@ -60,25 +64,85 @@
     directory: "exercicesStatiques",
     filename: "crpe_2019-g5-pb-1",
   }
-  listeExercices.set([exercice1, exercice2, exercice3, exercice4, exercice5, exercice6, exercice7, exercice8, exercice9, exercice10])
+  // listeExercices.set([exercice1, exercice2, exercice3, exercice4, exercice5, exercice6, exercice7, exercice8, exercice9, exercice10])
+  listeExercices.set([exercice3])
+
+  /**
+   * Transforme un objet en arbre basé sur un type Map.
+   * Chaque propriété devient une clé et la valeur correspondante devient :
+   * - soit une valeur si la valeur de la propriété est un tableau
+   * - soit une autre map dans le cas contraire
+   * @param {any} obj
+   * @return {Map} l'arbre correspondant à l'objet
+   * @author sylvain chambon
+   */
+  function toMap(obj: any): Map {
+    let dico = new Map()
+    for (let cle of Object.keys(obj)) {
+      if (obj[cle] instanceof Object) {
+        if (obj[cle] instanceof Array) {
+          dico.set(cle, obj[cle])
+        } else {
+          dico.set(cle, toMap(obj[cle]))
+        }
+      } else {
+        dico.set(cle, obj[cle])
+      }
+    }
+    return dico
+  }
+
+  const refTree: Map = toMap(referentiel)
+  /**
+   * Retrouve le titre d'un niveau basé sur son
+   * @param levelId
+   */
+  function codeToLevelTitle(code: string) {
+    if (codeList[code]) {
+      return codeList[code]
+    } else {
+      return code
+    }
+  }
 </script>
 
-<!-- <Header /> -->
-<NavBar />
-<main class="flex-grow px-1 pt-2 md:p-10">
-  <InputListeExercices />
-  <Recherche />
-  {#each $listeExercices as exercice, i (exercice)}
-    <div animate:flip={{ duration: (d) => 30 * Math.sqrt(d) }}>
-      <Exercice {...exercice} indiceExercice={i} indiceLastExercice={$listeExercices.length} />
+<div class="h-screen  scrollbar-hide">
+  <!-- <Header /> -->
+  <NavBar />
+  <TitrePage />
+  <main class="flex h-full">
+    <!-- side menu -->
+    <aside class="flex flex-col bg-gray-200 w-1/3 p-4 border-r-2 border-r-coopmaths-light overflow-hidden h-full">
+      <div class="flex-none block overflow-y-scroll overscroll-auto h-full">
+        <!-- <InputListeExercices /> -->
+        <!-- <Recherche /> -->
+        <h2 class="font-bold text-xl">Liste des exercices</h2>
+        <ul>
+          {#each Array.from(refTree, ([key, obj]) => ({ key, obj })) as item}
+            <li>
+              <NiveauListeExos nestedLevelCount={1} pathToThisNode={[item.key]} levelTitle={codeToLevelTitle(item.key)} items={item.obj} />
+            </li>
+          {/each}
+        </ul>
+      </div>
+    </aside>
+    <!-- content -->
+    <div class="flex-1 flex flex-col p-6 overflow-hidden h-full">
+      <div class="flex-1 overflow-y-scroll overscroll-auto">
+        {#each $listeExercices as exercice, i (exercice)}
+          <div animate:flip={{ duration: (d) => 30 * Math.sqrt(d) }}>
+            <Exercice {...exercice} indiceExercice={i} indiceLastExercice={$listeExercices.length} />
+          </div>
+        {/each}
+      </div>
     </div>
-  {/each}
-</main>
-<!-- Modals ne sont pas utilisés pour le moment
-<Modals>
-  <div slot="backdrop" class="backdrop" on:click={closeModal} />
-</Modals> -->
-<Footer />
+  </main>
+  <!-- Modals ne sont pas utilisés pour le moment
+  <Modals>
+    <div slot="backdrop" class="backdrop" on:click={closeModal} />
+  </Modals> -->
+  <Footer />
+</div>
 
 <style>
   :root {

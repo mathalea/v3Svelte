@@ -1,5 +1,5 @@
-import { writable } from 'svelte/store'
-import type Exercice from '../exercices/ExerciceTs'
+import { writable } from "svelte/store"
+import type Exercice from "../exercices/ExerciceTs"
 
 export const listeExercices = writable([])
 
