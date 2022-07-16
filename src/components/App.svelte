@@ -1,5 +1,6 @@
 <script lang="ts">
   import { flip } from "svelte/animate"
+  import { fly } from "svelte/transition"
   import Exercice from "./Exercice.svelte"
   import Header from "./Header.svelte"
   import NavBar from "./NavBar.svelte"
@@ -104,28 +105,48 @@
       return code
     }
   }
+  let sideMenuVisible = false
+  let searchType = "liste"
+  function handleSideMenu(event: CustomEvent) {
+    sideMenuVisible = event.detail.isListVisible
+  }
+  function handleSearchType(event: CustomEvent) {
+    searchType = event.detail.searchChoice
+    console.log(searchType)
+  }
 </script>
 
 <div class="h-screen  scrollbar-hide">
   <!-- <Header /> -->
   <NavBar />
-  <TitrePage />
+  <TitrePage {sideMenuVisible} on:sideMenuChange={handleSideMenu} on:searchTypeChange={handleSearchType} />
   <main class="flex h-full">
     <!-- side menu -->
-    <aside class="flex flex-col bg-gray-200 w-1/3 p-4 border-r-2 border-r-coopmaths-light overflow-hidden h-full">
-      <div class="flex-none block overflow-y-scroll overscroll-auto h-full">
-        <!-- <InputListeExercices /> -->
-        <!-- <Recherche /> -->
-        <h2 class="font-bold text-xl">Liste des exercices</h2>
-        <ul>
-          {#each Array.from(refTree, ([key, obj]) => ({ key, obj })) as item}
-            <li>
-              <NiveauListeExos nestedLevelCount={1} pathToThisNode={[item.key]} levelTitle={codeToLevelTitle(item.key)} items={item.obj} />
-            </li>
-          {/each}
-        </ul>
-      </div>
-    </aside>
+    {#if sideMenuVisible}
+      {#if searchType === "liste"}
+        <aside class="flex flex-col bg-gray-200 w-1/3 p-4  overflow-hidden h-full transition-width transition-slowest ease duration-500">
+          <div class="flex-none block overflow-y-scroll overscroll-auto h-full">
+            <h2 class="font-bold text-xl">Liste des exercices</h2>
+            <ul>
+              {#each Array.from(refTree, ([key, obj]) => ({ key, obj })) as item}
+                <li>
+                  <NiveauListeExos nestedLevelCount={1} pathToThisNode={[item.key]} levelTitle={codeToLevelTitle(item.key)} items={item.obj} />
+                </li>
+              {/each}
+            </ul>
+          </div>
+        </aside>
+      {:else}
+        <aside class="flex flex-col bg-gray-200 w-1/3 p-4  overflow-hidden h-full transition-width transition-slowest ease duration-500">
+          <div class="flex-none block overflow-y-scroll overscroll-auto h-full">
+            <h2 class="font-bold text-xl mb-8">Rechercher un thème</h2>
+            <Recherche />
+          </div>
+        </aside>
+      {/if}
+      <!-- split line -->
+      <div class="flex w-1 bg-coopmaths-light hover:bg-coopmaths-lightest" />
+    {/if}
     <!-- content -->
     <div class="flex-1 flex flex-col p-6 overflow-hidden h-full">
       <div class="flex-1 overflow-y-scroll overscroll-auto">

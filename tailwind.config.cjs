@@ -11,6 +11,9 @@ const config = {
           dark: "#D84010",
           darkest: "#BE2600"
         }
+      },
+      transitionProperty: {
+        width: "width"
       }
     }
   },
@@ -19,6 +22,7 @@ const config = {
   },
   plugins: [
     require("tw-elements/dist/plugin"),
+    require("@tailwindcss/forms"),
     plugin(function ({ addUtilities }) {
       addUtilities({
         ".scrollbar-hide": {
