@@ -123,3 +123,7 @@ input[type="range"]:focus::-ms-fill-lower {
 input[type="range"]:focus::-ms-fill-upper {
   background: #ccc;
 }
+
+input[type="radio"]:checked {
+    background-color: #F15929;
+}
