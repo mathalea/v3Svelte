@@ -23,7 +23,7 @@ export default function EquationsFonctionsRef () {
   this.spacing = 1
   this.nbQuestions = 2
   this.nbQuestionsModifiable = true
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     this.sup = parseInt(this.sup)
     this.listeQuestions = [] // Liste de questions
@@ -48,7 +48,7 @@ export default function EquationsFonctionsRef () {
        //
     }
     function ecritureParentheseSiNegatif (a, maximumFractionDigits = 15) {
-      const result = Intl.NumberFormat('fr-FR', { maximumFractionDigits: maximumFractionDigits }).format(a).replace(',', '{,}')
+      const result = Intl.NumberFormat('fr-FR', { maximumFractionDigits }).format(a).replace(',', '{,}')
       return a < 0 ? `(${result})` : result
     }
     const listeTypeDeQuestions = combinaisonListes(typesDeQuestionsDisponibles, this.nbQuestions)

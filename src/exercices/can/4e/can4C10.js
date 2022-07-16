@@ -19,7 +19,7 @@ export default function SommeDifferenceFractionsEgyptiennes () {
   this.tailleDiaporama = 1
   this.formatChampTexte = 'largeur15 inline'
   this.formatInteractif = 'fraction'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(2, 7)
     const b = randint(2, 7, a)
     if (choice([true, false])) {

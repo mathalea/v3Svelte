@@ -27,7 +27,7 @@ export default function LireAbscisseDecimale () {
   this.sup = 1
   this.listePackages = 'tkz-euclide'
   this.interactif = false
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.autoCorrection = []
     // numeroExercice est 0 pour l'exercice 1
     let typesDeQuestions

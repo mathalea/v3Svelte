@@ -31,7 +31,7 @@ export default function TableauxEtProportionnalite () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.debug) {
       typesDeQuestionsDisponibles = [0, 1, 2, 3, 4, 5]
     } else {

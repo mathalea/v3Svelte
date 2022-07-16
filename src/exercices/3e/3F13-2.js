@@ -24,7 +24,7 @@ export default function PremierEscapeGameMathalea () {
   this.sup = 1
   // this.sup2 = ''
   this.pasDeVersionLatex = false
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const lettres = []; const mots = ['BMDF', 'OGNQ', 'BUQP', 'BAUP', 'BXGE', 'BDUJ', 'MZSXQE', 'BDUEYQ', 'BMDFUQ', 'HMXQGD', 'OAGBXQ', 'PDAUFQ', 'DQXMFUAZ', 'BMDMNAXQ', 'MPPUFUAZ', 'QJBAEMZF', 'RAZOFUAZ', 'OAYBXQJQ']
     let alphabet = []
     this.listeQuestions = []

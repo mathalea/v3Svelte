@@ -15,7 +15,7 @@ export default function CalculsProbabilite2 () {
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b
     const choix = choice([true, false])
     switch (choice(['a', 'a', 'b'])) { //, 'a', 'b'

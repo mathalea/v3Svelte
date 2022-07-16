@@ -18,7 +18,7 @@ export default function NombreDeNombresEntiersEntreDeuxValeurs () {
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(1, 15)
     const b = randint(18, 35)
     this.question = `Le nombre d'entiers strictement compris entre $${a}$ et $${b}$ est :`

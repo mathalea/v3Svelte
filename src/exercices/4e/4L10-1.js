@@ -31,7 +31,7 @@ export default function ReductionsPiegesClassiques () {
   this.nbQuestions = 10
   this.sup = true
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

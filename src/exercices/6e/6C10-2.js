@@ -28,7 +28,7 @@ export default function ExerciceTablesMultiplicationsEtMultiplesDe10 (
   this.spacing = 2
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.interactifType = parseInt(this.sup2) === 2 ? 'mathLive' : 'qcm'
     this.autoCorrection = []
     let tables = []

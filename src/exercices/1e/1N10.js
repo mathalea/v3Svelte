@@ -13,7 +13,7 @@ export default function TermeDUneSuiteDefinieExplicitement () {
   this.consigne = 'Une suite étant donnée, calculer le terme demandé.'
   this.nbQuestions = 4
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Vide la liste de questions
     this.listeCorrections = [] // Vide la liste de questions corrigées
 

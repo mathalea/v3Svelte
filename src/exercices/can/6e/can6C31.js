@@ -1,5 +1,5 @@
-import { choice, randint, texNombre, texteEnCouleur, arrondi } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { choice, randint, texNombre, texteEnCouleur, arrondi } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Soustraire un décimal d’un entier'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -17,7 +17,7 @@ export default function SoustraireEntierDecimal () {
   this.formatChampTexte = 'largeur15 inline'
   this.typeExercice = 'simple'
   this.tailleDiaporama = 2
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, u, d, c
     switch (choice([1, 2])) {
       case 1:// 5-2,6 par ex

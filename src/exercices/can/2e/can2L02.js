@@ -18,7 +18,7 @@ export default function CoordonneesPointDroite () {
   this.formatChampTexte = 'largeur15 inline'
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(-10, 10, 0)
     const b = randint(-10, 10, 0)
     const c = randint(-10, 10, 0)

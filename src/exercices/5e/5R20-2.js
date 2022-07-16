@@ -28,7 +28,7 @@ export default function ExerciceAdditionsRelatifsATrou (max = 20) {
   this.consigne = 'Compléter :'
   this.spacing = 2
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.sup = parseInt(this.sup)
     this.numeroExercice = numeroExercice
     this.listeQuestions = [] // Liste de questions

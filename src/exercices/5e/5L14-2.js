@@ -38,7 +38,7 @@ export default function ExerciceSubstituer (difficulte = 1) {
   this.spacing = 1
   this.consigneModifiable = false
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

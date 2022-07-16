@@ -1,5 +1,5 @@
-import { choice, randint, texteEnCouleur } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { choice, randint, texteEnCouleur } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Trouver le reste d’une division euclidienne'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -17,7 +17,7 @@ export default function ResteDivision5e () {
   this.tailleDiaporama = 2
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = choice([25, 20, 50, 40, 15])
     const b = randint(5, a - 1)
     const c = randint(3, 9)

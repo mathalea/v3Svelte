@@ -1,5 +1,5 @@
-import { calcul, randint } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { calcul, randint } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Chercher un reste en minutes'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -17,7 +17,7 @@ export default function ResteEnMinutes () {
   this.tailleDiaporama = 1
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(1, 2)
     const b = randint(10, 59)
     const d = calcul(a * 60 + b)

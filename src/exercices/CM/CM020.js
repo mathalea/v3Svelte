@@ -17,7 +17,7 @@ export default function LeCompteEstBonV4 () {
   this.nbColsCorr = 2
   this.sup = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let solutionMathador = []

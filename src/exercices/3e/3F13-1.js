@@ -24,7 +24,7 @@ export default function AntecedentEtImageGraphique () {
   this.nbColsCorr = 1
   if (context.isHtml) { this.spacingCorr = 2 }
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const r = repere2({
       xMin: -5,
       xMax: 5,

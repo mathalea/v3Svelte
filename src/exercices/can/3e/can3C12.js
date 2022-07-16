@@ -1,5 +1,5 @@
-import { choice, randint } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { choice, randint } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Encadrer une racine carrée'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -14,7 +14,7 @@ export default function EncadrementRacineCarree () {
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
   this.nbQuestions = 1
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(3, 99, [4, 9, 16, 25, 36, 49, 64, 81]) // numérateur
     if (choice([true, false])) {
       this.reponse = Math.floor(Math.sqrt(a))

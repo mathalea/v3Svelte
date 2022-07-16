@@ -1,9 +1,9 @@
-import { context } from '../../modules/context'
+import { context } from '../../modules/context.js'
 import { setReponse } from '../../modules/gestionInteractif.js'
 import { ajouteChampTexteMathLive } from '../../modules/interactif/questionMathLive.js'
 
-import { calcul, combinaisonListes, contraindreValeur, listeQuestionsToContenu, randint, sp, texteEnCouleur } from '../../modules/outils'
-import Exercice from '../Exercice'
+import { calcul, combinaisonListes, contraindreValeur, listeQuestionsToContenu, randint, sp, texteEnCouleur } from '../../modules/outils.js'
+import Exercice from '../Exercice.js'
 export const titre = 'Convertir en min vers h et min ou en s vers min et s'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -23,7 +23,7 @@ export default function ConversionHeuresMinutesOuMinutesEtSecondes (can = false)
   this.correctionDetailleeDisponible = true
   this.correctionDetaillee = false
   this.sup = 1
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = contraindreValeur(1, 3, this.sup, 1)
     this.listeQuestions = []
     this.listeCorrections = []

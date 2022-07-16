@@ -17,7 +17,7 @@ export default function CoefficientFonctionAffine () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const b = randint(-3, 3, 0)
     const c = randint(1, 5)
     const n = choice([-4, -3, -2, 2, 3, 4])

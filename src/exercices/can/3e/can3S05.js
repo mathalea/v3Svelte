@@ -17,7 +17,7 @@ export default function MoyenneStat () {
   this.formatChampTexte = 'largeur15 inline'
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c, d, e, f, N
     switch (choice([1, 2, 3, 3])) { //
       case 1:

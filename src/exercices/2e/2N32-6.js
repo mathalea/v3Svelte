@@ -17,7 +17,7 @@ export default function IdentitesRemarquablesEtRacineCarree () {
   this.nbColsCorr = 2
   this.sup = 1 //
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const typesDeQuestionsDisponibles = [1, 2, 3, 4, 5]; let typesDeQuestions

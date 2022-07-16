@@ -28,7 +28,7 @@ export default function ExerciceAdditionsRelatifs (max = 20) {
   this.modeQcm = false
   this.sup3 = false
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.interactifType = this.sup3 ? 'qcm' : 'mathLive'
     this.listeQuestions = [] // Liste de questions

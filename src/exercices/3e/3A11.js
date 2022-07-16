@@ -31,7 +31,7 @@ export default function PremierOuPas () {
   this.listePackages = 'bclogo'
   const prems = cribleEratostheneN(529) // constante contenant tous les nombres premiers jusqu'à 529...
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let typesDeQuestions
     if (context.isHtml) { // les boutons d'aide uniquement pour la version html
       // this.boutonAide = '';

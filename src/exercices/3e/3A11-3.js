@@ -22,7 +22,7 @@ export default function listerDiviseursParDecompositionFacteursPremiers () {
   this.nbCols = 1
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     // let typesDeQuestions
     if (context.isHtml) { // les boutons d'aide uniquement pour la version html
       // this.boutonAide = '';

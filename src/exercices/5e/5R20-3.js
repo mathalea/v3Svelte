@@ -47,7 +47,7 @@ export default function ExerciceAdditionsDe5Relatifs (max = 20) {
   this.amcType = amcType
   this.amcReady = amcReady
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (!context.isHtml) this.interactif = false
     this.sup = parseInt(this.sup)
     if (this.interactif) {

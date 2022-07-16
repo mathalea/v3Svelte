@@ -30,7 +30,7 @@ export default function ColorierDeplacement () {
   context.isHtml ? this.spacingCorr = 2 : this.spacingCorr = 1
   this.listePackages = 'scratch3' // pour dessiner les blocs en LaTeX/Tikz
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

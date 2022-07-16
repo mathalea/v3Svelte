@@ -1,7 +1,7 @@
 import Exercice from '../../Exercice.js'
 import { fraction } from '../../../modules/fractions.js'
 import {
-  mathalea2d, point, polygoneAvecNom, codageAngleDroit, labelPoint, segment, milieu, texteParPosition, demiDroite, ellipse, codeSegment
+  mathalea2d, point, polygoneAvecNom, codageAngleDroit, labelPoint, segment, milieu, texteParPosition, demiDroite, ellipse, codageSegment
 } from '../../../modules/2d.js'
 import { listeQuestionsToContenu, randint, texNombre, shuffle, printlatex, stringNombre, texFraction, miseEnEvidence, simplificationDeFractionAvecEtapes, choice, sp, arrondi } from '../../../modules/outils.js'
 import { setReponse } from '../../../modules/gestionInteractif.js'
@@ -32,7 +32,7 @@ export default function SujetCAN20213ieme () {
   this.nbCols = 1
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const nbQ1 = min(round(this.nbQuestions * 8 / 30), 8) // Choisir d'un nb de questions de niveau 1 parmi les 8 possibles.
@@ -296,14 +296,14 @@ export default function SujetCAN20213ieme () {
           sCote2.styleExtremites = '<->'
           objets = []
           objets.push(
-            texteParPosition(`$${a} $`, milieu(B, E).x + 0.4, milieu(B, E).y, 'milieu', 'black', 1, 'middle', true),
-            texteParPosition('$\\large \\text{?}$', milieu(A, E).x - 0.4, milieu(A, E).y + 1, 'milieu', 'black', 1, 'middle', true),
+            texteParPosition(`$${a} $`, milieu(B, E).x + 0.4, milieu(B, E).y - 0.3, 'milieu', 'black', 1, 'middle', true),
+            texteParPosition('$\\large \\text{?}$', milieu(A, E).x - 0.4, milieu(A, E).y + 0.7, 'milieu', 'black', 1, 'middle', true),
             texteParPosition(`$${b} $`, milieu(D, C).x + 0.5, milieu(D, C).y, 'milieu', 'black', 1, 'middle', true),
-            texteParPosition(`$${d} $`, milieu(A, D).x - 1, milieu(A, D).y + 1.8, 'milieu', 'black', 1, 'middle', true),
-            demiDroite(A, C), demiDroite(A, D), labelPoint(A, B, C, D, E), segment(B, E), segment(D, C), sCote1, sCote2)
+            texteParPosition(`$${d} $`, milieu(A, D).x - 1, milieu(A, D).y + 1.5, 'milieu', 'black', 1, 'middle', true),
+            demiDroite(A, C), demiDroite(A, D), labelPoint(A, B, C, D, E), segment(A, D), segment(A, C), segment(B, E), segment(D, C), sCote1, sCote2)
           reponse = c
           texte = '$(BE)//(DC)$.  Détermine la longueur $AE$.<br>'
-          texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 30, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+          texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 30, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
           texteCorr = `Le triangle $ADC$ est un agrandissement du triangle $ABE$. Le coefficient d'agrandissement est donné par : $\\dfrac{${b}}{${a}}=${texNombre(b / a)}$.<br>
           On obtient donc la longueur $AE$ en divisant par $${k}$ la longueur $AD$.<br>
           $AE=\\dfrac{${d}}{${k}}=${c}$.<br>`
@@ -372,9 +372,9 @@ export default function SujetCAN20213ieme () {
           D = point(0, -4, 'D', 'above')
           c = ellipse(A, 2, 0.5)
           s1 = segment(D, A)
-          s1.pointilles = true
+          s1.pointilles = 5
           s2 = segment(A, C)
-          s2.pointilles = true
+          s2.pointilles = 5
 
           xmin = -3
           ymin = -5
@@ -387,7 +387,7 @@ export default function SujetCAN20213ieme () {
             segment(B, D), segment(D, C), s1, s2, c)
           reponse = 3 * b
           texte = 'Donne le volume exact de ce cône.<br>'
-          texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 30, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+          texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 30, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
           texteCorr = `Le volume du cône est  : $\\dfrac{1}{3}\\times \\text{(Aire de la base)}\\times \\text{Hauteur}$.<br>
           Soit : $\\dfrac{1}{3}\\times \\pi \\times 3^2\\times ${b}=${reponse}\\pi$ cm$^3$.  `
           setReponse(this, index, reponse, { formatInteractif: 'calcul' })
@@ -448,7 +448,7 @@ export default function SujetCAN20213ieme () {
             reponse = a[1]
             texte = 'Calcule la longueur $AB$. <br>'
 
-            texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+            texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
             texte += '<br>$AB=$'
 
             texteCorr = `On utilise le théorème de Pythagore dans le triangle rectangle $ABC$ :<br>
@@ -464,7 +464,7 @@ export default function SujetCAN20213ieme () {
             reponse = a[0]
             texte = 'Calcule la longueur $AC$. <br>'
 
-            texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+            texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
             texte += '<br>$AC=$'
 
             texteCorr = `On utilise le théorème de Pythagore dans le triangle rectangle $ABC$ :<br>
@@ -480,7 +480,7 @@ export default function SujetCAN20213ieme () {
             reponse = a[2]
             texte = 'Calcule la longueur $BC$. <br>'
 
-            texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+            texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
             texte += '<br>$BC=$'
 
             texteCorr = `On utilise le théorème de Pythagore dans le triangle rectangle $ABC$ :<br>
@@ -552,17 +552,17 @@ export default function SujetCAN20213ieme () {
             F = point(2, 0)
             G = point(1, 0)
             s1 = segment(A, B)
-            code1 = codeSegment(A, B, '||')
+            code1 = codageSegment(A, B, '||')
             s2 = segment(B, C)
-            code2 = codeSegment(B, C, '||')
+            code2 = codageSegment(B, C, '||')
             s3 = segment(A, G)
-            code3 = codeSegment(A, G, '||')
+            code3 = codageSegment(A, G, '||')
             s4 = segment(G, F)
-            code4 = codeSegment(G, F, '||')
+            code4 = codageSegment(G, F, '||')
             s5 = segment(C, D)
-            code5 = codeSegment(C, D, '|')
+            code5 = codageSegment(C, D, '|')
             s6 = segment(E, F)
-            code6 = codeSegment(E, F, '|')
+            code6 = codageSegment(E, F, '|')
             xmin = -1
             ymin = -2
             xmax = 4
@@ -575,7 +575,7 @@ export default function SujetCAN20213ieme () {
               s1, s2, s3, s4, s5, s6, code1, code2, code3, code4, code5, code6, segment(D, E))
             reponse = printlatex(`4x+${2 * a + b}`)
             texte = 'Exprime en fonction de $x$, le périmètre de cette figure.<br>'
-            texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+            texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
             texteCorr = `La figure est composée de $4$ segments de longueur $x$, de $2$ segments de longueur $${a}$ et d'un segment de longueur $${b}$.<br>
           Le périmètre de cette figure est donc : $4\\times x+2\\times ${a}+${b}=4x+${2 * a + b}$.   `
           }
@@ -590,17 +590,17 @@ export default function SujetCAN20213ieme () {
             F = point(2, 0)
             G = point(1, 0)
             s1 = segment(A, B)
-            code1 = codeSegment(A, B, '||')
+            code1 = codageSegment(A, B, '||')
             s2 = segment(B, C)
-            code2 = codeSegment(B, C, '||')
+            code2 = codageSegment(B, C, '||')
             s3 = segment(A, G)
-            code3 = codeSegment(A, G, '||')
+            code3 = codageSegment(A, G, '||')
             s4 = segment(G, F)
-            code4 = codeSegment(G, F, '||')
+            code4 = codageSegment(G, F, '||')
             s5 = segment(C, D)
-            code5 = codeSegment(C, D, '|')
+            code5 = codageSegment(C, D, '|')
             s6 = segment(E, F)
-            code6 = codeSegment(E, F, '|')
+            code6 = codageSegment(E, F, '|')
             xmin = -1
             ymin = -2
             xmax = 4
@@ -613,7 +613,7 @@ export default function SujetCAN20213ieme () {
               s1, s2, s3, s4, s5, s6, code1, code2, code3, code4, code5, code6, segment(D, E))
             reponse = printlatex(`2x+${4 * a + b}`)
             texte = 'Exprime en fonction de $x$, le périmètre de cette figure.<br>'
-            texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+            texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
             texteCorr = `La figure est composée de $2$ segments de longueur $x$, de $4$ segments de longueur $${a}$ et d'un segment de longueur $${b}$.<br>
             Le périmètre de cette figure est donc : $2\\times x+4\\times ${a}+${b}=2x+${4 * a + b}$.   `
           }
@@ -628,15 +628,15 @@ export default function SujetCAN20213ieme () {
             F = point(2, 0)
             G = point(1, 0)
             s1 = segment(B, G)
-            code1 = codeSegment(B, G, '||')
+            code1 = codageSegment(B, G, '||')
             s2 = segment(B, C)
-            code2 = codeSegment(B, C, '||')
+            code2 = codageSegment(B, C, '||')
             s4 = segment(G, F)
-            code4 = codeSegment(G, F, '||')
+            code4 = codageSegment(G, F, '||')
             s5 = segment(C, D)
-            code5 = codeSegment(C, D, '|')
+            code5 = codageSegment(C, D, '|')
             s6 = segment(E, F)
-            code6 = codeSegment(E, F, '|')
+            code6 = codageSegment(E, F, '|')
             xmin = -1
             ymin = -2
             xmax = 4
@@ -649,7 +649,7 @@ export default function SujetCAN20213ieme () {
               s1, s2, s4, s5, s6, code1, code2, code4, code5, code6, segment(D, E))
             reponse = printlatex(`2x+${3 * a + b}`)
             texte = 'Exprime en fonction de $x$, le périmètre de cette figure.<br>'
-            texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+            texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
             texteCorr = `La figure est composée de $2$ segments de longueur $x$, de $3$ segments de longueur $${a}$ et d'un segment de longueur $${b}$.<br>
               Le périmètre de cette figure est donc : $2\\times x+3\\times ${a}+${b}=2x+${3 * a + b}$.   `
           }
@@ -663,15 +663,15 @@ export default function SujetCAN20213ieme () {
             F = point(2, 0)
             G = point(1, 0)
             s1 = segment(B, G)
-            code1 = codeSegment(B, G, '||')
+            code1 = codageSegment(B, G, '||')
             s2 = segment(B, C)
-            code2 = codeSegment(B, C, '||')
+            code2 = codageSegment(B, C, '||')
             s4 = segment(G, F)
-            code4 = codeSegment(G, F, '||')
+            code4 = codageSegment(G, F, '||')
             s5 = segment(C, D)
-            code5 = codeSegment(C, D, '|')
+            code5 = codageSegment(C, D, '|')
             s6 = segment(E, F)
-            code6 = codeSegment(E, F, '|')
+            code6 = codageSegment(E, F, '|')
             xmin = -1
             ymin = -2
             xmax = 4
@@ -684,7 +684,7 @@ export default function SujetCAN20213ieme () {
               s1, s2, s4, s5, s6, code1, code2, code4, code5, code6, segment(D, E))
             reponse = printlatex(`3x+${2 * a + b}`)
             texte = 'Exprime en fonction de $x$, le périmètre de cette figure.<br>'
-            texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+            texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
             texteCorr = `La figure est composée de $3$ segments de longueur $x$, de $2$ segments de longueur $${a}$ et d'un segment de longueur $${b}$.<br>
                 Le périmètre de cette figure est donc : $3\\times x+2\\times ${a}+${b}=3x+${2 * a + b}$.   `
           }

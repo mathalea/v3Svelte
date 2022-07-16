@@ -293,10 +293,10 @@ export default function SymetrieAxialePavageTriangulaire () {
         }
         break
     }
-    return { antecedent: antecedent, image: image, distracteurs: distracteurs }
+    return { antecedent, image, distracteurs }
   }
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = [] // tableau contenant la liste des questions
     this.listeCorrections = []
     this.autocorrection = []

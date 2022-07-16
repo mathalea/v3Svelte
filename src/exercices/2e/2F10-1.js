@@ -26,7 +26,7 @@ export default function Reconnaitrefonctionaffine () {
   this.spacingCorr = 1
   this.nbQuestions = 5
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let bonneReponse

@@ -26,7 +26,7 @@ export default function ConstruireUnDiagramme () {
   this.sup4 = true
 
   //  this.sup3 = false;
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     this.autoCorrection = []

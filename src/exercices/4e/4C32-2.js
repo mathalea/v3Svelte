@@ -32,7 +32,7 @@ micro : millionième $\\times10^{-6}$<br>
 nano : milliardième $\\times10^{-9}$<br>
 `, 'Signification des préfixes'
   )
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

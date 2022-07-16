@@ -27,7 +27,7 @@ export default function MesurerUnAngle () {
   this.sup2 = false
   this.video = 'TEzu9uky56M'
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

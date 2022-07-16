@@ -42,7 +42,7 @@ export default function ModelisationProblemes () {
   this.correctionDetailleeDisponible = true
   this.correctionDetaillee = true
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.interactif & this.sup3 === 2) {
       this.sup3 = 3
     }

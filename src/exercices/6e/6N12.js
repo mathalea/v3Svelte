@@ -15,7 +15,7 @@ export default function MultiplierEntierPar101001000 () {
   this.nbColsCorr = 2
   this.sup = 2
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.boutonAide = modalUrl(numeroExercice, 'https://mathix.org/glisse-nombre/index.html',
       'Glisse-nombre'
     )

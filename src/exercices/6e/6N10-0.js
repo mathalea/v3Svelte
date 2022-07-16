@@ -23,7 +23,7 @@ export default function EcrireNombresEntiers () {
   this.nbColsCorr = 1
   this.sup = 1
   this.sup2 = 3
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let typeDeConsigne = []
     if (parseInt(this.sup) === 1) {
       this.consigne = 'Écrire le nombre en lettres.'

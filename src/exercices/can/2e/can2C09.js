@@ -1,7 +1,7 @@
 import Exercice from '../../Exercice.js'
-import { fraction } from '../../../modules/fractions'
+import { fraction } from '../../../modules/fractions.js'
 import { choice, texFraction, texFractionReduite, simplificationDeFractionAvecEtapes, texteEnCouleur } from '../../../modules/outils.js'
-import { mathalea2d, point, segmentAvecExtremites, codeSegments, labelPoint, texteParPosition, fractionParPosition } from '../../../modules/2d.js'
+import { mathalea2d, point, segmentAvecExtremites, codageSegments, labelPoint, texteParPosition, fractionParPosition } from '../../../modules/2d.js'
 export const titre = 'Calculer le "milieu" entre 1 et une fraction'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -16,7 +16,7 @@ export default function MilieuEntre1EtFraction () {
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const listeFractions1 = [
       [10, 3], [5, 4], [7, 4], [10, 7], [11, 7], [12, 7], [9, 7], [13, 7], [11, 8], [11, 9], [7, 6], [12, 11], [4, 3],
       [7, 5], [13, 7], [13, 9], [13, 11], [13, 12], [14, 11]
@@ -28,7 +28,7 @@ export default function MilieuEntre1EtFraction () {
     const B = point(4, 0, 'M', 'below')
     const C = point(8, 0)
     const objets = []
-    objets.push(segmentAvecExtremites(A, B), segmentAvecExtremites(B, C), labelPoint(B), codeSegments('||', 'blue', A, B, B, C))
+    objets.push(segmentAvecExtremites(A, B), segmentAvecExtremites(B, C), labelPoint(B), codageSegments('||', 'blue', A, B, B, C))
     objets.push(texteParPosition('1', 0, -0.6, 'milieu', 'black', 1, 'middle', true)
     )
     objets.push(fractionParPosition({ x: 8, y: -1, fraction: fraction(n, d), couleur: 'black' }))

@@ -1,6 +1,6 @@
-import { fraction } from '../../../modules/fractions'
-import { randint, choice } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { fraction } from '../../../modules/fractions.js'
+import { randint, choice } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Calculer une probabilité'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -19,7 +19,7 @@ export default function CalculProbaSimple () {
   this.formatChampTexte = 'largeur15 inline'
   this.formatInteractif = 'fractionEgale'
   const parfums = ['au citron', 'à la fraise', 'à la menthe', "à l'orange", 'à la cerise', 'à la framboise', 'au cassis']
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(3, 10)
     const k = choice([1, 3, 4, 9])
     const parfum1 = choice(parfums)

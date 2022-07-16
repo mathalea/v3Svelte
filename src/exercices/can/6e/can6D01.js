@@ -1,5 +1,5 @@
-import { calcul, randint } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { calcul, randint } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Convertir des Heures/minutes en minutes'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -21,7 +21,7 @@ export default function ConversionHeuresEtMinutesVersMinutes () {
     this.question += ' .... minutes'
   }
   this.optionsChampTexte = { texteApres: ' minutes' }
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(2, 4)
     const b = randint(10, 59)
     const d = calcul(a * 60 + b)

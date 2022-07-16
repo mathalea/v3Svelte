@@ -17,7 +17,7 @@ export default function Intervalles () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c, N, d, e
 
     switch (choice([1, 2])) { //, 2, 2

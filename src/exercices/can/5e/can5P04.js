@@ -17,7 +17,7 @@ export default function PoucentageP1 () {
   this.nbQuestions = 1
   this.tailleDiaporama = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let b, caractere
 
     switch (choice(['a', 'b', 'c', 'd', 'e', 'f'])) {

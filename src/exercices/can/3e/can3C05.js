@@ -18,7 +18,7 @@ export default function CalculPuissance10 () {
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(1, 6)
     const n = calcul(2 * randint(1, 6) + 1) / 2
     const N = calcul(2 * randint(1, 6, a) + 1) / 2

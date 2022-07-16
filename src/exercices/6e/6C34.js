@@ -35,7 +35,7 @@ export default function DernierChiffre () {
   this.sup = 1 // A décommenter : valeur par défaut d'un premier paramètre
 
   // c'est ici que commence le code de l'exercice cette fonction crée une copie de l'exercice
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.version === 2) {
       this.sup = 2
     }

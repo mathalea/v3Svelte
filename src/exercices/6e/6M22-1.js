@@ -30,7 +30,7 @@ export default function PerimetreAireDisques (pa = 3) {
   this.spacingCorr = 2
   this.nbQuestions = 4
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.sup = contraindreValeur(1, 3, this.sup, 3)
     this.listeQuestions = []
     this.listeCorrections = [] // Liste de questions corrigées

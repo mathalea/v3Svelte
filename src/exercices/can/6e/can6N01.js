@@ -1,5 +1,5 @@
-import { calcul, randint, texNombre, texteEnCouleur, choice } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { calcul, randint, texNombre, texteEnCouleur, choice } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Recomposer un entier'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -16,7 +16,7 @@ export default function RecomposerEntier () {
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(2, 5)
     const b = randint(2, 9)
     const c = randint(2, 9)

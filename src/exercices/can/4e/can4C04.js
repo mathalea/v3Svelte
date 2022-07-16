@@ -1,5 +1,5 @@
-import { ecritureParentheseSiNegatif, miseEnEvidence, randint, shuffle } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { ecritureParentheseSiNegatif, miseEnEvidence, randint, shuffle } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Utiliser la règle des signes'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -17,7 +17,7 @@ export default function RegleDesSignes () {
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a = randint(-5, 5, [-1, 0, 1])
     const b = randint(-4, 4, [-1, 0, 1, a])
     const c = randint(2, 3)

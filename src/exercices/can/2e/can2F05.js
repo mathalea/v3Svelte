@@ -1,5 +1,5 @@
 import Exercice from '../../Exercice.js'
-import { fraction } from '../../../modules/fractions'
+import { fraction } from '../../../modules/fractions.js'
 import { randint, calcul, miseEnEvidence } from '../../../modules/outils.js'
 export const titre = 'Déterminer un antécédent avec la racine carrée'
 export const interactifReady = true
@@ -19,7 +19,7 @@ export default function AntecedentFonctionRacine () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const m = randint(2, 5)
     const p = calcul(randint(1, 4) * m)
     const a = calcul(randint(5, 10) * m)

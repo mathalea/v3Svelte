@@ -19,7 +19,7 @@ export default function CoeffTaux () {
   this.formatChampTexte = 'largeur15 inline'
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let taux, coeff
 
     switch (choice(['a', 'b', 'b'])) { //, 'b', 'b'

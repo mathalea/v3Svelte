@@ -17,7 +17,7 @@ export default function MoitiePlusOuMoinsUn () {
   this.tailleDiaporama = 2
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(21, 35, 30) / 10
     if (choice([true, false])) {
       this.reponse = calcul(a / 2 + 1)

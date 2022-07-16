@@ -1,6 +1,6 @@
-import { mathalea2d, repere2, traceBarreHorizontale } from '../../../modules/2d'
-import { prenom, randint } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { mathalea2d, repere2, traceBarreHorizontale } from '../../../modules/2d.js'
+import { prenom, randint } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Lire un diagramme en barres'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -21,7 +21,7 @@ export default function LectureDiagrammeBarre () {
     ['voitures', 'un garage', ['berline', 'utilitaire', 'cross over']],
     ['vêtements', 'une armoire', ['chemises', 'T-shirts', 'pulls']]]
   const quidam = prenom()
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const objets = []
 
     const n = randint(0, 2)

@@ -21,7 +21,7 @@ export default function CalculRaison2 () {
   this.tailleDiaporama = 2
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let u, i, v, r, q, n, choix
     const nomSuite = ['u', 'v', 'w']
     const s = choice(nomSuite)

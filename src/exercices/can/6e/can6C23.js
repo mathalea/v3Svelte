@@ -18,7 +18,7 @@ export default function CalculAvec99 () {
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a
     switch (choice(['a', 'b', 'c', 'd', 'e'])) { //
       case 'a':

@@ -24,7 +24,7 @@ export default function AntecedentGraphique () {
   this.nbQuestionsModifiable = false
   this.nbCols = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.contenu = '' // Liste de questions

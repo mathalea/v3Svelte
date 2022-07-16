@@ -18,7 +18,7 @@ export default function RecherchePrix () {
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
   this.optionsChampTexte = { texteApres: ' €' }
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const listeviennoiserie = [
       ['pains au chocolat', ' un pain au chocolat'],
       ['chocolatines', 'une chocolatine'], ['pains aux raisins', 'un pain aux raisins'], ['cookies', 'un cookie'], ['brioches', 'une brioche']]

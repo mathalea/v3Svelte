@@ -1,5 +1,5 @@
-import { calcul, choice, randint, texNombre, texteEnCouleur, texNombrec } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { calcul, choice, randint, texNombre, texteEnCouleur, texNombrec } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Déterminer la valeur décimale d’une fraction'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -17,7 +17,7 @@ export default function ValeursDecimalesFractions () {
   this.formatChampTexte = 'largeur15 inline'
   this.typeExercice = 'simple'
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b
     switch (choice([1, 2, 3, 4])) {
       case 1:

@@ -36,7 +36,7 @@ export default function CalculProbaExperience2Epreuves3e() {
   this.nbQuestions = 1
   this.spacing = context.isHtml ? 2 : 1.5
   this.spacingCorr = context.isHtml ? 2 : 1.5
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []
@@ -252,7 +252,7 @@ function unePieceDeuxUrnes(exercice, NoQuestion, sup, sup2, sup3) {
   }$.<br>`
   if (!context.isAMC) setReponse(exercice, NoQuestion + 1, proba2, { formatInteractif: "fractionEgale" })
 
-  return { texte: texte, texteCorr: texteCorr, alea: [...n1, ...n2], NoQuestion: NoQuestion + 2 }
+  return { texte, texteCorr, alea: [...n1, ...n2], NoQuestion: NoQuestion + 2 }
 }
 
 // On tire deux boules dans une urne avec remise
@@ -413,7 +413,7 @@ function urneDeuxTiragesAvecRemise(exercice, NoQuestion, sup, sup2, niveau) {
   if (!context.isAMC) setReponse(exercice, NoQuestion + 1, proba1et2, { formatInteractif: "fractionEgale" })
   if (!context.isAMC) setReponse(exercice, NoQuestion + 2, proba4, { formatInteractif: "fractionEgale" })
 
-  return { texte: texte, texteCorr: texteCorr, alea: [nbBoule1, nbBoule2, b1Char, b2Char], NoQuestion: NoQuestion + 3 }
+  return { texte, texteCorr, alea: [nbBoule1, nbBoule2, b1Char, b2Char], NoQuestion: NoQuestion + 3 }
 }
 
 // On tire deux boules dans une urne sans remise
@@ -571,9 +571,9 @@ function urneDeuxTiragesSansRemise(exercice, NoQuestion, sup, sup2, niveau) {
     1
   )}.<br>`
   texteCorr += `On peut donc calculer la probabilité de cet événement en calculant : $1 -${proba1et2.texFractionSimplifiee} = ${proba4.texFractionSimplifiee}$.`
-  if (!context.isAMC) setReponse(exercice, NoQuestion, probaChoix, { formatInteractif: "fractionEgale" })
-  if (!context.isAMC) setReponse(exercice, NoQuestion + 1, proba1et2, { formatInteractif: "fractionEgale" })
-  // console.log(proba4)
-  if (!context.isAMC) setReponse(exercice, NoQuestion + 2, proba4, { formatInteractif: "fractionEgale" })
-  return { texte: texte, texteCorr: texteCorr, alea: [nbBoule1, nbBoule2, b1Char, b2Char], NoQuestion: NoQuestion + 3 }
+  if (!context.isAMC) setReponse(exercice, NoQuestion, probaChoix, { formatInteractif: 'fractionEgale' })
+  if (!context.isAMC) setReponse(exercice, NoQuestion + 1, proba1et2, { formatInteractif: 'fractionEgale' })
+  console.log(proba4)
+  if (!context.isAMC) setReponse(exercice, NoQuestion + 2, proba4, { formatInteractif: 'fractionEgale' })
+  return { texte, texteCorr, alea: [nbBoule1, nbBoule2, b1Char, b2Char], NoQuestion: NoQuestion + 3 }
 }

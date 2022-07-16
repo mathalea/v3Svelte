@@ -32,7 +32,7 @@ export default function EvolutionsSuccesives () {
   this.spacing = 1
   this.spacingCorr = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

@@ -52,7 +52,7 @@ export default function Priorites () {
   this.sup = 3
   this.sup2 = false
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

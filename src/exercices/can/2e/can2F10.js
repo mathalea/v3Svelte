@@ -19,7 +19,7 @@ export default function ResoudreEquationsFonctionDeReference2 () {
   this.tailleDiaporama = 1
   this.spacing = 2
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     let texte, texteCorr, k, b, c

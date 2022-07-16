@@ -30,7 +30,7 @@ export default function ImageFonctionAlgebrique () {
   this.nbColsCorr = 1
   this.sup = 5 // niveau de difficulté
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.sup = parseInt(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

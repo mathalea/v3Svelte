@@ -17,7 +17,7 @@ export default function CompteEstBon () {
   this.nbColsCorr = 2
   this.sup = 1 // niveau de calcul souhaité
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let typesDeQuestions, a, b, c, d, cible, tirage
     if (!this.sup) {
       // Si rien n'est saisi

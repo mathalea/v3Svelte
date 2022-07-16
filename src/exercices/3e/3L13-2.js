@@ -41,7 +41,7 @@ export default function EqResolvantesThales () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     // une fonction pour dire que c'est trivial dans ce cas
     function trivial (bool, a, b, c, inc) {
       let sortie
@@ -144,7 +144,7 @@ export default function EqResolvantesThales () {
         a: nbAlea[0] * coeff[0],
         b: nbAlea[1] * coeff[1],
         c: nbAlea[2] * coeff[2],
-        inc: inc,
+        inc,
         fraction: new FractionX(nbAlea[1] * nbAlea[0], nbAlea[2] / coeff[0] / coeff[1])
       }
 

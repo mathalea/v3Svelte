@@ -1,5 +1,5 @@
-import { calcul, contraindreValeur, randint, texNombre } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { calcul, contraindreValeur, randint, texNombre } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Convertir en mètres'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -17,7 +17,7 @@ export default function ConvertirEnM () {
   this.nbQuestions = 1
   this.sup = 1
   this.tailleDiaporama = 2
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = contraindreValeur(1, 2, this.sup, 1)
     let a
     if (this.sup === 1) {

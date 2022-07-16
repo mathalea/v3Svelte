@@ -1,8 +1,8 @@
-import { setReponse } from '../../../modules/gestionInteractif'
-import { ajouteChampTexteMathLive } from '../../../modules/interactif/questionMathLive'
+import { setReponse } from '../../../modules/gestionInteractif.js'
+import { ajouteChampTexteMathLive } from '../../../modules/interactif/questionMathLive.js'
 import { calcul, choice, listeQuestionsToContenu, randint, sp, texNombrec, texFractionReduite }
-  from '../../../modules/outils'
-import Exercice from '../../Exercice'
+  from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Convertir des heures décimales en heures/minutes et inversement*'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -16,7 +16,7 @@ export default function HeuresDecimalesHeuresMinutes2 () {
   Exercice.call(this)
   this.nbQuestions = 1
   this.tailleDiaporama = 2
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let a, b, d, texte, texteCorr

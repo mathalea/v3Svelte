@@ -85,7 +85,7 @@ export default function problemesTrigoLongueur() {
   this.spacingCorr = 3
   this.spacing = 2
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let listeDeNomsDePolygones

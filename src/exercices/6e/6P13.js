@@ -37,7 +37,7 @@ export default function AugmenterEtReduireDunPourcentage () {
   this.interactifType = 'mathLive'
   this.listePackages = 'bclogo'
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const n = this.sup - 1
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

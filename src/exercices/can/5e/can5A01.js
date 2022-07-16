@@ -1,9 +1,9 @@
-import { scratchblock } from '../../../modules/2d'
-import { setReponse } from '../../../modules/gestionInteractif'
-import { ajouteChampTexteMathLive } from '../../../modules/interactif/questionMathLive'
-import { propositionsQcm } from '../../../modules/interactif/questionQcm'
-import { calcul, choice, listeQuestionsToContenuSansNumero, randint, texteEnCouleur } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { scratchblock } from '../../../modules/2d.js'
+import { setReponse } from '../../../modules/gestionInteractif.js'
+import { ajouteChampTexteMathLive } from '../../../modules/interactif/questionMathLive.js'
+import { propositionsQcm } from '../../../modules/interactif/questionQcm.js'
+import { calcul, choice, listeQuestionsToContenuSansNumero, randint, texteEnCouleur } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Travailler les répétitions (Scratch)'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -23,7 +23,7 @@ export default function RepetitionScratch () {
   this.listePackages = 'scratch3'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let prog = '\\begin{scratch}[print,fill,blocks,scale=0.8]\n \\blockinit{quand \\greenflag est cliqué}\n '
     prog += "\\blockpen{stylo en position d'écriture}\n"
     const b = choice([[120, 'triangle équilatéral'], [90, 'carré'], [72, 'pentagone régulier'], [60, 'hexagone régulier'], [45, 'octogone régulier'], [40, 'énéagone régulier'], [36, 'décagone régulier']])

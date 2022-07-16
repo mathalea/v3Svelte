@@ -25,7 +25,7 @@ export default function CompleterParSymetrieCan () {
   this.nbColsCorr = 1
   this.sup = 1
   this.sup2 = 1
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = randint(1, 2)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

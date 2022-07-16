@@ -25,7 +25,7 @@ export default function PlacerUnPointAbscisseEntiere2d () {
   this.spacingCorr = 1
   this.sup = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.interactif) {
       this.consigne = 'Placer un point sur un axe gradué.'
     } else {

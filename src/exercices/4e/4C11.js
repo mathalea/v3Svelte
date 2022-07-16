@@ -52,7 +52,7 @@ export default function PrioritesEtRelatifs () {
   this.nbColsCorr = 1
   this.sup = 3
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

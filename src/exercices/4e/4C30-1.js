@@ -26,7 +26,7 @@ export default function PuissancesEncadrement () {
   let typesDeQuestionsDisponibles
   let signeChange
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.level === 2) {
       this.sup = 5
     }

@@ -1,5 +1,5 @@
-import { choice, ecritureAlgebrique, ecritureParentheseSiNegatif, randint, signe } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { choice, ecritureAlgebrique, ecritureParentheseSiNegatif, randint, signe } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Développer avec la simple distributivité'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -15,7 +15,7 @@ export default function DeveloppementNiveau1 () {
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.date = 1635092507483
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.formatChampTexte = 'largeur15 inline'
     let a, b, k, inconnue
     switch (randint(1, 2)) {

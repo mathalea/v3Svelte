@@ -23,7 +23,7 @@ export default function ReduireDinstinctionSommeProduit () {
   // this.sup2=false; // si false alors utilisation de nombres entiers, si true alors utilisation de nombres à un chiffre après la virgule.
   this.titre = titre
   let typesDeQuestionsDisponibles
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     // let typesDeQuestionsDisponibles
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

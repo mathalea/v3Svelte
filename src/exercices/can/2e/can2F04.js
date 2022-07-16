@@ -16,7 +16,7 @@ export default function ValeurInterdite () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c, n
     if (choice([true, false])) {
       a = randint(-10, 10, 0)

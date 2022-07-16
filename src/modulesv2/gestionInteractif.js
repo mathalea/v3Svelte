@@ -8,7 +8,8 @@ import { isUserIdOk } from '../modules/interactif/isUserIdOk.js'
 import { gestionCan } from '../modules/interactif/gestionCan.js'
 import FractionX from '../modules/FractionEtendue.js'
 import Grandeur from '../modules/Grandeur.js'
-import { ComputeEngine } from '@cortex-js/compute-engine'
+import pkg from '@cortex-js/compute-engine'
+const { ComputeEngine } = pkg
 
 export function exerciceInteractif (exercice, divScore, buttonScore) {
   if (exercice.interactifType === 'qcm')exerciceQcm(exercice)
@@ -22,9 +23,9 @@ export function exerciceInteractif (exercice, divScore, buttonScore) {
 
 /**
  *
- * @param exercice
+ * @param {Exercice} exercice
  * @param {number} i
- * @param {*} param2
+ * @param {object} param2
  * @returns {string} code HTML du champ texte avec identifiant champTexteEx__Q__ et le span pour le résultat de la question
  */
 export function ajouteChampTexte (exercice, i, { texte = '', texteApres = '', inline = true, numeric = false, indice } = {}) {
@@ -44,12 +45,13 @@ export function ajouteChampTexte (exercice, i, { texte = '', texteApres = '', in
 
 /**
  * Précise la réponse attendue
- * @param {'objet exercice'} exercice
- * @param {'numero de la question'} i
- * @param {'array || number'} valeurs
+ * @param {Exercice} exercice
+ * @param {number} i
+ * @param {array | number} valeurs
+ * @param {object}
  */
 
-export function setReponse (exercice, i, valeurs, { digits = 0, decimals = 0, signe = false, exposantNbChiffres = 0, exposantSigne = false, approx = 0, aussiCorrect, digitsNum, digitsDen, basePuissance, exposantPuissance, baseNbChiffres, milieuIntervalle, formatInteractif = 'calcul' } = {}) {
+export function setReponse (exercice, i, valeurs, { digits = 0, formatInteractif = 'calcul', decimals = 0, signe = false, exposantNbChiffres = 0, exposantSigne = false, approx = 0, aussiCorrect = undefined, digitsNum = undefined, digitsDen = undefined, basePuissance = undefined, exposantPuissance = undefined, baseNbChiffres = undefined, milieuIntervalle = undefined } = {}) {
   let reponses = []
 
   if (Array.isArray(valeurs)) {
@@ -148,7 +150,7 @@ export function setReponse (exercice, i, valeurs, { digits = 0, decimals = 0, si
  * Lorsque l'évènement 'exercicesAffiches' est lancé par mathalea.js
  * on vérifie la présence du bouton de validation d'id btnValidationEx{i} créé par listeQuestionsToContenu
  * et on y ajoute un listenner pour vérifier les réponses cochées
- * @param {object} exercice
+ * @param {Exercice} exercice
  */
 export function exerciceCustom (exercice) {
   document.addEventListener('exercicesAffiches', () => {
@@ -195,7 +197,7 @@ export function exerciceCustom (exercice) {
  * on vérifie la présence du bouton de validation d'id btnValidationEx{i} créé par listeQuestionsToContenu
  * et on y ajoute un listenner pour vérifier les réponses saisies dans les math-field
  * Si le bouton n'existe pas on le crée
- * @param {object} exercice
+ * @param {Exercice} exercice
  */
 export function exerciceNonInteractif (exercice) {
   document.addEventListener('exercicesAffiches', () => {

@@ -35,7 +35,7 @@ export default function TraduireUnProgrammeDeCalcul () {
   this.besoinFormulaireCaseACocher = ['Résultat développé']
   this.sup = true
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

@@ -1,5 +1,5 @@
-import { ecritureAlgebrique, randint } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { ecritureAlgebrique, randint } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Résoudre une équation du type ax+b=c'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -17,7 +17,7 @@ export default function EquationAXPlusBEgalC () {
   this.nbQuestions = 1
   this.tailleDiaporama = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(-5, 5, [0, -1, 1])
     this.reponse = randint(-9, 9, [-1, 0, 1])
     const c = randint(-9, 9, [0])

@@ -25,7 +25,7 @@ export default function SensDeLaFraction () {
   this.pasDeVersionLatex = false
   this.pas_de_version_HMTL = false
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     this.autoCorrection = []

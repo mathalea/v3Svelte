@@ -1,5 +1,5 @@
-import { choice } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { choice } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Déterminer un nombre à partir d’une phrase'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -17,7 +17,7 @@ export default function CalculsAutomatiques () {
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = choice([50, 100, 40, 10, 20, 60, 200, 1000, 500])
     if (choice([true, false])) {
       switch (choice([1, 2, 3])) {

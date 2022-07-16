@@ -17,7 +17,7 @@ export default function PetitsProblemeDeFraction () {
   this.tailleDiaporama = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = choice([12, 24, 36, 48])
     const b = choice([15, 20, 25, 30, 35, 40, 45])
     const N = choice(['quart', 'tiers', 'cinquième', 'sixième'])

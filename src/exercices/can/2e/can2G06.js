@@ -18,7 +18,7 @@ export default function CoeffDirecteurDroite () {
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let xA, yA, xB, yB, n, d, a, b, tA, tB, repere
     switch (choice([1, 2, 3, 4])) { //
       case 1:// coefficient directeur droite
@@ -57,7 +57,7 @@ export default function CoeffDirecteurDroite () {
         repere = repere2({ xMin: -5, yMin: -5, xMax: 5, yMax: 5 })
         this.formatInteractif = 'calcul'
         this.question = 'Donner le coefficient directeur de la droite bleue.<br>'
-        this.question += `${mathalea2d({ xmin: -5, ymin: -5, xmax: 5, ymax: 5, pixelsParCm: 18, scale: 0.7, style: 'margin: auto' }, repere, courbe2(x => a * x + b, { repere: repere, color: 'blue' }))}`
+        this.question += `${mathalea2d({ xmin: -5, ymin: -5, xmax: 5, ymax: 5, pixelsParCm: 18, scale: 0.7, style: 'margin: auto' }, repere, courbe2(x => a * x + b, { repere, color: 'blue' }))}`
         this.correction = `<br>Le coefficient directeur est $${a}$`
         this.reponse = a
         break

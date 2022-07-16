@@ -1,5 +1,5 @@
-import { calcul, choice, randint, texNombre } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { calcul, choice, randint, texNombre } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Trouver le nombre manquant dans une somme'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -17,7 +17,7 @@ export default function ComplementAuDixiemeOuALaDizaine () {
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b
     if (choice([true, false])) { // décimal ou entier ?
       a = calcul((randint(1, 5) * 10 + randint(1, 9) / 10))

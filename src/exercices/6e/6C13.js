@@ -21,7 +21,7 @@ export default function VocabulaireEtOperations () {
   this.sup2 = false
   this.spacing = 2
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let decimal
     let expf, expn, expc, resultats
     let typesDeQuestionsDisponibles = []

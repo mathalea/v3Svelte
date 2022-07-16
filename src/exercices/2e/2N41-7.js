@@ -20,7 +20,7 @@ export default function FactoriserIdentitesremarquables2 () {
   this.nbQuestions = 3
   this.sup = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let typesDeQuestionsDisponibles = []

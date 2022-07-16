@@ -1,4 +1,4 @@
-import { fraction } from '../../modules/fractions'
+import { fraction } from '../../modules/fractions.js'
 import Exercice from '../Exercice.js'
 import { randint, texNombrec, miseEnEvidence, texteGras, sp, prenom, itemize, texteEnCouleur, numAlpha, listeQuestionsToContenu, combinaisonListes, texNombre, texFractionReduite, reduireAxPlusB } from '../../modules/outils.js'
 
@@ -20,7 +20,7 @@ export default function modeliserEquations () {
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let typeDeQuestionsDisponibles

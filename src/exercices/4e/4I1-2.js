@@ -30,7 +30,7 @@ export default function AlgoTortue () { // Ã§a c'est la classe qui permet de crÃ
   this.listePackages = 'scratch3'
   this.interactif = true
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = []
     this.listeCorrections = []
     this.autoCorrection = []

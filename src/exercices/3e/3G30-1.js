@@ -38,7 +38,7 @@ export default function ExprimerCosSinTan () {
     this.spacingCorr = 2
   }
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     this.autoCorrection = []

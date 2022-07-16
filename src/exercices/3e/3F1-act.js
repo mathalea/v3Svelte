@@ -36,7 +36,7 @@ export default function fonctionNotionVocabulaire () {
     pourcentage = '100%' // pour l'affichage des svg. On a besoin d'une variable globale
   } else { // sortie LaTeX
   };
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     let typesDeQuestions
     let j, idDuDivDiag, idDuDivCorr
     this.listeQuestions = [] // Liste de questions

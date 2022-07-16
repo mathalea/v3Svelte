@@ -30,7 +30,7 @@ export default function Exercice_fractions_simplifier (max = 11) {
   this.amcType = amcType
   this.amcReady = amcReady
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.autoCorrection = []
     this.listeQuestions = [] // Liste de questions

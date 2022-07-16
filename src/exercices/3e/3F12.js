@@ -33,7 +33,7 @@ export default function fonctionsCalculsDImages () {
     pourcentage = '100%' // pour l'affichage des svg. On a besoin d'une variable globale
   } else { // sortie LaTeX
   };
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.sup = Number(this.sup)
     let typesDeQuestions
     if (context.isHtml) { // les boutons d'aide uniquement pour la version html

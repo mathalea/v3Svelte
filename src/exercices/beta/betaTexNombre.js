@@ -1,8 +1,7 @@
 import Exercice from '../Exercice.js'
-import { texNombre, listeQuestionsToContenu, scientifiqueToDecimal, stringNombre } from '../../modules/outils.js'
+import { listeQuestionsToContenu, stringNombre } from '../../modules/outils.js'
 import { Decimal } from 'decimal.js'
 import { all, create } from 'mathjs'
-import { aleaVariables } from '../../modules/outilsMathjs.js'
 export const titre = 'Somme de deux entier'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -28,14 +27,13 @@ export default function NomExercice () {
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.besoinFormulaireTexte = ['nombre a : ', '']
   this.besoinFormulaire2Texte = ['nombre b : ', '']
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeCorrections = []
     this.listeQuestions = []
     Decimal.precision = 40
     Decimal.toExpNeg = -40
     Decimal.toExpPos = 40
     const a = new Decimal(this.sup)
-    const b = Number(this.sup)
 
     console.log(stringNombre(a))
     console.log(stringNombre(Math.log10(a), 5))

@@ -23,7 +23,7 @@ export default function LeCompteEstBonV3 () {
   this.sup2 = 70
   let maxSolution = 70
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

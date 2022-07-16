@@ -1,6 +1,6 @@
-import { droiteGraduee2, mathalea2d } from '../../../modules/2d'
-import { calcul, choice, texNombre } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { droiteGraduee2, mathalea2d } from '../../../modules/2d.js'
+import { calcul, choice, texNombre } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Lire l\'abscisse décimale d\'un point sur une droite graduée'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -19,7 +19,7 @@ export default function LireAbscisseDecimaleDeFraction () {
   this.formatChampTexte = 'largeur15 inline'
   this.consigne = ''
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a
     switch (choice([1, 2])) { //
       case 1:// droite graduée     /4 resultat décimal

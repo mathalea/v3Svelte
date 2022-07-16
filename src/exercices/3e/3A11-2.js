@@ -35,7 +35,7 @@ export default function decompositionFacteursPremiers () {
   this.besoinFormulaireCaseACocher = ['Afficher la liste des nombres premiers inférieurs à 100']
   this.sup = true
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     let typesDeQuestions
     if (context.isHtml) { // les boutons d'aide uniquement pour la version html
       // this.boutonAide = '';

@@ -20,7 +20,7 @@ export default function Trigo () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const listeTriplet = [
       [3, 4, 5], [5, 12, 13], [8, 15, 17], [7, 24, 25], [20, 21, 29], [12, 35, 37], [9, 40, 41], [11, 60, 61]
     ] // triplets Pythagore
@@ -48,10 +48,10 @@ export default function Trigo () {
         this.question = `$\\cos\\widehat{${nom[2]}}=$<br>
         (Sous forme d'une fraction irréductible)<br>`
         this.question += mathalea2d({
-          xmin: xmin,
-          ymin: ymin,
-          xmax: xmax,
-          ymax: ymax,
+          xmin,
+          ymin,
+          xmax,
+          ymax,
           pixelsParCm: 170 / c,
           mainlevee: false,
           amplitude: 0.5,
@@ -69,10 +69,10 @@ export default function Trigo () {
         this.question = `$\\sin\\widehat{${nom[2]}}=$<br>
         (Sous forme d'une fraction irréductible)<br>`
         this.question += mathalea2d({
-          xmin: xmin,
-          ymin: ymin,
-          xmax: xmax,
-          ymax: ymax,
+          xmin,
+          ymin,
+          xmax,
+          ymax,
           pixelsParCm: 170 / c,
           mainlevee: false,
           amplitude: 0.5,
@@ -90,10 +90,10 @@ export default function Trigo () {
         this.question = `$\\tan\\widehat{${nom[2]}}=$<br>
         (Sous forme d'une fraction irréductible)<br>`
         this.question += mathalea2d({
-          xmin: xmin,
-          ymin: ymin,
-          xmax: xmax,
-          ymax: ymax,
+          xmin,
+          ymin,
+          xmax,
+          ymax,
           pixelsParCm: 170 / c,
           mainlevee: false,
           amplitude: 0.5,
@@ -111,10 +111,10 @@ export default function Trigo () {
         this.question = `$\\cos\\widehat{${nom[0]}}=$<br>
         (Sous forme d'une fraction irréductible)<br>`
         this.question += mathalea2d({
-          xmin: xmin,
-          ymin: ymin,
-          xmax: xmax,
-          ymax: ymax,
+          xmin,
+          ymin,
+          xmax,
+          ymax,
           pixelsParCm: 170 / c,
           mainlevee: false,
           amplitude: 0.5,
@@ -132,10 +132,10 @@ export default function Trigo () {
         this.question = `$\\sin\\widehat{${nom[0]}}=$<br>
         (Sous forme d'une fraction irréductible)<br>`
         this.question += mathalea2d({
-          xmin: xmin,
-          ymin: ymin,
-          xmax: xmax,
-          ymax: ymax,
+          xmin,
+          ymin,
+          xmax,
+          ymax,
           pixelsParCm: 170 / c,
           mainlevee: false,
           amplitude: 0.5,
@@ -153,10 +153,10 @@ export default function Trigo () {
         this.question = `$\\tan\\widehat{${nom[0]}}=$<br>
         (Sous forme d'une fraction irréductible)<br>`
         this.question += mathalea2d({
-          xmin: xmin,
-          ymin: ymin,
-          xmax: xmax,
-          ymax: ymax,
+          xmin,
+          ymin,
+          xmax,
+          ymax,
           pixelsParCm: 170 / c,
           mainlevee: false,
           amplitude: 0.5,

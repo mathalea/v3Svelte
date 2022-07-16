@@ -25,7 +25,7 @@ export default function TablesAdditionsSoustractions () {
   this.consigne = 'Calculer'
   this.spacing = 2
   this.tailleDiaporama = 3
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     this.sup = parseInt(this.sup)
     this.sup2 = parseInt(this.sup2)

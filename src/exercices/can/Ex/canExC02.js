@@ -18,7 +18,7 @@ export default function SommeDeComplexes () {
   this.nbQuestions = 1
   this.typeExercice = 'simple'
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const z1 = complex(randint(-5, 5, 0), randint(-5, 5, 0))
     const z2 = complex(0, randint(-5, 5, 0))
     this.question = `On donne $~~a = ${z1.toString()}~~$ et $~~b = ${z2.toString()}$.<br>Calcule $a \\times b$.`

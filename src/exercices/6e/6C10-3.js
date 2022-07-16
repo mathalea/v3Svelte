@@ -26,7 +26,7 @@ export default function ExerciceTablesMultiplicationsEtDecimaux (
   this.tailleDiaporama = 3
   this.nbQuestions = 10
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

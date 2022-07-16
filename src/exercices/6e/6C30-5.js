@@ -33,7 +33,7 @@ export default function MultiplierPar001 () {
   //  this.modeQcm = false; // A décommenter : valeur par défaut d'un troisième paramètre
 
   // c'est ici que commence le code de l'exercice cette fonction crée une copie de l'exercice
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup2 = parseInt(this.sup2)
     // la variable numeroExercice peut être récupérée pour permettre de différentier deux copies d'un même exo
     // Par exemple, pour être certain de ne pas avoir les mêmes noms de points en appelant 2 fois cet exo dans la même page

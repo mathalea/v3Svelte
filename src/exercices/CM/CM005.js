@@ -21,7 +21,7 @@ export default function Ajouter9 () {
   this.nbColsCorr = 2
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.boutonAide = modalTexteCourt(
       numeroExercice,
       'Ajouter 9 revient à ajouter 10 et à soustraire 1.'

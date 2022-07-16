@@ -32,7 +32,7 @@ export default function FonctionsProbabilite1 () {
     }
   }
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

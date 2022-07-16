@@ -21,7 +21,7 @@ export default function FonctionsProbabilite2 () {
   context.isHtml ? this.spacingCorr = 3 : this.spacingCorr = 2
   this.sup = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const indexDisponibles = [0, 1, 2, 3]

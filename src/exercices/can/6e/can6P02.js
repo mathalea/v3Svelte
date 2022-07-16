@@ -1,5 +1,5 @@
-import { calcul, choice, randint, texPrix } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { calcul, choice, randint, texPrix } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Utiliser une proportionnalité*'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -20,7 +20,7 @@ export default function ProportionnaliteCompliquee () {
   this.consigne = ''
   const fruits = [
     ['pêches', 4, 10, 30],
-    ['Noix', 5, 4, 13],
+    ['noix', 5, 4, 13],
     ['cerises', 6, 11, 20],
     ['pommes', 2, 20, 40],
     ['framboises', 15, 1, 5],
@@ -29,7 +29,7 @@ export default function ProportionnaliteCompliquee () {
     ['bananes', 1.5, 15, 25]
   ]
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(0, 7) // index du fruit
     const b = calcul(fruits[a][1] * (1 + choice([-1, 1]) * randint(1, 3) * 0.1)) // prix au kg
     const c = Math.round(randint(fruits[a][2], fruits[a][3] / 10)) // nombre de kg première valeur

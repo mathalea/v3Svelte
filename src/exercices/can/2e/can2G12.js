@@ -17,7 +17,7 @@ export default function VecteursColineairesVF () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let ux, uy, vx, vy, k
     this.listeQuestions = []
     this.listeCorrections = []

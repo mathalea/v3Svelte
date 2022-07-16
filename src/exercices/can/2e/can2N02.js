@@ -21,7 +21,7 @@ export default function PlusPetitEnsemble () {
   this.formatInteractif = 'texte'
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.tailleDiaporama = 2
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c, d, listeFractions1, listeFractions2, fraction1, fraction2, choix, choix2, N
     switch (choice(['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i'])) { //
       case 'a':

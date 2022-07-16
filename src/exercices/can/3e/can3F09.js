@@ -20,7 +20,7 @@ export default function ReconnaitreFonctionAffine () {
   this.formatChampTexte = 'largeur15 inline'
   this.formatInteractif = 'calcul'
   this.nbQuestions = 1
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeCorrections = []
     this.listeQuestions = []
     let a, b, c

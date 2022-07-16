@@ -28,7 +28,7 @@ export default function ArrondirUneValeur () {
   this.interactifReady = interactifReady
   context.isHtml ? (this.spacingCorr = 2.5) : (this.spacingCorr = 3.5)
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     this.consigne = "Arrondir chaque nombre à l'unité, puis au dixième, puis au centième."
 

@@ -23,7 +23,7 @@ export default function PasserDUneBaseA1Autre () {
   this.spacing = 1
   context.isHtml ? this.spacingCorr = 2 : this.spacingCorr = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

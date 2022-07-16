@@ -17,7 +17,7 @@ export default function CoordonneesPointIntersectionAxeOrdonneesDroite () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(-10, 10, 0)
     const b = randint(1, 10)
     const n = randint(-5, 5, 0)

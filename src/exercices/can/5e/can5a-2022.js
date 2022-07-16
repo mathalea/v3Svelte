@@ -1,7 +1,7 @@
 import Exercice from '../../Exercice.js'
 import { fraction } from '../../../modules/fractions.js'
 import {
-  mathalea2d, point, labelPoint, droiteGraduee2, grille, segment, milieu, arc, droite, texteParPosition, tracePoint, polygone, codageAngleDroit, fixeBordures, pointSurSegment, angleModulo, rotation, rapporteur, codeAngle
+  mathalea2d, point, labelPoint, droiteGraduee2, grille, segment, milieu, arc, droite, texteParPosition, tracePoint, polygone, codageAngleDroit, fixeBordures, pointSurSegment, angleModulo, rotation, rapporteur, codageAngle
 } from '../../../modules/2d.js'
 import { round, min, max } from 'mathjs'
 import Grandeur from '../../../modules/Grandeur.js'
@@ -35,7 +35,7 @@ export default function SujetCAN2022cinquieme () {
   this.nbCols = 1
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const nbQ1 = min(round(this.nbQuestions * 10 / 30), 10) // Choisir d'un nb de questions de niveau 1 parmi les 7 possibles.
@@ -392,11 +392,11 @@ export default function SujetCAN2022cinquieme () {
           g = texteParPosition(`$${c}^\\circ$`, 2.7, 5.5)// angle D
           if (choix === 'a') {
             h = texteParPosition('?', 7, 8.5)
-            codeA = codeAngle(F, G, H)
+            codeA = codageAngle(F, G, H)
           }
           if (choix === 'b') {
             h = texteParPosition('?', 5.8, 7.5)
-            codeA = codeAngle(G, F, H)
+            codeA = codageAngle(G, F, H)
           }
 
           poly1.epaisseur = 1
@@ -692,7 +692,7 @@ export default function SujetCAN2022cinquieme () {
           nordEst = rotation(nordEst, A, angC < 0 ? angB + 180 : angB)
           sudOuest = rotation(sudOuest, A, angC < 0 ? angB + 180 : angB)
           nordOuest = rotation(nordOuest, A, angC < 0 ? angB + 180 : angB)
-          objetsEnonce.push(R, AB, AC, codeAngle(B, A, angC, 1, '', 'black', 2, 1, 'none', 0, false, true, '?', 2)) // On remplit les tableaux d'objets Mathalea2d
+          objetsEnonce.push(R, AB, AC, codageAngle(B, A, angC, 1, '', 'black', 2, 1, 'none', 0, false, true, '?', 2)) // On remplit les tableaux d'objets Mathalea2d
           texte = 'Donne la mesure de l\'angle.'
           paramsEnonce = { xmin: min(nordEst.x, nordOuest.x, sudEst.x, sudOuest.x), ymin: -1 + min(nordEst.y, nordOuest.y, sudEst.y, sudOuest.y), xmax: max(nordEst.x, nordOuest.x, sudEst.x, sudOuest.x), ymax: 1 + max(nordEst.y, nordOuest.y, sudEst.y, sudOuest.y), pixelsParCm: 20, scale: 0.4, mainlevee: false }
           texte += '<br>' + mathalea2d(paramsEnonce, objetsEnonce)
@@ -783,8 +783,8 @@ export default function SujetCAN2022cinquieme () {
           reponse = arrondi(c / (d + 1), 1)
           texte = `Quelle est la distance du point $A$ à la droite $(BC)$ ? <br>
             `
-          texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 20, mainlevee: false, amplitude: 0.5, scale: 0.7, style: 'margin: auto' }, objets)
-          texteCorr = mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 15, mainlevee: false, amplitude: 0.5, scale: 0.7, style: 'margin: auto' }, objets, s2, traceH, droite(B, C),
+          texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 20, mainlevee: false, amplitude: 0.5, scale: 0.7, style: 'margin: auto' }, objets)
+          texteCorr = mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 15, mainlevee: false, amplitude: 0.5, scale: 0.7, style: 'margin: auto' }, objets, s2, traceH, droite(B, C),
             texteParPosition(`${reponse}  cm`, milieu(A, H).x - 0.9, milieu(A, H).y, 'milieu', 'black', 1, 'middle', true), labelPoint(H))
           texteCorr += `<br>La distance du point $A$ à la droite $(BC)$ est donnée par la longueur $AH$ : $${texNombre(reponse, 1)}$ cm`
 

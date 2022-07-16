@@ -28,7 +28,7 @@ export default function ExerciceLabyrintheNumeration () {
   this.sup2 = 3
   this.sup = true
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeCorrections = []
     this.listeQuestions = []
     this.autoCorrection = []

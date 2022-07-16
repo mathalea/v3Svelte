@@ -21,7 +21,7 @@ export default function CalculTermeSuiteRec () {
   this.tailleDiaporama = 2
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, u
     const nomSuite = ['u', 'v', 'w']
     const s = choice(nomSuite)

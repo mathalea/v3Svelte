@@ -29,7 +29,7 @@ export default function FormeLitteraleIntroduireUneLettre () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.debug) {
       typesDeQuestionsDisponibles = [1]
     } else {

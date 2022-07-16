@@ -24,7 +24,7 @@ export default function ReperagePointDuPlan () {
   this.quartDePlan = false
   this.listePackages = 'tkz-euclide'
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     this.autoCorrection = []

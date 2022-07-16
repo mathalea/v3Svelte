@@ -18,7 +18,7 @@ export default function SolutionInequation () {
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   let a, b, c, d
   this.date = 1635094684684
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     let texte, texteCorr, monQcm

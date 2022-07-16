@@ -18,7 +18,7 @@ export default function DiagonaleCarre () {
   this.tailleDiaporama = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, c2, reductible, reduction, entiere
     a = randint(1, 10)//
     switch (choice(['a', 'b'])) {

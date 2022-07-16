@@ -16,7 +16,7 @@ export default function RacineCarrAvecTheoremeHauteur () {
   this.nbQuestions = 1
   this.nbQuestionsModifiable = false
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     const couplesPossibles = [[1, 5], [2, 3], [1, 7], [2, 4], [2, 5], [3, 4], [3, 5]]
     const couple = choice(couplesPossibles)
     const a = couple[0]

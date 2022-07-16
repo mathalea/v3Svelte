@@ -23,7 +23,7 @@ export default function PasserDeLaBase12Ou16ALaBase10 () {
   this.spacing = 1
   context.isHtml ? this.spacingCorr = 2 : this.spacingCorr = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const typesDeQuestionsDisponibles = ['vers_base_10', 'vers_base_n_3_chiffres']

@@ -28,7 +28,7 @@ export default function MultiplierUnNombreParPuissanceDeDix () {
   this.sup3 = 3
   this.listePackages = 'bclogo'
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // tableau contenant la liste des questions
     this.listeCorrections = []
     this.autoCorrection = []

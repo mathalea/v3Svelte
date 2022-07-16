@@ -34,7 +34,7 @@ export default function ProportionnaliteParLineariteBis () {
     titre = 'Résoudre un problème relevant de la proportionnalité'
   }
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const tabHash = []
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

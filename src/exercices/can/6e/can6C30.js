@@ -1,5 +1,5 @@
-import { choice, randint, texNombre, texteEnCouleur } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { choice, randint, texNombre, texteEnCouleur } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 import Decimal from 'decimal.js'
 export const titre = 'Multiplier deux décimaux'
 export const interactifReady = true
@@ -19,7 +19,7 @@ export default function MultiplierDeuxDecimaux () {
   this.formatChampTexte = 'largeur15 inline'
   this.typeExercice = 'simple'
   this.tailleDiaporama = 2
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c, d
     switch (choice([1, 2, 3, 4])) {
       case 1:// un entier par un décimal avec une chiffre après la virgule

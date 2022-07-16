@@ -1,5 +1,5 @@
-import { calcul, randint, texNombrec, choice } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { calcul, randint, texNombrec, choice } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Passer de la fraction décimale à l’écriture décimale*'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -16,7 +16,7 @@ export default function FractionDecimaleEcritureDecimale2 () {
   this.tailleDiaporama = 1
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c
     switch (choice(['a', 'b'])) { //,
       case 'a':

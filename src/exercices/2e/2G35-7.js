@@ -28,7 +28,7 @@ export default function lecturegraphiquedeaetb (numeroExercice) {
   this.spacingCorr = 3
   this.sup = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.listeQuestions = []
     this.listeCorrections = []

@@ -106,12 +106,12 @@ export default function ProblemesAiresRectangles () {
     const objets = []
     for (let i = 0; i < typeDeGrille[0] + 1; i++) {
       segTemp = segment(xBordures[i], 0, xBordures[i], yBordures[typeDeGrille[1]])
-      segTemp.pointilles = true
+      segTemp.pointilles = 5
       objets.push(segTemp)
     }
     for (let i = 0; i < typeDeGrille[1] + 1; i++) {
       segTemp = segment(0, yBordures[i], xBordures[typeDeGrille[0]], yBordures[i])
-      segTemp.pointilles = true
+      segTemp.pointilles = 5
       objets.push(segTemp)
     }
     return objets
@@ -311,7 +311,7 @@ export default function ProblemesAiresRectangles () {
     return [texte, texteCorr, reponse]
   }
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // tableau contenant la liste des questions
     this.listeCorrections = []
     this.autoCorrection = []

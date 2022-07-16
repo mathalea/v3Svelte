@@ -1,4 +1,4 @@
-import Operation from '../../modules/operations'
+import Operation from '../../modules/operations.js'
 import Exercice from '../Exercice.js'
 import { context } from '../../modules/context.js'
 import { listeQuestionsToContenu, randint, combinaisonListesSansChangerOrdre, texNombre, calcul, nombreDeChiffresDe } from '../../modules/outils.js'
@@ -34,7 +34,7 @@ export default function AdditionsSoustractionsMultiplicationsPosees () {
   this.listePackages = 'xlop'
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

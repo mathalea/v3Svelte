@@ -41,7 +41,7 @@ export default function PuissancesDunRelatif1 () {
 
   this.listePackages = 'bclogo'
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.sup = Number(this.sup)
     let typesDeQuestions
     this.boutonAide = modalPdf(

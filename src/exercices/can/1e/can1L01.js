@@ -1,6 +1,6 @@
 
-import Exercice from '../../Exercice'
-import { choice, randint, reduirePolynomeDegre3, ecritureParentheseSiNegatif } from '../../../modules/outils'
+import Exercice from '../../Exercice.js'
+import { choice, randint, reduirePolynomeDegre3, ecritureParentheseSiNegatif } from '../../../modules/outils.js'
 export const titre = 'Calculer un discriminant'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -16,7 +16,7 @@ export default function Discriminant () {
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(1, 5) * choice([-1, 1, 1, 1])
     const b = randint(-5, 5)
     const c = randint(-5, 5)

@@ -32,7 +32,7 @@ export default function chiffreNombreDe () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
 
     switch (this.sup) {

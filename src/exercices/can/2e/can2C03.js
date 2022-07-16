@@ -17,7 +17,7 @@ export default function CalculPuissance1 () {
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c, d
     switch (choice(['a', 'b', 'c', 'd', 'e', 'f'])) { //
       case 'a':

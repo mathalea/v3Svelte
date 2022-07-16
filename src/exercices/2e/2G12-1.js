@@ -16,7 +16,7 @@ export default function Distance () {
   this.nbColsCorr = 2
   this.sup = 1 //
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = Number(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

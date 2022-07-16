@@ -27,7 +27,7 @@ export default function CalculsAvecPuissancesDeDix () {
   this.nbColsCorr = 1
   this.nbQuestions = 5
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.sup2 = parseInt(this.sup2)
     this.autoCorrection = []

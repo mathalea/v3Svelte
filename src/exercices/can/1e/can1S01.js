@@ -21,7 +21,7 @@ export default function CalculTermeSuiteExp () {
   this.tailleDiaporama = 2
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c, k, choix, listeFractions1, fraction1
     switch (choice(['a', 'b', 'c', 'd'])) { //
       case 'a':// fonction affine

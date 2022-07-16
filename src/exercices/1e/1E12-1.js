@@ -23,7 +23,7 @@ export default function LireElementsCarac () {
   // this.video = '' // Id YouTube ou url
   this.sup = 4
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     const pixelsParCm = 20
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

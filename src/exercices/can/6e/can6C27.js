@@ -17,7 +17,7 @@ export default function PetitsProblemeArithmetique () {
   this.tailleDiaporama = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, r, e, m, somme, prenom1, prenom2
     switch (choice([1, 2, 3, 4, 5, 6, 7, 8])) {
       case 1:// de plus

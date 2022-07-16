@@ -16,7 +16,7 @@ export default function NotationSegmentDroiteDemiDroite () {
   this.nbCols = 3
   this.nbColsCorr = 2
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

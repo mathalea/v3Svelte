@@ -29,7 +29,7 @@ export default function NomExercice () {
   this.tailleDiaporama = 3
   this.video = ''
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     this.autoCorrection = []

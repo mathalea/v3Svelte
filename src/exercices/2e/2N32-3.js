@@ -16,7 +16,7 @@ export default function ExtraireUnCarreParfaitDUneRacineCarree () {
   this.nbColsCorr = 2
   this.sup = 2 //
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.sup2 = parseInt(this.sup2)
     this.listeQuestions = [] // Liste de questions

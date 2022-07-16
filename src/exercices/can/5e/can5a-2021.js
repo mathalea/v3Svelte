@@ -1,6 +1,6 @@
 import Exercice from '../../Exercice.js'
 import { fraction, obtenirListeFractionsIrreductibles } from '../../../modules/fractions.js'
-import { mathalea2d, point, labelPoint, codeSegment, codeAngle, droiteGraduee2, segment, milieu, texteParPosition } from '../../../modules/2d.js'
+import { mathalea2d, point, labelPoint, codageSegment, codageAngle, droiteGraduee2, segment, milieu, texteParPosition } from '../../../modules/2d.js'
 import { round, min } from 'mathjs'
 import { listeQuestionsToContenu, printlatex, randint, simplificationDeFractionAvecEtapes, texNombre, tableauColonneLigne, miseEnEvidence, shuffle, choice, calcul, sp, arrondi } from '../../../modules/outils.js'
 import { setReponse } from '../../../modules/gestionInteractif.js'
@@ -30,7 +30,7 @@ export default function SujetCAN20215ieme () {
   this.nbCols = 1
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const nbQ1 = min(round(this.nbQuestions * 8 / 30), 8) // Choisir d'un nb de questions de niveau 1 parmi les 7 possibles.
@@ -313,29 +313,29 @@ export default function SujetCAN20215ieme () {
             K = point(1, 1)
             L = point(0, 1)
             s1 = segment(A, B)
-            code1 = codeSegment(A, B, '|')
+            code1 = codageSegment(A, B, '|')
             s2 = segment(B, C)
-            code2 = codeSegment(B, C, '|')
+            code2 = codageSegment(B, C, '|')
             s3 = segment(C, D)
-            code3 = codeSegment(C, D, '|')
+            code3 = codageSegment(C, D, '|')
             s4 = segment(D, E)
-            code4 = codeSegment(D, E, '|')
+            code4 = codageSegment(D, E, '|')
             s5 = segment(E, F)
-            code5 = codeSegment(E, F, '|')
+            code5 = codageSegment(E, F, '|')
             s6 = segment(F, G)
-            code6 = codeSegment(F, G, '|')
+            code6 = codageSegment(F, G, '|')
             s7 = segment(G, H)
-            code7 = codeSegment(G, H, '|')
+            code7 = codageSegment(G, H, '|')
             s8 = segment(H, I)
-            code8 = codeSegment(H, I, '|')
+            code8 = codageSegment(H, I, '|')
             s9 = segment(I, J)
-            code9 = codeSegment(I, J, '|')
+            code9 = codageSegment(I, J, '|')
             s10 = segment(J, K)
-            code10 = codeSegment(J, K, '|')
+            code10 = codageSegment(J, K, '|')
             s11 = segment(K, L)
-            code11 = codeSegment(K, L, '|')
+            code11 = codageSegment(K, L, '|')
             s12 = segment(L, A)
-            code12 = codeSegment(L, A, '|')
+            code12 = codageSegment(L, A, '|')
             xmin = -2
             ymin = -2.1
             xmax = 3
@@ -346,7 +346,7 @@ export default function SujetCAN20215ieme () {
               s1, s2, s3, s4, s5, s6, code1, code2, code3, code4, code5, code6, s7, s8, s9, s10, s11, s12, code7, code8, code9, code10, code11, code12)
             reponse = 12 * a
             texte = 'Quel est le périmètre de cette figure ?<br>'
-            texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+            texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
             texteCorr = `La figure est composée de $12$ segments de longueur $${a}$ cm.<br>
               Le périmètre de cette figure est donc : $12\\times\\times ${a}=${12 * a}$ cm.   `
           }
@@ -362,17 +362,17 @@ export default function SujetCAN20215ieme () {
             F = point(2, 0)
             G = point(1, 0)
             s1 = segment(A, B)
-            code1 = codeSegment(A, B, '||')
+            code1 = codageSegment(A, B, '||')
             s2 = segment(B, C)
-            code2 = codeSegment(B, C, '||')
+            code2 = codageSegment(B, C, '||')
             s3 = segment(A, G)
-            code3 = codeSegment(A, G, '||')
+            code3 = codageSegment(A, G, '||')
             s4 = segment(G, F)
-            code4 = codeSegment(G, F, '||')
+            code4 = codageSegment(G, F, '||')
             s5 = segment(C, D)
-            code5 = codeSegment(C, D, '|')
+            code5 = codageSegment(C, D, '|')
             s6 = segment(E, F)
-            code6 = codeSegment(E, F, '|')
+            code6 = codageSegment(E, F, '|')
             xmin = -1
             ymin = -2
             xmax = 4
@@ -385,7 +385,7 @@ export default function SujetCAN20215ieme () {
               s1, s2, s3, s4, s5, s6, code1, code2, code3, code4, code5, code6, segment(D, E))
             reponse = 4 * a + 2 * c + b
             texte = 'Quel est le périmètre de cette figure ?<br>'
-            texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+            texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
             texteCorr = `La figure est composée de $4$ segments de longueur $${a}$, de $2$ segments de longueur $${c}$ et d'un segment de longueur $${b}$.<br>
             Le périmètre de cette figure est donc : $4\\times ${a}+2\\times ${c}+${b}=${4 * a + 2 * c + b}$ cm.   `
           }
@@ -401,15 +401,15 @@ export default function SujetCAN20215ieme () {
             F = point(2, 0)
             G = point(1, 0)
             s1 = segment(B, G)
-            code1 = codeSegment(B, G, '||')
+            code1 = codageSegment(B, G, '||')
             s2 = segment(B, C)
-            code2 = codeSegment(B, C, '||')
+            code2 = codageSegment(B, C, '||')
             s4 = segment(G, F)
-            code4 = codeSegment(G, F, '||')
+            code4 = codageSegment(G, F, '||')
             s5 = segment(C, D)
-            code5 = codeSegment(C, D, '|')
+            code5 = codageSegment(C, D, '|')
             s6 = segment(E, F)
-            code6 = codeSegment(E, F, '|')
+            code6 = codageSegment(E, F, '|')
             xmin = -1
             ymin = -2
             xmax = 4
@@ -422,7 +422,7 @@ export default function SujetCAN20215ieme () {
               s1, s2, s4, s5, s6, code1, code2, code4, code5, code6, segment(D, E))
             reponse = 3 * c + 2 * a + b
             texte = 'Quel est le périmètre de cette figure ?<br>'
-            texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+            texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
             texteCorr = `La figure est composée de $3$ segments de longueur $${c}$, de $2$ segments de longueur $${a}$ et d'un segment de longueur $${b}$.<br>
                     Le périmètre de cette figure est donc : $3\\times ${c}+2\\times ${a}+${b}=${3 * c + 2 * a + b}$ cm.   `
           }
@@ -687,7 +687,7 @@ export default function SujetCAN20215ieme () {
               texteParPosition(`$${a}° $`, 4, 1.5, 'milieu', 'black', 1, 'middle', true),
               texteParPosition(`$${b}° $`, 1.2, 0.25, 'milieu', 'black', 1, 'middle', true),
               texteParPosition('?', 5.3, 0.3, 'milieu', 'black', 1, 'middle', true),
-              s1, s2, s3, codeAngle(B, C, A, 0.8, '|'), codeAngle(C, A, B, 0.8, '||'))
+              s1, s2, s3, codageAngle(B, C, A, 0.8, '|'), codageAngle(C, A, B, 0.8, '||'))
           } else {
             a = choice([100, 110, 120])
             b = choice([45, 50, 55])
@@ -707,11 +707,11 @@ export default function SujetCAN20215ieme () {
               texteParPosition(`$${a}° $`, 2, 1.5, 'milieu', 'black', 1, 'middle', true),
               texteParPosition(`$${b}° $`, 1.2, 0.25, 'milieu', 'black', 1, 'middle', true),
               texteParPosition('?', 5.2, 0.3, 'milieu', 'black', 1, 'middle', true),
-              s1, s2, s3, codeAngle(B, C, A, 0.8, '|'), codeAngle(C, A, B, 0.8, '||'))
+              s1, s2, s3, codageAngle(B, C, A, 0.8, '|'), codageAngle(C, A, B, 0.8, '||'))
           }
           reponse = 180 - a - b
           texte = '<br>'
-          texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+          texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
           texte += ' ? $=$'
           texteCorr = `Dans un triangle, la somme des angles vaut $180°$.<br>
          ?$=180-${a}-${b}=${180 - a - b}°$.`
@@ -798,15 +798,15 @@ export default function SujetCAN20215ieme () {
           C = point(3, 1, 'C', 'above')
           reponse = (b - 2 * a) / 2
           s1 = segment(A, E)
-          code1 = codeSegment(A, E, '||')
+          code1 = codageSegment(A, E, '||')
           s2 = segment(A, C)
-          code2 = codeSegment(A, C, '||')
+          code2 = codageSegment(A, C, '||')
           s3 = segment(C, E)
-          code3 = codeSegment(C, E, '|')
+          code3 = codageSegment(C, E, '|')
           s4 = segment(C, D)
-          code4 = codeSegment(C, D, '|')
+          code4 = codageSegment(C, D, '|')
           s5 = segment(E, D)
-          code5 = codeSegment(E, D, '|')
+          code5 = codageSegment(E, D, '|')
           xmin = -1
           ymin = -1.5
           xmax = 5.5
@@ -818,7 +818,7 @@ export default function SujetCAN20215ieme () {
               s1, s2, s3, s4, s5, code1, code2, code3, code4, code5, labelPoint(A, C, D, E))
             texte = `Le périmètre du quadrilatère $AEDC$ est égal à $${b}$ cm.<br>
           `
-            texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+            texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
             texteCorr = ` Le quadrilatère est composé de $2$ segments de $${a}$ cm et de deux autres segments de même longueur.<br>
           Ainsi, $CD=(${b}-2\\times ${a})\\div 2=${texNombre((b - 2 * a) / 2)}$  `
             setReponse(this, index, reponse, { formatInteractif: 'calcul' })
@@ -831,7 +831,7 @@ export default function SujetCAN20215ieme () {
               s1, s2, s3, s4, s5, code1, code2, code3, code4, code5, labelPoint(A, C, D, E))
             texte = `Le périmètre du quadrilatère $AEDC$ est égal à $${b}$ cm.<br>
           `
-            texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+            texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
             texteCorr = ` Le quadrilatère est composé de $2$ segments de $${a}$ cm et de deux autres segments de même longueur.<br>
           Ainsi, $AE=(${b}-2\\times ${a})\\div 2=${texNombre((b - 2 * a) / 2)}$  `
             setReponse(this, index, reponse, { formatInteractif: 'calcul' })

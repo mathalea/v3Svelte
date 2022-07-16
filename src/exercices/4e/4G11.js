@@ -1,7 +1,7 @@
 import Exercice from '../Exercice.js'
 import { context } from '../../modules/context.js'
 import { listeQuestionsToContenu, egal, randint, shuffle, nombreAvecEspace, texcolors } from '../../modules/outils.js'
-import { tracePoint, vecteur, segment, translation, translationAnimee, codeSegment, texteParPosition, mathalea2d, pavage } from '../../modules/2d.js'
+import { tracePoint, vecteur, segment, translation, translationAnimee, codageSegment, texteParPosition, mathalea2d, pavage } from '../../modules/2d.js'
 export const titre = 'Trouver l\'image d\'une figure par une translation dans un pavage'
 
 /**
@@ -25,7 +25,7 @@ export default function PavageEtTranslation2d () {
   this.sup2 = false // On cache les centres par défaut.
   this.sup3 = 7
   context.isHtml ? (this.spacingCorr = 2.5) : (this.spacingCorr = 1.5)
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = Number(this.sup)
     this.sup3 = Number(this.sup3)
     const videcouples = function (tableau) {
@@ -204,7 +204,7 @@ export default function PavageEtTranslation2d () {
         P3 = translationAnimee(P1, v, `begin="${i * 3}s;${i * 3 + t}s;${i * 3 + t * 2}s" end="${i * 3 + 2}s;${i * 3 + t + 2}s;${i * 3 + t * 2 + 2}s" dur="2s" repeatCount="indefinite" repeatDur="${9 * this.nbQuestions}s" id="poly-${i}-anim"`)
         P3.color = texcolors(i)
         P3.epaisseur = 2
-        objetsCorrection.push(tracePoint(A, B), d, codeSegment(A, B, '//', texcolors(i)), P1, P2, P3)
+        objetsCorrection.push(tracePoint(A, B), d, codageSegment(A, B, '//', texcolors(i)), P1, P2, P3)
       }
     }
     if (this.correctionDetaillee) {

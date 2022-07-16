@@ -40,7 +40,7 @@ export default function MultiplierDecimaux () {
   this.besoinFormulaire4Numerique = ['Choix du nombre de décimales significatives dans le second facteur', 3,
     '1 : Une décimale\n2 : Deux décimales\n3 : Trois décimales']
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

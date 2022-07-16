@@ -14,7 +14,7 @@ export default function SommeDeVecteurs () {
   this.nbCols = 2
   this.nbColsCorr = 2
   this.sup = 1 //
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let u, v, A, B, C, xU, yU, xV, yV, p, U, V, M, N, UU, VV, posLabelA
@@ -76,9 +76,9 @@ export default function SommeDeVecteurs () {
         anim.compasDeplacer(translation(M, u))
         anim.compasTracerArcCentrePoint(translation(M, u), B)
         anim.crayonMontrer(B)
-        anim.tracer(translation(M, u), { couleur: 'blue', pointilles: true })
+        anim.tracer(translation(M, u), { couleur: 'blue', pointilles: 5 })
         anim.crayonDeplacer(M)
-        anim.tracer(A, { couleur: 'blue', pointilles: true })
+        anim.tracer(A, { couleur: 'blue', pointilles: 5 })
         anim.tracer(B, { vecteur: true, couleur: 'blue' })
         anim.crayonMasquer()
       }
@@ -91,9 +91,9 @@ export default function SommeDeVecteurs () {
       anim.compasDeplacer(translation(N, v))
       anim.compasTracerArcCentrePoint(translation(N, v), C)
       anim.crayonMontrer(C)
-      anim.tracer(translation(N, v), { couleur: 'green', pointilles: true })
+      anim.tracer(translation(N, v), { couleur: 'green', pointilles: 5 })
       anim.crayonDeplacer(N)
-      anim.tracer(B, { couleur: 'green', pointilles: true })
+      anim.tracer(B, { couleur: 'green', pointilles: 5 })
       anim.tracer(C, { vecteur: true, couleur: 'green' })
       anim.crayonMasquer()
       anim.compasMasquer()

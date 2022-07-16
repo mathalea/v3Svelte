@@ -19,7 +19,7 @@ export default function cliqueFigure () {
   this.nbCols = 1
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     this.interactifType = 'cliqueFigure'
     this.consigne = (this.interactif) ? 'Cliquer sur la bonne figure.' : 'Entourer la bonne figure.' /// Penser ici à AMC aussi.

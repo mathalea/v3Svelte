@@ -1,6 +1,6 @@
-import { droiteGraduee2, mathalea2d } from '../../../modules/2d'
-import { randint, texNombre, texteEnCouleur } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { droiteGraduee2, mathalea2d } from '../../../modules/2d.js'
+import { randint, texNombre, texteEnCouleur } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Trouver un nombre sur une droite graduée'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -18,7 +18,7 @@ export default function SuiteSurDroiteGraduee () {
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
   this.nbQuestions = 1
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(1, 6) // choix de la table = écart entre deux graduations
     const c = Math.floor(randint(10, 40) / a) * a // premier nombre.
     const maListe = []
