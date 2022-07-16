@@ -9,7 +9,9 @@
   export let exo: Exo
   export let pathToThisNode: string[]
   export let nestedLevelCount: number
-
+  /*--------------------------------------------------------------
+    Gestions de l'affichage du titre de l'exercice
+   ---------------------------------------------------------------*/
   /**
    * Transforme un objet en arbre basé sur un type Map.
    * Chaque propriété devient une clé et la valeur correspondante devient :
@@ -57,29 +59,57 @@
     return response.get("titre")
   }
 
-  // on compte réactivement le nombre d'occurences
-  // de l'exercice dans la liste des sélectionnés
+  /*--------------------------------------------------------------
+    Gestions des exercices via la liste
+   ---------------------------------------------------------------*/
+  const isPresent = (code) => code === exo.code
   let selectedCount = 0
   let listeCodes = []
+  // on compte réactivement le nombre d'occurences
+  // de l'exercice dans la liste des sélectionnés
   $: {
     listeCodes = []
     for (const exo of $listeExercices) {
       listeCodes.push(exo.filename)
     }
     listeCodes = listeCodes
-    const isPresent = (code) => code === exo.code
     selectedCount = listeCodes.filter(isPresent).length
   }
-
   /**
    * Ajouter l'exercice courant à la liste
    */
-  function addExerciseToList() {
+  function addToList() {
     const newExercise = {
       directory: exo.code[0] + "e",
       filename: exo.code,
     }
     listeExercices.update((list) => [...list, newExercise])
+  }
+  /**
+   * Retirer l'exercice de la liste (si plusieurs occurences
+   * la première est retirée)
+   */
+  function removeFromList() {
+    let matchingIndex = listeCodes.findIndex(isPresent)
+    console.log("exo " + exo.code + " est en position " + matchingIndex)
+    listeExercices.update((list) => [...list.slice(0, matchingIndex), ...list.slice(matchingIndex + 1)])
+  }
+
+  /*--------------------------------------------------------------
+    Gestions des icônes en début de ligne
+   ---------------------------------------------------------------*/
+  let icon = "bxs-message-alt"
+  let rotation = "-rotate-90"
+  let mouseIsOut = true
+  function handleMouseOver() {
+    icon = "bx-trash"
+    rotation = "rotate-0"
+    mouseIsOut = false
+  }
+  function handleMouseOut() {
+    icon = "bxs-message-alt"
+    rotation = "-rotate-90"
+    mouseIsOut = true
   }
 </script>
 
@@ -99,15 +129,17 @@
   
  -->
 <div class="relative flex flex-row items-center text-sm text-gray-600 bg-gray-400 ml-{nestedLevelCount * 2}">
-  <div class="flex-1 hover:bg-coopmaths-lightest cursor-pointer" on:click={addExerciseToList}>
+  <div class="flex-1 hover:bg-coopmaths-lightest cursor-pointer" on:click={addToList}>
     <div class="ml-[3px] pl-2 bg-gray-200 hover:bg-gray-100 flex-1">
       <span class="font-bold">{exo.code} - </span>{codeToTitle([...pathToThisNode, exo.id])}
     </div>
   </div>
   {#if selectedCount >= 1}
-    <div class="absolute -left-4"><i class="text-coopmaths-lightest text-base bx bxs-message-alt -rotate-90" /></div>
+    <button type="button" class="absolute -left-4" on:mouseover={handleMouseOver} on:mouseout={handleMouseOut} on:click={removeFromList}
+      ><i class="text-coopmaths-lightest text-base bx {icon} {rotation}" /></button
+    >
   {/if}
-  {#if selectedCount >= 2}
+  {#if (selectedCount >= 2) & mouseIsOut}
     <div class="absolute -left-[12.5px] text-[0.6rem] font-bold text-white">{selectedCount}</div>
   {/if}
 </div>
