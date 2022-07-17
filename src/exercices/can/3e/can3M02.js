@@ -11,6 +11,8 @@ export const amcType = 'AMCNum'
   * Créé pendant l'été 2021
  * Référence can3E01
 */
+export const uuid = 'c0ac9'
+export const ref = 'can3M02'
 export default function CalculVolumePyramide () {
   Exercice.call(this)
   this.typeExercice = 'simple'

@@ -15,6 +15,8 @@ export const titre = 'Placer un point d\'abscisse un nombre relatif'
 * @author Jean-Claude Lhote et Rémi Angot
 * Référence 5R11-2
 */
+export const uuid = 'f3f40'
+export const ref = '5R11-2'
 export default function PlacerPointsSurAxeRelatifs () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()

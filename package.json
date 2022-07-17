@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "transpile": "tsc > journal.log",
-    "builddicos": "cd ./src/modules && node exercice_to_json.js > journal2.log"
+    "buildDicos": "cd ./src/modules && node exercice_to_json.js > journal2.log"
   },
   "dependencies": {
     "@cortex-js/compute-engine": "^0.6.0",
@@ -25,6 +25,7 @@
     "mathlive": "^0.69.11",
     "mathsteps": "github:mathalea/mathsteps",
     "seedrandom": "^3.0.5",
+    "simple-svelte-autocomplete": "^2.4.0",
     "ts-import": "4.0.0-beta.2",
     "tw-elements": "1.0.0-alpha12"
   },

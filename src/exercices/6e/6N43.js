@@ -18,6 +18,8 @@ export const titre = 'Utiliser les critères de divisibilité'
  * @author Rémi Angot
  * 6N43
  */
+export const uuid = 'ee733'
+export const ref = '6N43'
 export default function CriteresDeDivisibilite () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = 4 // Correspond au facteur commun

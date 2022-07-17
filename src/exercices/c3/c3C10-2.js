@@ -8,6 +8,8 @@ export const titre = 'Labyrinthe de multiples'
  *
  * @author Jean-Claude Lhote
  */
+export const uuid = '390f7'
+export const ref = 'c3C10-2'
 export default function LabyrintheDeMultiplesCM () {
   ExerciceLabyrintheMultiples.call(this)
   this.niveau = 'CM'

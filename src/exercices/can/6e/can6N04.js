@@ -14,6 +14,8 @@ export const amcType = 'AMCHybride'
  * Créé pendant l'été 2021
  * Référence can6N04
  */
+export const uuid = '8c90f'
+export const ref = 'can6N04'
 export default function AbscisseFractionnaire () {
   Exercice.call(this)
   this.typeExercice = 'simple'

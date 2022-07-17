@@ -12,6 +12,8 @@ export const dateDePublication = '16/11/2021'
  * Date de publication 16/11/2021
  * Référence canc3C04
  */
+export const uuid = '35a6d'
+export const ref = 'canc3C04'
 export default function DoubleOuBienMoitie () {
   Exercice.call(this)
   this.typeExercice = 'simple'

@@ -1,15 +1,15 @@
-import { listeQuestionsToContenu, randint, choice, combinaisonListes, scientifiqueToDecimal, sp, stringNombre, texNombre } from '../../modules/outils.js'
-import Exercice from '../Exercice.js'
-import Decimal from 'decimal.js'
-import { context } from '../../modules/context.js'
+import { listeQuestionsToContenu, randint, choice, combinaisonListes, scientifiqueToDecimal, sp, stringNombre, texNombre } from "../../modules/outils.js"
+import Exercice from "../Exercice.js"
+import Decimal from "decimal.js/decimal.mjs"
+import { context } from "../../modules/context.js"
 
-import { setReponse } from '../../modules/gestionInteractif.js'
-import { ajouteChampTexteMathLive } from '../../modules/interactif/questionMathLive.js'
-export const titre = 'Notation scientifique'
+import { setReponse } from "../../modules/gestionInteractif.js"
+import { ajouteChampTexteMathLive } from "../../modules/interactif/questionMathLive.js"
+export const titre = "Notation scientifique"
 export const interactifReady = true
-export const interactifType = 'mathLive'
+export const interactifType = "mathLive"
 export const amcReady = true
-export const amcType = 'AMCNum' // type de question AMC
+export const amcType = "AMCNum" // type de question AMC
 
 /**
  * Ecrire un nombre décimal en notation scientifique et inversement
@@ -17,6 +17,8 @@ export const amcType = 'AMCNum' // type de question AMC
  * 4C32
  */
 
+export const uuid = '2e9bc'
+export const ref = '4C32'
 export default function NotationScientifique () {
   Exercice.call(this)
   this.sup = 1
@@ -30,8 +32,8 @@ export default function NotationScientifique () {
     Decimal.toExpNeg = -15
     Decimal.toExpPos = 20
     let reponse
-    if (parseInt(this.sup) === 1) this.consigne = 'Donner l\'écriture scientifique des nombres suivants.'
-    else this.consigne = 'Donner l\'écriture décimale des nombres suivants.'
+    if (parseInt(this.sup) === 1) this.consigne = "Donner l'écriture scientifique des nombres suivants."
+    else this.consigne = "Donner l'écriture décimale des nombres suivants."
     let typesDeQuestionsDisponibles
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
@@ -94,7 +96,7 @@ export default function NotationScientifique () {
         texte = `$${decimalstring}${sp()}=$`
         texteCorr = `$${decimalstring} = ${scientifiquestring}$`
         if (this.interactif) {
-          texte += ajouteChampTexteMathLive(this, i, 'largeur25 inline')
+          texte += ajouteChampTexteMathLive(this, i, "largeur25 inline")
         } else {
           texte += `$${sp()}\\dots$`
         }
@@ -103,7 +105,7 @@ export default function NotationScientifique () {
         texteCorr = `$${scientifiquestring} = ${decimalstring}$`
         texte = `$${scientifiquestring}${sp()}=$`
         if (this.interactif) {
-          texte += ajouteChampTexteMathLive(this, i, 'largeur25 inline')
+          texte += ajouteChampTexteMathLive(this, i, "largeur25 inline")
         } else {
           texte += `$${sp()}\\dots$`
         }
@@ -112,18 +114,18 @@ export default function NotationScientifique () {
         this.listeQuestions.push(texte)
         this.listeCorrections.push(texteCorr)
         if (parseInt(this.sup) === 1) {
-          setReponse(this, i, reponse.replace(/\\thickspace /g, '').replace(/ /g, ''), { formatInteractif: 'ecritureScientifique', digits: listeTypeDeQuestions[i] + 1, decimals: listeTypeDeQuestions[i], signe: false, exposantNbChiffres: 1, exposantSigne: true, approx: 0 })
+          setReponse(this, i, reponse.replace(/\\thickspace /g, "").replace(/ /g, ""), { formatInteractif: "ecritureScientifique", digits: listeTypeDeQuestions[i] + 1, decimals: listeTypeDeQuestions[i], signe: false, exposantNbChiffres: 1, exposantSigne: true, approx: 0 })
         } else {
-          setReponse(this, i, reponse, { formatInteractif: 'nombreDecimal', decimals: Math.max(0, listeTypeDeQuestions[i] - exp) })
+          setReponse(this, i, reponse, { formatInteractif: "nombreDecimal", decimals: Math.max(0, listeTypeDeQuestions[i] - exp) })
         }
         if (context.isAmc) {
           this.autoCorrection[i].reponse.valeur = [mantisse.mul(Decimal.pow(10, exp)).toString()]
           if (parseInt(this.sup) === 1) {
-            this.amcType = 'AMCNum'
-            this.autoCorrection[i].enonce = "Donner l'écriture scientifique du nombre " + texte + '.'
+            this.amcType = "AMCNum"
+            this.autoCorrection[i].enonce = "Donner l'écriture scientifique du nombre " + texte + "."
           } else {
-            this.amcType = 'qcmMono'
-            this.autoCorrection[i].enonce = "Donner l'écriture décimale du nombre " + texte + '.'
+            this.amcType = "qcmMono"
+            this.autoCorrection[i].enonce = "Donner l'écriture décimale du nombre " + texte + "."
             this.autoCorrection[i].options = {
               ordered: false,
               lastChoice: 5
@@ -154,6 +156,6 @@ export default function NotationScientifique () {
     }
     listeQuestionsToContenu(this)
   }
-  this.besoinFormulaireNumerique = ["Type d'exercices", 2, '1 : Traduire en notation scientifique\n2 : Traduire en notation décimale']
-  this.besoinFormulaire2Numerique = ['Niveau de difficulté', 3, '1 : Facile\n2 : Moyen\n3 : Difficile']
+  this.besoinFormulaireNumerique = ["Type d'exercices", 2, "1 : Traduire en notation scientifique\n2 : Traduire en notation décimale"]
+  this.besoinFormulaire2Numerique = ["Niveau de difficulté", 3, "1 : Facile\n2 : Moyen\n3 : Difficile"]
 }

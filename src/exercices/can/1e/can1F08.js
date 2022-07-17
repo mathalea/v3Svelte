@@ -1,13 +1,13 @@
-import Exercice from '../../Exercice.js'
-import Decimal from 'decimal.js'
-import { randint, choice, ecritureAlgebrique, ecritureAlgebriqueSauf1, texNombre, reduireAxPlusB, texteCentre } from '../../../modules/outils.js'
-import FractionX from '../../../modules/FractionEtendue.js'
-export const titre = 'Déterminer la fonction dérivée d’une fonction affine'
+import Exercice from "../../Exercice.js"
+import Decimal from "decimal.js/decimal.mjs"
+import { randint, choice, ecritureAlgebrique, ecritureAlgebriqueSauf1, texNombre, reduireAxPlusB, texteCentre } from "../../../modules/outils.js"
+import FractionX from "../../../modules/FractionEtendue.js"
+export const titre = "Déterminer la fonction dérivée d’une fonction affine"
 export const interactifReady = true
-export const interactifType = 'mathLive'
+export const interactifType = "mathLive"
 
 // Les exports suivants sont optionnels mais au moins la date de publication semble essentielle
-export const dateDePublication = '20/06/2022' // La date de publication initiale au format 'jj/mm/aaaa' pour affichage temporaire d'un tag
+export const dateDePublication = "20/06/2022" // La date de publication initiale au format 'jj/mm/aaaa' pour affichage temporaire d'un tag
 // export const dateDeModifImportante = '14/02/2022' // Une date de modification importante au format 'jj/mm/aaaa' pour affichage temporaire d'un tag
 
 /**
@@ -15,11 +15,13 @@ export const dateDePublication = '20/06/2022' // La date de publication initiale
  * @author Gilles Mora
  * Référence
 */
+export const uuid = '330eb'
+export const ref = 'can1F08'
 export default function CalculFonctionDeriveeAffine () {
   Exercice.call(this) // Héritage de la classe Exercice()
-  this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
+  this.typeExercice = "simple" // Cette ligne est très importante pour faire faire un exercice simple !
   this.nbQuestions = 1
-  this.formatChampTexte = 'largeur15 inline'
+  this.formatChampTexte = "largeur15 inline"
   this.tailleDiaporama = 2
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
@@ -33,7 +35,7 @@ export default function CalculFonctionDeriveeAffine () {
         this.question = `Soit $f$ la fonction définie sur $\\mathbb{R}$ par : 
         ${texteCentre(`$f(x)=${reduireAxPlusB(m, p)}$`)}  
         Déterminer la fonction dérivée de la fonction $f$.<br>     `
-        if (this.interactif) { this.question += '$f\'(x)=$' }
+        if (this.interactif) { this.question += "$f'(x)=$" }
         this.correction = `On reconnaît une fonction affine de la forme $f(x)=mx+p$ avec $m=${texNombre(m, 1)}$ et $p=${texNombre(p, 1)}$.<br>
         La fonction dérivée est donnée par $f'(x)=m$, soit ici $f'(x)=${texNombre(m, 1)}$. `
 
@@ -47,7 +49,7 @@ export default function CalculFonctionDeriveeAffine () {
         this.question = `Soit $f$ la fonction définie sur $\\mathbb{R}$ par : 
         ${texteCentre(`$f(x)=${texNombre(p, 1)}${ecritureAlgebrique(m)}x$`)}  
         Déterminer la fonction dérivée de la fonction $f$.<br>     `
-        if (this.interactif) { this.question += '$f\'(x)=$' }
+        if (this.interactif) { this.question += "$f'(x)=$" }
         this.correction = `On reconnaît une fonction affine de la forme $f(x)=mx+p$ avec $m=${texNombre(m, 1)}$ et $p=${texNombre(p, 1)}$.<br>
         La fonction dérivée est donnée par $f'(x)=m$, soit ici $f'(x)=${texNombre(m, 1)}$. `
 
@@ -66,7 +68,7 @@ export default function CalculFonctionDeriveeAffine () {
         ${texteCentre(`$f(x)=${texNombre(p, 1)}${ecritureAlgebriqueSauf1(m)}x$`)}  
         Déterminer la fonction dérivée de la fonction $f$.<br>     `
         }
-        if (this.interactif) { this.question += '$f\'(x)=$' }
+        if (this.interactif) { this.question += "$f'(x)=$" }
         this.correction = `On reconnaît une fonction affine de la forme $f(x)=mx+p$ avec $m=${m}$ et $p=${texNombre(p, 1)}$.<br>
         La fonction dérivée est donnée par $f'(x)=m$, soit ici $f'(x)=${m}$. `
 

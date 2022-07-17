@@ -1,23 +1,25 @@
-import { choice, randint, texNombre, texteEnCouleur } from '../../../modules/outils.js'
-import Exercice from '../../Exercice.js'
-import Decimal from 'decimal.js'
-export const titre = 'Multiplier deux décimaux'
+import { choice, randint, texNombre, texteEnCouleur } from "../../../modules/outils.js"
+import Exercice from "../../Exercice.js"
+import Decimal from "decimal.js/decimal.mjs"
+export const titre = "Multiplier deux décimaux"
 export const interactifReady = true
-export const interactifType = 'mathLive'
+export const interactifType = "mathLive"
 export const amcReady = true
-export const amcType = 'AMCNum'
-export const dateDePublication = '04/03/2022'
+export const amcType = "AMCNum"
+export const dateDePublication = "04/03/2022"
 
 /*!
  * @author  Gilles Mora
  *
  *
  */
+export const uuid = 'e5cd7'
+export const ref = 'can6C30'
 export default function MultiplierDeuxDecimaux () {
   Exercice.call(this)
   this.nbQuestions = 1
-  this.formatChampTexte = 'largeur15 inline'
-  this.typeExercice = 'simple'
+  this.formatChampTexte = "largeur15 inline"
+  this.typeExercice = "simple"
   this.tailleDiaporama = 2
   this.nouvelleVersion = () => {
     let a, b, c, d

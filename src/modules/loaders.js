@@ -86,14 +86,14 @@ export async function loadGiac () {
  * @return {Promise<iepApp>} L'appli iep
  */
 export async function loadIep (elt, xml) {
-  try {
-    const { default: iepLoadPromise } = await import('instrumenpoche')
-    const iepApp = await iepLoadPromise(elt, xml, { zoom: true, autostart: false })
-    return iepApp
-  } catch (error) {
-    console.error(error)
-    throw UserFriendlyError('Le chargement d’instrumenpoche a échoué')
-  }
+  // try {
+  //   const { default: iepLoadPromise } = await import('instrumenpoche')
+  //   const iepApp = await iepLoadPromise(elt, xml, { zoom: true, autostart: false })
+  //   return iepApp
+  // } catch (error) {
+  //   console.error(error)
+  //   throw UserFriendlyError('Le chargement d’instrumenpoche a échoué')
+  // }
 }
 
 /**

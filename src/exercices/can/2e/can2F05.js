@@ -13,6 +13,8 @@ export const dateDePublication = '1/11/2021' // La date de publication initiale 
  * @author Gilles Mora
  * Référence can2F05
 */
+export const uuid = 'fd3c8'
+export const ref = 'can2F05'
 export default function AntecedentFonctionRacine () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !

@@ -1,15 +1,15 @@
-import Exercice from '../Exercice.js'
-import Decimal from 'decimal.js'
-import { context } from '../../modules/context.js'
-import { listeQuestionsToContenuSansNumero, randint, abs, resolutionSystemeLineaire2x2, resolutionSystemeLineaire3x3, chercheMinMaxFonction, nombreDeChiffresDansLaPartieEntiere } from '../../modules/outils.js'
-import { setReponse } from '../../modules/gestionInteractif.js'
-import { ajouteChampTexteMathLive } from '../../modules/interactif/questionMathLive.js'
-import { courbe2, mathalea2d, repere2 } from '../../modules/2d.js'
-export const titre = 'Lire l\'image d\'un nombre à partir d\'un graphique'
+import Exercice from "../Exercice.js"
+import Decimal from "decimal.js/decimal.mjs"
+import { context } from "../../modules/context.js"
+import { listeQuestionsToContenuSansNumero, randint, abs, resolutionSystemeLineaire2x2, resolutionSystemeLineaire3x3, chercheMinMaxFonction, nombreDeChiffresDansLaPartieEntiere } from "../../modules/outils.js"
+import { setReponse } from "../../modules/gestionInteractif.js"
+import { ajouteChampTexteMathLive } from "../../modules/interactif/questionMathLive.js"
+import { courbe2, mathalea2d, repere2 } from "../../modules/2d.js"
+export const titre = "Lire l'image d'un nombre à partir d'un graphique"
 export const interactifReady = true
-export const interactifType = 'mathLive'
+export const interactifType = "mathLive"
 export const amcReady = true
-export const amcType = 'AMCHybride'
+export const amcType = "AMCHybride"
 
 /**
 * Un graphique étant tracé, déterminer l'image de nombres donnés.
@@ -18,10 +18,12 @@ export const amcType = 'AMCHybride'
 * @author Rémi Angot
 * 3F12-4
 */
+export const uuid = 'a26ec'
+export const ref = '3F12-4'
 export default function ImageGraphique () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
-  this.consigne = ''
+  this.consigne = ""
   this.sup = 3
   this.spacing = 1
   context.isHtml ? this.spacingCorr = 3 : this.spacingCorr = 1
@@ -35,8 +37,8 @@ export default function ImageGraphique () {
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []
 
-    this.contenu = '' // Liste de questions
-    this.contenuCorrection = '' // Liste de questions corrigées
+    this.contenu = "" // Liste de questions
+    this.contenuCorrection = "" // Liste de questions corrigées
     this.sup = parseInt(this.sup)
     let a, b, c, d, x1, x2, x3, fx1, fx2, fx3, numa, dena, numb, denb, numc, denc, ymax, f
 
@@ -54,7 +56,7 @@ export default function ImageGraphique () {
 
     initialiseVariables()
 
-    let texte = 'On a tracé ci-dessous la courbe représentative de la fonction $f$.<br>'; let texteCorr = ''
+    let texte = "On a tracé ci-dessous la courbe représentative de la fonction $f$.<br>"; let texteCorr = ""
     const r = repere2({ xMin: -7, xMax: 9, yMin: -7, yMax: 7 })
     if (this.sup === 1) {
       a = new Decimal(fx2 - fx1).div(x2 - x1)
@@ -120,10 +122,10 @@ export default function ImageGraphique () {
         enonce: texte,
         propositions: [
           {
-            type: 'AMCNum',
+            type: "AMCNum",
             propositions: [{
               texte: `L'image de $${x1}$ est $${fx1}$, on note $f(${x1})=${fx1}$.\\\\`,
-              statut: '',
+              statut: "",
               reponse: {
                 texte: `$f(${x1})$`,
                 valeur: fx1,
@@ -137,10 +139,10 @@ export default function ImageGraphique () {
             }]
           },
           {
-            type: 'AMCNum',
+            type: "AMCNum",
             propositions: [{
               texte: `L'image de $${x2}$ est $${fx2}$, on note $f(${x2})=${fx2}$.\\\\`,
-              statut: '',
+              statut: "",
               reponse: {
                 texte: `$f(${x2})$`,
                 valeur: fx2,
@@ -154,10 +156,10 @@ export default function ImageGraphique () {
             }]
           },
           {
-            type: 'AMCNum',
+            type: "AMCNum",
             propositions: [{
               texte: `L'image de $${x3}$ est $${fx3}$, on note $f(${x3})=${fx3}$.\\\\`,
-              statut: '',
+              statut: "",
               reponse: {
                 texte: `$f(${x3})$`,
                 valeur: fx3,
@@ -174,14 +176,14 @@ export default function ImageGraphique () {
       }
     } else if (this.interactif) {
       if (this.sup === 1) {
-        texte += `$f(${x1})=$` + ajouteChampTexteMathLive(this, 0, 'largeur25 inline')
-        texte += `$f(${x2})=$` + ajouteChampTexteMathLive(this, 1, 'largeur25 inline')
+        texte += `$f(${x1})=$` + ajouteChampTexteMathLive(this, 0, "largeur25 inline")
+        texte += `$f(${x2})=$` + ajouteChampTexteMathLive(this, 1, "largeur25 inline")
         setReponse(this, 0, f(x1))
         setReponse(this, 1, f(x1))
       } else {
-        texte += `<br><br>$f(${x1})=$` + ajouteChampTexteMathLive(this, 0, 'largeur25 inline')
-        texte += `<br><br>$f(${x2})=$` + ajouteChampTexteMathLive(this, 1, 'largeur25 inline')
-        texte += `<br><br>$f(${x3})=$` + ajouteChampTexteMathLive(this, 2, 'largeur25 inline')
+        texte += `<br><br>$f(${x1})=$` + ajouteChampTexteMathLive(this, 0, "largeur25 inline")
+        texte += `<br><br>$f(${x2})=$` + ajouteChampTexteMathLive(this, 1, "largeur25 inline")
+        texte += `<br><br>$f(${x3})=$` + ajouteChampTexteMathLive(this, 2, "largeur25 inline")
         setReponse(this, 0, f(x1))
         setReponse(this, 1, f(x2))
         setReponse(this, 2, f(x3))
@@ -192,5 +194,5 @@ export default function ImageGraphique () {
     listeQuestionsToContenuSansNumero(this)
   }
 
-  this.besoinFormulaireNumerique = ['Type de fonction', 3, '1 : Affine\n2 : Polynome du 2nd degré\n3 : Polynome du 3e degré']
+  this.besoinFormulaireNumerique = ["Type de fonction", 3, "1 : Affine\n2 : Polynome du 2nd degré\n3 : Polynome du 3e degré"]
 }

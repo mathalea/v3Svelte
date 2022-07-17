@@ -13,6 +13,8 @@ export const interactifType = 'mathLive'
  * Référence can3G03
  * Date de publication sptembre 2021
 */
+export const uuid = 'a3ab7'
+export const ref = 'can3G03'
 export default function CalculLongueurThales2 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !

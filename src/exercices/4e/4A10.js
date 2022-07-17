@@ -6,6 +6,8 @@ export { interactifReady, interactifType, amcReady, amcType } from '../3e/3A11.j
  * @author Guillaume Valmont
  * reference 4A10
  */
+export const uuid = '2862e'
+export const ref = '4A10'
 export default function PremierOuPas4e () {
   PremierOuPas.call(this)
   this.titre = titre
