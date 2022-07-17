@@ -13,8 +13,6 @@ export const dateDePublication = '07/01/2022'
 * @author Gilles Mora // suppression des calcul des texNombrec et simplification des racines carrées de fration par Jean-Claude Lhote
 *
 */
-export const uuid = '68e0e'
-export const ref = '2F12-1'
 export default function EquationsFonctionsRef () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = 1

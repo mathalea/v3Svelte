@@ -6,8 +6,6 @@ export const titre = 'Construire un triangle avec cible auto-corrective'
  * référence 5G20
  *
  */
-export const uuid = 'b65dc'
-export const ref = '5G20'
 export default function ConstruireUnTriangleAvecCible5e () {
   ConstruireUnTriangleAvecCible.call(this)
   this.titre = titre

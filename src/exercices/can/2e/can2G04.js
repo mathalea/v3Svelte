@@ -10,8 +10,6 @@ export const interactifType = 'mathLive'
  * Référence can2G04
  * Date de publication sptembre 2021
 */
-export const uuid = 'da03c'
-export const ref = 'can2G04'
 export default function CalculCoordonneesMilieu () {
   Exercice.call(this)
   this.typeExercice = 'simple'

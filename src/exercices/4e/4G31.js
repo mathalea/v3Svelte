@@ -6,8 +6,6 @@ export { interactifReady, interactifType, amcReady, amcType } from '../3e/3G21.j
  * @author Jean-Claude Lhote
  * référence 4G31
  */
-export const uuid = 'd1f8d'
-export const ref = '4G31'
 export default function ReciproqueThales4eme () {
   ReciproqueThales.call(this)
   this.quatrieme = true

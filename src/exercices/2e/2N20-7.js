@@ -8,8 +8,6 @@ export const dateDeModifImportante = '14/11/2021'
  * @author Jean-Claude Lhote
  */
 
-export const uuid = 'db8eb'
-export const ref = '2N20-7'
 export default function ppcmEngrenages2nde () {
   ppcmEngrenages.call(this)
   this.sup = true

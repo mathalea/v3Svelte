@@ -7,8 +7,6 @@ export { interactifReady, interactifType, amcReady, amcType, titre } from './_Th
  * Référence 4G30
 */
 
-export const uuid = '5fed7'
-export const ref = '4G30'
 export default function Thales2D4e () {
   Thales2D.call(this)
   this.level = 4

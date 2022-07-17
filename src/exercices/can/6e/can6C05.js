@@ -11,8 +11,6 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can6C05
  */
-export const uuid = 'cf977'
-export const ref = 'can6C05'
 export default function MultiplierAstucieusement () {
   Exercice.call(this)
   this.typeExercice = 'simple'

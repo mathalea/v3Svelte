@@ -21,8 +21,6 @@ export const amcType = 'AMCHybride'
 * @author Rémi Angot
 * 3F12-3
 */
-export const uuid = '145cb'
-export const ref = '3F12-3'
 export default function TableauDeValeurs () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

@@ -10,8 +10,6 @@ export const titre = 'Engrenages'
  * pb dans la sortie LaTeX, revoir comment user de la fonction katexPopup2() pour affichage d'une note hors texte !
  * @author Sébastien Lozano
  */
-export const uuid = '65b10'
-export const ref = '3A13'
 export default function ppcmEngrenages () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()

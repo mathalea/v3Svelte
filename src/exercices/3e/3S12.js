@@ -14,8 +14,6 @@ export const interactifType = 'mathLive'
 * 2021-02-07
 */
 
-export const uuid = 'a6df1'
-export const ref = '3S12'
 export default function calculEffectifFrequence () {
   Exercice.call(this)
   this.titre = titre

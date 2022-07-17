@@ -11,8 +11,6 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can6P04 Complété par des corrections de Gilles Mora
  */
-export const uuid = 'e5119'
-export const ref = 'can6P04'
 export default function AppliquerUnPourcentage () {
   Exercice.call(this)
   this.typeExercice = 'simple'

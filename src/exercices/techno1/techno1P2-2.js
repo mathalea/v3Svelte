@@ -11,8 +11,6 @@ export const dateDeModifImportante = '' // Une date de modification importante a
  * @author Stéphane Guyon
  * Référence
 */
-export const uuid = '238b3'
-export const ref = 'techno1P2-2'
 export default class nomExercice extends Exercice {
   constructor () {
     super()

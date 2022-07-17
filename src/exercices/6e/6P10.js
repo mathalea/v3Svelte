@@ -15,8 +15,6 @@ export const amcType = 'qcmMono'
  * @author Jean-Claude Lhote
  * référence 6P10
  */
-export const uuid = '71923'
-export const ref = '6P10'
 export default function ProportionnalitePasProportionnalite () {
   Exercice.call(this) // Héritage de la classe Exercice()
   context.isHtml ? this.spacing = 2 : this.spacing = 1.4

@@ -12,8 +12,6 @@ export const interactifType = 'mathLive'
  * Référence
  * Date de publication
 */
-export const uuid = '8f786'
-export const ref = 'can2L02'
 export default function CoordonneesPointDroite () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1

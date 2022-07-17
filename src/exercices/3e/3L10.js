@@ -15,8 +15,6 @@ export const interactifType = 'mathLive'
  * @author Rémi Angot
  * 3L10
  */
-export const uuid = '209f1'
-export const ref = '3L10'
 export default function OpposeExpression () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

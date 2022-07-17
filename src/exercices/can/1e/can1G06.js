@@ -15,8 +15,6 @@ export const dateDePublication = '27/06/2022'
  * Référence can1G06
  *
 */
-export const uuid = '3a68a'
-export const ref = 'can1G06'
 export default function ProduitScalaireFiguresClassiques () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !

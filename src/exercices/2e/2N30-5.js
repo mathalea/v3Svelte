@@ -11,8 +11,6 @@ export { interactifReady, interactifType } from '../4e/4C23.js'
  *
  * @author Sébastien LOZANO
  */
-export const uuid = '737ee'
-export const ref = '2N30-5'
 export default function SommeOuProduitFractions2nde () {
   SommeOuProduitFractions.call(this)
 }

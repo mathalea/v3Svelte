@@ -15,8 +15,6 @@ export const amcType = 'AMCHybride'
  * Référence 4G20-6
  * Date de publication : 08/08/2021
 */
-export const uuid = '8348b'
-export const ref = '4G20-6'
 export default function CalculValeurApprocheeRacineCarree () {
   Exercice.call(this)
   this.nbQuestions = 6

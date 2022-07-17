@@ -16,8 +16,6 @@ export const dateDePublication = '16/03/2022'
  * @author Guillaume Valmont
  * Référence 5N10
 */
-export const uuid = '09738'
-export const ref = '5N10'
 export default function PasserEcritureDecimaleEcritureFractionnaireInversement () {
   Exercice.call(this)
   this.nbQuestions = 10

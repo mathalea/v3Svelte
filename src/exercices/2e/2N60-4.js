@@ -13,8 +13,6 @@ export const titre = 'Inéquation du premier degré'
  * @author Remi Angot et Guillaume Valmont
  * 2N60-4, ex 2L13
  */
-export const uuid = '550c5'
-export const ref = '2N60-4'
 export default function ExerciceInequation1 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

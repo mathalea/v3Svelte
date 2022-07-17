@@ -11,8 +11,6 @@ export const dateDePublication = '11/05/2022'
  *
  *
  */
-export const uuid = 'e2c60'
-export const ref = 'can5C21'
 export default function SommeDecimaux () {
   Exercice.call(this)
   this.nbQuestions = 1

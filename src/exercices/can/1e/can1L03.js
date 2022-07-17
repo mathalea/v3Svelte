@@ -14,8 +14,6 @@ export const dateDePublication = '01/06/2022' // La date de publication initiale
  * @author Gilles Mora
  * Référence can1L03
 */
-export const uuid = 'da4b8'
-export const ref = 'can1L03'
 export default function RacinesPoly () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1

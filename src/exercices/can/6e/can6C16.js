@@ -11,8 +11,6 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can6C16
  */
-export const uuid = '1a3f4'
-export const ref = 'can6C16'
 export default function DoubleEtMoitie () {
   Exercice.call(this)
   this.typeExercice = 'simple'

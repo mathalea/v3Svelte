@@ -12,8 +12,6 @@ export const dateDeModifImportante = '05/12/2021'
  * Créé pendant l'été 2021
  * Référence can4C02
  */
-export const uuid = '0e987'
-export const ref = 'can4C02'
 export default function OpposeDeFraction () {
   Exercice.call(this)
   this.typeExercice = 'simple'

@@ -16,8 +16,6 @@ export const amcType = 'AMCNum'
  * @author Rémi Angot
  * 6N23
  */
-export const uuid = '09534'
-export const ref = '6N23'
 export default function ExerciceEcritureDecimaleApartirDeFractionDecimale () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = "Donner l'écriture décimale."

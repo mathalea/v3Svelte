@@ -13,8 +13,6 @@ export const titre = 'Note la couleur (scratch)'
  * Publié le 11/04/2021
  * @author Jean-Claude Lhote
  */
-export const uuid = 'a50ab'
-export const ref = 'c3I11'
 export default function NoteLaCouleurC3 () {
   'use strict'
   Exercice.call(this)

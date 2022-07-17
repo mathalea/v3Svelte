@@ -8,8 +8,6 @@ export const titre = 'Problèmes utilisant la trigonométrie'
  *
  * @author Sébastien LOZANO
  */
-export const uuid = 'e848b'
-export const ref = '2G11-3'
 export default function MonSuperExerciceTropBeau2nde () {
   MonSuperExerciceTropBeau.call(this)
 }

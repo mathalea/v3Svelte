@@ -11,8 +11,6 @@ export const dateDePublication = '6/12/2021'
  * Référence can2G13
  * Date de publication décembre 2021
 */
-export const uuid = 'f3882'
-export const ref = 'can2G13'
 export default function NormeVecteur () {
   Exercice.call(this)
   this.typeExercice = 'simple'

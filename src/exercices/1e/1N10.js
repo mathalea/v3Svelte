@@ -7,8 +7,6 @@ export const titre = 'Déterminer les termes d\'une suite définie de façon exp
  * 1N10
  * @author Gaelle Morvan
  */
-export const uuid = '2b811'
-export const ref = '1N10'
 export default function TermeDUneSuiteDefinieExplicitement () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

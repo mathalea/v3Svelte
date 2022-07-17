@@ -15,8 +15,6 @@ export const amcType = 'AMCHybride'
  * @author Jean-Claude Lhote
  * Référence 6S10-1
  */
-export const uuid = '6501e'
-export const ref = '6S10-1'
 export default function LireUnDiagramme () {
   'use strict'
   Exercice.call(this)

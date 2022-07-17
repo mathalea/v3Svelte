@@ -18,8 +18,6 @@ export const amcType = 'AMCNum'
  * @author Jean-Claude Lhote
  * Référence 2S30-5
 */
-export const uuid = '3740b'
-export const ref = '2S30-5'
 export default function CalculProbaExperience2Epreuves2e () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = true

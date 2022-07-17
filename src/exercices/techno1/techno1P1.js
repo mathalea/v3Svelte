@@ -8,8 +8,6 @@ export { interactifReady, interactifType } from '../5e/5N11-3.js'
  * @author Rémi Angot
  */
 
-export const uuid = '345bc'
-export const ref = 'techno1P1'
 export default class EcritureFractionnaire1T extends EcritureFractionnaire {
   constructor () {
     super()

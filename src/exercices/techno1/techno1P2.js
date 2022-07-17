@@ -8,8 +8,6 @@ export { interactifReady, interactifType } from '../6e/6N33-1.js'
  * @author Rémi Angot
  */
 
-export const uuid = '3bd1f'
-export const ref = 'techno1P2'
 export default class AppliquerPourcentage1 extends AppliquerPourcentage {
   constructor () {
     super()

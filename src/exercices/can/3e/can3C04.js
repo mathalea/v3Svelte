@@ -12,8 +12,6 @@ export const amcType = 'AMCNum'
   * Créé pendant l'été 2021
  * Référence can3C04
 */
-export const uuid = '659b1'
-export const ref = 'can3C04'
 export default function SommeEntierEtFractionIrred () {
   Exercice.call(this)
   this.typeExercice = 'simple'

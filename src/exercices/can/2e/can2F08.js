@@ -16,8 +16,6 @@ export const dateDeModifImportante = '24/10/2021' // Une date de modification im
  * @author Gilles Mora
  * Référence
 */
-export const uuid = '1bba6'
-export const ref = 'can2F08'
 export default function EncadrerTableau () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1

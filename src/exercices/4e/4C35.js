@@ -13,8 +13,6 @@ export const interactifType = 'mathLive'
  * @author Rémi Angot
  * Référence 4C35
 */
-export const uuid = '5f805'
-export const ref = '4C35'
 export default function PuissanceDecimaleOuFractionnaire () {
   Exercice.call(this)
   this.titre = titre

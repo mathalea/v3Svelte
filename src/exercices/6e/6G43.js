@@ -19,8 +19,6 @@ export const amcReady = true
 * Compter des cubes dans un empilement de cubes
 */
 
-export const uuid = 'fb06a'
-export const ref = '6G43'
 export default function DenombrerCubes () {
   Exercice.call(this)
   this.titre = titre

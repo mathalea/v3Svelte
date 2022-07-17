@@ -7,8 +7,6 @@ export const titre = 'Connaître le cours sur le périmètre et l\'aire'
  * @author Rémi Angot
  * Référence 6M25
  */
-export const uuid = '23c4c'
-export const ref = '6M25'
 export default function ConnaitreFormulesDePerimetreEtAires () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

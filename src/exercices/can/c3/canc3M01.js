@@ -12,8 +12,6 @@ export const amcType = 'AMCOpen'
  * Créé le 4/11/2021
  * Référence canc3M01
  */
-export const uuid = 'ab7bd'
-export const ref = 'canc3M01'
 export default function TrouverLaBonneUnite () {
   Exercice.call(this)
   this.nbQuestions = 1

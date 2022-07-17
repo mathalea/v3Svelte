@@ -41,8 +41,6 @@ export const interactifType = 'mathLive'
  * @author Rémi Angot
  * 4C11
  */
-export const uuid = 'c74f9'
-export const ref = '4C11'
 export default function PrioritesEtRelatifs () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

@@ -11,8 +11,6 @@ export const titre = 'Labyrinthe de multiples basé sur les critères de divisib
  * Ref 5A11-1
  * Sortir du labyrinthe en utilisant les critères de divisibilité.
  */
-export const uuid = '3ee1d'
-export const ref = '5A11-1'
 export default function ExerciceLabyrintheDivisibilite () {
   Exercice.call(this)
   this.titre = titre

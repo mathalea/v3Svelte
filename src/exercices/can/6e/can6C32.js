@@ -12,8 +12,6 @@ export const dateDePublication = '09/05/2022'
  *
  *
  */
-export const uuid = 'db4a1'
-export const ref = 'can6C32'
 export default function Pyramide3Etages () {
   Exercice.call(this)
   this.nbQuestions = 1

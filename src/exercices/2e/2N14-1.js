@@ -12,8 +12,6 @@ export const titre = 'Déterminer le plus petit ensemble de nombres dans lequel 
  * 2N14-1, ex 2N20
  * @author Stéphane Guyon (Exportable AMC par Eric Elter)
  */
-export const uuid = '3e612'
-export const ref = '2N14-1'
 export default function EnsembleDeNombres () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

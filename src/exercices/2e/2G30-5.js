@@ -6,8 +6,6 @@ export const titre = 'Déterminer une équation cartésienne à partir d\'un poi
  * @author Stéphane Guyon
  * Référence 2G30-5
 */
-export const uuid = '2816d'
-export const ref = '2G30-5'
 export default function Determinerequationcartesienneavecpente () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

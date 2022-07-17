@@ -16,8 +16,6 @@ export const amcType = 'AMCOpen'
 * 3L11-4
 * Ajout du paramétrage : Guillaume Valmont 13/08/2021
 */
-export const uuid = 'a4ac4'
-export const ref = '3L11-4'
 export default function FactoriserParNombreOux () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Factoriser les expressions suivantes.'

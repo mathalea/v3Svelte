@@ -7,8 +7,6 @@ export const titre = 'Calculer un antécédent par fonction affine'
   * Créé pendant l'été 2021
  * Référence can3C04
 */
-export const uuid = '161e4'
-export const ref = 'can3F05'
 export default function CalculAntecedentAffine () {
   CalculsImagesFonctions.call(this)
   this.nbQuestions = 1

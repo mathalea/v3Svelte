@@ -14,8 +14,6 @@ export const amcType = 'AMCHybride'
  * Créé le 4/11/2021
  * Référence canc3D01
  */
-export const uuid = '45508'
-export const ref = 'canc3D01'
 export default function LireHeure () {
   Exercice.call(this)
   this.nbQuestions = 1

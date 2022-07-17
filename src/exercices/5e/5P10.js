@@ -9,8 +9,6 @@ export const titre = 'Reconnaître des tableaux de proportionnalité'
  * @author Sébastien Lozano
  */
 
-export const uuid = '9f479'
-export const ref = '5P10'
 export default function TableauxEtProportionnalite () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()

@@ -18,8 +18,6 @@ export const dateDePublication = '04/03/2022'
  * @author Frédéric PIOU
  * Problème à partir de https://twitter.com/blatherwick_sam/status/1497292774621822979
  */
-export const uuid = 'f21b6'
-export const ref = '3L13-4'
 export default class problemes extends Exercice {
   constructor () {
     super()

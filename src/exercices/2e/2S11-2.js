@@ -20,8 +20,6 @@ export const dateDePublication = '06/01/2022'
 * @author Rémi Angot + Florence Tapiero (correction version seconde)
 * 2S12-1
 */
-export const uuid = 'd2954'
-export const ref = '2S11-2'
 export default function EvolutionsEnPourcentage () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

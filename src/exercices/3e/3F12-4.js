@@ -18,8 +18,6 @@ export const amcType = 'AMCHybride'
 * @author Rémi Angot
 * 3F12-4
 */
-export const uuid = '2cf57'
-export const ref = '3F12-4'
 export default function ImageGraphique () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

@@ -8,8 +8,6 @@ export const dateDePublication = '16/12/2021'
  * @author Gilles Mora
  * Référence
  */
-export const uuid = '03e07'
-export const ref = '2N50-4'
 export default function modeliserEquationsGeometrie () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''

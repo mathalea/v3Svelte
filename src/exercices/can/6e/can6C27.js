@@ -10,8 +10,6 @@ export const interactifType = 'mathLive'
  * Référence can6C26
  * Date de publication 21/10/2021
 */
-export const uuid = 'ff8fc'
-export const ref = 'can6C27'
 export default function PetitsProblemeArithmetique () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !

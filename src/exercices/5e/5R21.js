@@ -20,8 +20,6 @@ export const dateDeModifImportante = '11/11/2021'
 * Rendu les différentes situations équiprobables le 16/10/2021 par Guillaume Valmont
 * Ajout possibilité correction non détaillée le 11/11/2021 par Mireille Gain
 */
-export const uuid = '22865'
-export const ref = '5R21'
 export default function ExerciceSoustractionsRelatifs (max = 20) {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = max

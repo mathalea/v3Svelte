@@ -11,8 +11,6 @@ export { interactifReady, interactifType } from '../3e/3L11-5.js'
 
 export const titre = 'Calcul mental et calcul littéral'
 
-export const uuid = 'f0cc8'
-export const ref = '2N40-6'
 export default function identitesCalculs2e () {
   identitesCalculs.call(this)
   this.sup = 4

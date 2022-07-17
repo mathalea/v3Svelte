@@ -9,8 +9,6 @@ export const titre = 'Trouver la transformation'
 export const interactifReady = true // Pour l'instant le listeDeroulante n'est pas au point avec les chaines ???
 export const interactifType = 'listeDeroulante'
 
-export const uuid = 'e3337'
-export const ref = '4G12-1'
 export default function TrouverLaTransformations () {
   Exercice.call(this)
   this.nbQuestions = 1

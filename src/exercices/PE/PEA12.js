@@ -14,8 +14,6 @@ export const dateDePublication = '31/10/2021'
 *
 * @author Jean-Claude Lhote pour les opérations posées et Rémi Angot pour la correction détaillée
 */
-export const uuid = 'ab65c'
-export const ref = 'PEA12'
 export default function AdditionSoustractionBaseN () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Poser et effectuer les calculs suivants :'

@@ -8,8 +8,6 @@ export { interactifReady, interactifType } from '../3e/3S15.js'
  *
  * @author Sébastien LOZANO
  */
-export const uuid = 'e28bb'
-export const ref = '2S20-4'
 export default function CalculerEtendues2nde () {
   CalculerEtendues.call(this)
 }

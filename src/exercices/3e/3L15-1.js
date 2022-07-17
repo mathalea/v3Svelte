@@ -12,8 +12,6 @@ export const interactifType = 'mathLive'
 * @author Jean-Claude Lhote
 * 3L15
 */
-export const uuid = '3ccf1'
-export const ref = '3L15-1'
 export default function ResoudreEquatioeX2EgalA () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

@@ -17,8 +17,6 @@ export const amcType = 'AMCNum' // type de question AMC
 * @author Rémi Angot
 * 4C21-1
 */
-export const uuid = '3f608'
-export const ref = '4C21-1'
 export default function ExerciceAdditionnerDesFractions () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = 2 // Niveau de difficulté

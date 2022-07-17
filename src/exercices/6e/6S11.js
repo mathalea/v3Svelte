@@ -11,8 +11,6 @@ export const titre = 'Organiser des données dans un tableau'
 
 // source : http://www.ac-grenoble.fr/savoie/pedagogie/docs_pedas/ogd_c2_c3/ogd_c2_c3.pdf
 
-export const uuid = '4d570'
-export const ref = '6S11'
 export default function OrganiserDonneesDepuisTexte () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

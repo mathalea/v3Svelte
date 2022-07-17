@@ -7,8 +7,6 @@ export const titre = 'Calculer une image par une fonction linéaire'
   * Créé pendant l'été 2021
  * Référence can3F10-2
 */
-export const uuid = 'a7509'
-export const ref = 'can3F02'
 export default function CalculImageParFonctionLineaire () {
   CalculsImagesFonctions.call(this)
   this.nbQuestions = 1

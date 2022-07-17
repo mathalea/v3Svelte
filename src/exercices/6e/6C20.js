@@ -24,8 +24,6 @@ export const titre = 'Effectuer additions et soustractions de nombres décimaux'
  * @author Rémi Angot
  * Référence 6C20
  */
-export const uuid = '04346'
-export const ref = '6C20'
 export default function AdditionnerSoustrairesDecimaux () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

@@ -11,8 +11,6 @@ export const amcType = 'AMCNum'
 * Référence
 * Date de publication
 */
-export const uuid = 'b1286'
-export const ref = 'techno1P5'
 export default function Effectif () {
   Exercice.call(this)
   this.typeExercice = 'simple'

@@ -12,8 +12,6 @@ export const dateDePublication = '09/12/2021' // La date de publication initiale
  * @author Gilles Mora
  * Référence
 */
-export const uuid = '1647d'
-export const ref = 'can2C10'
 export default function TauxCoeff () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !

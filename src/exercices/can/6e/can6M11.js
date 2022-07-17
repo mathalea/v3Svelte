@@ -14,8 +14,6 @@ export const dateDePublication = '04/07/2022'
  *
  * Référence can6M11
  */
-export const uuid = '3368e'
-export const ref = 'can6M11'
 export default function VolumePaveCubes () {
   Exercice.call(this)
   this.typeExercice = 'simple'

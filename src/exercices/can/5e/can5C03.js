@@ -11,8 +11,6 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can5C03
  */
-export const uuid = '65497'
-export const ref = 'can5C03'
 export default function DifferenceEntiers5e () {
   Exercice.call(this)
   this.nbQuestions = 1

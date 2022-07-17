@@ -9,8 +9,6 @@ export const titre = 'Déterminer la dernière opération à effectuer dans une 
  * Déterminer la dernière opération à effectuer dans une expression numérique
  * @author Sébastien Lozano
  */
-export const uuid = 'f2706'
-export const ref = '5L14-6'
 export default function DeterminerDerniereOperationExpNum () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.debug = false

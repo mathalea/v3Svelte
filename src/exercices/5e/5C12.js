@@ -12,8 +12,6 @@ export const titre = 'Calculer une expression numérique en détaillant les calc
  * @author Jean-Claude Lhote
  * Référence 5C12
  */
-export const uuid = '1b0e3'
-export const ref = '5C12'
 export default function CalculerUneExpressionNumerique () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''

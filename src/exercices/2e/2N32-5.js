@@ -7,8 +7,6 @@ export const titre = 'Appliquer la double distributivité avec les racines carr�
  * 2N32-5, ex 2N12
  * @author Stéphane Guyon
  */
-export const uuid = 'd9b07'
-export const ref = '2N32-5'
 export default function DoubleDistributiviteAvecRacineCarree () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

@@ -15,8 +15,6 @@ export const amcReady = true
 * @author Rémi Angot
 * 3L11-2
 */
-export const uuid = '095b3'
-export const ref = '3L11-2'
 export default function ReductionSiPossible () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Réduire les expressions suivantes, si cela est possible.'

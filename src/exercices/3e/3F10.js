@@ -12,8 +12,6 @@ export const interactifType = 'mathLive'
  * @author Rémi Angot
  * Référence 3F10
 */
-export const uuid = '28f4c'
-export const ref = '3F10'
 export default function ImageAntecedentDepuisTableauOuFleche () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

@@ -11,8 +11,6 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can6C14
  */
-export const uuid = 'd5915'
-export const ref = 'can6C14'
 export default function Somme4EntiersQuiSeMarient () {
   Exercice.call(this)
   this.typeExercice = 'simple'

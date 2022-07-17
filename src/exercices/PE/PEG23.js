@@ -10,8 +10,6 @@ export const dateDePublication = '1/11/2021'
  * @author Rémi Angot
  * Référence PEG23
 */
-export const uuid = 'e8e81'
-export const ref = 'PEG23'
 export default function ProduitDeDeuxLongueurs () {
   Exercice.call(this)
   this.typeExercice = 'IEP'
