@@ -5,7 +5,6 @@
   import BoutonMonter from "./BoutonMonter.svelte"
   import BoutonDescendre from "./BoutonDescendre.svelte"
   import { Mathalea } from "../Mathalea"
-  import type Exercice from "../exercices/ExerciceTs"
   import Settings from "./Settings.svelte"
   import { randomInt } from "mathjs"
   import Contenu from "./Contenu.svelte"
@@ -18,7 +17,7 @@
   export let indiceExercice: number
   export let indiceLastExercice: number
 
-  let exercice: Exercice
+  let exercice
   let divExercice: HTMLDivElement
   let divScore: HTMLDivElement
   let buttonScore: HTMLButtonElement

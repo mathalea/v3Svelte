@@ -1,18 +1,14 @@
 <script lang="ts">
   import { flip } from "svelte/animate"
-  import { fly } from "svelte/transition"
   import Exercice from "./Exercice.svelte"
-  import Header from "./Header.svelte"
   import NavBar from "./NavBar.svelte"
   import Footer from "./Footer.svelte"
   import TitrePage from "./TitrePage.svelte"
   import { listeExercices } from "./store"
-  import InputListeExercices from "./InputListeExercices.svelte"
   import Recherche from "./Recherche.svelte"
   import NiveauListeExos from "./NiveauListeExos.svelte"
   import codeList from "../dicos/codeToLevelList.json"
   import referentiel from "../dicos/referentiel2022.json"
-  // import { Modals, closeModal } from "svelte-modals"
 
   const exercice1 = {
     directory: "6e",

@@ -1,5 +1,4 @@
 <script lang="ts">
-  import { get } from "svelte/store"
   import { listeExercices } from "./store"
 
   type Exo = {
@@ -139,7 +138,7 @@
       ><i class="text-coopmaths-lightest text-base bx {icon} {rotation}" /></button
     >
   {/if}
-  {#if (selectedCount >= 2) & mouseIsOut}
+  {#if (selectedCount >= 2) && mouseIsOut}
     <div class="absolute -left-[12.5px] text-[0.6rem] font-bold text-white">{selectedCount}</div>
   {/if}
 </div>

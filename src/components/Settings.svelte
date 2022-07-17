@@ -1,9 +1,8 @@
 <script lang="ts">
-  import type Exercice from "src/exercices/ExerciceTs"
   import { afterUpdate, createEventDispatcher } from "svelte"
   import Curseur from "./Curseur.svelte"
 
-  export let exercice: Exercice
+  export let exercice
   let nbQuestions: number
   let sup: string | boolean
   let sup2: string | boolean
