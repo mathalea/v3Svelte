@@ -1,18 +1,15 @@
 <script lang="ts">
   import { flip } from "svelte/animate"
-  import { fly } from "svelte/transition"
   import Exercice from "./Exercice.svelte"
-  import Header from "./Header.svelte"
   import NavBar from "./NavBar.svelte"
   import Footer from "./Footer.svelte"
   import TitrePage from "./TitrePage.svelte"
   import { listeExercices } from "./store"
-  import InputListeExercices from "./InputListeExercices.svelte"
   import Recherche from "./Recherche.svelte"
   import NiveauListeExos from "./NiveauListeExos.svelte"
+  import SearchChoiceOptionsRadio from "./SearchChoiceOptionsRadio.svelte"
   import codeList from "../dicos/codeToLevelList.json"
   import referentiel from "../dicos/referentiel2022.json"
-  // import { Modals, closeModal } from "svelte-modals"
 
   const exercice1 = {
     directory: "6e",
@@ -67,7 +64,6 @@
   }
   // listeExercices.set([exercice1, exercice2, exercice3, exercice4, exercice5, exercice6, exercice7, exercice8, exercice9, exercice10])
   listeExercices.set([exercice3])
-
   /**
    * Transforme un objet en arbre basé sur un type Map.
    * Chaque propriété devient une clé et la valeur correspondante devient :
@@ -105,28 +101,51 @@
       return code
     }
   }
-  let sideMenuVisible = false
-  let searchType = "liste"
+
+  /*---------------------------------------------------------------------
+    Gestion du menu de recherche des exercices
+  ---------------------------------------------------------------------*/
+  let nbExercisesInList: number
+  let sideMenuVisible: boolean = false
+  $: {
+    nbExercisesInList = $listeExercices.length
+    if (nbExercisesInList === 0) {
+      sideMenuVisible = true
+    }
+  }
+  const searchOptions = [
+    {
+      value: "list",
+      label: "Liste",
+    },
+    {
+      value: "theme",
+      label: "Themes",
+    },
+  ]
+  let searchOption
   function handleSideMenu(event: CustomEvent) {
     sideMenuVisible = event.detail.isListVisible
   }
-  function handleSearchType(event: CustomEvent) {
-    searchType = event.detail.searchChoice
-    console.log(searchType)
+  function toggleSearchType(e) {
+    console.log(e.value)
   }
 </script>
 
 <div class="h-screen  scrollbar-hide">
   <!-- <Header /> -->
   <NavBar />
-  <TitrePage {sideMenuVisible} on:sideMenuChange={handleSideMenu} on:searchTypeChange={handleSearchType} />
+  <TitrePage {sideMenuVisible} on:sideMenuChange={handleSideMenu} />
   <main class="flex h-full">
     <!-- side menu -->
-    {#if sideMenuVisible}
-      {#if searchType === "liste"}
-        <aside class="flex flex-col bg-gray-200 w-1/3 p-4  overflow-hidden h-full transition-width transition-slowest ease duration-500">
-          <div class="flex-none block overflow-y-scroll overscroll-auto h-full">
-            <h2 class="font-bold text-xl">Liste des exercices</h2>
+    {#if sideMenuVisible || nbExercisesInList === 0}
+      <aside class="flex flex-col bg-gray-200 w-1/3 p-4  overflow-hidden h-full transition-width transition-slowest ease duration-500">
+        <div class="flex-none block overflow-y-scroll overscroll-auto h-full">
+          <h2 class="inline-flex items-center font-bold text-xl mb-6">
+            <span>Choix des exercices</span>
+            <SearchChoiceOptionsRadio options={searchOptions} bind:userSelected={searchOption} />
+          </h2>
+          {#if searchOption === "list"}
             <ul>
               {#each Array.from(refTree, ([key, obj]) => ({ key, obj })) as item}
                 <li>
@@ -134,16 +153,11 @@
                 </li>
               {/each}
             </ul>
-          </div>
-        </aside>
-      {:else}
-        <aside class="flex flex-col bg-gray-200 w-1/3 p-4  overflow-hidden h-full transition-width transition-slowest ease duration-500">
-          <div class="flex-none block overflow-y-scroll overscroll-auto h-full">
-            <h2 class="font-bold text-xl mb-8">Rechercher un thème</h2>
+          {:else}
             <Recherche />
-          </div>
-        </aside>
-      {/if}
+          {/if}
+        </div>
+      </aside>
       <!-- split line -->
       <div class="flex w-1 bg-coopmaths-light hover:bg-coopmaths-lightest" />
     {/if}

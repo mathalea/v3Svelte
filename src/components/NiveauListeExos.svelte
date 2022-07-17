@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { string } from "mathjs"
-
   import { slide } from "svelte/transition"
   import EntreeListeExos from "./EntreeListeExos.svelte"
 

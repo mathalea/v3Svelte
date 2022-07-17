@@ -25,7 +25,7 @@
   }
 </script>
 
-<input type="text" class="inline-flex border w-20 p-0 m-0 text-sm" bind:this={input} on:change={handleChange} />
+<input type="text" class="inline-flex border w-20 p-0 m-0 text-sm" placeholder="Code exo" bind:this={input} on:change={handleChange} />
 <div class="inline-flex space-x-2">
   {#each listeId as id, indice (indice)}
     <Chips text={id} {indice} />

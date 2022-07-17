@@ -1,6 +1,4 @@
 <script lang="ts">
-  import { boolean } from "mathjs"
-
   export let entrees: string[]
   export let isMenuOpen: boolean
   export let titre: string
