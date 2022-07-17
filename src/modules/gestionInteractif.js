@@ -9,7 +9,7 @@ import { gestionCan } from "./interactif/gestionCan.js"
 import FractionX from "./FractionEtendue.js"
 import Grandeur from "./Grandeur.js"
 // import { ComputeEngine } from "@cortex-js/compute-engine"
-import pkg from "@cortex-js/compute-engine"
+import * as pkg from "@cortex-js/compute-engine"
 const { ComputeEngine } = pkg
 
 export function exerciceInteractif (exercice) {

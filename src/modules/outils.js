@@ -10,8 +10,7 @@ import { getVueFromUrl } from "./gestionUrl.js"
 import FractionX from "./FractionEtendue.js"
 import { elimineDoublons } from "./interactif/questionQcm.js"
 // import { Decimal } from "decimal.js"
-import pkg from "decimal.js"
-const { Decimal } = pkg
+import Decimal from "decimal.js/decimal.mjs"
 
 const math = { format, evaluate }
 const epsilon = 0.000001
