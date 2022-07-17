@@ -8,6 +8,8 @@ export const titre = 'Déterminer si des droites $(d)$ et $(d\')$ sont parallèl
  * @author Stéphane Guyon
  * Référence 2G33-2, ex 2G50-2
 */
+export const uuid = 'c7133'
+export const ref = '2G33-2'
 export default function PositionsDeDroites () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

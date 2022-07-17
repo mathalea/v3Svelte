@@ -8,6 +8,8 @@ export { interactifReady, interactifType } from '../4e/4C35.js'
  * @author Rémi Angot
  */
 
+export const uuid = 'aee91'
+export const ref = '2N31-0'
 export default class PuissanceDunNombre2e extends PuissanceDunNombre {
   constructor () {
     super()

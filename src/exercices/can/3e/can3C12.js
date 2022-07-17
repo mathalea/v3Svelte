@@ -9,6 +9,8 @@ export const amcType = 'AMCNum'
 /*!
  * @author Gilles Mora
  */
+export const uuid = '19f5b'
+export const ref = 'can3C12'
 export default function EncadrementRacineCarree () {
   Exercice.call(this)
   this.typeExercice = 'simple'

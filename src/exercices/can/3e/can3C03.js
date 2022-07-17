@@ -12,6 +12,8 @@ export const amcType = 'AMCNum'
   * Créé pendant l'été 2021
  * Référence can3C03
 */
+export const uuid = 'ce4ec'
+export const ref = 'can3C03'
 export default function FractionIrreductible () {
   Exercice.call(this)
   this.typeExercice = 'simple'

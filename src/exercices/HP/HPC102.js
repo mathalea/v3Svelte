@@ -18,6 +18,8 @@ const math = create(all)
  * Référence HPC102
 */
 
+export const uuid = '31a0d'
+export const ref = 'HPC102'
 export default function CalculsLoiNormale () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

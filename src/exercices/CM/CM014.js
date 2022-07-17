@@ -13,6 +13,8 @@ export const amcType = 'AMCNum'
  * @author Rémi Angot
 * Référence CM014
  */
+export const uuid = '9f39c'
+export const ref = 'CM014'
 export default function DoubleMoitieTiersTriple () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Calculer'

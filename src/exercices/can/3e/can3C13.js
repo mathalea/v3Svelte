@@ -12,6 +12,8 @@ export const dateDePublication = '09/05/2022'
  *
  *
  */
+export const uuid = '18844'
+export const ref = 'can3C13'
 export default function Pyramide3EtagesAdditionFractions () {
   Exercice.call(this)
   this.nbQuestions = 1

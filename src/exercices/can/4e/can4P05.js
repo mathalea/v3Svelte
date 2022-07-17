@@ -10,6 +10,8 @@ export const dateDeModifImportante = '23/01/2021' // Une date de modification im
 /**
  * @author Guillaume Valmont
  */
+export const uuid = '2c81f'
+export const ref = 'can4P05'
 export default function ImageSpline () {
   Exercice.call(this)
   this.typeExercice = 'simple'

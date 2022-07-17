@@ -15,6 +15,8 @@ export const titre = 'Reconnaître un quadrilatère particulier à partir de ses
  * @author Rémi Angot
  * Référence 6G33
 */
+export const uuid = '3c3ec'
+export const ref = '6G33'
 export default function ReconnaitreQuadrilatereParticulier () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

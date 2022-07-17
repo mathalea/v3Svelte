@@ -12,6 +12,8 @@ export const amcType = 'AMCNum'
  * Référence can2C02
  * Date de publication
 */
+export const uuid = 'be7d9'
+export const ref = 'can2C02'
 export default function CalculAstucieuxAvecDifferenceCarre () {
   Exercice.call(this)
   this.typeExercice = 'simple'

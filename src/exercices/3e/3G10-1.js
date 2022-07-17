@@ -16,6 +16,8 @@ export const amcType = 'AMCHybride'
  * @author Jean-Claude Lhote
  * 3G10-1
  */
+export const uuid = '307c2'
+export const ref = '3G10-1'
 export default function TransformationsDuPlanEtCoordonnees () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()

@@ -13,6 +13,8 @@ export const interactifReady = true
  * @author Rémi Angot
  * 4G21
  */
+export const uuid = '6df98'
+export const ref = '4G21'
 export default function ReciproquePythagore () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

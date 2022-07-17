@@ -10,6 +10,8 @@ export const titre = 'Résoudre une équation avec des valeurs absolues'
  * 2N15-2, ex 2N23
  * @author Stéphane Guyon
  */
+export const uuid = '51726'
+export const ref = '2N15-2'
 export default function ValeurAbsolueEtEquation () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre

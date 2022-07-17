@@ -9,7 +9,7 @@
     "preview": "vite preview",
     "check": "svelte-check --tsconfig ./tsconfig.json",
     "transpile": "tsc > journal.log",
-    "builddicos": "cd ./src/modules && node exercice_to_json.js > journal2.log"
+    "buildDicos": "cd ./src/modules && node exercice_to_json.js > journal2.log"
   },
   "dependencies": {
     "@cortex-js/compute-engine": "^0.6.0",
