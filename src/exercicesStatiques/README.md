@@ -25,5 +25,5 @@ Il suffit de :
 
 ## Pour CRPE 
 
-La procédure sera la même mais il faudra d'aboir opérer un renommage des fichiers pour uniformiser la nomenclature.
+La procédure sera la même mais il faudra d'abord opérer un renommage des fichiers pour uniformiser la nomenclature.
 [dépôt mathalea/crpe](https://github.com/mathalea/crpe)
