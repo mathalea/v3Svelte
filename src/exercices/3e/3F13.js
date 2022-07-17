@@ -1,10 +1,10 @@
 /* eslint-disable no-sequences */
-import Exercice from '../Exercice.js'
-import Decimal from 'decimal.js'
-import { context } from '../../modules/context.js'
-import { listeQuestionsToContenuSansNumero, randint, resolutionSystemeLineaire2x2 } from '../../modules/outils.js'
-import { courbe2, mathalea2d, repere2 } from '../../modules/2d.js'
-export const titre = 'Lire les antécédents d\'un nombre à partir d\'un graphique'
+import Exercice from "../Exercice.js"
+import Decimal from "decimal.js/decimal.mjs"
+import { context } from "../../modules/context.js"
+import { listeQuestionsToContenuSansNumero, randint, resolutionSystemeLineaire2x2 } from "../../modules/outils.js"
+import { courbe2, mathalea2d, repere2 } from "../../modules/2d.js"
+export const titre = "Lire les antécédents d'un nombre à partir d'un graphique"
 
 /**
 * Un graphique étant tracé, déterminer les antécédents de nombres donnés.
@@ -16,7 +16,7 @@ export const titre = 'Lire les antécédents d\'un nombre à partir d\'un graphi
 export default function AntecedentGraphique () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
-  this.consigne = ''
+  this.consigne = ""
   this.sup = 2
   this.spacing = 1
   context.isHtml ? this.spacingCorr = 3 : this.spacingCorr = 1
@@ -27,8 +27,8 @@ export default function AntecedentGraphique () {
   this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
-    this.contenu = '' // Liste de questions
-    this.contenuCorrection = '' // Liste de questions corrigées
+    this.contenu = "" // Liste de questions
+    this.contenuCorrection = "" // Liste de questions corrigées
     let a, b, c, x1, x2, x3, fx1, fx2, fx3, numa, dena, numb, denb, texte, texteCorr, f
     this.sup = Number(this.sup)
 
@@ -54,7 +54,7 @@ export default function AntecedentGraphique () {
 
     initialiseVariables()
 
-    texte = 'On a tracé ci-dessous la courbe représentative de la fonction $f$.<br>'
+    texte = "On a tracé ci-dessous la courbe représentative de la fonction $f$.<br>"
 
     if (this.sup === 1) {
       a = new Decimal(fx2 - fx1).div(x2 - x1)
@@ -102,12 +102,12 @@ export default function AntecedentGraphique () {
       }
     }
     const r = repere2({ xMin: -10, xMax: 10, yMin: -10, yMax: 10 })
-    const Cf = courbe2(f, { repere: r, step: 0.2, color: 'purple' })
+    const Cf = courbe2(f, { repere: r, step: 0.2, color: "purple" })
     texte += mathalea2d({ xmin: -10, xmax: 10, ymin: -10, ymax: 10, scale: 0.5 }, r, Cf)
     this.listeQuestions.push(texte)
     this.listeCorrections.push(texteCorr)
     listeQuestionsToContenuSansNumero(this)
   }
 
-  this.besoinFormulaireNumerique = ['Type de fonctions', 2, '1 : Affine\n2 : Polynôme du 2nd degré']
+  this.besoinFormulaireNumerique = ["Type de fonctions", 2, "1 : Affine\n2 : Polynôme du 2nd degré"]
 }

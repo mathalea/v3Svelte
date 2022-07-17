@@ -1,14 +1,14 @@
-import Exercice from '../Exercice.js'
-import { listeQuestionsToContenu, randint, combinaisonListes, texNombre, sp, nombreDeChiffresDe, nombreDeChiffresDansLaPartieDecimale } from '../../modules/outils.js'
-import { ajouteChampTexteMathLive } from '../../modules/interactif/questionMathLive.js'
-import { setReponse } from '../../modules/gestionInteractif.js'
-import { min } from 'mathjs'
-import Decimal from 'decimal.js'
-export const titre = 'Convertir des volumes ou des capacités'
+import Exercice from "../Exercice.js"
+import { listeQuestionsToContenu, randint, combinaisonListes, texNombre, sp, nombreDeChiffresDe, nombreDeChiffresDansLaPartieDecimale } from "../../modules/outils.js"
+import { ajouteChampTexteMathLive } from "../../modules/interactif/questionMathLive.js"
+import { setReponse } from "../../modules/gestionInteractif.js"
+import { min } from "mathjs"
+import Decimal from "decimal.js/decimal.mjs"
+export const titre = "Convertir des volumes ou des capacités"
 export const amcReady = true
-export const amcType = 'AMCNum'
+export const amcType = "AMCNum"
 export const interactifReady = true
-export const interactifType = 'mathLive'
+export const interactifType = "mathLive"
 
 /**
  * Conversions d'unités de volumes vers les unités de capacité ou inversement.
@@ -27,7 +27,7 @@ export default function UnitesDeVolumesEtDeCapacite (niveau = 1) {
   this.sup = niveau // Niveau de difficulté de l'exercice
   this.sup2 = false // Avec des nombres décimaux ou pas
   this.titre = titre
-  this.consigne = 'Compléter : '
+  this.consigne = "Compléter : "
   this.spacing = 2
   this.nbQuestions = 8
   this.nbColsCorr = 1
@@ -40,27 +40,27 @@ export default function UnitesDeVolumesEtDeCapacite (niveau = 1) {
     this.sup = parseInt(this.sup)
     if (this.sup === 1) {
       listeTypeDeQuestions = combinaisonListes(
-        ['dam3toL', 'm3toL', 'dm3toL', 'cm3toL'],
+        ["dam3toL", "m3toL", "dm3toL", "cm3toL"],
         this.nbQuestions
       )
     }
     if (this.sup === 2) {
       listeTypeDeQuestions = combinaisonListes(
-        ['Ltodm3', 'Ltocm3', 'Ltom3'],
+        ["Ltodm3", "Ltocm3", "Ltom3"],
         this.nbQuestions
       )
     }
     if (this.sup === 3) {
       listeTypeDeQuestions = combinaisonListes(
         [
-          'dam3toL',
-          'm3toL',
-          'dm3toL',
-          'cm3toL',
-          'mm3toL',
-          'Ltodm3',
-          'Ltocm3',
-          'Ltom3'
+          "dam3toL",
+          "m3toL",
+          "dm3toL",
+          "cm3toL",
+          "mm3toL",
+          "Ltodm3",
+          "Ltocm3",
+          "Ltom3"
         ],
         this.nbQuestions
       )
@@ -114,9 +114,9 @@ export default function UnitesDeVolumesEtDeCapacite (niveau = 1) {
         }
       }
       switch (listeTypeDeQuestions[i]) {
-        case 'dam3toL':
+        case "dam3toL":
           if (this.interactif) {
-            texte = `$${texNombre(n, 3)}${sp()}\\text{dam}^3=$` + ajouteChampTexteMathLive(this, i, 'inline', { tailleExtensible: true }) + `${sp(3)}L`
+            texte = `$${texNombre(n, 3)}${sp()}\\text{dam}^3=$` + ajouteChampTexteMathLive(this, i, "inline", { tailleExtensible: true }) + `${sp(3)}L`
           } else {
             texte = `$${texNombre(n, 3)}${sp()}\\text{dam}^3=\\dotfill${sp()}\\text{L}$`
           }
@@ -126,9 +126,9 @@ export default function UnitesDeVolumesEtDeCapacite (niveau = 1) {
           texteCorr = `$${texNombre(n, 3)}${sp()}\\text{dam}^3=${texNombre(n, 3)}\\times1${sp()}000\\times1${sp()}000${sp()}\\text{dm}^3=${texNombre(resultat, 0)}${sp()}\\text{L}$`
 
           break
-        case 'm3toL':
+        case "m3toL":
           if (this.interactif) {
-            texte = `$${texNombre(n, 3)}${sp()}\\text{m}^3=$` + ajouteChampTexteMathLive(this, i, 'inline', { tailleExtensible: true }) + `${sp(3)}L`
+            texte = `$${texNombre(n, 3)}${sp()}\\text{m}^3=$` + ajouteChampTexteMathLive(this, i, "inline", { tailleExtensible: true }) + `${sp(3)}L`
           } else {
             texte = `$${texNombre(n, 3)}${sp()}\\text{m}^3=\\dotfill${sp()}\\text{L}$`
           }
@@ -137,9 +137,9 @@ export default function UnitesDeVolumesEtDeCapacite (niveau = 1) {
           setReponse(this, i, resultat, { digits: nombreDeChiffresDe(resultat) + randint(0, 1) + bonusDecimalesAMC, decimals: nombreDeChiffresDansLaPartieDecimale(resultat) + bonusDecimalesAMC, signe: false })
           texteCorr = `$${texNombre(n, 3)}${sp()}\\text{m}^3=${texNombre(n, 3)}\\times1${sp()}000${sp()}\\text{dm}^3=${texNombre(resultat, 0)}${sp()}\\text{L}$`
           break
-        case 'dm3toL':
+        case "dm3toL":
           if (this.interactif) {
-            texte = `$${texNombre(n, 3)}${sp()}\\text{dm}^3=$` + ajouteChampTexteMathLive(this, i, 'inline', { tailleExtensible: true }) + `${sp(3)}L`
+            texte = `$${texNombre(n, 3)}${sp()}\\text{dm}^3=$` + ajouteChampTexteMathLive(this, i, "inline", { tailleExtensible: true }) + `${sp(3)}L`
           } else {
             texte = `$${texNombre(n, 3)}${sp()}\\text{dm}^3=\\dotfill${sp()}\\text{L}$`
           }
@@ -148,9 +148,9 @@ export default function UnitesDeVolumesEtDeCapacite (niveau = 1) {
           setReponse(this, i, resultat, { digits: nombreDeChiffresDe(resultat) + randint(0, 1) + bonusDecimalesAMC, decimals: nombreDeChiffresDansLaPartieDecimale(resultat) + bonusDecimalesAMC, signe: false })
           texteCorr = `$${texNombre(n, 3)}${sp()}\\text{dm}^3=${texNombre(resultat, 3)}${sp()}\\text{L}$`
           break
-        case 'cm3toL':
+        case "cm3toL":
           if (this.interactif) {
-            texte = `$${texNombre(n, 3)}${sp()}\\text{cm}^3=$` + ajouteChampTexteMathLive(this, i, 'inline', { tailleExtensible: true }) + `${sp(3)}L`
+            texte = `$${texNombre(n, 3)}${sp()}\\text{cm}^3=$` + ajouteChampTexteMathLive(this, i, "inline", { tailleExtensible: true }) + `${sp(3)}L`
           } else {
             texte = `$${texNombre(n, 3)}${sp()}\\text{cm}^3=\\dotfill${sp()}\\text{L}$`
           }
@@ -159,9 +159,9 @@ export default function UnitesDeVolumesEtDeCapacite (niveau = 1) {
           setReponse(this, i, resultat, { digits: nombreDeChiffresDe(resultat) + randint(0, 1) + bonusDecimalesAMC, decimals: nombreDeChiffresDansLaPartieDecimale(resultat) + bonusDecimalesAMC, signe: false })
           texteCorr = `$${texNombre(n, 3)}${sp()}\\text{cm}^3=${texNombre(n, 3)}\\div 1${sp()}000${sp()}\\text{dm}^3=${texNombre(resultat, 6)}${sp()}\\text{L}$`
           break
-        case 'mm3toL':
+        case "mm3toL":
           if (this.interactif) {
-            texte = `$${texNombre(n, 3)}${sp()}\\text{mm}^3=$` + ajouteChampTexteMathLive(this, i, 'inline', { tailleExtensible: true }) + `${sp(3)}L`
+            texte = `$${texNombre(n, 3)}${sp()}\\text{mm}^3=$` + ajouteChampTexteMathLive(this, i, "inline", { tailleExtensible: true }) + `${sp(3)}L`
           } else {
             texte = `$${texNombre(n, 3)}${sp()}\\text{mm}^3=\\dotfill${sp()}\\text{L}$`
           }
@@ -170,9 +170,9 @@ export default function UnitesDeVolumesEtDeCapacite (niveau = 1) {
           setReponse(this, i, resultat, { digits: nombreDeChiffresDe(resultat) + randint(0, 1) + bonusDecimalesAMC, decimals: nombreDeChiffresDansLaPartieDecimale(resultat) + bonusDecimalesAMC, signe: false })
           texteCorr = `$${texNombre(n, 3)}${sp()}\\text{mm}^3=${texNombre(n, 3)}\\div1${sp()}000\\div 1${sp()}000${sp()}\\text{dm}^3=${texNombre(resultat, 9)}${sp()}\\text{L}$`
           break
-        case 'Ltodm3':
+        case "Ltodm3":
           if (this.interactif) {
-            texte = `$${texNombre(n, 3)}${sp()}\\text{L}=$` + ajouteChampTexteMathLive(this, i, 'inline', { tailleExtensible: true }) + `$${sp(3)}\\text{dm}^3$`
+            texte = `$${texNombre(n, 3)}${sp()}\\text{L}=$` + ajouteChampTexteMathLive(this, i, "inline", { tailleExtensible: true }) + `$${sp(3)}\\text{dm}^3$`
           } else {
             texte = `$${texNombre(n, 3)}${sp()}\\text{L}=\\dotfill${sp()}\\text{dm}^3$`
           }
@@ -181,9 +181,9 @@ export default function UnitesDeVolumesEtDeCapacite (niveau = 1) {
           setReponse(this, i, resultat, { digits: nombreDeChiffresDe(resultat) + randint(0, 1) + bonusDecimalesAMC, decimals: nombreDeChiffresDansLaPartieDecimale(resultat) + bonusDecimalesAMC, signe: false })
           texteCorr = `$${texNombre(n, 3)}${sp()}\\text{L}=${texNombre(resultat, 3)}${sp()}\\text{dm}^3$`
           break
-        case 'Ltocm3':
+        case "Ltocm3":
           if (this.interactif) {
-            texte = `$${texNombre(n, 3)}${sp()}\\text{L}=$` + ajouteChampTexteMathLive(this, i, 'inline', { tailleExtensible: true }) + `$${sp(3)}\\text{cm}^3$`
+            texte = `$${texNombre(n, 3)}${sp()}\\text{L}=$` + ajouteChampTexteMathLive(this, i, "inline", { tailleExtensible: true }) + `$${sp(3)}\\text{cm}^3$`
           } else {
             texte = `$${texNombre(n, 3)}${sp()}\\text{L}=\\dotfill${sp()}\\text{cm}^3$`
           }
@@ -192,9 +192,9 @@ export default function UnitesDeVolumesEtDeCapacite (niveau = 1) {
           setReponse(this, i, resultat, { digits: nombreDeChiffresDe(resultat) + randint(0, 1) + bonusDecimalesAMC, decimals: nombreDeChiffresDansLaPartieDecimale(resultat) + bonusDecimalesAMC, signe: false })
           texteCorr = `$${texNombre(n, 3)}${sp()}\\text{L}=${texNombre(n, 0)}${sp()}\\text{dm}^3=${texNombre(resultat, 0)}\\times1${sp()}000${sp()}\\text{cm}^3=${texNombre(n * 1000)}${sp()}\\text{cm}^3$`
           break
-        case 'Ltom3':
+        case "Ltom3":
           if (this.interactif) {
-            texte = `$${texNombre(n, 3)}${sp()}\\text{L}=$` + ajouteChampTexteMathLive(this, i, 'inline', { tailleExtensible: true }) + `$${sp(3)}\\text{m}^3$`
+            texte = `$${texNombre(n, 3)}${sp()}\\text{L}=$` + ajouteChampTexteMathLive(this, i, "inline", { tailleExtensible: true }) + `$${sp(3)}\\text{m}^3$`
           } else {
             texte = `$${texNombre(n, 3)}${sp()}\\text{L}=\\dotfill${sp()}\\text{m}^3$`
           }
@@ -216,9 +216,9 @@ export default function UnitesDeVolumesEtDeCapacite (niveau = 1) {
     listeQuestionsToContenu(this)
   }
   this.besoinFormulaireNumerique = [
-    'Niveau de difficulté',
+    "Niveau de difficulté",
     3,
-    '1 : Unités de volume vers litres\n2 : Litres vers unités de volume\n3 : Mélange'
+    "1 : Unités de volume vers litres\n2 : Litres vers unités de volume\n3 : Mélange"
   ]
-  this.besoinFormulaire2CaseACocher = ['Avec des nombres décimaux']
+  this.besoinFormulaire2CaseACocher = ["Avec des nombres décimaux"]
 }

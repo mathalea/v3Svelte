@@ -1,16 +1,16 @@
-import Exercice from '../../Exercice.js'
-import { randint, listeQuestionsToContenu, choice, sp, texNombre } from '../../../modules/outils.js'
-import { ajouteChampTexteMathLive } from '../../../modules/interactif/questionMathLive.js'
-import { repere2, courbe2, mathalea2d, texteParPosition } from '../../../modules/2d.js'
-import { setReponse } from '../../../modules/gestionInteractif.js'
-import { calcule } from '../../../modules/fonctionsMaths.js'
-import Decimal from 'decimal.js'
-export const titre = 'Lire graphiquement les valeurs de $b$ et $c$ avec une parabole'
+import Exercice from "../../Exercice.js"
+import { randint, listeQuestionsToContenu, choice, sp, texNombre } from "../../../modules/outils.js"
+import { ajouteChampTexteMathLive } from "../../../modules/interactif/questionMathLive.js"
+import { repere2, courbe2, mathalea2d, texteParPosition } from "../../../modules/2d.js"
+import { setReponse } from "../../../modules/gestionInteractif.js"
+import { calcule } from "../../../modules/fonctionsMaths.js"
+import Decimal from "decimal.js/decimal.mjs"
+export const titre = "Lire graphiquement les valeurs de $b$ et $c$ avec une parabole"
 export const interactifReady = true
-export const interactifType = 'mathLive'
+export const interactifType = "mathLive"
 
 // Les exports suivants sont optionnels mais au moins la date de publication semble essentielle
-export const dateDePublication = '08/06/2022' // La date de publication initiale au format 'jj/mm/aaaa' pour affichage temporaire d'un tag
+export const dateDePublication = "08/06/2022" // La date de publication initiale au format 'jj/mm/aaaa' pour affichage temporaire d'un tag
 
 /**
  *
@@ -20,7 +20,7 @@ export const dateDePublication = '08/06/2022' // La date de publication initiale
 export default function LectureGraphiqueParabolebEtc () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1
-  this.formatChampTexte = 'largeur10 inline'
+  this.formatChampTexte = "largeur10 inline"
   this.tailleDiaporama = 1
 
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
@@ -36,7 +36,7 @@ export default function LectureGraphiqueParabolebEtc () {
 
           x1 = randint(-4, 4)
           x2 = randint(-2, 3, 0)
-          o = texteParPosition('O', -0.3, -0.3, 'milieu', 'black', 1)
+          o = texteParPosition("O", -0.3, -0.3, "milieu", "black", 1)
           absS = new Decimal(x1 + x2).div(2)// abscisse sommet
           f = function (x) {
             return calcule(x ** 2 - (x1 + x2) * x + x1 * x2)
@@ -54,20 +54,20 @@ export default function LectureGraphiqueParabolebEtc () {
             yLabelMin: Math.floor(f((x1 + x2) / 2)) + 1,
             // yLabelMin: -9,
             // yLabelListe:[-8,-6,-4,-2,2,4,6,8],
-            axeXStyle: '->',
-            axeYStyle: '->'
+            axeXStyle: "->",
+            axeYStyle: "->"
           })
 
           F = x => (x - x1) * (x - x2)
 
-          texte = 'On donne la courbe représentative d\'une fonction $f$ polynôme du second degré définie par $f(x)=x^2+bx+c$ .<br>'
+          texte = "On donne la courbe représentative d'une fonction $f$ polynôme du second degré définie par $f(x)=x^2+bx+c$ .<br>"
 
-          texte += 'Déterminer les valeurs de $b$ et $c$.<br>' + mathalea2d({ xmin: -5, xmax: 5, ymin: Math.floor(f((x1 + x2) / 2)) - 1, ymax: Math.max(3, f(0) + 1), pixelsParCm: 18, scale: 0.6 }, r, o, courbe2(F, { repere: r, color: 'blue', epaisseur: 2 }))
+          texte += "Déterminer les valeurs de $b$ et $c$.<br>" + mathalea2d({ xmin: -5, xmax: 5, ymin: Math.floor(f((x1 + x2) / 2)) - 1, ymax: Math.max(3, f(0) + 1), pixelsParCm: 18, scale: 0.6 }, r, o, courbe2(F, { repere: r, color: "blue", epaisseur: 2 }))
 
           if (this.interactif) {
-            texte += ajouteChampTexteMathLive(this, 2 * i, 'largeur10 inline', { texte: '$b=$' })
+            texte += ajouteChampTexteMathLive(this, 2 * i, "largeur10 inline", { texte: "$b=$" })
             texte += ` ${sp(2)} et ${sp(4)} `
-            texte += ajouteChampTexteMathLive(this, 2 * i + 1, 'largeur10 inline', { texte: '$c=$' })
+            texte += ajouteChampTexteMathLive(this, 2 * i + 1, "largeur10 inline", { texte: "$c=$" })
             setReponse(this, 2 * i, -x1 - x2)
             setReponse(this, 2 * i + 1, x1 * x2)
           }

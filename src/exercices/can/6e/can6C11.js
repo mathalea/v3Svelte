@@ -1,11 +1,11 @@
-import { calcul, choice, randint, texNombre, texteEnCouleur } from '../../../modules/outils.js'
-import Exercice from '../../Exercice.js'
-import Decimal from 'decimal.js'
-export const titre = 'Calculer le double ou le triple (décimal)'
+import { calcul, choice, randint, texNombre, texteEnCouleur } from "../../../modules/outils.js"
+import Exercice from "../../Exercice.js"
+import Decimal from "decimal.js/decimal.mjs"
+export const titre = "Calculer le double ou le triple (décimal)"
 export const interactifReady = true
-export const interactifType = 'mathLive'
+export const interactifType = "mathLive"
 export const amcReady = true
-export const amcType = 'AMCNum'
+export const amcType = "AMCNum"
 
 /*!
  * @author Jean-Claude Lhote
@@ -14,10 +14,10 @@ export const amcType = 'AMCNum'
  */
 export default function DoubleOuTripleDecimal () {
   Exercice.call(this)
-  this.typeExercice = 'simple'
+  this.typeExercice = "simple"
   this.nbQuestions = 1
   this.tailleDiaporama = 2
-  this.formatChampTexte = 'largeur15 inline'
+  this.formatChampTexte = "largeur15 inline"
   this.nouvelleVersion = () => {
     const a = randint(1, 3)
     const b = randint(1, 9, a)
