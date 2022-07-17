@@ -145,7 +145,7 @@
   },
   "6I1": {
     "titre": "Algorithmique",
-    "sousTitre": {}
+    "sousThemes": {}
   },
   "5C1": {
     "titre": "Calculs - Niveau 1",
@@ -299,7 +299,7 @@
   },
   "5I1": {
     "titre": "Algorithmique",
-    "sousTitre": {}
+    "sousThemes": {}
   },
   "4A1": {
     "titre": "Arithmétique",
@@ -426,7 +426,7 @@
   },
   "4I1": {
     "titre": "Algorithmique",
-    "sousTitre": {}
+    "sousThemes": {}
   },
   "3L1": {
     "titre": "Calcul littéral",
@@ -670,5 +670,9 @@
   "2S4": {
     "titre": "Echantillonnage",
     "sousThemes": {}
-  }
+  },
+  "ExC1": { "titre": "Calculs avec nombres complexes", "sousThemes": {} },
+  "ExE1": { "titre": "Équations", "sousThemes": {} },
+  "ExL1": { "titre": "Calcul littéral", "sousThemes": {} },
+  "HPC1": { "titre": "Calculs", "sousThemes": {} }
 }
