@@ -1,6 +1,6 @@
 <script>
     export let itemLabel;
-      export let highlighted;
+    export let highlighted;
   </script>
   
   <style>

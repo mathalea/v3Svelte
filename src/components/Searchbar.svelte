@@ -25,7 +25,7 @@ const filterEx = () => {
 	let storageArr = []
 	if (inputValue) {
 		data.forEach(ex => {
-			 if (ex.toLowerCase().includes(inputValue.toLowerCase())) {
+			 if (ex.toLowerCase().startsWith(inputValue.toLowerCase())) {
 				 storageArr = [...storageArr, makeMatchBold(ex)];
 			 }
 		});
@@ -52,7 +52,7 @@ const setInputVal = (countryName) => {
 	inputValue = removeBold(countryName);
 	filteredExercices = [];
 	hiLiteIndex = null;
-	document.querySelector('#country-input').focus();
+	document.querySelector('#country-input')//.focus();
 }	
 
 const submitValue = () => {
@@ -66,7 +66,7 @@ const submitValue = () => {
 
 const makeMatchBold = (str) => {
 	// replace part of (country name === inputValue) with strong tags
-	let matched = str.substring(0, inputValue.length);
+    let matched = str.substring(0, inputValue.length);
 	let makeBold = `<strong>${matched}</strong>`;
 	let boldedMatch = str.replace(matched, makeBold);
 	return boldedMatch;
@@ -96,18 +96,9 @@ const navigateList = (e) => {
 	}
 } 
   
-    function handleChange() {
-      let newId = input.value
-      const newExercice = {
-        directory: newId[0] + 'e',
-        id: newId,
-      }
-      listeExercices.update((l) => [...l, newExercice])
-      input.value = ""
-    }
 
     function handleChange2() {
-      let newId = selectedColor.replace('.js','')
+      let newId = inputValue.replace('.js','')
       let ex = newId.split('/')
       const newExercice = {
         directory: ex[0],
@@ -117,15 +108,9 @@ const navigateList = (e) => {
       input.value = ""
     }
 
-    async function searchExercice() {
-    return await data.map(x => x.replace('.js',''));
-}
   </script>
 
-<div>
- 
-<!--  <button class="button is-info" on:click={handleChange2}>>></button>-->
-</div>
+
   <div class="inline-flex space-x-2">
     {#each listeId as id, indice (indice)}
       <Chips text={id} {indice} />
@@ -138,13 +123,13 @@ const navigateList = (e) => {
   <div class="autocomplete">
     <input id="country-input" 
 					 type="text" 
-					 placeholder="Search Country Names" 
+					 placeholder="Search Ex Names" 
 					 bind:this={searchInput}
 					 bind:value={inputValue} 
 					 on:input={filterEx}>
   </div>
 	
-  <input type="submit">
+   <input type="submit" on:click={handleChange2}>
 	
 	<!-- FILTERED LIST OF COUNTRIES -->
 	{#if filteredExercices.length > 0}

@@ -1,6 +1,6 @@
 <script lang="ts">
   import InputListeExercices from "./InputListeExercices.svelte"
-  import Searchbar from "./Searchbar_old.svelte"
+  import Searchbar from "./Searchbar.svelte"
   import { createEventDispatcher } from "svelte"
   const dispatch = createEventDispatcher()
   const dispatch2 = createEventDispatcher()
