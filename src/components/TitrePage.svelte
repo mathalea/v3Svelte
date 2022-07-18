@@ -16,7 +16,7 @@
 
 <h1 class="py-2 px-4 text-white text-2xl font-bold  bg-coopmaths-light flex items-center">
   <button type="button" on:click={toggleSideList}><i class="bx bx-menu-alt-left" /></button>
-  <div class="text-gray-700 font-normal ml-8">
+  <div class="text-gray-700 font-normal ml-8 w-15">
     <Searchbar />
   <!--  <InputListeExercices /> -->
   </div>

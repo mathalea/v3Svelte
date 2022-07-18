@@ -40,16 +40,17 @@
     }
 
     async function searchExercice() {
-    return await data;
+    return await data.map(x => x.replace('.js',''));
 }
   </script>
-
+<div>
   <AutoComplete
   searchFunction={searchExercice}
   items={exercices}
-  bind:selectedItem={selectedColor}
+  bind:selectedItem={selectedColor}   
   />
   <button class="button is-info" on:click={handleChange2}>>></button>
+</div>
   <div class="inline-flex space-x-2">
     {#each listeId as id, indice (indice)}
       <Chips text={id} {indice} />
