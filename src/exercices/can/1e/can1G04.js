@@ -1,14 +1,14 @@
-import Exercice from "../../Exercice.js"
-import { randint, choice, texNombre, choisitLettresDifferentes } from "../../../modules/outils.js"
+import Exercice from '../../Exercice.js'
+import { randint, choice, texNombre, choisitLettresDifferentes } from '../../../modules/outils.js'
 import {
   mathalea2d, point, labelPoint, afficheLongueurSegment, afficheMesureAngle, pointAdistance, segment
-} from "../../../modules/2d.js"
-import Decimal from "decimal.js/decimal.mjs"
-import FractionX from "../../../modules/FractionEtendue.js"
-export const titre = "Calculer un produit scalaire à l’aide de normes et d’un angle "
+} from '../../../modules/2d.js'
+import Decimal from 'decimal.js/decimal.mjs'
+import FractionX from '../../../modules/FractionEtendue.js'
+export const titre = 'Calculer un produit scalaire à l’aide de normes et d’un angle '
 export const interactifReady = true
-export const interactifType = "mathLive"
-export const dateDePublication = "26/06/2022"
+export const interactifType = 'mathLive'
+export const dateDePublication = '26/06/2022'
 /**
  * Modèle d'exercice très simple pour la course aux nombres
  * @author Gilles Mora
@@ -19,36 +19,36 @@ export const uuid = 'e7a2b'
 export const ref = 'can1G04'
 export default function ProduitScalaireNormesAngles () {
   Exercice.call(this) // Héritage de la classe Exercice()
-  this.typeExercice = "simple" // Cette ligne est très importante pour faire faire un exercice simple !
-  this.formatChampTexte = "largeur15 inline"
+  this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
+  this.formatChampTexte = 'largeur15 inline'
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
   this.nouvelleVersion = () => {
     const choix = choice([true, false])
-    const nom = choisitLettresDifferentes(3, "O", true)
-    const A = point(0, 0, nom[0], "below")
+    const nom = choisitLettresDifferentes(3, 'O', true)
+    const A = point(0, 0, nom[0], 'below')
     const a = randint(4, 8)//
-    const B = pointAdistance(A, a, 0, nom[1], "below")
+    const B = pointAdistance(A, a, 0, nom[1], 'below')
     const b = randint(4, 8)//
     const d = (new Decimal(a * b)).div(2)
     const f1 = new FractionX(a * b, 2)
-    const Angle = [[60, "$\\dfrac{\\pi}{3}$", "\\dfrac{\\pi}{3}"], [30, "$\\dfrac{\\pi}{6}$", "\\dfrac{\\pi}{6}"],
-      [45, "$\\dfrac{\\pi}{4}$", "\\dfrac{\\pi}{4}"],
-      [120, "$\\dfrac{2\\pi}{3}$", "\\dfrac{2\\pi}{3}"],
-      [135, "$\\dfrac{3\\pi}{4}$", "\\dfrac{3\\pi}{4}"],
-      [150, "$\\dfrac{5\\pi}{6}$", "\\dfrac{5\\pi}{6}"]
+    const Angle = [[60, '$\\dfrac{\\pi}{3}$', '\\dfrac{\\pi}{3}'], [30, '$\\dfrac{\\pi}{6}$', '\\dfrac{\\pi}{6}'],
+      [45, '$\\dfrac{\\pi}{4}$', '\\dfrac{\\pi}{4}'],
+      [120, '$\\dfrac{2\\pi}{3}$', '\\dfrac{2\\pi}{3}'],
+      [135, '$\\dfrac{3\\pi}{4}$', '\\dfrac{3\\pi}{4}'],
+      [150, '$\\dfrac{5\\pi}{6}$', '\\dfrac{5\\pi}{6}']
     ]
     const angle = choice(Angle)
-    const C = pointAdistance(A, b, angle[0], nom[2], "above")
-    const vAB = segment(A, B, "blue", "->")
+    const C = pointAdistance(A, b, angle[0], nom[2], 'above')
+    const vAB = segment(A, B, 'blue', '->')
     vAB.epaisseur = 2
-    const a1 = afficheLongueurSegment(B, A, "black", 0.5, "")
-    const a2 = afficheLongueurSegment(A, C, "black", 0.5, "")
-    const vAC = segment(A, C, "red", "->")
+    const a1 = afficheLongueurSegment(B, A, 'black', 0.5, '')
+    const a2 = afficheLongueurSegment(A, C, 'black', 0.5, '')
+    const vAC = segment(A, C, 'red', '->')
     vAC.epaisseur = 2
 
-    const a3 = choix ? afficheMesureAngle(B, A, C, "black", 1.5, `${angle[1]}`) : afficheMesureAngle(B, A, C, "black", 1.5, `${angle[0]}°`)
+    const a3 = choix ? afficheMesureAngle(B, A, C, 'black', 1.5, `${angle[1]}`) : afficheMesureAngle(B, A, C, 'black', 1.5, `${angle[0]}°`)
     const objets = []
     const xmin = Math.min(A.x, B.x, C.x) - 1
     const ymin = Math.min(A.y, B.y, C.y) - 1
@@ -58,7 +58,7 @@ export default function ProduitScalaireNormesAngles () {
     objets.push(vAB, vAC, labelPoint(A, B, C), a1, a2, a3)
 
     this.question = `Calculer $\\overrightarrow{${nom[0]}${nom[1]}}\\cdot\\overrightarrow{${nom[0]}${nom[2]}}$.<br>`
-    this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: "margin: auto" }, objets)
+    this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 18, mainlevee: false, amplitude: 0.3, scale: 0.7, style: 'margin: auto' }, objets)
     if (angle[0] === 30) {
       this.correction = `
     $\\begin{aligned}

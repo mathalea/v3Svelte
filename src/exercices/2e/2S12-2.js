@@ -1,12 +1,12 @@
-import Exercice from "../Exercice.js"
-import Decimal from "decimal.js/decimal.mjs"
-import { listeQuestionsToContenu, randint, combinaisonListes, texNombre } from "../../modules/outils.js"
-import { ajouteChampTexteMathLive } from "../../modules/interactif/questionMathLive.js"
-import { setReponse } from "../../modules/gestionInteractif.js"
+import Exercice from '../Exercice.js'
+import Decimal from 'decimal.js/decimal.mjs'
+import { listeQuestionsToContenu, randint, combinaisonListes, texNombre } from '../../modules/outils.js'
+import { ajouteChampTexteMathLive } from '../../modules/interactif/questionMathLive.js'
+import { setReponse } from '../../modules/gestionInteractif.js'
 export const titre = "Déterminer un taux d'évolution global"
 export const interactifReady = true
-export const interactifType = "mathLive"
-export const dateDePublication = "06/01/2022"
+export const interactifType = 'mathLive'
+export const dateDePublication = '06/01/2022'
 
 /**
 * Problèmes d'évolutions successives'
@@ -26,7 +26,7 @@ export default function EvolutionsSuccesives () {
   this.titre = titre
   this.interactifReady = interactifReady
   this.interactifType = interactifType
-  this.consigne = ""
+  this.consigne = ''
   this.nbQuestions = 3
   this.nbCols = 1
   this.nbColsCorr = 1
@@ -49,20 +49,20 @@ export default function EvolutionsSuccesives () {
           taux1 = randint(-80, 80, 0)
           taux2 = randint(-80, 80, 0)
           if (taux1 > 0) {
-            verbe1 = "Augmenter"
-            nom1 = "hausse"
+            verbe1 = 'Augmenter'
+            nom1 = 'hausse'
           }
           if (taux2 > 0) {
-            verbe2 = "Augmenter"
-            nom2 = "hausse"
+            verbe2 = 'Augmenter'
+            nom2 = 'hausse'
           }
           if (taux1 < 0) {
-            verbe1 = "Diminuer"
-            nom1 = "baisse"
+            verbe1 = 'Diminuer'
+            nom1 = 'baisse'
           }
           if (taux2 < 0) {
-            verbe2 = "Diminuer"
-            nom2 = "baisse"
+            verbe2 = 'Diminuer'
+            nom2 = 'baisse'
           }
           p1 = new Decimal(taux1).div(100)
           p2 = new Decimal(taux2).div(100)
@@ -75,15 +75,15 @@ export default function EvolutionsSuccesives () {
           taux = p.mul(100)
           t = taux.abs()
           if (taux.isPos()) {
-            nom = "hausse"
+            nom = 'hausse'
           }
           if (taux.isNeg()) {
-            nom = "baisse"
+            nom = 'baisse'
           }
           texte = `Le prix d'un article subit une ${nom1} de $${t1}~\\%$ puis une ${nom2} de $${t2}~\\%$.<br>Déterminer le taux d'évolution global du prix de cet article.`
-          texte += ajouteChampTexteMathLive(this, i, "largeur15 inline", { texteApres: "%" })
+          texte += ajouteChampTexteMathLive(this, i, 'largeur15 inline', { texteApres: '%' })
           texteCorr = "Pour déterminer le taux d'évolution global, on commence par calculer le coefficient multiplicateur global."
-          texteCorr += "<br>Si une grandeur subit des évolutions successives, le coefficient multiplicateur global est le produit des coefficients multiplicateurs de chaque évolution :"
+          texteCorr += '<br>Si une grandeur subit des évolutions successives, le coefficient multiplicateur global est le produit des coefficients multiplicateurs de chaque évolution :'
           texteCorr += `<br><br>Première évolution : ${verbe1} de $${t1}~\\%$ revient à multiplier par `
           if (taux1 > 0) {
             texteCorr += `$CM_1 = 1 + \\dfrac{${t1}}{100} = ${texNombre(CM1, 2)}$.`
@@ -111,20 +111,20 @@ export default function EvolutionsSuccesives () {
           taux1 = randint(-20, 20, 0)
           taux2 = randint(-20, 20, 0)
           if (taux1 > 0) {
-            verbe1 = "Augmenter"
-            nom1 = "augmenté"
+            verbe1 = 'Augmenter'
+            nom1 = 'augmenté'
           }
           if (taux2 > 0) {
-            verbe2 = "Augmenter"
-            nom2 = "augmenté"
+            verbe2 = 'Augmenter'
+            nom2 = 'augmenté'
           }
           if (taux1 < 0) {
-            verbe1 = "Diminuer"
-            nom1 = "diminué"
+            verbe1 = 'Diminuer'
+            nom1 = 'diminué'
           }
           if (taux2 < 0) {
-            verbe2 = "Diminuer"
-            nom2 = "diminué"
+            verbe2 = 'Diminuer'
+            nom2 = 'diminué'
           }
           p1 = new Decimal(taux1).div(100)
           p2 = new Decimal(taux2).div(100)
@@ -137,15 +137,15 @@ export default function EvolutionsSuccesives () {
           taux = p.mul(100)
           t = taux.abs()
           if (taux.isPos()) {
-            nom = "augmenté"
+            nom = 'augmenté'
           }
           if (taux.isNeg()) {
-            nom = "diminué"
+            nom = 'diminué'
           }
           texte = `La population d'une ville a ${nom1} de $${t1}~\\%$ en $2020$ puis a ${nom2} de $${t2}~\\%$ en $2021$.<br>Quel est le taux d'évolution global ?`
-          texte += ajouteChampTexteMathLive(this, i, "largeur15 inline", { texteApres: "%" })
+          texte += ajouteChampTexteMathLive(this, i, 'largeur15 inline', { texteApres: '%' })
           texteCorr = "Pour déterminer le taux d'évolution global, on commence par calculer le coefficient multiplicateur global."
-          texteCorr += "<br>Si une grandeur subit des évolutions successives, le coefficient multiplicateur global est le produit des coefficients multiplicateurs de chaque évolution :"
+          texteCorr += '<br>Si une grandeur subit des évolutions successives, le coefficient multiplicateur global est le produit des coefficients multiplicateurs de chaque évolution :'
           texteCorr += `<br><br>Première évolution : ${verbe1} de $${t1}~\\%$ revient à multiplier par `
           if (taux1 > 0) {
             texteCorr += `$CM_1 = 1 + \\dfrac{${t1}}{100} = ${texNombre(CM1, 2)}$.`
@@ -173,20 +173,20 @@ export default function EvolutionsSuccesives () {
           taux1 = randint(-40, 40, 0)
           taux2 = randint(-40, 40, 0)
           if (taux1 > 0) {
-            verbe1 = "Augmenter"
-            nom1 = "augmenté"
+            verbe1 = 'Augmenter'
+            nom1 = 'augmenté'
           }
           if (taux2 > 0) {
-            verbe2 = "Augmenter"
-            nom2 = "augmenté"
+            verbe2 = 'Augmenter'
+            nom2 = 'augmenté'
           }
           if (taux1 < 0) {
-            verbe1 = "Diminuer"
-            nom1 = "diminué"
+            verbe1 = 'Diminuer'
+            nom1 = 'diminué'
           }
           if (taux2 < 0) {
-            verbe2 = "Diminuer"
-            nom2 = "diminué"
+            verbe2 = 'Diminuer'
+            nom2 = 'diminué'
           }
           p1 = new Decimal(taux1).div(100)
           p2 = new Decimal(taux2).div(100)
@@ -199,15 +199,15 @@ export default function EvolutionsSuccesives () {
           taux = p.mul(100)
           t = taux.abs()
           if (taux.isPos()) {
-            nom = "augmenté"
+            nom = 'augmenté'
           }
           if (taux.isNeg()) {
-            nom = "diminué"
+            nom = 'diminué'
           }
           texte = `Le nombre d'adhérents d'une association a ${nom1} de $${t1}~\\%$ entre $2019$ et $2020$ puis a ${nom2} de $${t2}~\\%$ entre $2020$ et $2021$.<br>Quel est le taux d'évolution global du nombre d'adhérents ?`
-          texte += ajouteChampTexteMathLive(this, i, "largeur15 inline", { texteApres: "%" })
+          texte += ajouteChampTexteMathLive(this, i, 'largeur15 inline', { texteApres: '%' })
           texteCorr = "Pour déterminer le taux d'évolution global, on commence par calculer le coefficient multiplicateur global."
-          texteCorr += "<br>Si une grandeur subit des évolutions successives, le coefficient multiplicateur global est le produit des coefficients multiplicateurs de chaque évolution :"
+          texteCorr += '<br>Si une grandeur subit des évolutions successives, le coefficient multiplicateur global est le produit des coefficients multiplicateurs de chaque évolution :'
           texteCorr += `<br><br>Première évolution : ${verbe1} de $${t1}~\\%$ revient à multiplier par `
           if (taux1 > 0) {
             texteCorr += `$CM_1 = 1 + \\dfrac{${t1}}{100} = ${texNombre(CM1, 2)}$.`

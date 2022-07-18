@@ -536,7 +536,7 @@ function htmlListes (objaff) {
     }
     lignes += objaff.obj_ex[objaff.liste_affichage[i]].lignes_tableau
   }
-  return { liste: liste, lignes: lignes }
+  return { liste, lignes }
 }
 
 export function menuDesExercicesDisponibles () {

@@ -142,7 +142,7 @@ export async function loadMathLive () {
     await import('mathlive')
     for (const mf of champs) {
       mf.setOptions(clavierCollege)
-      mf.setOptions({fontsDirectory: './fonts'})
+      mf.setOptions({ fontsDirectory: './fonts' })
 
       // Evite les problèmes de positionnement du clavier mathématique dans les iframes
       if (context.vue === 'exMoodle') {

@@ -1,16 +1,16 @@
-import Exercice from "../../Exercice.js"
-import { listeQuestionsToContenu, randint, choice, texNombre, choisitLettresDifferentes, sp } from "../../../modules/outils.js"
-import Decimal from "decimal.js/decimal.mjs"
-import { Arbre } from "../../../modules/arbres.js"
-import { mathalea2d } from "../../../modules/2d.js"
-import { ajouteChampTexteMathLive } from "../../../modules/interactif/questionMathLive.js"
-import { setReponse } from "../../../modules/gestionInteractif.js"
-export const titre = "Lire une probabilité  à partir d’un arbre"
-export const dateDePublication = "03/07/2022"
+import Exercice from '../../Exercice.js'
+import { listeQuestionsToContenu, randint, choice, texNombre, choisitLettresDifferentes, sp } from '../../../modules/outils.js'
+import Decimal from 'decimal.js/decimal.mjs'
+import { Arbre } from '../../../modules/arbres.js'
+import { mathalea2d } from '../../../modules/2d.js'
+import { ajouteChampTexteMathLive } from '../../../modules/interactif/questionMathLive.js'
+import { setReponse } from '../../../modules/gestionInteractif.js'
+export const titre = 'Lire une probabilité  à partir d’un arbre'
+export const dateDePublication = '03/07/2022'
 export const interactifReady = true
-export const interactifType = "mathLive"
+export const interactifType = 'mathLive'
 export const amcReady = true
-export const amcType = "AMCNum"
+export const amcType = 'AMCNum'
 
 /**
  * On donne un arbre de probabilité et lit une probabilité sur l'arbre
@@ -22,13 +22,13 @@ export const ref = 'can1P02'
 export default function LectureProbabilite () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = true
-  this.consigne = ""
+  this.consigne = ''
   this.nbQuestions = 1
   this.nbCols = 2 // Uniquement pour la sortie LaTeX
   this.nbColsCorr = 1 // Uniquement pour la sortie LaTeX
   // this.sup = 1; // Niveau de difficulté
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
-  this.video = "" // Id YouTube ou url
+  this.video = '' // Id YouTube ou url
 
   this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
@@ -37,8 +37,8 @@ export default function LectureProbabilite () {
     for (let i = 0, cpt = 0, pA, pB, pAC, pBC, omega, texte, texteCorr, choix, nom1, nom2, objets; i < this.nbQuestions && cpt < 50;) {
       objets = []
       // On choisit les probas de l'arbre
-      nom1 = choisitLettresDifferentes(1, "D")
-      nom2 = choisitLettresDifferentes(1, nom1 + "D")
+      nom1 = choisitLettresDifferentes(1, 'D')
+      nom2 = choisitLettresDifferentes(1, nom1 + 'D')
       pA = (new Decimal(randint(1, 9, 5))).div(10)
 
       pB = new Decimal(1 - pA)
@@ -57,10 +57,10 @@ export default function LectureProbabilite () {
       omega = new Arbre({
         racine: true,
         rationnel: false,
-        nom: "",
+        nom: '',
         proba: 1,
         visible: false,
-        alter: "",
+        alter: '',
         enfants: [
           new Arbre(
             {
@@ -103,10 +103,10 @@ export default function LectureProbabilite () {
       omega.setTailles() // On calcule les tailles des arbres.
       objets = omega.represente(0, 7, 0, 1.5, true, 1) // On crée l'arbre complet echelle 1.4 feuilles verticales sens gauche-droite
       texte = "On donne l'arbre de probabilités ci-dessous :<br>"
-      texte += mathalea2d({ xmin: -0.1, xmax: 14, ymin: 0, ymax: 7, style: "inline" }, ...objets)
-      texte += "<br>Compléter avec la notation qui convient : "
+      texte += mathalea2d({ xmin: -0.1, xmax: 14, ymin: 0, ymax: 7, style: 'inline' }, ...objets)
+      texte += '<br>Compléter avec la notation qui convient : '
       if (this.interactif) {
-        texte += ajouteChampTexteMathLive(this, i, "inline largeur25 lycee")
+        texte += ajouteChampTexteMathLive(this, i, 'inline largeur25 lycee')
       } else { texte += `${sp(7)}$\\ldots\\ldots $` }
       texte += ` $= ${texNombre(choix, 2)}$`
       texteCorr = `Les probabilités conditionnelles se lisent sur la deuxième partie de l'arbre :<br>

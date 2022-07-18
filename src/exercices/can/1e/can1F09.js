@@ -1,13 +1,13 @@
-import Exercice from "../../Exercice.js"
-import Decimal from "decimal.js/decimal.mjs"
-import FractionX from "../../../modules/FractionEtendue.js"
-import { randint, choice, ecritureAlgebrique, texNombre, reduireAxPlusB, texteCentre } from "../../../modules/outils.js"
-export const titre = "Déterminer la fonction dérivée d’une fonction affine*"
+import Exercice from '../../Exercice.js'
+import Decimal from 'decimal.js/decimal.mjs'
+import FractionX from '../../../modules/FractionEtendue.js'
+import { randint, choice, ecritureAlgebrique, texNombre, reduireAxPlusB, texteCentre } from '../../../modules/outils.js'
+export const titre = 'Déterminer la fonction dérivée d’une fonction affine*'
 export const interactifReady = true
-export const interactifType = "mathLive"
+export const interactifType = 'mathLive'
 
 // Les exports suivants sont optionnels mais au moins la date de publication semble essentielle
-export const dateDePublication = "20/06/2022" // La date de publication initiale au format 'jj/mm/aaaa' pour affichage temporaire d'un tag
+export const dateDePublication = '20/06/2022' // La date de publication initiale au format 'jj/mm/aaaa' pour affichage temporaire d'un tag
 // export const dateDeModifImportante = '14/02/2022' // Une date de modification importante au format 'jj/mm/aaaa' pour affichage temporaire d'un tag
 
 /**
@@ -19,11 +19,11 @@ export const uuid = '5eb88'
 export const ref = 'can1F09'
 export default function CalculFonctionDeriveeAffine2 () {
   Exercice.call(this) // Héritage de la classe Exercice()
-  this.typeExercice = "simple" // Cette ligne est très importante pour faire faire un exercice simple !
+  this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
   this.nbQuestions = 1
-  this.formatChampTexte = "largeur15 inline"
+  this.formatChampTexte = 'largeur15 inline'
   this.tailleDiaporama = 2
-  this.formatInteractif = "fractionEgale"
+  this.formatInteractif = 'fractionEgale'
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
   this.nouvelleVersion = () => {

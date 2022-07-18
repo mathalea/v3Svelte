@@ -1,15 +1,15 @@
-import Exercice from "../Exercice.js"
-import { listeQuestionsToContenu, randint, abs, reduireAxPlusB, texFractionReduite, ecritureAlgebrique, pgcd } from "../../modules/outils.js"
-import { repere2, droite, segment, tracePoint, labelPoint, point, mathalea2d } from "../../modules/2d.js"
-import { setReponse } from "../../modules/gestionInteractif.js"
-import { ajouteChampTexteMathLive } from "../../modules/interactif/questionMathLive.js"
-import { context } from "../../modules/context.js"
-import Decimal from "decimal.js/decimal.mjs"
+import Exercice from '../Exercice.js'
+import { listeQuestionsToContenu, randint, abs, reduireAxPlusB, texFractionReduite, ecritureAlgebrique, pgcd } from '../../modules/outils.js'
+import { repere2, droite, segment, tracePoint, labelPoint, point, mathalea2d } from '../../modules/2d.js'
+import { setReponse } from '../../modules/gestionInteractif.js'
+import { ajouteChampTexteMathLive } from '../../modules/interactif/questionMathLive.js'
+import { context } from '../../modules/context.js'
+import Decimal from 'decimal.js/decimal.mjs'
 export const titre = "Lecture graphique des coefficients d'une équation réduite "
 export const interactifReady = true
-export const interactifType = "mathLive"
+export const interactifType = 'mathLive'
 export const amcReady = true
-export const amcType = "AMCHybride"
+export const amcType = 'AMCHybride'
 /**
  2G35-7, ex 2G50-2
 
@@ -19,12 +19,12 @@ export const ref = '2G35-7'
 export default function lecturegraphiquedeaetb (numeroExercice) {
   Exercice.call(this)
 
-  this.consigne = "Equation réduite de droite et représentation graphique "
+  this.consigne = 'Equation réduite de droite et représentation graphique '
   this.nbQuestions = 3// On complète le nb de questions
   this.nbCols = 2
   this.nbColsCorr = 2
   this.tailleDiaporama = 3
-  this.video = ""
+  this.video = ''
   this.spacing = 1
   this.spacingCorr = 1
   this.spacingCorr = 3
@@ -50,9 +50,9 @@ export default function lecturegraphiquedeaetb (numeroExercice) {
         }// On évite la situation de double nullité
         r = repere2()// On définit le repère
         c = droite(a, -1, b) // On définit l'objet qui tracera la courbe dans le repère
-        c.color = "red"
+        c.color = 'red'
         c.epaisseur = 2
-        texte = "A partir de la représentation graphique de la droite ci-dessous, donner par lecture graphique son équation réduite.<br>"
+        texte = 'A partir de la représentation graphique de la droite ci-dessous, donner par lecture graphique son équation réduite.<br>'
         texte += mathalea2d({
           xmin: -8,
           ymin: -8,
@@ -61,7 +61,7 @@ export default function lecturegraphiquedeaetb (numeroExercice) {
           scale: 0.5
         }, r, f, c)// On trace le graphique
         if (a === 0) {
-          texteCorr = "On observe que la droite est horizontale. "
+          texteCorr = 'On observe que la droite est horizontale. '
           texteCorr += `<br>La droite est l'ensemble des points ayant comme ordonnée : $${b}$ `
           texteCorr += `<br>L'équation réduite de cette droite est donc : $y=${b}$`
         } else {
@@ -70,23 +70,23 @@ export default function lecturegraphiquedeaetb (numeroExercice) {
           texteCorr += "C'est l'ordonnée du point d'intersection de la droite avec l'axe des ordonnées.<br>"
           texteCorr += `On lit ici que le point $(0;${b}) \\in (d)$.<br>`
           texteCorr += `On peut alors conclure que l'ordonnée à l'origine est : $b=${b}$. <br>`
-          texteCorr += "On peut lire ensuite le coefficient directeur $a$ de la droite $(d)$.<br>"
-          texteCorr += "On sait que $a=\\dfrac{\\text{Dénivelé vertical}}{\\text{Déplacement horizontal}}$"
+          texteCorr += 'On peut lire ensuite le coefficient directeur $a$ de la droite $(d)$.<br>'
+          texteCorr += 'On sait que $a=\\dfrac{\\text{Dénivelé vertical}}{\\text{Déplacement horizontal}}$'
           texteCorr += `<br>En lisant le déplacement vertical correspondant à un déplacement horizontal d'une unité, on lit : <br>$a=\\dfrac{\\text{Dénivelé vertical}}{1}=${a}$`
           texteCorr += "<br>On peut en déduire que l'équation réduite de la droite $(d)$ est :"
 
           texteCorr += `$y=${reduireAxPlusB(a, b)}$`
         }
         if (b + a < -5 || b + a > 5) {
-          s1 = segment(-2, b - 2 * a, -1, b - 2 * a, "blue")
-          s2 = segment(-1, b - 2 * a, -1, b - a, "blue")
+          s1 = segment(-2, b - 2 * a, -1, b - 2 * a, 'blue')
+          s2 = segment(-1, b - 2 * a, -1, b - a, 'blue')
 
           s1.epaisseur = 4
           s2.epaisseur = 4
-          const A = point(0, b, "A")
-          t = tracePoint(A, "blue") // Variable qui trace les points avec une croix
+          const A = point(0, b, 'A')
+          t = tracePoint(A, 'blue') // Variable qui trace les points avec une croix
           l = labelPoint(A)// Variable qui trace les nom s A et B
-          l.color = "blue"
+          l.color = 'blue'
           if (a !== 0) {
             texteCorr += mathalea2d({
               xmin: -8,
@@ -97,15 +97,15 @@ export default function lecturegraphiquedeaetb (numeroExercice) {
             }, r, s1, s2, t, l, c)
           }
         } else {
-          s1 = segment(0, b, 1, b, "blue")
-          s2 = segment(1, b, 1, b + a, "blue")
+          s1 = segment(0, b, 1, b, 'blue')
+          s2 = segment(1, b, 1, b + a, 'blue')
 
           s1.epaisseur = 4
           s2.epaisseur = 4
-          const A = point(0, b, "A")
-          t = tracePoint(A, "blue") // Variable qui trace les points avec une croix
+          const A = point(0, b, 'A')
+          t = tracePoint(A, 'blue') // Variable qui trace les points avec une croix
           l = labelPoint(A)// Variable qui trace les nom s A et B
-          l.color = "blue"
+          l.color = 'blue'
           if (a !== 0) {
             texteCorr += mathalea2d({
               xmin: -8,
@@ -117,18 +117,18 @@ export default function lecturegraphiquedeaetb (numeroExercice) {
           }
         }
         // On trace le graphique
-        setReponse(this, i, "y=" + reduireAxPlusB(a, b))
+        setReponse(this, i, 'y=' + reduireAxPlusB(a, b))
         if (context.isAmc) {
           this.autoCorrection[i] = {
-            enonce: texte + "<br>",
+            enonce: texte + '<br>',
             propositions: [
               {
-                type: "AMCNum",
+                type: 'AMCNum',
                 propositions: [{
                   texte: texteCorr,
-                  statut: "",
+                  statut: '',
                   reponse: {
-                    texte: "coefficient directeur",
+                    texte: 'coefficient directeur',
                     valeur: a,
                     param: {
                       digits: 1,
@@ -140,9 +140,9 @@ export default function lecturegraphiquedeaetb (numeroExercice) {
                 }]
               },
               {
-                type: "AMCNum",
+                type: 'AMCNum',
                 propositions: [{
-                  statut: "",
+                  statut: '',
                   reponse: {
                     texte: "ordonnée à l'origine",
                     valeur: b,
@@ -169,10 +169,10 @@ export default function lecturegraphiquedeaetb (numeroExercice) {
 
         r = repere2()// On définit le repère
         c = droite(a / d, -1, b) // On définit l'objet qui tracera la courbe dans le repère
-        c.color = "red"
+        c.color = 'red'
         c.epaisseur = 2// On définit l'objet qui tracera la courbe dans le repère
 
-        texte = "A partir de la représentation graphique de la droite ci-dessous, donner par lecture graphique son équation réduite.<br>"
+        texte = 'A partir de la représentation graphique de la droite ci-dessous, donner par lecture graphique son équation réduite.<br>'
         texte += mathalea2d({
           xmin: -6,
           ymin: -6,
@@ -181,7 +181,7 @@ export default function lecturegraphiquedeaetb (numeroExercice) {
           scale: 0.5
         }, r, c)// On trace le graphique
         if (a === 0) {
-          texteCorr = "On observe que la droite est horizontale. "
+          texteCorr = 'On observe que la droite est horizontale. '
           texteCorr += `<br>La droite est l'ensemble des points ayant comme ordonnée : $${b}$ `
           texteCorr += `<br>L'équation réduite de cette droite est donc : $y=${b}$`
         } else {
@@ -190,47 +190,47 @@ export default function lecturegraphiquedeaetb (numeroExercice) {
           texteCorr += "C'est l'ordonnée du point d'intersection de la droite avec l'axe des ordonnées.<br>"
           texteCorr += `On lit ici que : $A(0;${b}) \\in (d)$.<br>`
           texteCorr += `On peut alors conclure que l'ordonnée à l'origine est : $b=${b}$. <br>`
-          texteCorr += "On peut lire ensuite le coefficient directeur $a$ de la droite $(d)$.<br>"
-          texteCorr += "On sait que $a=\\dfrac{\\text{Dénivelé vertical}}{\\text{Déplacement horizontal}}$"
-          texteCorr += "<br>On cherche un déplacement horizontal correspondant à un déplacement vertical entier."
+          texteCorr += 'On peut lire ensuite le coefficient directeur $a$ de la droite $(d)$.<br>'
+          texteCorr += 'On sait que $a=\\dfrac{\\text{Dénivelé vertical}}{\\text{Déplacement horizontal}}$'
+          texteCorr += '<br>On cherche un déplacement horizontal correspondant à un déplacement vertical entier.'
           texteCorr += `<br>On lit que pour un déplacement vers la droite de ${d} unités, il faut `
 
-          if (a > 0) { texteCorr += "monter de " }
-          if (a < 0) { texteCorr += "descendre de " }
+          if (a > 0) { texteCorr += 'monter de ' }
+          if (a < 0) { texteCorr += 'descendre de ' }
           texteCorr += `${abs(a)} unités.`
           texteCorr += `<br>Il vient : $a=\\dfrac{${a}}{${d}}`
           if (pgcd(a, d) !== 1) {
             texteCorr += `=${texFractionReduite(a, d)}`
           }
-          texteCorr += "$"
+          texteCorr += '$'
 
           texteCorr += "<br>On peut en déduire que l'équation réduite de la droite $(d)$ est : $y= "
           if (a === d) {
-            texteCorr += `x${b !== 0 ? ecritureAlgebrique(b) : ""}`
+            texteCorr += `x${b !== 0 ? ecritureAlgebrique(b) : ''}`
           } else if (a === -d) {
-            texteCorr += `-x${b !== 0 ? ecritureAlgebrique(b) : ""}`
+            texteCorr += `-x${b !== 0 ? ecritureAlgebrique(b) : ''}`
           } else {
             texteCorr += `${texFractionReduite(a, d)}x`
             if (b !== 0) { texteCorr += `${ecritureAlgebrique(b)}=${reduireAxPlusB(new Decimal(a).div(d), b)}` }
           }
 
-          texteCorr += "$."
+          texteCorr += '$.'
 
           if (a > 0) {
-            s1 = segment(0, b - a, -d, b - a, "blue")
+            s1 = segment(0, b - a, -d, b - a, 'blue')
             s1.epaisseur = 4
-            s2 = segment(0, b - a, 0, b, "blue")
+            s2 = segment(0, b - a, 0, b, 'blue')
           }
           if (a < 0) {
-            s1 = segment(0, b, d, b, "blue")
+            s1 = segment(0, b, d, b, 'blue')
             s1.epaisseur = 4
-            s2 = segment(d, b - abs(a), d, b, "blue")
+            s2 = segment(d, b - abs(a), d, b, 'blue')
           }
           s2.epaisseur = 4
-          const A = point(0, b, "A")
-          t = tracePoint(A, "red") // Variable qui trace les points avec une croix
+          const A = point(0, b, 'A')
+          t = tracePoint(A, 'red') // Variable qui trace les points avec une croix
           l = labelPoint(A)// Variable qui trace les nom s A et B
-          l.color = "red"
+          l.color = 'red'
           if (a !== 0) {
             texteCorr += mathalea2d({
               xmin: -6,
@@ -240,18 +240,18 @@ export default function lecturegraphiquedeaetb (numeroExercice) {
               scale: 0.5
             }, r, s1, s2, t, l, c)
           }// On trace le graphique
-          setReponse(this, i, "y=" + reduireAxPlusB(new Decimal(a).div(d), b))
+          setReponse(this, i, 'y=' + reduireAxPlusB(new Decimal(a).div(d), b))
           if (context.isAmc) {
             this.autoCorrection[i] = {
-              enonce: texte + "<br>",
+              enonce: texte + '<br>',
               propositions: [
                 {
-                  type: "AMCNum",
+                  type: 'AMCNum',
                   propositions: [{
                     texte: texteCorr,
-                    statut: "",
+                    statut: '',
                     reponse: {
-                      texte: "coefficient directeur",
+                      texte: 'coefficient directeur',
                       valeur: new Decimal(a).div(d).toString(),
                       param: {
                         digits: 3,
@@ -263,9 +263,9 @@ export default function lecturegraphiquedeaetb (numeroExercice) {
                   }]
                 },
                 {
-                  type: "AMCNum",
+                  type: 'AMCNum',
                   propositions: [{
-                    statut: "",
+                    statut: '',
                     reponse: {
                       texte: "ordonnée à l'origine",
                       valeur: b,
@@ -295,5 +295,5 @@ export default function lecturegraphiquedeaetb (numeroExercice) {
 
     listeQuestionsToContenu(this)
   }
-  this.besoinFormulaireNumerique = ["Types de question ", 2, "1 : Valeurs entières.\n2 : Valeurs fractionnaires."]
+  this.besoinFormulaireNumerique = ['Types de question ', 2, '1 : Valeurs entières.\n2 : Valeurs fractionnaires.']
 }

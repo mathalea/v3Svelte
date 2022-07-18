@@ -1,18 +1,18 @@
-import Exercice from "../Exercice.js"
-import { listeQuestionsToContenu, stringNombre } from "../../modules/outils.js"
-import Decimal from "decimal.js/decimal.mjs"
-import { all, create } from "mathjs"
-export const titre = "Somme de deux entier"
+import Exercice from '../Exercice.js'
+import { listeQuestionsToContenu, stringNombre } from '../../modules/outils.js'
+import Decimal from 'decimal.js/decimal.mjs'
+import { all, create } from 'mathjs'
+export const titre = 'Somme de deux entier'
 export const interactifReady = true
-export const interactifType = "mathLive"
+export const interactifType = 'mathLive'
 
 // Les exports suivants sont optionnels mais au moins la date de publication semble essentielle
-export const dateDePublication = "25/10/2021" // La date de publication initiale au format 'jj/mm/aaaa' pour affichage temporaire d'un tag
-export const dateDeModifImportante = "24/10/2021" // Une date de modification importante au format 'jj/mm/aaaa' pour affichage temporaire d'un tag
+export const dateDePublication = '25/10/2021' // La date de publication initiale au format 'jj/mm/aaaa' pour affichage temporaire d'un tag
+export const dateDeModifImportante = '24/10/2021' // Une date de modification importante au format 'jj/mm/aaaa' pour affichage temporaire d'un tag
 
 const bmath = create(all)
 
-bmath.config({ number: "BigNumber" })
+bmath.config({ number: 'BigNumber' })
 
 /**
  * Modèle d'exercice très simple pour la course aux nombres
@@ -25,8 +25,8 @@ export default function NomExercice () {
   this.sup = 0
   this.sup2 = 0
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
-  this.besoinFormulaireTexte = ["nombre a : ", ""]
-  this.besoinFormulaire2Texte = ["nombre b : ", ""]
+  this.besoinFormulaireTexte = ['nombre a : ', '']
+  this.besoinFormulaire2Texte = ['nombre b : ', '']
   this.nouvelleVersion = () => {
     this.listeCorrections = []
     this.listeQuestions = []

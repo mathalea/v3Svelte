@@ -157,7 +157,7 @@ export function propositionsQcm (exercice, i) {
   } else {
     texte += '\\end{multicols}'
   }
-  return { texte: texte, texteCorr: texteCorr }
+  return { texte, texteCorr }
 }
 
 /**

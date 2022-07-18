@@ -1,13 +1,13 @@
-import Exercice from "../Exercice.js"
-import Decimal from "decimal.js/decimal.mjs"
-import { listeQuestionsToContenu, randint, combinaisonListes, rangeMinMax, ecritureAlgebrique, choice, texNombre, miseEnEvidence, sp, ecritureParentheseSiNegatif, texNombrec, nombreDeChiffresDansLaPartieDecimale, nombreDeChiffresDansLaPartieEntiere } from "../../modules/outils.js"
-import { setReponse } from "../../modules/gestionInteractif.js"
-import { ajouteChampTexteMathLive } from "../../modules/interactif/questionMathLive.js"
-import { context } from "../../modules/context.js"
+import Exercice from '../Exercice.js'
+import Decimal from 'decimal.js/decimal.mjs'
+import { listeQuestionsToContenu, randint, combinaisonListes, rangeMinMax, ecritureAlgebrique, choice, texNombre, miseEnEvidence, sp, ecritureParentheseSiNegatif, texNombrec, nombreDeChiffresDansLaPartieDecimale, nombreDeChiffresDansLaPartieEntiere } from '../../modules/outils.js'
+import { setReponse } from '../../modules/gestionInteractif.js'
+import { ajouteChampTexteMathLive } from '../../modules/interactif/questionMathLive.js'
+import { context } from '../../modules/context.js'
 export const interactifReady = true
-export const interactifType = "mathLive"
+export const interactifType = 'mathLive'
 export const amcReady = true
-export const amcType = "AMCNum"
+export const amcType = 'AMCNum'
 export const titre = "Fonction : calculs d'images (et d'antécédents)"
 
 /**
@@ -22,7 +22,7 @@ export default function CalculsImagesFonctions () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = 2
   this.sup2 = false
-  this.consigne = ""
+  this.consigne = ''
   this.correctionDetailleeDisponible = true
   this.correctionDetaillee = false
   this.spacing = 2
@@ -36,19 +36,19 @@ export default function CalculsImagesFonctions () {
     let typesDeQuestionsDisponibles
     switch (this.sup) {
       case 1:
-        typesDeQuestionsDisponibles = ["linéaire"]
+        typesDeQuestionsDisponibles = ['linéaire']
         break
       case 2:
-        typesDeQuestionsDisponibles = ["affine"]
+        typesDeQuestionsDisponibles = ['affine']
         break
       case 3:
-        typesDeQuestionsDisponibles = ["polynôme"]
+        typesDeQuestionsDisponibles = ['polynôme']
         break
       case 4:
-        typesDeQuestionsDisponibles = ["fraction"]
+        typesDeQuestionsDisponibles = ['fraction']
         break
       case 5:
-        typesDeQuestionsDisponibles = ["linéaire", "affine", "polynôme", "fraction"]
+        typesDeQuestionsDisponibles = ['linéaire', 'affine', 'polynôme', 'fraction']
         break
     }
     const listeTypeDeQuestions = combinaisonListes(typesDeQuestionsDisponibles, this.nbQuestions)
@@ -69,7 +69,7 @@ export default function CalculsImagesFonctions () {
 
       tagImage = true
       switch (listeTypeDeQuestions[i]) {
-        case "linéaire":
+        case 'linéaire':
           switch (sousChoix[i]) {
             case 0:
               enonce = `Soit $f$ la fonction définie par $f(x)=\\dfrac{${m}}{${n}}x$. ${sp(5)} Quelle est l'image de $${n * x}$ ?<br>`
@@ -108,7 +108,7 @@ export default function CalculsImagesFonctions () {
               break
           }
           break
-        case "affine":
+        case 'affine':
           switch (sousChoix[i]) {
             case 0:
               enonce = `Soit $f$ la fonction définie par $f(x)=\\dfrac{${m}}{${n}}x${ecritureAlgebrique(y)}$. ${sp(5)} Quelle est l'image de $${n * x}$ ?<br>`
@@ -145,7 +145,7 @@ export default function CalculsImagesFonctions () {
               break
           }
           break
-        case "polynôme":
+        case 'polynôme':
           ant = x
           sousChoix[i] = randint(0, 4)
           switch (sousChoix[i]) {
@@ -178,7 +178,7 @@ export default function CalculsImagesFonctions () {
               break
           }
           break
-        case "fraction":
+        case 'fraction':
           ant = x
           switch (sousChoix[i] % 4) {
             case 0:
@@ -214,17 +214,17 @@ export default function CalculsImagesFonctions () {
       }
       if (this.interactif) {
         if (tagImage) {
-          texte = enonce + ajouteChampTexteMathLive(this, i, "largeur25 inline", { texte: `$f(${ant})=$` })
+          texte = enonce + ajouteChampTexteMathLive(this, i, 'largeur25 inline', { texte: `$f(${ant})=$` })
         } else {
-          texte = enonce + ajouteChampTexteMathLive(this, i, "largeur25 inline", { texte: "$f($", texteApres: `$)=${img}$` })
+          texte = enonce + ajouteChampTexteMathLive(this, i, 'largeur25 inline', { texte: '$f($', texteApres: `$)=${img}$` })
         }
       } else {
         texte = enonce
       }
       if (tagImage) {
-        texteCorr = correction + "<br>" + `$f(${ant})=${miseEnEvidence(texNombre(reponses[i], 5))}$`
+        texteCorr = correction + '<br>' + `$f(${ant})=${miseEnEvidence(texNombre(reponses[i], 5))}$`
       } else {
-        texteCorr = correction + "<br>" + `$f(${miseEnEvidence(texNombre(reponses[i], 5))})=${img}$`
+        texteCorr = correction + '<br>' + `$f(${miseEnEvidence(texNombre(reponses[i], 5))})=${img}$`
       }
       setReponse(this, i, reponses[i])
       if (this.questionJamaisPosee(i, listeTypeDeQuestions[i], x, y, sousChoix[i])) {
@@ -251,9 +251,9 @@ export default function CalculsImagesFonctions () {
     }
   }
   this.besoinFormulaireNumerique = [
-    "Choix des questions",
+    'Choix des questions',
     5,
-    "1 : Fonction linéaire\n2 : Fonction affine \n3 : Polynome de degré 2 \n4 : Fonction rationnelle \n5 : Mélange"
+    '1 : Fonction linéaire\n2 : Fonction affine \n3 : Polynome de degré 2 \n4 : Fonction rationnelle \n5 : Mélange'
   ]
-  this.besoinFormulaire2Numerique = ["Choix des questions", 3, "1 : Calcul d'image\n2 : Calcul d'antécédent (uniquement pour linéaire et affine)\n3 : Mélange"]
+  this.besoinFormulaire2Numerique = ['Choix des questions', 3, "1 : Calcul d'image\n2 : Calcul d'antécédent (uniquement pour linéaire et affine)\n3 : Mélange"]
 }

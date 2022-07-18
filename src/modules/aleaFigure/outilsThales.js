@@ -1,7 +1,7 @@
-import { GVVector } from "./elements.js"
-import { GVGraphicView } from "./GraphicView.js"
-import { aleaName } from "../outilsMathjs.js"
-import { cross } from "mathjs"
+import { GVVector } from './elements.js'
+import { GVGraphicView } from './GraphicView.js'
+import { aleaName } from '../outilsMathjs.js'
+import { cross } from 'mathjs'
 export class GVAleaThalesConfig extends GVGraphicView {
   classicConfig/** boolean */ = undefined
   k/** number */

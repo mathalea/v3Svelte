@@ -1,7 +1,7 @@
 import { point, vecteur, droite, segment, polyline, polygone } from './2d.js'
 import { matrix, multiply, norm, cross, dot } from 'mathjs'
 import { context } from './context.js'
-const math = { matrix: matrix, multiply: multiply, norm: norm, cross: cross, dot: dot }
+const math = { matrix, multiply, norm, cross, dot }
 
 /*
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%

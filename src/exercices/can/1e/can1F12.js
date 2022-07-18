@@ -1,12 +1,12 @@
-import Exercice from "../../Exercice.js"
-import Decimal from "decimal.js/decimal.mjs"
-import { randint, choice, texNombre, texteCentre } from "../../../modules/outils.js"
-export const titre = "Déterminer la fonction dérivée d’une fonction $k/x$ ou $k\\sqrt{x}$"
+import Exercice from '../../Exercice.js'
+import Decimal from 'decimal.js/decimal.mjs'
+import { randint, choice, texNombre, texteCentre } from '../../../modules/outils.js'
+export const titre = 'Déterminer la fonction dérivée d’une fonction $k/x$ ou $k\\sqrt{x}$'
 export const interactifReady = true
-export const interactifType = "mathLive"
+export const interactifType = 'mathLive'
 
 // Les exports suivants sont optionnels mais au moins la date de publication semble essentielle
-export const dateDePublication = "21/06/2022" // La date de publication initiale au format 'jj/mm/aaaa' pour affichage temporaire d'un tag
+export const dateDePublication = '21/06/2022' // La date de publication initiale au format 'jj/mm/aaaa' pour affichage temporaire d'un tag
 // export const dateDeModifImportante = '14/02/2022' // Une date de modification importante au format 'jj/mm/aaaa' pour affichage temporaire d'un tag
 
 /**
@@ -18,9 +18,9 @@ export const uuid = '0f09e'
 export const ref = 'can1F12'
 export default function CalculFonctionDeriveeFctRef () {
   Exercice.call(this) // Héritage de la classe Exercice()
-  this.typeExercice = "simple" // Cette ligne est très importante pour faire faire un exercice simple !
+  this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
   this.nbQuestions = 1
-  this.formatChampTexte = "largeur15 inline"
+  this.formatChampTexte = 'largeur15 inline'
   this.tailleDiaporama = 2
 
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne

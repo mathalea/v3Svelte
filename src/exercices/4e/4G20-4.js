@@ -1,14 +1,14 @@
-import Exercice from "../Exercice.js"
-import Decimal from "decimal.js/decimal.mjs"
-import { context } from "../../modules/context.js"
-import { choice, listeQuestionsToContenu, randint, texNombre } from "../../modules/outils.js"
-import { setReponse } from "../../modules/gestionInteractif.js"
-import { ajouteChampTexteMathLive } from "../../modules/interactif/questionMathLive.js"
-import { cos } from "../../modules/fonctionsMaths.js"
+import Exercice from '../Exercice.js'
+import Decimal from 'decimal.js/decimal.mjs'
+import { context } from '../../modules/context.js'
+import { choice, listeQuestionsToContenu, randint, texNombre } from '../../modules/outils.js'
+import { setReponse } from '../../modules/gestionInteractif.js'
+import { ajouteChampTexteMathLive } from '../../modules/interactif/questionMathLive.js'
+import { cos } from '../../modules/fonctionsMaths.js'
 
 export const interactifReady = true
-export const interactifType = "mathLive"
-export const titre = "Arrondir une racine carrée"
+export const interactifType = 'mathLive'
+export const titre = 'Arrondir une racine carrée'
 
 /**
  * * Arrondir_une_valeur
@@ -38,7 +38,7 @@ export default function ArrondirUneValeur () {
     this.listeCorrections = []
     let n, nb, rac, angle, v
 
-    for (let i = 0, texte = "", texteCorr = "", cpt = 0; i < this.nbQuestions && cpt < 50;) {
+    for (let i = 0, texte = '', texteCorr = '', cpt = 0; i < this.nbQuestions && cpt < 50;) {
       this.autoCorrection[3 * i] = {}
       this.autoCorrection[3 * i + 1] = {}
       this.autoCorrection[3 * i + 2] = {}
@@ -67,15 +67,15 @@ export default function ArrondirUneValeur () {
       texteCorr += `$${texNombre(n, 0)}$`
       setReponse(this, 3 * i, n.round())
 
-      texte += "<br>Arrondi au dixième : "
+      texte += '<br>Arrondi au dixième : '
       texte += ajouteChampTexteMathLive(this, 3 * i + 1)
-      texteCorr += "<br>Arrondi au dixième : "
+      texteCorr += '<br>Arrondi au dixième : '
       texteCorr += `$${texNombre(n, 1)}$`
       setReponse(this, 3 * i + 1, n.toDP(1))
 
-      texte += "<br>Arrondi au centième : "
+      texte += '<br>Arrondi au centième : '
       texte += ajouteChampTexteMathLive(this, 3 * i + 2)
-      texteCorr += "<br>Arrondi au centième : "
+      texteCorr += '<br>Arrondi au centième : '
       texteCorr += `$${texNombre(n, 2)}$`
       setReponse(this, 3 * i + 2, n.toDP(2))
 
