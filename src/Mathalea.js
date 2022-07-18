@@ -112,7 +112,7 @@ export class Mathalea {
   }
 
   static updateUrl (listeExercices) {
-    const url = new URL(window.location.href)
+    const url = new URL(window.location.protocol + '//' + window.location.host + window.location.pathname)
     for (const ex of listeExercices) {
       url.searchParams.append('ex', ex.filename)
       if (ex.nbQuestions !== undefined) url.searchParams.append('n', ex.nbQuestions)

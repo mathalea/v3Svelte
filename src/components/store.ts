@@ -1,9 +1,15 @@
-import { writable } from "svelte/store"
-import type Exercice from "../exercices/ExerciceTs"
+import { writable } from 'svelte/store'
 
 export const listeExercices = writable([])
 
-export function moveExercice (liste: Exercice[], iDepart: number, iArrivee: number): Exercice[] {
+/**
+ *
+ * @param liste
+ * @param {number} iDepart
+ * @param {number} iArrivee
+ * @returns liste
+ */
+export function moveExercice (liste, iDepart, iArrivee) {
   liste.splice(iArrivee, 0, liste.splice(iDepart, 1)[0])
   return liste
 }

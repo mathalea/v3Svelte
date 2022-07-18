@@ -7,7 +7,6 @@ import { Mathalea } from '../Mathalea'
     listeExercices.update((l) => {
       return moveExercice(l, indice, indice - 1)
     })
-    Mathalea.updateUrl($listeExercices)
   }
 </script>
 
