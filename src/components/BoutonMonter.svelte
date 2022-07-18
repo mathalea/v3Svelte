@@ -1,6 +1,4 @@
 <script lang="ts">
-import { Mathalea } from '../Mathalea'
-
   import { listeExercices, moveExercice } from "./store"
   export let indice: number
   function monter() {

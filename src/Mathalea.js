@@ -1,5 +1,6 @@
 import renderMathInElement from 'katex/dist/contrib/auto-render.js'
 import 'katex/dist/katex.min.css'
+import { listeExercices } from './components/store'
 import Exercice from './exercices/Exercice.js'
 // export type Settings = { sup?: boolean | string | number, sup2?: boolean | string | number, sup3?: boolean | string | number, sup4?: boolean | string | number, nbQuestions?: number, seed?: string }
 
@@ -114,7 +115,7 @@ export class Mathalea {
   static updateUrl (listeExercices) {
     const url = new URL(window.location.protocol + '//' + window.location.host + window.location.pathname)
     for (const ex of listeExercices) {
-      url.searchParams.append('ex', ex.filename)
+      url.searchParams.append('ex', ex.id)
       if (ex.nbQuestions !== undefined) url.searchParams.append('n', ex.nbQuestions)
       if (ex.sup !== undefined) url.searchParams.append('s', ex.sup)
       if (ex.sup2 !== undefined) url.searchParams.append('s2', ex.sup2)
@@ -122,5 +123,34 @@ export class Mathalea {
       if (ex.sup4 !== undefined) url.searchParams.append('s4', ex.sup4)
     }
     window.history.pushState({}, '', url)
+  }
+
+  static loadExercicesFromUrl () {
+    const url = new URL(window.location.href)
+    const entries = url.searchParams.entries()
+    let indiceExercice = -1
+    const newListeExercice = []
+    for (const entry of entries) {
+      if (entry[0] === 'ex') {
+        indiceExercice++
+        // ToFix il faudra supprimer directory et aller chercher l'url
+        newListeExercice[indiceExercice] = { id: entry[1], directory: entry[1][0] + 'e' }
+      } else if (entry[0] === 'n') {
+        newListeExercice[indiceExercice].nbQuestions = entry[1]
+      } else if (entry[0] === 's') {
+        newListeExercice[indiceExercice].sup = entry[1]
+      } else if (entry[0] === 's2') {
+        newListeExercice[indiceExercice].sup2 = entry[1]
+      } else if (entry[0] === 's3') {
+        newListeExercice[indiceExercice].sup3 = entry[1]
+      } else if (entry[0] === 's4') {
+        newListeExercice[indiceExercice].sup4 = entry[1]
+      } else {
+        newListeExercice[indiceExercice][entry[0]] = entry[1]
+      }
+    }
+    listeExercices.update((l) => {
+      return newListeExercice
+    })
   }
 }

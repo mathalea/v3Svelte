@@ -12,7 +12,7 @@
   import { exerciceInteractif, prepareExerciceCliqueFigure } from "../interactif/interactif"
 
   export let directory: string
-  export let filename: string
+  export let id: string
   export let nbQuestions = undefined
   export let sup = undefined
   export let sup2 = undefined
@@ -129,7 +129,7 @@
   }
 
   onMount(async () => {
-    exercice = await Mathalea.load(directory, filename)
+    exercice = await Mathalea.load(directory, id)
     // Nombre de questions transmis par App.svelte
     if (nbQuestions) exercice.nbQuestions = nbQuestions
     if (sup) exercice.sup = sup

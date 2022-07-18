@@ -11,9 +11,19 @@
   import codeList from "../dicos/codeToLevelList.json"
   import referentiel from "../dicos/referentiel2022.json"
   import { Mathalea } from "../Mathalea"
+  import { onMount } from "svelte";
 
+
+  let isInitialUrlHandled = false
+  // Récupération des informations de l'URL
+  onMount(() => {
+    Mathalea.loadExercicesFromUrl()
+    isInitialUrlHandled = true
+  })
+
+  // Mise à jour de l'URL dès que l'on change listeExercices (sauf pour l'URL d'arrivée sur la page)
   $: {
-    Mathalea.updateUrl($listeExercices)
+    if (isInitialUrlHandled) Mathalea.updateUrl($listeExercices)
   }
 
   /**

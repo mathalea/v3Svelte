@@ -3,7 +3,6 @@
     import { listeExercices } from "./store"
     import AutoComplete from "simple-svelte-autocomplete"
     import data from '../exercicesList.json'
-    import data2 from '../levelsThemesList.json'
     
     let input: HTMLInputElement
     let listeId = []
@@ -13,7 +12,7 @@
     $: {
       listeId = []
       for (const ex of $listeExercices) {
-        listeId.push(ex.filename)
+        listeId.push(ex.id)
       }
       listeId = listeId
     }
@@ -22,7 +21,7 @@
       let newId = input.value
       const newExercice = {
         directory: newId[0] + 'e',
-        filename: newId,
+        id: newId,
       }
       listeExercices.update((l) => [...l, newExercice])
       input.value = ""
@@ -33,7 +32,7 @@
       let ex = newId.split('/')
       const newExercice = {
         directory: ex[0],
-        filename: ex[1],
+        id: ex[1],
       }
       listeExercices.update((l) => [...l, newExercice])
       input.value = ""

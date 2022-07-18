@@ -192,7 +192,7 @@ async function construireListeExos() {
     let liste = get(listeExercices)
     let reponse = false
     liste.forEach((exo) => {
-      if (code === exo.filename) {
+      if (code === exo.id) {
         reponse = true
       }
     })

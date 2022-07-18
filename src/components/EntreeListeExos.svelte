@@ -69,7 +69,7 @@
   $: {
     listeCodes = []
     for (const exo of $listeExercices) {
-      listeCodes.push(exo.filename)
+      listeCodes.push(exo.id)
     }
     listeCodes = listeCodes
     selectedCount = listeCodes.filter(isPresent).length
@@ -80,7 +80,7 @@
   function addToList() {
     const newExercise = {
       directory: exo.code[0] + "e",
-      filename: exo.code,
+      id: exo.code,
     }
     listeExercices.update((list) => [...list, newExercise])
   }

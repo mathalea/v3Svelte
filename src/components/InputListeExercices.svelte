@@ -9,7 +9,7 @@
   $: {
     listeId = []
     for (const ex of $listeExercices) {
-      listeId.push(ex.filename)
+      listeId.push(ex.id)
     }
     listeId = listeId
   }
@@ -18,7 +18,7 @@
     let newId = input.value
     const newExercice = {
       directory: newId[0] + "e",
-      filename: newId,
+      id: newId,
     }
     listeExercices.update((l) => [...l, newExercice])
     input.value = ""
