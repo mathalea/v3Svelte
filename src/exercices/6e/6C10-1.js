@@ -1,7 +1,7 @@
-import TablesDeMultiplications from './_Tables_de_multiplications.js'
+import TablesDeMultiplications from "./_Tables_de_multiplications.js"
 
-export const titre = 'Réviser les tables de multiplication'
-export { interactifReady, interactifType, amcReady, amcType } from './_Tables_de_multiplications.js'
+export const titre = "Réviser les tables de multiplication"
+export { interactifReady, interactifType, amcReady, amcType } from "./_Tables_de_multiplications.js"
 
 /**
  * Tables de multiplications classiques, à trou ou un mélange des deux.
@@ -10,13 +10,11 @@ export { interactifReady, interactifType, amcReady, amcType } from './_Tables_de
  * @author Rémi Angot (ES6 : Loïc Geeraerts)
  * Référence 6C10-1
  */
-export const uuid = 'fd760'
-export const ref = '6C10-1'
-export default class TablesParametres extends TablesDeMultiplications {
-  constructor (tablesParDefaut = '2-3-4-5-6-7-8-9') {
-    super(tablesParDefaut)
-    this.titre = titre
-    this.sup2 = 2
-    this.tailleDiaporama = 3
-  }
+export const uuid = "fd760"
+export const ref = "6C10-1"
+export default function TablesParametres () {
+  TablesDeMultiplications.call(this, "2-3-4-5-6-7-8-9")
+  this.titre = titre
+  this.sup2 = 2
+  this.tailleDiaporama = 3
 }
