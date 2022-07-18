@@ -1,5 +1,5 @@
-import { randint, texNombre, texteEnCouleur, arrondi } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { randint, texNombre, texteEnCouleur, arrondi } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Soustraire deux décimaux*'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -11,13 +11,15 @@ export const dateDePublication = '09/05/2022'
  *
  *
  */
+export const uuid = '0ea52'
+export const ref = 'can5C20'
 export default function Soustraire2Decimaux2 () {
   Exercice.call(this)
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
   this.typeExercice = 'simple'
   this.tailleDiaporama = 2
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(2, 9)
     const b = randint(1, a - 1)
     const d1 = randint(1, 6)

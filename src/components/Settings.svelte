@@ -1,9 +1,8 @@
 <script lang="ts">
-  import type Exercice from "src/exercices/ExerciceTs"
   import { afterUpdate, createEventDispatcher } from "svelte"
   import Curseur from "./Curseur.svelte"
 
-  export let exercice: Exercice
+  export let exercice
   let nbQuestions: number
   let sup: string | boolean
   let sup2: string | boolean
@@ -14,7 +13,7 @@
   // pour récupérer les tooltips de l'exercice
   type FormNumerique = {
     titre: string
-    champs: string | string[]
+    champs: string[] | string
   }
   let formNum1: FormNumerique
   let formNum2: FormNumerique
@@ -134,17 +133,14 @@
   }
 
   /**
-   * Appliquer les nouveaux réglages lorsque le bouton de validation
-   * du formulaire des paramètres texte est cliqué
-   * @param {SubmitEvent} e
+   *
+   * @param {string} formId id du formulaire
    * @author sylvain chambon
    */
-  function onSubmit(e: SubmitEvent) {
-    const formData = new FormData(e.target as HTMLFormElement)
+  function submitOnSliderChange(formId: string) {
+    const e: HTMLFormElement = document.getElementById(formId as string)
+    const formData = new FormData(e as HTMLFormElement)
     const data: string[] = []
-    // chaque formulaire est nommé 'formTextX' où X est l'indice du sup
-    const { name } = e.target as HTMLButtonElement
-    let indiceSup: string = name.charAt(name.length - 1)
     for (let field of formData) {
       const [key, value] = field
       // chaque curseur est nommé 'paramTextX-idNumY'
@@ -154,7 +150,8 @@
         data.push(key.charAt(key.length - 1))
       }
     }
-    switch (indiceSup) {
+    // chaque formulaire est nommé 'formTextX' où X est l'indice du sup
+    switch (formId.charAt(formId.length - 1)) {
       case "1":
         sup = data.join("-")
         break
@@ -191,7 +188,7 @@
     </div>
   {/if}
   {#if exercice.besoinFormulaireNumerique}
-    {#if isNaN(formNum1.champs)}
+    {#if Array.isArray(formNum1.champs)}
       <div class="flex flex-col">
         <form action="">
           <label class="text-coopmaths-lightest" for="formNum1">{formNum1.titre}</label>
@@ -222,13 +219,20 @@
   {/if}
   {#if exercice.besoinFormulaireTexte}
     <div>
-      <form id="formText1" name="formText1" on:submit|preventDefault={onSubmit}>
+      <form id="formText1" name="formText1">
         <fieldset>
-          <legend class="text-coopmaths-lightest">{formText1.titre}<button type="submit" class="ml-2 text-xl duration-75"><i class="bx bxs-edit" /></button></legend>
+          <legend class="text-coopmaths-lightest">{formText1.titre}</legend>
           <div class="flex flex-col  ml-3 mt-1">
             {#each formText1.champsDecortiques as entree, i}
               <div class="flew-row space-x-2">
-                <Curseur titre={entree.parametre} montant={0} identifiant={["paramText1-", i + 1, "-curseur"].join("")} nom={["paramText1-idNum-", entree.valeur].join("")} max={nbQuestions} />
+                <Curseur
+                  on:curseurNotif={() => submitOnSliderChange("formText1")}
+                  titre={entree.parametre}
+                  montant={0}
+                  identifiant={["paramText1-", i + 1, "-curseur"].join("")}
+                  nom={["paramText1-idNum-", entree.valeur].join("")}
+                  max={nbQuestions}
+                />
               </div>
             {/each}
           </div>
@@ -245,7 +249,7 @@
     </div>
   {/if}
   {#if exercice.besoinFormulaire2Numerique}
-    {#if isNaN(formNum2.champs)}
+    {#if Array.isArray(formNum2.champs)}
       <div class="flex flex-col">
         <form action="">
           <label class="text-coopmaths-lightest" for="formNum2">{formNum2.titre}</label>
@@ -276,13 +280,20 @@
   {/if}
   {#if exercice.besoinFormulaire2Texte}
     <div>
-      <form id="formText2" name="formText2" on:submit|preventDefault={onSubmit}>
+      <form id="formText2" name="formText2">
         <fieldset>
-          <legend class="text-coopmaths-lightest">{formText2.titre}<button type="submit" class="ml-2 text-xl duration-75"><i class="bx bxs-edit" /></button></legend>
+          <legend class="text-coopmaths-lightest">{formText2.titre}</legend>
           <div class="flex flex-col  ml-3 mt-1">
             {#each formText2.champsDecortiques as entree, i}
               <div class="flew-row space-x-2">
-                <Curseur titre={entree.parametre} montant={0} identifiant={["paramText2-", i + 1, "-curseur"].join("")} nom={["paramText2-idNum-", entree.valeur].join("")} max={nbQuestions} />
+                <Curseur
+                  on:curseurNotif={() => submitOnSliderChange("formText2")}
+                  titre={entree.parametre}
+                  montant={0}
+                  identifiant={["paramText2-", i + 1, "-curseur"].join("")}
+                  nom={["paramText2-idNum-", entree.valeur].join("")}
+                  max={nbQuestions}
+                />
               </div>
             {/each}
           </div>
@@ -299,7 +310,7 @@
     </div>
   {/if}
   {#if exercice.besoinFormulaire3Numerique}
-    {#if isNaN(formNum3.champs)}
+    {#if Array.isArray(formNum3.champs)}
       <div class="flex flex-col">
         <form action="">
           <label class="text-coopmaths-lightest" for="formNum3">{formNum3.titre}</label>
@@ -330,13 +341,20 @@
   {/if}
   {#if exercice.besoinFormulaire3Texte}
     <div>
-      <form id="formText3" name="formText3" on:submit|preventDefault={onSubmit}>
+      <form id="formText3" name="formText3">
         <fieldset>
-          <legend class="text-coopmaths-lightest">{formText3.titre}<button type="submit" class="ml-2 text-xl duration-75"><i class="bx bxs-edit" /></button></legend>
+          <legend class="text-coopmaths-lightest">{formText3.titre}</legend>
           <div class="flex flex-col  ml-3 mt-1">
             {#each formText3.champsDecortiques as entree, i}
               <div class="flew-row space-x-2">
-                <Curseur titre={entree.parametre} montant={0} identifiant={["paramText3-", i + 1, "-curseur"].join("")} nom={["paramText3-idNum-", entree.valeur].join("")} max={nbQuestions} />
+                <Curseur
+                  on:curseurNotif={() => submitOnSliderChange("formText3")}
+                  titre={entree.parametre}
+                  montant={0}
+                  identifiant={["paramText3-", i + 1, "-curseur"].join("")}
+                  nom={["paramText3-idNum-", entree.valeur].join("")}
+                  max={nbQuestions}
+                />
               </div>
             {/each}
           </div>
@@ -353,7 +371,7 @@
     </div>
   {/if}
   {#if exercice.besoinFormulaire4Numerique}
-    {#if isNaN(formNum4.champs)}
+    {#if Array.isArray(formNum4.champs)}
       <div class="flex flex-col">
         <form action="">
           <label class="text-coopmaths-lightest" for="formNum4">{formNum4.titre}</label>
@@ -384,13 +402,20 @@
   {/if}
   {#if exercice.besoinFormulaire4Texte}
     <div>
-      <form id="formText4" name="formText4" on:submit|preventDefault={onSubmit}>
+      <form id="formText4" name="formText4">
         <fieldset>
-          <legend class="text-coopmaths-lightest">{formText4.titre}<button type="submit" class="ml-2 text-xl duration-75"><i class="bx bxs-edit" /></button></legend>
+          <legend class="text-coopmaths-lightest">{formText4.titre}</legend>
           <div class="flex flex-col  ml-3 mt-1">
             {#each formText4.champsDecortiques as entree, i}
               <div class="flew-row space-x-2">
-                <Curseur titre={entree.parametre} montant={0} identifiant={["paramText4-", i + 1, "-curseur"].join("")} nom={["paramText4-idNum-", entree.valeur].join("")} max={nbQuestions} />
+                <Curseur
+                  on:curseurNotif={() => submitOnSliderChange("formText4")}
+                  titre={entree.parametre}
+                  montant={0}
+                  identifiant={["paramText4-", i + 1, "-curseur"].join("")}
+                  nom={["paramText4-idNum-", entree.valeur].join("")}
+                  max={nbQuestions}
+                />
               </div>
             {/each}
           </div>

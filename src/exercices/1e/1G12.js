@@ -15,6 +15,8 @@ export const dateDeModifImportante = '' // Une date de modification importante a
  * @author Stéphane Guyon
  * Référence
 */
+export const uuid = '86b51'
+export const ref = '1G12'
 export default function MesurePrincipale () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Déterminer une écriture plus simple, en fonction de $\\cos(x)$ ou $\\sin(x) $'
@@ -23,7 +25,7 @@ export default function MesurePrincipale () {
   this.nbColsCorr = 2 // Uniquement pour la sortie LaTeX
   this.video = '' // Id YouTube ou url
   this.sup = 1
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

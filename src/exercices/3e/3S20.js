@@ -9,6 +9,8 @@ export const titre = 'Calculer des probabilités dans une expérience aléatoire
  * @author Jean-Claude Lhote
  * 3S20
  */
+export const uuid = 'fb74c'
+export const ref = '3S20'
 export default function FonctionsProbabilite2 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -21,7 +23,7 @@ export default function FonctionsProbabilite2 () {
   context.isHtml ? this.spacingCorr = 3 : this.spacingCorr = 2
   this.sup = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const indexDisponibles = [0, 1, 2, 3]

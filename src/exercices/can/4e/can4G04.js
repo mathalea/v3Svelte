@@ -13,6 +13,8 @@ export const interactifType = 'mathLive'
  * Référence can4G04
  * Date de publication sptembre 2021
 */
+export const uuid = '0c469'
+export const ref = 'can4G04'
 export default function CalculCotePythagore () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -20,7 +22,7 @@ export default function CalculCotePythagore () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const nom = creerNomDePolygone(3, ['QD'])
     const a = randint(2, 5)//
     const b = randint(6, 10)//
@@ -47,7 +49,7 @@ export default function CalculCotePythagore () {
     //  latexParPoint(`${texNombrec(a)}`, similitude(B, A, -10, 0.5, '', 'center'), 'black', 20, 10, '')
     // )
     this.question = `Sur cette figure, déterminer la valeur exacte de $${nom[1]}${nom[2]}$.<br>`
-    this.question += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 25, mainlevee: false, amplitude: 0.3, scale: 0.5, style: 'margin: auto' }, objets)
+    this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 25, mainlevee: false, amplitude: 0.3, scale: 0.5, style: 'margin: auto' }, objets)
     this.correction = ` On utilise le théorème de Pythagore dans le triangle $${nom[0]}${nom[1]}${nom[2]}$,  rectangle en $${nom[1]}$.<br>
       On obtient :<br>
       $\\begin{aligned}\n

@@ -10,6 +10,8 @@ export const titre = 'Calcul du discriminant d\'une équation du second degré'
  * @author Rémi Angot
  * Référence 1E10
 */
+export const uuid = 'fe053'
+export const ref = '1E10'
 export default function CalculDiscriminant () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -20,7 +22,7 @@ export default function CalculDiscriminant () {
   if (context.isHtml) {
     this.spacingCorr = 2
   }
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const listeTypesEquations = combinaisonListes(['0solution', '1solution', '2solutions'], this.nbQuestions)

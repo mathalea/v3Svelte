@@ -1,6 +1,6 @@
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, combinaisonListes, prenom, texteEnCouleur } from '../../modules/outils.js'
-import { point, segment, codageCarre, polygoneRegulierParCentreEtRayon, nommePolygone, afficheCoteSegment, codeSegments, mathalea2d } from '../../modules/2d.js'
+import { point, segment, codageCarre, polygoneRegulierParCentreEtRayon, nommePolygone, afficheCoteSegment, codageSegments, mathalea2d } from '../../modules/2d.js'
 export const titre = 'Mettre en équation un problème sans objectif de résolution'
 
 /**
@@ -9,6 +9,8 @@ export const titre = 'Mettre en équation un problème sans objectif de résolut
  * * 4L13-0
  * @author Sébastien Lozano
  */
+export const uuid = '2cb76'
+export const ref = '4L13-0'
 export default function MettreEnEquationSansResoudre () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -31,7 +33,7 @@ export default function MettreEnEquationSansResoudre () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.debug) {
       typesDeQuestionsDisponibles = [1]
     } else {
@@ -114,7 +116,7 @@ export default function MettreEnEquationSansResoudre () {
       // on finit les appels
       const mesAppels = [
         po,
-        codeSegments('X', 'blue', po.listePoints),
+        codageSegments('X', 'blue', po.listePoints),
         afficheCoteSegment(s, `${inc}`, 1, 'red', 2, 0.5, 'black'),
         nommePolygone(po, myPolyName(n).nameParSommets),
         anglesDroitsIfIsCarre
@@ -122,7 +124,7 @@ export default function MettreEnEquationSansResoudre () {
       // on prépare l'objet polygone
       const polygone = {
         nb_cotes: n,
-        unite: unite,
+        unite,
         article: myPolyName(n).article,
         nom: myPolyName(n).name,
         let_cote: inc,

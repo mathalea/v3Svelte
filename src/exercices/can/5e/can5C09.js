@@ -1,5 +1,5 @@
-import { calcul, randint, texNombrec, texteEnCouleur } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { calcul, randint, texNombrec, texteEnCouleur } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Multiplier par les multiples de 101'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -11,13 +11,15 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can5C09
  */
+export const uuid = '65330'
+export const ref = 'can5C09'
 export default function MutliplierParN0N () {
   Exercice.call(this)
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(2, 4)
     const b = randint(9, 24, [10, 20])
     this.reponse = calcul(101 * a * b)

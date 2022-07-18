@@ -10,13 +10,15 @@ export const dateDePublication = '25/10/2021'
  * Référence can2F04
  * Date de publication
 */
+export const uuid = 'bc8a4'
+export const ref = 'can2F04'
 export default function ValeurInterdite () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c, n
     if (choice([true, false])) {
       a = randint(-10, 10, 0)

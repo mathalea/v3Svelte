@@ -1,5 +1,5 @@
-import { calcul, randint, texNombre, texNombrec } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { calcul, randint, texNombre, texNombrec } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Utiliser une proportionnalité'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -11,6 +11,8 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can6P01
  */
+export const uuid = '1e34d'
+export const ref = 'can6P01'
 export default function ProportionnaliteSimple () {
   Exercice.call(this)
   this.typeExercice = 'simple'
@@ -19,7 +21,7 @@ export default function ProportionnaliteSimple () {
   this.optionsChampTexte = { texteApres: ' €' }
   const fruits = [
     ['pêches', 4, 10, 30],
-    ['Noix', 5, 4, 13],
+    ['noix', 5, 4, 13],
     ['cerises', 6, 11, 20],
     ['pommes', 2, 20, 40],
     ['framboises', 15, 1, 5],
@@ -27,7 +29,7 @@ export default function ProportionnaliteSimple () {
     ['citrons', 1.5, 15, 30],
     ['bananes', 1.5, 15, 25]
   ]
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(0, 7)
     const b = fruits[a][1]
     const c = randint(fruits[a][2], fruits[a][3])

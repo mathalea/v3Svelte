@@ -1,14 +1,14 @@
-import Exercice from '../Exercice.js'
-import { context } from '../../modules/context.js'
-import Decimal from 'decimal.js'
-import { listeQuestionsToContenu, randint, choice, combinaisonListes, texNombre, texTexte } from '../../modules/outils.js'
-import { setReponse } from '../../modules/gestionInteractif.js'
-import { ajouteChampTexteMathLive } from '../../modules/interactif/questionMathLive.js'
-import { propositionsQcm } from '../../modules/interactif/questionQcm.js'
+import Exercice from "../Exercice.js"
+import { context } from "../../modules/context.js"
+import Decimal from "decimal.js/decimal.mjs"
+import { listeQuestionsToContenu, randint, choice, combinaisonListes, texNombre, texTexte } from "../../modules/outils.js"
+import { setReponse } from "../../modules/gestionInteractif.js"
+import { ajouteChampTexteMathLive } from "../../modules/interactif/questionMathLive.js"
+import { propositionsQcm } from "../../modules/interactif/questionQcm.js"
 export const amcReady = true
-export const amcType = 'qcmMono' // type de question AMC
+export const amcType = "qcmMono" // type de question AMC
 export const interactifReady = true
-export const interactifType = ['qcm', 'mathLive']
+export const interactifType = ["qcm", "mathLive"]
 
 /**
  * Conversions d'aires en utilisant le préfixe pour déterminer la multiplication ou division à faire.
@@ -31,30 +31,30 @@ export default function ExerciceConversionsAires (niveau = 1) {
   this.sup2 = false // Avec des nombres décimaux ou pas
   this.sup3 = 1 // interactifType Qcm
   this.titre = "Conversions d'aires"
-  this.consigne = 'Compléter :'
+  this.consigne = "Compléter :"
   this.spacing = 2
   this.nbColsCorr = 1
   this.amcReady = amcReady
   this.amcType = amcType
   this.interactifReady = interactifReady
 
-  this.nouvelleVersion = function () {
-    this.interactifType = parseInt(this.sup3) === 2 ? 'mathLive' : 'qcm'
+  this.nouvelleVersion = () => {
+    this.interactifType = parseInt(this.sup3) === 2 ? "mathLive" : "qcm"
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     Decimal.toExpNeg = -15
     let prefixeMulti = [
-      [' da', '\\times10\\times10', 100],
-      [' h', '\\times100\\times100', 10000],
-      [' k', '\\times1~000\\times1~000', 1000000]
+      [" da", "\\times10\\times10", 100],
+      [" h", "\\times100\\times100", 10000],
+      [" k", "\\times1~000\\times1~000", 1000000]
     ]
     let prefixeDiv = [
-      [' d', '\\div10\\div10', 100],
-      [' c', '\\div100\\div100', 10000],
-      [' m', '\\div1~000\\div1~000', 1000000]
+      [" d", "\\div10\\div10", 100],
+      [" c", "\\div100\\div100", 10000],
+      [" m", "\\div1~000\\div1~000", 1000000]
     ]
-    const unite = 'm'
-    const listeUnite = ['mm', 'cm', 'dm', 'm', 'dam', 'hm', 'km']
+    const unite = "m"
+    const listeUnite = ["mm", "cm", "dm", "m", "dam", "hm", "km"]
     const listeDeK = combinaisonListes([0, 1, 2], this.nbQuestions)
     for (let i = 0,
       a,
@@ -113,9 +113,9 @@ export default function ExerciceConversionsAires (niveau = 1) {
       if (!div && typesDeQuestions < 4) {
         // Si il faut multiplier pour convertir
         prefixeMulti = [
-          [' da', '\\times10\\times10', 100],
-          [' h', '\\times100\\times100', 10000],
-          [' k', '\\times1~000\\times1~000', 1000000]
+          [" da", "\\times10\\times10", 100],
+          [" h", "\\times100\\times100", 10000],
+          [" k", "\\times1~000\\times1~000", 1000000]
         ] // On réinitialise cette liste qui a pu être modifiée dans le cas des ares
         resultat = a.mul(prefixeMulti[k][2]) // Utilise Algebrite pour avoir le résultat exact même avec des décimaux
         resultat2 = resultat.div(10)
@@ -123,35 +123,35 @@ export default function ExerciceConversionsAires (niveau = 1) {
         resultat4 = resultat.mul(100)
         resultat5 = resultat.div(100)
         texte =
-          '$ ' +
+          "$ " +
           texNombre(a, 2) +
           texTexte(prefixeMulti[k][0] + unite) +
-          '^2' +
-          ' = \\dotfill ' +
+          "^2" +
+          " = \\dotfill " +
           texTexte(unite) +
-          '^2' +
-          '$'
+          "^2" +
+          "$"
         texteCorr =
-          '$ ' +
+          "$ " +
           texNombre(a, 2) +
           texTexte(prefixeMulti[k][0] + unite) +
-          '^2' +
-          ' =  ' +
+          "^2" +
+          " =  " +
           texNombre(a, 2) +
           prefixeMulti[k][1] +
           texTexte(unite) +
-          '^2' +
-          ' = ' +
+          "^2" +
+          " = " +
           texNombre(resultat, 0) +
           texTexte(unite) +
-          '^2' +
-          '$'
+          "^2" +
+          "$"
         prefixe = prefixeMulti[k][2]
       } else if (div && typesDeQuestions < 4) {
         prefixeDiv = [
-          [' d', '\\div10\\div10', 100],
-          [' c', '\\div100\\div100', 10000],
-          [' m', '\\div1~000\\div1~000', 1000000]
+          [" d", "\\div10\\div10", 100],
+          [" c", "\\div100\\div100", 10000],
+          [" m", "\\div1~000\\div1~000", 1000000]
         ]
         k = randint(0, 1) // Pas de conversions de mm^2 en m^2 avec des nombres décimaux car résultat inférieur à 10e-8
         resultat = a.div(prefixeDiv[k][2]) // Attention aux notations scientifiques pour 10e-8
@@ -160,29 +160,29 @@ export default function ExerciceConversionsAires (niveau = 1) {
         resultat4 = resultat.mul(100)
         resultat5 = resultat.div(100)
         texte =
-          '$ ' +
+          "$ " +
           texNombre(a, 2) +
           texTexte(prefixeDiv[k][0] + unite) +
-          '^2' +
-          ' = \\dotfill ' +
+          "^2" +
+          " = \\dotfill " +
           texTexte(unite) +
-          '^2' +
-          '$'
+          "^2" +
+          "$"
         texteCorr =
-          '$ ' +
+          "$ " +
           texNombre(a, 2) +
           texTexte(prefixeDiv[k][0] + unite) +
-          '^2' +
-          ' =  ' +
+          "^2" +
+          " =  " +
           texNombre(a, 2) +
           prefixeDiv[k][1] +
           texTexte(unite) +
-          '^2' +
-          ' = ' +
+          "^2" +
+          " = " +
           texNombre(resultat, 10) +
           texTexte(unite) +
-          '^2' +
-          '$'
+          "^2" +
+          "$"
         prefixe = prefixeDiv[k][2]
       } else if (typesDeQuestions === 4) {
         const unite1 = randint(0, 3)
@@ -198,30 +198,30 @@ export default function ExerciceConversionsAires (niveau = 1) {
           resultat4 = resultat.mul(100)
           resultat5 = resultat.div(100)
           texte =
-            '$ ' +
+            "$ " +
             texNombre(a, 2) +
             texTexte(listeUnite[unite2]) +
-            '^2' +
-            ' = \\dotfill ' +
+            "^2" +
+            " = \\dotfill " +
             texTexte(listeUnite[unite1]) +
-            '^2' +
-            '$'
+            "^2" +
+            "$"
           texteCorr =
-            '$ ' +
+            "$ " +
             texNombre(a, 2) +
             texTexte(listeUnite[unite2]) +
-            '^2' +
-            ' =  ' +
+            "^2" +
+            " =  " +
             texNombre(a, 2) +
-            '\\times' +
+            "\\times" +
             texNombre(Math.pow(10, 2 * ecart)) +
             texTexte(listeUnite[unite1]) +
-            '^2' +
-            ' = ' +
+            "^2" +
+            " = " +
             texNombre(resultat, 0) +
             texTexte(listeUnite[unite1]) +
-            '^2' +
-            '$'
+            "^2" +
+            "$"
           prefixe = Math.pow(10, 2 * ecart)
         } else {
           resultat = a.div(Math.pow(10, 2 * ecart))
@@ -230,37 +230,37 @@ export default function ExerciceConversionsAires (niveau = 1) {
           resultat4 = resultat.mul(10)
           resultat5 = resultat.mul(100)
           texte =
-            '$ ' +
+            "$ " +
             texNombre(a, 2) +
             texTexte(listeUnite[unite1]) +
-            '^2' +
-            ' = \\dotfill ' +
+            "^2" +
+            " = \\dotfill " +
             texTexte(listeUnite[unite2]) +
-            '^2' +
-            '$'
+            "^2" +
+            "$"
           texteCorr =
-            '$ ' +
+            "$ " +
             texNombre(a, 2) +
             texTexte(listeUnite[unite1]) +
-            '^2' +
-            ' =  ' +
+            "^2" +
+            " =  " +
             texNombre(a, 2) +
-            '\\div' +
+            "\\div" +
             texNombre(Math.pow(10, 2 * ecart)) +
             texTexte(listeUnite[unite2]) +
-            '^2' +
-            ' = ' +
+            "^2" +
+            " = " +
             texNombre(resultat, 10) +
             texTexte(listeUnite[unite2]) +
-            '^2' +
-            '$'
+            "^2" +
+            "$"
           prefixe = Math.pow(10, 2 * ecart)
         }
       } else if (typesDeQuestions === 5) {
         // Pour typesDeQuestions==5
         prefixeMulti = [
-          ['ha', '\\times100\\times100', 10000],
-          ['a', '\\times10\\times10', 100]
+          ["ha", "\\times100\\times100", 10000],
+          ["a", "\\times10\\times10", 100]
         ]
         k = randint(0, 1)
         resultat = a.mul(prefixeMulti[k][2]) // Utilise Algebrite pour avoir le résultat exact même avec des décimaux
@@ -269,27 +269,27 @@ export default function ExerciceConversionsAires (niveau = 1) {
         resultat4 = resultat.mul(100)
         resultat5 = resultat.div(100)
         texte =
-          '$ ' +
+          "$ " +
           texNombre(a, 2) +
           texTexte(prefixeMulti[k][0]) +
-          ' = \\dotfill ' +
+          " = \\dotfill " +
           texTexte(unite) +
-          '^2' +
-          '$'
+          "^2" +
+          "$"
         texteCorr =
-          '$ ' +
+          "$ " +
           texNombre(a, 2) +
           texTexte(prefixeMulti[k][0]) +
-          ' =  ' +
+          " =  " +
           texNombre(a, 2) +
           prefixeMulti[k][1] +
           texTexte(unite) +
-          '^2' +
-          ' = ' +
+          "^2" +
+          " = " +
           texNombre(resultat, 10) +
           texTexte(unite) +
-          '^2' +
-          '$'
+          "^2" +
+          "$"
         prefixe = prefixeMulti[k][2]
       }
       this.autoCorrection[i].enonce = `${texte}\n`
@@ -314,7 +314,7 @@ export default function ExerciceConversionsAires (niveau = 1) {
         statut: false
       }
       ]
-      if (this.interactif && this.interactifType === 'qcm') {
+      if (this.interactif && this.interactifType === "qcm") {
         texte += propositionsQcm(this, i).texte
       } else {
         texte += ajouteChampTexteMathLive(this, i)
@@ -323,13 +323,13 @@ export default function ExerciceConversionsAires (niveau = 1) {
 
       if (this.questionJamaisPosee(i, a, prefixe, div)) {
         // Si la question n'a jamais été posée, on en crée une autre
-        if (context.vue === 'diap') {
-          texte = texte.replace('= \\dotfill', '\\text{ en }')
+        if (context.vue === "diap") {
+          texte = texte.replace("= \\dotfill", "\\text{ en }")
         }
         if (context.isHtml) {
           texte = texte.replace(
-            '\\dotfill',
-            '................................................'
+            "\\dotfill",
+            "................................................"
           )
         }
         this.listeQuestions.push(texte)
@@ -341,10 +341,10 @@ export default function ExerciceConversionsAires (niveau = 1) {
     listeQuestionsToContenu(this)
   }
   this.besoinFormulaireNumerique = [
-    'Niveau de difficulté',
+    "Niveau de difficulté",
     6,
     "1 : Conversions en m² avec des multiplications\n2 : Conversions en m² avec des divisions\n3 : Conversions en m² avec des multiplications ou divisions\n4 : Conversions avec des multiplications ou divisions\n5 : Conversions d'hectares et ares en m² \n6 : Mélange"
   ]
-  this.besoinFormulaire2CaseACocher = ['Avec des nombres décimaux']
-  if (context.isHtml && !context.vue === 'diap') this.besoinFormulaire3Numerique = ['Exercice interactif', 2, '1 : QCM\n2 : Numérique'] // Texte, tooltip
+  this.besoinFormulaire2CaseACocher = ["Avec des nombres décimaux"]
+  if (context.isHtml && !context.vue === "diap") this.besoinFormulaire3Numerique = ["Exercice interactif", 2, "1 : QCM\n2 : Numérique"] // Texte, tooltip
 }

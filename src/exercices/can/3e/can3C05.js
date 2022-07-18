@@ -12,13 +12,15 @@ export const amcType = 'AMCNum'
  * Référence can3C05
  * Date de publication
 */
+export const uuid = '3f69f'
+export const ref = 'can3C05'
 export default function CalculPuissance10 () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(1, 6)
     const n = calcul(2 * randint(1, 6) + 1) / 2
     const N = calcul(2 * randint(1, 6, a) + 1) / 2

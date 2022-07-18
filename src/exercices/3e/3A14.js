@@ -18,6 +18,8 @@ export const amcType = 'AMCHybride'
  * Référence 3A14
  * Date août 2021
 */
+export const uuid = '2d7ad'
+export const ref = '3A14'
 export default function NomQuelconqueDeLaFonctionQuiCreeExercice () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''
@@ -29,7 +31,7 @@ export default function NomQuelconqueDeLaFonctionQuiCreeExercice () {
   this.video = '' // Id YouTube ou url
   this.interactifType = 'mathLive'
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

@@ -1,8 +1,8 @@
-import { droiteGraduee2, mathalea2d } from '../../../modules/2d'
-import { context } from '../../../modules/context'
-import FractionEtendue from '../../../modules/FractionEtendue'
-import { pgcd, randint, texFractionReduite } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { droiteGraduee2, mathalea2d } from '../../../modules/2d.js'
+import { context } from '../../../modules/context.js'
+import FractionEtendue from '../../../modules/FractionEtendue.js'
+import { pgcd, randint, texFractionReduite } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Trouver une abscisse fractionnaire'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -14,6 +14,8 @@ export const amcType = 'AMCHybride'
  * Créé pendant l'été 2021
  * Référence can6N04
  */
+export const uuid = '8c90f'
+export const ref = 'can6N04'
 export default function AbscisseFractionnaire () {
   Exercice.call(this)
   this.typeExercice = 'simple'
@@ -22,7 +24,7 @@ export default function AbscisseFractionnaire () {
   this.formatInteractif = 'fractionEgale'
   this.consigne = ''
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(2, 6) // dénominateur
     let b = randint(2, a * 4 - 1)
     do {

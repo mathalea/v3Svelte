@@ -1,7 +1,7 @@
-import { courbeSpline, mathalea2d, repere2 } from '../../../modules/2d'
-import { splineCatmullRom } from '../../../modules/fonctionsMaths'
-import { randint } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { courbeSpline, mathalea2d, repere2 } from '../../../modules/2d.js'
+import { splineCatmullRom } from '../../../modules/fonctionsMaths.js'
+import { randint } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const interactifReady = true
 export const interactifType = 'mathLive'
 export const amcReady = true
@@ -12,12 +12,14 @@ export const titre = 'Lire une image graphiquement'
   * Créé pendant l'été 2021
  * Référence can3F01
 */
+export const uuid = '9262c'
+export const ref = 'can3F01'
 export default function ImageSpline () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const X = randint(-5, 5)
     const Y = []
     for (let x = -6; x <= 6; x++) {

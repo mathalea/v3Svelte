@@ -15,6 +15,8 @@ export const amcType = 'AMCOpen'
  * référence 6N11-2
  * Relecture : Novembre 2021 par EE
  */
+export const uuid = '6b083'
+export const ref = '6N11-2'
 export default function PlacerUnPointAbscisseEntiere2d () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 5
@@ -25,7 +27,7 @@ export default function PlacerUnPointAbscisseEntiere2d () {
   this.spacingCorr = 1
   this.sup = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.interactif) {
       this.consigne = 'Placer un point sur un axe gradué.'
     } else {

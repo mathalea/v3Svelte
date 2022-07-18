@@ -18,6 +18,8 @@ export const dateDePublication = '01/03/2022'
  * @author Eric Elter
 * Référence 6C12-4 (d'après 6C12-3)
  */
+export const uuid = '27a2f'
+export const ref = '6C12-4'
 export default function ExerciceInformationsProblemes () {
   // Multiplier deux nombres
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -26,7 +28,7 @@ export default function ExerciceInformationsProblemes () {
   this.spacing = 2
   this.nbQuestions = 10
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

@@ -16,6 +16,8 @@ export const titre = 'Utiliser tables de multiplications pour effectuer produits
  * @author Rémi Angot
 * Référence 6C10-2
  */
+export const uuid = 'c7c70'
+export const ref = '6C10-2'
 export default function ExerciceTablesMultiplicationsEtMultiplesDe10 (
   tablesParDefaut = '2-3-4-5-6-7-8-9'
 ) {
@@ -28,7 +30,7 @@ export default function ExerciceTablesMultiplicationsEtMultiplesDe10 (
   this.spacing = 2
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.interactifType = parseInt(this.sup2) === 2 ? 'mathLive' : 'qcm'
     this.autoCorrection = []
     let tables = []

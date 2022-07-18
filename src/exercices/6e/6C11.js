@@ -29,6 +29,8 @@ export const titre = 'Poser divisions euclidiennes'
  * @author Rémi Angot
  * Référence 6C11
  */
+export const uuid = '7ead1'
+export const ref = '6C11'
 export default function DivisionsEuclidiennes () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = 2
@@ -39,7 +41,7 @@ export default function DivisionsEuclidiennes () {
   this.nbQuestions = 4
   this.listePackages = 'xlop'
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

@@ -14,6 +14,8 @@ export const amcType = 'AMCHybride'
 /**
 
 */
+export const uuid = 'a55e2'
+export const ref = '2F10-2'
 export default function lecturefonctionaffine () {
   Exercice.call(this)
   this.titre = titre
@@ -28,7 +30,7 @@ export default function lecturefonctionaffine () {
   this.spacingCorr = 1
   this.sup = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     this.autoCorrection = []

@@ -11,6 +11,8 @@ export const interactifType = 'qcm'
  * Référence can3L04
  * Date de publication 24/10/2021
 */
+export const uuid = 'd8536'
+export const ref = 'can3L04'
 export default function SolutionInequation () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1
@@ -18,7 +20,7 @@ export default function SolutionInequation () {
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   let a, b, c, d
   this.date = 1635094684684
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     let texte, texteCorr, monQcm

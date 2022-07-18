@@ -1,7 +1,7 @@
-import { context } from '../../../modules/context'
-import { propositionsQcm } from '../../../modules/interactif/questionQcm'
-import { choice, listeQuestionsToContenu, nombreEnLettres, randint, texNombre } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { context } from '../../../modules/context.js'
+import { propositionsQcm } from '../../../modules/interactif/questionQcm.js'
+import { choice, listeQuestionsToContenu, nombreEnLettres, randint, texNombre } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Écrire en lettres un nombre entier (QCM)'
 export const interactifReady = true
 export const interactifType = 'qcm'
@@ -13,12 +13,14 @@ export const amcType = 'qcmMono'
  * Date de publication septembre 2021
  * Référence canc3N01
  */
+export const uuid = '9ec95'
+export const ref = 'canc3N01'
 export default function EcritureDeNombreEntier () {
   Exercice.call(this)
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     const a = randint(1, 9)

@@ -1,6 +1,6 @@
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, contraindreValeur, combinaisonListes, arrondi, numAlpha, choice, compteOccurences, rangeMinMax, entreDeux } from '../../modules/outils.js'
-import { afficherTempo, arc, cacherTempo, codeSegment, droite, droiteParPointEtPente, homothetie, longueur, mathalea2d, milieu, ObjetMathalea2D, point, pointIntersectionDD, pointSurSegment, polygone, projectionOrtho, rotation, segment, translation, vecteur } from '../../modules/2d.js'
+import { afficherTempo, arc, cacherTempo, codageSegment, droite, droiteParPointEtPente, homothetie, longueur, mathalea2d, milieu, ObjetMathalea2D, point, pointIntersectionDD, pointSurSegment, polygone, projectionOrtho, rotation, segment, translation, vecteur } from '../../modules/2d.js'
 import { min, max } from 'mathjs'
 import { propositionsQcm } from '../../modules/interactif/questionQcm.js'
 import { context } from '../../modules/context.js'
@@ -64,6 +64,8 @@ function translationPuisRotationAnimees (...args) {
   return new TranslationPuisRotationAnimee(...args)
 }
 
+export const uuid = '099b8'
+export const ref = '6M21'
 export default function compareAireEtPerimetreAvecRectangle () {
   Exercice.call(this)
   this.titre = titre
@@ -75,7 +77,7 @@ export default function compareAireEtPerimetreAvecRectangle () {
   this.sup = 13
   this.sup2 = 3
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // tableau contenant la liste des questions
     this.listeCorrections = []
     this.autoCorrection = []
@@ -254,7 +256,7 @@ export default function compareAireEtPerimetreAvecRectangle () {
           O = rotation(choixFigAire2[choixFig2][0], choixFigAire2[choixFig2][1], -60)
           P = segment(O, choixFigAire2[choixFig2][1], 'black')
           P.epaisseur = 2
-          objets.push(figAire1, figAire2, N, codeSegment(M, pt1, '|||'), P, codeSegment(O, choixFigAire2[choixFig2][1], '|||'), rect)
+          objets.push(figAire1, figAire2, N, codageSegment(M, pt1, '|||'), P, codageSegment(O, choixFigAire2[choixFig2][1], '|||'), rect)
           texte = mathalea2d(paramsEnonce, objets)
           // Correction
           texteCorr = (this.sup2 === 3) ? numAlpha(0) : ''
@@ -268,7 +270,7 @@ export default function compareAireEtPerimetreAvecRectangle () {
             angleCorr = choixFig2 - choixFig < 0 ? choixFig2 - choixFig + 4 : choixFig2 - choixFig
             angleCorr = angleCorr === 1 ? 90 : angleCorr === 2 ? 0 : -90
             figAireCorr2 = arc(rotation(choixFigAire2[choixFig2][0], choixFigAire2[choixFig2][1], angleCorr), choixFigAire2[choixFig2][1], -180, false, color[q], 'black', 0.5)
-            objets.push(poly, figAire1, figAire2, N, codeSegment(M, pt1, '|||'), P, codeSegment(O, choixFigAire2[choixFig2][1], '|||'), rect)
+            objets.push(poly, figAire1, figAire2, N, codageSegment(M, pt1, '|||'), P, codageSegment(O, choixFigAire2[choixFig2][1], '|||'), rect)
             objets.push(translationPuisRotationAnimees(q, figAireCorr, vecteur(pt1, choixFigAire2[choixFig2][1]), figAireCorr2, choixFigAire2[choixFig2][1], -angleCorr))
             paramsEnonce.ymin = choixFig2 === 0 ? -0.5 - rayonOuCote : paramsEnonce.ymin
             paramsEnonce.ymax = choixFig2 === 2 ? rayonOuCote + C.y + 0.5 : paramsEnonce.ymax
@@ -439,7 +441,7 @@ export default function compareAireEtPerimetreAvecRectangle () {
           O = rotation(choixFigAire2[choixFig2][0], choixFigAire2[choixFig2][1], 60)
           P = segment(O, choixFigAire2[choixFig2][1], 'black')
           P.epaisseur = 2
-          objets.push(figAire1, figAire2, N, codeSegment(M, pt1, '|||'), P, codeSegment(O, choixFigAire2[choixFig2][1], '|||'), rect)
+          objets.push(figAire1, figAire2, N, codageSegment(M, pt1, '|||'), P, codageSegment(O, choixFigAire2[choixFig2][1], '|||'), rect)
           texte = mathalea2d(paramsEnonce, objets)
           // Correction
           texteCorr = (this.sup2 === 3) ? numAlpha(0) : ''
@@ -515,7 +517,7 @@ export default function compareAireEtPerimetreAvecRectangle () {
           O = rotation(choixFigAire2[choixFig2][0], choixFigAire2[choixFig2][1], -60)
           P = segment(O, choixFigAire2[choixFig2][1], 'black')
           P.epaisseur = 2
-          objets.push(figAire1, figAire2, N, codeSegment(M, pt1, '|||'), P, codeSegment(O, choixFigAire2[choixFig2][1], '|||'), rect)
+          objets.push(figAire1, figAire2, N, codageSegment(M, pt1, '|||'), P, codageSegment(O, choixFigAire2[choixFig2][1], '|||'), rect)
           texte = mathalea2d(paramsEnonce, objets)
           // Correction
           texteCorr = (this.sup2 === 3) ? numAlpha(0) : ''
@@ -643,8 +645,8 @@ export default function compareAireEtPerimetreAvecRectangle () {
           figAire2.color = ''
           figAire2.couleurDeRemplissage = 'white'
           figAire2.opaciteDeRemplissage = 1.1
-          objets.push(figAire1, figAire2, segment(pt2, R), segment(pt1, R), codeSegment(pt2, R, '|||'), codeSegment(pt2, pt1, 'OO'), codeSegment(pt1, R, 'XX'), rect)
-          objets.push(segment(choixFigAire2[choixFig2][0], T), segment(choixFigAire2[choixFig2][1], T), codeSegment(choixFigAire2[choixFig2][1], T, '|||'), codeSegment(choixFigAire2[choixFig2][1], choixFigAire2[choixFig2][0], 'OO'), codeSegment(choixFigAire2[choixFig2][0], T, 'XX'))
+          objets.push(figAire1, figAire2, segment(pt2, R), segment(pt1, R), codageSegment(pt2, R, '|||'), codageSegment(pt2, pt1, 'OO'), codageSegment(pt1, R, 'XX'), rect)
+          objets.push(segment(choixFigAire2[choixFig2][0], T), segment(choixFigAire2[choixFig2][1], T), codageSegment(choixFigAire2[choixFig2][1], T, '|||'), codageSegment(choixFigAire2[choixFig2][1], choixFigAire2[choixFig2][0], 'OO'), codageSegment(choixFigAire2[choixFig2][0], T, 'XX'))
           texte = mathalea2d(paramsEnonce, objets)
           // Correction
           texteCorr = (this.sup2 === 3) ? numAlpha(0) : ''
@@ -665,8 +667,8 @@ export default function compareAireEtPerimetreAvecRectangle () {
             figAireCorr2 = rotation(figAire2, choixFigAire2[choixFig2][0], angleCorr)
             figAireCorr2.couleurDeRemplissage = color[q]
             figAireCorr2.opaciteDeRemplissage = 0.5
-            objets.push(poly, figAire1, figAire2, segment(pt2, R), segment(pt1, R), codeSegment(pt2, R, '|||'), codeSegment(pt2, pt1, 'OO'), codeSegment(pt1, R, 'XX'), rect)
-            objets.push(segment(choixFigAire2[choixFig2][0], T), segment(choixFigAire2[choixFig2][1], T), codeSegment(choixFigAire2[choixFig2][1], T, '|||'), codeSegment(choixFigAire2[choixFig2][1], choixFigAire2[choixFig2][0], 'OO'), codeSegment(choixFigAire2[choixFig2][0], T, 'XX'))
+            objets.push(poly, figAire1, figAire2, segment(pt2, R), segment(pt1, R), codageSegment(pt2, R, '|||'), codageSegment(pt2, pt1, 'OO'), codageSegment(pt1, R, 'XX'), rect)
+            objets.push(segment(choixFigAire2[choixFig2][0], T), segment(choixFigAire2[choixFig2][1], T), codageSegment(choixFigAire2[choixFig2][1], T, '|||'), codageSegment(choixFigAire2[choixFig2][1], choixFigAire2[choixFig2][0], 'OO'), codageSegment(choixFigAire2[choixFig2][0], T, 'XX'))
             objets.push(translationPuisRotationAnimees(q, figAireCorr, vecteur(pt1, choixFigAire2[choixFig2][0]), figAireCorr2, choixFigAire2[choixFig2][0], -angleCorr))
             paramsEnonce.ymin = choixFig2 === 0 ? -0.5 - rayonOuCote : paramsEnonce.ymin
             paramsEnonce.ymax = choixFig2 === 2 ? rayonOuCote + C.y + 0.5 : paramsEnonce.ymax
@@ -894,8 +896,8 @@ export default function compareAireEtPerimetreAvecRectangle () {
           figAire2.color = ''
           figAire2.couleurDeRemplissage = color[q]
           figAire2.opaciteDeRemplissage = 0.5
-          objets.push(figAire1, figAire2, segment(pt2, R), segment(pt1, R), codeSegment(pt2, R, '|||'), codeSegment(pt2, pt1, 'OO'), codeSegment(pt1, R, 'XX'), rect)
-          objets.push(segment(choixFigAire2[choixFig2][0], T), segment(choixFigAire2[choixFig2][1], T), codeSegment(choixFigAire2[choixFig2][1], T, '|||'), codeSegment(choixFigAire2[choixFig2][1], choixFigAire2[choixFig2][0], 'OO'), codeSegment(choixFigAire2[choixFig2][0], T, 'XX'))
+          objets.push(figAire1, figAire2, segment(pt2, R), segment(pt1, R), codageSegment(pt2, R, '|||'), codageSegment(pt2, pt1, 'OO'), codageSegment(pt1, R, 'XX'), rect)
+          objets.push(segment(choixFigAire2[choixFig2][0], T), segment(choixFigAire2[choixFig2][1], T), codageSegment(choixFigAire2[choixFig2][1], T, '|||'), codageSegment(choixFigAire2[choixFig2][1], choixFigAire2[choixFig2][0], 'OO'), codageSegment(choixFigAire2[choixFig2][0], T, 'XX'))
           texte = mathalea2d(paramsEnonce, objets)
           // Correction
           texteCorr = (this.sup2 === 3) ? numAlpha(0) : ''
@@ -979,8 +981,8 @@ export default function compareAireEtPerimetreAvecRectangle () {
           figAire2.color = ''
           figAire2.couleurDeRemplissage = 'white'
           figAire2.opaciteDeRemplissage = 1.1
-          objets.push(figAire1, figAire2, segment(pt2, R), segment(pt1, R), codeSegment(pt2, R, '|||'), codeSegment(pt2, pt1, 'OO'), codeSegment(pt1, R, 'XX'), rect)
-          objets.push(segment(choixFigAire2[choixFig2][0], T), segment(choixFigAire2[choixFig2][1], T), codeSegment(choixFigAire2[choixFig2][1], T, 'XX'), codeSegment(choixFigAire2[choixFig2][1], choixFigAire2[choixFig2][0], 'OO'), codeSegment(choixFigAire2[choixFig2][0], T, '|||'))
+          objets.push(figAire1, figAire2, segment(pt2, R), segment(pt1, R), codageSegment(pt2, R, '|||'), codageSegment(pt2, pt1, 'OO'), codageSegment(pt1, R, 'XX'), rect)
+          objets.push(segment(choixFigAire2[choixFig2][0], T), segment(choixFigAire2[choixFig2][1], T), codageSegment(choixFigAire2[choixFig2][1], T, 'XX'), codageSegment(choixFigAire2[choixFig2][1], choixFigAire2[choixFig2][0], 'OO'), codageSegment(choixFigAire2[choixFig2][0], T, '|||'))
           texte = mathalea2d(paramsEnonce, objets)
           // Correction
           texteCorr = (this.sup2 === 3) ? numAlpha(0) : ''

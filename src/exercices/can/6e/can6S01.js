@@ -1,6 +1,6 @@
-import { mathalea2d, repere2, traceBarreHorizontale } from '../../../modules/2d'
-import { prenom, randint } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { mathalea2d, repere2, traceBarreHorizontale } from '../../../modules/2d.js'
+import { prenom, randint } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Lire un diagramme en barres'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -12,6 +12,8 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can6S01
  */
+export const uuid = '4ed66'
+export const ref = 'can6S01'
 export default function LectureDiagrammeBarre () {
   Exercice.call(this)
   this.typeExercice = 'simple'
@@ -21,7 +23,7 @@ export default function LectureDiagrammeBarre () {
     ['voitures', 'un garage', ['berline', 'utilitaire', 'cross over']],
     ['vêtements', 'une armoire', ['chemises', 'T-shirts', 'pulls']]]
   const quidam = prenom()
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const objets = []
 
     const n = randint(0, 2)

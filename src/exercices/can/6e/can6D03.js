@@ -1,5 +1,5 @@
-import { prenomM, randint, texteEnCouleur } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { prenomM, randint, texteEnCouleur } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Calculer une durée en minutes'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -11,6 +11,8 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can6D03
  */
+export const uuid = 'e72b7'
+export const ref = 'can6D03'
 export default function CalculDureeMinutes () {
   Exercice.call(this)
   this.nbQuestions = 1
@@ -18,7 +20,7 @@ export default function CalculDureeMinutes () {
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
   this.optionsChampTexte = { texteApres: ' minutes' }
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(13, 15)
     const b = a + 1
     const c = randint(1, 4) * 10

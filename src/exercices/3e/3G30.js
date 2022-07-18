@@ -1,6 +1,6 @@
 import Exercice from '../Exercice.js'
 import { context } from '../../modules/context.js'
-import { homothetie, codeAngle, longueur, barycentre, milieu, latexParPoint, mathalea2d, point, polygone, rotation, codageAngleDroit, nommePolygone, segment } from '../../modules/2d.js'
+import { homothetie, codageAngle, longueur, barycentre, milieu, latexParPoint, mathalea2d, point, polygone, rotation, codageAngleDroit, nommePolygone, segment } from '../../modules/2d.js'
 import { stringNombre, texFraction, quatriemeProportionnelle, texNombre, arrondi, texteEnCouleurEtGras, listeQuestionsToContenu, randint, creerNomDePolygone, combinaisonListes } from '../../modules/outils.js'
 import { setReponse } from '../../modules/gestionInteractif.js'
 import { ajouteChampTexteMathLive } from '../../modules/interactif/questionMathLive.js'
@@ -20,6 +20,8 @@ export const titre = 'Calculer une longueur dans un triangle rectangle en utilis
  * Mars 2021
  * combinaisonListes des questions par Guillaume Valmont le 23/05/2022
  */
+export const uuid = 'f1aba'
+export const ref = '3G30'
 export default function CalculDeLongueur () {
   Exercice.call(this)
   this.titre = titre
@@ -38,7 +40,7 @@ export default function CalculDeLongueur () {
     this.spacingCorr = 2
   }
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     this.listeQuestions = []
     this.listeCorrections = []
@@ -127,7 +129,7 @@ export default function CalculDeLongueur () {
       hypo.color = 'blue'
       //   codageAngle.epaisseur = 3
       //  codageAngle2.epaisseur = 3
-      const codageDeAngle = codeAngle(A, B, C, 2)
+      const codageDeAngle = codageAngle(A, B, C, 2)
       const M1 = milieu(A, B)
       const M2 = milieu(A, C)
       const M3 = milieu(B, C)

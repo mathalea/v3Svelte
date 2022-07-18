@@ -19,6 +19,8 @@ export const amcReady = true
 * Compter des cubes dans un empilement de cubes
 */
 
+export const uuid = '89177'
+export const ref = '6G43'
 export default function DenombrerCubes () {
   Exercice.call(this)
   this.titre = titre
@@ -31,7 +33,7 @@ export default function DenombrerCubes () {
   this.sup = 1 // A décommenter : valeur par défaut d'un premier paramètre
   this.sup2 = 1 // A décommenter : valeur par défaut d'un deuxième paramètre
   // c'est ici que commence le code de l'exercice cette fonction crée une copie de l'exercice
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // tableau contenant la liste des questions
     this.listeCorrections = []
     this.autoCorrection = []

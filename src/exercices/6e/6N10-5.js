@@ -14,6 +14,8 @@ export const dateDeModifImportante = '13/01/2022' // Labyrinthe moins évident +
  * Sortir du labyrinthe en utilisant la numération décimale.
  * Ajout AMC et remaniement du code pour moins d'évidence dans la solution : Janvier 2022 par EE
  */
+export const uuid = '5bdb3'
+export const ref = '6N10-5'
 export default function ExerciceLabyrintheNumeration () {
   Exercice.call(this)
   this.consigne = ''
@@ -28,7 +30,7 @@ export default function ExerciceLabyrintheNumeration () {
   this.sup2 = 3
   this.sup = true
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeCorrections = []
     this.listeQuestions = []
     this.autoCorrection = []

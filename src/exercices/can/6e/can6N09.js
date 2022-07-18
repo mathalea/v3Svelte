@@ -1,5 +1,5 @@
-import { calcul, choice, randint, texNombrec, sp } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { calcul, choice, randint, texNombrec, sp } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Trouver le nombre qui suit'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -11,6 +11,8 @@ export const amcType = 'AMCNum'
  * Publié le 11 / 09 / 2021
  * Référence can6N06
  */
+export const uuid = '0de8c'
+export const ref = 'can6N09'
 export default function PositionDesChiffres () {
   Exercice.call(this)
   this.typeExercice = 'simple'
@@ -18,7 +20,7 @@ export default function PositionDesChiffres () {
   this.formatChampTexte = 'largeur15 inline'
   this.consigne = ''
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const f = choice([1, 10, 100])
     const a = randint(1, 9) * 10 + randint(1, 9)
     this.question = ` Compléter la suite logique : <br>$${texNombrec((a + 0.6) / f)}$ ${sp(1)} ; ${sp(1)}$${texNombrec((a + 0.7) / f)}$ ${sp(1)} ; ${sp(1)}$${texNombrec((a + 0.8) / f)}$ ${sp(1)} ; ${sp(1)}$${texNombrec((a + 0.9) / f)}$ &nbsp ; &nbsp .....`

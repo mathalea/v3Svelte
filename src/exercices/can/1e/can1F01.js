@@ -14,12 +14,14 @@ export const dateDePublication = '1/11/2021' // La date de publication initiale 
  * @author Gilles Mora
  * Référence can1F01
 */
+export const uuid = '64be7'
+export const ref = 'can1F01'
 export default function CoordonneesSommetParabole () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(-10, 10, [0, -1, 1])
     const b = randint(-5, 5, 0)
     const c = randint(-5, 5)

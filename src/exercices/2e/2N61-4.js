@@ -23,6 +23,8 @@ export const titre = 'Résoudre une inéquation quotient'
  * 2N61-4, ex 2L14-2
  * 17/07/2021
  */
+export const uuid = '5333c'
+export const ref = '2N61-4'
 export default function ExerciceInequationQuotient () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.spacing = 2 // Espace entre deux lignes
@@ -41,7 +43,7 @@ export default function ExerciceInequationQuotient () {
   this.nbCols = 1 // Fixe le nombre de colonnes pour les énoncés de la sortie LateX
   this.nbColsCorr = 1 // Fixe le nombre de colonnes pour les réponses de la sortie LateX
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let listeTypeDeQuestions // Stockera la liste des types de questions

@@ -1,8 +1,8 @@
-import Exercice from '../Exercice.js'
-import { listeQuestionsToContenu, combinaisonListes, choice, randint, texNombre, miseEnEvidence, texFraction, stringNombre } from '../../modules/outils.js'
-import Decimal from 'decimal.js'
-export const titre = 'Utiliser les variations des fonctions de référence pour comparer des images'
-export const dateDePublication = '07/01/2022'
+import Exercice from "../Exercice.js"
+import { listeQuestionsToContenu, combinaisonListes, choice, randint, texNombre, miseEnEvidence, texFraction, stringNombre } from "../../modules/outils.js"
+import Decimal from "decimal.js/decimal.mjs"
+export const titre = "Utiliser les variations des fonctions de référence pour comparer des images"
+export const dateDePublication = "07/01/2022"
 /**
  * Description didactique de l'exercice
  * @author Gilles Mora // Suppression de calcul et mise en place de Decimal par Jean-Claude Lhote
@@ -12,12 +12,14 @@ function ecritureParentheseSiNegatif (a, maximumFractionDigits = 15) {
   if (a instanceof Decimal) {
     return a.isNeg() ? `(${stringNombre(a, maximumFractionDigits)})` : `${stringNombre(a, maximumFractionDigits)}`
   }
-  const result = Intl.NumberFormat('fr-FR', { maximumFractionDigits: maximumFractionDigits }).format(a).replace(',', '{,}')
+  const result = Intl.NumberFormat("fr-FR", { maximumFractionDigits }).format(a).replace(",", "{,}")
   return a < 0 ? `(${result})` : result
 }
+export const uuid = '2811e'
+export const ref = '2F31-1'
 export default function ComparerAvecFctRef () {
   Exercice.call(this) // Héritage de la classe Exercice()
-  this.consigne = ''
+  this.consigne = ""
   this.nbQuestions = 2
   // this.nbQuestionsModifiable = false
   this.nbCols = 2 // Uniquement pour la sortie LaTeX
@@ -25,22 +27,22 @@ export default function ComparerAvecFctRef () {
   this.sup = 1
   this.spacingCorr = 2
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
-  this.video = '' // Id YouTube ou url
+  this.video = "" // Id YouTube ou url
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let typeDeQuestionsDisponibles
     if (this.sup === 1) {
-      typeDeQuestionsDisponibles = ['carré']
+      typeDeQuestionsDisponibles = ["carré"]
     } else if (this.sup === 2) {
-      typeDeQuestionsDisponibles = ['inverse']
+      typeDeQuestionsDisponibles = ["inverse"]
     } else if (this.sup === 3) {
-      typeDeQuestionsDisponibles = ['cube']
+      typeDeQuestionsDisponibles = ["cube"]
     } else if (this.sup === 4) {
-      typeDeQuestionsDisponibles = ['racine carrée']
+      typeDeQuestionsDisponibles = ["racine carrée"]
     } else if (this.sup === 5) {
-      typeDeQuestionsDisponibles = ['carré', 'carré', 'inverse', 'cube', 'racine carrée']
+      typeDeQuestionsDisponibles = ["carré", "carré", "inverse", "cube", "racine carrée"]
     }
     const listeFractions1 = [[1, 2], [2, 3], [3, 4], [2, 5], [4, 5],
       [5, 6], [2, 7], [4, 7], [6, 7], [3, 8], [7, 8],
@@ -52,7 +54,7 @@ export default function ComparerAvecFctRef () {
     for (let i = 0, a, b, N, texte, texteCorr, fraction1 = [], fraction2 = [], n1, d1, n2, d2, d3, n3, n4, cpt = 0; i < this.nbQuestions && cpt < 50;) {
       // Boucle principale où i+1 correspond au numéro de la question
       switch (listeTypeQuestions[i]) { // Suivant le type de question, le contenu sera différent
-        case 'carré':
+        case "carré":
           N = randint(1, 3)
           if (N === 1) {
             a = (new Decimal(randint(0, 5) * 1000 + randint(5, 9) * 100 + randint(5, 9) * 10 + randint(0, 2))).div(1000)
@@ -63,11 +65,11 @@ export default function ComparerAvecFctRef () {
             Autrement dit, si $a$ et $b$ sont deux nombres  positifs et si $a < b$, alors $a^2 < b^2$.`
 
             if (a.lessThan(b)) {
-              texteCorr += `<br>Comme $${texNombre(a, 3)}${miseEnEvidence('\\boldsymbol{<}', 'blue')}${texNombre(b, 3)}$, 
-          alors  $${texNombre(a, 3)}^2${miseEnEvidence('\\boldsymbol{<}', 'blue')}${texNombre(b, 3)}^2$.`
+              texteCorr += `<br>Comme $${texNombre(a, 3)}${miseEnEvidence("\\boldsymbol{<}", "blue")}${texNombre(b, 3)}$, 
+          alors  $${texNombre(a, 3)}^2${miseEnEvidence("\\boldsymbol{<}", "blue")}${texNombre(b, 3)}^2$.`
             } else {
-              texteCorr += `<br>Comme $${texNombre(b)}${miseEnEvidence('\\boldsymbol{<}', 'blue')}${texNombre(a)}$, 
-          alors  $${texNombre(b, 3)}^2${miseEnEvidence('\\boldsymbol{<}', 'blue')}${texNombre(a, 3)}^2$.`
+              texteCorr += `<br>Comme $${texNombre(b)}${miseEnEvidence("\\boldsymbol{<}", "blue")}${texNombre(a)}$, 
+          alors  $${texNombre(b, 3)}^2${miseEnEvidence("\\boldsymbol{<}", "blue")}${texNombre(a, 3)}^2$.`
             }
           }
           if (N === 2) {
@@ -90,10 +92,10 @@ export default function ComparerAvecFctRef () {
             `
               if (d1 < d2) {
                 texteCorr += `On a $${d1}<${d2}$, donc $${texFraction(n2, d2)}<${texFraction(n1, d1)}$.<br>
-                <br>Comme $${texFraction(n2, d2)}${miseEnEvidence('\\boldsymbol{<}', 'blue')}${texFraction(n1, d1)}$, alors $\\left(${texFraction(n2, d2)}\\right)^2${miseEnEvidence('\\boldsymbol{<}', 'blue')}\\left(${texFraction(n1, d1)}\\right)^2$`
+                <br>Comme $${texFraction(n2, d2)}${miseEnEvidence("\\boldsymbol{<}", "blue")}${texFraction(n1, d1)}$, alors $\\left(${texFraction(n2, d2)}\\right)^2${miseEnEvidence("\\boldsymbol{<}", "blue")}\\left(${texFraction(n1, d1)}\\right)^2$`
               } else {
                 texteCorr += `On a $${d2}<${d1}$, donc $${texFraction(n1, d1)}<${texFraction(n2, d2)}$.<br>
-                <br> Comme,  $${texFraction(n1, d1)}${miseEnEvidence('\\boldsymbol{<}', 'blue')}${texFraction(n2, d2)}$, alors $\\left(${texFraction(n1, d1)}\\right)^2${miseEnEvidence('\\boldsymbol{<}', 'blue')}\\left(${texFraction(n2, d2)}\\right)^2$`
+                <br> Comme,  $${texFraction(n1, d1)}${miseEnEvidence("\\boldsymbol{<}", "blue")}${texFraction(n2, d2)}$, alors $\\left(${texFraction(n1, d1)}\\right)^2${miseEnEvidence("\\boldsymbol{<}", "blue")}\\left(${texFraction(n2, d2)}\\right)^2$`
               }
             }
             if (d1 === d2) {
@@ -102,10 +104,10 @@ export default function ComparerAvecFctRef () {
             `
               if (n2 < n1) {
                 texteCorr += `On a $${n2}<${n1}$, donc $${texFraction(n2, d2)}<${texFraction(n1, d1)}$.<br>
-                <br>Comme $${texFraction(n2, d2)}${miseEnEvidence('\\boldsymbol{<}', 'blue')}${texFraction(n1, d1)}$, alors $\\left(${texFraction(n2, d2)}\\right)^2${miseEnEvidence('<', 'blue')}\\left(${texFraction(n1, d1)}\\right)^2$`
+                <br>Comme $${texFraction(n2, d2)}${miseEnEvidence("\\boldsymbol{<}", "blue")}${texFraction(n1, d1)}$, alors $\\left(${texFraction(n2, d2)}\\right)^2${miseEnEvidence("<", "blue")}\\left(${texFraction(n1, d1)}\\right)^2$`
               } else {
                 texteCorr += `On a $${n1}<${n2}$, donc $${texFraction(n1, d1)}<${texFraction(n2, d2)}$.<br>
-                <br>Comme,  $${texFraction(n1, d1)}${miseEnEvidence('\\boldsymbol{<}', 'blue')}${texFraction(n2, d2)}$, alors $\\left(${texFraction(n1, d1)}\\right)^2${miseEnEvidence('\\boldsymbol{<}', 'blue')}\\left(${texFraction(n2, d2)}\\right)^2$`
+                <br>Comme,  $${texFraction(n1, d1)}${miseEnEvidence("\\boldsymbol{<}", "blue")}${texFraction(n2, d2)}$, alors $\\left(${texFraction(n1, d1)}\\right)^2${miseEnEvidence("\\boldsymbol{<}", "blue")}\\left(${texFraction(n2, d2)}\\right)^2$`
               }
             }
             if (n1 !== n2 && d1 !== d2) {
@@ -114,10 +116,10 @@ export default function ComparerAvecFctRef () {
           `
               if (n3 < n4) {
                 texteCorr += `On a $${n3}<${n4}$, donc $${texFraction(n3, d3)}<${texFraction(n4, d3)}$, soit $${texFraction(n1, d1)}<${texFraction(n2, d2)}$.<br>
-                <br>Comme $${texFraction(n1, d1)}${miseEnEvidence('\\boldsymbol{<}', 'blue')}${texFraction(n2, d2)}$, alors $\\left(${texFraction(n1, d1)}\\right)^2${miseEnEvidence('\\boldsymbol{<}', 'blue')}\\left(${texFraction(n2, d2)}\\right)^2$`
+                <br>Comme $${texFraction(n1, d1)}${miseEnEvidence("\\boldsymbol{<}", "blue")}${texFraction(n2, d2)}$, alors $\\left(${texFraction(n1, d1)}\\right)^2${miseEnEvidence("\\boldsymbol{<}", "blue")}\\left(${texFraction(n2, d2)}\\right)^2$`
               } else {
                 texteCorr += `On a $${n4}<${n3}$, donc $${texFraction(n4, d3)}<${texFraction(n3, d3)}$ , soit $${texFraction(n2, d2)}<${texFraction(n1, d1)}$.<br>
-                <br>Comme,  $${texFraction(n2, d2)}${miseEnEvidence('\\boldsymbol{<}', 'blue')}${texFraction(n1, d1)}$, alors $\\left(${texFraction(n2, d2)}\\right)^2${miseEnEvidence('\\boldsymbol{<}', 'blue')}\\left(${texFraction(n1, d1)}\\right)^2$`
+                <br>Comme,  $${texFraction(n2, d2)}${miseEnEvidence("\\boldsymbol{<}", "blue")}${texFraction(n1, d1)}$, alors $\\left(${texFraction(n2, d2)}\\right)^2${miseEnEvidence("\\boldsymbol{<}", "blue")}\\left(${texFraction(n1, d1)}\\right)^2$`
               }
             }
           }
@@ -131,10 +133,10 @@ export default function ComparerAvecFctRef () {
             Cela signifie que deux nombres négatifs sont rangés dans l'ordre inverse de leurs carrés.<br>
             Autrement dit, si $a$ et $b$ sont deux nombres  négatifs et si $a < b$, alors $a^2 > b^2$.`
 
-            if (a.lessThan(b)) { texteCorr += `<br>Comme $${texNombre(a, 3)}${miseEnEvidence('\\boldsymbol{<}', 'blue')}${texNombre(b, 3)}$, alors  $(${texNombre(a, 3)})^2${miseEnEvidence('\\boldsymbol{>}', 'blue')}(${texNombre(b, 3)})^2$` } else { texteCorr += `<br>Comme $${texNombre(b, 3)}${miseEnEvidence('\\boldsymbol{<}', 'blue')}${texNombre(a, 3)}$, alors  $(${texNombre(b, 3)})^2${miseEnEvidence('\\boldsymbol{>}', 'blue')}(${texNombre(a, 3)})^2$` }
+            if (a.lessThan(b)) { texteCorr += `<br>Comme $${texNombre(a, 3)}${miseEnEvidence("\\boldsymbol{<}", "blue")}${texNombre(b, 3)}$, alors  $(${texNombre(a, 3)})^2${miseEnEvidence("\\boldsymbol{>}", "blue")}(${texNombre(b, 3)})^2$` } else { texteCorr += `<br>Comme $${texNombre(b, 3)}${miseEnEvidence("\\boldsymbol{<}", "blue")}${texNombre(a, 3)}$, alors  $(${texNombre(b, 3)})^2${miseEnEvidence("\\boldsymbol{>}", "blue")}(${texNombre(a, 3)})^2$` }
           }
           break
-        case 'inverse':
+        case "inverse":
           N = randint(1, 2)
           if (N === 1) {
             a = (new Decimal(randint(1, 9) * 10 + randint(5, 9))).div(10)
@@ -146,8 +148,8 @@ export default function ComparerAvecFctRef () {
               Autrement dit, si $a$ et $b$ sont deux nombres strictement positifs et si $a < b$, alors $\\dfrac{1}{a} > \\dfrac{1}{b}$.<br>`
 
             if (a.lessThan(b)) {
-              texteCorr += `Comme $${texNombre(a, 1)}${miseEnEvidence('\\boldsymbol{<}', 'blue')}${texNombre(b, 1)}$, alors  $\\dfrac{1}{${texNombre(a, 1)}}${miseEnEvidence('\\boldsymbol{>}', 'blue')}\\dfrac{1}{${texNombre(b, 1)}}$`
-            } else { texteCorr += `Comme $${texNombre(b, 1)}${miseEnEvidence('\\boldsymbol{<}', 'blue')}${texNombre(a, 1)}$, alors  $\\dfrac{1}{${texNombre(b, 1)}}${miseEnEvidence('\\boldsymbol{>}', 'blue')}\\dfrac{1}{${texNombre(a, 1)}}$` }
+              texteCorr += `Comme $${texNombre(a, 1)}${miseEnEvidence("\\boldsymbol{<}", "blue")}${texNombre(b, 1)}$, alors  $\\dfrac{1}{${texNombre(a, 1)}}${miseEnEvidence("\\boldsymbol{>}", "blue")}\\dfrac{1}{${texNombre(b, 1)}}$`
+            } else { texteCorr += `Comme $${texNombre(b, 1)}${miseEnEvidence("\\boldsymbol{<}", "blue")}${texNombre(a, 1)}$, alors  $\\dfrac{1}{${texNombre(b, 1)}}${miseEnEvidence("\\boldsymbol{>}", "blue")}\\dfrac{1}{${texNombre(a, 1)}}$` }
           }
           if (N === 2) {
             a = (new Decimal(randint(1, 9) * 10 + randint(5, 9))).div(10)
@@ -160,12 +162,12 @@ export default function ComparerAvecFctRef () {
                 Autrement dit, si $a$ et $b$ sont deux nombres strictement négatifs et si $a < b$, alors $\\dfrac{1}{a} > \\dfrac{1}{b}$.<br>`
 
             if (a > b) {
-              texteCorr += ` Comme $-${texNombre(a, 1)}${miseEnEvidence('\\boldsymbol{<}', 'blue')}-${texNombre(b, 1)}$, alors  $\\dfrac{1}{-${texNombre(a, 1)}}${miseEnEvidence('\\boldsymbol{>}', 'blue')}\\dfrac{1}{-${texNombre(b, 1)}}$`
-            } else { texteCorr += `Comme $-${texNombre(b, 1)}${miseEnEvidence('\\boldsymbol{<}', 'blue')}-${texNombre(a, 1)}$, alors  $\\dfrac{1}{-${texNombre(b, 1)}}${miseEnEvidence('\\boldsymbol{>}', 'blue')}\\dfrac{1}{-${texNombre(a, 1)}}$` }
+              texteCorr += ` Comme $-${texNombre(a, 1)}${miseEnEvidence("\\boldsymbol{<}", "blue")}-${texNombre(b, 1)}$, alors  $\\dfrac{1}{-${texNombre(a, 1)}}${miseEnEvidence("\\boldsymbol{>}", "blue")}\\dfrac{1}{-${texNombre(b, 1)}}$`
+            } else { texteCorr += `Comme $-${texNombre(b, 1)}${miseEnEvidence("\\boldsymbol{<}", "blue")}-${texNombre(a, 1)}$, alors  $\\dfrac{1}{-${texNombre(b, 1)}}${miseEnEvidence("\\boldsymbol{>}", "blue")}\\dfrac{1}{-${texNombre(a, 1)}}$` }
           }
           break
 
-        case 'cube':
+        case "cube":
           a = (new Decimal(randint(-10, 10) * 10 + randint(-9, 9, 0))).div(10).mul(choice([-1, 1]))
           b = (new Decimal(randint(1, 9))).div(10).mul(choice([-1, 1]))
           texte = `En utilisant le sens de variation d'une fonction de référence, comparer $${ecritureParentheseSiNegatif(a, 1)}^3$ 
@@ -174,9 +176,9 @@ export default function ComparerAvecFctRef () {
           La fonction cube étant strictement croissante sur $\\mathbb{R}$, elle conserve l'ordre. 
           Cela signifie que deux nombres réels  sont rangés dans le même ordre que leurs cubes.<br>
           Autrement dit, si $a$ et $b$ sont deux nombres réels et si $a < b$, alors $a^3 < b^3$.<br>`
-          if (a.lessThan(b)) { texteCorr += `Comme $${texNombre(a, 1)}${miseEnEvidence('\\boldsymbol{<}', 'blue')}${texNombre(b, 1)}$, alors $${ecritureParentheseSiNegatif(a, 1)}^3${miseEnEvidence('\\boldsymbol{<}', 'blue')}${ecritureParentheseSiNegatif(b, 1)}^3$.` } else { texteCorr += `Comme $${texNombre(b, 1)}${miseEnEvidence('\\boldsymbol{<}', 'blue')}${texNombre(a, 1)}$, alors $${ecritureParentheseSiNegatif(b, 1)}^3${miseEnEvidence('\\boldsymbol{<}', 'blue')}${ecritureParentheseSiNegatif(a, 1)}^3$.` }
+          if (a.lessThan(b)) { texteCorr += `Comme $${texNombre(a, 1)}${miseEnEvidence("\\boldsymbol{<}", "blue")}${texNombre(b, 1)}$, alors $${ecritureParentheseSiNegatif(a, 1)}^3${miseEnEvidence("\\boldsymbol{<}", "blue")}${ecritureParentheseSiNegatif(b, 1)}^3$.` } else { texteCorr += `Comme $${texNombre(b, 1)}${miseEnEvidence("\\boldsymbol{<}", "blue")}${texNombre(a, 1)}$, alors $${ecritureParentheseSiNegatif(b, 1)}^3${miseEnEvidence("\\boldsymbol{<}", "blue")}${ecritureParentheseSiNegatif(a, 1)}^3$.` }
           break
-        case 'racine carrée':
+        case "racine carrée":
           a = (new Decimal(randint(0, 10) * 10 + randint(6, 9))).div(10)
           b = (new Decimal(randint(1, 5, 0))).div(10).mul(choice([-1, 1])).plus(a)
           texte = `En utilisant le sens de variation d'une fonction de référence, comparer $\\sqrt{${texNombre(a, 1)}}$  et $\\sqrt{${texNombre(b)}}$.`
@@ -185,11 +187,11 @@ export default function ComparerAvecFctRef () {
           Cela signifie que deux nombres réels positifs sont rangés dans le même ordre que leurs racines carrées.<br>
           Autrement dit, si $a$ et $b$ sont deux nombres réels positifs et si $a < b$, alors $\\sqrt{a} < \\sqrt{b}$.<br>`
           if (a < b) {
-            texteCorr += ` Comme $${texNombre(a, 1)}${miseEnEvidence('\\boldsymbol{<}', 'blue')}${texNombre(b, 1)}$, alors 
-          $\\sqrt{${texNombre(a, 1)}}${miseEnEvidence('\\boldsymbol{<}', 'blue')}\\sqrt{${texNombre(b, 1)}}$.`
+            texteCorr += ` Comme $${texNombre(a, 1)}${miseEnEvidence("\\boldsymbol{<}", "blue")}${texNombre(b, 1)}$, alors 
+          $\\sqrt{${texNombre(a, 1)}}${miseEnEvidence("\\boldsymbol{<}", "blue")}\\sqrt{${texNombre(b, 1)}}$.`
           } else {
-            texteCorr += ` Comme $${texNombre(b, 1)}${miseEnEvidence('\\boldsymbol{<}', 'blue')}${texNombre(a, 1)}$, 
-          alors $\\sqrt{${texNombre(b, 1)}}${miseEnEvidence('\\boldsymbol{<}', 'blue')}\\sqrt{${texNombre(a, 1)}}$.`
+            texteCorr += ` Comme $${texNombre(b, 1)}${miseEnEvidence("\\boldsymbol{<}", "blue")}${texNombre(a, 1)}$, 
+          alors $\\sqrt{${texNombre(b, 1)}}${miseEnEvidence("\\boldsymbol{<}", "blue")}\\sqrt{${texNombre(a, 1)}}$.`
           }
 
           break
@@ -205,5 +207,5 @@ export default function ComparerAvecFctRef () {
     }
     listeQuestionsToContenu(this)
   }
-  this.besoinFormulaireNumerique = ['Choix des questions', 5, '1 : carré\n2 : inverse\n3 : cube\n4 : racine carrée\n5 : mélange']
+  this.besoinFormulaireNumerique = ["Choix des questions", 5, "1 : carré\n2 : inverse\n3 : cube\n4 : racine carrée\n5 : mélange"]
 }

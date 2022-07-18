@@ -1,5 +1,5 @@
-import { calcul, randint } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { calcul, randint } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Calculer une expression pour une valeur particulière*'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -10,13 +10,15 @@ export const amcType = 'AMCNum'
  * @author Gilles Mora
  * Réference : can4L06
  */
+export const uuid = '14487'
+export const ref = 'can4L06'
 export default function CalculSubstitution () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.date = 1635092507483
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.formatChampTexte = 'largeur15 inline'
     let a, b, d
     switch (randint(1, 4)) {

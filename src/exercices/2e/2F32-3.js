@@ -6,6 +6,8 @@ export const dateDePublication = '20/12/2021'
 /**
 * @author Gilles Mora
 */
+export const uuid = '2b136'
+export const ref = '2F32-3'
 export default function LireUnTableauDevariations () {
   Exercice.call(this)
   this.consigne = ''
@@ -15,7 +17,7 @@ export default function LireUnTableauDevariations () {
   this.sup = 1 // Niveau de difficulté
   this.tailleDiaporama = 1 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let typeDeQuestionsDisponibles

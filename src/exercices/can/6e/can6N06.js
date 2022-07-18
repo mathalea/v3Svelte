@@ -1,5 +1,5 @@
-import { arrondi, calcul, randint, texNombre, choice } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { arrondi, calcul, randint, texNombre, choice } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Arrondir au dixième ou au centième'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -11,6 +11,8 @@ export const amcType = 'AMCHybride'
  * Publié le 11 / 09 / 2021
  * Référence can6N06
  */
+export const uuid = '47ea4'
+export const ref = 'can6N06'
 export default function ArrondiDixiemeCentième () {
   Exercice.call(this)
   this.typeExercice = 'simple'
@@ -18,7 +20,7 @@ export default function ArrondiDixiemeCentième () {
   this.formatChampTexte = 'largeur15 inline'
   this.consigne = ''
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(1, 20)
     const b = randint(0, 9, 5)
     const c = randint(1, 9, b)

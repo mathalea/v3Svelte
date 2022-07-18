@@ -18,6 +18,8 @@ export const dateDePublication = '26/04/2022'
  * @author Eric Elter
  * Publié le 27/04/2022
  */
+export const uuid = 'f44a7'
+export const ref = '6G23-4'
 export default function MesurerUnAngleAvecRapporteur () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''
@@ -26,7 +28,7 @@ export default function MesurerUnAngleAvecRapporteur () {
   this.sup2 = 7
   this.sup3 = 4
   this.sup4 = false
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

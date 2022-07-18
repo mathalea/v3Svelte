@@ -14,6 +14,8 @@ export const dateDePublication = '28/11/2021' // La date de publication initiale
  * @author Frédéric PIOU
  * Référence
 */
+export const uuid = '170ea'
+export const ref = '3G13'
 export default function calculsHomothetie () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''
@@ -57,7 +59,7 @@ export default function calculsHomothetie () {
     '1 : k est décimal (0.1 < k < 4) \n2 : k est une fraction k = a/b avec (a,b) in [1;9]\n3 : k est une fraction et les mesures sont des entiers'
   ]
   this.besoinFormulaire4CaseACocher = ['Figure dans l`énoncé (1-6,9-11)', false]
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let typeQuestionsDisponibles = []
@@ -169,11 +171,11 @@ export default function calculsHomothetie () {
         legendeOBi: agrandissement || !kpositif ? texteSurSegment('?', figure.O, figure.B, 'black', 0.30) : texteSurArc('?', figure.B, figure.O, 60, 'black', 0.30),
         legendeOhBi: !agrandissement || !kpositif ? texteSurSegment('?', figure.O, figure.hB, 'black', 0.30) : texteSurArc('?', figure.hB, figure.O, 60, 'black', 0.30)
       })
-      figure.arcOA.pointilles = true
-      figure.arcOhA.pointilles = true
-      figure.arcOB.pointilles = true
-      figure.arcOhB.pointilles = true
-      figure.arcAhA.pointilles = true
+      figure.arcOA.pointilles = 5
+      figure.arcOhA.pointilles = 5
+      figure.arcOB.pointilles = 5
+      figure.arcOhB.pointilles = 5
+      figure.arcAhA.pointilles = 5
       // const fscale = context.isHtml ? kpositif ? 1 : 0.7 : kpositif ? 0.7 : 0.5
       const fscale = context.isHtml ? 1 : kpositif ? 0.7 : 0.6
       const flabelsRapport = labelPoint(figure.O, figure.A, figure.hA)

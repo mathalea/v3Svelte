@@ -16,6 +16,8 @@ export const amcType = 'AMCNum'
  * @author Rémi Angot
  * 6N23
  */
+export const uuid = 'a53bc'
+export const ref = '6N23'
 export default function ExerciceEcritureDecimaleApartirDeFractionDecimale () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = "Donner l'écriture décimale."
@@ -23,7 +25,7 @@ export default function ExerciceEcritureDecimaleApartirDeFractionDecimale () {
   this.spacingCorr = 2
   this.nbQuestions = 8
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

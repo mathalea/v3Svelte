@@ -14,13 +14,15 @@ export const dateDePublication = '27/02/2022' // La date de publication initiale
  * @author Gilles Mora
  * Référence
 */
+export const uuid = 'fd659'
+export const ref = 'can4L08'
 export default function ReconnaitreExpL () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.spacing = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
 

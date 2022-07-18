@@ -3,7 +3,7 @@ import { context } from '../../modules/context.js'
 import { listeQuestionsToContenu, randint, combinaisonListes, rienSi1, ecritureAlgebrique, ecritureParentheseSiNegatif, signe, abs, pgcd, texFractionReduite, miseEnEvidence, texFraction, lampeMessage } from '../../modules/outils.js'
 import { setReponse } from '../../modules/gestionInteractif.js'
 import { ajouteChampTexteMathLive } from '../../modules/interactif/questionMathLive.js'
-import FractionEtendue from '../../modules/FractionEtendue'
+import FractionEtendue from '../../modules/FractionEtendue.js'
 export const titre = 'Équation du premier degré (utilisant la distributivité)'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -19,6 +19,8 @@ export const amcReady = false // AMC : pour l'instant on ne peut pas tester une 
 * Rendre interactif Laurence Candille
 * 3L13-1
 */
+export const uuid = 'f5cd0'
+export const ref = '3L13-1'
 export default function ExerciceEquation1Tiret2 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -33,7 +35,7 @@ export default function ExerciceEquation1Tiret2 () {
   this.nbQuestions = 3
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

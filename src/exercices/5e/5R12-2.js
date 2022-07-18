@@ -9,6 +9,8 @@ export const titre = 'Déterminer les coordonnées (relatives) d\'un point'
  * @author Jean-Claude Lhote
  * Références 5R12-2
  */
+export const uuid = '8b82f'
+export const ref = '5R12-2'
 export default function ReperagePointDuPlan () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -24,7 +26,7 @@ export default function ReperagePointDuPlan () {
   this.quartDePlan = false
   this.listePackages = 'tkz-euclide'
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     this.autoCorrection = []

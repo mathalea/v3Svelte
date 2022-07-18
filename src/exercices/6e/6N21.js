@@ -17,6 +17,8 @@ export const amcType = 'AMCHybride'
  * Référence 6N21
  * publié le 29/6/2021
 */
+export const uuid = '2ba69'
+export const ref = '6N21'
 export default function PlacerPointsAbscissesFractionnaires () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''
@@ -27,7 +29,7 @@ export default function PlacerPointsAbscissesFractionnaires () {
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

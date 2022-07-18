@@ -1,17 +1,18 @@
 /* globals UI */
-import { texteParPosition } from './2d.js'
-import { fraction } from './fractions.js'
-import Algebrite from 'algebrite'
-import { format, evaluate, isPrime, gcd, round, equal, Fraction, isInteger } from 'mathjs'
-import { loadScratchblocks } from './loaders'
-import { context } from './context.js'
-import { setReponse } from './gestionInteractif.js'
-import { getVueFromUrl } from './gestionUrl.js'
-import FractionX from './FractionEtendue.js'
-import { elimineDoublons } from './interactif/questionQcm.js'
-import { Decimal } from 'decimal.js'
+import { texteParPosition } from "./2d.js"
+import { fraction } from "./fractions.js"
+import Algebrite from "algebrite"
+import { format, evaluate, isPrime, gcd, round, equal, Fraction, isInteger } from "mathjs"
+import { loadScratchblocks } from "./loaders.js"
+import { context } from "./context.js"
+import { setReponse } from "./gestionInteractif.js"
+import { getVueFromUrl } from "./gestionUrl.js"
+import FractionX from "./FractionEtendue.js"
+import { elimineDoublons } from "./interactif/questionQcm.js"
+// import { Decimal } from "decimal.js"
+import Decimal from "decimal.js/decimal.mjs"
 
-const math = { format: format, evaluate: evaluate }
+const math = { format, evaluate }
 const epsilon = 0.000001
 
 /**
@@ -21,11 +22,11 @@ const epsilon = 0.000001
 
 export function interactivite (exercice) {
   if (context.isHtml) {
-    if (exercice.interactif) return 'I-html'
-    else return 'html'
-  } else if (context.isAmc) return 'AMC'
-  else if (exercice.interactif) return 'I-latex'
-  else return 'latex'
+    if (exercice.interactif) return "I-html"
+    else return "html"
+  } else if (context.isAmc) return "AMC"
+  else if (exercice.interactif) return "I-latex"
+  else return "latex"
 }
 
 /**
@@ -34,26 +35,26 @@ export function interactivite (exercice) {
  */
 export function listeQuestionsToContenu (exercice) {
   if (context.isHtml) {
-    exercice.contenu = htmlConsigne(exercice.consigne) + htmlParagraphe(exercice.introduction) + htmlEnumerate(exercice.listeQuestions, exercice.spacing, 'question', `exercice${exercice.numeroExercice}Q`, exercice.tailleDiaporama)
-    if ((exercice.interactif) || getVueFromUrl() === 'eval') {
+    exercice.contenu = htmlConsigne(exercice.consigne) + htmlParagraphe(exercice.introduction) + htmlEnumerate(exercice.listeQuestions, exercice.spacing, "question", `exercice${exercice.numeroExercice}Q`, exercice.tailleDiaporama)
+    if ((exercice.interactif) || getVueFromUrl() === "eval") {
       exercice.contenu += `<button class="inline-block px-6 py-2.5 mr-10 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out checkReponses" type="submit" style="margin-bottom: 20px; margin-top: 20px" id="btnValidationEx${exercice.numeroExercice}-${exercice.id}">Vérifier les réponses</button>`
     }
-    exercice.contenuCorrection = htmlParagraphe(exercice.consigneCorrection) + htmlEnumerate(exercice.listeCorrections, exercice.spacingCorr, 'correction', `correction${exercice.numeroExercice}Q`, exercice.tailleDiaporama)
+    exercice.contenuCorrection = htmlParagraphe(exercice.consigneCorrection) + htmlEnumerate(exercice.listeCorrections, exercice.spacingCorr, "correction", `correction${exercice.numeroExercice}Q`, exercice.tailleDiaporama)
   } else {
-    let vspace = ''
+    let vspace = ""
     if (exercice.vspace) {
       vspace = `\\vspace{${exercice.vspace} cm}\n`
     }
     if (!context.isAmc) {
-      if (document.getElementById('supprimer_reference').checked === true) {
+      if (document.getElementById("supprimer_reference").checked === true) {
         exercice.contenu = texConsigne(exercice.consigne) + vspace + texIntroduction(exercice.introduction) + texMulticols(texEnumerate(exercice.listeQuestions, exercice.spacing), exercice.nbCols)
       } else {
         exercice.contenu = texConsigne(exercice.consigne) + `\n\\marginpar{\\footnotesize ${exercice.id}}` + vspace + texIntroduction(exercice.introduction) + texMulticols(texEnumerate(exercice.listeQuestions, exercice.spacing), exercice.nbCols)
       }
     }
-    exercice.contenuCorrection = texConsigne('') + texIntroduction(exercice.consigneCorrection) + texMulticols(texEnumerate(exercice.listeCorrections, exercice.spacingCorr), exercice.nbColsCorr)
-    exercice.contenuCorrection = exercice.contenuCorrection.replace(/\\\\\n*/g, '\\\\\n')
-    exercice.contenu = exercice.contenu.replace(/\\\\\n*/g, '\\\\\n')
+    exercice.contenuCorrection = texConsigne("") + texIntroduction(exercice.consigneCorrection) + texMulticols(texEnumerate(exercice.listeCorrections, exercice.spacingCorr), exercice.nbColsCorr)
+    exercice.contenuCorrection = exercice.contenuCorrection.replace(/\\\\\n*/g, "\\\\\n")
+    exercice.contenu = exercice.contenu.replace(/\\\\\n*/g, "\\\\\n")
   }
 }
 
@@ -63,13 +64,13 @@ export function exerciceSimpleToContenu (exercice) {
   for (let i = 0, cpt = 0; i < exercice.nbQuestions & cpt < 50; cpt++) {
     if (exercice.questionJamaisPosee(i, exercice.question)) {
       if (context.isAmc) {
-        listeQuestions.push(exercice.question + '<br>')
+        listeQuestions.push(exercice.question + "<br>")
         listeCorrections.push(exercice.correction)
       } else {
         listeQuestions.push(exercice.question)
         listeCorrections.push(exercice.correction)
       }
-      if (context.isAmc && exercice.amcType === 'AMCNum') {
+      if (context.isAmc && exercice.amcType === "AMCNum") {
         setReponse(exercice, i, exercice.reponse, {
           digits: nombreDeChiffresDe(exercice.reponse),
           decimals: nombreDeChiffresDansLaPartieDecimale(exercice.reponse),
@@ -93,18 +94,18 @@ export function exerciceSimpleToContenu (exercice) {
 export function listeDeChosesAImprimer (exercice) {
   if (context.isHtml) {
     exercice.contenu = htmlLigne(exercice.listeQuestions, exercice.spacing)
-    exercice.contenuCorrection = ''
+    exercice.contenuCorrection = ""
   } else {
     // let vspace = ''
     // if (exercice.vspace) {
     //   vspace = `\\vspace{${exercice.vspace} cm}\n`
     // }
-    if (document.getElementById('supprimer_reference').checked === true) {
+    if (document.getElementById("supprimer_reference").checked === true) {
       exercice.contenu = texMulticols(texParagraphe(exercice.listeQuestions, exercice.spacing), exercice.nbCols)
     } else {
       exercice.contenu = `\n\\marginpar{\\footnotesize ${exercice.id}}` + texMulticols(texParagraphe(exercice.listeQuestions, exercice.spacing), exercice.nbCols)
     }
-    exercice.contenuCorrection = ''
+    exercice.contenuCorrection = ""
   }
 }
 
@@ -116,17 +117,17 @@ export function listeDeChosesAImprimer (exercice) {
  */
 export function listeQuestionsToContenuSansNumero (exercice, retourCharriot = true) {
   // En vue diapCorr, les questions doivent toujours être numérotées car venant d'exercices différents
-  if (context.vue === 'diapCorr') {
+  if (context.vue === "diapCorr") {
     listeQuestionsToContenu(exercice, retourCharriot = true)
   } else {
     if (context.isHtml) {
-      exercice.contenu = htmlConsigne(exercice.consigne) + htmlParagraphe(exercice.introduction) + htmlEnumerate(exercice.listeQuestions, exercice.spacing, 'question', `exercice${exercice.numeroExercice}Q`, exercice.tailleDiaporama, 'sansNumero')
-      if ((exercice.interactif) || getVueFromUrl() === 'eval') {
+      exercice.contenu = htmlConsigne(exercice.consigne) + htmlParagraphe(exercice.introduction) + htmlEnumerate(exercice.listeQuestions, exercice.spacing, "question", `exercice${exercice.numeroExercice}Q`, exercice.tailleDiaporama, "sansNumero")
+      if ((exercice.interactif) || getVueFromUrl() === "eval") {
         exercice.contenu += `<button class="ui blue button checkReponses" type="submit" style="margin-bottom: 20px; margin-top: 20px" id="btnValidationEx${exercice.numeroExercice}-${exercice.id}">Vérifier les réponses</button>`
       }
-      exercice.contenuCorrection = htmlParagraphe(exercice.consigneCorrection) + htmlEnumerate(exercice.listeCorrections, exercice.spacingCorr, 'correction', `correction${exercice.numeroExercice}Q`, exercice.tailleDiaporama, 'sansNumero')
+      exercice.contenuCorrection = htmlParagraphe(exercice.consigneCorrection) + htmlEnumerate(exercice.listeCorrections, exercice.spacingCorr, "correction", `correction${exercice.numeroExercice}Q`, exercice.tailleDiaporama, "sansNumero")
     } else {
-      if (document.getElementById('supprimer_reference').checked === true) {
+      if (document.getElementById("supprimer_reference").checked === true) {
         exercice.contenu = texConsigne(exercice.consigne) + texIntroduction(exercice.introduction) + texMulticols(texParagraphe(exercice.listeQuestions, exercice.spacing, retourCharriot), exercice.nbCols)
       } else {
         exercice.contenu = texConsigne(exercice.consigne) + `\n\\marginpar{\\footnotesize ${exercice.id}}` + texIntroduction(exercice.introduction) + texMulticols(texParagraphe(exercice.listeQuestions, exercice.spacing, retourCharriot), exercice.nbCols)
@@ -146,7 +147,7 @@ export function listeQuestionsToContenuSansNumero (exercice, retourCharriot = tr
  * @author Rémi Angot
  */
 export function listeQuestionsToContenuSansNumeroEtSansConsigne (exercice) {
-  if (document.getElementById('supprimer_reference').checked === true) {
+  if (document.getElementById("supprimer_reference").checked === true) {
     exercice.contenu = texMulticols(texParagraphe(exercice.listeQuestions, exercice.spacing), exercice.nbCols)
   } else {
     exercice.contenu = `\n\\marginpar{\\footnotesize ${exercice.id}` + texMulticols(texParagraphe(exercice.listeQuestions, exercice.spacing), exercice.nbCols)
@@ -179,10 +180,10 @@ export function deuxColonnes (cont1, cont2, largeur1 = 50) {
 `
   } else {
     return `\\begin{minipage}{${largeur1 / 100}\\linewidth}
-    ${cont1.replaceAll('<br>', '\\\\\n')}
+    ${cont1.replaceAll("<br>", "\\\\\n")}
     \\end{minipage}
     \\begin{minipage}{${(100 - largeur1) / 100}\\linewidth}
-    ${cont2.replaceAll('<br>', '\\\\\n')}
+    ${cont2.replaceAll("<br>", "\\\\\n")}
     \\end{minipage}
     `
   }
@@ -395,10 +396,10 @@ export function randint (min, max, listeAEviter = []) {
 */
 export function strRandom (o) {
   let a = 10
-  const b = 'abcdefghijklmnopqrstuvwxyz'
-  let c = ''
+  const b = "abcdefghijklmnopqrstuvwxyz"
+  let c = ""
   let d = 0
-  let e = '' + b
+  let e = "" + b
   if (o) {
     if (o.startsWithLowerCase) {
       c = b[Math.floor(Math.random() * b.length)]
@@ -411,7 +412,7 @@ export function strRandom (o) {
       e += b.toUpperCase()
     }
     if (o.includeNumbers) {
-      e += '1234567890'
+      e += "1234567890"
     }
   }
   for (; d < a; d++) {
@@ -430,7 +431,7 @@ export function strRandom (o) {
 export function enleveElement (array, item) {
   //
   for (let i = array.length - 1; i >= 0; i--) {
-    if (typeof item === 'number') {
+    if (typeof item === "number") {
       if (egal(array[i], item)) {
         array.splice(i, 1)
       }
@@ -646,9 +647,9 @@ export function enleveDoublonNum (arr, tolerance) {
  * @author Jean-Claude Lhote
  */
 export function checkSum (...args) {
-  let checkString = ''
+  let checkString = ""
   for (let i = 0; i < args.length; i++) {
-    if (typeof args[i] === 'number') {
+    if (typeof args[i] === "number") {
       checkString += Number(args[i]).toString()
     } else {
       checkString += args[0]
@@ -700,8 +701,8 @@ export function shuffleJusqua (array, indice) {
 * @Source https://stackoverflow.com/questions/2450954/how-to-randomize-shuffle-a-javascript-array
 */
 export function shuffleLettres (txt) {
-  const array = txt.split('')
-  return shuffle(array).join('')
+  const array = txt.split("")
+  return shuffle(array).join("")
 }
 
 /**
@@ -766,9 +767,9 @@ export function filtreDictionnaire (dict, sub) {
 * @Source : https://gitlab.com/moongoal/js-polyfill-object.fromentries/
 */
 if (!Object.fromEntries) {
-  Object.defineProperty(Object, 'fromEntries', {
+  Object.defineProperty(Object, "fromEntries", {
     value (entries) {
-      if (!entries || !entries[Symbol.iterator]) { throw new Error('Object.fromEntries() requires a single iterable argument') }
+      if (!entries || !entries[Symbol.iterator]) { throw new Error("Object.fromEntries() requires a single iterable argument") }
 
       const o = {}
 
@@ -866,11 +867,11 @@ export function combinaisonListesSansChangerOrdre (liste, tailleMinimale) {
 * @author Rémi Angot et Jean-Claude Lhote pour le support des fractions
 */
 export function rienSi1 (a) {
-  if (equal(a, 1)) return ''
-  if (equal(a, -1)) return '-'
+  if (equal(a, 1)) return ""
+  if (equal(a, -1)) return "-"
   if (a instanceof Fraction || a instanceof FractionX) return a.toLatex()
   if (Number(a)) return texNombre(a)
-  window.notify('rienSi1 : type de valeur non prise en compte')
+  window.notify("rienSi1 : type de valeur non prise en compte")
 }
 
 /**
@@ -895,13 +896,13 @@ export function texteExposant (texte) {
 * @author Rémi Angot
 */
 export function ecritureNombreRelatif (a) {
-  let result = ''
+  let result = ""
   if (a > 0) {
-    result = '(+' + a + ')'
+    result = "(+" + a + ")"
   } else if (a < 0) {
-    result = '(' + a + ')'
+    result = "(" + a + ")"
   } else { // ne pas mettre de parenthèses pour 0
-    result = '0'
+    result = "0"
   }
   return result
 }
@@ -910,13 +911,13 @@ export function ecritureNombreRelatif (a) {
  * @param {number} a
  */
 export function ecritureNombreRelatifc (a) {
-  let result = ''
+  let result = ""
   if (a > 0) {
-    result = miseEnEvidence('(+' + texNombrec(a) + ')', 'blue')
+    result = miseEnEvidence("(+" + texNombrec(a) + ")", "blue")
   } else if (a < 0) {
-    result = miseEnEvidence('(' + texNombrec(a) + ')')
+    result = miseEnEvidence("(" + texNombrec(a) + ")")
   } else { // ne pas mettre de parenthèses pour 0
-    result = miseEnEvidence('0', 'black')
+    result = miseEnEvidence("0", "black")
   }
   return result
 }
@@ -929,19 +930,19 @@ export function ecritureNombreRelatifc (a) {
 */
 export function ecritureAlgebrique (a) {
   if (a instanceof Fraction || a instanceof FractionX) return fraction(a).ecritureAlgebrique
-  else if (typeof a === 'number') {
+  else if (typeof a === "number") {
     if (a >= 0) {
-      return '+' + stringNombre(a)
+      return "+" + stringNombre(a)
     } else {
       return stringNombre(a)
     }
   } else if (a instanceof Decimal) {
     if (a.isPos()) {
-      return '+' + stringNombre(a)
+      return "+" + stringNombre(a)
     } else {
       return stringNombre(a)
     }
-  } else window.notify('rienSi1 : type de valeur non prise en compte')
+  } else window.notify("rienSi1 : type de valeur non prise en compte")
 }
 
 /**
@@ -951,11 +952,11 @@ export function ecritureAlgebrique (a) {
 * @author Rémi Angot et Jean-Claude Lhote pour le support des fractions
 */
 export function ecritureAlgebriqueSauf1 (a) {
-  if (equal(a, 1)) return '+'
-  else if (equal(a, -1)) return '-'
+  if (equal(a, 1)) return "+"
+  else if (equal(a, -1)) return "-"
   else if (a instanceof Fraction || a instanceof FractionX) return fraction(a).ecritureAlgebrique
-  else if (typeof a === 'number') return ecritureAlgebrique(a)
-  else window.notify('rienSi1 : type de valeur non prise en compte')
+  else if (typeof a === "number") return ecritureAlgebrique(a)
+  else window.notify("rienSi1 : type de valeur non prise en compte")
 }
 
 /**
@@ -963,12 +964,12 @@ export function ecritureAlgebriqueSauf1 (a) {
  * @param {number} a
  */
 export function ecritureAlgebriquec (a) {
-  let result = ''
+  let result = ""
   if (a > 0) {
-    result = miseEnEvidence('+' + texNombrec(a), 'blue')
+    result = miseEnEvidence("+" + texNombrec(a), "blue")
   } else if (a < 0) {
     result = miseEnEvidence(texNombrec(a))
-  } else result = miseEnEvidence(texNombrec(a), 'black')
+  } else result = miseEnEvidence(texNombrec(a), "black")
   return result
 }
 
@@ -979,7 +980,7 @@ export function ecritureAlgebriquec (a) {
  */
 
 export function signeMoinsEnEvidence (r, precision = 0) {
-  if (r < 0) return miseEnEvidence('-') + texNombre(Math.abs(r), precision)
+  if (r < 0) return miseEnEvidence("-") + texNombre(Math.abs(r), precision)
   else return texNombre(Math.abs(r), precision)
 }
 
@@ -990,7 +991,7 @@ export function signeMoinsEnEvidence (r, precision = 0) {
 * @author Rémi Angot
 */
 export function ecritureParentheseSiNegatif (a) {
-  let result = ''
+  let result = ""
   if (a >= 0) {
     result = a
   } else {
@@ -1006,7 +1007,7 @@ export function ecritureParentheseSiNegatif (a) {
 * @author Rémi Angot
 */
 export function ecritureParentheseSiMoins (expr) {
-  if (expr[0] === '-') return `(${expr})`
+  if (expr[0] === "-") return `(${expr})`
   else return expr
 }
 
@@ -1022,7 +1023,7 @@ export function calculAligne (numero, etapes) {
   for (let i = 1; i < etapes.length - 1; i++) {
     script += `\\\\&=${etapes[i]}`
   }
-  script += `\\\\${miseEnEvidence(lettreDepuisChiffre(numero) + '&=' + etapes[etapes.length - 1])}$`
+  script += `\\\\${miseEnEvidence(lettreDepuisChiffre(numero) + "&=" + etapes[etapes.length - 1])}$`
   return script
 }
 
@@ -1033,24 +1034,24 @@ export function calculAligne (numero, etapes) {
 */
 export function valeurBase (n) {
   switch (n) {
-    case 'A': return 10
-    case 'B': return 11
-    case 'C': return 12
-    case 'D': return 13
-    case 'E': return 14
-    case 'F': return 15
+    case "A": return 10
+    case "B": return 11
+    case "C": return 12
+    case "D": return 13
+    case "E": return 14
+    case "F": return 15
     default: return parseInt(n)
   }
 }
 
 export function baseValeur (n) {
   switch (n) {
-    case 10: return 'A'
-    case 11: return 'B'
-    case 12: return 'C'
-    case 13: return 'D'
-    case 14: return 'E'
-    case 15: return 'F'
+    case 10: return "A"
+    case 11: return "B"
+    case 12: return "C"
+    case 13: return "D"
+    case 14: return "E"
+    case 15: return "F"
     default: return Number(n).toString()
   }
 }
@@ -1061,7 +1062,7 @@ export function baseValeur (n) {
  */
 export function baseNVersBase10 (stringNombre, b) {
   let result = 0
-  if (typeof stringNombre === 'number') {
+  if (typeof stringNombre === "number") {
     stringNombre = stringNombre.toString()
   } else if (stringNombre instanceof Decimal) {
     stringNombre = stringNombre.toNumber().toString()
@@ -1266,11 +1267,11 @@ export function imagePointParTransformation (transformation, pointA, pointO, vec
 * @author Rémi Angot
 */
 export function signe (a) { // + ou -
-  let result = ''
+  let result = ""
   if (a > 0) {
-    result = '+'
+    result = "+"
   } else {
-    result = '-'
+    result = "-"
   }
   return result
 }
@@ -1294,14 +1295,14 @@ export function unSiPositifMoinsUnSinon (a) {
 */export function sommeDesChiffres (n) {
   const nString = n.toString()
   let somme = 0
-  let sommeString = ''
+  let sommeString = ""
   for (let i = 0; i < nString.length - 1; i++) {
-    if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].indexOf(nString[i] !== -1)) {
-      sommeString += nString[i] + '+'
+    if (["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].indexOf(nString[i] !== -1)) {
+      sommeString += nString[i] + "+"
       somme += Number(nString[i])
     }
   }
-  if (['0', '1', '2', '3', '4', '5', '6', '7', '8', '9'].indexOf(nString[nString.length - 1] !== -1)) {
+  if (["0", "1", "2", "3", "4", "5", "6", "7", "8", "9"].indexOf(nString[nString.length - 1] !== -1)) {
     sommeString += nString[nString.length - 1]
     somme += Number(nString[nString.length - 1])
   }
@@ -1317,7 +1318,7 @@ export function unSiPositifMoinsUnSinon (a) {
  */
 export function arrondi (nombre, precision = 2) {
   if (isNaN(nombre)) {
-    window.notify('Le nombre à arrondir n\'en est pas un, ça retourne NaN', { nombre, precision })
+    window.notify("Le nombre à arrondir n'en est pas un, ça retourne NaN", { nombre, precision })
     return NaN
   } else {
     return round(nombre, precision)
@@ -1360,14 +1361,14 @@ export function abs (a) {
 * @author Jean-Claude Lhote
 */
 export function egalOuApprox (a, precision) {
-  if (typeof a === 'object' && ['Fraction', 'FractionX'].indexOf(a.type) !== -1) {
-    return egal(a.n / a.d, arrondi(a.n / a.d, precision)) ? '=' : '\\approx'
+  if (typeof a === "object" && ["Fraction", "FractionX"].indexOf(a.type) !== -1) {
+    return egal(a.n / a.d, arrondi(a.n / a.d, precision)) ? "=" : "\\approx"
   } else if (a instanceof Decimal) {
-    return a.eq(a.toDP(precision)) ? '=' : '\\approx'
-  } else if (!isNaN(a) && !isNaN(precision)) return egal(a, arrondi(a, precision)) ? '=' : '\\approx'
+    return a.eq(a.toDP(precision)) ? "=" : "\\approx"
+  } else if (!isNaN(a) && !isNaN(precision)) return egal(a, arrondi(a, precision)) ? "=" : "\\approx"
   else {
-    window.notify('egalOuApprox : l\'argument n\'est pas un nombre', { a, precision })
-    return 'Mauvais argument (nombres attendus).'
+    window.notify("egalOuApprox : l'argument n'est pas un nombre", { a, precision })
+    return "Mauvais argument (nombres attendus)."
   }
 }
 
@@ -1443,11 +1444,11 @@ export function produitDeDeuxFractions (num1, den1, num2, den2) {
 * @author Rémi Angot
 */
 export function simplificationDeFractionAvecEtapes (num, den) {
-  let result = '='
+  let result = "="
   if (num === 0) {
-    return '=0'
+    return "=0"
   }
-  const signe = num * den < 0 ? '-' : ''
+  const signe = num * den < 0 ? "-" : ""
   const numAbs = Math.abs(num)
   const denAbs = Math.abs(den)
   // Est-ce que le résultat est simplifiable ?
@@ -1456,11 +1457,11 @@ export function simplificationDeFractionAvecEtapes (num, den) {
     if (numAbs % denAbs === 0) { // si le résultat est entier
       result += `${num / den}`
     } else {
-      result += `${signe}${texFraction(numAbs / s + miseEnEvidence('\\times' + s), denAbs / s + miseEnEvidence('\\times' + s))}=${texFractionSigne(num / s, den / s)}`
+      result += `${signe}${texFraction(numAbs / s + miseEnEvidence("\\times" + s), denAbs / s + miseEnEvidence("\\times" + s))}=${texFractionSigne(num / s, den / s)}`
     }
   } else if (num < 0 || den < 0) {
     result += `${texFractionSigne(num, den)}`
-  } else return ''
+  } else return ""
   return result
 }
 
@@ -1471,7 +1472,7 @@ export function simplificationDeFractionAvecEtapes (num, den) {
  */
 
 export function produitsEnCroix ([[a, b], [c, d]]) { // écrit une chaine pour a*d=b*c
-  let result = ''
+  let result = ""
   result += `$${a}\\times${d}=${b}\\times${c}$`
   return result
 }
@@ -1483,16 +1484,16 @@ export function produitsEnCroix ([[a, b], [c, d]]) { // écrit une chaine pour a
  */
 
 export function quatriemeProportionnelle (a, b, c, precision) { // calcul de b*c/a
-  let result = ''
-  if ((typeof a) === 'number' && (typeof b) === 'number' && (typeof c) === 'number') {
+  let result = ""
+  if ((typeof a) === "number" && (typeof b) === "number" && (typeof c) === "number") {
     if (a === 0) {
-      result = '=erreur : division par zéro'
+      result = "=erreur : division par zéro"
       return result
     }
     const p4 = new Decimal(b).mul(c).div(a)
     result += `\\dfrac{${texNombrec(b)}\\times${texNombrec(c)}}{${texNombrec(a)}}`
-    if (p4.eq(p4.toDP(precision))) result += '='
-    else result += '\\approx'
+    if (p4.eq(p4.toDP(precision))) result += "="
+    else result += "\\approx"
     result += `${texNombre(p4, precision)}`
     return result
   } else {
@@ -1509,16 +1510,16 @@ export function quatriemeProportionnelle (a, b, c, precision) { // calcul de b*c
 export function reduireAxPlusB (a, b) {
   if (!(a instanceof Decimal)) a = new Decimal(a)
   if (!(b instanceof Decimal)) b = new Decimal(b)
-  let result = ''
+  let result = ""
   if (!a.isZero()) {
-    if (a.eq(1)) result = 'x'
-    else if (a.eq(-1)) result = '-x'
+    if (a.eq(1)) result = "x"
+    else if (a.eq(-1)) result = "-x"
     else result = `${stringNombre(a)}x`
   }
   if (!b.isZero()) {
     if (!a.isZero()) result += `${ecritureAlgebrique(b)}`
     else result = stringNombre(b)
-  } else if (a.isZero()) result = '0'
+  } else if (a.isZero()) result = "0"
   return result
 }
 /**
@@ -1526,14 +1527,14 @@ export function reduireAxPlusB (a, b) {
  * @author Jean-Claude Lhote
  */
 export function reduirePolynomeDegre3 (a, b, c, d) {
-  let result = ''
+  let result = ""
   if (a !== 0) {
     switch (a) {
       case 1:
-        result += 'x^3'
+        result += "x^3"
         break
       case -1:
-        result += '-x^3'
+        result += "-x^3"
         break
       default:
         result += `${a}x^3`
@@ -1542,10 +1543,10 @@ export function reduirePolynomeDegre3 (a, b, c, d) {
     if (b !== 0) {
       switch (b) {
         case 1:
-          result += '+x^2'
+          result += "+x^2"
           break
         case -1:
-          result += '-x^2'
+          result += "-x^2"
           break
         default:
           result += `${ecritureAlgebrique(b)}x^2`
@@ -1555,10 +1556,10 @@ export function reduirePolynomeDegre3 (a, b, c, d) {
     if (c !== 0) {
       switch (c) {
         case 1:
-          result += '+x'
+          result += "+x"
           break
         case -1:
-          result += '-x'
+          result += "-x"
           break
         default:
           result += `${ecritureAlgebrique(c)}x`
@@ -1572,10 +1573,10 @@ export function reduirePolynomeDegre3 (a, b, c, d) {
     if (b !== 0) {
       switch (b) {
         case 1:
-          result += 'x^2'
+          result += "x^2"
           break
         case -1:
-          result += '-x^2'
+          result += "-x^2"
           break
         default:
           result += `${b}x^2`
@@ -1584,10 +1585,10 @@ export function reduirePolynomeDegre3 (a, b, c, d) {
       if (c !== 0) {
         switch (c) {
           case 1:
-            result += '+x'
+            result += "+x"
             break
           case -1:
-            result += '-x'
+            result += "-x"
             break
           default:
             result += `${ecritureAlgebrique(c)}x`
@@ -1601,10 +1602,10 @@ export function reduirePolynomeDegre3 (a, b, c, d) {
     if (c !== 0) {
       switch (c) {
         case 1:
-          result += 'x'
+          result += "x"
           break
         case -1:
-          result += '-x'
+          result += "-x"
           break
         default:
           result += `${c}x`
@@ -1669,14 +1670,14 @@ export function factorisation (n) {
  * @returns {string} texFacto
  */
 export function texFactorisation (n, puissancesOn = true) {
-  let texFacto = ''
+  let texFacto = ""
   let facto = []
   if (puissancesOn) {
     facto = factorisation(n)
     for (let i = 0; i < facto.length - 1; i++) {
-      texFacto += `${facto[i][0]}${facto[i][1] > 1 ? '^{' + facto[i][1] + '}\\times ' : '\\times '}`
+      texFacto += `${facto[i][0]}${facto[i][1] > 1 ? "^{" + facto[i][1] + "}\\times " : "\\times "}`
     }
-    texFacto += `${facto[facto.length - 1][0]}${facto[facto.length - 1][1] > 1 ? '^{' + facto[facto.length - 1][1] + '}' : ''}`
+    texFacto += `${facto[facto.length - 1][0]}${facto[facto.length - 1][1] > 1 ? "^{" + facto[facto.length - 1][1] + "}" : ""}`
   } else {
     facto = obtenirListeFacteursPremiers(n)
     for (let i = 0; i < facto.length - 1; i++) {
@@ -1727,8 +1728,8 @@ export function texRacineCarree (n) {
  * @author Rémi Angot
  */
 export function xcas (expression) {
-  const sortie = (txt) => UI.eval(`latex(${txt})`).replaceAll('\\cdot ', '~').replaceAll('\\frac', '\\dfrac').replaceAll('"', '')
-  if (typeof expression === 'string') return sortie(expression)
+  const sortie = (txt) => UI.eval(`latex(${txt})`).replaceAll("\\cdot ", "~").replaceAll("\\frac", "\\dfrac").replaceAll("\"", "")
+  if (typeof expression === "string") return sortie(expression)
   else {
     const result = []
     for (const txt of expression) {
@@ -1746,11 +1747,11 @@ export function xcas (expression) {
 export function calcul (x, arrondir) {
   const sansPrecision = (arrondir === undefined)
   if (sansPrecision) arrondir = 6
-  if (typeof x === 'string') {
-    window.notify('Calcul : Reçoit une chaine de caractère et pas un nombre', { x })
+  if (typeof x === "string") {
+    window.notify("Calcul : Reçoit une chaine de caractère et pas un nombre", { x })
     x = parseFloat(evaluate(x))
   }
-  if (sansPrecision && !egal(x, arrondi(x, arrondir), 10 ** (-arrondir - 1))) window.notify('calcul : arrondir semble avoir tronqué des décimales sans avoir eu de paramètre de précision', { x, arrondir })
+  if (sansPrecision && !egal(x, arrondi(x, arrondir), 10 ** (-arrondir - 1))) window.notify("calcul : arrondir semble avoir tronqué des décimales sans avoir eu de paramètre de précision", { x, arrondir })
   return parseFloat(x.toFixed(arrondir))
 }
 
@@ -1786,14 +1787,14 @@ export function texNombrec (expression, precision) {
 */
 
 export function texNum (expression, formatFraction = false) {
-  if (typeof expression === 'object') {
-    const signe = expression.s === 1 ? '' : '-'
+  if (typeof expression === "object") {
+    const signe = expression.s === 1 ? "" : "-"
     if (formatFraction === true) {
       expression = expression.d !== 1 ? signe + texFraction(expression.n, expression.d) : signe + expression.n
     } else {
       expression = texNombre(evaluate(format(expression)))
     }
-    expression = expression.replace(',', '{,}').replace('{{,}}', '{,}')
+    expression = expression.replace(",", "{,}").replace("{{,}}", "{,}")
   } else {
     expression = texNombre(parseFloat(Algebrite.eval(expression)))
   }
@@ -1805,9 +1806,9 @@ export function texNum (expression, formatFraction = false) {
  * @param {string} expression l'expression à calculer
  */
 export function texNombreCoul (nombre) {
-  if (nombre > 0) return miseEnEvidence(texNombrec(nombre), 'green')
-  else if (nombre < 0) return miseEnEvidence(texNombrec(nombre), 'red')
-  else return miseEnEvidence(texNombrec(0), 'black')
+  if (nombre > 0) return miseEnEvidence(texNombrec(nombre), "green")
+  else if (nombre < 0) return miseEnEvidence(texNombrec(nombre), "red")
+  else return miseEnEvidence(texNombrec(0), "black")
 }
 
 /**
@@ -1849,7 +1850,7 @@ export function sommeDesTermesParSigne (liste) {
  **/
 export function creerNomDePolygone (nbsommets, listeAEviter = []) {
   let premiersommet = randint(65, 90 - nbsommets)
-  let polygone = ''
+  let polygone = ""
   if (listeAEviter === undefined) listeAEviter = []
   for (let i = 0; i < nbsommets; i++) {
     let augmentation = i
@@ -1861,7 +1862,7 @@ export function creerNomDePolygone (nbsommets, listeAEviter = []) {
   if (listeAEviter.length < 26 - nbsommets - 1) { // On évite la liste à éviter si elle n'est pas trop grosse sinon on n'en tient pas compte
     let cpt = 0
     while (possedeUnCaractereInterdit(polygone, listeAEviter) && cpt < 20) {
-      polygone = ''
+      polygone = ""
       premiersommet = randint(65, 90 - nbsommets)
       for (let i = 0; i < nbsommets; i++) {
         polygone += String.fromCharCode(premiersommet + i)
@@ -1869,7 +1870,7 @@ export function creerNomDePolygone (nbsommets, listeAEviter = []) {
       cpt++ // Au bout de 20 essais on laisse tomber la liste à éviter
     }
   } else {
-    console.log('Trop de questions donc plusieurs polygones peuvent avoir le même nom')
+    console.log("Trop de questions donc plusieurs polygones peuvent avoir le même nom")
   }
   return polygone
 }
@@ -1915,7 +1916,7 @@ export function choisitNombresEntreMetN (m, n, combien, listeAEviter = []) {
  * les lettres à éviter sont données dans une chaine par exemple : 'QXY'
  * @author Jean-Claude Lhote
  */
-export function choisitLettresDifferentes (nombre, lettresAeviter = '', majuscule = true) {
+export function choisitLettresDifferentes (nombre, lettresAeviter = "", majuscule = true) {
   const listeAEviter = []; const lettres = []
   for (const l of lettresAeviter) {
     listeAEviter.push(l.charCodeAt(0) - 64)
@@ -1928,7 +1929,7 @@ export function choisitLettresDifferentes (nombre, lettresAeviter = '', majuscul
   return lettres
 }
 export function cesar (word, decal) {
-  let mot = ''; let code = 65
+  let mot = ""; let code = 65
   for (let x = 0; x < word.length; x++) {
     code = word.charCodeAt(x) % 65
     code = (code + decal) % 26 + 65
@@ -1953,7 +1954,7 @@ export function codeCesar (mots, decal) {
 * // 27->AA ; 28 ->AB ...
 */
 export function lettreDepuisChiffre (i) {
-  let result = ''
+  let result = ""
   if (i <= 26) {
     result = String.fromCharCode(64 + i)
   } else {
@@ -1987,7 +1988,7 @@ export function lettreMinusculeDepuisChiffre (i) {
 * // 27->A_1 ; 28 ->A_2 ...
 */
 export function lettreIndiceeDepuisChiffre (i) {
-  const indiceLettre = quotientier(i - 1, 26) === 0 ? '' : quotientier(i - 1, 26)
+  const indiceLettre = quotientier(i - 1, 26) === 0 ? "" : quotientier(i - 1, 26)
   return String.fromCharCode(64 + (i - 1) % 26 + 1) + `_{${indiceLettre}}`
 }
 
@@ -2014,9 +2015,9 @@ export function minToHoraire (minutes) {
   }
   const nbminuteRestante = (minutes % 60)
   if (nbminuteRestante > 9) {
-    return (nbHour + sp() + 'h' + sp() + nbminuteRestante)
+    return (nbHour + sp() + "h" + sp() + nbminuteRestante)
   } else {
-    return (nbHour + sp() + ' h' + sp() + '0' + nbminuteRestante)
+    return (nbHour + sp() + " h" + sp() + "0" + nbminuteRestante)
   }
 }
 
@@ -2032,12 +2033,12 @@ export function minToHour (minutes) {
   }
   const nbminuteRestante = (minutes % 60)
   if (nbHour === 0) {
-    return (nbminuteRestante + sp() + 'min')
+    return (nbminuteRestante + sp() + "min")
   } else {
     if (nbminuteRestante > 9) {
-      return (nbHour + sp() + 'h' + sp() + nbminuteRestante)
+      return (nbHour + sp() + "h" + sp() + nbminuteRestante)
     } else {
-      return (nbHour + sp() + ' h' + sp() + '0' + nbminuteRestante)
+      return (nbHour + sp() + " h" + sp() + "0" + nbminuteRestante)
     }
   }
 }
@@ -2060,9 +2061,9 @@ export function minToHeuresMinutes (minutes) {
 */
 export function prenomF (n = 1) {
   if (n === 1) {
-    return choice(['Aude', 'Béatrice', 'Carine', 'Corinne', 'Dalila', 'Elsa', 'Farida', 'Julie', 'Karole', 'Léa', 'Lisa', 'Manon', 'Marina', 'Magalie', 'Nadia', 'Nawel', 'Teresa', 'Vanessa', 'Yasmine'])
+    return choice(["Aude", "Béatrice", "Carine", "Corinne", "Dalila", "Elsa", "Farida", "Julie", "Karole", "Léa", "Lisa", "Manon", "Marina", "Magalie", "Nadia", "Nawel", "Teresa", "Vanessa", "Yasmine"])
   } else {
-    return shuffle(['Aude', 'Béatrice', 'Carine', 'Corinne', 'Dalila', 'Elsa', 'Farida', 'Julie', 'Karole', 'Léa', 'Lisa', 'Manon', 'Marina', 'Magalie', 'Nadia', 'Nawel', 'Teresa', 'Vanessa', 'Yasmine']).slice(0, n)
+    return shuffle(["Aude", "Béatrice", "Carine", "Corinne", "Dalila", "Elsa", "Farida", "Julie", "Karole", "Léa", "Lisa", "Manon", "Marina", "Magalie", "Nadia", "Nawel", "Teresa", "Vanessa", "Yasmine"]).slice(0, n)
   }
 }
 
@@ -2072,9 +2073,9 @@ export function prenomF (n = 1) {
 */
 export function prenomM (n = 1) {
   if (n === 1) {
-    return choice(['Arthur', 'Benjamin', 'Bernard', 'Christophe', 'Cyril', 'David', 'Fernando', 'Guillaume', 'Jean-Claude', 'Joachim', 'José', 'Kamel', 'Karim', 'Laurent', 'Mehdi', 'Nacim', 'Pablo', 'Rémi', 'Victor', 'Yazid'])
+    return choice(["Arthur", "Benjamin", "Bernard", "Christophe", "Cyril", "David", "Fernando", "Guillaume", "Jean-Claude", "Joachim", "José", "Kamel", "Karim", "Laurent", "Mehdi", "Nacim", "Pablo", "Rémi", "Victor", "Yazid"])
   } else {
-    return shuffle(['Arthur', 'Benjamin', 'Bernard', 'Christophe', 'Cyril', 'David', 'Fernando', 'Guillaume', 'Jean-Claude', 'Joachim', 'José', 'Kamel', 'Karim', 'Laurent', 'Mehdi', 'Nacim', 'Pablo', 'Rémi', 'Victor', 'Yazid']).slice(0, n)
+    return shuffle(["Arthur", "Benjamin", "Bernard", "Christophe", "Cyril", "David", "Fernando", "Guillaume", "Jean-Claude", "Joachim", "José", "Kamel", "Karim", "Laurent", "Mehdi", "Nacim", "Pablo", "Rémi", "Victor", "Yazid"]).slice(0, n)
   }
 }
 
@@ -2086,7 +2087,7 @@ export function prenom (n = 1) {
   if (n === 1) {
     return choice([prenomF(), prenomM()])
   } else {
-    return shuffle(['Aude', 'Béatrice', 'Carine', 'Corinne', 'Dalila', 'Elsa', 'Farida', 'Julie', 'Karole', 'Léa', 'Lisa', 'Manon', 'Marina', 'Magalie', 'Nadia', 'Nawel', 'Teresa', 'Vanessa', 'Yasmine', 'Arthur', 'Benjamin', 'Bernard', 'Christophe', 'Cyril', 'David', 'Fernando', 'Guillaume', 'Jean-Claude', 'Joachim', 'José', 'Kamel', 'Karim', 'Laurent', 'Mehdi', 'Nacim', 'Pablo', 'Rémi', 'Victor', 'Yazid']).slice(0, n)
+    return shuffle(["Aude", "Béatrice", "Carine", "Corinne", "Dalila", "Elsa", "Farida", "Julie", "Karole", "Léa", "Lisa", "Manon", "Marina", "Magalie", "Nadia", "Nawel", "Teresa", "Vanessa", "Yasmine", "Arthur", "Benjamin", "Bernard", "Christophe", "Cyril", "David", "Fernando", "Guillaume", "Jean-Claude", "Joachim", "José", "Kamel", "Karim", "Laurent", "Mehdi", "Nacim", "Pablo", "Rémi", "Victor", "Yazid"]).slice(0, n)
   }
 }
 
@@ -2095,7 +2096,7 @@ export function prenom (n = 1) {
 * @author Mireille Gain
 */
 export function objetF () {
-  return choice(['boîtes', 'bougies', 'cartes de voeux', 'gommes', 'photos', 'petites peluches'])
+  return choice(["boîtes", "bougies", "cartes de voeux", "gommes", "photos", "petites peluches"])
 }
 
 /**
@@ -2103,7 +2104,7 @@ export function objetF () {
 * @author Mireille Gain
 */
 export function objetM () {
-  return choice(['stickers', 'gâteaux', 'cahiers', 'livres', 'stylos', 'crayons'])
+  return choice(["stickers", "gâteaux", "cahiers", "livres", "stylos", "crayons"])
 }
 
 /**
@@ -2111,7 +2112,7 @@ export function objetM () {
 * @author Mireille Gain
 */
 export function objet () {
-  return choice(['billes', 'bonbons', 'bougies', 'cartes de voeux', 'crayons', 'gâteaux', 'gommes', 'photos', 'stickers', 'cahiers'])
+  return choice(["billes", "bonbons", "bougies", "cartes de voeux", "crayons", "gâteaux", "gommes", "photos", "stickers", "cahiers"])
 }
 
 /**
@@ -2120,28 +2121,28 @@ export function objet () {
  * le 14/03/2021
  */
 class Personne {
-  constructor ({ prenom = '', genre = '', pronom = '', Pronom = '' } = {}) {
+  constructor ({ prenom = "", genre = "", pronom = "", Pronom = "" } = {}) {
     let choix
-    this.prenom = ''
-    this.genre = ''
-    this.pronom = ''
-    this.Pronom = ''
-    if (prenom === '' || ((typeof prenom) === 'undefined')) { // On le/la baptise
+    this.prenom = ""
+    this.genre = ""
+    this.pronom = ""
+    this.Pronom = ""
+    if (prenom === "" || ((typeof prenom) === "undefined")) { // On le/la baptise
       choix = prenomPronom()
       this.prenom = choix[0]
       this.pronom = choix[1]
-    } else if (pronom === '') { // le pronom n'est pas précisé
-      this.pronom = 'on'
-      this.Pronom = 'On'
+    } else if (pronom === "") { // le pronom n'est pas précisé
+      this.pronom = "on"
+      this.Pronom = "On"
     }
-    if (genre === '') {
-      if (this.pronom === 'il') {
-        this.Pronom = 'Il'
-        this.genre = 'masculin'
-      } else if (this.pronom === 'elle') {
-        this.Pronom = 'Elle'
-        this.genre = 'féminin'
-      } else this.genre = 'neutre'
+    if (genre === "") {
+      if (this.pronom === "il") {
+        this.Pronom = "Il"
+        this.genre = "masculin"
+      } else if (this.pronom === "elle") {
+        this.Pronom = "Elle"
+        this.genre = "féminin"
+      } else this.genre = "neutre"
     }
   }
 }
@@ -2151,8 +2152,8 @@ class Personne {
  * @author Jean-Claude Lhote
  * le 14/03/2021
  */
-export function personne ({ prenom = '', genre = '', pronom = '' } = {}) {
-  return new Personne({ prenom: prenom, genre: genre, pronom: pronom })
+export function personne ({ prenom = "", genre = "", pronom = "" } = {}) {
+  return new Personne({ prenom, genre, pronom })
 }
 
 /**
@@ -2185,9 +2186,9 @@ export function personnes (n) {
  */
 export function prenomPronom () {
   if (choice([true, false])) {
-    return [prenomM(1), 'il']
+    return [prenomM(1), "il"]
   } else {
-    return [prenomF(1), 'elle']
+    return [prenomF(1), "elle"]
   }
 }
 
@@ -2280,7 +2281,7 @@ export function unMoisDeTemperature (base, mois, annee) {
 * @author Jean-Claude Lhote
 */
 export function nomDuMois (n) {
-  const mois = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre']
+  const mois = ["janvier", "février", "mars", "avril", "mai", "juin", "juillet", "août", "septembre", "octobre", "novembre", "décembre"]
   return mois[n - 1]
 }
 
@@ -2290,7 +2291,7 @@ export function nomDuMois (n) {
 * @author Mireille Gain
 */
 export function nomDuJour (n) {
-  const jour = ['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche']
+  const jour = ["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"]
   return jour[n - 1]
 }
 
@@ -2300,7 +2301,7 @@ export function nomDuJour (n) {
 * @author Mireille Gain
 */
 export function jour () {
-  return choice(['lundi', 'mardi', 'mercredi', 'jeudi', 'vendredi', 'samedi', 'dimanche'])
+  return choice(["lundi", "mardi", "mercredi", "jeudi", "vendredi", "samedi", "dimanche"])
 }
 
 // Fonctions LaTeX
@@ -2313,29 +2314,29 @@ export function jour () {
 * @author Rémi Angot
 */
 export function texEnumerate (liste, spacing) {
-  let result = ''
+  let result = ""
   if (liste.length > 1) {
-    result = '\\begin{enumerate}\n'
+    result = "\\begin{enumerate}\n"
     if (spacing > 1) {
       result += `\\begin{spacing}{${spacing}}\n`
     }
     for (const i in liste) {
-      result += '\t\\item ' + liste[i] + '\n'
+      result += "\t\\item " + liste[i] + "\n"
     }
     if (spacing > 1) {
-      result += '\\end{spacing}\n'
+      result += "\\end{spacing}\n"
     }
-    result += '\\end{enumerate}\n'
+    result += "\\end{enumerate}\n"
   } else {
     if (spacing > 1) {
       result += `\\begin{spacing}{${spacing}}\n`
     }
-    result += liste[0] + '\n'
+    result += liste[0] + "\n"
     if (spacing > 1) {
-      result += '\\end{spacing}\n'
+      result += "\\end{spacing}\n"
     }
   }
-  return result.replace(/(<br *\/?>[\n\t ]*)+<br *\/?>/mig, '\n\n\\medskip\n').replace(/<br>/g, '\\\\\n').replace(/€/g, '\\euro{}')
+  return result.replace(/(<br *\/?>[\n\t ]*)+<br *\/?>/mig, "\n\n\\medskip\n").replace(/<br>/g, "\\\\\n").replace(/€/g, "\\euro{}")
 }
 
 /**
@@ -2347,7 +2348,7 @@ export function texEnumerate (liste, spacing) {
 */
 export function texEnumerateSansNumero (liste, spacing) {
   // return texEnumerate(liste,spacing).replace('\\begin{enumerate}[label={}]','\\begin{enumerate}[label={}]')
-  return texEnumerate(liste, spacing).replace('\\begin{enumerate}', '\\begin{enumerate}[label={}]')
+  return texEnumerate(liste, spacing).replace("\\begin{enumerate}", "\\begin{enumerate}[label={}]")
 }
 
 /**
@@ -2357,7 +2358,7 @@ export function texEnumerateSansNumero (liste, spacing) {
 * @author Rémi Angot
 */
 export function texParagraphe (liste, spacing = false, retourCharriot) {
-  let result = ''
+  let result = ""
   if (spacing > 1) {
     result = `\\begin{spacing}{${spacing}}\n`
   }
@@ -2370,10 +2371,10 @@ export function texParagraphe (liste, spacing = false, retourCharriot) {
     }
   }
   if (spacing > 1) {
-    result += '\\end{spacing}'
+    result += "\\end{spacing}"
   }
   // les <br> peuvent être 2 ou plus et peuvent être séparés par des sauts de ligne ou des espaces
-  return result.replace(/(<br *\/?>[\n\t ]*)+<br *\/?>/mig, '\n\n\\medskip\n').replace(/<br>/g, '\\\\\n').replace(/€/g, '\\euro{}')
+  return result.replace(/(<br *\/?>[\n\t ]*)+<br *\/?>/mig, "\n\n\\medskip\n").replace(/<br>/g, "\\\\\n").replace(/€/g, "\\euro{}")
 }
 
 /**
@@ -2383,7 +2384,7 @@ export function texParagraphe (liste, spacing = false, retourCharriot) {
 * @author Rémi Angot
 */
 export function texIntroduction (texte) {
-  return texte.replace(/(<br *\/?>[\n\t ]*)+<br *\/?>/mig, '\n\n\\medskip\n').replace(/<br>/g, '\\\\\n')
+  return texte.replace(/(<br *\/?>[\n\t ]*)+<br *\/?>/mig, "\n\n\\medskip\n").replace(/<br>/g, "\\\\\n")
 }
 
 /**
@@ -2393,22 +2394,22 @@ export function texIntroduction (texte) {
 * @param spacing interligne (line-height en css)
 * @author Rémi Angot
 */
-export function htmlEnumerate (liste, spacing, classe = 'question', id = '', tailleDiaporama = 1, classeOl) {
-  let result = ''
+export function htmlEnumerate (liste, spacing, classe = "question", id = "", tailleDiaporama = 1, classeOl) {
+  let result = ""
   // Pour diapCorr, on numérote les questions même si un exercice n'en comporte qu'une
-  if (liste.length > 1 || context.vue === 'diapCorr') {
-    (spacing > 1) ? result = `<ol style="line-height: ${spacing};" ${classeOl ? `class = ${classeOl}` : ''}>` : result = `<ol ${classeOl ? `class = ${classeOl}` : ''}>`
+  if (liste.length > 1 || context.vue === "diapCorr") {
+    (spacing > 1) ? result = `<ol style="line-height: ${spacing};" ${classeOl ? `class = ${classeOl}` : ""}>` : result = `<ol ${classeOl ? `class = ${classeOl}` : ""}>`
     for (const i in liste) {
-      result += `<li class="${classe}" ${id ? 'id="' + id + i + '"' : ''} ${dataTaille(tailleDiaporama)}>` + liste[i].replace(/\\dotfill/g, '..............................').replace(/\\not=/g, '≠').replace(/\\ldots/g, '....') + '</li>' // .replace(/~/g,' ') pour enlever les ~ mais je voulais les garder dans les formules LaTeX donc abandonné
+      result += `<li class="${classe}" ${id ? "id=\"" + id + i + "\"" : ""} ${dataTaille(tailleDiaporama)}>` + liste[i].replace(/\\dotfill/g, "..............................").replace(/\\not=/g, "≠").replace(/\\ldots/g, "....") + "</li>" // .replace(/~/g,' ') pour enlever les ~ mais je voulais les garder dans les formules LaTeX donc abandonné
     }
-    result += '</ol>'
+    result += "</ol>"
   } else if (liste.length === 1) {
     // Pour garder la même hiérarchie avec une ou plusieurs questions
     // On met ce div inutile comme ça le grand-père de la question est toujours l'exercice
     // Utile pour la vue can
-    (spacing > 1) ? result = `<div><div class="${classe}" ${id ? 'id="' + id + '0"' : ''} style="line-height: ${spacing}; margin-bottom: 20px" ${dataTaille(tailleDiaporama)}>` : result = `<div><div class="${classe}" ${id ? 'id="' + id + '0"' : ''}>`
-    result += liste[0].replace(/\\dotfill/g, '..............................').replace(/\\not=/g, '≠').replace(/\\ldots/g, '....') // .replace(/~/g,' ') pour enlever les ~ mais je voulais les garder dans les formules LaTeX donc abandonné
-    result += '</div></div>'
+    (spacing > 1) ? result = `<div><div class="${classe}" ${id ? "id=\"" + id + "0\"" : ""} style="line-height: ${spacing}; margin-bottom: 20px" ${dataTaille(tailleDiaporama)}>` : result = `<div><div class="${classe}" ${id ? "id=\"" + id + "0\"" : ""}>`
+    result += liste[0].replace(/\\dotfill/g, "..............................").replace(/\\not=/g, "≠").replace(/\\ldots/g, "....") // .replace(/~/g,' ') pour enlever les ~ mais je voulais les garder dans les formules LaTeX donc abandonné
+    result += "</div></div>"
   }
   return result
 }
@@ -2444,7 +2445,7 @@ export function enumerateSansPuceSansNumero (liste, spacing) {
     return htmlLigne(liste, spacing)
   } else {
     // return texEnumerate(liste,spacing)
-    return texEnumerate(liste, spacing).replace('\\begin{enumerate}', '\\begin{enumerate}[label={}]')
+    return texEnumerate(liste, spacing).replace("\\begin{enumerate}", "\\begin{enumerate}[label={}]")
   }
 }
 
@@ -2462,7 +2463,7 @@ export function htmlParagraphe (texte, retourCharriot) {
       return `\n${texte}\n\n`
     }
   } else {
-    return ''
+    return ""
   }
 }
 
@@ -2473,17 +2474,17 @@ export function htmlParagraphe (texte, retourCharriot) {
 * @param spacing interligne (line-height en css)
 * @author Rémi Angot
 */
-export function htmlLigne (liste, spacing, classe = 'question') {
-  let result = '<div>'
-  const spacingTxt = (spacing > 1) ? `style="line-height: ${spacing};"` : ''
+export function htmlLigne (liste, spacing, classe = "question") {
+  let result = "<div>"
+  const spacingTxt = (spacing > 1) ? `style="line-height: ${spacing};"` : ""
   // Pour garder la même hiérarchie avec listeDeQuestionsToContenu
   // On met ce div inutile comme ça le grand-père de la question est toujours l'exercice
   // Utile pour la vue can
   for (const i in liste) {
-    result += '\t' + `<div ${spacingTxt}  class="${classe}">` + liste[i].replace(/\\dotfill/g, '...') + '</div>' // .replace(/~/g,' ') pour enlever les ~ mais je voulais les garder dans les formules LaTeX donc abandonné
+    result += "\t" + `<div ${spacingTxt}  class="${classe}">` + liste[i].replace(/\\dotfill/g, "...") + "</div>" // .replace(/~/g,' ') pour enlever les ~ mais je voulais les garder dans les formules LaTeX donc abandonné
     // .replace(/\\\\/g,'<br>') abandonné pour supporter les array
   }
-  result += '</div></div>\n'
+  result += "</div></div>\n"
 
   return result
 }
@@ -2495,8 +2496,8 @@ export function htmlLigne (liste, spacing, classe = 'question') {
 export function texMulticols (texte, nbCols = 2) {
   let result
   if (nbCols > 1) {
-    result = '\\begin{multicols}{' + nbCols + '}\n' +
-      texte + '\n\\end{multicols}'
+    result = "\\begin{multicols}{" + nbCols + "}\n" +
+      texte + "\n\\end{multicols}"
   } else {
     result = texte
   }
@@ -2508,8 +2509,8 @@ export function texMulticols (texte, nbCols = 2) {
 * @author Rémi Angot
 */
 export function htmlConsigne (consigne) {
-  if (consigne) return '<h4>' + consigne + '</h4>\n\n'
-  else return ''
+  if (consigne) return "<h4>" + consigne + "</h4>\n\n"
+  else return ""
 }
 
 /**
@@ -2517,7 +2518,7 @@ export function htmlConsigne (consigne) {
 * @author Rémi Angot
 */
 export function texConsigne (consigne) {
-  return '\\exo{' + consigne.replace(/<br>/g, '\\\\') + '}\n\n'
+  return "\\exo{" + consigne.replace(/<br>/g, "\\\\") + "}\n\n"
 }
 /**
  * @author Frédéric Piou
@@ -2525,7 +2526,7 @@ export function texConsigne (consigne) {
  * @returns retourne un nombre au format français sans espace après la virgule
  */
 export function num (nb) {
-  return Intl.NumberFormat('fr-FR', { maximumFractionDigits: 20 }).format(nb).toString().replace(/\s+/g, '\\thickspace ').replace(',', '{,}')
+  return Intl.NumberFormat("fr-FR", { maximumFractionDigits: 20 }).format(nb).toString().replace(/\s+/g, "\\thickspace ").replace(",", "{,}")
 }
 /**
  * @author Frédéric Piou
@@ -2533,7 +2534,7 @@ export function num (nb) {
  * @returns retourne un nombre au format français
  */
 export function numberFormat (nb) {
-  return Intl.NumberFormat('fr-FR', { maximumFractionDigits: 20 }).format(nb).toString().replace(/\s+/g, '\\thickspace ')
+  return Intl.NumberFormat("fr-FR", { maximumFractionDigits: 20 }).format(nb).toString().replace(/\s+/g, "\\thickspace ")
 }
 
 /**
@@ -2549,8 +2550,8 @@ export function numberFormat (nb) {
  * @returns string avec le nombre dans le format français à mettre entre des $ $
  */
 export function texNombre (nb, precision = 8, force = false) {
-  const result = afficherNombre(nb, precision, 'texNombre', force)
-  return result.replace(',', '{,}').replace(/\s+/g, '\\,')
+  const result = afficherNombre(nb, precision, "texNombre", force)
+  return result.replace(",", "{,}").replace(/\s+/g, "\\,")
 }
 
 /**
@@ -2558,30 +2559,30 @@ export function texNombre (nb, precision = 8, force = false) {
  * @author Rémi Angot
  */
 export function texNombre2 (nb) {
-  let nombre = math.format(nb, { notation: 'auto', lowerExp: -12, upperExp: 12, precision: 12 }).replace('.', ',')
-  const rangVirgule = nombre.indexOf(',')
-  let partieEntiere = ''
+  let nombre = math.format(nb, { notation: "auto", lowerExp: -12, upperExp: 12, precision: 12 }).replace(".", ",")
+  const rangVirgule = nombre.indexOf(",")
+  let partieEntiere = ""
   if (rangVirgule !== -1) {
     partieEntiere = nombre.substring(0, rangVirgule)
   } else {
     partieEntiere = nombre
   }
-  let partieDecimale = ''
+  let partieDecimale = ""
   if (rangVirgule !== -1) {
     partieDecimale = nombre.substring(rangVirgule + 1)
   }
 
   for (let i = partieEntiere.length - 3; i > 0; i -= 3) {
-    partieEntiere = partieEntiere.substring(0, i) + '\\,' + partieEntiere.substring(i)
+    partieEntiere = partieEntiere.substring(0, i) + "\\," + partieEntiere.substring(i)
   }
   for (let i = 3; i < partieDecimale.length; i += 5) {
-    partieDecimale = partieDecimale.substring(0, i) + '\\,' + partieDecimale.substring(i)
+    partieDecimale = partieDecimale.substring(0, i) + "\\," + partieDecimale.substring(i)
     i += 12
   }
-  if (partieDecimale === '') {
+  if (partieDecimale === "") {
     nombre = partieEntiere
   } else {
-    nombre = partieEntiere + '{,}' + partieDecimale
+    nombre = partieEntiere + "{,}" + partieDecimale
   }
   return nombre
 }
@@ -2602,15 +2603,15 @@ export function nombrec2 (nb) {
 * Rajout Octobre 2021 pour 6C14
 */
 export function texNombre3 (nb) {
-  let nombre = math.format(nb, { notation: 'auto', lowerExp: -12, upperExp: 12, precision: 12 }).replace('.', ',')
-  const rangVirgule = nombre.indexOf(',')
-  let partieEntiere = ''
+  let nombre = math.format(nb, { notation: "auto", lowerExp: -12, upperExp: 12, precision: 12 }).replace(".", ",")
+  const rangVirgule = nombre.indexOf(",")
+  let partieEntiere = ""
   if (rangVirgule !== -1) {
     partieEntiere = nombre.substring(0, rangVirgule)
   } else {
     partieEntiere = nombre
   }
-  let partieDecimale = ''
+  let partieDecimale = ""
   if (rangVirgule !== -1) {
     partieDecimale = nombre.substring(rangVirgule + 1)
   }
@@ -2622,10 +2623,10 @@ export function texNombre3 (nb) {
     partieDecimale = partieDecimale.substring(0, i) + sp() + partieDecimale.substring(i)
     i += 12
   }
-  if (partieDecimale === '') {
+  if (partieDecimale === "") {
     nombre = partieEntiere
   } else {
-    nombre = partieEntiere + ',' + partieDecimale
+    nombre = partieEntiere + "," + partieDecimale
   }
   return nombre
 }
@@ -2635,10 +2636,10 @@ export function texNombre3 (nb) {
  * @author Jean-Claude Lhote
  */
 export function sp (nb = 1) {
-  let s = ''
+  let s = ""
   for (let i = 0; i < nb; i++) {
-    if (context.isHtml) s += '&nbsp;'
-    else s += '\\,'
+    if (context.isHtml) s += "&nbsp;"
+    else s += "\\,"
   }
   return s
 }
@@ -2651,18 +2652,18 @@ export function sp (nb = 1) {
 */
 export function nombreAvecEspace (nb) {
   if (isNaN(nb)) {
-    window.notify('nombreAvecEspace : argument NaN ou undefined', { nb })
-    return 'NaN'
+    window.notify("nombreAvecEspace : argument NaN ou undefined", { nb })
+    return "NaN"
   }
   // Ecrit \nombre{nb} pour tous les nombres supérieurs à 1 000 (pour la gestion des espaces)
   if (context.isHtml) {
-    return Intl.NumberFormat('fr-FR', { maximumFractionDigits: 20 }).format(nb).toString().replace(/\s+/g, ' ')
+    return Intl.NumberFormat("fr-FR", { maximumFractionDigits: 20 }).format(nb).toString().replace(/\s+/g, " ")
   } else {
     let result
     if (nb > 999 || nombreDeChiffresDansLaPartieDecimale(nb) > 3) {
-      result = '\\numprint{' + nb.toString().replace('.', ',') + '}'
+      result = "\\numprint{" + nb.toString().replace(".", ",") + "}"
     } else {
-      result = Number(nb).toString().replace('.', '{,}')
+      result = Number(nb).toString().replace(".", "{,}")
     }
     return result
   }
@@ -2716,12 +2717,12 @@ export const scientifiqueToDecimal = (mantisse, exp) => {
  */
 export const insereEspaceDansNombre = nb => {
   if (!Number.isNaN(nb)) {
-    nb = nb.toString().replace('.', ',')
+    nb = nb.toString().replace(".", ",")
   } else {
-    window.notify('insereEspaceDansNombre : l\'argument n\'est pas un nombre', nb)
+    window.notify("insereEspaceDansNombre : l'argument n'est pas un nombre", nb)
     return nb
   }
-  let indiceVirgule = nb.indexOf(',')
+  let indiceVirgule = nb.indexOf(",")
   const indiceMax = nb.length - 1
   const tableauIndicesEspaces = []
   if (indiceVirgule < 0) {
@@ -2739,7 +2740,7 @@ export const insereEspaceDansNombre = nb => {
   }
   for (let i = tableauIndicesEspaces.length - 1; i >= 0; i--) {
     const indice = tableauIndicesEspaces[i] + 1
-    if (indice !== 0)nb = insertCharInString(nb, indice, ' \\thickspace ')
+    if (indice !== 0)nb = insertCharInString(nb, indice, " \\thickspace ")
   }
   return nb
 }
@@ -2758,7 +2759,7 @@ export const insertCharInString = (string, index, char) => string.substring(0, i
  * @returns string avec le nombre dans le format français à placer hors des $ $
  */
 export function stringNombre (nb, precision = 8, force = false) {
-  return afficherNombre(nb, precision, 'stringNombre', force)
+  return afficherNombre(nb, precision, "stringNombre", force)
 }
 /**
  * Fonction auxiliaire aux fonctions stringNombre et texNombre
@@ -2786,35 +2787,35 @@ function afficherNombre (nb, precision, fonction, force = false) {
     if (nb instanceof Decimal) {
       signe = nb.isNeg()
       if (force) {
-        nombre = nb.toPrecision(maximumSignificantDigits).replace('.', ',')
+        nombre = nb.toPrecision(maximumSignificantDigits).replace(".", ",")
       } else {
-        nombre = nb.toSD(maximumSignificantDigits).toString().replace('.', ',')
+        nombre = nb.toSD(maximumSignificantDigits).toString().replace(".", ",")
       }
     } else {
       signe = nb < 0
       // let nombre = math.format(nb, { notation: 'fixed', lowerExp: -precision, upperExp: precision, precision: precision }).replace('.', ',')
       if (Math.abs(nb) < 1) {
         if (force) {
-          nombre = Intl.NumberFormat('fr-FR', { maximumFractionDigits: maximumSignificantDigits, minimumFractionDigits: maximumSignificantDigits }).format(nb)
+          nombre = Intl.NumberFormat("fr-FR", { maximumFractionDigits: maximumSignificantDigits, minimumFractionDigits: maximumSignificantDigits }).format(nb)
         } else {
-          nombre = Intl.NumberFormat('fr-FR', { maximumFractionDigits: maximumSignificantDigits }).format(nb)
+          nombre = Intl.NumberFormat("fr-FR", { maximumFractionDigits: maximumSignificantDigits }).format(nb)
         }
       } else {
         if (force) {
-          nombre = Intl.NumberFormat('fr-FR', { maximumSignificantDigits, minimumSignificantDigits: maximumSignificantDigits }).format(nb)
+          nombre = Intl.NumberFormat("fr-FR", { maximumSignificantDigits, minimumSignificantDigits: maximumSignificantDigits }).format(nb)
         } else {
-          nombre = Intl.NumberFormat('fr-FR', { maximumSignificantDigits }).format(nb)
+          nombre = Intl.NumberFormat("fr-FR", { maximumSignificantDigits }).format(nb)
         }
       }
     }
-    const rangVirgule = nombre.indexOf(',')
-    let partieEntiere = ''
+    const rangVirgule = nombre.indexOf(",")
+    let partieEntiere = ""
     if (rangVirgule !== -1) {
       partieEntiere = nombre.substring(0, rangVirgule)
     } else {
       partieEntiere = nombre
     }
-    let partieDecimale = ''
+    let partieDecimale = ""
     if (rangVirgule !== -1) {
       partieDecimale = nombre.substring(rangVirgule + 1)
     }
@@ -2823,35 +2824,35 @@ function afficherNombre (nb, precision, fonction, force = false) {
     if (nb instanceof Decimal) {
       if (signe) partieEntiere = partieEntiere.substring(1)
       for (let i = partieEntiere.length - 3; i > 0; i -= 3) {
-        partieEntiere = partieEntiere.substring(0, i) + ' ' + partieEntiere.substring(i)
+        partieEntiere = partieEntiere.substring(0, i) + " " + partieEntiere.substring(i)
       }
-      if (signe) partieEntiere = '-' + partieEntiere
+      if (signe) partieEntiere = "-" + partieEntiere
     }
-    for (let i = 3; i < partieDecimale.length; i += (fonction === 'texNombre' ? 5 : 4)) { // des paquets de 3 nombres + 1 espace
-      partieDecimale = partieDecimale.substring(0, i) + (fonction === 'texNombre' ? '\\,' : ' ') + partieDecimale.substring(i)
+    for (let i = 3; i < partieDecimale.length; i += (fonction === "texNombre" ? 5 : 4)) { // des paquets de 3 nombres + 1 espace
+      partieDecimale = partieDecimale.substring(0, i) + (fonction === "texNombre" ? "\\," : " ") + partieDecimale.substring(i)
     }
-    if (partieDecimale === '') {
+    if (partieDecimale === "") {
       nombre = partieEntiere
     } else {
-      nombre = partieEntiere + ',' + partieDecimale
+      nombre = partieEntiere + "," + partieDecimale
     }
     return nombre
   } // fin insereEspacesNombre()
 
   // si nb n'est pas un nombre, on le retourne tel quel, on ne fait rien.
   if (isNaN(nb) && !(nb instanceof Decimal)) {
-    window.notify('AfficherNombre : Le nombre n\'en est pas un', { nb, precision, fonction })
-    return ''
+    window.notify("AfficherNombre : Le nombre n'en est pas un", { nb, precision, fonction })
+    return ""
   }
   if (nb instanceof Decimal) {
-    if (nb.isZero()) return '0'
-  } else if (Number(nb) === 0) return '0'
+    if (nb.isZero()) return "0"
+  } else if (Number(nb) === 0) return "0"
   let nbChiffresPartieEntiere
   if (nb instanceof Decimal) {
     nbChiffresPartieEntiere = nb.abs().lt(1) ? 0 : nb.abs().toFixed(0).length
     if (nb.isInteger()) precision = 0
     else {
-      if (typeof precision !== 'number') { // Si precision n'est pas un nombre, on le remplace par la valeur max acceptable
+      if (typeof precision !== "number") { // Si precision n'est pas un nombre, on le remplace par la valeur max acceptable
         precision = 15 - nbChiffresPartieEntiere
       } else if (precision < 0) {
         precision = 0
@@ -2861,7 +2862,7 @@ function afficherNombre (nb, precision, fonction, force = false) {
     nbChiffresPartieEntiere = Math.abs(nb) < 1 ? 0 : Math.abs(nb).toFixed(0).length
     if (Number.isInteger(nb)) precision = 0
     else {
-      if (typeof precision !== 'number') { // Si precision n'est pas un nombre, on le remplace par la valeur max acceptable
+      if (typeof precision !== "number") { // Si precision n'est pas un nombre, on le remplace par la valeur max acceptable
         precision = 15 - nbChiffresPartieEntiere
       } else if (precision < 0) {
         precision = 0
@@ -2871,7 +2872,7 @@ function afficherNombre (nb, precision, fonction, force = false) {
 
   const maximumSignificantDigits = nbChiffresPartieEntiere + precision
   if (maximumSignificantDigits > 15 && !(nb instanceof Decimal)) { // au delà de 15 chiffres significatifs, on risque des erreurs d'arrondi
-    window.notify(fonction + ' : Trop de chiffres', { nb, precision })
+    window.notify(fonction + " : Trop de chiffres", { nb, precision })
     return insereEspacesNombre(nb, 15, fonction, force)
   } else {
     return insereEspacesNombre(nb, maximumSignificantDigits, fonction, force)
@@ -2899,14 +2900,14 @@ ${texte}
 * @param {string} couleur en anglais ou code couleur hexadécimal par défaut c'est le orange de CoopMaths
 * @author Rémi Angot
 */
-export function miseEnEvidence (texte, couleur = '#f15929') {
+export function miseEnEvidence (texte, couleur = "#f15929") {
   if (context.isHtml) {
     return `\\mathbf{{\\color{${couleur}}{${texte}}}}`
   } else {
-    if (couleur[0] === '#') {
-      return `\\mathbf{{\\color[HTML]{${couleur.replace('#', '')}}${texte}}}`
+    if (couleur[0] === "#") {
+      return `\\mathbf{{\\color[HTML]{${couleur.replace("#", "")}}${texte}}}`
     } else {
-      return `\\mathbf{{\\color{${couleur.replace('#', '')}}${texte}}}`
+      return `\\mathbf{{\\color{${couleur.replace("#", "")}}${texte}}}`
     }
   }
 }
@@ -2917,14 +2918,14 @@ export function miseEnEvidence (texte, couleur = '#f15929') {
 * @param {string} couleur en anglais ou code couleur hexadécimal par défaut c'est le orange de CoopMaths
 * @author Rémi Angot
 */
-export function texteEnCouleur (texte, couleur = '#f15929') {
+export function texteEnCouleur (texte, couleur = "#f15929") {
   if (context.isHtml) {
     return `<span style="color:${couleur};">${texte}</span>`
   } else {
-    if (couleur[0] === '#') {
-      return `{\\color[HTML]{${couleur.replace('#', '')}}${texte}}`
+    if (couleur[0] === "#") {
+      return `{\\color[HTML]{${couleur.replace("#", "")}}${texte}}`
     } else {
-      return `{\\color{${couleur.replace('#', '')}}${texte}}`
+      return `{\\color{${couleur.replace("#", "")}}${texte}}`
     }
   }
 }
@@ -2935,14 +2936,14 @@ export function texteEnCouleur (texte, couleur = '#f15929') {
 * @param {string} couleur en anglais ou code couleur hexadécimal par défaut c'est le orange de CoopMaths
 * @author Rémi Angot
 */
-export function texteEnCouleurEtGras (texte, couleur = '#f15929') {
+export function texteEnCouleurEtGras (texte, couleur = "#f15929") {
   if (context.isHtml) {
     return `<span style="color:${couleur};font-weight: bold;">${texte}</span>`
   } else {
-    if (couleur[0] === '#') {
-      return `{\\bfseries \\color[HTML]{${couleur.replace('#', '')}}${texte}}`
+    if (couleur[0] === "#") {
+      return `{\\bfseries \\color[HTML]{${couleur.replace("#", "")}}${texte}}`
     } else {
-      return `{\\bfseries \\color{${couleur.replace('#', '')}}${texte}}`
+      return `{\\bfseries \\color{${couleur.replace("#", "")}}${texte}}`
     }
   }
 }
@@ -2952,7 +2953,7 @@ export function texteEnCouleurEtGras (texte, couleur = '#f15929') {
  * @author Rémi Angot
  */
 export function couleurAleatoire () {
-  return choice(['white', 'black', 'red', 'green', 'blue', 'cyan', 'magenta', 'yellow'])
+  return choice(["white", "black", "red", "green", "blue", "cyan", "magenta", "yellow"])
 }
 
 /**
@@ -2965,26 +2966,26 @@ export function couleurAleatoire () {
  */
 export function couleurTab (choixCouleur = 999) {
   const panelCouleurs = [
-    ['black', 'noir', 'noire'],
-    ['red', 'rouge', 'rouge'],
-    ['green', 'vert', 'verte'],
-    ['blue', 'bleu', 'bleue'],
-    ['hotpink', 'rose', 'rose'],
-    ['sienna', 'marron', 'marron'],
-    ['darkgray', 'gris', 'grise'],
-    ['darkorange', 'orange', 'orange']
+    ["black", "noir", "noire"],
+    ["red", "rouge", "rouge"],
+    ["green", "vert", "verte"],
+    ["blue", "bleu", "bleue"],
+    ["hotpink", "rose", "rose"],
+    ["sienna", "marron", "marron"],
+    ["darkgray", "gris", "grise"],
+    ["darkorange", "orange", "orange"]
   ]
   return (choixCouleur === 999 || choixCouleur >= panelCouleurs.length || !isInteger(choixCouleur)) ? choice(panelCouleurs) : panelCouleurs[choixCouleur]
 }
 
 export function arcenciel (i, fondblanc = true) {
   let couleurs
-  if (fondblanc) couleurs = ['violet', 'purple', 'blue', 'green', 'lime', 'orange', 'red']
-  else couleurs = ['violet', 'indigo', 'blue', 'green', 'yellow', 'orange', 'red']
+  if (fondblanc) couleurs = ["violet", "purple", "blue", "green", "lime", "orange", "red"]
+  else couleurs = ["violet", "indigo", "blue", "green", "yellow", "orange", "red"]
   return couleurs[i % 7]
 }
 export function texcolors (i, fondblanc = true) {
-  const couleurs = ['black', 'blue', 'brown', 'cyan', 'darkgray', 'gray', 'green', 'lightgray', 'lime', 'magenta', 'olive', 'orange', 'pink', 'purple', 'red', 'teal', 'violet', 'white', 'yellow']
+  const couleurs = ["black", "blue", "brown", "cyan", "darkgray", "gray", "green", "lightgray", "lime", "magenta", "olive", "orange", "pink", "purple", "red", "teal", "violet", "white", "yellow"]
   if (fondblanc && i % 19 >= 17) i += 2
   return couleurs[i % 19]
 }
@@ -3031,7 +3032,7 @@ export function texPrix (nb) {
   if (nombre.toString() === nombre.toFixed(0)) {
     result = nombre
   } else {
-    result = nombre.toFixed(2).toString().replace('.', '{,}') // Ne gère pas l'espace des milliers
+    result = nombre.toFixed(2).toString().replace(".", "{,}") // Ne gère pas l'espace des milliers
   }
   return result
 }
@@ -3047,7 +3048,7 @@ export function texMasse (nb) {
   if (nombre.toString() === nombre.toFixed(0)) {
     result = nombre
   } else {
-    result = nombre.toFixed(3).toString().replace('.', ',') // Ne gère pas l'espace des milliers
+    result = nombre.toFixed(3).toString().replace(".", ",") // Ne gère pas l'espace des milliers
   }
   return result
 }
@@ -3056,15 +3057,15 @@ export function texMasse (nb) {
 * Convertit en majuscule la première lettre
 * @author Rémi Angot
 */
-export function premiereLettreEnMajuscule (text) { return (text + '').charAt(0).toUpperCase() + text.substr(1) }
+export function premiereLettreEnMajuscule (text) { return (text + "").charAt(0).toUpperCase() + text.substr(1) }
 
 /**
 * Renvoie le nombre de chiffres de la partie décimale
 * @author Rémi Angot
 */
 export function nombreDeChiffresDansLaPartieDecimale (nb) {
-  if (String(nb).indexOf('.') > 0) {
-    return String(nb).split('.')[1].length
+  if (String(nb).indexOf(".") > 0) {
+    return String(nb).split(".")[1].length
   } else {
     return 0
   }
@@ -3080,8 +3081,8 @@ export function nombreDeChiffresDansLaPartieEntiere (nb) {
   } else {
     nombre = nb
   }
-  if (String(nombre).indexOf('.') > 0) {
-    return String(nombre).split('.')[0].length
+  if (String(nombre).indexOf(".") > 0) {
+    return String(nombre).split(".")[0].length
   } else {
     return String(nombre).length
   }
@@ -3108,7 +3109,7 @@ export function texFractionSigne (num, den) {
   if (num * den < 0) {
     return `-\\dfrac{${Math.abs(num)}}{${Math.abs(den)}}`
   }
-  return '0'
+  return "0"
 }
 
 /**
@@ -3116,7 +3117,7 @@ export function texFractionSigne (num, den) {
 * @author Jean-Claude Lhote
 */
 export function texFractionParentheses (a, b) {
-  if (a * b > 0) { return texFractionSigne(a, b) } else { return '\\left(' + texFractionSigne(a, b) + '\\right)' }
+  if (a * b > 0) { return texFractionSigne(a, b) } else { return "\\left(" + texFractionSigne(a, b) + "\\right)" }
 }
 
 /**
@@ -3155,10 +3156,10 @@ export function obtenirListeNombresPremiers (n = 300) {
 * @author Rémi Angot
 */
 export function decompositionFacteursPremiers (n) {
-  let decomposition = ''
+  let decomposition = ""
   const liste = obtenirListeFacteursPremiers(n)
   for (const i in liste) {
-    decomposition += liste[i] + '\\times'
+    decomposition += liste[i] + "\\times"
   }
   decomposition = decomposition.substr(0, decomposition.length - 6)
   return decomposition
@@ -3174,7 +3175,7 @@ export function decompositionFacteursPremiers (n) {
 export function decompositionFacteursPremiersBarres (nombreADecomposer, facteursABarrer) {
   const decomposition = decompositionFacteursPremiersArray(nombreADecomposer)
   const facteursBarres = []
-  let str = ''
+  let str = ""
   for (const nombre of decomposition) {
     let unNombreAEteBarre = false
     for (let i = 0; i < facteursABarrer.length; i++) {
@@ -3186,7 +3187,7 @@ export function decompositionFacteursPremiersBarres (nombreADecomposer, facteurs
       }
     }
     if (!unNombreAEteBarre) {
-      str += nombre + ' \\times '
+      str += nombre + " \\times "
     }
   }
   return str.slice(0, -8)
@@ -3215,7 +3216,7 @@ export function listeDesDiviseurs (n) {
 */
 export function texFraction (a, b) {
   if (b !== 1) {
-    return `\\dfrac{${typeof a === 'number' ? texNombre(a) : a}}{${typeof b === 'number' ? texNombre(b) : b}}`
+    return `\\dfrac{${typeof a === "number" ? texNombre(a) : a}}{${typeof b === "number" ? texNombre(b) : b}}`
   } else {
     return a
   }
@@ -3230,18 +3231,18 @@ export function texFraction (a, b) {
  */
 export function texSymbole (symbole) {
   switch (symbole) {
-    case '<':
-      return '<'
-    case '>':
-      return '>'
-    case '≤':
-      return '\\leqslant'
-    case '≥':
-      return '\\geqslant'
-    case '\\':
-      return '\\smallsetminus'
+    case "<":
+      return "<"
+    case ">":
+      return ">"
+    case "≤":
+      return "\\leqslant"
+    case "≥":
+      return "\\geqslant"
+    case "\\":
+      return "\\smallsetminus"
     default:
-      return 'symbole non connu par texSymbole()'
+      return "symbole non connu par texSymbole()"
   }
 }
 
@@ -3251,8 +3252,8 @@ export function texSymbole (symbole) {
 */
 
 export function printlatex (e) {
-  if (e === '0x') {
-    return '0'
+  if (e === "0x") {
+    return "0"
   } else {
     return Algebrite.run(`printlatex(quote(${e}))`)
   }
@@ -3263,7 +3264,7 @@ export function printlatex (e) {
 * @author Rémi Angot
 */
 export function texTexte (texte) {
-  return '~\\text{' + texte + '}'
+  return "~\\text{" + texte + "}"
 }
 
 /**
@@ -3271,19 +3272,19 @@ export function texTexte (texte) {
 * @author Rémi Angot
 */
 export function itemize (tableauDeTexte) {
-  let texte = ''
+  let texte = ""
   if (context.isHtml) {
-    texte = '<div>'
+    texte = "<div>"
     for (let i = 0; i < tableauDeTexte.length; i++) {
-      texte += '<div> − ' + tableauDeTexte[i] + '</div>'
+      texte += "<div> − " + tableauDeTexte[i] + "</div>"
     }
-    texte += '</div>'
+    texte += "</div>"
   } else {
-    texte = '\t\\begin{itemize}\n'
+    texte = "\t\\begin{itemize}\n"
     for (let i = 0; i < tableauDeTexte.length; i++) {
-      texte += '\t\t\\item ' + tableauDeTexte[i] + '\n'
+      texte += "\t\t\\item " + tableauDeTexte[i] + "\n"
     }
-    texte += '\t\\end{itemize}'
+    texte += "\t\\end{itemize}"
   }
   return texte
 }
@@ -3338,7 +3339,7 @@ export class MatriceCarree {
   constructor (table) {
     let ligne
     this.table = []
-    if (typeof (table) === 'number') {
+    if (typeof (table) === "number") {
       this.dim = table // si c'est un nombre qui est passé en argument, c'est la taille, et on rempli la table de 0
       for (let i = 0; i < this.dim; i++) {
         ligne = []
@@ -3598,9 +3599,9 @@ export function simpExp (b, e) {
     case 1:
       return ` ${b}`
     case 0:
-      return ' 1'
+      return " 1"
     default:
-      return ' '
+      return " "
   }
 }
 
@@ -3614,14 +3615,14 @@ export function simpExp (b, e) {
 export function puissance (b, n) {
   switch (b) {
     case 0:
-      return '0'
+      return "0"
     case 1:
-      return '1'
+      return "1"
     case -1:
       if (b % 2 === 0) {
-        return '1'
+        return "1"
       } else {
-        return '-1'
+        return "-1"
       }
     default:
       if (b < 0) {
@@ -3635,11 +3636,11 @@ export function puissance (b, n) {
 export function ecriturePuissance (a, b, n) {
   switch (a) {
     case 0:
-      return '$0$'
+      return "$0$"
     case 1:
       return `$${puissance(b, n)}$`
     default:
-      return `$${String(round(a, 3)).replace('.', '{,}')} \\times ${puissance(b, n)}$`.replace('.', '{,}')
+      return `$${String(round(a, 3)).replace(".", "{,}")} \\times ${puissance(b, n)}$`.replace(".", "{,}")
   }
 }
 
@@ -3657,18 +3658,18 @@ export function simpNotPuissance (b, e) {
   switch (b) {
     case -1: // si la base vaut -1 on teste la parité de l'exposant
       if (e % 2 === 0) {
-        return ' 1'
+        return " 1"
         // break;
       } else {
-        return ' -1'
+        return " -1"
         // break;
       }
     case 1: // si la base vaut 1 on renvoit toujours 1
-      return ' 1'
+      return " 1"
     default: // sinon on switch sur l'exposant
       switch (e) {
         case 0: // si l'exposant vaut 0 on ranvoit toujours 1
-          return '1'
+          return "1"
         case 1: // si l'exposant vaut 1 on renvoit toujours la base
           return ` ${b}`
         default: // sinon on teste le signe de la base et la parité de l'exposant
@@ -3717,7 +3718,7 @@ export function eclatePuissance (b, e, couleur) {
 export function puissanceEnProduit (b, e) {
   let str
   if (e === 0) {
-    return '1'
+    return "1"
   } else if (e === 1) {
     return `${b}`
   } else if (e > 1) {
@@ -3776,7 +3777,7 @@ export function reorganiseProduitPuissance (b1, b2, e, couleur1, couleur2) {
   let str
   switch (e) {
     case 0:
-      return '1'
+      return "1"
     case 1:
       return `\\mathbf{\\color{${couleur1}}{${b1}}} \\times \\mathbf{\\color{${couleur2}}{${b2}}}`
     default:
@@ -3820,7 +3821,7 @@ export function creerModal (numeroExercice, contenu, labelBouton, icone) {
       </div>`
     return HTML
   } else {
-    return ''
+    return ""
   }
 }
 /**
@@ -3830,7 +3831,7 @@ export function creerModal (numeroExercice, contenu, labelBouton, icone) {
 * @param icone
 * @author Rémi Angot
 */
-export function creerBoutonMathalea2d (numeroExercice, fonction, labelBouton = 'Aide', icone = 'info circle') {
+export function creerBoutonMathalea2d (numeroExercice, fonction, labelBouton = "Aide", icone = "info circle") {
   const HTML = `<button class="ui toggle left floated mini compact button" id = "btnMathALEA2d_${numeroExercice}" onclick="${fonction}"><i class="large ${icone} icon"></i>${labelBouton}</button>`
 
   return HTML
@@ -3844,7 +3845,7 @@ export function creerBoutonMathalea2d (numeroExercice, fonction, labelBouton = '
 * @param icone Nom de l'icone (par défaut c'est info circle icon), liste complète sur https://semantic-ui.com/elements/icon.html
 * @author Rémi Angot
 */
-export function modalTexteCourt (numeroExercice, texte, labelBouton = 'Aide', icone = 'info circle') {
+export function modalTexteCourt (numeroExercice, texte, labelBouton = "Aide", icone = "info circle") {
   const contenu = `<div class="header">${texte}</div>`
   return creerModal(numeroExercice, contenu, labelBouton, icone)
 }
@@ -3858,18 +3859,18 @@ export function modalTexteCourt (numeroExercice, texte, labelBouton = 'Aide', ic
 * @param icone Nom de l'icone (par défaut c'est youtube icon), liste complète sur https://semantic-ui.com/elements/icon.html
 * @author Rémi Angot
 */
-export function modalYoutube (numeroExercice, idYoutube, titre, labelBouton = 'Aide - Vidéo', icone = 'youtube') {
+export function modalYoutube (numeroExercice, idYoutube, titre, labelBouton = "Aide - Vidéo", icone = "youtube") {
   let contenu
-  if (idYoutube.substr(0, 4) === 'http') {
-    if (idYoutube.slice(-4) === '.pdf') {
+  if (idYoutube.substr(0, 4) === "http") {
+    if (idYoutube.slice(-4) === ".pdf") {
       contenu = `<div class="header">${titre}</div><div class="content"><p align="center"><object type="application/pdf" data="${idYoutube}" width="560" height="315"> </object></p></div>`
     }
-    if (idYoutube.substr(0, 17) === 'https://youtu.be/') {
+    if (idYoutube.substr(0, 17) === "https://youtu.be/") {
       contenu = `<div class="header">${titre}</div><div class="content"><p align="center"><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/${idYoutube.substring(17)}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p></div>`
     } else {
       contenu = `<div class="header">${titre}</div><div class="content"><p align="center"><iframe width="560" height="315" sandbox="allow-same-origin allow-scripts allow-popups" src="${idYoutube}" frameborder="0" allowfullscreen></iframe></p></div>`
     }
-  } else if (idYoutube.substr(0, 4) === '<ifr') {
+  } else if (idYoutube.substr(0, 4) === "<ifr") {
     contenu = `<div class="header">${titre}</div><div class="content"><p align="center">${idYoutube}</p></div>`
   } else {
     contenu = `<div class="header">${titre}</div><div class="content"><p align="center"><iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/${idYoutube}?rel=0&showinfo=0" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p></div>`
@@ -3886,7 +3887,7 @@ export function modalYoutube (numeroExercice, idYoutube, titre, labelBouton = 'A
 * @param icone Nom de l'icone (par défaut c'est info circle icon), liste complète sur https://semantic-ui.com/elements/icon.html
 * @author Rémi Angot
 */
-export function modalTexteLong (numeroExercice, titre, texte, labelBouton = 'Aide', icone = 'info circle') {
+export function modalTexteLong (numeroExercice, titre, texte, labelBouton = "Aide", icone = "info circle") {
   let contenu = `<div class="header">${titre}</div>`
   contenu += `<div class="content">${texte}</div>`
   return creerModal(numeroExercice, contenu, labelBouton, icone)
@@ -3900,7 +3901,7 @@ export function modalTexteLong (numeroExercice, titre, texte, labelBouton = 'Aid
 * @param icone Nom de l'icone (par défaut c'est info circle icon), liste complète sur https://semantic-ui.com/elements/icon.html
 * @author Rémi Angot
 */
-export function modalUrl (numeroExercice, url, labelBouton = 'Aide', icone = 'info circle') {
+export function modalUrl (numeroExercice, url, labelBouton = "Aide", icone = "info circle") {
   const contenu = `<iframe width="100%" height="600"  src="${url}" frameborder="0" ></iframe>`
   return creerModal(numeroExercice, contenu, labelBouton, icone)
 }
@@ -3914,7 +3915,7 @@ export function modalUrl (numeroExercice, url, labelBouton = 'Aide', icone = 'in
 * @param icone Nom de l'icone (par défaut c'est file pdf icon), liste complète sur https://semantic-ui.com/elements/icon.html
 * @author Rémi Angot
 */
-export function modalPdf (numeroExercice, urlPdf, titre = 'Aide', labelBouton = 'Aide - PDF', icone = 'file pdf') {
+export function modalPdf (numeroExercice, urlPdf, titre = "Aide", labelBouton = "Aide - PDF", icone = "file pdf") {
   const contenu = `<div class="header">${titre}</div><div class="content"><p align="center"><embed src=${urlPdf} width=90% height=500 type='application/pdf'/></p></div>`
   return creerModal(numeroExercice, contenu, labelBouton, icone)
 }
@@ -3928,7 +3929,7 @@ export function modalPdf (numeroExercice, urlPdf, titre = 'Aide', labelBouton = 
  * @param icone Nom de l'icone (par défaut c'est file video outline icon), liste complète sur https://semantic-ui.com/elements/icon.html
  * @author Sébastien Lozano
  */
-export function modalVideo (numeroExercice, urlVideo, titre, labelBouton = 'Vidéo', icone = 'file video outline') {
+export function modalVideo (numeroExercice, urlVideo, titre, labelBouton = "Vidéo", icone = "file video outline") {
   // let contenu = `<div class="header">${titre}</div><div class="content"><p align="center"><iframe width="560" height="315" src="${urlVideo}" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></p></div>`
   const contenu = `
   <div class="header">${titre}</div>
@@ -3950,7 +3951,7 @@ export function modalVideo (numeroExercice, urlVideo, titre, labelBouton = 'Vid�
  * @param {string} labelBouton = ce qui est écrit sur le bouton à côté de l'icône d'image.
  * @param {string} icone
  */
-export function modalImage (numeroExercice, urlImage, titre, labelBouton = 'Illustration', icone = 'image') {
+export function modalImage (numeroExercice, urlImage, titre, labelBouton = "Illustration", icone = "image") {
   const contenu = `<div class="header">${titre}</div><div class="image content"><img class="ui centered medium image" src="${urlImage}"></div>`
   return creerModal(numeroExercice, contenu, labelBouton, icone)
 }
@@ -3961,7 +3962,7 @@ export function modalImage (numeroExercice, urlImage, titre, labelBouton = 'Illu
  * @author Sébastien Lozano
  */
 export function listeDiviseurs (n) {
-  'use strict'
+  "use strict"
   let i = 2
   const diviseurs = [1]
   while (i <= n) {
@@ -3992,7 +3993,7 @@ export function listeDiviseurs (n) {
 
 export function tikzMachineMaths (nom, etape1, etape2, etape3, xLigne1, xLigne2, yLigne1, yLigne2) {
   // tous les textes sont en mode maths !!!
-  'use strict'
+  "use strict"
   return `
   \\definecolor{frvzsz}{rgb}{0.9450980392156862,0.34901960784313724,0.1607843137254902}
   \\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
@@ -4027,15 +4028,15 @@ export function tikzMachineMaths (nom, etape1, etape2, etape3, xLigne1, xLigne2,
  * @author Sébastien Lozano
  */
 export function tikzMachineDiag (nom, xAnt, etapesExpressions) {
-  'use strict'
+  "use strict"
   const xInit = -10
   let saut = 0
   const pas = 1
-  let sortie = ''
+  let sortie = ""
   sortie += `
   \\definecolor{frvzsz}{rgb}{0.9450980392156862,0.34901960784313724,0.1607843137254902}
   \\begin{tikzpicture}[line cap=round,line join=round,>=triangle 45,x=1cm,y=1cm]
-  \\draw [line width=3pt,color=frvzsz] (` + xInit + ',0.5) -- (' + (xInit + pas) + ',0.5) -- (' + (xInit + pas) + ',-0.5) -- (' + xInit + `,-0.5) -- cycle;
+  \\draw [line width=3pt,color=frvzsz] (` + xInit + ",0.5) -- (" + (xInit + pas) + ",0.5) -- (" + (xInit + pas) + ",-0.5) -- (" + xInit + `,-0.5) -- cycle;
   \\node[text width=3cm,text centered, scale=1] at(` + (xInit + 0.5) + `,0){$${xAnt}$};
   `
   saut = saut + pas
@@ -4044,102 +4045,102 @@ export function tikzMachineDiag (nom, xAnt, etapesExpressions) {
     // on affiche donc chaque fois avec le nom de la fonction
     if (etapesExpressions.length === i + 1) {
       // si il y a une operation et une expression algébrique
-      if (typeof etapesExpressions[i][0] !== 'undefined' && typeof etapesExpressions[i][1] !== 'undefined') {
+      if (typeof etapesExpressions[i][0] !== "undefined" && typeof etapesExpressions[i][1] !== "undefined") {
         const wEtape = `${nom}(x)=${etapesExpressions[i][1]}}`.length
         sortie += `
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut) + ',0) -- (' + (xInit + saut + pas / 2) + `,0);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut) + ",0) -- (" + (xInit + saut + pas / 2) + `,0);
         \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + pas) + `,0) circle(0.5);
         \\node [text width=3cm,text centered, scale=1] at(` + (xInit + saut + pas) + `,0){$${etapesExpressions[i][0]}$};
-        \\draw [->,line width=3pt,color=frvzsz] (` + (xInit + saut + 3 * pas / 2) + ',0) -- (' + (xInit + saut + 5 * pas / 2) + `,0);
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + 5 * pas / 2) + ',0.5) -- (' + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ',0.5) -- (' + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ',-0.5) -- (' + (xInit + saut + 5 * pas / 2) + `,-0.5) -- cycle;
+        \\draw [->,line width=3pt,color=frvzsz] (` + (xInit + saut + 3 * pas / 2) + ",0) -- (" + (xInit + saut + 5 * pas / 2) + `,0);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + 5 * pas / 2) + ",0.5) -- (" + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ",0.5) -- (" + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ",-0.5) -- (" + (xInit + saut + 5 * pas / 2) + `,-0.5) -- cycle;
         \\node [text width=3cm,text centered, scale=1] at(` + (xInit + saut + wEtape / 8 + 5.5 * pas / 2) + `,0){$${nom}(` + xAnt + `)=${etapesExpressions[i][1]}$};
         `
       }
       // si il y a une operation et pas d'expression algébrique
-      if (typeof etapesExpressions[i][0] !== 'undefined' && typeof etapesExpressions[i][1] === 'undefined') {
+      if (typeof etapesExpressions[i][0] !== "undefined" && typeof etapesExpressions[i][1] === "undefined") {
         const wEtape = `${nom}(x)=\\ldots`.length
         sortie += `
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut) + ',0) -- (' + (xInit + saut + pas / 2) + `,0);
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + pas) + ',0) circle(' + (pas / 2) + `);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut) + ",0) -- (" + (xInit + saut + pas / 2) + `,0);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + pas) + ",0) circle(" + (pas / 2) + `);
         \\node [text width=3cm,text centered, scale=1] at(` + (xInit + saut + pas) + `,0){$${etapesExpressions[i][0]}$};
-        \\draw [->,line width=3pt,color=frvzsz] (` + (xInit + saut + 3 * pas / 2) + ',0) -- (' + (xInit + saut + 5 * pas / 2) + `,0);
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + 5 * pas / 2) + ',' + (pas / 2) + ') -- (' + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ',' + (pas / 2) + ') -- (' + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ',-' + (pas / 2) + ') -- (' + (xInit + saut + 5 * pas / 2) + ',-' + (pas / 2) + `) -- cycle;
+        \\draw [->,line width=3pt,color=frvzsz] (` + (xInit + saut + 3 * pas / 2) + ",0) -- (" + (xInit + saut + 5 * pas / 2) + `,0);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + 5 * pas / 2) + "," + (pas / 2) + ") -- (" + (xInit + saut + wEtape / 4 + 6 * pas / 2) + "," + (pas / 2) + ") -- (" + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ",-" + (pas / 2) + ") -- (" + (xInit + saut + 5 * pas / 2) + ",-" + (pas / 2) + `) -- cycle;
         \\node [text width=3cm,text centered, scale=1] at(` + (xInit + saut + wEtape / 8 + 5.5 * pas / 2) + `,0){$${nom}(` + xAnt + `)=\\ldots$};
         `
       }
       // si il n'y a pas d'operation mais une expression algébrique
-      if (typeof etapesExpressions[i][0] === 'undefined' && typeof etapesExpressions[i][1] !== 'undefined') {
+      if (typeof etapesExpressions[i][0] === "undefined" && typeof etapesExpressions[i][1] !== "undefined") {
         const wEtape = `${nom}(x)=${etapesExpressions[i][1]}`.length
         sortie += `
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut) + ',0) -- (' + (xInit + saut + pas / 2) + `,0);
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + pas) + ',0) circle(' + (pas / 2) + `);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut) + ",0) -- (" + (xInit + saut + pas / 2) + `,0);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + pas) + ",0) circle(" + (pas / 2) + `);
         \\node [text width=3cm,text centered, scale=1] at(` + (xInit + saut + pas) + `,0){$\\ldots$};
-        \\draw [->,line width=3pt,color=frvzsz] (` + (xInit + saut + 3 * pas / 2) + ',0) -- (' + (xInit + saut + 5 * pas / 2) + `,0);
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + 5 * pas / 2) + ',' + (pas / 2) + ') -- (' + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ',' + (pas / 2) + ') -- (' + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ',-' + (pas / 2) + ') -- (' + (xInit + saut + 5 * pas / 2) + ',-' + (pas / 2) + `) -- cycle;
+        \\draw [->,line width=3pt,color=frvzsz] (` + (xInit + saut + 3 * pas / 2) + ",0) -- (" + (xInit + saut + 5 * pas / 2) + `,0);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + 5 * pas / 2) + "," + (pas / 2) + ") -- (" + (xInit + saut + wEtape / 4 + 6 * pas / 2) + "," + (pas / 2) + ") -- (" + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ",-" + (pas / 2) + ") -- (" + (xInit + saut + 5 * pas / 2) + ",-" + (pas / 2) + `) -- cycle;
         \\node [text width=3cm,text centered, scale=1] at(` + (xInit + saut + wEtape / 8 + 5.5 * pas / 2) + `,0){$${nom}(` + xAnt + `)=${etapesExpressions[i][1]}$};
         `
       }
       // si il n'y ni une operation et ni expression algébrique
-      if (typeof etapesExpressions[i][0] === 'undefined' && typeof etapesExpressions[i][1] === 'undefined') {
+      if (typeof etapesExpressions[i][0] === "undefined" && typeof etapesExpressions[i][1] === "undefined") {
         const wEtape = `${nom}(x)=\\ldots`.length
         sortie += `
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut) + ',0) -- (' + (xInit + saut + pas / 2) + `,0);
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + pas) + ',0) circle(' + (pas / 2) + `);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut) + ",0) -- (" + (xInit + saut + pas / 2) + `,0);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + pas) + ",0) circle(" + (pas / 2) + `);
         \\node [text width=3cm,text centered, scale=1] at(` + (xInit + saut + pas) + `,0){$\\ldots$};
-        \\draw [->,line width=3pt,color=frvzsz] (` + (xInit + saut + 3 * pas / 2) + ',0) -- (' + (xInit + saut + 5 * pas / 2) + `,0);
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + 5 * pas / 2) + ',' + (pas / 2) + ') -- (' + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ',' + (pas / 2) + ') -- (' + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ',-' + (pas / 2) + ') -- (' + (xInit + saut + 5 * pas / 2) + ',-' + (pas / 2) + `) -- cycle;
+        \\draw [->,line width=3pt,color=frvzsz] (` + (xInit + saut + 3 * pas / 2) + ",0) -- (" + (xInit + saut + 5 * pas / 2) + `,0);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + 5 * pas / 2) + "," + (pas / 2) + ") -- (" + (xInit + saut + wEtape / 4 + 6 * pas / 2) + "," + (pas / 2) + ") -- (" + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ",-" + (pas / 2) + ") -- (" + (xInit + saut + 5 * pas / 2) + ",-" + (pas / 2) + `) -- cycle;
         \\node [text width=3cm,text centered, scale=1] at(` + (xInit + saut + wEtape / 8 + 5.5 * pas / 2) + `,0){$${nom}(` + xAnt + `)=\\ldots$};
         `
       }
     } else { // sinon c'est une étape intermédiaire
       // si il y a une operation et une expression algébrique
-      if (typeof etapesExpressions[i][0] !== 'undefined' && typeof etapesExpressions[i][1] !== 'undefined') {
+      if (typeof etapesExpressions[i][0] !== "undefined" && typeof etapesExpressions[i][1] !== "undefined") {
         const wEtape = `${etapesExpressions[i][1]}`.length
         sortie += `
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut) + ',0) -- (' + (xInit + saut + pas / 2) + `,0);
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + pas) + ',0) circle(' + (pas / 2) + `);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut) + ",0) -- (" + (xInit + saut + pas / 2) + `,0);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + pas) + ",0) circle(" + (pas / 2) + `);
         \\node [text width=3cm,text centered, scale=1] at(` + (xInit + saut + pas) + `,0){$${etapesExpressions[i][0]}$};
-        \\draw [->,line width=3pt,color=frvzsz] (` + (xInit + saut + 3 * pas / 2) + ',0) -- (' + (xInit + saut + 5 * pas / 2) + `,0);
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + 5 * pas / 2) + ',' + (pas / 2) + ') -- (' + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ',' + (pas / 2) + ') -- (' + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ',-' + (pas / 2) + ') -- (' + (xInit + saut + 5 * pas / 2) + ',-' + (pas / 2) + `) -- cycle;
+        \\draw [->,line width=3pt,color=frvzsz] (` + (xInit + saut + 3 * pas / 2) + ",0) -- (" + (xInit + saut + 5 * pas / 2) + `,0);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + 5 * pas / 2) + "," + (pas / 2) + ") -- (" + (xInit + saut + wEtape / 4 + 6 * pas / 2) + "," + (pas / 2) + ") -- (" + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ",-" + (pas / 2) + ") -- (" + (xInit + saut + 5 * pas / 2) + ",-" + (pas / 2) + `) -- cycle;
         \\node [text width=3cm,text centered, scale=1] at(` + (xInit + saut + wEtape / 8 + 5.5 * pas / 2) + `,0){$${etapesExpressions[i][1]}$};
         `
         saut = saut + 3 * pas + wEtape / 4
       }
       // si il y a une operation et pas d'expression algébrique
-      if (typeof etapesExpressions[i][0] !== 'undefined' && typeof etapesExpressions[i][1] === 'undefined') {
-        const wEtape = '\\ldots'.length
+      if (typeof etapesExpressions[i][0] !== "undefined" && typeof etapesExpressions[i][1] === "undefined") {
+        const wEtape = "\\ldots".length
         sortie += `
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut) + ',0) -- (' + (xInit + saut + pas / 2) + `,0);
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + pas) + ',0) circle(' + (pas / 2) + `);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut) + ",0) -- (" + (xInit + saut + pas / 2) + `,0);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + pas) + ",0) circle(" + (pas / 2) + `);
         \\node [text width=3cm,text centered, scale=1] at(` + (xInit + saut + pas) + `,0){$${etapesExpressions[i][0]}$};
-        \\draw [->,line width=3pt,color=frvzsz] (` + (xInit + saut + 3 * pas / 2) + ',0) -- (' + (xInit + saut + 5 * pas / 2) + `,0);
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + 5 * pas / 2) + ',' + (pas / 2) + ') -- (' + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ',' + (pas / 2) + ') -- (' + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ',-' + (pas / 2) + ') -- (' + (xInit + saut + 5 * pas / 2) + ',-' + (pas / 2) + `) -- cycle;
+        \\draw [->,line width=3pt,color=frvzsz] (` + (xInit + saut + 3 * pas / 2) + ",0) -- (" + (xInit + saut + 5 * pas / 2) + `,0);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + 5 * pas / 2) + "," + (pas / 2) + ") -- (" + (xInit + saut + wEtape / 4 + 6 * pas / 2) + "," + (pas / 2) + ") -- (" + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ",-" + (pas / 2) + ") -- (" + (xInit + saut + 5 * pas / 2) + ",-" + (pas / 2) + `) -- cycle;
         \\node [text width=3cm,text centered, scale=1] at(` + (xInit + saut + wEtape / 8 + 5.5 * pas / 2) + `,0){$\\ldots$};
         `
         saut = saut + 3 * pas + wEtape / 4
       }
       // si il n'y a pas d'operation mais une expression algébrique
-      if (typeof etapesExpressions[i][0] === 'undefined' && typeof etapesExpressions[i][1] !== 'undefined') {
+      if (typeof etapesExpressions[i][0] === "undefined" && typeof etapesExpressions[i][1] !== "undefined") {
         const wEtape = `${etapesExpressions[i][1]}`.length
         sortie += `
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut) + ',0) -- (' + (xInit + saut + pas / 2) + `,0);
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + pas) + ',0) circle(' + (pas / 2) + `);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut) + ",0) -- (" + (xInit + saut + pas / 2) + `,0);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + pas) + ",0) circle(" + (pas / 2) + `);
         \\node [text width=3cm,text centered, scale=1] at(` + (xInit + saut + pas) + `,0){$\\ldots$};
-        \\draw [->,line width=3pt,color=frvzsz] (` + (xInit + saut + 3 * pas / 2) + ',0) -- (' + (xInit + saut + 5 * pas / 2) + `,0);
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + 5 * pas / 2) + ',' + (pas / 2) + ') -- (' + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ',' + (pas / 2) + ') -- (' + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ',-' + (pas / 2) + ') -- (' + (xInit + saut + 5 * pas / 2) + ',-' + (pas / 2) + `) -- cycle;
+        \\draw [->,line width=3pt,color=frvzsz] (` + (xInit + saut + 3 * pas / 2) + ",0) -- (" + (xInit + saut + 5 * pas / 2) + `,0);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + 5 * pas / 2) + "," + (pas / 2) + ") -- (" + (xInit + saut + wEtape / 4 + 6 * pas / 2) + "," + (pas / 2) + ") -- (" + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ",-" + (pas / 2) + ") -- (" + (xInit + saut + 5 * pas / 2) + ",-" + (pas / 2) + `) -- cycle;
         \\node [text width=3cm,text centered, scale=1] at(` + (xInit + saut + wEtape / 8 + 5.5 * pas / 2) + `,0){$${etapesExpressions[i][1]}$};
         `
         saut = saut + 3 * pas + wEtape / 4
       }
       // si il n'y ni une operation et ni expression algébrique
-      if (typeof etapesExpressions[i][0] === 'undefined' && typeof etapesExpressions[i][1] === 'undefined') {
-        const wEtape = '\\ldots'.length
+      if (typeof etapesExpressions[i][0] === "undefined" && typeof etapesExpressions[i][1] === "undefined") {
+        const wEtape = "\\ldots".length
         sortie += `
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut) + ',0) -- (' + (xInit + saut + pas / 2) + `,0);
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + pas) + ',0) circle(' + (pas / 2) + `);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut) + ",0) -- (" + (xInit + saut + pas / 2) + `,0);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + pas) + ",0) circle(" + (pas / 2) + `);
         \\node [text width=3cm,text centered, scale=1] at(` + (xInit + saut + pas) + `,0){$\\ldots$};
-        \\draw [->,line width=3pt,color=frvzsz] (` + (xInit + saut + 3 * pas / 2) + ',0) -- (' + (xInit + saut + 5 * pas / 2) + `,0);
-        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + 5 * pas / 2) + ',' + (pas / 2) + ') -- (' + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ',' + (pas / 2) + ') -- (' + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ',-' + (pas / 2) + ') -- (' + (xInit + saut + 5 * pas / 2) + ',-' + (pas / 2) + `) -- cycle;
+        \\draw [->,line width=3pt,color=frvzsz] (` + (xInit + saut + 3 * pas / 2) + ",0) -- (" + (xInit + saut + 5 * pas / 2) + `,0);
+        \\draw [line width=3pt,color=frvzsz] (` + (xInit + saut + 5 * pas / 2) + "," + (pas / 2) + ") -- (" + (xInit + saut + wEtape / 4 + 6 * pas / 2) + "," + (pas / 2) + ") -- (" + (xInit + saut + wEtape / 4 + 6 * pas / 2) + ",-" + (pas / 2) + ") -- (" + (xInit + saut + 5 * pas / 2) + ",-" + (pas / 2) + `) -- cycle;
         \\node [text width=3cm,text centered, scale=1] at(` + (xInit + saut + wEtape / 8 + 5.5 * pas / 2) + `,0){$\\ldots$};
         `
         saut = saut + 3 * pas + wEtape / 4
@@ -4160,32 +4161,32 @@ export function tikzMachineDiag (nom, xAnt, etapesExpressions) {
  * @author Sébastien Lozano
  */
 export function katexPopup (texte, titrePopup, textePopup) {
-  'use strict'
-  let contenu = ''
+  "use strict"
+  let contenu = ""
   if (context.isHtml) {
-    contenu = '<div class="mini ui right labeled icon button katexPopup"><i class="info circle icon"></i> ' + texte + '</div>'
-    contenu += '<div class="ui special popup" >'
-    if (titrePopup !== '') {
-      contenu += '<div class="header">' + titrePopup + '</div>'
+    contenu = "<div class=\"mini ui right labeled icon button katexPopup\"><i class=\"info circle icon\"></i> " + texte + "</div>"
+    contenu += "<div class=\"ui special popup\" >"
+    if (titrePopup !== "") {
+      contenu += "<div class=\"header\">" + titrePopup + "</div>"
     }
-    contenu += '<div>' + textePopup + '</div>'
-    contenu += '</div>'
+    contenu += "<div>" + textePopup + "</div>"
+    contenu += "</div>"
     return contenu
   } else {
     return `\\textbf{${texte}} \\footnote{\\textbf{${titrePopup}} ${textePopup}}`
   }
 }
 export function katexPopupTest (texte, titrePopup, textePopup) {
-  'use strict'
-  let contenu = ''
+  "use strict"
+  let contenu = ""
   if (context.isHtml) {
-    contenu = '<div class="ui right label katexPopup">' + texte + '</div>'
-    contenu += '<div class="ui special popup" >'
-    if (titrePopup !== '') {
-      contenu += '<div class="header">' + titrePopup + '</div>'
+    contenu = "<div class=\"ui right label katexPopup\">" + texte + "</div>"
+    contenu += "<div class=\"ui special popup\" >"
+    if (titrePopup !== "") {
+      contenu += "<div class=\"header\">" + titrePopup + "</div>"
     }
-    contenu += '<div>' + textePopup + '</div>'
-    contenu += '</div>'
+    contenu += "<div>" + textePopup + "</div>"
+    contenu += "</div>"
     return contenu
   } else {
     return `\\textbf{${texte}} \\footnote{\\textbf{${titrePopup}} ${textePopup}}`
@@ -4230,13 +4231,13 @@ export function katexPopupTest (texte, titrePopup, textePopup) {
 **/
 
 export function katexPopup2 (numero, type, texte, titrePopup, textePopup) {
-  'use strict'
+  "use strict"
   switch (type) {
     case 0:
       return katexPopupTest(texte, titrePopup, textePopup)
     case 1:
       if (context.isHtml) {
-        return `${texte}` + modalTexteLong(numero, `${titrePopup}`, `${textePopup}`, `${texte}`, 'info circle')
+        return `${texte}` + modalTexteLong(numero, `${titrePopup}`, `${textePopup}`, `${texte}`, "info circle")
       } else {
         return `\\textbf{${texte}} \\footnote{\\textbf{${titrePopup}} ${textePopup}}`
       }
@@ -4255,10 +4256,10 @@ export function katexPopup2 (numero, type, texte, titrePopup, textePopup) {
  * @author Sébastien Lozano
  */
 export function numAlpha (k) {
-  'use strict'
-  if (context.isHtml) return '<span style="color:#f15929; font-weight:bold">' + String.fromCharCode(97 + k) + ') &nbsp;</span>'
+  "use strict"
+  if (context.isHtml) return "<span style=\"color:#f15929; font-weight:bold\">" + String.fromCharCode(97 + k) + ") &nbsp;</span>"
   // else return '\\textcolor [HTML] {f15929} {'+String.fromCharCode(97+k)+'/}';
-  else return '\\textbf {' + String.fromCharCode(97 + k) + '.} '
+  else return "\\textbf {" + String.fromCharCode(97 + k) + ".} "
 }
 
 /**
@@ -4269,7 +4270,7 @@ export function numAlpha (k) {
  */
 
 export function texCadreParOrange (texte) {
-  'use strict'
+  "use strict"
   // \\definecolor{orangeCoop}{rgb}{0.9450980392156862,0.34901960784313724,0.1607843137254902}
   const sortie = `
    
@@ -4292,7 +4293,7 @@ export function texCadreParOrange (texte) {
  */
 
 export function machineMathsVideo (urlVideo) {
-  'use strict'
+  "use strict"
   const video = `
   <div style="text-align:center"> 
   <video width="560" height="100%" controls  loop autoplay muted style="max-width: 100%">
@@ -4309,12 +4310,12 @@ export function machineMathsVideo (urlVideo) {
  * @author Sébastien Lozano
  */
 export function detectSafariChromeBrowser () {
-  'use strict'
-  let isChrome = navigator.userAgent.indexOf('Chrome') > -1
+  "use strict"
+  let isChrome = navigator.userAgent.indexOf("Chrome") > -1
   // var is_explorer = navigator.userAgent.indexOf('MSIE') > -1;
   // var is_firefox = navigator.userAgent.indexOf('Firefox') > -1;
-  let isSafari = navigator.userAgent.indexOf('Safari') > -1
-  const isOpera = navigator.userAgent.toLowerCase().indexOf('op') > -1
+  let isSafari = navigator.userAgent.indexOf("Safari") > -1
+  const isOpera = navigator.userAgent.toLowerCase().indexOf("op") > -1
   if ((isChrome) && (isSafari)) { isSafari = false }
   if ((isChrome) && (isOpera)) { isChrome = false }
 
@@ -4355,7 +4356,7 @@ export function premierMultipleInferieur (k, n) {
 * @author Sébastien Lozano
 */
 export function listeNombresPremiersStrictJusqua (borneSup) {
-  'use strict'
+  "use strict"
   // tableau contenant les 300 premiers nombres premiers
   const liste300 = [2, 3, 5, 7, 11, 13, 17, 19, 23, 29, 31, 37, 41, 43, 47, 53, 59, 61, 67, 71, 73, 79, 83, 89, 97, 101, 103, 107, 109, 113, 127, 131, 137, 139, 149, 151, 157, 163, 167, 173, 179, 181, 191, 193, 197, 199, 211, 223, 227, 229, 233, 239, 241, 251, 257, 263, 269, 271, 277, 281, 283, 293]
   const liste = []
@@ -4373,7 +4374,7 @@ export function listeNombresPremiersStrictJusqua (borneSup) {
  * @author Sébastien Lozano
  */
 export function cribleEratostheneN (n) {
-  'use strict'
+  "use strict"
   const tabEntiers = [] // pour tous les entiers de 2 à n
   const testMax = Math.sqrt(n + 1) // inutile de tester au dela de racine de n
   const liste = [] // tableau de la liste des premiers jusqu'à n
@@ -4412,7 +4413,7 @@ export function cribleEratostheneN (n) {
  */
 
 export function premiersEntreBornes (min, max) {
-  'use strict'
+  "use strict"
   // on crée les premiers jusque min
   const premiersASupprimer = cribleEratostheneN(min - 1)
   // on crée les premiers jusque max
@@ -4430,10 +4431,10 @@ export function premiersEntreBornes (min, max) {
  */
 
 export function texteOuPas (texte) {
-  'use strict'
+  "use strict"
   const bool = randint(0, 1)
   if (bool === 0) {
-    return '\\ldots'
+    return "\\ldots"
   } else {
     return texte
   }
@@ -4457,9 +4458,9 @@ export function texteOuPas (texte) {
  *
  */
 export function tableauColonneLigne (tabEntetesColonnes, tabEntetesLignes, tabLignes, arraystretch) {
-  'use strict'
+  "use strict"
   let myLatexArraystretch
-  if (typeof arraystretch === 'undefined') {
+  if (typeof arraystretch === "undefined") {
     myLatexArraystretch = 1
   } else {
     myLatexArraystretch = arraystretch
@@ -4470,56 +4471,56 @@ export function tableauColonneLigne (tabEntetesColonnes, tabEntetesLignes, tabLi
   // on définit le nombre de lignes
   const L = tabEntetesLignes.length
   // On construit le string pour obtenir le tableau pour compatibilité HTML et LaTeX
-  let tableauCL = ''
+  let tableauCL = ""
   if (context.isHtml) {
-    tableauCL += '$\\def\\arraystretch{2.5}\\begin{array}{|'
+    tableauCL += "$\\def\\arraystretch{2.5}\\begin{array}{|"
   } else {
     tableauCL += `$\\renewcommand{\\arraystretch}{${myLatexArraystretch}}\n`
-    tableauCL += '\\begin{array}{|'
+    tableauCL += "\\begin{array}{|"
   }
   // on construit la 1ere ligne avec toutes les colonnes
   for (let k = 0; k < C; k++) {
-    tableauCL += 'c|'
+    tableauCL += "c|"
   }
-  tableauCL += '}\n'
+  tableauCL += "}\n"
 
-  tableauCL += '\\hline\n'
-  if (typeof tabEntetesColonnes[0] === 'number') {
+  tableauCL += "\\hline\n"
+  if (typeof tabEntetesColonnes[0] === "number") {
     tableauCL += texNombre(tabEntetesColonnes[0])
   } else {
     tableauCL += tabEntetesColonnes[0]
   }
   for (let k = 1; k < C; k++) {
-    if (typeof tabEntetesColonnes[k] === 'number') {
-      tableauCL += ' & ' + texNombre(tabEntetesColonnes[k]) + ''
+    if (typeof tabEntetesColonnes[k] === "number") {
+      tableauCL += " & " + texNombre(tabEntetesColonnes[k]) + ""
     } else {
-      tableauCL += ' & ' + tabEntetesColonnes[k] + ''
+      tableauCL += " & " + tabEntetesColonnes[k] + ""
     }
   }
-  tableauCL += '\\\\\n'
-  tableauCL += '\\hline\n'
+  tableauCL += "\\\\\n"
+  tableauCL += "\\hline\n"
   // on construit toutes les lignes
   for (let k = 0; k < L; k++) {
-    if (typeof tabEntetesLignes[k] === 'number') {
-      tableauCL += '' + texNombre(tabEntetesLignes[k]) + ''
+    if (typeof tabEntetesLignes[k] === "number") {
+      tableauCL += "" + texNombre(tabEntetesLignes[k]) + ""
     } else {
-      tableauCL += '' + tabEntetesLignes[k] + ''
+      tableauCL += "" + tabEntetesLignes[k] + ""
     }
     for (let m = 1; m < C; m++) {
-      if (typeof tabLignes[(C - 1) * k + m - 1] === 'number') {
-        tableauCL += ' & ' + texNombre(tabLignes[(C - 1) * k + m - 1])
+      if (typeof tabLignes[(C - 1) * k + m - 1] === "number") {
+        tableauCL += " & " + texNombre(tabLignes[(C - 1) * k + m - 1])
       } else {
-        tableauCL += ' & ' + tabLignes[(C - 1) * k + m - 1]
+        tableauCL += " & " + tabLignes[(C - 1) * k + m - 1]
       }
     }
-    tableauCL += '\\\\\n'
-    tableauCL += '\\hline\n'
+    tableauCL += "\\\\\n"
+    tableauCL += "\\hline\n"
   }
-  tableauCL += '\\end{array}\n'
+  tableauCL += "\\end{array}\n"
   if (context.isHtml) {
-    tableauCL += '$'
+    tableauCL += "$"
   } else {
-    tableauCL += '\\renewcommand{\\arraystretch}{1}$\n'
+    tableauCL += "\\renewcommand{\\arraystretch}{1}$\n"
   }
 
   return tableauCL
@@ -4533,9 +4534,9 @@ export function tableauColonneLigne (tabEntetesColonnes, tabEntetesLignes, tabLi
  * @author Sébastien Lozano
  */
 export function warnMessage (texte, couleur, titre) {
-  'use strict'
-  if (typeof (titre) === 'undefined') {
-    titre = ''
+  "use strict"
+  if (typeof (titre) === "undefined") {
+    titre = ""
   }
   if (context.isHtml) {
     return `
@@ -4549,7 +4550,7 @@ export function warnMessage (texte, couleur, titre) {
   } else {
     // return texCadreParOrange(texte);
     return `
-    \\begin{bclogo}[couleurBarre=` + couleur + ',couleurBord=' + couleur + ',epBord=2,couleur=gray!10,logo=\\bclampe,arrondi=0.1]{\\bf ' + titre + `}
+    \\begin{bclogo}[couleurBarre=` + couleur + ",couleurBord=" + couleur + ",epBord=2,couleur=gray!10,logo=\\bclampe,arrondi=0.1]{\\bf " + titre + `}
       ` + texte + `
     \\end{bclogo}
     `
@@ -4578,7 +4579,7 @@ export function infoMessage ({ titre, texte, couleur }) {
     `
   } else {
     return `
-    \\begin{bclogo}[couleurBarre=` + couleur + ',couleurBord=' + couleur + ',epBord=2,couleur=gray!10,logo=\\bcinfo,arrondi=0.1]{\\bf ' + titre + `}
+    \\begin{bclogo}[couleurBarre=` + couleur + ",couleurBord=" + couleur + ",epBord=2,couleur=gray!10,logo=\\bcinfo,arrondi=0.1]{\\bf " + titre + `}
       ` + texte + `
     \\end{bclogo}
     `
@@ -4611,7 +4612,7 @@ export function lampeMessage ({ titre, texte, couleur }) {
     `
   } else {
     return `
-    \\begin{bclogo}[couleurBarre=` + couleur + ',couleurBord=' + couleur + ',epBord=2,couleur=gray!10,logo=\\bclampe,arrondi=0.1]{\\bf ' + titre + `}
+    \\begin{bclogo}[couleurBarre=` + couleur + ",couleurBord=" + couleur + ",epBord=2,couleur=gray!10,logo=\\bclampe,arrondi=0.1]{\\bf " + titre + `}
       ` + texte + `
     \\end{bclogo}
     `
@@ -4644,13 +4645,13 @@ export function decompositionFacteursPremiersArray (n) {
  * @author Sébastien Lozano
  */
 export function Triangles (l1, l2, l3, a1, a2, a3) {
-  'use strict'
+  "use strict"
   const self = this
 
   /**
    * @constant {array} nomsPossibles liste de noms possibles pour un triangle
    */
-  const nomsPossibles = ['AGE', 'AIL', 'AIR', 'ALU', 'AME', 'AMI', 'ANE', 'ARC', 'BAC', 'BAL', 'BAR', 'BEC', 'BEL', 'BIO', 'BIP', 'BIS', 'BLE', 'BOA', 'BOF', 'BOG', 'BOL', 'BUT', 'BYE', 'COQ', 'CRI', 'CRU', 'DUC', 'DUO', 'DUR', 'EAU', 'ECU', 'EGO', 'EPI', 'FER', 'FIL', 'FUN', 'GPS', 'ICE', 'JET', 'KIF', 'KIR', 'MAC', 'NEM', 'PAS', 'PIC', 'PIF', 'PIN', 'POT', 'RAI', 'RAP', 'RAT', 'RIF', 'SEL', 'TAF', 'TIC', 'TAC', 'TOC', 'TOP', 'UNI', 'WOK', 'YAK', 'YEN', 'ZEN', 'ZIG', 'ZAG']
+  const nomsPossibles = ["AGE", "AIL", "AIR", "ALU", "AME", "AMI", "ANE", "ARC", "BAC", "BAL", "BAR", "BEC", "BEL", "BIO", "BIP", "BIS", "BLE", "BOA", "BOF", "BOG", "BOL", "BUT", "BYE", "COQ", "CRI", "CRU", "DUC", "DUO", "DUR", "EAU", "ECU", "EGO", "EPI", "FER", "FIL", "FUN", "GPS", "ICE", "JET", "KIF", "KIR", "MAC", "NEM", "PAS", "PIC", "PIF", "PIN", "POT", "RAI", "RAP", "RAT", "RIF", "SEL", "TAF", "TIC", "TAC", "TOC", "TOP", "UNI", "WOK", "YAK", "YEN", "ZEN", "ZIG", "ZAG"]
 
   /**
    * @property {string} nom nom du triangle, tiré au hasard dans un tableau
@@ -4663,7 +4664,7 @@ export function Triangles (l1, l2, l3, a1, a2, a3) {
    * @example si triangle est une instance de la classe Triangle() triangle.getNom() renvoie le string '$AMI$' si AMI est le nom tiré au hasard
    */
   function getNom () {
-    return '$' + self.nom + '$'
+    return "$" + self.nom + "$"
   }
 
   /**
@@ -4674,10 +4675,10 @@ export function Triangles (l1, l2, l3, a1, a2, a3) {
   function getCotes () {
     const cotes = []
     const triangle = self.nom
-    const sommets = triangle.split('')
-    cotes[0] = '$[' + sommets[0] + '' + sommets[1] + ']$'
-    cotes[1] = '$[' + sommets[1] + '' + sommets[2] + ']$'
-    cotes[2] = '$[' + sommets[2] + '' + sommets[0] + ']$'
+    const sommets = triangle.split("")
+    cotes[0] = "$[" + sommets[0] + "" + sommets[1] + "]$"
+    cotes[1] = "$[" + sommets[1] + "" + sommets[2] + "]$"
+    cotes[2] = "$[" + sommets[2] + "" + sommets[0] + "]$"
 
     return cotes
   }
@@ -4690,10 +4691,10 @@ export function Triangles (l1, l2, l3, a1, a2, a3) {
   function getLongueurs () {
     const longueurs = []
     const triangle = self.nom
-    const sommets = triangle.split('')
-    longueurs[0] = '$' + sommets[0] + '' + sommets[1] + '$'
-    longueurs[1] = '$' + sommets[1] + '' + sommets[2] + '$'
-    longueurs[2] = '$' + sommets[2] + '' + sommets[0] + '$'
+    const sommets = triangle.split("")
+    longueurs[0] = "$" + sommets[0] + "" + sommets[1] + "$"
+    longueurs[1] = "$" + sommets[1] + "" + sommets[2] + "$"
+    longueurs[2] = "$" + sommets[2] + "" + sommets[0] + "$"
 
     return longueurs
   }
@@ -4702,9 +4703,9 @@ export function Triangles (l1, l2, l3, a1, a2, a3) {
    * @return {array} Renvoie un tableau avec les valeurs des longueurs des côtés du triangle passées en paramètre à l'instance de la classe
    */
   function getLongueursValeurs () {
-    if ((typeof self.l1 === 'undefined') || (typeof self.l2 === 'undefined') || (typeof self.l3 === 'undefined')) {
+    if ((typeof self.l1 === "undefined") || (typeof self.l2 === "undefined") || (typeof self.l3 === "undefined")) {
       // return false;
-      return ['L\'une des longueurs de l\'objet triangle n\'est pas définie']
+      return ["L'une des longueurs de l'objet triangle n'est pas définie"]
     }
     const longueurs = []
     longueurs[0] = self.l1
@@ -4721,7 +4722,7 @@ export function Triangles (l1, l2, l3, a1, a2, a3) {
   function getAngles () {
     const angles = []
     const triangle = self.nom
-    const sommets = triangle.split('')
+    const sommets = triangle.split("")
     angles[0] = `$\\;\\widehat{${sommets[0] + sommets[1] + sommets[2]}}$`
     angles[1] = `$\\;\\widehat{${sommets[1] + sommets[2] + sommets[0]}}$`
     angles[2] = `$\\;\\widehat{${sommets[2] + sommets[0] + sommets[1]}}$`
@@ -4733,9 +4734,9 @@ export function Triangles (l1, l2, l3, a1, a2, a3) {
    * @return {array} Renvoie un tableau avec les valeurs des angles du triangle passées en paramètre à l'instance de la classe
    */
   function getAnglesValeurs () {
-    if ((typeof self.a1 === 'undefined') || (typeof self.a2 === 'undefined') || (typeof self.a3 === 'undefined')) {
+    if ((typeof self.a1 === "undefined") || (typeof self.a2 === "undefined") || (typeof self.a3 === "undefined")) {
       // return false;
-      return ['L\'un des angles de l\'objet triangle n\'est pas définie']
+      return ["L'un des angles de l'objet triangle n'est pas définie"]
     }
     const angles = []
     angles[0] = self.a1
@@ -4751,11 +4752,11 @@ export function Triangles (l1, l2, l3, a1, a2, a3) {
    */
   function getSommets (math = true) {
     const triangle = self.nom
-    const sommets = triangle.split('')
+    const sommets = triangle.split("")
     if (math === true) {
-      sommets[0] = '$' + sommets[0] + '$'
-      sommets[1] = '$' + sommets[1] + '$'
-      sommets[2] = '$' + sommets[2] + '$'
+      sommets[0] = "$" + sommets[0] + "$"
+      sommets[1] = "$" + sommets[1] + "$"
+      sommets[2] = "$" + sommets[2] + "$"
     }
     return sommets
   }
@@ -4769,9 +4770,9 @@ export function Triangles (l1, l2, l3, a1, a2, a3) {
    * * triangle.getPerimetre() renvoie 9
    */
   function getPerimetre () {
-    if ((typeof self.l1 === 'undefined') || (typeof self.l2 === 'undefined') || (typeof self.l3 === 'undefined')) {
+    if ((typeof self.l1 === "undefined") || (typeof self.l2 === "undefined") || (typeof self.l3 === "undefined")) {
       // return false;
-      return 'L\'une des longueurs de l\'objet triangle n\'est pas définie'
+      return "L'une des longueurs de l'objet triangle n'est pas définie"
     } else {
       return self.l1 + self.l2 + self.l3
     }
@@ -4791,7 +4792,7 @@ export function Triangles (l1, l2, l3, a1, a2, a3) {
    * * triangle.isTrueTriangleLongueurs() renvoie true
    */
   function isTrueTriangleLongueurs () {
-    if ((typeof self.l1 === 'undefined') || (typeof self.l2 === 'undefined') || (typeof self.l3 === 'undefined')) {
+    if ((typeof self.l1 === "undefined") || (typeof self.l2 === "undefined") || (typeof self.l3 === "undefined")) {
       return false
       // return 'L\'une des longueurs de l\'objet triangle n\'est pas définie';
     }
@@ -4820,7 +4821,7 @@ export function Triangles (l1, l2, l3, a1, a2, a3) {
    * * triangle.isTrueTriangleLongueurs() renvoie false
    */
   function isPlatTriangleLongueurs () {
-    if ((typeof self.l1 === 'undefined') || (typeof self.l2 === 'undefined') || (typeof self.l3 === 'undefined')) {
+    if ((typeof self.l1 === "undefined") || (typeof self.l2 === "undefined") || (typeof self.l3 === "undefined")) {
       // return 'L\'une des longueurs de l\'objet triangle n\'est pas définie';
       return false
     }
@@ -4851,7 +4852,7 @@ export function Triangles (l1, l2, l3, a1, a2, a3) {
 
   function isTrueTriangleAngles () {
     // si l'un des angles n'est pas defini ça ne va pas
-    if ((typeof self.a1 === 'undefined') || (typeof self.a2 === 'undefined') || (typeof self.a3 === 'undefined')) {
+    if ((typeof self.a1 === "undefined") || (typeof self.a2 === "undefined") || (typeof self.a3 === "undefined")) {
       return false
       // return 'L\'une des longueurs de l\'objet triangle n\'est pas définie';
     }
@@ -4886,7 +4887,7 @@ export function Triangles (l1, l2, l3, a1, a2, a3) {
    * * triangle.isTrueTriangleAngles() renvoie false
    */
   function isPlatTriangleAngles () {
-    if ((typeof self.a1 === 'undefined') || (typeof self.a2 === 'undefined') || (typeof self.a3 === 'undefined')) {
+    if ((typeof self.a1 === "undefined") || (typeof self.a2 === "undefined") || (typeof self.a3 === "undefined")) {
       return false
       // return 'L\'une des longueurs de l\'objet triangle n\'est pas définie';
     }
@@ -4943,7 +4944,7 @@ export function Relatif (...relatifs) {
     try {
       // port du string interdit !
       relatifs.forEach(function (element) {
-        if (typeof element === 'string') {
+        if (typeof element === "string") {
           throw new TypeError(`${element} est un string !`)
         }
         if (element === 0) {
@@ -4952,7 +4953,7 @@ export function Relatif (...relatifs) {
       })
       // Quoi faire sans nombres ?
       if (relatifs.length === 0) {
-        throw new Error('C\'est mieux avec quelques nombres !')
+        throw new Error("C'est mieux avec quelques nombres !")
       }
       relatifs.forEach(function (element) {
         if (element < 0) {
@@ -4979,10 +4980,10 @@ export function Relatif (...relatifs) {
     const signes = getSigneNumber()
     signes.forEach(function (element) {
       if (element === -1) {
-        signesString.push('négatif')
+        signesString.push("négatif")
       }
       if (element === 1) {
-        signesString.push('positif')
+        signesString.push("positif")
       }
     })
     return signesString
@@ -5000,7 +5001,7 @@ export function Relatif (...relatifs) {
     try {
       // port du string interdit !
       n.forEach(function (element) {
-        if (typeof element === 'string') {
+        if (typeof element === "string") {
           throw new TypeError(`${element} est un string !`)
         }
         if (element === 0) {
@@ -5009,7 +5010,7 @@ export function Relatif (...relatifs) {
       })
       // Quoi faire sans nombres ?
       if (n.length === 0) {
-        throw new Error('C\'est mieux avec quelques nombres !')
+        throw new Error("C'est mieux avec quelques nombres !")
       }
       n.forEach(function (element) {
         produit = produit * element
@@ -5036,10 +5037,10 @@ export function Relatif (...relatifs) {
   function getSigneProduitString (...n) {
     const produit = getSigneProduitNumber(...n)
     if (produit === -1) {
-      return 'négatif'
+      return "négatif"
     }
     if (produit === 1) {
-      return 'positif'
+      return "positif"
     }
   }
 
@@ -5057,7 +5058,7 @@ export function Relatif (...relatifs) {
     try {
       // port du string interdit !
       n.forEach(function (element) {
-        if (typeof element === 'string') {
+        if (typeof element === "string") {
           throw new TypeError(`${element} est un string !`)
         }
         if (element === 0) {
@@ -5066,7 +5067,7 @@ export function Relatif (...relatifs) {
       })
       // Quoi faire sans nombres ?
       if (n.length === 0) {
-        throw new Error('C\'est mieux avec quelques nombres !')
+        throw new Error("C'est mieux avec quelques nombres !")
       }
       n.forEach(function (element) {
         if (element < 0) {
@@ -5088,9 +5089,9 @@ export function Relatif (...relatifs) {
    */
   function orthographeFacteursNegatifs (n) {
     if (n >= 2) {
-      return 'facteurs négatifs'
+      return "facteurs négatifs"
     } else {
-      return 'facteur négatif'
+      return "facteur négatif"
     }
   }
 
@@ -5104,24 +5105,24 @@ export function Relatif (...relatifs) {
     try {
       // port du string interdit !
       n.forEach(function (element) {
-        if (typeof element === 'string') {
+        if (typeof element === "string") {
           throw new TypeError(`${element} est un string !`)
         }
       })
       // Quoi faire sans nombres ?
       if (n.length === 0) {
-        throw new Error('C\'est mieux avec quelques nombres !')
+        throw new Error("C'est mieux avec quelques nombres !")
       }
       if (n.length === 2) {
         if (getCardNegatifs(n) % 2 === 0) {
-          return 'Les deux facteurs ont le même signe donc le produit est positif.'
+          return "Les deux facteurs ont le même signe donc le produit est positif."
         } else {
-          return 'Les deux facteurs ont un signe différent donc le produit est négatif.'
+          return "Les deux facteurs ont un signe différent donc le produit est négatif."
         }
       } else if (n.length > 2) {
         if (getCardNegatifs(n) % 2 === 0) {
           if (getCardNegatifs(n) === 0) {
-            return 'Tous les facteurs sont positifs donc le produit est positif.'
+            return "Tous les facteurs sont positifs donc le produit est positif."
           } else {
             return `Il y a ${getCardNegatifs(n)} ${orthographeFacteursNegatifs(getCardNegatifs(n))}, le nombre de facteurs négatifs est pair donc le produit est positif.`
           }
@@ -5146,24 +5147,24 @@ export function Relatif (...relatifs) {
     try {
       // port du string interdit !
       n.forEach(function (element) {
-        if (typeof element === 'string') {
+        if (typeof element === "string") {
           throw new TypeError(`${element} est un string !`)
         }
       })
       // Quoi faire sans nombres ?
       if (n.length === 0) {
-        throw new Error('C\'est mieux avec quelques nombres !')
+        throw new Error("C'est mieux avec quelques nombres !")
       }
       if (n.length === 2) {
         if (getCardNegatifs(n) % 2 === 0) {
-          return 'Le numérateur et le dénominateur ont le même signe donc le quotient est positif.'
+          return "Le numérateur et le dénominateur ont le même signe donc le quotient est positif."
         } else {
-          return 'Les numérateur et le dénominateur ont un signe différent donc le quotient est négatif.'
+          return "Les numérateur et le dénominateur ont un signe différent donc le quotient est négatif."
         }
       } else if (n.length > 2) {
         if (getCardNegatifs(n) % 2 === 0) {
           if (getCardNegatifs(n) === 0) {
-            return 'Tous les facteurs du numérateur et tous les facteurs du dénominateur sont positifs donc le quotient est positif.'
+            return "Tous les facteurs du numérateur et tous les facteurs du dénominateur sont positifs donc le quotient est positif."
           } else {
             // return `La somme du nombre de facteurs négatifs du numérateur et du nombre de facteurs négatifs du dénominateur vaut ${getCardNegatifs(n)}, ce nombre est pair donc le quotient est positif.`;
             return `Quand on compte les facteurs négatifs du numérateur et du dénominateur, on trouve ${getCardNegatifs(n)}, ce nombre est pair donc le quotient est positif.`
@@ -5193,32 +5194,32 @@ export function nombreEnLettres (nb, type = 1) {
   else {
     partieEntiere = Math.floor(nb)
     partieDecimale = new Decimal(nb).sub(partieEntiere).toDP(3)
-    nbDec = partieDecimale.toString().replace(/\d*\./, '').length
+    nbDec = partieDecimale.toString().replace(/\d*\./, "").length
     partieDecimale = partieDecimale.mul(10 ** nbDec).toNumber()
 
     switch (nbDec) {
       case 1:
-        if (partieDecimale > 1) decstring = ' dixièmes'
-        else decstring = ' dixième'
+        if (partieDecimale > 1) decstring = " dixièmes"
+        else decstring = " dixième"
         break
       case 2:
-        if (partieDecimale > 1) decstring = ' centièmes'
-        else decstring = ' centième'
+        if (partieDecimale > 1) decstring = " centièmes"
+        else decstring = " centième"
         break
       case 3:
-        if (partieDecimale > 1) decstring = ' millièmes'
-        else decstring = ' millième'
+        if (partieDecimale > 1) decstring = " millièmes"
+        else decstring = " millième"
         break
     }
 
     if (type === 1) {
-      nbstring = partieEntiereEnLettres(partieEntiere) + ' unités et ' + partieEntiereEnLettres(partieDecimale) + decstring
+      nbstring = partieEntiereEnLettres(partieEntiere) + " unités et " + partieEntiereEnLettres(partieDecimale) + decstring
     } else if (nbDec === nombreDeChiffresDansLaPartieEntiere(partieDecimale)) {
-      nbstring = partieEntiereEnLettres(partieEntiere) + ' virgule ' + partieEntiereEnLettres(partieDecimale)
+      nbstring = partieEntiereEnLettres(partieEntiere) + " virgule " + partieEntiereEnLettres(partieDecimale)
     } else {
-      nbstring = partieEntiereEnLettres(partieEntiere) + ' virgule '
+      nbstring = partieEntiereEnLettres(partieEntiere) + " virgule "
       for (let n = 0; n < nbDec - nombreDeChiffresDansLaPartieEntiere(partieDecimale); n++) {
-        nbstring += 'zéro-'
+        nbstring += "zéro-"
       }
       nbstring += partieEntiereEnLettres(partieDecimale)
     }
@@ -5234,1060 +5235,1060 @@ export function nombreEnLettres (nb, type = 1) {
  */
 export function partieEntiereEnLettres (nb) {
   const dictionnaire = {
-    0: 'zéro',
-    '000': '',
-    1: 'un',
-    2: 'deux',
-    3: 'trois',
-    4: 'quatre',
-    5: 'cinq',
-    6: 'six',
-    7: 'sept',
-    8: 'huit',
-    9: 'neuf',
-    10: 'dix',
-    11: 'onze',
-    12: 'douze',
-    13: 'treize',
-    14: 'quatorze',
-    15: 'quinze',
-    16: 'seize',
-    17: 'dix-sept',
-    18: 'dix-huit',
-    19: 'dix-neuf',
-    20: 'vingt',
-    21: 'vingt et un',
-    22: 'vingt-deux',
-    23: 'vingt-trois',
-    24: 'vingt-quatre',
-    25: 'vingt-cinq',
-    26: 'vingt-six',
-    27: 'vingt-sept',
-    28: 'vingt-huit',
-    29: 'vingt-neuf',
-    30: 'trente',
-    31: 'trente et un',
-    32: 'trente-deux',
-    33: 'trente-trois',
-    34: 'trente-quatre',
-    35: 'trente-cinq',
-    36: 'trente-six',
-    37: 'trente-sept',
-    38: 'trente-huit',
-    39: 'trente-neuf',
-    40: 'quarante',
-    41: 'quarante et un',
-    42: 'quarante-deux',
-    43: 'quarante-trois',
-    44: 'quarante-quatre',
-    45: 'quarante-cinq',
-    46: 'quarante-six',
-    47: 'quarante-sept',
-    48: 'quarante-huit',
-    49: 'quarante-neuf',
-    50: 'cinquante',
-    51: 'cinquante et un',
-    52: 'cinquante-deux',
-    53: 'cinquante-trois',
-    54: 'cinquante-quatre',
-    55: 'cinquante-cinq',
-    56: 'cinquante-six',
-    57: 'cinquante-sept',
-    58: 'cinquante-huit',
-    59: 'cinquante-neuf',
-    60: 'soixante',
-    61: 'soixante et un',
-    62: 'soixante-deux',
-    63: 'soixante-trois',
-    64: 'soixante-quatre',
-    65: 'soixante-cinq',
-    66: 'soixante-six',
-    67: 'soixante-sept',
-    68: 'soixante-huit',
-    69: 'soixante-neuf',
-    70: 'soixante-dix',
-    71: 'soixante et onze',
-    72: 'soixante-douze',
-    73: 'soixante-treize',
-    74: 'soixante-quatorze',
-    75: 'soixante-quinze',
-    76: 'soixante-seize',
-    77: 'soixante-dix-sept',
-    78: 'soixante-dix-huit',
-    79: 'soixante-dix-neuf',
-    80: 'quatre-vingts',
-    81: 'quatre-vingt-un',
-    82: 'quatre-vingt-deux',
-    83: 'quatre-vingt-trois',
-    84: 'quatre-vingt-quatre',
-    85: 'quatre-vingt-cinq',
-    86: 'quatre-vingt-six',
-    87: 'quatre-vingt-sept',
-    88: 'quatre-vingt-huit',
-    89: 'quatre-vingt-neuf',
-    90: 'quatre-vingt-dix',
-    91: 'quatre-vingt-onze',
-    92: 'quatre-vingt-douze',
-    93: 'quatre-vingt-treize',
-    94: 'quatre-vingt-quatorze',
-    95: 'quatre-vingt-quinze',
-    96: 'quatre-vingt-seize',
-    97: 'quatre-vingt-dix-sept',
-    98: 'quatre-vingt-dix-huit',
-    99: 'quatre-vingt-dix-neuf',
-    100: 'cent',
-    101: 'cent un',
-    102: 'cent deux',
-    103: 'cent trois',
-    104: 'cent quatre',
-    105: 'cent cinq',
-    106: 'cent six',
-    107: 'cent sept',
-    108: 'cent huit',
-    109: 'cent neuf',
-    110: 'cent dix',
-    111: 'cent onze',
-    112: 'cent douze',
-    113: 'cent treize',
-    114: 'cent quatorze',
-    115: 'cent quinze',
-    116: 'cent seize',
-    117: 'cent dix-sept',
-    118: 'cent dix-huit',
-    119: 'cent dix-neuf',
-    120: 'cent vingt',
-    121: 'cent vingt et un',
-    122: 'cent vingt-deux',
-    123: 'cent vingt-trois',
-    124: 'cent vingt-quatre',
-    125: 'cent vingt-cinq',
-    126: 'cent vingt-six',
-    127: 'cent vingt-sept',
-    128: 'cent vingt-huit',
-    129: 'cent vingt-neuf',
-    130: 'cent trente',
-    131: 'cent trente et un',
-    132: 'cent trente-deux',
-    133: 'cent trente-trois',
-    134: 'cent trente-quatre',
-    135: 'cent trente-cinq',
-    136: 'cent trente-six',
-    137: 'cent trente-sept',
-    138: 'cent trente-huit',
-    139: 'cent trente-neuf',
-    140: 'cent quarante',
-    141: 'cent quarante et un',
-    142: 'cent quarante-deux',
-    143: 'cent quarante-trois',
-    144: 'cent quarante-quatre',
-    145: 'cent quarante-cinq',
-    146: 'cent quarante-six',
-    147: 'cent quarante-sept',
-    148: 'cent quarante-huit',
-    149: 'cent quarante-neuf',
-    150: 'cent cinquante',
-    151: 'cent cinquante et un',
-    152: 'cent cinquante-deux',
-    153: 'cent cinquante-trois',
-    154: 'cent cinquante-quatre',
-    155: 'cent cinquante-cinq',
-    156: 'cent cinquante-six',
-    157: 'cent cinquante-sept',
-    158: 'cent cinquante-huit',
-    159: 'cent cinquante-neuf',
-    160: 'cent soixante',
-    161: 'cent soixante et un',
-    162: 'cent soixante-deux',
-    163: 'cent soixante-trois',
-    164: 'cent soixante-quatre',
-    165: 'cent soixante-cinq',
-    166: 'cent soixante-six',
-    167: 'cent soixante-sept',
-    168: 'cent soixante-huit',
-    169: 'cent soixante-neuf',
-    170: 'cent soixante-dix',
-    171: 'cent soixante et onze',
-    172: 'cent soixante-douze',
-    173: 'cent soixante-treize',
-    174: 'cent soixante-quatorze',
-    175: 'cent soixante-quinze',
-    176: 'cent soixante-seize',
-    177: 'cent soixante-dix-sept',
-    178: 'cent soixante-dix-huit',
-    179: 'cent soixante-dix-neuf',
-    180: 'cent quatre-vingts',
-    181: 'cent quatre-vingt-un',
-    182: 'cent quatre-vingt-deux',
-    183: 'cent quatre-vingt-trois',
-    184: 'cent quatre-vingt-quatre',
-    185: 'cent quatre-vingt-cinq',
-    186: 'cent quatre-vingt-six',
-    187: 'cent quatre-vingt-sept',
-    188: 'cent quatre-vingt-huit',
-    189: 'cent quatre-vingt-neuf',
-    190: 'cent quatre-vingt-dix',
-    191: 'cent quatre-vingt-onze',
-    192: 'cent quatre-vingt-douze',
-    193: 'cent quatre-vingt-treize',
-    194: 'cent quatre-vingt-quatorze',
-    195: 'cent quatre-vingt-quinze',
-    196: 'cent quatre-vingt-seize',
-    197: 'cent quatre-vingt-dix-sept',
-    198: 'cent quatre-vingt-dix-huit',
-    199: 'cent quatre-vingt-dix-neuf',
-    200: 'deux cents',
-    201: 'deux cent un',
-    202: 'deux cent deux',
-    203: 'deux cent trois',
-    204: 'deux cent quatre',
-    205: 'deux cent cinq',
-    206: 'deux cent six',
-    207: 'deux cent sept',
-    208: 'deux cent huit',
-    209: 'deux cent neuf',
-    210: 'deux cent dix',
-    211: 'deux cent onze',
-    212: 'deux cent douze',
-    213: 'deux cent treize',
-    214: 'deux cent quatorze',
-    215: 'deux cent quinze',
-    216: 'deux cent seize',
-    217: 'deux cent dix-sept',
-    218: 'deux cent dix-huit',
-    219: 'deux cent dix-neuf',
-    220: 'deux cent vingt',
-    221: 'deux cent vingt et un',
-    222: 'deux cent vingt-deux',
-    223: 'deux cent vingt-trois',
-    224: 'deux cent vingt-quatre',
-    225: 'deux cent vingt-cinq',
-    226: 'deux cent vingt-six',
-    227: 'deux cent vingt-sept',
-    228: 'deux cent vingt-huit',
-    229: 'deux cent vingt-neuf',
-    230: 'deux cent trente',
-    231: 'deux cent trente et un',
-    232: 'deux cent trente-deux',
-    233: 'deux cent trente-trois',
-    234: 'deux cent trente-quatre',
-    235: 'deux cent trente-cinq',
-    236: 'deux cent trente-six',
-    237: 'deux cent trente-sept',
-    238: 'deux cent trente-huit',
-    239: 'deux cent trente-neuf',
-    240: 'deux cent quarante',
-    241: 'deux cent quarante et un',
-    242: 'deux cent quarante-deux',
-    243: 'deux cent quarante-trois',
-    244: 'deux cent quarante-quatre',
-    245: 'deux cent quarante-cinq',
-    246: 'deux cent quarante-six',
-    247: 'deux cent quarante-sept',
-    248: 'deux cent quarante-huit',
-    249: 'deux cent quarante-neuf',
-    250: 'deux cent cinquante',
-    251: 'deux cent cinquante et un',
-    252: 'deux cent cinquante-deux',
-    253: 'deux cent cinquante-trois',
-    254: 'deux cent cinquante-quatre',
-    255: 'deux cent cinquante-cinq',
-    256: 'deux cent cinquante-six',
-    257: 'deux cent cinquante-sept',
-    258: 'deux cent cinquante-huit',
-    259: 'deux cent cinquante-neuf',
-    260: 'deux cent soixante',
-    261: 'deux cent soixante et un',
-    262: 'deux cent soixante-deux',
-    263: 'deux cent soixante-trois',
-    264: 'deux cent soixante-quatre',
-    265: 'deux cent soixante-cinq',
-    266: 'deux cent soixante-six',
-    267: 'deux cent soixante-sept',
-    268: 'deux cent soixante-huit',
-    269: 'deux cent soixante-neuf',
-    270: 'deux cent soixante-dix',
-    271: 'deux cent soixante et onze',
-    272: 'deux cent soixante-douze',
-    273: 'deux cent soixante-treize',
-    274: 'deux cent soixante-quatorze',
-    275: 'deux cent soixante-quinze',
-    276: 'deux cent soixante-seize',
-    277: 'deux cent soixante-dix-sept',
-    278: 'deux cent soixante-dix-huit',
-    279: 'deux cent soixante-dix-neuf',
-    280: 'deux cent quatre-vingts',
-    281: 'deux cent quatre-vingt-un',
-    282: 'deux cent quatre-vingt-deux',
-    283: 'deux cent quatre-vingt-trois',
-    284: 'deux cent quatre-vingt-quatre',
-    285: 'deux cent quatre-vingt-cinq',
-    286: 'deux cent quatre-vingt-six',
-    287: 'deux cent quatre-vingt-sept',
-    288: 'deux cent quatre-vingt-huit',
-    289: 'deux cent quatre-vingt-neuf',
-    290: 'deux cent quatre-vingt-dix',
-    291: 'deux cent quatre-vingt-onze',
-    292: 'deux cent quatre-vingt-douze',
-    293: 'deux cent quatre-vingt-treize',
-    294: 'deux cent quatre-vingt-quatorze',
-    295: 'deux cent quatre-vingt-quinze',
-    296: 'deux cent quatre-vingt-seize',
-    297: 'deux cent quatre-vingt-dix-sept',
-    298: 'deux cent quatre-vingt-dix-huit',
-    299: 'deux cent quatre-vingt-dix-neuf',
-    300: 'trois cents',
-    301: 'trois cent un',
-    302: 'trois cent deux',
-    303: 'trois cent trois',
-    304: 'trois cent quatre',
-    305: 'trois cent cinq',
-    306: 'trois cent six',
-    307: 'trois cent sept',
-    308: 'trois cent huit',
-    309: 'trois cent neuf',
-    310: 'trois cent dix',
-    311: 'trois cent onze',
-    312: 'trois cent douze',
-    313: 'trois cent treize',
-    314: 'trois cent quatorze',
-    315: 'trois cent quinze',
-    316: 'trois cent seize',
-    317: 'trois cent dix-sept',
-    318: 'trois cent dix-huit',
-    319: 'trois cent dix-neuf',
-    320: 'trois cent vingt',
-    321: 'trois cent vingt et un',
-    322: 'trois cent vingt-deux',
-    323: 'trois cent vingt-trois',
-    324: 'trois cent vingt-quatre',
-    325: 'trois cent vingt-cinq',
-    326: 'trois cent vingt-six',
-    327: 'trois cent vingt-sept',
-    328: 'trois cent vingt-huit',
-    329: 'trois cent vingt-neuf',
-    330: 'trois cent trente',
-    331: 'trois cent trente et un',
-    332: 'trois cent trente-deux',
-    333: 'trois cent trente-trois',
-    334: 'trois cent trente-quatre',
-    335: 'trois cent trente-cinq',
-    336: 'trois cent trente-six',
-    337: 'trois cent trente-sept',
-    338: 'trois cent trente-huit',
-    339: 'trois cent trente-neuf',
-    340: 'trois cent quarante',
-    341: 'trois cent quarante et un',
-    342: 'trois cent quarante-deux',
-    343: 'trois cent quarante-trois',
-    344: 'trois cent quarante-quatre',
-    345: 'trois cent quarante-cinq',
-    346: 'trois cent quarante-six',
-    347: 'trois cent quarante-sept',
-    348: 'trois cent quarante-huit',
-    349: 'trois cent quarante-neuf',
-    350: 'trois cent cinquante',
-    351: 'trois cent cinquante et un',
-    352: 'trois cent cinquante-deux',
-    353: 'trois cent cinquante-trois',
-    354: 'trois cent cinquante-quatre',
-    355: 'trois cent cinquante-cinq',
-    356: 'trois cent cinquante-six',
-    357: 'trois cent cinquante-sept',
-    358: 'trois cent cinquante-huit',
-    359: 'trois cent cinquante-neuf',
-    360: 'trois cent soixante',
-    361: 'trois cent soixante et un',
-    362: 'trois cent soixante-deux',
-    363: 'trois cent soixante-trois',
-    364: 'trois cent soixante-quatre',
-    365: 'trois cent soixante-cinq',
-    366: 'trois cent soixante-six',
-    367: 'trois cent soixante-sept',
-    368: 'trois cent soixante-huit',
-    369: 'trois cent soixante-neuf',
-    370: 'trois cent soixante-dix',
-    371: 'trois cent soixante et onze',
-    372: 'trois cent soixante-douze',
-    373: 'trois cent soixante-treize',
-    374: 'trois cent soixante-quatorze',
-    375: 'trois cent soixante-quinze',
-    376: 'trois cent soixante-seize',
-    377: 'trois cent soixante-dix-sept',
-    378: 'trois cent soixante-dix-huit',
-    379: 'trois cent soixante-dix-neuf',
-    380: 'trois cent quatre-vingts',
-    381: 'trois cent quatre-vingt-un',
-    382: 'trois cent quatre-vingt-deux',
-    383: 'trois cent quatre-vingt-trois',
-    384: 'trois cent quatre-vingt-quatre',
-    385: 'trois cent quatre-vingt-cinq',
-    386: 'trois cent quatre-vingt-six',
-    387: 'trois cent quatre-vingt-sept',
-    388: 'trois cent quatre-vingt-huit',
-    389: 'trois cent quatre-vingt-neuf',
-    390: 'trois cent quatre-vingt-dix',
-    391: 'trois cent quatre-vingt-onze',
-    392: 'trois cent quatre-vingt-douze',
-    393: 'trois cent quatre-vingt-treize',
-    394: 'trois cent quatre-vingt-quatorze',
-    395: 'trois cent quatre-vingt-quinze',
-    396: 'trois cent quatre-vingt-seize',
-    397: 'trois cent quatre-vingt-dix-sept',
-    398: 'trois cent quatre-vingt-dix-huit',
-    399: 'trois cent quatre-vingt-dix-neuf',
-    400: 'quatre cents',
-    401: 'quatre cent un',
-    402: 'quatre cent deux',
-    403: 'quatre cent trois',
-    404: 'quatre cent quatre',
-    405: 'quatre cent cinq',
-    406: 'quatre cent six',
-    407: 'quatre cent sept',
-    408: 'quatre cent huit',
-    409: 'quatre cent neuf',
-    410: 'quatre cent dix',
-    411: 'quatre cent onze',
-    412: 'quatre cent douze',
-    413: 'quatre cent treize',
-    414: 'quatre cent quatorze',
-    415: 'quatre cent quinze',
-    416: 'quatre cent seize',
-    417: 'quatre cent dix-sept',
-    418: 'quatre cent dix-huit',
-    419: 'quatre cent dix-neuf',
-    420: 'quatre cent vingt',
-    421: 'quatre cent vingt et un',
-    422: 'quatre cent vingt-deux',
-    423: 'quatre cent vingt-trois',
-    424: 'quatre cent vingt-quatre',
-    425: 'quatre cent vingt-cinq',
-    426: 'quatre cent vingt-six',
-    427: 'quatre cent vingt-sept',
-    428: 'quatre cent vingt-huit',
-    429: 'quatre cent vingt-neuf',
-    430: 'quatre cent trente',
-    431: 'quatre cent trente et un',
-    432: 'quatre cent trente-deux',
-    433: 'quatre cent trente-trois',
-    434: 'quatre cent trente-quatre',
-    435: 'quatre cent trente-cinq',
-    436: 'quatre cent trente-six',
-    437: 'quatre cent trente-sept',
-    438: 'quatre cent trente-huit',
-    439: 'quatre cent trente-neuf',
-    440: 'quatre cent quarante',
-    441: 'quatre cent quarante et un',
-    442: 'quatre cent quarante-deux',
-    443: 'quatre cent quarante-trois',
-    444: 'quatre cent quarante-quatre',
-    445: 'quatre cent quarante-cinq',
-    446: 'quatre cent quarante-six',
-    447: 'quatre cent quarante-sept',
-    448: 'quatre cent quarante-huit',
-    449: 'quatre cent quarante-neuf',
-    450: 'quatre cent cinquante',
-    451: 'quatre cent cinquante et un',
-    452: 'quatre cent cinquante-deux',
-    453: 'quatre cent cinquante-trois',
-    454: 'quatre cent cinquante-quatre',
-    455: 'quatre cent cinquante-cinq',
-    456: 'quatre cent cinquante-six',
-    457: 'quatre cent cinquante-sept',
-    458: 'quatre cent cinquante-huit',
-    459: 'quatre cent cinquante-neuf',
-    460: 'quatre cent soixante',
-    461: 'quatre cent soixante et un',
-    462: 'quatre cent soixante-deux',
-    463: 'quatre cent soixante-trois',
-    464: 'quatre cent soixante-quatre',
-    465: 'quatre cent soixante-cinq',
-    466: 'quatre cent soixante-six',
-    467: 'quatre cent soixante-sept',
-    468: 'quatre cent soixante-huit',
-    469: 'quatre cent soixante-neuf',
-    470: 'quatre cent soixante-dix',
-    471: 'quatre cent soixante et onze',
-    472: 'quatre cent soixante-douze',
-    473: 'quatre cent soixante-treize',
-    474: 'quatre cent soixante-quatorze',
-    475: 'quatre cent soixante-quinze',
-    476: 'quatre cent soixante-seize',
-    477: 'quatre cent soixante-dix-sept',
-    478: 'quatre cent soixante-dix-huit',
-    479: 'quatre cent soixante-dix-neuf',
-    480: 'quatre cent quatre-vingts',
-    481: 'quatre cent quatre-vingt-un',
-    482: 'quatre cent quatre-vingt-deux',
-    483: 'quatre cent quatre-vingt-trois',
-    484: 'quatre cent quatre-vingt-quatre',
-    485: 'quatre cent quatre-vingt-cinq',
-    486: 'quatre cent quatre-vingt-six',
-    487: 'quatre cent quatre-vingt-sept',
-    488: 'quatre cent quatre-vingt-huit',
-    489: 'quatre cent quatre-vingt-neuf',
-    490: 'quatre cent quatre-vingt-dix',
-    491: 'quatre cent quatre-vingt-onze',
-    492: 'quatre cent quatre-vingt-douze',
-    493: 'quatre cent quatre-vingt-treize',
-    494: 'quatre cent quatre-vingt-quatorze',
-    495: 'quatre cent quatre-vingt-quinze',
-    496: 'quatre cent quatre-vingt-seize',
-    497: 'quatre cent quatre-vingt-dix-sept',
-    498: 'quatre cent quatre-vingt-dix-huit',
-    499: 'quatre cent quatre-vingt-dix-neuf',
-    500: 'cinq cents',
-    501: 'cinq cent un',
-    502: 'cinq cent deux',
-    503: 'cinq cent trois',
-    504: 'cinq cent quatre',
-    505: 'cinq cent cinq',
-    506: 'cinq cent six',
-    507: 'cinq cent sept',
-    508: 'cinq cent huit',
-    509: 'cinq cent neuf',
-    510: 'cinq cent dix',
-    511: 'cinq cent onze',
-    512: 'cinq cent douze',
-    513: 'cinq cent treize',
-    514: 'cinq cent quatorze',
-    515: 'cinq cent quinze',
-    516: 'cinq cent seize',
-    517: 'cinq cent dix-sept',
-    518: 'cinq cent dix-huit',
-    519: 'cinq cent dix-neuf',
-    520: 'cinq cent vingt',
-    521: 'cinq cent vingt et un',
-    522: 'cinq cent vingt-deux',
-    523: 'cinq cent vingt-trois',
-    524: 'cinq cent vingt-quatre',
-    525: 'cinq cent vingt-cinq',
-    526: 'cinq cent vingt-six',
-    527: 'cinq cent vingt-sept',
-    528: 'cinq cent vingt-huit',
-    529: 'cinq cent vingt-neuf',
-    530: 'cinq cent trente',
-    531: 'cinq cent trente et un',
-    532: 'cinq cent trente-deux',
-    533: 'cinq cent trente-trois',
-    534: 'cinq cent trente-quatre',
-    535: 'cinq cent trente-cinq',
-    536: 'cinq cent trente-six',
-    537: 'cinq cent trente-sept',
-    538: 'cinq cent trente-huit',
-    539: 'cinq cent trente-neuf',
-    540: 'cinq cent quarante',
-    541: 'cinq cent quarante et un',
-    542: 'cinq cent quarante-deux',
-    543: 'cinq cent quarante-trois',
-    544: 'cinq cent quarante-quatre',
-    545: 'cinq cent quarante-cinq',
-    546: 'cinq cent quarante-six',
-    547: 'cinq cent quarante-sept',
-    548: 'cinq cent quarante-huit',
-    549: 'cinq cent quarante-neuf',
-    550: 'cinq cent cinquante',
-    551: 'cinq cent cinquante et un',
-    552: 'cinq cent cinquante-deux',
-    553: 'cinq cent cinquante-trois',
-    554: 'cinq cent cinquante-quatre',
-    555: 'cinq cent cinquante-cinq',
-    556: 'cinq cent cinquante-six',
-    557: 'cinq cent cinquante-sept',
-    558: 'cinq cent cinquante-huit',
-    559: 'cinq cent cinquante-neuf',
-    560: 'cinq cent soixante',
-    561: 'cinq cent soixante et un',
-    562: 'cinq cent soixante-deux',
-    563: 'cinq cent soixante-trois',
-    564: 'cinq cent soixante-quatre',
-    565: 'cinq cent soixante-cinq',
-    566: 'cinq cent soixante-six',
-    567: 'cinq cent soixante-sept',
-    568: 'cinq cent soixante-huit',
-    569: 'cinq cent soixante-neuf',
-    570: 'cinq cent soixante-dix',
-    571: 'cinq cent soixante et onze',
-    572: 'cinq cent soixante-douze',
-    573: 'cinq cent soixante-treize',
-    574: 'cinq cent soixante-quatorze',
-    575: 'cinq cent soixante-quinze',
-    576: 'cinq cent soixante-seize',
-    577: 'cinq cent soixante-dix-sept',
-    578: 'cinq cent soixante-dix-huit',
-    579: 'cinq cent soixante-dix-neuf',
-    580: 'cinq cent quatre-vingts',
-    581: 'cinq cent quatre-vingt-un',
-    582: 'cinq cent quatre-vingt-deux',
-    583: 'cinq cent quatre-vingt-trois',
-    584: 'cinq cent quatre-vingt-quatre',
-    585: 'cinq cent quatre-vingt-cinq',
-    586: 'cinq cent quatre-vingt-six',
-    587: 'cinq cent quatre-vingt-sept',
-    588: 'cinq cent quatre-vingt-huit',
-    589: 'cinq cent quatre-vingt-neuf',
-    590: 'cinq cent quatre-vingt-dix',
-    591: 'cinq cent quatre-vingt-onze',
-    592: 'cinq cent quatre-vingt-douze',
-    593: 'cinq cent quatre-vingt-treize',
-    594: 'cinq cent quatre-vingt-quatorze',
-    595: 'cinq cent quatre-vingt-quinze',
-    596: 'cinq cent quatre-vingt-seize',
-    597: 'cinq cent quatre-vingt-dix-sept',
-    598: 'cinq cent quatre-vingt-dix-huit',
-    599: 'cinq cent quatre-vingt-dix-neuf',
-    600: 'six cents',
-    601: 'six cent un',
-    602: 'six cent deux',
-    603: 'six cent trois',
-    604: 'six cent quatre',
-    605: 'six cent cinq',
-    606: 'six cent six',
-    607: 'six cent sept',
-    608: 'six cent huit',
-    609: 'six cent neuf',
-    610: 'six cent dix',
-    611: 'six cent onze',
-    612: 'six cent douze',
-    613: 'six cent treize',
-    614: 'six cent quatorze',
-    615: 'six cent quinze',
-    616: 'six cent seize',
-    617: 'six cent dix-sept',
-    618: 'six cent dix-huit',
-    619: 'six cent dix-neuf',
-    620: 'six cent vingt',
-    621: 'six cent vingt et un',
-    622: 'six cent vingt-deux',
-    623: 'six cent vingt-trois',
-    624: 'six cent vingt-quatre',
-    625: 'six cent vingt-cinq',
-    626: 'six cent vingt-six',
-    627: 'six cent vingt-sept',
-    628: 'six cent vingt-huit',
-    629: 'six cent vingt-neuf',
-    630: 'six cent trente',
-    631: 'six cent trente et un',
-    632: 'six cent trente-deux',
-    633: 'six cent trente-trois',
-    634: 'six cent trente-quatre',
-    635: 'six cent trente-cinq',
-    636: 'six cent trente-six',
-    637: 'six cent trente-sept',
-    638: 'six cent trente-huit',
-    639: 'six cent trente-neuf',
-    640: 'six cent quarante',
-    641: 'six cent quarante et un',
-    642: 'six cent quarante-deux',
-    643: 'six cent quarante-trois',
-    644: 'six cent quarante-quatre',
-    645: 'six cent quarante-cinq',
-    646: 'six cent quarante-six',
-    647: 'six cent quarante-sept',
-    648: 'six cent quarante-huit',
-    649: 'six cent quarante-neuf',
-    650: 'six cent cinquante',
-    651: 'six cent cinquante et un',
-    652: 'six cent cinquante-deux',
-    653: 'six cent cinquante-trois',
-    654: 'six cent cinquante-quatre',
-    655: 'six cent cinquante-cinq',
-    656: 'six cent cinquante-six',
-    657: 'six cent cinquante-sept',
-    658: 'six cent cinquante-huit',
-    659: 'six cent cinquante-neuf',
-    660: 'six cent soixante',
-    661: 'six cent soixante et un',
-    662: 'six cent soixante-deux',
-    663: 'six cent soixante-trois',
-    664: 'six cent soixante-quatre',
-    665: 'six cent soixante-cinq',
-    666: 'six cent soixante-six',
-    667: 'six cent soixante-sept',
-    668: 'six cent soixante-huit',
-    669: 'six cent soixante-neuf',
-    670: 'six cent soixante-dix',
-    671: 'six cent soixante et onze',
-    672: 'six cent soixante-douze',
-    673: 'six cent soixante-treize',
-    674: 'six cent soixante-quatorze',
-    675: 'six cent soixante-quinze',
-    676: 'six cent soixante-seize',
-    677: 'six cent soixante-dix-sept',
-    678: 'six cent soixante-dix-huit',
-    679: 'six cent soixante-dix-neuf',
-    680: 'six cent quatre-vingts',
-    681: 'six cent quatre-vingt-un',
-    682: 'six cent quatre-vingt-deux',
-    683: 'six cent quatre-vingt-trois',
-    684: 'six cent quatre-vingt-quatre',
-    685: 'six cent quatre-vingt-cinq',
-    686: 'six cent quatre-vingt-six',
-    687: 'six cent quatre-vingt-sept',
-    688: 'six cent quatre-vingt-huit',
-    689: 'six cent quatre-vingt-neuf',
-    690: 'six cent quatre-vingt-dix',
-    691: 'six cent quatre-vingt-onze',
-    692: 'six cent quatre-vingt-douze',
-    693: 'six cent quatre-vingt-treize',
-    694: 'six cent quatre-vingt-quatorze',
-    695: 'six cent quatre-vingt-quinze',
-    696: 'six cent quatre-vingt-seize',
-    697: 'six cent quatre-vingt-dix-sept',
-    698: 'six cent quatre-vingt-dix-huit',
-    699: 'six cent quatre-vingt-dix-neuf',
-    700: 'sept cents',
-    701: 'sept cent un',
-    702: 'sept cent deux',
-    703: 'sept cent trois',
-    704: 'sept cent quatre',
-    705: 'sept cent cinq',
-    706: 'sept cent six',
-    707: 'sept cent sept',
-    708: 'sept cent huit',
-    709: 'sept cent neuf',
-    710: 'sept cent dix',
-    711: 'sept cent onze',
-    712: 'sept cent douze',
-    713: 'sept cent treize',
-    714: 'sept cent quatorze',
-    715: 'sept cent quinze',
-    716: 'sept cent seize',
-    717: 'sept cent dix-sept',
-    718: 'sept cent dix-huit',
-    719: 'sept cent dix-neuf',
-    720: 'sept cent vingt',
-    721: 'sept cent vingt et un',
-    722: 'sept cent vingt-deux',
-    723: 'sept cent vingt-trois',
-    724: 'sept cent vingt-quatre',
-    725: 'sept cent vingt-cinq',
-    726: 'sept cent vingt-six',
-    727: 'sept cent vingt-sept',
-    728: 'sept cent vingt-huit',
-    729: 'sept cent vingt-neuf',
-    730: 'sept cent trente',
-    731: 'sept cent trente et un',
-    732: 'sept cent trente-deux',
-    733: 'sept cent trente-trois',
-    734: 'sept cent trente-quatre',
-    735: 'sept cent trente-cinq',
-    736: 'sept cent trente-six',
-    737: 'sept cent trente-sept',
-    738: 'sept cent trente-huit',
-    739: 'sept cent trente-neuf',
-    740: 'sept cent quarante',
-    741: 'sept cent quarante et un',
-    742: 'sept cent quarante-deux',
-    743: 'sept cent quarante-trois',
-    744: 'sept cent quarante-quatre',
-    745: 'sept cent quarante-cinq',
-    746: 'sept cent quarante-six',
-    747: 'sept cent quarante-sept',
-    748: 'sept cent quarante-huit',
-    749: 'sept cent quarante-neuf',
-    750: 'sept cent cinquante',
-    751: 'sept cent cinquante et un',
-    752: 'sept cent cinquante-deux',
-    753: 'sept cent cinquante-trois',
-    754: 'sept cent cinquante-quatre',
-    755: 'sept cent cinquante-cinq',
-    756: 'sept cent cinquante-six',
-    757: 'sept cent cinquante-sept',
-    758: 'sept cent cinquante-huit',
-    759: 'sept cent cinquante-neuf',
-    760: 'sept cent soixante',
-    761: 'sept cent soixante et un',
-    762: 'sept cent soixante-deux',
-    763: 'sept cent soixante-trois',
-    764: 'sept cent soixante-quatre',
-    765: 'sept cent soixante-cinq',
-    766: 'sept cent soixante-six',
-    767: 'sept cent soixante-sept',
-    768: 'sept cent soixante-huit',
-    769: 'sept cent soixante-neuf',
-    770: 'sept cent soixante-dix',
-    771: 'sept cent soixante et onze',
-    772: 'sept cent soixante-douze',
-    773: 'sept cent soixante-treize',
-    774: 'sept cent soixante-quatorze',
-    775: 'sept cent soixante-quinze',
-    776: 'sept cent soixante-seize',
-    777: 'sept cent soixante-dix-sept',
-    778: 'sept cent soixante-dix-huit',
-    779: 'sept cent soixante-dix-neuf',
-    780: 'sept cent quatre-vingts',
-    781: 'sept cent quatre-vingt-un',
-    782: 'sept cent quatre-vingt-deux',
-    783: 'sept cent quatre-vingt-trois',
-    784: 'sept cent quatre-vingt-quatre',
-    785: 'sept cent quatre-vingt-cinq',
-    786: 'sept cent quatre-vingt-six',
-    787: 'sept cent quatre-vingt-sept',
-    788: 'sept cent quatre-vingt-huit',
-    789: 'sept cent quatre-vingt-neuf',
-    790: 'sept cent quatre-vingt-dix',
-    791: 'sept cent quatre-vingt-onze',
-    792: 'sept cent quatre-vingt-douze',
-    793: 'sept cent quatre-vingt-treize',
-    794: 'sept cent quatre-vingt-quatorze',
-    795: 'sept cent quatre-vingt-quinze',
-    796: 'sept cent quatre-vingt-seize',
-    797: 'sept cent quatre-vingt-dix-sept',
-    798: 'sept cent quatre-vingt-dix-huit',
-    799: 'sept cent quatre-vingt-dix-neuf',
-    800: 'huit cents',
-    801: 'huit cent un',
-    802: 'huit cent deux',
-    803: 'huit cent trois',
-    804: 'huit cent quatre',
-    805: 'huit cent cinq',
-    806: 'huit cent six',
-    807: 'huit cent sept',
-    808: 'huit cent huit',
-    809: 'huit cent neuf',
-    810: 'huit cent dix',
-    811: 'huit cent onze',
-    812: 'huit cent douze',
-    813: 'huit cent treize',
-    814: 'huit cent quatorze',
-    815: 'huit cent quinze',
-    816: 'huit cent seize',
-    817: 'huit cent dix-sept',
-    818: 'huit cent dix-huit',
-    819: 'huit cent dix-neuf',
-    820: 'huit cent vingt',
-    821: 'huit cent vingt et un',
-    822: 'huit cent vingt-deux',
-    823: 'huit cent vingt-trois',
-    824: 'huit cent vingt-quatre',
-    825: 'huit cent vingt-cinq',
-    826: 'huit cent vingt-six',
-    827: 'huit cent vingt-sept',
-    828: 'huit cent vingt-huit',
-    829: 'huit cent vingt-neuf',
-    830: 'huit cent trente',
-    831: 'huit cent trente et un',
-    832: 'huit cent trente-deux',
-    833: 'huit cent trente-trois',
-    834: 'huit cent trente-quatre',
-    835: 'huit cent trente-cinq',
-    836: 'huit cent trente-six',
-    837: 'huit cent trente-sept',
-    838: 'huit cent trente-huit',
-    839: 'huit cent trente-neuf',
-    840: 'huit cent quarante',
-    841: 'huit cent quarante et un',
-    842: 'huit cent quarante-deux',
-    843: 'huit cent quarante-trois',
-    844: 'huit cent quarante-quatre',
-    845: 'huit cent quarante-cinq',
-    846: 'huit cent quarante-six',
-    847: 'huit cent quarante-sept',
-    848: 'huit cent quarante-huit',
-    849: 'huit cent quarante-neuf',
-    850: 'huit cent cinquante',
-    851: 'huit cent cinquante et un',
-    852: 'huit cent cinquante-deux',
-    853: 'huit cent cinquante-trois',
-    854: 'huit cent cinquante-quatre',
-    855: 'huit cent cinquante-cinq',
-    856: 'huit cent cinquante-six',
-    857: 'huit cent cinquante-sept',
-    858: 'huit cent cinquante-huit',
-    859: 'huit cent cinquante-neuf',
-    860: 'huit cent soixante',
-    861: 'huit cent soixante et un',
-    862: 'huit cent soixante-deux',
-    863: 'huit cent soixante-trois',
-    864: 'huit cent soixante-quatre',
-    865: 'huit cent soixante-cinq',
-    866: 'huit cent soixante-six',
-    867: 'huit cent soixante-sept',
-    868: 'huit cent soixante-huit',
-    869: 'huit cent soixante-neuf',
-    870: 'huit cent soixante-dix',
-    871: 'huit cent soixante et onze',
-    872: 'huit cent soixante-douze',
-    873: 'huit cent soixante-treize',
-    874: 'huit cent soixante-quatorze',
-    875: 'huit cent soixante-quinze',
-    876: 'huit cent soixante-seize',
-    877: 'huit cent soixante-dix-sept',
-    878: 'huit cent soixante-dix-huit',
-    879: 'huit cent soixante-dix-neuf',
-    880: 'huit cent quatre-vingts',
-    881: 'huit cent quatre-vingt-un',
-    882: 'huit cent quatre-vingt-deux',
-    883: 'huit cent quatre-vingt-trois',
-    884: 'huit cent quatre-vingt-quatre',
-    885: 'huit cent quatre-vingt-cinq',
-    886: 'huit cent quatre-vingt-six',
-    887: 'huit cent quatre-vingt-sept',
-    888: 'huit cent quatre-vingt-huit',
-    889: 'huit cent quatre-vingt-neuf',
-    890: 'huit cent quatre-vingt-dix',
-    891: 'huit cent quatre-vingt-onze',
-    892: 'huit cent quatre-vingt-douze',
-    893: 'huit cent quatre-vingt-treize',
-    894: 'huit cent quatre-vingt-quatorze',
-    895: 'huit cent quatre-vingt-quinze',
-    896: 'huit cent quatre-vingt-seize',
-    897: 'huit cent quatre-vingt-dix-sept',
-    898: 'huit cent quatre-vingt-dix-huit',
-    899: 'huit cent quatre-vingt-dix-neuf',
-    900: 'neuf cents',
-    901: 'neuf cent un',
-    902: 'neuf cent deux',
-    903: 'neuf cent trois',
-    904: 'neuf cent quatre',
-    905: 'neuf cent cinq',
-    906: 'neuf cent six',
-    907: 'neuf cent sept',
-    908: 'neuf cent huit',
-    909: 'neuf cent neuf',
-    910: 'neuf cent dix',
-    911: 'neuf cent onze',
-    912: 'neuf cent douze',
-    913: 'neuf cent treize',
-    914: 'neuf cent quatorze',
-    915: 'neuf cent quinze',
-    916: 'neuf cent seize',
-    917: 'neuf cent dix-sept',
-    918: 'neuf cent dix-huit',
-    919: 'neuf cent dix-neuf',
-    920: 'neuf cent vingt',
-    921: 'neuf cent vingt et un',
-    922: 'neuf cent vingt-deux',
-    923: 'neuf cent vingt-trois',
-    924: 'neuf cent vingt-quatre',
-    925: 'neuf cent vingt-cinq',
-    926: 'neuf cent vingt-six',
-    927: 'neuf cent vingt-sept',
-    928: 'neuf cent vingt-huit',
-    929: 'neuf cent vingt-neuf',
-    930: 'neuf cent trente',
-    931: 'neuf cent trente et un',
-    932: 'neuf cent trente-deux',
-    933: 'neuf cent trente-trois',
-    934: 'neuf cent trente-quatre',
-    935: 'neuf cent trente-cinq',
-    936: 'neuf cent trente-six',
-    937: 'neuf cent trente-sept',
-    938: 'neuf cent trente-huit',
-    939: 'neuf cent trente-neuf',
-    940: 'neuf cent quarante',
-    941: 'neuf cent quarante et un',
-    942: 'neuf cent quarante-deux',
-    943: 'neuf cent quarante-trois',
-    944: 'neuf cent quarante-quatre',
-    945: 'neuf cent quarante-cinq',
-    946: 'neuf cent quarante-six',
-    947: 'neuf cent quarante-sept',
-    948: 'neuf cent quarante-huit',
-    949: 'neuf cent quarante-neuf',
-    950: 'neuf cent cinquante',
-    951: 'neuf cent cinquante et un',
-    952: 'neuf cent cinquante-deux',
-    953: 'neuf cent cinquante-trois',
-    954: 'neuf cent cinquante-quatre',
-    955: 'neuf cent cinquante-cinq',
-    956: 'neuf cent cinquante-six',
-    957: 'neuf cent cinquante-sept',
-    958: 'neuf cent cinquante-huit',
-    959: 'neuf cent cinquante-neuf',
-    960: 'neuf cent soixante',
-    961: 'neuf cent soixante et un',
-    962: 'neuf cent soixante-deux',
-    963: 'neuf cent soixante-trois',
-    964: 'neuf cent soixante-quatre',
-    965: 'neuf cent soixante-cinq',
-    966: 'neuf cent soixante-six',
-    967: 'neuf cent soixante-sept',
-    968: 'neuf cent soixante-huit',
-    969: 'neuf cent soixante-neuf',
-    970: 'neuf cent soixante-dix',
-    971: 'neuf cent soixante et onze',
-    972: 'neuf cent soixante-douze',
-    973: 'neuf cent soixante-treize',
-    974: 'neuf cent soixante-quatorze',
-    975: 'neuf cent soixante-quinze',
-    976: 'neuf cent soixante-seize',
-    977: 'neuf cent soixante-dix-sept',
-    978: 'neuf cent soixante-dix-huit',
-    979: 'neuf cent soixante-dix-neuf',
-    980: 'neuf cent quatre-vingts',
-    981: 'neuf cent quatre-vingt-un',
-    982: 'neuf cent quatre-vingt-deux',
-    983: 'neuf cent quatre-vingt-trois',
-    984: 'neuf cent quatre-vingt-quatre',
-    985: 'neuf cent quatre-vingt-cinq',
-    986: 'neuf cent quatre-vingt-six',
-    987: 'neuf cent quatre-vingt-sept',
-    988: 'neuf cent quatre-vingt-huit',
-    989: 'neuf cent quatre-vingt-neuf',
-    990: 'neuf cent quatre-vingt-dix',
-    991: 'neuf cent quatre-vingt-onze',
-    992: 'neuf cent quatre-vingt-douze',
-    993: 'neuf cent quatre-vingt-treize',
-    994: 'neuf cent quatre-vingt-quatorze',
-    995: 'neuf cent quatre-vingt-quinze',
-    996: 'neuf cent quatre-vingt-seize',
-    997: 'neuf cent quatre-vingt-dix-sept',
-    998: 'neuf cent quatre-vingt-dix-huit',
-    999: 'neuf cent quatre-vingt-dix-neuf'
+    0: "zéro",
+    "000": "",
+    1: "un",
+    2: "deux",
+    3: "trois",
+    4: "quatre",
+    5: "cinq",
+    6: "six",
+    7: "sept",
+    8: "huit",
+    9: "neuf",
+    10: "dix",
+    11: "onze",
+    12: "douze",
+    13: "treize",
+    14: "quatorze",
+    15: "quinze",
+    16: "seize",
+    17: "dix-sept",
+    18: "dix-huit",
+    19: "dix-neuf",
+    20: "vingt",
+    21: "vingt et un",
+    22: "vingt-deux",
+    23: "vingt-trois",
+    24: "vingt-quatre",
+    25: "vingt-cinq",
+    26: "vingt-six",
+    27: "vingt-sept",
+    28: "vingt-huit",
+    29: "vingt-neuf",
+    30: "trente",
+    31: "trente et un",
+    32: "trente-deux",
+    33: "trente-trois",
+    34: "trente-quatre",
+    35: "trente-cinq",
+    36: "trente-six",
+    37: "trente-sept",
+    38: "trente-huit",
+    39: "trente-neuf",
+    40: "quarante",
+    41: "quarante et un",
+    42: "quarante-deux",
+    43: "quarante-trois",
+    44: "quarante-quatre",
+    45: "quarante-cinq",
+    46: "quarante-six",
+    47: "quarante-sept",
+    48: "quarante-huit",
+    49: "quarante-neuf",
+    50: "cinquante",
+    51: "cinquante et un",
+    52: "cinquante-deux",
+    53: "cinquante-trois",
+    54: "cinquante-quatre",
+    55: "cinquante-cinq",
+    56: "cinquante-six",
+    57: "cinquante-sept",
+    58: "cinquante-huit",
+    59: "cinquante-neuf",
+    60: "soixante",
+    61: "soixante et un",
+    62: "soixante-deux",
+    63: "soixante-trois",
+    64: "soixante-quatre",
+    65: "soixante-cinq",
+    66: "soixante-six",
+    67: "soixante-sept",
+    68: "soixante-huit",
+    69: "soixante-neuf",
+    70: "soixante-dix",
+    71: "soixante et onze",
+    72: "soixante-douze",
+    73: "soixante-treize",
+    74: "soixante-quatorze",
+    75: "soixante-quinze",
+    76: "soixante-seize",
+    77: "soixante-dix-sept",
+    78: "soixante-dix-huit",
+    79: "soixante-dix-neuf",
+    80: "quatre-vingts",
+    81: "quatre-vingt-un",
+    82: "quatre-vingt-deux",
+    83: "quatre-vingt-trois",
+    84: "quatre-vingt-quatre",
+    85: "quatre-vingt-cinq",
+    86: "quatre-vingt-six",
+    87: "quatre-vingt-sept",
+    88: "quatre-vingt-huit",
+    89: "quatre-vingt-neuf",
+    90: "quatre-vingt-dix",
+    91: "quatre-vingt-onze",
+    92: "quatre-vingt-douze",
+    93: "quatre-vingt-treize",
+    94: "quatre-vingt-quatorze",
+    95: "quatre-vingt-quinze",
+    96: "quatre-vingt-seize",
+    97: "quatre-vingt-dix-sept",
+    98: "quatre-vingt-dix-huit",
+    99: "quatre-vingt-dix-neuf",
+    100: "cent",
+    101: "cent un",
+    102: "cent deux",
+    103: "cent trois",
+    104: "cent quatre",
+    105: "cent cinq",
+    106: "cent six",
+    107: "cent sept",
+    108: "cent huit",
+    109: "cent neuf",
+    110: "cent dix",
+    111: "cent onze",
+    112: "cent douze",
+    113: "cent treize",
+    114: "cent quatorze",
+    115: "cent quinze",
+    116: "cent seize",
+    117: "cent dix-sept",
+    118: "cent dix-huit",
+    119: "cent dix-neuf",
+    120: "cent vingt",
+    121: "cent vingt et un",
+    122: "cent vingt-deux",
+    123: "cent vingt-trois",
+    124: "cent vingt-quatre",
+    125: "cent vingt-cinq",
+    126: "cent vingt-six",
+    127: "cent vingt-sept",
+    128: "cent vingt-huit",
+    129: "cent vingt-neuf",
+    130: "cent trente",
+    131: "cent trente et un",
+    132: "cent trente-deux",
+    133: "cent trente-trois",
+    134: "cent trente-quatre",
+    135: "cent trente-cinq",
+    136: "cent trente-six",
+    137: "cent trente-sept",
+    138: "cent trente-huit",
+    139: "cent trente-neuf",
+    140: "cent quarante",
+    141: "cent quarante et un",
+    142: "cent quarante-deux",
+    143: "cent quarante-trois",
+    144: "cent quarante-quatre",
+    145: "cent quarante-cinq",
+    146: "cent quarante-six",
+    147: "cent quarante-sept",
+    148: "cent quarante-huit",
+    149: "cent quarante-neuf",
+    150: "cent cinquante",
+    151: "cent cinquante et un",
+    152: "cent cinquante-deux",
+    153: "cent cinquante-trois",
+    154: "cent cinquante-quatre",
+    155: "cent cinquante-cinq",
+    156: "cent cinquante-six",
+    157: "cent cinquante-sept",
+    158: "cent cinquante-huit",
+    159: "cent cinquante-neuf",
+    160: "cent soixante",
+    161: "cent soixante et un",
+    162: "cent soixante-deux",
+    163: "cent soixante-trois",
+    164: "cent soixante-quatre",
+    165: "cent soixante-cinq",
+    166: "cent soixante-six",
+    167: "cent soixante-sept",
+    168: "cent soixante-huit",
+    169: "cent soixante-neuf",
+    170: "cent soixante-dix",
+    171: "cent soixante et onze",
+    172: "cent soixante-douze",
+    173: "cent soixante-treize",
+    174: "cent soixante-quatorze",
+    175: "cent soixante-quinze",
+    176: "cent soixante-seize",
+    177: "cent soixante-dix-sept",
+    178: "cent soixante-dix-huit",
+    179: "cent soixante-dix-neuf",
+    180: "cent quatre-vingts",
+    181: "cent quatre-vingt-un",
+    182: "cent quatre-vingt-deux",
+    183: "cent quatre-vingt-trois",
+    184: "cent quatre-vingt-quatre",
+    185: "cent quatre-vingt-cinq",
+    186: "cent quatre-vingt-six",
+    187: "cent quatre-vingt-sept",
+    188: "cent quatre-vingt-huit",
+    189: "cent quatre-vingt-neuf",
+    190: "cent quatre-vingt-dix",
+    191: "cent quatre-vingt-onze",
+    192: "cent quatre-vingt-douze",
+    193: "cent quatre-vingt-treize",
+    194: "cent quatre-vingt-quatorze",
+    195: "cent quatre-vingt-quinze",
+    196: "cent quatre-vingt-seize",
+    197: "cent quatre-vingt-dix-sept",
+    198: "cent quatre-vingt-dix-huit",
+    199: "cent quatre-vingt-dix-neuf",
+    200: "deux cents",
+    201: "deux cent un",
+    202: "deux cent deux",
+    203: "deux cent trois",
+    204: "deux cent quatre",
+    205: "deux cent cinq",
+    206: "deux cent six",
+    207: "deux cent sept",
+    208: "deux cent huit",
+    209: "deux cent neuf",
+    210: "deux cent dix",
+    211: "deux cent onze",
+    212: "deux cent douze",
+    213: "deux cent treize",
+    214: "deux cent quatorze",
+    215: "deux cent quinze",
+    216: "deux cent seize",
+    217: "deux cent dix-sept",
+    218: "deux cent dix-huit",
+    219: "deux cent dix-neuf",
+    220: "deux cent vingt",
+    221: "deux cent vingt et un",
+    222: "deux cent vingt-deux",
+    223: "deux cent vingt-trois",
+    224: "deux cent vingt-quatre",
+    225: "deux cent vingt-cinq",
+    226: "deux cent vingt-six",
+    227: "deux cent vingt-sept",
+    228: "deux cent vingt-huit",
+    229: "deux cent vingt-neuf",
+    230: "deux cent trente",
+    231: "deux cent trente et un",
+    232: "deux cent trente-deux",
+    233: "deux cent trente-trois",
+    234: "deux cent trente-quatre",
+    235: "deux cent trente-cinq",
+    236: "deux cent trente-six",
+    237: "deux cent trente-sept",
+    238: "deux cent trente-huit",
+    239: "deux cent trente-neuf",
+    240: "deux cent quarante",
+    241: "deux cent quarante et un",
+    242: "deux cent quarante-deux",
+    243: "deux cent quarante-trois",
+    244: "deux cent quarante-quatre",
+    245: "deux cent quarante-cinq",
+    246: "deux cent quarante-six",
+    247: "deux cent quarante-sept",
+    248: "deux cent quarante-huit",
+    249: "deux cent quarante-neuf",
+    250: "deux cent cinquante",
+    251: "deux cent cinquante et un",
+    252: "deux cent cinquante-deux",
+    253: "deux cent cinquante-trois",
+    254: "deux cent cinquante-quatre",
+    255: "deux cent cinquante-cinq",
+    256: "deux cent cinquante-six",
+    257: "deux cent cinquante-sept",
+    258: "deux cent cinquante-huit",
+    259: "deux cent cinquante-neuf",
+    260: "deux cent soixante",
+    261: "deux cent soixante et un",
+    262: "deux cent soixante-deux",
+    263: "deux cent soixante-trois",
+    264: "deux cent soixante-quatre",
+    265: "deux cent soixante-cinq",
+    266: "deux cent soixante-six",
+    267: "deux cent soixante-sept",
+    268: "deux cent soixante-huit",
+    269: "deux cent soixante-neuf",
+    270: "deux cent soixante-dix",
+    271: "deux cent soixante et onze",
+    272: "deux cent soixante-douze",
+    273: "deux cent soixante-treize",
+    274: "deux cent soixante-quatorze",
+    275: "deux cent soixante-quinze",
+    276: "deux cent soixante-seize",
+    277: "deux cent soixante-dix-sept",
+    278: "deux cent soixante-dix-huit",
+    279: "deux cent soixante-dix-neuf",
+    280: "deux cent quatre-vingts",
+    281: "deux cent quatre-vingt-un",
+    282: "deux cent quatre-vingt-deux",
+    283: "deux cent quatre-vingt-trois",
+    284: "deux cent quatre-vingt-quatre",
+    285: "deux cent quatre-vingt-cinq",
+    286: "deux cent quatre-vingt-six",
+    287: "deux cent quatre-vingt-sept",
+    288: "deux cent quatre-vingt-huit",
+    289: "deux cent quatre-vingt-neuf",
+    290: "deux cent quatre-vingt-dix",
+    291: "deux cent quatre-vingt-onze",
+    292: "deux cent quatre-vingt-douze",
+    293: "deux cent quatre-vingt-treize",
+    294: "deux cent quatre-vingt-quatorze",
+    295: "deux cent quatre-vingt-quinze",
+    296: "deux cent quatre-vingt-seize",
+    297: "deux cent quatre-vingt-dix-sept",
+    298: "deux cent quatre-vingt-dix-huit",
+    299: "deux cent quatre-vingt-dix-neuf",
+    300: "trois cents",
+    301: "trois cent un",
+    302: "trois cent deux",
+    303: "trois cent trois",
+    304: "trois cent quatre",
+    305: "trois cent cinq",
+    306: "trois cent six",
+    307: "trois cent sept",
+    308: "trois cent huit",
+    309: "trois cent neuf",
+    310: "trois cent dix",
+    311: "trois cent onze",
+    312: "trois cent douze",
+    313: "trois cent treize",
+    314: "trois cent quatorze",
+    315: "trois cent quinze",
+    316: "trois cent seize",
+    317: "trois cent dix-sept",
+    318: "trois cent dix-huit",
+    319: "trois cent dix-neuf",
+    320: "trois cent vingt",
+    321: "trois cent vingt et un",
+    322: "trois cent vingt-deux",
+    323: "trois cent vingt-trois",
+    324: "trois cent vingt-quatre",
+    325: "trois cent vingt-cinq",
+    326: "trois cent vingt-six",
+    327: "trois cent vingt-sept",
+    328: "trois cent vingt-huit",
+    329: "trois cent vingt-neuf",
+    330: "trois cent trente",
+    331: "trois cent trente et un",
+    332: "trois cent trente-deux",
+    333: "trois cent trente-trois",
+    334: "trois cent trente-quatre",
+    335: "trois cent trente-cinq",
+    336: "trois cent trente-six",
+    337: "trois cent trente-sept",
+    338: "trois cent trente-huit",
+    339: "trois cent trente-neuf",
+    340: "trois cent quarante",
+    341: "trois cent quarante et un",
+    342: "trois cent quarante-deux",
+    343: "trois cent quarante-trois",
+    344: "trois cent quarante-quatre",
+    345: "trois cent quarante-cinq",
+    346: "trois cent quarante-six",
+    347: "trois cent quarante-sept",
+    348: "trois cent quarante-huit",
+    349: "trois cent quarante-neuf",
+    350: "trois cent cinquante",
+    351: "trois cent cinquante et un",
+    352: "trois cent cinquante-deux",
+    353: "trois cent cinquante-trois",
+    354: "trois cent cinquante-quatre",
+    355: "trois cent cinquante-cinq",
+    356: "trois cent cinquante-six",
+    357: "trois cent cinquante-sept",
+    358: "trois cent cinquante-huit",
+    359: "trois cent cinquante-neuf",
+    360: "trois cent soixante",
+    361: "trois cent soixante et un",
+    362: "trois cent soixante-deux",
+    363: "trois cent soixante-trois",
+    364: "trois cent soixante-quatre",
+    365: "trois cent soixante-cinq",
+    366: "trois cent soixante-six",
+    367: "trois cent soixante-sept",
+    368: "trois cent soixante-huit",
+    369: "trois cent soixante-neuf",
+    370: "trois cent soixante-dix",
+    371: "trois cent soixante et onze",
+    372: "trois cent soixante-douze",
+    373: "trois cent soixante-treize",
+    374: "trois cent soixante-quatorze",
+    375: "trois cent soixante-quinze",
+    376: "trois cent soixante-seize",
+    377: "trois cent soixante-dix-sept",
+    378: "trois cent soixante-dix-huit",
+    379: "trois cent soixante-dix-neuf",
+    380: "trois cent quatre-vingts",
+    381: "trois cent quatre-vingt-un",
+    382: "trois cent quatre-vingt-deux",
+    383: "trois cent quatre-vingt-trois",
+    384: "trois cent quatre-vingt-quatre",
+    385: "trois cent quatre-vingt-cinq",
+    386: "trois cent quatre-vingt-six",
+    387: "trois cent quatre-vingt-sept",
+    388: "trois cent quatre-vingt-huit",
+    389: "trois cent quatre-vingt-neuf",
+    390: "trois cent quatre-vingt-dix",
+    391: "trois cent quatre-vingt-onze",
+    392: "trois cent quatre-vingt-douze",
+    393: "trois cent quatre-vingt-treize",
+    394: "trois cent quatre-vingt-quatorze",
+    395: "trois cent quatre-vingt-quinze",
+    396: "trois cent quatre-vingt-seize",
+    397: "trois cent quatre-vingt-dix-sept",
+    398: "trois cent quatre-vingt-dix-huit",
+    399: "trois cent quatre-vingt-dix-neuf",
+    400: "quatre cents",
+    401: "quatre cent un",
+    402: "quatre cent deux",
+    403: "quatre cent trois",
+    404: "quatre cent quatre",
+    405: "quatre cent cinq",
+    406: "quatre cent six",
+    407: "quatre cent sept",
+    408: "quatre cent huit",
+    409: "quatre cent neuf",
+    410: "quatre cent dix",
+    411: "quatre cent onze",
+    412: "quatre cent douze",
+    413: "quatre cent treize",
+    414: "quatre cent quatorze",
+    415: "quatre cent quinze",
+    416: "quatre cent seize",
+    417: "quatre cent dix-sept",
+    418: "quatre cent dix-huit",
+    419: "quatre cent dix-neuf",
+    420: "quatre cent vingt",
+    421: "quatre cent vingt et un",
+    422: "quatre cent vingt-deux",
+    423: "quatre cent vingt-trois",
+    424: "quatre cent vingt-quatre",
+    425: "quatre cent vingt-cinq",
+    426: "quatre cent vingt-six",
+    427: "quatre cent vingt-sept",
+    428: "quatre cent vingt-huit",
+    429: "quatre cent vingt-neuf",
+    430: "quatre cent trente",
+    431: "quatre cent trente et un",
+    432: "quatre cent trente-deux",
+    433: "quatre cent trente-trois",
+    434: "quatre cent trente-quatre",
+    435: "quatre cent trente-cinq",
+    436: "quatre cent trente-six",
+    437: "quatre cent trente-sept",
+    438: "quatre cent trente-huit",
+    439: "quatre cent trente-neuf",
+    440: "quatre cent quarante",
+    441: "quatre cent quarante et un",
+    442: "quatre cent quarante-deux",
+    443: "quatre cent quarante-trois",
+    444: "quatre cent quarante-quatre",
+    445: "quatre cent quarante-cinq",
+    446: "quatre cent quarante-six",
+    447: "quatre cent quarante-sept",
+    448: "quatre cent quarante-huit",
+    449: "quatre cent quarante-neuf",
+    450: "quatre cent cinquante",
+    451: "quatre cent cinquante et un",
+    452: "quatre cent cinquante-deux",
+    453: "quatre cent cinquante-trois",
+    454: "quatre cent cinquante-quatre",
+    455: "quatre cent cinquante-cinq",
+    456: "quatre cent cinquante-six",
+    457: "quatre cent cinquante-sept",
+    458: "quatre cent cinquante-huit",
+    459: "quatre cent cinquante-neuf",
+    460: "quatre cent soixante",
+    461: "quatre cent soixante et un",
+    462: "quatre cent soixante-deux",
+    463: "quatre cent soixante-trois",
+    464: "quatre cent soixante-quatre",
+    465: "quatre cent soixante-cinq",
+    466: "quatre cent soixante-six",
+    467: "quatre cent soixante-sept",
+    468: "quatre cent soixante-huit",
+    469: "quatre cent soixante-neuf",
+    470: "quatre cent soixante-dix",
+    471: "quatre cent soixante et onze",
+    472: "quatre cent soixante-douze",
+    473: "quatre cent soixante-treize",
+    474: "quatre cent soixante-quatorze",
+    475: "quatre cent soixante-quinze",
+    476: "quatre cent soixante-seize",
+    477: "quatre cent soixante-dix-sept",
+    478: "quatre cent soixante-dix-huit",
+    479: "quatre cent soixante-dix-neuf",
+    480: "quatre cent quatre-vingts",
+    481: "quatre cent quatre-vingt-un",
+    482: "quatre cent quatre-vingt-deux",
+    483: "quatre cent quatre-vingt-trois",
+    484: "quatre cent quatre-vingt-quatre",
+    485: "quatre cent quatre-vingt-cinq",
+    486: "quatre cent quatre-vingt-six",
+    487: "quatre cent quatre-vingt-sept",
+    488: "quatre cent quatre-vingt-huit",
+    489: "quatre cent quatre-vingt-neuf",
+    490: "quatre cent quatre-vingt-dix",
+    491: "quatre cent quatre-vingt-onze",
+    492: "quatre cent quatre-vingt-douze",
+    493: "quatre cent quatre-vingt-treize",
+    494: "quatre cent quatre-vingt-quatorze",
+    495: "quatre cent quatre-vingt-quinze",
+    496: "quatre cent quatre-vingt-seize",
+    497: "quatre cent quatre-vingt-dix-sept",
+    498: "quatre cent quatre-vingt-dix-huit",
+    499: "quatre cent quatre-vingt-dix-neuf",
+    500: "cinq cents",
+    501: "cinq cent un",
+    502: "cinq cent deux",
+    503: "cinq cent trois",
+    504: "cinq cent quatre",
+    505: "cinq cent cinq",
+    506: "cinq cent six",
+    507: "cinq cent sept",
+    508: "cinq cent huit",
+    509: "cinq cent neuf",
+    510: "cinq cent dix",
+    511: "cinq cent onze",
+    512: "cinq cent douze",
+    513: "cinq cent treize",
+    514: "cinq cent quatorze",
+    515: "cinq cent quinze",
+    516: "cinq cent seize",
+    517: "cinq cent dix-sept",
+    518: "cinq cent dix-huit",
+    519: "cinq cent dix-neuf",
+    520: "cinq cent vingt",
+    521: "cinq cent vingt et un",
+    522: "cinq cent vingt-deux",
+    523: "cinq cent vingt-trois",
+    524: "cinq cent vingt-quatre",
+    525: "cinq cent vingt-cinq",
+    526: "cinq cent vingt-six",
+    527: "cinq cent vingt-sept",
+    528: "cinq cent vingt-huit",
+    529: "cinq cent vingt-neuf",
+    530: "cinq cent trente",
+    531: "cinq cent trente et un",
+    532: "cinq cent trente-deux",
+    533: "cinq cent trente-trois",
+    534: "cinq cent trente-quatre",
+    535: "cinq cent trente-cinq",
+    536: "cinq cent trente-six",
+    537: "cinq cent trente-sept",
+    538: "cinq cent trente-huit",
+    539: "cinq cent trente-neuf",
+    540: "cinq cent quarante",
+    541: "cinq cent quarante et un",
+    542: "cinq cent quarante-deux",
+    543: "cinq cent quarante-trois",
+    544: "cinq cent quarante-quatre",
+    545: "cinq cent quarante-cinq",
+    546: "cinq cent quarante-six",
+    547: "cinq cent quarante-sept",
+    548: "cinq cent quarante-huit",
+    549: "cinq cent quarante-neuf",
+    550: "cinq cent cinquante",
+    551: "cinq cent cinquante et un",
+    552: "cinq cent cinquante-deux",
+    553: "cinq cent cinquante-trois",
+    554: "cinq cent cinquante-quatre",
+    555: "cinq cent cinquante-cinq",
+    556: "cinq cent cinquante-six",
+    557: "cinq cent cinquante-sept",
+    558: "cinq cent cinquante-huit",
+    559: "cinq cent cinquante-neuf",
+    560: "cinq cent soixante",
+    561: "cinq cent soixante et un",
+    562: "cinq cent soixante-deux",
+    563: "cinq cent soixante-trois",
+    564: "cinq cent soixante-quatre",
+    565: "cinq cent soixante-cinq",
+    566: "cinq cent soixante-six",
+    567: "cinq cent soixante-sept",
+    568: "cinq cent soixante-huit",
+    569: "cinq cent soixante-neuf",
+    570: "cinq cent soixante-dix",
+    571: "cinq cent soixante et onze",
+    572: "cinq cent soixante-douze",
+    573: "cinq cent soixante-treize",
+    574: "cinq cent soixante-quatorze",
+    575: "cinq cent soixante-quinze",
+    576: "cinq cent soixante-seize",
+    577: "cinq cent soixante-dix-sept",
+    578: "cinq cent soixante-dix-huit",
+    579: "cinq cent soixante-dix-neuf",
+    580: "cinq cent quatre-vingts",
+    581: "cinq cent quatre-vingt-un",
+    582: "cinq cent quatre-vingt-deux",
+    583: "cinq cent quatre-vingt-trois",
+    584: "cinq cent quatre-vingt-quatre",
+    585: "cinq cent quatre-vingt-cinq",
+    586: "cinq cent quatre-vingt-six",
+    587: "cinq cent quatre-vingt-sept",
+    588: "cinq cent quatre-vingt-huit",
+    589: "cinq cent quatre-vingt-neuf",
+    590: "cinq cent quatre-vingt-dix",
+    591: "cinq cent quatre-vingt-onze",
+    592: "cinq cent quatre-vingt-douze",
+    593: "cinq cent quatre-vingt-treize",
+    594: "cinq cent quatre-vingt-quatorze",
+    595: "cinq cent quatre-vingt-quinze",
+    596: "cinq cent quatre-vingt-seize",
+    597: "cinq cent quatre-vingt-dix-sept",
+    598: "cinq cent quatre-vingt-dix-huit",
+    599: "cinq cent quatre-vingt-dix-neuf",
+    600: "six cents",
+    601: "six cent un",
+    602: "six cent deux",
+    603: "six cent trois",
+    604: "six cent quatre",
+    605: "six cent cinq",
+    606: "six cent six",
+    607: "six cent sept",
+    608: "six cent huit",
+    609: "six cent neuf",
+    610: "six cent dix",
+    611: "six cent onze",
+    612: "six cent douze",
+    613: "six cent treize",
+    614: "six cent quatorze",
+    615: "six cent quinze",
+    616: "six cent seize",
+    617: "six cent dix-sept",
+    618: "six cent dix-huit",
+    619: "six cent dix-neuf",
+    620: "six cent vingt",
+    621: "six cent vingt et un",
+    622: "six cent vingt-deux",
+    623: "six cent vingt-trois",
+    624: "six cent vingt-quatre",
+    625: "six cent vingt-cinq",
+    626: "six cent vingt-six",
+    627: "six cent vingt-sept",
+    628: "six cent vingt-huit",
+    629: "six cent vingt-neuf",
+    630: "six cent trente",
+    631: "six cent trente et un",
+    632: "six cent trente-deux",
+    633: "six cent trente-trois",
+    634: "six cent trente-quatre",
+    635: "six cent trente-cinq",
+    636: "six cent trente-six",
+    637: "six cent trente-sept",
+    638: "six cent trente-huit",
+    639: "six cent trente-neuf",
+    640: "six cent quarante",
+    641: "six cent quarante et un",
+    642: "six cent quarante-deux",
+    643: "six cent quarante-trois",
+    644: "six cent quarante-quatre",
+    645: "six cent quarante-cinq",
+    646: "six cent quarante-six",
+    647: "six cent quarante-sept",
+    648: "six cent quarante-huit",
+    649: "six cent quarante-neuf",
+    650: "six cent cinquante",
+    651: "six cent cinquante et un",
+    652: "six cent cinquante-deux",
+    653: "six cent cinquante-trois",
+    654: "six cent cinquante-quatre",
+    655: "six cent cinquante-cinq",
+    656: "six cent cinquante-six",
+    657: "six cent cinquante-sept",
+    658: "six cent cinquante-huit",
+    659: "six cent cinquante-neuf",
+    660: "six cent soixante",
+    661: "six cent soixante et un",
+    662: "six cent soixante-deux",
+    663: "six cent soixante-trois",
+    664: "six cent soixante-quatre",
+    665: "six cent soixante-cinq",
+    666: "six cent soixante-six",
+    667: "six cent soixante-sept",
+    668: "six cent soixante-huit",
+    669: "six cent soixante-neuf",
+    670: "six cent soixante-dix",
+    671: "six cent soixante et onze",
+    672: "six cent soixante-douze",
+    673: "six cent soixante-treize",
+    674: "six cent soixante-quatorze",
+    675: "six cent soixante-quinze",
+    676: "six cent soixante-seize",
+    677: "six cent soixante-dix-sept",
+    678: "six cent soixante-dix-huit",
+    679: "six cent soixante-dix-neuf",
+    680: "six cent quatre-vingts",
+    681: "six cent quatre-vingt-un",
+    682: "six cent quatre-vingt-deux",
+    683: "six cent quatre-vingt-trois",
+    684: "six cent quatre-vingt-quatre",
+    685: "six cent quatre-vingt-cinq",
+    686: "six cent quatre-vingt-six",
+    687: "six cent quatre-vingt-sept",
+    688: "six cent quatre-vingt-huit",
+    689: "six cent quatre-vingt-neuf",
+    690: "six cent quatre-vingt-dix",
+    691: "six cent quatre-vingt-onze",
+    692: "six cent quatre-vingt-douze",
+    693: "six cent quatre-vingt-treize",
+    694: "six cent quatre-vingt-quatorze",
+    695: "six cent quatre-vingt-quinze",
+    696: "six cent quatre-vingt-seize",
+    697: "six cent quatre-vingt-dix-sept",
+    698: "six cent quatre-vingt-dix-huit",
+    699: "six cent quatre-vingt-dix-neuf",
+    700: "sept cents",
+    701: "sept cent un",
+    702: "sept cent deux",
+    703: "sept cent trois",
+    704: "sept cent quatre",
+    705: "sept cent cinq",
+    706: "sept cent six",
+    707: "sept cent sept",
+    708: "sept cent huit",
+    709: "sept cent neuf",
+    710: "sept cent dix",
+    711: "sept cent onze",
+    712: "sept cent douze",
+    713: "sept cent treize",
+    714: "sept cent quatorze",
+    715: "sept cent quinze",
+    716: "sept cent seize",
+    717: "sept cent dix-sept",
+    718: "sept cent dix-huit",
+    719: "sept cent dix-neuf",
+    720: "sept cent vingt",
+    721: "sept cent vingt et un",
+    722: "sept cent vingt-deux",
+    723: "sept cent vingt-trois",
+    724: "sept cent vingt-quatre",
+    725: "sept cent vingt-cinq",
+    726: "sept cent vingt-six",
+    727: "sept cent vingt-sept",
+    728: "sept cent vingt-huit",
+    729: "sept cent vingt-neuf",
+    730: "sept cent trente",
+    731: "sept cent trente et un",
+    732: "sept cent trente-deux",
+    733: "sept cent trente-trois",
+    734: "sept cent trente-quatre",
+    735: "sept cent trente-cinq",
+    736: "sept cent trente-six",
+    737: "sept cent trente-sept",
+    738: "sept cent trente-huit",
+    739: "sept cent trente-neuf",
+    740: "sept cent quarante",
+    741: "sept cent quarante et un",
+    742: "sept cent quarante-deux",
+    743: "sept cent quarante-trois",
+    744: "sept cent quarante-quatre",
+    745: "sept cent quarante-cinq",
+    746: "sept cent quarante-six",
+    747: "sept cent quarante-sept",
+    748: "sept cent quarante-huit",
+    749: "sept cent quarante-neuf",
+    750: "sept cent cinquante",
+    751: "sept cent cinquante et un",
+    752: "sept cent cinquante-deux",
+    753: "sept cent cinquante-trois",
+    754: "sept cent cinquante-quatre",
+    755: "sept cent cinquante-cinq",
+    756: "sept cent cinquante-six",
+    757: "sept cent cinquante-sept",
+    758: "sept cent cinquante-huit",
+    759: "sept cent cinquante-neuf",
+    760: "sept cent soixante",
+    761: "sept cent soixante et un",
+    762: "sept cent soixante-deux",
+    763: "sept cent soixante-trois",
+    764: "sept cent soixante-quatre",
+    765: "sept cent soixante-cinq",
+    766: "sept cent soixante-six",
+    767: "sept cent soixante-sept",
+    768: "sept cent soixante-huit",
+    769: "sept cent soixante-neuf",
+    770: "sept cent soixante-dix",
+    771: "sept cent soixante et onze",
+    772: "sept cent soixante-douze",
+    773: "sept cent soixante-treize",
+    774: "sept cent soixante-quatorze",
+    775: "sept cent soixante-quinze",
+    776: "sept cent soixante-seize",
+    777: "sept cent soixante-dix-sept",
+    778: "sept cent soixante-dix-huit",
+    779: "sept cent soixante-dix-neuf",
+    780: "sept cent quatre-vingts",
+    781: "sept cent quatre-vingt-un",
+    782: "sept cent quatre-vingt-deux",
+    783: "sept cent quatre-vingt-trois",
+    784: "sept cent quatre-vingt-quatre",
+    785: "sept cent quatre-vingt-cinq",
+    786: "sept cent quatre-vingt-six",
+    787: "sept cent quatre-vingt-sept",
+    788: "sept cent quatre-vingt-huit",
+    789: "sept cent quatre-vingt-neuf",
+    790: "sept cent quatre-vingt-dix",
+    791: "sept cent quatre-vingt-onze",
+    792: "sept cent quatre-vingt-douze",
+    793: "sept cent quatre-vingt-treize",
+    794: "sept cent quatre-vingt-quatorze",
+    795: "sept cent quatre-vingt-quinze",
+    796: "sept cent quatre-vingt-seize",
+    797: "sept cent quatre-vingt-dix-sept",
+    798: "sept cent quatre-vingt-dix-huit",
+    799: "sept cent quatre-vingt-dix-neuf",
+    800: "huit cents",
+    801: "huit cent un",
+    802: "huit cent deux",
+    803: "huit cent trois",
+    804: "huit cent quatre",
+    805: "huit cent cinq",
+    806: "huit cent six",
+    807: "huit cent sept",
+    808: "huit cent huit",
+    809: "huit cent neuf",
+    810: "huit cent dix",
+    811: "huit cent onze",
+    812: "huit cent douze",
+    813: "huit cent treize",
+    814: "huit cent quatorze",
+    815: "huit cent quinze",
+    816: "huit cent seize",
+    817: "huit cent dix-sept",
+    818: "huit cent dix-huit",
+    819: "huit cent dix-neuf",
+    820: "huit cent vingt",
+    821: "huit cent vingt et un",
+    822: "huit cent vingt-deux",
+    823: "huit cent vingt-trois",
+    824: "huit cent vingt-quatre",
+    825: "huit cent vingt-cinq",
+    826: "huit cent vingt-six",
+    827: "huit cent vingt-sept",
+    828: "huit cent vingt-huit",
+    829: "huit cent vingt-neuf",
+    830: "huit cent trente",
+    831: "huit cent trente et un",
+    832: "huit cent trente-deux",
+    833: "huit cent trente-trois",
+    834: "huit cent trente-quatre",
+    835: "huit cent trente-cinq",
+    836: "huit cent trente-six",
+    837: "huit cent trente-sept",
+    838: "huit cent trente-huit",
+    839: "huit cent trente-neuf",
+    840: "huit cent quarante",
+    841: "huit cent quarante et un",
+    842: "huit cent quarante-deux",
+    843: "huit cent quarante-trois",
+    844: "huit cent quarante-quatre",
+    845: "huit cent quarante-cinq",
+    846: "huit cent quarante-six",
+    847: "huit cent quarante-sept",
+    848: "huit cent quarante-huit",
+    849: "huit cent quarante-neuf",
+    850: "huit cent cinquante",
+    851: "huit cent cinquante et un",
+    852: "huit cent cinquante-deux",
+    853: "huit cent cinquante-trois",
+    854: "huit cent cinquante-quatre",
+    855: "huit cent cinquante-cinq",
+    856: "huit cent cinquante-six",
+    857: "huit cent cinquante-sept",
+    858: "huit cent cinquante-huit",
+    859: "huit cent cinquante-neuf",
+    860: "huit cent soixante",
+    861: "huit cent soixante et un",
+    862: "huit cent soixante-deux",
+    863: "huit cent soixante-trois",
+    864: "huit cent soixante-quatre",
+    865: "huit cent soixante-cinq",
+    866: "huit cent soixante-six",
+    867: "huit cent soixante-sept",
+    868: "huit cent soixante-huit",
+    869: "huit cent soixante-neuf",
+    870: "huit cent soixante-dix",
+    871: "huit cent soixante et onze",
+    872: "huit cent soixante-douze",
+    873: "huit cent soixante-treize",
+    874: "huit cent soixante-quatorze",
+    875: "huit cent soixante-quinze",
+    876: "huit cent soixante-seize",
+    877: "huit cent soixante-dix-sept",
+    878: "huit cent soixante-dix-huit",
+    879: "huit cent soixante-dix-neuf",
+    880: "huit cent quatre-vingts",
+    881: "huit cent quatre-vingt-un",
+    882: "huit cent quatre-vingt-deux",
+    883: "huit cent quatre-vingt-trois",
+    884: "huit cent quatre-vingt-quatre",
+    885: "huit cent quatre-vingt-cinq",
+    886: "huit cent quatre-vingt-six",
+    887: "huit cent quatre-vingt-sept",
+    888: "huit cent quatre-vingt-huit",
+    889: "huit cent quatre-vingt-neuf",
+    890: "huit cent quatre-vingt-dix",
+    891: "huit cent quatre-vingt-onze",
+    892: "huit cent quatre-vingt-douze",
+    893: "huit cent quatre-vingt-treize",
+    894: "huit cent quatre-vingt-quatorze",
+    895: "huit cent quatre-vingt-quinze",
+    896: "huit cent quatre-vingt-seize",
+    897: "huit cent quatre-vingt-dix-sept",
+    898: "huit cent quatre-vingt-dix-huit",
+    899: "huit cent quatre-vingt-dix-neuf",
+    900: "neuf cents",
+    901: "neuf cent un",
+    902: "neuf cent deux",
+    903: "neuf cent trois",
+    904: "neuf cent quatre",
+    905: "neuf cent cinq",
+    906: "neuf cent six",
+    907: "neuf cent sept",
+    908: "neuf cent huit",
+    909: "neuf cent neuf",
+    910: "neuf cent dix",
+    911: "neuf cent onze",
+    912: "neuf cent douze",
+    913: "neuf cent treize",
+    914: "neuf cent quatorze",
+    915: "neuf cent quinze",
+    916: "neuf cent seize",
+    917: "neuf cent dix-sept",
+    918: "neuf cent dix-huit",
+    919: "neuf cent dix-neuf",
+    920: "neuf cent vingt",
+    921: "neuf cent vingt et un",
+    922: "neuf cent vingt-deux",
+    923: "neuf cent vingt-trois",
+    924: "neuf cent vingt-quatre",
+    925: "neuf cent vingt-cinq",
+    926: "neuf cent vingt-six",
+    927: "neuf cent vingt-sept",
+    928: "neuf cent vingt-huit",
+    929: "neuf cent vingt-neuf",
+    930: "neuf cent trente",
+    931: "neuf cent trente et un",
+    932: "neuf cent trente-deux",
+    933: "neuf cent trente-trois",
+    934: "neuf cent trente-quatre",
+    935: "neuf cent trente-cinq",
+    936: "neuf cent trente-six",
+    937: "neuf cent trente-sept",
+    938: "neuf cent trente-huit",
+    939: "neuf cent trente-neuf",
+    940: "neuf cent quarante",
+    941: "neuf cent quarante et un",
+    942: "neuf cent quarante-deux",
+    943: "neuf cent quarante-trois",
+    944: "neuf cent quarante-quatre",
+    945: "neuf cent quarante-cinq",
+    946: "neuf cent quarante-six",
+    947: "neuf cent quarante-sept",
+    948: "neuf cent quarante-huit",
+    949: "neuf cent quarante-neuf",
+    950: "neuf cent cinquante",
+    951: "neuf cent cinquante et un",
+    952: "neuf cent cinquante-deux",
+    953: "neuf cent cinquante-trois",
+    954: "neuf cent cinquante-quatre",
+    955: "neuf cent cinquante-cinq",
+    956: "neuf cent cinquante-six",
+    957: "neuf cent cinquante-sept",
+    958: "neuf cent cinquante-huit",
+    959: "neuf cent cinquante-neuf",
+    960: "neuf cent soixante",
+    961: "neuf cent soixante et un",
+    962: "neuf cent soixante-deux",
+    963: "neuf cent soixante-trois",
+    964: "neuf cent soixante-quatre",
+    965: "neuf cent soixante-cinq",
+    966: "neuf cent soixante-six",
+    967: "neuf cent soixante-sept",
+    968: "neuf cent soixante-huit",
+    969: "neuf cent soixante-neuf",
+    970: "neuf cent soixante-dix",
+    971: "neuf cent soixante et onze",
+    972: "neuf cent soixante-douze",
+    973: "neuf cent soixante-treize",
+    974: "neuf cent soixante-quatorze",
+    975: "neuf cent soixante-quinze",
+    976: "neuf cent soixante-seize",
+    977: "neuf cent soixante-dix-sept",
+    978: "neuf cent soixante-dix-huit",
+    979: "neuf cent soixante-dix-neuf",
+    980: "neuf cent quatre-vingts",
+    981: "neuf cent quatre-vingt-un",
+    982: "neuf cent quatre-vingt-deux",
+    983: "neuf cent quatre-vingt-trois",
+    984: "neuf cent quatre-vingt-quatre",
+    985: "neuf cent quatre-vingt-cinq",
+    986: "neuf cent quatre-vingt-six",
+    987: "neuf cent quatre-vingt-sept",
+    988: "neuf cent quatre-vingt-huit",
+    989: "neuf cent quatre-vingt-neuf",
+    990: "neuf cent quatre-vingt-dix",
+    991: "neuf cent quatre-vingt-onze",
+    992: "neuf cent quatre-vingt-douze",
+    993: "neuf cent quatre-vingt-treize",
+    994: "neuf cent quatre-vingt-quatorze",
+    995: "neuf cent quatre-vingt-quinze",
+    996: "neuf cent quatre-vingt-seize",
+    997: "neuf cent quatre-vingt-dix-sept",
+    998: "neuf cent quatre-vingt-dix-huit",
+    999: "neuf cent quatre-vingt-dix-neuf"
   }
 
   const nbString = nb.toString()
-  let classeDesMilliards = ''
+  let classeDesMilliards = ""
   if (nbString.substring(nbString.length - 12, nbString.length - 9).length > 0) {
-    classeDesMilliards = dictionnaire[nbString.substring(nbString.length - 12, nbString.length - 9).replace(/^0{1,2}/, '')].replaceAll(' ', '-')
+    classeDesMilliards = dictionnaire[nbString.substring(nbString.length - 12, nbString.length - 9).replace(/^0{1,2}/, "")].replaceAll(" ", "-")
   }
-  let classeDesMillions = ''
+  let classeDesMillions = ""
   if (nbString.substring(nbString.length - 9, nbString.length - 6).length > 0) {
-    classeDesMillions = dictionnaire[nbString.substring(nbString.length - 9, nbString.length - 6).replace(/^0{1,2}/, '')].replaceAll(' ', '-')
+    classeDesMillions = dictionnaire[nbString.substring(nbString.length - 9, nbString.length - 6).replace(/^0{1,2}/, "")].replaceAll(" ", "-")
   }
-  let classeDesMilliers = ''
-  if (nbString.substring(nbString.length - 6, nbString.length - 3) === '080' || nbString.substring(nbString.length - 6, nbString.length - 3) === '80') {
-    classeDesMilliers = 'quatre-vingt'
-  } else if (nbString.substring(nbString.length - 5, nbString.length - 3) === '00' && nbString.substring(nbString.length - 6, nbString.length - 5) !== '1') {
-    classeDesMilliers = dictionnaire[nbString.substring(nbString.length - 6, nbString.length - 3).replace(/^0{1,2}/, '')].replaceAll(' ', '-').replace('cents', 'cent')
+  let classeDesMilliers = ""
+  if (nbString.substring(nbString.length - 6, nbString.length - 3) === "080" || nbString.substring(nbString.length - 6, nbString.length - 3) === "80") {
+    classeDesMilliers = "quatre-vingt"
+  } else if (nbString.substring(nbString.length - 5, nbString.length - 3) === "00" && nbString.substring(nbString.length - 6, nbString.length - 5) !== "1") {
+    classeDesMilliers = dictionnaire[nbString.substring(nbString.length - 6, nbString.length - 3).replace(/^0{1,2}/, "")].replaceAll(" ", "-").replace("cents", "cent")
   } else if (nbString.substring(nbString.length - 6, nbString.length - 3).length > 0) {
-    classeDesMilliers = dictionnaire[nbString.substring(nbString.length - 6, nbString.length - 3).replace(/^0{1,2}/, '')].replaceAll(' ', '-')
+    classeDesMilliers = dictionnaire[nbString.substring(nbString.length - 6, nbString.length - 3).replace(/^0{1,2}/, "")].replaceAll(" ", "-")
   }
-  let classeDesUnites = ''
+  let classeDesUnites = ""
   if (nbString.substring(nbString.length - 3, nbString.length).length > 0) {
-    classeDesUnites = dictionnaire[nbString.substring(nbString.length - 3, nbString.length).replace(/^0{1,2}/, '')].replaceAll(' ', '-')
+    classeDesUnites = dictionnaire[nbString.substring(nbString.length - 3, nbString.length).replace(/^0{1,2}/, "")].replaceAll(" ", "-")
   }
-  let result = ''
+  let result = ""
   if (classeDesMilliards.length > 1) {
-    classeDesMilliards === 'un' ? result += classeDesMilliards + '-milliard' : result += classeDesMilliards + '-milliards'
-    if (classeDesMillions !== 'zéro' || classeDesMilliers !== 'zéro' || classeDesUnites !== 'zéro') {
-      result += '-'
+    classeDesMilliards === "un" ? result += classeDesMilliards + "-milliard" : result += classeDesMilliards + "-milliards"
+    if (classeDesMillions !== "zéro" || classeDesMilliers !== "zéro" || classeDesUnites !== "zéro") {
+      result += "-"
     }
   }
-  if (classeDesMillions.length > 1 && classeDesMillions !== 'zéro') {
-    classeDesMillions === 'un' ? result += classeDesMillions + '-million' : result += classeDesMillions + '-millions'
-    if (classeDesMilliers !== 'zéro' || classeDesUnites !== 'zéro') {
-      result += '-'
+  if (classeDesMillions.length > 1 && classeDesMillions !== "zéro") {
+    classeDesMillions === "un" ? result += classeDesMillions + "-million" : result += classeDesMillions + "-millions"
+    if (classeDesMilliers !== "zéro" || classeDesUnites !== "zéro") {
+      result += "-"
     }
   }
-  if (classeDesMilliers.length > 1 && classeDesMilliers !== 'zéro') {
-    classeDesMilliers === 'un' ? result += 'mille' : result += classeDesMilliers + '-mille'
-    if (classeDesUnites !== 'zéro') {
-      result += '-'
+  if (classeDesMilliers.length > 1 && classeDesMilliers !== "zéro") {
+    classeDesMilliers === "un" ? result += "mille" : result += classeDesMilliers + "-mille"
+    if (classeDesUnites !== "zéro") {
+      result += "-"
     }
   }
-  if (classeDesUnites.length > 1 && classeDesUnites !== 'zéro') {
+  if (classeDesUnites.length > 1 && classeDesUnites !== "zéro") {
     result += classeDesUnites
   }
-  result = result.replace('deux-cents-mille', 'deux-cent-mille')
-  result = result.replace('trois-cents-mille', 'trois-cent-mille')
-  result = result.replace('quatre-cents-mille', 'quatre-cent-mille')
-  result = result.replace('cinq-cents-mille', 'cinq-cent-mille')
-  result = result.replace('six-cents-mille', 'six-cent-mille')
-  result = result.replace('sept-cents-mille', 'sept-cent-mille')
-  result = result.replace('huit-cents-mille', 'huit-cent-mille')
-  result = result.replace('neuf-cents-mille', 'neuf-cent-mille')
+  result = result.replace("deux-cents-mille", "deux-cent-mille")
+  result = result.replace("trois-cents-mille", "trois-cent-mille")
+  result = result.replace("quatre-cents-mille", "quatre-cent-mille")
+  result = result.replace("cinq-cents-mille", "cinq-cent-mille")
+  result = result.replace("six-cents-mille", "six-cent-mille")
+  result = result.replace("sept-cents-mille", "sept-cent-mille")
+  result = result.replace("huit-cents-mille", "huit-cent-mille")
+  result = result.replace("neuf-cents-mille", "neuf-cent-mille")
   return result
 }
 
@@ -6385,7 +6386,7 @@ export function TrouverSolutionMathador (
     if (nbDetermines < 5) { e = parseInt(choice(listeChoix, [12, 13, 14, 15, 16, 17, 18, 19, 20])) } else e = E
     tirage.push(a, b, c, d, e)
     nombresRestants = shuffle(tirage)
-    operationsRestantes = ['\\times', '+', '-', '\\div']
+    operationsRestantes = ["\\times", "+", "-", "\\div"]
     operationsRestantes = shuffle(operationsRestantes)
     expressionEnCoursF = [
       `${nombresRestants[0]}`,
@@ -6411,19 +6412,19 @@ export function TrouverSolutionMathador (
       part1d = expressionEnCoursD.pop()
 
       op = operationsRestantes.pop()
-      if (op === '\\times') {
+      if (op === "\\times") {
         c = a * b
         expressionEnCoursF.push(`${part1f}${op}${part2f}`)
         expressionEnCoursD.push(`${part1d}${op}${part2d}`)
         nombresRestants.push(c)
-      } else if (op === '\\div') {
+      } else if (op === "\\div") {
         if (a % b === 0) {
           c = a / b
-          if (part1f[0] === '\\') {
+          if (part1f[0] === "\\") {
             part1f = part1f.substring(6, part1f.length)
             part1f = part1f.substring(0, part1f.length - 7)
           }
-          if (part2f[0] === '\\') {
+          if (part2f[0] === "\\") {
             part2f = part2f.substring(6, part2f.length)
             part2f = part2f.substring(0, part2f.length - 7)
           }
@@ -6431,7 +6432,7 @@ export function TrouverSolutionMathador (
           expressionEnCoursD.push(`${part1d}${op}${part2d}`)
           nombresRestants.push(c)
         } else break
-      } else if (op === '-') {
+      } else if (op === "-") {
         if (a > b) {
           c = a - b
           expressionEnCoursF.push(
@@ -6442,14 +6443,14 @@ export function TrouverSolutionMathador (
           )
           nombresRestants.push(c)
         } else break
-      } else if (op === '+') {
+      } else if (op === "+") {
         c = a + b
-        if (part2f.substring(0, 2) === '\\l') {
+        if (part2f.substring(0, 2) === "\\l") {
           part2f = part2f.substring(6, part2f.length)
           part2f = part2f.substring(0, part2f.length - 7)
         }
         expressionEnCoursF.push(`\\left(${part1f}${op}${part2f}\\right)`)
-        if (part2d.substring(0, 2) === '\\l') {
+        if (part2d.substring(0, 2) === "\\l") {
           part2d = part2d.substring(6, part2d.length)
           part2d = part2d.substring(0, part2d.length - 7)
         }
@@ -6464,8 +6465,8 @@ export function TrouverSolutionMathador (
       if (solution >= min && solution <= max) {
         eureka = true
         if (
-          expressionEnCoursF[0][0] === '\\' &&
-          expressionEnCoursF[0][1] === 'l'
+          expressionEnCoursF[0][0] === "\\" &&
+          expressionEnCoursF[0][1] === "l"
         ) {
           expressionEnCoursF[0] = expressionEnCoursF[0].substring(
             6,
@@ -6477,8 +6478,8 @@ export function TrouverSolutionMathador (
           )
         }
         if (
-          expressionEnCoursD[0][0] === '\\' &&
-          expressionEnCoursD[0][1] === 'l'
+          expressionEnCoursD[0][0] === "\\" &&
+          expressionEnCoursD[0][1] === "l"
         ) {
           expressionEnCoursD[0] = expressionEnCoursD[0].substring(
             6,
@@ -6503,11 +6504,11 @@ export function TrouverSolutionMathador (
 
 // Gestion du fichier à télécharger
 export function telechargeFichier (text, filename) {
-  const element = document.createElement('a')
-  element.setAttribute('href', 'data:text/plain;charset=utf-8,' + encodeURIComponent(text))
-  element.setAttribute('download', filename)
+  const element = document.createElement("a")
+  element.setAttribute("href", "data:text/plain;charset=utf-8," + encodeURIComponent(text))
+  element.setAttribute("download", filename)
 
-  element.style.display = 'none'
+  element.style.display = "none"
   document.body.appendChild(element)
   element.click()
 
@@ -6521,8 +6522,8 @@ export function telechargeFichier (text, filename) {
 * @param {string} Le titre de l'entête
 * @author Rémi Angot
 */
-export function introLatex (entete = 'Exercices', listePackages = '') {
-  if (entete === '') { entete = 'Exercices' }
+export function introLatex (entete = "Exercices", listePackages = "") {
+  if (entete === "") { entete = "Exercices" }
   return `\\documentclass[12pt]{article}
 \\usepackage[left=1.5cm,right=1.5cm,top=2cm,bottom=2cm]{geometry}
 %\\usepackage[utf8]{inputenc}        
@@ -6604,8 +6605,8 @@ ${preambulePersonnalise(listePackages)}
 * @param {string} Le titre de l'entête
 * @author Rémi Angot
 */
-export function introLatexCan (entete = 'Course aux nombres', listePackages = '') {
-  if (entete === '') { entete = 'Course aux nombres' }
+export function introLatexCan (entete = "Course aux nombres", listePackages = "") {
+  if (entete === "") { entete = "Course aux nombres" }
   return `\\documentclass[12pt, landscape]{article}
 \\usepackage[left=1.5cm,right=1.5cm,top=2cm,bottom=2cm]{geometry}
 %\\usepackage[utf8]{inputenc}        
@@ -6872,10 +6873,10 @@ ${preambulePersonnalise(listePackages)}
 }
 
 export function preambulePersonnalise (listePackages) {
-  let result = ''
+  let result = ""
   for (const packages of listePackages) {
     switch (packages) {
-      case 'axe_gradues':
+      case "axe_gradues":
         result += `
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%% Gestion des axes gradués (Olivier Lacroix) %%%
@@ -7123,16 +7124,16 @@ export function preambulePersonnalise (listePackages) {
 
 `
         break
-      case 'bclogo':
-        result += '\\usepackage[tikz]{bclogo}'
+      case "bclogo":
+        result += "\\usepackage[tikz]{bclogo}"
         break
-      case 'tkz-euclide':
-        result += '\\usepackage{tkz-euclide}'
+      case "tkz-euclide":
+        result += "\\usepackage{tkz-euclide}"
         break
-      case 'bac':
-      case 'crpe':
-      case 'dnb':
-      case 'e3c':
+      case "bac":
+      case "crpe":
+      case "dnb":
+      case "e3c":
         // result += `
         // \\usepackage{fourier}
         // \\usepackage[scaled=0.875]{helvet}
@@ -7387,207 +7388,207 @@ export async function scratchTraductionFr () {
   window.scratchblocks.loadLanguages({
     fr: {
       commands: {
-        'move %1 steps': 'avancer de %1 pas',
-        'turn @turnRight %1 degrees': 'tourner @turnRight de %1 degrés',
-        'turn @turnLeft %1 degrees': 'tourner @turnLeft de %1 degrés',
-        'point in direction %1': "s'orienter à %1",
-        'point towards %1': "s'orienter vers %1",
-        'go to x:%1 y:%2': 'aller à x: %1 y: %2',
-        'go to %1': 'aller à %1',
-        'glide %1 secs to x:%2 y:%3': 'glisser en %1 secondes à x: %2 y: %3',
-        'glide %1 secs to %2': 'glisser en %1 secondes à %2',
-        'change x by %1': 'ajouter %1 à x',
-        'set x to %1': 'mettre x à %1',
-        'change y by %1': 'ajouter %1 à y',
-        'set y to %1': 'mettre y à %1',
-        'set rotation style %1': 'fixer le sens de rotation %1',
-        'say %1 for %2 seconds': 'dire %1 pendant %2 secondes',
-        'say %1': 'dire %1',
-        'think %1 for %2 seconds': 'penser à %1 pendant %2 secondes',
-        'think %1': 'penser à %1',
-        show: 'montrer',
-        hide: 'cacher',
-        'switch costume to %1': 'basculer sur le costume %1',
-        'next costume': 'costume suivant',
-        'next backdrop': 'arrière-plan suivant',
-        'switch backdrop to %1': "basculer sur l'arrière-plan %1",
-        'switch backdrop to %1 and wait': "basculer sur l'arrière-plan %1 et attendre",
-        'change %1 effect by %2': "ajouter %2 à l'effet %1",
-        'set %1 effect to %2': "mettre l'effet %1 à %2",
-        'clear graphic effects': 'annuler les effets graphiques',
-        'change size by %1': 'ajouter %1 à la taille',
-        'set size to %1%': 'mettre la taille à %1 % de la taille initiale',
-        'go to %1 layer': "aller à l'%1 plan",
-        'go %1 %2 layers': "déplacer de %2 plans vers l'%1",
-        'start sound %1': 'jouer le son %1',
-        'clear sound effects': 'annuler tous les effets sonores',
-        'play sound %1 until done': "jouer le son %1 jusqu'au bout",
-        'stop all sounds': 'arrêter tous les sons',
-        'play drum %1 for %2 beats': 'jouer du tambour %1 pendant %2 temps',
-        'rest for %1 beats': 'faire une pause pendant %1 temps',
-        'play note %1 for %2 beats': 'jouer la note %1 pendant %2 temps',
-        'set instrument to %1': "choisir l'instrument n° %1",
-        'change volume by %1': 'ajouter %1 au volume',
-        'set volume to %1%': 'mettre le volume à %1%',
-        'change tempo by %1': 'ajouter %1 au tempo',
-        'set tempo to %1': 'mettre le tempo à %1',
-        'erase all': 'effacer tout',
-        stamp: 'estampiller',
-        'pen down': "stylo en position d'écriture",
-        'pen up': 'relever le stylo',
-        'set pen color to %1': 'mettre la couleur du stylo à %1',
-        'change pen color by %1': 'ajouter %1 à la couleur du stylo',
-        'set pen %1 to %2': 'mettre la %1 du stylo à %2',
-        'change pen %1 by %2': 'ajouter %2 à la %1 du stylo',
-        'change pen shade by %1': "ajouter %1 à l'intensité du stylo",
-        'set pen shade to %1': "mettre l'intensité du stylo à %1",
-        'change pen size by %1': 'ajouter %1 à la taille du stylo',
-        'set pen size to %1': 'mettre la taille du stylo à %1',
-        'when @greenFlag clicked': 'quand @greenFlag est cliqué',
-        'when %1 key pressed': 'quand la touche %1 est pressée',
-        'when this sprite clicked': 'quand ce sprite est cliqué',
-        'when stage clicked': 'quand la scène est cliquée',
-        'when backdrop switches to %1': "quand l'arrière-plan bascule sur %1",
-        'when %1 > %2': 'quand le %1 > %2',
-        'when I receive %1': 'quand je reçois %1',
-        'broadcast %1': 'envoyer à tous %1',
-        'broadcast %1 and wait': 'envoyer à tous %1 et attendre',
-        'wait %1 seconds': 'attendre %1 secondes',
-        'repeat %1': 'répéter %1 fois',
-        forever: 'répéter indéfiniment',
-        'if %1 then': 'si %1 alors',
-        'wait until %1': "attendre jusqu'à ce que %1",
-        'repeat until %1': "répéter jusqu'à ce que %1",
-        'stop %1': 'stop %1',
-        'when I start as a clone': 'quand je commence comme un clone',
-        'create clone of %1': 'créer un clone de %1',
-        'delete this clone': 'supprimer ce clone',
-        'ask %1 and wait': 'demander %1 et attendre',
-        'turn video %1': 'vidéo %1',
-        'set video transparency to %1%': 'mettre la transparence vidéo sur %1',
-        'when video motion > %1': 'quand mouvement vidéo > %1',
-        'reset timer': 'réinitialiser le chronomètre',
-        'set %1 to %2': 'mettre %1 à %2',
-        'change %1 by %2': 'ajouter %2 à %1',
-        'show variable %1': 'montrer la variable %1',
-        'hide variable %1': 'cacher la variable %1',
-        'add %1 to %2': 'ajouter %1 à %2',
-        'delete %1 of %2': "supprimer l'élément %1 de %2",
-        'delete all of %1': 'supprimer tous les éléments de la liste %1',
-        'if on edge, bounce': 'rebondir si le bord est atteint',
-        'insert %1 at %2 of %3': 'insérer %1 en position %2 de %3',
-        'replace item %1 of %2 with %3': "remplacer l'élément %1 de la liste %2 par %3",
-        'show list %1': 'montrer la liste %1',
-        'hide list %1': 'cacher la liste %1',
-        'x position': 'abscisse x',
-        'y position': 'ordonnée y',
-        direction: 'direction',
-        'costume #': 'numéro de costume',
-        'costume %1': '%1 du costume',
-        size: 'taille',
-        'backdrop name': "nom de l'arrière-plan",
-        'backdrop %1': "%1 de l'arrière-plan",
-        'backdrop #': "numéro de l'arrière-plan",
-        volume: 'volume',
-        tempo: 'tempo',
-        'touching %1?': 'touche le %1 ?',
-        'touching color %1?': 'couleur %1 touchée ?',
-        'color %1 is touching %2?': 'couleur %1 touche %2 ?',
-        'distance to %1': 'distance de %1',
-        answer: 'réponse',
-        'key %1 pressed?': 'touche %1 pressée ?',
-        'mouse down?': 'souris pressée ?',
-        'mouse x': 'souris x',
-        'mouse y': 'souris y',
-        'set drag mode %1': 'mettre mode de glissement à %1',
-        loudness: 'volume sonore',
-        'video %1 on %2': 'vidéo %1 sur %2',
-        timer: 'chronomètre',
-        '%1 of %2': '%1 de %2',
-        'current %1': '%1 actuelle',
-        'days since 2000': 'jours depuis 2000',
+        "move %1 steps": "avancer de %1 pas",
+        "turn @turnRight %1 degrees": "tourner @turnRight de %1 degrés",
+        "turn @turnLeft %1 degrees": "tourner @turnLeft de %1 degrés",
+        "point in direction %1": "s'orienter à %1",
+        "point towards %1": "s'orienter vers %1",
+        "go to x:%1 y:%2": "aller à x: %1 y: %2",
+        "go to %1": "aller à %1",
+        "glide %1 secs to x:%2 y:%3": "glisser en %1 secondes à x: %2 y: %3",
+        "glide %1 secs to %2": "glisser en %1 secondes à %2",
+        "change x by %1": "ajouter %1 à x",
+        "set x to %1": "mettre x à %1",
+        "change y by %1": "ajouter %1 à y",
+        "set y to %1": "mettre y à %1",
+        "set rotation style %1": "fixer le sens de rotation %1",
+        "say %1 for %2 seconds": "dire %1 pendant %2 secondes",
+        "say %1": "dire %1",
+        "think %1 for %2 seconds": "penser à %1 pendant %2 secondes",
+        "think %1": "penser à %1",
+        show: "montrer",
+        hide: "cacher",
+        "switch costume to %1": "basculer sur le costume %1",
+        "next costume": "costume suivant",
+        "next backdrop": "arrière-plan suivant",
+        "switch backdrop to %1": "basculer sur l'arrière-plan %1",
+        "switch backdrop to %1 and wait": "basculer sur l'arrière-plan %1 et attendre",
+        "change %1 effect by %2": "ajouter %2 à l'effet %1",
+        "set %1 effect to %2": "mettre l'effet %1 à %2",
+        "clear graphic effects": "annuler les effets graphiques",
+        "change size by %1": "ajouter %1 à la taille",
+        "set size to %1%": "mettre la taille à %1 % de la taille initiale",
+        "go to %1 layer": "aller à l'%1 plan",
+        "go %1 %2 layers": "déplacer de %2 plans vers l'%1",
+        "start sound %1": "jouer le son %1",
+        "clear sound effects": "annuler tous les effets sonores",
+        "play sound %1 until done": "jouer le son %1 jusqu'au bout",
+        "stop all sounds": "arrêter tous les sons",
+        "play drum %1 for %2 beats": "jouer du tambour %1 pendant %2 temps",
+        "rest for %1 beats": "faire une pause pendant %1 temps",
+        "play note %1 for %2 beats": "jouer la note %1 pendant %2 temps",
+        "set instrument to %1": "choisir l'instrument n° %1",
+        "change volume by %1": "ajouter %1 au volume",
+        "set volume to %1%": "mettre le volume à %1%",
+        "change tempo by %1": "ajouter %1 au tempo",
+        "set tempo to %1": "mettre le tempo à %1",
+        "erase all": "effacer tout",
+        stamp: "estampiller",
+        "pen down": "stylo en position d'écriture",
+        "pen up": "relever le stylo",
+        "set pen color to %1": "mettre la couleur du stylo à %1",
+        "change pen color by %1": "ajouter %1 à la couleur du stylo",
+        "set pen %1 to %2": "mettre la %1 du stylo à %2",
+        "change pen %1 by %2": "ajouter %2 à la %1 du stylo",
+        "change pen shade by %1": "ajouter %1 à l'intensité du stylo",
+        "set pen shade to %1": "mettre l'intensité du stylo à %1",
+        "change pen size by %1": "ajouter %1 à la taille du stylo",
+        "set pen size to %1": "mettre la taille du stylo à %1",
+        "when @greenFlag clicked": "quand @greenFlag est cliqué",
+        "when %1 key pressed": "quand la touche %1 est pressée",
+        "when this sprite clicked": "quand ce sprite est cliqué",
+        "when stage clicked": "quand la scène est cliquée",
+        "when backdrop switches to %1": "quand l'arrière-plan bascule sur %1",
+        "when %1 > %2": "quand le %1 > %2",
+        "when I receive %1": "quand je reçois %1",
+        "broadcast %1": "envoyer à tous %1",
+        "broadcast %1 and wait": "envoyer à tous %1 et attendre",
+        "wait %1 seconds": "attendre %1 secondes",
+        "repeat %1": "répéter %1 fois",
+        forever: "répéter indéfiniment",
+        "if %1 then": "si %1 alors",
+        "wait until %1": "attendre jusqu'à ce que %1",
+        "repeat until %1": "répéter jusqu'à ce que %1",
+        "stop %1": "stop %1",
+        "when I start as a clone": "quand je commence comme un clone",
+        "create clone of %1": "créer un clone de %1",
+        "delete this clone": "supprimer ce clone",
+        "ask %1 and wait": "demander %1 et attendre",
+        "turn video %1": "vidéo %1",
+        "set video transparency to %1%": "mettre la transparence vidéo sur %1",
+        "when video motion > %1": "quand mouvement vidéo > %1",
+        "reset timer": "réinitialiser le chronomètre",
+        "set %1 to %2": "mettre %1 à %2",
+        "change %1 by %2": "ajouter %2 à %1",
+        "show variable %1": "montrer la variable %1",
+        "hide variable %1": "cacher la variable %1",
+        "add %1 to %2": "ajouter %1 à %2",
+        "delete %1 of %2": "supprimer l'élément %1 de %2",
+        "delete all of %1": "supprimer tous les éléments de la liste %1",
+        "if on edge, bounce": "rebondir si le bord est atteint",
+        "insert %1 at %2 of %3": "insérer %1 en position %2 de %3",
+        "replace item %1 of %2 with %3": "remplacer l'élément %1 de la liste %2 par %3",
+        "show list %1": "montrer la liste %1",
+        "hide list %1": "cacher la liste %1",
+        "x position": "abscisse x",
+        "y position": "ordonnée y",
+        direction: "direction",
+        "costume #": "numéro de costume",
+        "costume %1": "%1 du costume",
+        size: "taille",
+        "backdrop name": "nom de l'arrière-plan",
+        "backdrop %1": "%1 de l'arrière-plan",
+        "backdrop #": "numéro de l'arrière-plan",
+        volume: "volume",
+        tempo: "tempo",
+        "touching %1?": "touche le %1 ?",
+        "touching color %1?": "couleur %1 touchée ?",
+        "color %1 is touching %2?": "couleur %1 touche %2 ?",
+        "distance to %1": "distance de %1",
+        answer: "réponse",
+        "key %1 pressed?": "touche %1 pressée ?",
+        "mouse down?": "souris pressée ?",
+        "mouse x": "souris x",
+        "mouse y": "souris y",
+        "set drag mode %1": "mettre mode de glissement à %1",
+        loudness: "volume sonore",
+        "video %1 on %2": "vidéo %1 sur %2",
+        timer: "chronomètre",
+        "%1 of %2": "%1 de %2",
+        "current %1": "%1 actuelle",
+        "days since 2000": "jours depuis 2000",
         username: "nom d'utilisateur",
-        '%1 + %2': '%1 + %2',
-        '%1 - %2': '%1 - %2',
-        '%1 * %2': '%1 * %2',
-        '%1 / %2': '%1 / %2',
-        'pick random %1 to %2': 'nombre aléatoire entre %1 et %2',
-        '%1 < %2': '%1 < %2',
-        '%1 = %2': '%1 = %2',
-        '%1 > %2': '%1 > %2',
-        '%1 and %2': '%1 et %2',
-        '%1 or %2': '%1 ou %2',
-        'not %1': 'non %1',
-        'join %1 %2': 'regrouper %1 et %2',
-        'letter %1 of %2': 'lettre %1 de %2',
-        'length of %1': 'longueur de %1',
-        '%1 mod %2': '%1 modulo %2',
-        'round %1': 'arrondi de %1',
-        '%1 contains %2?': '%1 contient %2 ?',
-        'item %1 of %2': 'élément %1 de %2',
-        'item # of %1 in %2': 'position de %1 dans %2',
-        'turn %1 on': 'allumer le moteur %1',
-        'turn %1 off': 'éteindre le moteur %1',
-        'set %1 power to %2': 'mettre la puissance du moteur %1 à %2',
-        'set %1 direction to %2': 'mettre la direction du moteur %1 à %2',
-        'when distance %1 %2': 'quand la distance %1 %2',
-        distance: 'distance',
-        'turn %1 on for %2 seconds': 'allumer le moteur %1 pendant %2 secondes',
-        'set light color to %1': 'mettre la couleur de la lampe à %1',
-        'play note %1 for %2 seconds': 'jouer la note %1 pendant %2 secondes',
-        'when tilted %1': 'quand incliné %1',
-        'tilt angle %1': "angle d'inclinaison %1",
-        else: 'sinon',
-        'user id': "id de l'utilisateur",
-        'loud?': 'fort ?'
+        "%1 + %2": "%1 + %2",
+        "%1 - %2": "%1 - %2",
+        "%1 * %2": "%1 * %2",
+        "%1 / %2": "%1 / %2",
+        "pick random %1 to %2": "nombre aléatoire entre %1 et %2",
+        "%1 < %2": "%1 < %2",
+        "%1 = %2": "%1 = %2",
+        "%1 > %2": "%1 > %2",
+        "%1 and %2": "%1 et %2",
+        "%1 or %2": "%1 ou %2",
+        "not %1": "non %1",
+        "join %1 %2": "regrouper %1 et %2",
+        "letter %1 of %2": "lettre %1 de %2",
+        "length of %1": "longueur de %1",
+        "%1 mod %2": "%1 modulo %2",
+        "round %1": "arrondi de %1",
+        "%1 contains %2?": "%1 contient %2 ?",
+        "item %1 of %2": "élément %1 de %2",
+        "item # of %1 in %2": "position de %1 dans %2",
+        "turn %1 on": "allumer le moteur %1",
+        "turn %1 off": "éteindre le moteur %1",
+        "set %1 power to %2": "mettre la puissance du moteur %1 à %2",
+        "set %1 direction to %2": "mettre la direction du moteur %1 à %2",
+        "when distance %1 %2": "quand la distance %1 %2",
+        distance: "distance",
+        "turn %1 on for %2 seconds": "allumer le moteur %1 pendant %2 secondes",
+        "set light color to %1": "mettre la couleur de la lampe à %1",
+        "play note %1 for %2 seconds": "jouer la note %1 pendant %2 secondes",
+        "when tilted %1": "quand incliné %1",
+        "tilt angle %1": "angle d'inclinaison %1",
+        else: "sinon",
+        "user id": "id de l'utilisateur",
+        "loud?": "fort ?"
       },
       dropdowns: {},
       ignorelt: [],
       soundEffects: [
-        'hauteur',
-        'stéréo gauche/droite'
+        "hauteur",
+        "stéréo gauche/droite"
       ],
       osis: [
-        'autres scripts dans sprite'
+        "autres scripts dans sprite"
       ],
       definePrefix: [
-        'définir'
+        "définir"
       ],
       defineSuffix: [],
       palette: {
-        Motion: 'Mouvement',
-        Looks: 'Apparence',
-        Sound: 'Son',
-        Events: 'Événements',
-        Control: 'Contrôle',
-        Sensing: 'Capteurs',
-        Operators: 'Opérateurs',
-        Variables: 'Variables',
-        'My Blocks': 'Mes Blocs'
+        Motion: "Mouvement",
+        Looks: "Apparence",
+        Sound: "Son",
+        Events: "Événements",
+        Control: "Contrôle",
+        Sensing: "Capteurs",
+        Operators: "Opérateurs",
+        Variables: "Variables",
+        "My Blocks": "Mes Blocs"
       },
       math: [
-        'abs',
-        'plancher',
-        'plafond',
-        'racine',
-        'sin',
-        'cos',
-        'tan',
-        'asin',
-        'acos',
-        'atan',
-        'ln',
-        'log',
-        'e^',
-        '10^'
+        "abs",
+        "plancher",
+        "plafond",
+        "racine",
+        "sin",
+        "cos",
+        "tan",
+        "asin",
+        "acos",
+        "atan",
+        "ln",
+        "log",
+        "e^",
+        "10^"
       ],
       aliases: {
-        'tourner gauche de %1 degrés': 'turn @turnLeft %1 degrees',
-        'tourner droite de %1 degrés': 'turn @turnRight %1 degrees',
-        'quand le drapeau vert pressé': 'when @greenFlag clicked',
-        fin: 'end'
+        "tourner gauche de %1 degrés": "turn @turnLeft %1 degrees",
+        "tourner droite de %1 degrés": "turn @turnRight %1 degrees",
+        "quand le drapeau vert pressé": "when @greenFlag clicked",
+        fin: "end"
       },
-      name: 'Français',
+      name: "Français",
       percentTranslated: 100
     }
   })
@@ -7600,14 +7601,14 @@ export async function scratchTraductionFr () {
  */
 
 export function exportQcmAmc (exercice, idExo) {
-  const ref = `${exercice.id}${exercice.sup ? 'S:' + exercice.sup : ''}${exercice.sup2 ? 'S2:' + exercice.sup2 : ''}${exercice.sup3 ? 'S3:' + exercice.sup3 : ''}${exercice.sup4 ? 'S4:' + exercice.sup4 : ''}`
+  const ref = `${exercice.id}${exercice.sup ? "S:" + exercice.sup : ""}${exercice.sup2 ? "S2:" + exercice.sup2 : ""}${exercice.sup3 ? "S3:" + exercice.sup3 : ""}${exercice.sup4 ? "S4:" + exercice.sup4 : ""}`
   const autoCorrection = exercice.autoCorrection
   const titre = exercice.titre
   const type = exercice.amcType
-  let texQr = ''
+  let texQr = ""
   let id = 0
   let reponse, reponse2, reponse3
-  let horizontalite = 'reponseshoriz'
+  let horizontalite = "reponseshoriz"
   let lastchoice = false
   let ordered = false
   let nbChiffresPd, nbChiffresPe
@@ -7619,9 +7620,9 @@ export function exportQcmAmc (exercice, idExo) {
     }
     if (autoCorrection[j].options !== undefined) {
       if (autoCorrection[j].options.vertical === undefined) {
-        horizontalite = 'reponseshoriz'
+        horizontalite = "reponseshoriz"
       } else {
-        horizontalite = 'reponses'
+        horizontalite = "reponses"
       }
       if (autoCorrection[j].options.ordered) {
         ordered = true
@@ -7634,14 +7635,14 @@ export function exportQcmAmc (exercice, idExo) {
     if (autoCorrection[j].reponse !== undefined) {
       if (!Array.isArray(autoCorrection[j].reponse.valeur)) autoCorrection[j].reponse.valeur = [autoCorrection[j].reponse.valeur]
       valeurAMCNum = autoCorrection[j].reponse.valeur[0]
-      if (typeof valeurAMCNum === 'string') {
-        valeurAMCNum = valeurAMCNum.replace(/\s/g, '').replace(',', '.')
+      if (typeof valeurAMCNum === "string") {
+        valeurAMCNum = valeurAMCNum.replace(/\s/g, "").replace(",", ".")
       }
     }
     switch (type) {
-      case 'qcmMono': // question QCM 1 bonne réponse
+      case "qcmMono": // question QCM 1 bonne réponse
         if (elimineDoublons(autoCorrection[j].propositions)) {
-          console.log('doublons trouvés')
+          console.log("doublons trouvés")
         }
         if (autoCorrection[j].enonce === undefined) {
           autoCorrection[j].enonce = exercice.listeQuestions[j]
@@ -7651,12 +7652,12 @@ export function exportQcmAmc (exercice, idExo) {
         texQr += `${autoCorrection[j].enonce} \n `
         texQr += `\t\\begin{${horizontalite}}`
         if (ordered) {
-          texQr += '[o]'
+          texQr += "[o]"
         }
-        texQr += '\n '
+        texQr += "\n "
         for (let i = 0; i < autoCorrection[j].propositions.length; i++) {
           if (lastchoice > 0 && i === lastchoice) {
-            texQr += '\t\t\\lastchoices\n'
+            texQr += "\t\t\\lastchoices\n"
           }
           if (autoCorrection[j].propositions[i].statut) {
             texQr += `\t\t\\bonne{${autoCorrection[j].propositions[i].texte}}\n `
@@ -7665,13 +7666,13 @@ export function exportQcmAmc (exercice, idExo) {
           }
         }
         texQr += `\t\\end{${horizontalite}}\n `
-        texQr += '\\end{question}\n }\n '
+        texQr += "\\end{question}\n }\n "
         id++
         break
 
-      case 'qcmMult': // question QCM plusieurs bonnes réponses (même si il n'y a qu'une seule bonne réponse, il y aura le symbole multiSymbole)
+      case "qcmMult": // question QCM plusieurs bonnes réponses (même si il n'y a qu'une seule bonne réponse, il y aura le symbole multiSymbole)
         if (elimineDoublons(autoCorrection[j].propositions)) {
-          console.log('doublons trouvés')
+          console.log("doublons trouvés")
         }
         if (autoCorrection[j].enonce === undefined) {
           autoCorrection[j].enonce = exercice.listeQuestions[j]
@@ -7682,12 +7683,12 @@ export function exportQcmAmc (exercice, idExo) {
         texQr += `${autoCorrection[j].enonce} \n `
         texQr += `\t\\begin{${horizontalite}}`
         if (ordered) {
-          texQr += '[o]'
+          texQr += "[o]"
         }
-        texQr += '\n '
+        texQr += "\n "
         for (let i = 0; i < autoCorrection[j].propositions.length; i++) {
           if (lastchoice > 0 && i === lastchoice) {
-            texQr += '\t\t\\lastchoices\n'
+            texQr += "\t\t\\lastchoices\n"
           }
           if (autoCorrection[j].propositions[i].statut) {
             texQr += `\t\t\\bonne{${autoCorrection[j].propositions[i].texte}}\n `
@@ -7696,15 +7697,15 @@ export function exportQcmAmc (exercice, idExo) {
           }
         }
         texQr += `\t\\end{${horizontalite}}\n `
-        texQr += ' \\end{questionmult}\n }\n '
+        texQr += " \\end{questionmult}\n }\n "
         id++
         break
-      case 'AMCOpen': // AMCOpen question ouverte corrigée par l'enseignant
+      case "AMCOpen": // AMCOpen question ouverte corrigée par l'enseignant
         if (autoCorrection[j].enonce === undefined) {
           autoCorrection[j].enonce = exercice.listeQuestions[j]
         }
         if (autoCorrection[j].propositions === undefined) {
-          autoCorrection[j].propositions = [{ texte: exercice.listeCorrections[j], statut: '3' }]
+          autoCorrection[j].propositions = [{ texte: exercice.listeCorrections[j], statut: "3" }]
         }
         texQr += `\\element{${ref}}{\n `
         texQr += `\t\\begin{question}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}} \n `
@@ -7714,10 +7715,10 @@ export function exportQcmAmc (exercice, idExo) {
         if (!(isNaN(autoCorrection[j].propositions[0].sanscadre))) {
           texQr += `[${autoCorrection[j].propositions[0].sanscadre}]` // le statut contiendra le nombre de lignes pour ce type
         }
-        texQr += '\n\t\\end{question}\n }\n'
+        texQr += "\n\t\\end{question}\n }\n"
         id++
         break
-      case 'AMCNum': // AMCNum avec encodage numérique de la réponse
+      case "AMCNum": // AMCNum avec encodage numérique de la réponse
         /********************************************************************/
         // On pourra rajouter des options : les paramètres sont nommés.
         // {digits=0,digitsDen=0,digitsNum=0,decimals=0,vertical=false,signe=false,exposantNbChiffres=0,exposantSigne=false,approx=0}
@@ -7729,7 +7730,7 @@ export function exportQcmAmc (exercice, idExo) {
           autoCorrection[j].enonce = exercice.listeQuestions[j]
         }
         if (autoCorrection[j].propositions === undefined) {
-          autoCorrection[j].propositions = [{ texte: exercice.listeCorrections[j], statut: '' }]
+          autoCorrection[j].propositions = [{ texte: exercice.listeCorrections[j], statut: "" }]
         }
         if (!Array.isArray(autoCorrection[j].reponse.valeur)) {
           autoCorrection[j].reponse.valeur = [autoCorrection[j].reponse.valeur]
@@ -7739,8 +7740,8 @@ export function exportQcmAmc (exercice, idExo) {
             autoCorrection[j].reponse.param.exposantPuissance = 1000 // Nb volontairement grand pour faire comprendre à l'utilisateur AMC qu'il y a eu une erreur de programmation lors de la conception de l'exercice.
           }
           texQr += `\\element{${ref}}{\n`
-          texQr += '\\begin{minipage}{\\textwidth}\n'
-          texQr += '\\begin{multicols}{2}\n'
+          texQr += "\\begin{minipage}{\\textwidth}\n"
+          texQr += "\\begin{multicols}{2}\n"
           texQr += `\\begin{questionmultx}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}} \n `
           texQr += `${autoCorrection[j].enonce} \n \\vspace{0.25cm} \n`
           if (autoCorrection[j].propositions !== undefined) {
@@ -7758,18 +7759,18 @@ export function exportQcmAmc (exercice, idExo) {
           } else {
             digitsExposant = nombreDeChiffresDansLaPartieEntiere(autoCorrection[j].reponse.param.exposantPuissance)
           }
-          texQr += '\n'
-          texQr += `Base\n \\AMCnumericChoices{${autoCorrection[j].reponse.param.basePuissance}}{digits=${digitsBase},decimals=0,sign=${autoCorrection[j].reponse.param.basePuissance < 0 || autoCorrection[j].reponse.param.signe ? 'true' : 'false'},approx=0,`
+          texQr += "\n"
+          texQr += `Base\n \\AMCnumericChoices{${autoCorrection[j].reponse.param.basePuissance}}{digits=${digitsBase},decimals=0,sign=${autoCorrection[j].reponse.param.basePuissance < 0 || autoCorrection[j].reponse.param.signe ? "true" : "false"},approx=0,`
           if (autoCorrection[j].reponse.param.aussiCorrect !== undefined) texQr += `alsocorrect=${autoCorrection[j].reponse.param.aussiCorrect},`
           texQr += `borderwidth=0pt,backgroundcol=lightgray,scoreapprox=${autoCorrection[j].reponse.param.scoreapprox || 0.667},scoreexact=1,Tpoint={,}}\n`
-          texQr += '\\end{questionmultx}\n'
-          texQr += '\\AMCquestionNumberfalse\\def\\AMCbeginQuestion#1#2{}'
+          texQr += "\\end{questionmultx}\n"
+          texQr += "\\AMCquestionNumberfalse\\def\\AMCbeginQuestion#1#2{}"
           texQr += `\\begin{questionmultx}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 1}} \n `
-          texQr += '\\vspace{18pt}'
+          texQr += "\\vspace{18pt}"
           // texQr += `Exposant\n \\AMCnumericChoices{${autoCorrection[j].reponse.param.exposantPuissance}}{digits=${digitsExposant},decimals=0,sign=${autoCorrection[j].reponse.param.exposantPuissance < 0 ? 'true' : 'false'},approx=0,`
           texQr += `Exposant\n \\AMCnumericChoices{${autoCorrection[j].reponse.param.exposantPuissance}}{digits=${digitsExposant},decimals=0,sign=true,approx=0,`
           texQr += `borderwidth=0pt,backgroundcol=lightgray,scoreapprox=${autoCorrection[j].reponse.param.scoreapprox || 0.667},scoreexact=1,Tpoint={,}}\n`
-          texQr += '\\end{questionmultx}\n\\end{multicols}\n\\end{minipage}\n}\n\n'
+          texQr += "\\end{questionmultx}\n\\end{multicols}\n\\end{minipage}\n}\n\n"
           id += 2
         } else if (valeurAMCNum.num !== undefined) { // Si une fraction a été passée à AMCNum, on met un seul AMCNumericChoice particulier
           texQr += `\\element{${ref}}{\n`
@@ -7811,7 +7812,7 @@ export function exportQcmAmc (exercice, idExo) {
           }
           texQr += `\\AMCnumericChoices{${reponseF}}{digits=${digitsNum + digitsDen},decimals=${digitsDen},sign=${signeNum},approx=0,`
           texQr += `borderwidth=0pt,backgroundcol=lightgray,scoreexact=1,Tpoint={\\vspace{0.5cm} \\vrule height 0.4pt width 5.5cm },alsocorrect=${reponseAlsoCorrect}}\n`
-          texQr += '\\end{questionmultx}\n}\n\n'
+          texQr += "\\end{questionmultx}\n}\n\n"
           id += 2
         } else {
           let nbChiffresExpo
@@ -7827,7 +7828,7 @@ export function exportQcmAmc (exercice, idExo) {
             const demiMediane = autoCorrection[j].reponse.param.milieuIntervalle - valeurAMCNum
             nbChiffresPd = Math.max(nbChiffresPd, nombreDeChiffresDansLaPartieDecimale(demiMediane))
             valeurAMCNum = autoCorrection[j].reponse.param.milieuIntervalle
-            autoCorrection[j].reponse.param.approx = autoCorrection[j].reponse.param.approx === 'intervalleStrict' ? demiMediane * 10 ** nbChiffresPd - 1 : demiMediane * 10 ** nbChiffresPd
+            autoCorrection[j].reponse.param.approx = autoCorrection[j].reponse.param.approx === "intervalleStrict" ? demiMediane * 10 ** nbChiffresPd - 1 : demiMediane * 10 ** nbChiffresPd
           }
           texQr += `\\element{${ref}}{\n `
           texQr += `\\begin{questionmultx}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}} \n `
@@ -7835,7 +7836,7 @@ export function exportQcmAmc (exercice, idExo) {
           if (autoCorrection[j].propositions !== undefined) {
             texQr += `\\explain{${autoCorrection[j].propositions[0].texte}}\n`
           }
-          if (autoCorrection[j].reponse.textePosition === 'left') texQr += `${autoCorrection[j].reponse.texte} `
+          if (autoCorrection[j].reponse.textePosition === "left") texQr += `${autoCorrection[j].reponse.texte} `
           texQr += `\\AMCnumericChoices{${valeurAMCNum}}{digits=${nbChiffresPe + nbChiffresPd},decimals=${nbChiffresPd},sign=${autoCorrection[j].reponse.param.signe},`
           if (autoCorrection[j].reponse.param.exposantNbChiffres !== undefined && autoCorrection[j].reponse.param.exposantNbChiffres !== 0) { // besoin d'un champ pour la puissance de 10. (notation scientifique)
             texQr += `exponent=${nbChiffresExpo},exposign=${autoCorrection[j].reponse.param.exposantSigne},`
@@ -7856,15 +7857,15 @@ export function exportQcmAmc (exercice, idExo) {
           if (autoCorrection[j].reponse.param.tpoint !== undefined && autoCorrection[j].reponse.param.tpoint) {
             texQr += `Tpoint={${autoCorrection[j].reponse.param.tpoint}},`
           } else {
-            texQr += 'Tpoint={,},'
+            texQr += "Tpoint={,},"
           }
-          texQr += 'borderwidth=0pt,backgroundcol=lightgray,scoreexact=1} '
-          if (autoCorrection[j].reponse.textePosition === 'right') texQr += `${autoCorrection[j].reponse.texte}\n`
-          texQr += '\\end{questionmultx}\n }\n\n'
+          texQr += "borderwidth=0pt,backgroundcol=lightgray,scoreexact=1} "
+          if (autoCorrection[j].reponse.textePosition === "right") texQr += `${autoCorrection[j].reponse.texte}\n`
+          texQr += "\\end{questionmultx}\n }\n\n"
           id++
         }
         break
-      case 'AMCOpenNum': // AMCOpen + AMCnumeric Choices. (A ne plus utiliser au profit de AMCHybride)
+      case "AMCOpenNum": // AMCOpen + AMCnumeric Choices. (A ne plus utiliser au profit de AMCHybride)
         /********************************************************************/
         // On pourra rajouter des options : les paramètres sont nommés.
         // {digits=0,decimals=0,signe=false,exposantNbChiffres=0,exposantSigne=false,approx=0}
@@ -7877,13 +7878,13 @@ export function exportQcmAmc (exercice, idExo) {
           exercice.autoCorrection[j].enonce = exercice.listeQuestions[j]
         }
         if (exercice.autoCorrection[j].propositions === undefined) {
-          exercice.autoCorrection[j].propositions = [{ texte: exercice.listeCorrections[j], statut: 2, feedback: '' }]
+          exercice.autoCorrection[j].propositions = [{ texte: exercice.listeCorrections[j], statut: 2, feedback: "" }]
         }
         if (!Array.isArray(autoCorrection[j].reponse.valeur)) {
           autoCorrection[j].reponse.valeur = [autoCorrection[j].reponse.valeur]
         }
         texQr += `\\element{${ref}}{\n `
-        texQr += '\\begin{minipage}[b]{0.7 \\linewidth}\n'
+        texQr += "\\begin{minipage}[b]{0.7 \\linewidth}\n"
         texQr += `\\begin{question}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}a} \n `
         texQr += `${autoCorrection[j].enonce} \n `
         if (autoCorrection[j].propositions !== undefined) {
@@ -7893,7 +7894,7 @@ export function exportQcmAmc (exercice, idExo) {
         if (!(isNaN(autoCorrection[j].propositions[0].sanscadre))) {
           texQr += `[${autoCorrection[j].propositions[0].sanscadre}]` // le statut contiendra le nombre de lignes pour ce type
         }
-        texQr += '\n\t\\end{question}\n\\end{minipage}\n'
+        texQr += "\n\t\\end{question}\n\\end{minipage}\n"
         if (autoCorrection[j].reponse.param.exposantNbChiffres !== undefined && autoCorrection[j].reponse.param.exposantNbChiffres === 0) {
           if (autoCorrection[j].reponse.param.digits === 0) {
             nbChiffresPd = nombreDeChiffresDansLaPartieDecimale(valeurAMCNum)
@@ -7910,8 +7911,8 @@ export function exportQcmAmc (exercice, idExo) {
         if (autoCorrection[j].reponse.param.signe === undefined) {
           autoCorrection[j].reponse.param.signe = false
         }
-        texQr += '\\begin{minipage}[b]{0.3 \\linewidth}\n'
-        texQr += '\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse'
+        texQr += "\\begin{minipage}[b]{0.3 \\linewidth}\n"
+        texQr += "\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse"
         texQr += `\\begin{questionmultx}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}b} \n `
         texQr += `\\AMCnumericChoices{${valeurAMCNum}}{digits=${autoCorrection[j].reponse.param.digits},decimals=${autoCorrection[j].reponse.param.decimals},sign=${autoCorrection[j].reponse.param.signe},`
         if (autoCorrection[j].reponse.param.exposantNbChiffres === 0) { // besoin d'un champ pour la puissance de 10. (notation scientifique)
@@ -7932,13 +7933,13 @@ export function exportQcmAmc (exercice, idExo) {
         if (autoCorrection[j].reponse.param.tpoint !== undefined && autoCorrection[j].reponse.param.tpoint) {
           texQr += `Tpoint={${autoCorrection[j].reponse.param.tpoint}},`
         } else {
-          texQr += 'Tpoint={,},'
+          texQr += "Tpoint={,},"
         }
         texQr += `borderwidth=0pt,backgroundcol=lightgray,scoreapprox=${autoCorrection[j].reponse.param.scorapprox || 0.667},scoreexact=1,vertical=true}\n`
-        texQr += '\\end{questionmultx}\n\\end{minipage}}\n'
+        texQr += "\\end{questionmultx}\n\\end{minipage}}\n"
         id++
         break
-      case 'AMCOpenNum✖︎2': // AMCOpen + deux AMCnumeric Choices. (Nouveau ! en test)
+      case "AMCOpenNum✖︎2": // AMCOpen + deux AMCnumeric Choices. (Nouveau ! en test)
         /********************************************************************/
         // /!\/!\/!\/!\ ATTENTION /!\/!\/!\/!\
         // Pour ce type :
@@ -7949,7 +7950,7 @@ export function exportQcmAmc (exercice, idExo) {
           exercice.autoCorrection[j].enonce = exercice.listeQuestions[j]
         }
         if (exercice.autoCorrection[j].propositions === undefined) {
-          exercice.autoCorrection[j].propositions = [{ texte: exercice.listeCorrections[j], statut: '', feedback: '' }]
+          exercice.autoCorrection[j].propositions = [{ texte: exercice.listeCorrections[j], statut: "", feedback: "" }]
         }
         if (!Array.isArray(autoCorrection[j].reponse.valeur)) {
           autoCorrection[j].reponse.valeur = [autoCorrection[j].reponse.valeur]
@@ -7959,15 +7960,15 @@ export function exportQcmAmc (exercice, idExo) {
         }
         texQr += `\\element{${ref}}{\n `
         // premier champ de codage
-        texQr += '\\begin{minipage}[b]{0.7 \\linewidth}\n'
+        texQr += "\\begin{minipage}[b]{0.7 \\linewidth}\n"
         texQr += `\\begin{question}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}a} \n `
         texQr += `${autoCorrection[j].enonce} \n `
         if (autoCorrection[j].propositions !== undefined) {
           texQr += `\\explain{${autoCorrection[j].propositions[0].texte}}\n`
         }
         texQr += `\\notation{${autoCorrection[j].propositions[0].statut}}\n`
-        texQr += '\\end{question}\n\\end{minipage}\n'
-        texQr += '\\begin{minipage}[b]{0.05 \\linewidth}\\hspace{6pt}\\end{minipage}'
+        texQr += "\\end{question}\n\\end{minipage}\n"
+        texQr += "\\begin{minipage}[b]{0.05 \\linewidth}\\hspace{6pt}\\end{minipage}"
         reponse = autoCorrection[j].reponse.valeur[0]
         if (autoCorrection[j].reponse.param.digits === 0) {
           nbChiffresPd = nombreDeChiffresDansLaPartieDecimale(reponse)
@@ -7978,8 +7979,8 @@ export function exportQcmAmc (exercice, idExo) {
           autoCorrection[j].reponse.param.decimals = 0
         }
         // deuxième champ de codage numérique
-        texQr += '\\begin{minipage}[b]{0.15 \\linewidth}\n'
-        texQr += '\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse'
+        texQr += "\\begin{minipage}[b]{0.15 \\linewidth}\n"
+        texQr += "\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse"
         texQr += `\\begin{questionmultx}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}b} \n `
         texQr += `${autoCorrection[j].reponse.texte}\n` // pour pouvoir mettre du texte adapté par ex Dénominateur éventuellement de façon conditionnelle avec une valeur par défaut
         texQr += `\\AMCnumericChoices{${reponse}}{digits=${autoCorrection[j].reponse.param.digits},decimals=${autoCorrection[j].reponse.param.decimals},sign=${autoCorrection[j].reponse.param.signe},`
@@ -7990,11 +7991,11 @@ export function exportQcmAmc (exercice, idExo) {
           texQr += `approx=${autoCorrection[j].reponse.param.approx},`
         }
         texQr += `borderwidth=0pt,backgroundcol=lightgray,scoreapprox=${autoCorrection[j].reponse.param.scoreapprox || 0.667},scoreexact=1,Tpoint={,},vertical=true}\n`
-        texQr += '\\end{questionmultx}\n\\end{minipage}\n'
+        texQr += "\\end{questionmultx}\n\\end{minipage}\n"
 
         // troisième champ de codage numérique
-        texQr += '\\begin{minipage}[b]{0.15 \\linewidth}\n'
-        texQr += '\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse'
+        texQr += "\\begin{minipage}[b]{0.15 \\linewidth}\n"
+        texQr += "\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse"
         texQr += `\\begin{questionmultx}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}c} \n `
         reponse2 = autoCorrection[j].reponse2.valeur[0]
         if (autoCorrection[j].reponse2.param.digits === 0) {
@@ -8014,12 +8015,12 @@ export function exportQcmAmc (exercice, idExo) {
           texQr += `approx=${autoCorrection[j].reponse2.param.approx},`
         }
         texQr += `borderwidth=0pt,backgroundcol=lightgray,scoreapprox=${autoCorrection[j].reponse.param.scoreapprox || 0.667},scoreexact=1,Tpoint={,},vertical=true}\n`
-        texQr += '\\end{questionmultx}\n\\end{minipage}}\n'
+        texQr += "\\end{questionmultx}\n\\end{minipage}}\n"
 
         id++
         break
 
-      case 'AMCOpenNum✖︎3': // Un amcOpen et trois  AMCnumeric Choices. (Nouveau ! en test)
+      case "AMCOpenNum✖︎3": // Un amcOpen et trois  AMCnumeric Choices. (Nouveau ! en test)
         /********************************************************************/
         // /!\/!\/!\/!\ ATTENTION /!\/!\/!\/!\
         // Pour ce type :
@@ -8030,7 +8031,7 @@ export function exportQcmAmc (exercice, idExo) {
           exercice.autoCorrection[j].enonce = exercice.listeQuestions[j]
         }
         if (exercice.autoCorrection[j].propositions === undefined) {
-          exercice.autoCorrection[j].propositions = [{ texte: exercice.listeCorrections[j], statut: '', feedback: '' }]
+          exercice.autoCorrection[j].propositions = [{ texte: exercice.listeCorrections[j], statut: "", feedback: "" }]
         }
         if (!Array.isArray(autoCorrection[j].reponse.valeur)) {
           autoCorrection[j].reponse.valeur = [autoCorrection[j].reponse.valeur]
@@ -8043,14 +8044,14 @@ export function exportQcmAmc (exercice, idExo) {
         }
         texQr += `\\element{${ref}}{\n `
         // premier champ de codage
-        texQr += '\\begin{minipage}[b]{0.4 \\linewidth}\n'
+        texQr += "\\begin{minipage}[b]{0.4 \\linewidth}\n"
         texQr += `\\begin{question}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}a} \n `
         texQr += `${autoCorrection[j].enonce} \n `
         if (autoCorrection[j].propositions !== undefined) {
           texQr += `\\explain{${autoCorrection[j].propositions[0].texte}}\n`
         }
         texQr += `\\notation{${autoCorrection[j].propositions[0].statut}}\n`
-        texQr += '\\end{question}\n\\end{minipage}\n'
+        texQr += "\\end{question}\n\\end{minipage}\n"
         reponse = valeurAMCNum
         if (autoCorrection[j].reponse.param.digits === 0) {
           nbChiffresPd = nombreDeChiffresDansLaPartieDecimale(reponse)
@@ -8061,11 +8062,11 @@ export function exportQcmAmc (exercice, idExo) {
           autoCorrection[j].reponse.param.decimals = 0
         }
         // deuxième champ de codage numérique
-        texQr += '\\begin{minipage}[b]{0.2 \\linewidth}\n'
-        texQr += '\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse'
+        texQr += "\\begin{minipage}[b]{0.2 \\linewidth}\n"
+        texQr += "\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse"
         texQr += `\\begin{questionmultx}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}b} \n `
-        if (autoCorrection[j].reponse.textePosition === 'top') texQr += `${autoCorrection[j].reponse.texte}\n` // pour pouvoir mettre du texte adapté par ex Dénominateur éventuellement de façon conditionnelle avec une valeur par défaut
-        else if (autoCorrection[j].reponse.textePosition === 'left') texQr += `${autoCorrection[j].reponse.texte} `
+        if (autoCorrection[j].reponse.textePosition === "top") texQr += `${autoCorrection[j].reponse.texte}\n` // pour pouvoir mettre du texte adapté par ex Dénominateur éventuellement de façon conditionnelle avec une valeur par défaut
+        else if (autoCorrection[j].reponse.textePosition === "left") texQr += `${autoCorrection[j].reponse.texte} `
         texQr += `\\AMCnumericChoices{${valeurAMCNum}}{digits=${autoCorrection[j].reponse.param.digits},decimals=${autoCorrection[j].reponse.param.decimals},sign=${autoCorrection[j].reponse.param.signe},`
         if (autoCorrection[j].reponse.param.exposantNbChiffres !== 0) { // besoin d'un champ pour la puissance de 10. (notation scientifique)
           texQr += `exponent=${autoCorrection[j].reponse.param.exposantNbChiffres},exposign=${autoCorrection[j].reponse.param.exposantSigne},`
@@ -8074,12 +8075,12 @@ export function exportQcmAmc (exercice, idExo) {
           texQr += `approx=${autoCorrection[j].reponse.param.approx},`
         }
         texQr += `borderwidth=0pt,backgroundcol=lightgray,scoreapprox=${autoCorrection[j].reponse.param.scoreapprox || 0.667},scoreexact=1,Tpoint={,},vertical=true}`
-        if (autoCorrection[j].reponse.textePosition === 'right') texQr += `${autoCorrection[j].reponse.texte}\n`
-        texQr += '\\end{questionmultx}\n\\end{minipage}\n'
+        if (autoCorrection[j].reponse.textePosition === "right") texQr += `${autoCorrection[j].reponse.texte}\n`
+        texQr += "\\end{questionmultx}\n\\end{minipage}\n"
 
         // troisième champ de codage numérique
-        texQr += '\\begin{minipage}[b]{0.2 \\linewidth}\n'
-        texQr += '\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse'
+        texQr += "\\begin{minipage}[b]{0.2 \\linewidth}\n"
+        texQr += "\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse"
         texQr += `\\begin{questionmultx}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}c} \n `
         reponse2 = autoCorrection[j].reponse2.valeur[0]
         if (autoCorrection[j].reponse2.param.digits === 0) {
@@ -8090,8 +8091,8 @@ export function exportQcmAmc (exercice, idExo) {
         } else if (autoCorrection[j].reponse2.param.decimals === undefined) {
           autoCorrection[j].reponse2.param.decimals = 0
         }
-        if (autoCorrection[j].reponse2.textePosition === 'top') texQr += `${autoCorrection[j].reponse2.texte}\n` // pour pouvoir mettre du texte adapté par ex Dénominateur éventuellement de façon conditionnelle avec une valeur par défaut
-        else if (autoCorrection[j].reponse2.textePosition === 'left') texQr += `${autoCorrection[j].reponse2.texte} `
+        if (autoCorrection[j].reponse2.textePosition === "top") texQr += `${autoCorrection[j].reponse2.texte}\n` // pour pouvoir mettre du texte adapté par ex Dénominateur éventuellement de façon conditionnelle avec une valeur par défaut
+        else if (autoCorrection[j].reponse2.textePosition === "left") texQr += `${autoCorrection[j].reponse2.texte} `
         texQr += `\\AMCnumericChoices{${autoCorrection[j].reponse2.valeur}}{digits=${autoCorrection[j].reponse2.param.digits},decimals=${autoCorrection[j].reponse2.param.decimals},sign=${autoCorrection[j].reponse2.param.signe},`
         if (autoCorrection[j].reponse2.param.exposantNbChiffres !== 0) { // besoin d'un champ pour la puissance de 10. (notation scientifique)
           texQr += `exponent=${autoCorrection[j].reponse2.param.exposantNbChiffres},exposign=${autoCorrection[j].reponse2.param.exposantSigne},`
@@ -8100,12 +8101,12 @@ export function exportQcmAmc (exercice, idExo) {
           texQr += `approx=${autoCorrection[j].reponse2.param.approx},`
         }
         texQr += `borderwidth=0pt,backgroundcol=lightgray,scoreapprox=${autoCorrection[j].reponse.param.scoreapprox || 0.667},scoreexact=1,Tpoint={,},vertical=true}`
-        if (autoCorrection[j].reponse2.textePosition === 'right') texQr += `${autoCorrection[j].reponse2.texte}\n`
-        texQr += '\\end{questionmultx}\n\\end{minipage}\n'
+        if (autoCorrection[j].reponse2.textePosition === "right") texQr += `${autoCorrection[j].reponse2.texte}\n`
+        texQr += "\\end{questionmultx}\n\\end{minipage}\n"
 
         // quatrième champ de codage numérique
-        texQr += '\\begin{minipage}[b]{0.2 \\linewidth}\n'
-        texQr += '\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse'
+        texQr += "\\begin{minipage}[b]{0.2 \\linewidth}\n"
+        texQr += "\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse"
         texQr += `\\begin{questionmultx}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}d} \n `
         reponse3 = autoCorrection[j].reponse3.valeur[0]
         if (autoCorrection[j].reponse3.param.digits === 0) {
@@ -8116,8 +8117,8 @@ export function exportQcmAmc (exercice, idExo) {
         } else if (autoCorrection[j].reponse3.param.decimals === undefined) {
           autoCorrection[j].reponse3.param.decimals = 0
         }
-        if (autoCorrection[j].reponse3.textePosition === 'top') texQr += `${autoCorrection[j].reponse3.texte}\n` // pour pouvoir mettre du texte adapté par ex Dénominateur éventuellement de façon conditionnelle avec une valeur par défaut
-        else if (autoCorrection[j].reponse3.textePosition === 'left') texQr += `${autoCorrection[j].reponse3.texte} `
+        if (autoCorrection[j].reponse3.textePosition === "top") texQr += `${autoCorrection[j].reponse3.texte}\n` // pour pouvoir mettre du texte adapté par ex Dénominateur éventuellement de façon conditionnelle avec une valeur par défaut
+        else if (autoCorrection[j].reponse3.textePosition === "left") texQr += `${autoCorrection[j].reponse3.texte} `
         texQr += `\\AMCnumericChoices{${autoCorrection[j].reponse3.valeur}}{digits=${autoCorrection[j].reponse3.param.digits},decimals=${autoCorrection[j].reponse3.param.decimals},sign=${autoCorrection[j].reponse3.param.signe},`
         if (autoCorrection[j].reponse3.param.exposantNbChiffres !== 0) { // besoin d'un champ pour la puissance de 10. (notation scientifique)
           texQr += `exponent=${autoCorrection[j].reponse3.param.exposantNbChiffres},exposign=${autoCorrection[j].reponse3.param.exposantSigne},`
@@ -8126,14 +8127,14 @@ export function exportQcmAmc (exercice, idExo) {
           texQr += `approx=${autoCorrection[j].reponse3.param.approx},`
         }
         texQr += `borderwidth=0pt,backgroundcol=lightgray,scoreapprox=${autoCorrection[j].reponse.param.scoreapprox || 0.667},scoreexact=1,Tpoint={,},vertical=true} `
-        if (autoCorrection[j].reponse3.textePosition === 'right') texQr += `${autoCorrection[j].reponse3.texte}\n`
-        texQr += '\\end{questionmultx}\n\\end{minipage}\n}\n'
+        if (autoCorrection[j].reponse3.textePosition === "right") texQr += `${autoCorrection[j].reponse3.texte}\n`
+        texQr += "\\end{questionmultx}\n\\end{minipage}\n}\n"
         id++
         break
 
       default : // Si on arrive ici, c'est que le type est AMCHybride
-        if (type !== 'AMCHybride') {
-          window.notify('exportQcmAMC : Il doit y avoir une erreur de type AMC, je ne connais pas le type : ', { type })
+        if (type !== "AMCHybride") {
+          window.notify("exportQcmAMC : Il doit y avoir une erreur de type AMC, je ne connais pas le type : ", { type })
         }
         if (autoCorrection[j].enonce === undefined) { // Si l'énoncé n'a pas été défini, on va le chercher dans la question
           autoCorrection[j].enonce = exercice.listeQuestions[j]
@@ -8145,24 +8146,24 @@ export function exportQcmAmc (exercice, idExo) {
           melange = autoCorrection[j].melange
         }
         texQr += `\\element{${ref}}{\n ` // Un seul élément du groupe de question pour AMC... plusieurs questions dedans !
-        if (typeof autoCorrection[j].options !== 'undefined') {
+        if (typeof autoCorrection[j].options !== "undefined") {
           if (autoCorrection[j].options.multicolsAll) {
-            texQr += '\\setlength{\\columnseprule}{'
+            texQr += "\\setlength{\\columnseprule}{"
             if (autoCorrection[j].options.barreseparation) {
-              texQr += '0.5'
+              texQr += "0.5"
             } else {
-              texQr += '0'
+              texQr += "0"
             }
-            texQr += 'pt}\\begin{multicols}{2}\n'
+            texQr += "pt}\\begin{multicols}{2}\n"
           }
         }
         if (autoCorrection[j].enonceAGauche) {
           texQr += `\\noindent\\fbox{\\begin{minipage}{${autoCorrection[j].enonceAGauche[0]}\\linewidth}\n`
         }
-        sautDeLigneApresEnonce = '\\\\\n '
+        sautDeLigneApresEnonce = "\\\\\n "
         if (!(autoCorrection[j].enonceCentre === undefined) || (autoCorrection[j].enonceCentre)) {
-          texQr += '\\begin{center}'
-          sautDeLigneApresEnonce = ''
+          texQr += "\\begin{center}"
+          sautDeLigneApresEnonce = ""
         }
         if (autoCorrection[j].enonceAvant === undefined) { // Dans une suite de questions, il se peut qu'il n'y ait pas d'énoncé général donc pas besoin de saut de ligne non plus.
           texQr += `${autoCorrection[j].enonce} ` + sautDeLigneApresEnonce
@@ -8174,20 +8175,20 @@ export function exportQcmAmc (exercice, idExo) {
           }
         }
         if (!(autoCorrection[j].enonceCentre === undefined) || (autoCorrection[j].enonceCentre)) {
-          texQr += '\\end{center}'
+          texQr += "\\end{center}"
         }
         if (autoCorrection[j].enonceAGauche) {
           texQr += `\\end{minipage}}\n\\noindent\\begin{minipage}[t]{${autoCorrection[j].enonceAGauche[1]}\\linewidth}\n`
         }
-        if (typeof autoCorrection[j].options !== 'undefined') {
+        if (typeof autoCorrection[j].options !== "undefined") {
           if (autoCorrection[j].options.multicols & !autoCorrection[j].options.multicolsAll) {
-            texQr += '\\setlength{\\columnseprule}{'
+            texQr += "\\setlength{\\columnseprule}{"
             if (autoCorrection[j].options.barreseparation) {
-              texQr += '0.5'
+              texQr += "0.5"
             } else {
-              texQr += '0'
+              texQr += "0"
             }
-            texQr += 'pt}\\begin{multicols}{2}\n'
+            texQr += "pt}\\begin{multicols}{2}\n"
           }
         }
 
@@ -8197,16 +8198,16 @@ export function exportQcmAmc (exercice, idExo) {
 
           propositions = prop.propositions
           switch (qrType) {
-            case 'qcmMono':
+            case "qcmMono":
               if (elimineDoublons(propositions)) {
-                console.log('doublons trouvés')
+                console.log("doublons trouvés")
               }
 
               if (prop.options !== undefined) {
                 if (prop.options.vertical === undefined) {
-                  horizontalite = 'reponseshoriz'
+                  horizontalite = "reponseshoriz"
                 } else {
-                  horizontalite = 'reponses'
+                  horizontalite = "reponses"
                 }
                 if (prop.options.ordered) {
                   ordered = true
@@ -8215,20 +8216,20 @@ export function exportQcmAmc (exercice, idExo) {
                   lastchoice = prop.options.lastChoice
                 }
               }
-              texQr += `${qr > 0 ? '\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse' : ''}\\begin{question}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}} \n `
+              texQr += `${qr > 0 ? "\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse" : ""}\\begin{question}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}} \n `
               if (propositions[0].reponse !== undefined) {
                 if (propositions[0].reponse.texte) {
-                  texQr += propositions[0].reponse.texte + '\n'
+                  texQr += propositions[0].reponse.texte + "\n"
                 }
               }
               texQr += `\t\\begin{${horizontalite}}`
               if (ordered) {
-                texQr += '[o]'
+                texQr += "[o]"
               }
-              texQr += '\n '
+              texQr += "\n "
               for (let i = 0; i < propositions.length; i++) {
                 if (lastchoice > 0 && i === lastchoice) {
-                  texQr += '\t\t\\lastchoices\n'
+                  texQr += "\t\t\\lastchoices\n"
                 }
                 if (prop.propositions[i].statut) {
                   texQr += `\t\t\\bonne{${propositions[i].texte}}\n `
@@ -8237,18 +8238,18 @@ export function exportQcmAmc (exercice, idExo) {
                 }
               }
               texQr += `\t\\end{${horizontalite}}\n `
-              texQr += '\\end{question}\n'
+              texQr += "\\end{question}\n"
               id++
               break
-            case 'qcmMult':
+            case "qcmMult":
               if (elimineDoublons(propositions)) {
-                console.log('doublons trouvés')
+                console.log("doublons trouvés")
               }
               if (prop.options !== undefined) {
                 if (prop.options.vertical === undefined) {
-                  horizontalite = 'reponseshoriz'
+                  horizontalite = "reponseshoriz"
                 } else {
-                  horizontalite = 'reponses'
+                  horizontalite = "reponses"
                 }
                 if (prop.options.ordered) {
                   ordered = true
@@ -8257,17 +8258,17 @@ export function exportQcmAmc (exercice, idExo) {
                   lastchoice = prop.options.lastChoice
                 }
               }
-              texQr += `${(qr > 0 && !(autoCorrection[j].options.avecSymboleMult)) ? '\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse' : ''}\\begin{questionmult}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}} \n `
+              texQr += `${(qr > 0 && !(autoCorrection[j].options.avecSymboleMult)) ? "\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse" : ""}\\begin{questionmult}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}} \n `
               if (prop.enonce !== undefined) texQr += prop.enonce
 
               texQr += `\t\\begin{${horizontalite}}`
               if (ordered) {
-                texQr += '[o]'
+                texQr += "[o]"
               }
-              texQr += '\n '
+              texQr += "\n "
               for (let i = 0; i < propositions.length; i++) {
                 if (lastchoice > 0 && i === lastchoice) {
-                  texQr += '\t\t\\lastchoices\n'
+                  texQr += "\t\t\\lastchoices\n"
                 }
                 if (propositions[i].statut) {
                   texQr += `\t\t\\bonne{${propositions[i].texte}}\n `
@@ -8276,10 +8277,10 @@ export function exportQcmAmc (exercice, idExo) {
                 }
               }
               texQr += `\t\\end{${horizontalite}}\n `
-              texQr += ' \\end{questionmult}\n'
+              texQr += " \\end{questionmult}\n"
               id++
               break
-            case 'AMCNum':
+            case "AMCNum":
               rep = prop.propositions[0].reponse
               if (!Array.isArray(rep.valeur)) { // rep.valeur est un tableau si la réponse est une fraction
                 rep.valeur = [rep.valeur]
@@ -8288,9 +8289,9 @@ export function exportQcmAmc (exercice, idExo) {
                 if (rep.param.exposantPuissance === undefined) {
                   rep.param.exposantPuissance = 1000 // Nb volontairement grand pour faire comprendre à l'utilisateur AMC qu'il y a eu une erreur de programmation lors de la conception de l'exercice.
                 }
-                texQr += '\\begin{minipage}{\\textwidth}\n'
-                texQr += '\\begin{multicols}{2}\n'
-                texQr += `${qr > 0 ? '\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse' : ''}\\begin{questionmultx}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}} \n `
+                texQr += "\\begin{minipage}{\\textwidth}\n"
+                texQr += "\\begin{multicols}{2}\n"
+                texQr += `${qr > 0 ? "\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse" : ""}\\begin{questionmultx}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}} \n `
                 if (propositions !== undefined) {
                   texQr += `\\explain{${propositions[0].texte}}\n`
                 }
@@ -8307,23 +8308,23 @@ export function exportQcmAmc (exercice, idExo) {
                 } else {
                   digitsExposant = nombreDeChiffresDansLaPartieEntiere(rep.param.exposantPuissance)
                 }
-                texQr += '\n'
-                texQr += `Base\n \\AMCnumericChoices{${rep.param.basePuissance}}{digits=${digitsBase},decimals=0,sign=${rep.param.basePuissance < 0 ? 'true' : 'false'},approx=0,`
+                texQr += "\n"
+                texQr += `Base\n \\AMCnumericChoices{${rep.param.basePuissance}}{digits=${digitsBase},decimals=0,sign=${rep.param.basePuissance < 0 ? "true" : "false"},approx=0,`
                 texQr += `borderwidth=0pt,backgroundcol=lightgray,scoreapprox=${autoCorrection[j].reponse.param.scoreapprox || 0.667},scoreexact=1,Tpoint={,}}\n`
-                texQr += '\\end{questionmultx}\n'
-                texQr += '\\AMCquestionNumberfalse\\def\\AMCbeginQuestion#1#2{}'
+                texQr += "\\end{questionmultx}\n"
+                texQr += "\\AMCquestionNumberfalse\\def\\AMCbeginQuestion#1#2{}"
                 texQr += `\\begin{questionmultx}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 1}} \n `
-                texQr += '\\vspace{18pt}'
+                texQr += "\\vspace{18pt}"
                 // texQr += `Exposant\n \\AMCnumericChoices{${rep.param.exposantPuissance}}{digits=${digitsExposant},decimals=0,sign=${rep.param.exposantPuissance < 0 ? 'true' : 'false'},approx=0,`
                 texQr += `Exposant\n \\AMCnumericChoices{${rep.param.exposantPuissance}}{digits=${digitsExposant},decimals=0,sign=true,approx=0,`
                 texQr += `borderwidth=0pt,backgroundcol=lightgray,scoreapprox=${autoCorrection[j].reponse.param.scoreapprox || 0.667},scoreexact=1,Tpoint={,}}\n`
-                texQr += '\\end{questionmultx}\\end{multicols}\n\\end{minipage}\n\n'
+                texQr += "\\end{questionmultx}\\end{multicols}\n\\end{minipage}\n\n"
                 id += 2
               } else if (rep.valeur[0].num !== undefined) { // Si une fraction a été passée à AMCNum, on met deux AMCNumericChoice
                 valeurAMCNum = rep.valeur[0]
-                texQr += `${qr > 0 ? '\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse' : ''}\\begin{questionmultx}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}} \n `
+                texQr += `${qr > 0 ? "\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse" : ""}\\begin{questionmultx}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}} \n `
                 if (!(propositions[0].reponse.alignement === undefined)) {
-                  texQr += '\\begin{'
+                  texQr += "\\begin{"
                   texQr += `${propositions[0].reponse.alignement}}`
                 }
                 if (propositions !== undefined) {
@@ -8364,10 +8365,10 @@ export function exportQcmAmc (exercice, idExo) {
                 texQr += `\\AMCnumericChoices{${reponseF}}{digits=${digitsNum + digitsDen},decimals=${digitsDen},sign=${signeNum},approx=0,`
                 texQr += `borderwidth=0pt,backgroundcol=lightgray,scoreexact=1,Tpoint={\\vspace{0.5cm} \\vrule height 0.4pt width 5.5cm },alsocorrect=${reponseAlsoCorrect}}\n`
                 if (!(propositions[0].reponse.alignement === undefined)) {
-                  texQr += '\\end{'
+                  texQr += "\\end{"
                   texQr += `${propositions[0].reponse.alignement}}`
                 }
-                texQr += '\\end{questionmultx}\n'
+                texQr += "\\end{questionmultx}\n"
                 id += 2
               } else { // Ni puissances, ni fractions
                 let nbChiffresExpo
@@ -8383,15 +8384,15 @@ export function exportQcmAmc (exercice, idExo) {
                   const demiMediane = rep.param.milieuIntervalle - valeurAMCNum
                   nbChiffresPd = Math.max(nbChiffresPd, nombreDeChiffresDansLaPartieDecimale(demiMediane))
                   valeurAMCNum = rep.param.milieuIntervalle
-                  rep.param.approx = autoCorrection[j].reponse.param.approx === 'intervalleStrict' ? demiMediane * 10 ** nbChiffresPd - 1 : demiMediane * 10 ** nbChiffresPd
+                  rep.param.approx = autoCorrection[j].reponse.param.approx === "intervalleStrict" ? demiMediane * 10 ** nbChiffresPd - 1 : demiMediane * 10 ** nbChiffresPd
                 }
-                texQr += `${qr > 0 ? '\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse' : ''}\\begin{questionmultx}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}} \n `
+                texQr += `${qr > 0 ? "\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse" : ""}\\begin{questionmultx}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}} \n `
                 if (propositions !== undefined) {
                   texQr += `\\explain{${propositions[0].texte}}\n`
                 }
                 texQr += `${rep.texte}\n`
                 if (!(propositions[0].reponse.alignement === undefined)) {
-                  texQr += '\\begin{'
+                  texQr += "\\begin{"
                   texQr += `${propositions[0].reponse.alignement}}`
                 }
                 texQr += `\\AMCnumericChoices{${rep.valeur[0]}}{digits=${nbChiffresPe + nbChiffresPd},decimals=${nbChiffresPd},sign=${rep.param.signe},`
@@ -8414,22 +8415,22 @@ export function exportQcmAmc (exercice, idExo) {
                 if (rep.param.tpoint !== undefined && rep.param.tpoint) {
                   texQr += `Tpoint={${rep.param.tpoint}},`
                 } else {
-                  texQr += 'Tpoint={,},'
+                  texQr += "Tpoint={,},"
                 }
-                texQr += 'borderwidth=0pt,backgroundcol=lightgray,scoreexact=1}\n'
+                texQr += "borderwidth=0pt,backgroundcol=lightgray,scoreexact=1}\n"
                 if (!(propositions[0].reponse.alignement === undefined)) {
-                  texQr += '\\end{'
+                  texQr += "\\end{"
                   texQr += `${propositions[0].reponse.alignement}}`
                 }
-                texQr += '\\end{questionmultx}\n'
+                texQr += "\\end{questionmultx}\n"
                 id++
               }
               break
-            case 'AMCOpen': // AMCOpen de Hybride
+            case "AMCOpen": // AMCOpen de Hybride
               if (propositions[0].numQuestionVisible === undefined) {
-                texQr += `\t${qr > 0 ? '\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse' : ''}\\begin{question}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}} \n`
+                texQr += `\t${qr > 0 ? "\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse" : ""}\\begin{question}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}} \n`
               } else if (propositions[0].numQuestionVisible) {
-                texQr += `\t${qr > 0 ? '\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse' : ''}\\begin{question}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}} \n`
+                texQr += `\t${qr > 0 ? "\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse" : ""}\\begin{question}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}} \n`
               } else {
                 texQr += `\t\\def\\AMCbeginQuestion#1#2{}\\AMCquestionNumberfalse \\begin{question}{${ref}-${lettreDepuisChiffre(idExo + 1)}-${id + 10}}\\QuestionIndicative \n`
               }
@@ -8440,27 +8441,27 @@ export function exportQcmAmc (exercice, idExo) {
                 texQr += `\t\t\\notation{${propositions[0].statut}}`
                 if (!(isNaN(propositions[0].sanscadre))) {
                   texQr += `[${propositions[0].sanscadre}]` // le statut contiendra le nombre de lignes pour ce type
-                } else texQr += '[false]'
+                } else texQr += "[false]"
                 if (!(isNaN(propositions[0].sanslignes))) {
                   texQr += `[${!propositions[0].sanslignes}]` // le statut contiendra le nombre de lignes pour ce type
-                } else texQr += '[true]'
+                } else texQr += "[true]"
               }
 
-              texQr += '\n' // le statut contiendra le nombre de lignes pour ce type
-              texQr += '\t\\end{question}\n'
+              texQr += "\n" // le statut contiendra le nombre de lignes pour ce type
+              texQr += "\t\\end{question}\n"
               id++
               break
           }
         }
-        if (typeof autoCorrection[j].options !== 'undefined') {
+        if (typeof autoCorrection[j].options !== "undefined") {
           if (autoCorrection[j].options.multicols || autoCorrection[j].options.multicolsAll) {
-            texQr += '\\end{multicols}\n'
+            texQr += "\\end{multicols}\n"
           }
         }
         if (autoCorrection[j].enonceAGauche) {
-          texQr += '\\end{minipage}\n'
+          texQr += "\\end{minipage}\n"
         }
-        texQr += '}\n'
+        texQr += "}\n"
         break
     }
   }
@@ -8487,7 +8488,7 @@ export function exportQcmAmc (exercice, idExo) {
  * nb_exemplaire est le nombre de copies à générer
  * matiere et titre se passent de commentaires : ils renseignent l'entête du sujet.
  */
-export function creerDocumentAmc ({ questions, nbQuestions = [], nbExemplaires = 1, matiere = 'Mathématiques', titre = 'Evaluation', typeEntete = 'AMCcodeGrid', format = 'A4' }) {
+export function creerDocumentAmc ({ questions, nbQuestions = [], nbExemplaires = 1, matiere = "Mathématiques", titre = "Evaluation", typeEntete = "AMCcodeGrid", format = "A4" }) {
   // Attention questions est maintenant un tableau de tous les this.amc des exos
   // Dans cette partie, la fonction récupère toutes les questions et les trie pour les rassembler par groupe
   // Toutes les questions d'un même exercice seront regroupées ce qui permet éventuellement de les récupérer dans des fichiers individuels pour se constituer une base
@@ -8505,7 +8506,7 @@ export function creerDocumentAmc ({ questions, nbQuestions = [], nbExemplaires =
       texQuestions[indexOfCode] = code[0]
 
       // Si le nombre de questions du groupe n'est pas défini, alors on met toutes les questions sinon on laisse le nombre choisi par l'utilisateur
-      if (typeof nbQuestions[indexOfCode] === 'undefined') {
+      if (typeof nbQuestions[indexOfCode] === "undefined") {
         nombreDeQuestionsIndefinie[indexOfCode] = true
         nbQuestions[indexOfCode] = code[2]
       } else { // Si le nombre de question (à restituer pour ce groupe de question) a été défini par l'utilisateur, alors on le laisse !
@@ -8527,7 +8528,7 @@ export function creerDocumentAmc ({ questions, nbQuestions = [], nbExemplaires =
   // Fin de la préparation des groupes
 
   // variable qui contiendra le code LaTeX pour AMC
-  let codeLatex = ''
+  let codeLatex = ""
 
   // variable preambule à abonder le cas échéant si des packages sont nécessaires.
   // Merci à Sébastien Lozano pour la vérification des dépendances
@@ -8538,10 +8539,10 @@ export function creerDocumentAmc ({ questions, nbQuestions = [], nbExemplaires =
   %%%%% -I- PRÉAMBULE %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \n`
-  if (format === 'A3') {
-    preambule += '\t \\documentclass[10pt,a3paper,landscape,french]{article}\n'
+  if (format === "A3") {
+    preambule += "\t \\documentclass[10pt,a3paper,landscape,french]{article}\n"
   } else {
-    preambule += '\t \\documentclass[10pt,a4paper,french]{article}\n'
+    preambule += "\t \\documentclass[10pt,a4paper,french]{article}\n"
   }
 
   preambule += `\t
@@ -8745,9 +8746,9 @@ export function creerDocumentAmc ({ questions, nbQuestions = [], nbExemplaires =
       }
   \\end{center}\n`
 
-  let enteteCopie = ''
-  if (typeEntete === 'AMCassociation') {
-    enteteCopie += '\\newcommand{\\sujet}{\n'
+  let enteteCopie = ""
+  if (typeEntete === "AMCassociation") {
+    enteteCopie += "\\newcommand{\\sujet}{\n"
   }
   enteteCopie += ` 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -8758,8 +8759,8 @@ export function creerDocumentAmc ({ questions, nbQuestions = [], nbExemplaires =
   \\exemplaire{${nbExemplaires}}{   % <======  /!\\ PENSER À ADAPTER /!\\  ===  %
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
   \n`
-  if (format === 'A3') {
-    enteteCopie += '\\begin{multicols}{2}\n'
+  if (format === "A3") {
+    enteteCopie += "\\begin{multicols}{2}\n"
   }
   enteteCopie += `
   %%%%% EN-TÊTE, IDENTIFICATION AUTOMATIQUE DE L'ÉLÈVE %%%%%
@@ -8779,9 +8780,9 @@ export function creerDocumentAmc ({ questions, nbQuestions = [], nbExemplaires =
   \\end{center}
   \\end{minipage}
   \\hfill\n`
-  if (typeEntete === 'AMCassociation') {
+  if (typeEntete === "AMCassociation") {
     enteteCopie += enteteTypePreremplie
-  } else if (typeEntete === 'AMCcodeGrid') {
+  } else if (typeEntete === "AMCcodeGrid") {
     enteteCopie += enteteTypeCodeGrid
   } else {
     enteteCopie += enteteTypeChampnomSimple
@@ -8798,9 +8799,9 @@ export function creerDocumentAmc ({ questions, nbQuestions = [], nbExemplaires =
   // Ici On ajoute les commandes pour insérer les questions issues des groupes en quantité selon le nb_question[i]
   // nb_question est un tableau passé en paramètre à la fonction creerDocumentAmc pour déterminer le nombre de questions à restituer par groupe.
   // si ce nombre est 0, on restitue toutes les questions du groupe
-  let contenuCopie = ''
-  if (typeEntete === 'AMCcodeGrid') {
-    contenuCopie += '\t \\def\\AMCchoiceLabel##1{}'
+  let contenuCopie = ""
+  if (typeEntete === "AMCcodeGrid") {
+    contenuCopie += "\t \\def\\AMCchoiceLabel##1{}"
   }
   for (const g of groupeDeQuestions) {
     const i = groupeDeQuestions.indexOf(g)
@@ -8821,36 +8822,36 @@ export function creerDocumentAmc ({ questions, nbQuestions = [], nbExemplaires =
       contenuCopie += `\\restituegroupe{${g}}\n\n`
     }
   }
-  if (format === 'A3') {
-    contenuCopie += '\\end{multicols}\n'
+  if (format === "A3") {
+    contenuCopie += "\\end{multicols}\n"
   }
-  if (typeEntete === 'AMCassociation') {
+  if (typeEntete === "AMCassociation") {
     contenuCopie += `\\AMCassociation{\\id}\n
     }
   }\n`
   } else {
-    contenuCopie += '}\n'
+    contenuCopie += "}\n"
   }
 
   // On assemble les différents morceaux et on retourne le résultat
-  codeLatex = preambule + '\n' + debutDocument + '\n' + enteteCopie + contenuCopie
-  if (typeEntete === 'AMCassociation') {
-    codeLatex += '\n \n \\csvreader[head to column names]{liste.csv}{}{\\sujet}\n'
+  codeLatex = preambule + "\n" + debutDocument + "\n" + enteteCopie + contenuCopie
+  if (typeEntete === "AMCassociation") {
+    codeLatex += "\n \n \\csvreader[head to column names]{liste.csv}{}{\\sujet}\n"
   }
-  codeLatex += '\\end{document}\n'
+  codeLatex += "\\end{document}\n"
   return codeLatex
 }
 
 export function dataTailleDiaporama (exercice) {
-  if (context.vue !== 'diap') {
-    return ''
+  if (context.vue !== "diap") {
+    return ""
   } else if (exercice.tailleDiaporama !== 1) {
     return `data-taille = "${exercice.tailleDiaporama}"`
   }
 }
 function dataTaille (taille) {
-  if (context.vue !== 'diap') {
-    return ''
+  if (context.vue !== "diap") {
+    return ""
   } else if (taille !== 1) {
     return `data-taille = "${taille}"`
   }
@@ -8885,5 +8886,5 @@ export function listeEntiersSommeConnue (nbElements, total, valMin = 1) {
  * @author Jean-Léon Henry
  */
 export function prettyTex (expression) {
-  return expression.toTex({ implicit: 'hide' }).replaceAll('\\cdot', '')
+  return expression.toTex({ implicit: "hide" }).replaceAll("\\cdot", "")
 }

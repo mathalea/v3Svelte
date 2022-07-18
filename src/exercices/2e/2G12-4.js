@@ -7,6 +7,8 @@ export const titre = 'Déterminer la nature d\'un polygone'
  * 2G12
  * @author Stéphane Guyon
  */
+export const uuid = '9e15d'
+export const ref = '2G12-4'
 export default function NaturePolygone () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -14,7 +16,7 @@ export default function NaturePolygone () {
   this.nbCols = 2
   this.nbColsCorr = 2
   // this.sup = 1 ; //
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const typesDeQuestionsDisponibles = [1]; let typesDeQuestions

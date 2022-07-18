@@ -14,6 +14,8 @@ export const titre = 'Lecture graphique d\'éléments caractéristiques d\'un tr
  * - les 3 trucs précédents
  * référence 1E12-1
  */
+export const uuid = '0a4ad'
+export const ref = '1E12-1'
 export default function LireElementsCarac () {
   Exercice.call(this)
   this.consigne = 'Lecture graphique'
@@ -23,7 +25,7 @@ export default function LireElementsCarac () {
   // this.video = '' // Id YouTube ou url
   this.sup = 4
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     const pixelsParCm = 20
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

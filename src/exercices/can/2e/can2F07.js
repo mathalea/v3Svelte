@@ -19,6 +19,8 @@ export const dateDeModifImportante = '24/10/2021' // Une date de modification im
  * @author Gilles Mora
  * Référence
 */
+export const uuid = '0502d'
+export const ref = 'can2F07'
 export default function ExtremumsTableau () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1
@@ -27,7 +29,7 @@ export default function ExtremumsTableau () {
   this.listePackages = ['tkz-tab']
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let texte, texteCorr, ligne1

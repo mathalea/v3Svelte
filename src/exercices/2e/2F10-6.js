@@ -8,6 +8,8 @@ export const titre = 'Déterminer le sens de variation d\'une fonction affine'
 * @author Stéphane Guyon
 * 2F10-3
 */
+export const uuid = 'ee773'
+export const ref = '2F10-6'
 export default function variationsfonctionaffine () {
   Exercice.call(this)
   this.titre = titre
@@ -20,7 +22,7 @@ export default function variationsfonctionaffine () {
   this.spacingCorr = 1
   this.sup = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.listeQuestions = []
     this.listeCorrections = []

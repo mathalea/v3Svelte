@@ -10,6 +10,8 @@ export const dateDePublication = '16/05/2022'
  * @author Guillaume Valmont
  * Référence 4G10-2
 */
+export const uuid = 'a29e9'
+export const ref = '4G10-2'
 export default class nomExercice extends Exercice {
   constructor () {
     super()
@@ -98,7 +100,7 @@ export default class nomExercice extends Exercice {
       // Perpendiculaire
       anim.tempo = 0.5
       anim.couleur = 'red'
-      anim.pointilles = true
+      anim.pointilles = 5
       anim.equerreDeplacer(pied)
       anim.equerreMontrer()
       anim.equerreRotation(AA)

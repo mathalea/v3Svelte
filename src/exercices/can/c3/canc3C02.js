@@ -1,5 +1,5 @@
-import { choice, randint } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { choice, randint } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Calculer à partir d’une décomposition'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -11,13 +11,15 @@ export const amcType = 'AMCNum'
  * Date de publication septembre 2021
  * Référence canc3C02
  */
+export const uuid = 'b5e4d'
+export const ref = 'canc3C02'
 export default function CompositionDeNombreEntier () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(1, 9)
     const b = randint(1, 9, a)
     const c = randint(1, 9, [a, b])

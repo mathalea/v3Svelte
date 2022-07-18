@@ -19,6 +19,8 @@ export const titre = 'Addition de deux entiers relatifs'
 * @author Rémi Angot
 * 5R20
 */
+export const uuid = '6bf15'
+export const ref = '5R20'
 export default function ExerciceAdditionsRelatifs (max = 20) {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = max
@@ -28,7 +30,7 @@ export default function ExerciceAdditionsRelatifs (max = 20) {
   this.modeQcm = false
   this.sup3 = false
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.interactifType = this.sup3 ? 'qcm' : 'mathLive'
     this.listeQuestions = [] // Liste de questions

@@ -10,13 +10,15 @@ export const interactifType = 'mathLive'
  * Référence
  * Date de publication
 */
+export const uuid = '6f278'
+export const ref = 'can3S04'
 export default function Etendue () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let min, max
     const nombreNotes = randint(4, 7)
     const notes = listeDeNotes(nombreNotes, randint(0, 7), randint(13, 20)) // on récupère une série de notes (série brute)

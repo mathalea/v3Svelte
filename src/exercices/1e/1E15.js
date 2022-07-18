@@ -11,6 +11,8 @@ export const dateDePublication = '30/10/2021'
  * @author Eric Schrafstetter
  * Référence 1E15
 */
+export const uuid = '79078'
+export const ref = '1E15'
 export default function equationDuSecondDegreAvecUnParametre () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Discutez, suivant la valeur du paramètre $m$, le $\\underline{\\text{nombre de solutions}}$ de l\'équation du second degré'
@@ -23,7 +25,7 @@ export default function equationDuSecondDegreAvecUnParametre () {
   this.typeExercice = 'XCas'
   context.isHtml ? (this.spacingCorr = 2) : (this.spacingCorr = 1)
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

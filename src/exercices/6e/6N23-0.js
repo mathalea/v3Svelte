@@ -17,6 +17,8 @@ export const interactifType = 'mathLive'
  * 6N23-0
  */
 
+export const uuid = '831dd'
+export const ref = '6N23-0'
 export default function EcrireNombresDecimal () {
   Exercice.call(this)
   this.nbQuestions = 5
@@ -25,7 +27,7 @@ export default function EcrireNombresDecimal () {
   this.sup = 1
   this.sup2 = 1
   this.sup3 = 3
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let formatEcriture = []
     if (parseInt(this.sup) === 1) {
       formatEcriture = combinaisonListes([true], this.nbQuestions)

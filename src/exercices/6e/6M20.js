@@ -22,6 +22,8 @@ export const dateDeModifImportante = '08/05/2022'
  * Ajout de la possibilité de choisir le nombre de questions par Guillaume Valmont le 08/05/2022
  * Référence 6M20
  */
+export const uuid = '609cf'
+export const ref = '6M20'
 export default function AireDeTriangles () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.interactifReady = interactifReady
@@ -40,7 +42,7 @@ export default function AireDeTriangles () {
   this.correctionDetailleeDisponible = true
   this.correctionDetaillee = false
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeCorrections = [] // Liste de questions corrigées
     this.listeQuestions = []
     this.autoCorrection = []
@@ -82,8 +84,8 @@ export default function AireDeTriangles () {
       ymax = Math.max(A.y, B.y, C.y, H.y) + 1.5
       objetsEnonce.push(polynom[0], polynom[1], hauteurpoly, afficheCoteSegment(segment(B, A), '', 1), afficheLongueurSegment(A, C, 'black', 0.5), afficheLongueurSegment(C, B, 'black', 0.5), afficheLongueurSegment(C, H, 'black', 0.3), codageAngleDroit(A, H, C))
       objetsCorrection.push(polynom[0], polynom[1], hauteurpoly, afficheCoteSegment(segment(B, A), '', 1), afficheLongueurSegment(C, H, 'black', 0.3), codageAngleDroit(A, H, C))
-      texte = mathalea2d({ xmin: xmin, xmax: xmax, ymin: ymin, ymax: ymax, pixelsParCm: 20, scale: 0.5, mainlevee: false }, objetsEnonce) + '<br>'
-      if (this.correctionDetaillee) { texteCorr = mathalea2d({ xmin: xmin, xmax: xmax, ymin: ymin, ymax: ymax, pixelsParCm: 20, scale: 0.5, mainlevee: false }, objetsCorrection) + '<br>' } else texteCorr = ''
+      texte = mathalea2d({ xmin, xmax, ymin, ymax, pixelsParCm: 20, scale: 0.5, mainlevee: false }, objetsEnonce) + '<br>'
+      if (this.correctionDetaillee) { texteCorr = mathalea2d({ xmin, xmax, ymin, ymax, pixelsParCm: 20, scale: 0.5, mainlevee: false }, objetsCorrection) + '<br>' } else texteCorr = ''
       texteCorr += `$\\mathcal{A}_{${A.nom}${B.nom}${C.nom}}=\\dfrac{1}{2}\\times ${A.nom}${B.nom}\\times ${H.nom}${C.nom}=\\dfrac{1}{2}\\times${cotes[i]}~\\text{cm}\\times ${hauteurs[i]}~\\text{cm}=${texNombre(
       calcul((cotes[i] * hauteurs[i]) / 2)
     )}~\\text{cm}^2$`

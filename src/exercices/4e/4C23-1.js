@@ -17,6 +17,8 @@ export const interactifType = 'mathLive'
  * @author Jean-Claude Lhote
  * 4C23
  */
+export const uuid = 'c7ebb'
+export const ref = '4C23-1'
 export default function ExerciceAdditionnerFractionProduit () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = 1 // Avec ou sans relatifs
@@ -29,7 +31,7 @@ export default function ExerciceAdditionnerFractionProduit () {
   this.correctionDetailleeDisponible = true
   this.correctionDetaillee = true
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

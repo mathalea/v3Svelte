@@ -1,5 +1,5 @@
-import { choice, randint, texteEnCouleur } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { choice, randint, texteEnCouleur } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Calculer le quart ou le tiers'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -11,13 +11,15 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can6C08
  */
+export const uuid = '9650d'
+export const ref = 'can6C08'
 export default function QuartOuTiers () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(5, 10)
     let b
     if (choice([true, false])) {

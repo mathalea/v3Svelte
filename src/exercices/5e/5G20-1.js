@@ -9,6 +9,8 @@ export const titre = 'Vocabulaire des triangles'
  * 6G20-2 ; 5G20-1
  * @author Sébastien Lozano
  */
+export const uuid = '6b995'
+export const ref = '5G20-1'
 export default function VocabulaireDesTriangles () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -25,7 +27,7 @@ export default function VocabulaireDesTriangles () {
 
   let typeDeQuestionsDisponibles
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.sup = parseInt(this.sup)
     if (this.classe === 6) {
       if (this.sup === 1) {

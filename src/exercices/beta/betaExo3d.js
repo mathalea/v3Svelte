@@ -15,7 +15,7 @@ export default function ExerciceZeroMathalea2d3d () {
   this.pasDeVersionLatex = false // mettre à true si on ne veut pas de l'exercice dans le générateur LaTeX
   this.pas_de_version_HMTL = false // mettre à true si on ne veut pas de l'exercice en ligne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // tableau contenant la liste des questions
     this.listeCorrections = []
 

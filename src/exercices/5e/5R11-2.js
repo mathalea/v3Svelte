@@ -15,6 +15,8 @@ export const titre = 'Placer un point d\'abscisse un nombre relatif'
 * @author Jean-Claude Lhote et Rémi Angot
 * Référence 5R11-2
 */
+export const uuid = 'f3f40'
+export const ref = '5R11-2'
 export default function PlacerPointsSurAxeRelatifs () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -38,7 +40,7 @@ export default function PlacerPointsSurAxeRelatifs () {
   //   return ((xF - abs0) / 3 / pas1 + abs0)
   // }
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     if (this.interactif) this.consigne = 'Placer les points sur la droite graduée, puis vérifier la réponse.'
     let typesDeQuestions
     const pointsSolutions = []

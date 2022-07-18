@@ -11,6 +11,8 @@ export const interactifType = 'mathLive'
  * @author Rémi Angot
  * 6N20-2
  */
+export const uuid = '4198b'
+export const ref = '6N20-2'
 export default function ExerciceFractionsDifferentesEcritures () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne =
@@ -18,7 +20,7 @@ export default function ExerciceFractionsDifferentesEcritures () {
   this.spacing = 2
   this.spacingCorr = 2
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

@@ -14,6 +14,8 @@ export const amcType = 'AMCHybride'
  * @author Stéphane Guyon
  * 2G30-1, ex 2G50
 */
+export const uuid = '862e9'
+export const ref = '2G30-1'
 export default function CoefficientDirecteurDeDroite () {
   Exercice.call(this) // Héritage de la classe Exercice()
 
@@ -24,7 +26,7 @@ export default function CoefficientDirecteurDeDroite () {
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

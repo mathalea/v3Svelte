@@ -1,5 +1,5 @@
-import { choice, randint } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { choice, randint } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Calculer le double ou moitié'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -12,13 +12,15 @@ export const dateDePublication = '16/11/2021'
  * Date de publication 16/11/2021
  * Référence canc3C04
  */
+export const uuid = '35a6d'
+export const ref = 'canc3C04'
 export default function DoubleOuBienMoitie () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a = randint(2, 4) * 10 + randint(1, 9)
     if (choice([true, false])) {
       this.reponse = a << 1

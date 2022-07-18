@@ -12,6 +12,8 @@ export const titre = 'Reconnaître diviseur, multiple, divisible'
  * @author Rémi Angot
  * Référence 6N43-3
 */
+export const uuid = 'a710f'
+export const ref = '6N43-3'
 export default function ExerciceVraiFauxDivisibleMultipleDiviseur () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Pour chaque affirmation, indiquer si elle est vraie ou fausse.'
@@ -49,7 +51,7 @@ export default function ExerciceVraiFauxDivisibleMultipleDiviseur () {
     return result
   }
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.sup2 = parseInt(this.sup2)
     this.listeQuestions = [] // Liste de questions

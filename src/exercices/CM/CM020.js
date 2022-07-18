@@ -8,6 +8,8 @@ export const titre = 'Générateur de compte est bon version semi-aléatoire'
   * référence CM020
  * Dans cette version, il est possible de choisir 1,2,3,4 ou 5 nombres du tirage et de contraindre la cible entre deux valeurs
  */
+export const uuid = '33cb0'
+export const ref = 'CM020'
 export default function LeCompteEstBonV4 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne =
@@ -17,7 +19,7 @@ export default function LeCompteEstBonV4 () {
   this.nbColsCorr = 2
   this.sup = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let solutionMathador = []

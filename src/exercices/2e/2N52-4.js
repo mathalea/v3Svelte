@@ -8,6 +8,8 @@ export const titre = 'Résoudre des équations se ramenant au produit-nul.'
 * @author Stéphane Guyon
 * 2N52-4 (ex 2L12-2)
 */
+export const uuid = '32117'
+export const ref = '2N52-4'
 export default function Equationspresqueproduitnulle () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -23,7 +25,7 @@ export default function Equationspresqueproduitnulle () {
   this.correctionDetailleeDisponible = true
   this.correctionDetaillee = true
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.consigne = `Résoudre dans $\\mathbb R$ ${this.nbQuestions > 1 ? 'les équations suivantes' : 'l\'équation suivante'} :`
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

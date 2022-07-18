@@ -20,6 +20,8 @@ export const titre = 'Effectuer des opérations avec les nombres décimaux'
 * date : 2021/02/15
 */
 
+export const uuid = '163c3'
+export const ref = '6C30-3'
 export default function MultiplicationMentalDecimaux () {
   Exercice.call(this)
   this.titre = titre
@@ -33,7 +35,7 @@ export default function MultiplicationMentalDecimaux () {
   this.pasDeVersionLatex = false // mettre à true si on ne veut pas de l'exercice dans le générateur LaTeX
   this.pas_de_version_HMTL = false // mettre à true si on ne veut pas de l'exercice en ligne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // tableau contenant la liste des questions
     this.listeCorrections = []
     const typeDeQuestionsDisponibles = ['add', 'mul', 'add_deci', 'mul_deci'] // tableau à compléter par valeurs possibles des types de questions

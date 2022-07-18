@@ -1,22 +1,24 @@
-import { context } from './context.js'
-import { addElement, get, setStyles } from './dom.js'
-import { exerciceCliqueFigure } from './interactif/cliqueFigure.js'
-import { exerciceListeDeroulante } from './interactif/questionListeDeroulante.js'
-import { exerciceMathLive } from './interactif/questionMathLive.js'
-import { exerciceQcm } from './interactif/questionQcm.js'
-import { isUserIdOk } from './interactif/isUserIdOk.js'
-import { gestionCan } from './interactif/gestionCan.js'
-import FractionX from './FractionEtendue.js'
-import Grandeur from './Grandeur.js'
-import { ComputeEngine } from '@cortex-js/compute-engine'
+import { context } from "./context.js"
+import { addElement, get, setStyles } from "./dom.js"
+import { exerciceCliqueFigure } from "./interactif/cliqueFigure.js"
+import { exerciceListeDeroulante } from "./interactif/questionListeDeroulante.js"
+import { exerciceMathLive } from "./interactif/questionMathLive.js"
+import { exerciceQcm } from "./interactif/questionQcm.js"
+import { isUserIdOk } from "./interactif/isUserIdOk.js"
+import { gestionCan } from "./interactif/gestionCan.js"
+import FractionX from "./FractionEtendue.js"
+import Grandeur from "./Grandeur.js"
+// import { ComputeEngine } from "@cortex-js/compute-engine"
+import * as pkg from "@cortex-js/compute-engine"
+const { ComputeEngine } = pkg
 
 export function exerciceInteractif (exercice) {
-  if (exercice.interactifType === 'qcm')exerciceQcm(exercice)
-  if (exercice.interactifType === 'listeDeroulante')exerciceListeDeroulante(exercice)
-  if (exercice.interactifType === 'cliqueFigure')exerciceCliqueFigure(exercice)
-  if (exercice.interactifType === 'custom') exerciceCustom(exercice)
+  if (exercice.interactifType === "qcm")exerciceQcm(exercice)
+  if (exercice.interactifType === "listeDeroulante")exerciceListeDeroulante(exercice)
+  if (exercice.interactifType === "cliqueFigure")exerciceCliqueFigure(exercice)
+  if (exercice.interactifType === "custom") exerciceCustom(exercice)
   // Pour les exercices de type custom, on appelle la méthode correctionInteractive() définie dans l'exercice
-  if (exercice.interactifType === 'mathLive') exerciceMathLive(exercice)
+  if (exercice.interactifType === "mathLive") exerciceMathLive(exercice)
   if (exercice.interactifType === undefined) exerciceNonInteractif(exercice)
 }
 
@@ -27,29 +29,29 @@ export function exerciceInteractif (exercice) {
  * @param {*} param2
  * @returns {string} code HTML du champ texte avec identifiant champTexteEx__Q__ et le span pour le résultat de la question
  */
-export function ajouteChampTexte (exercice, i, { texte = '', texteApres = '', inline = true, numeric = false, indice } = {}) {
+export function ajouteChampTexte (exercice, i, { texte = "", texteApres = "", inline = true, numeric = false, indice } = {}) {
   if (context.isHtml && exercice.interactif) {
-    return `<div class="ui form ${inline ? 'inline' : ''}" >
+    return `<div class="ui form ${inline ? "inline" : ""}" >
       <div class="inline  field" >
       <label>${texte}</label>
-        <input type="text" ${numeric ? 'type="number" min="0" inputmode="numeric" pattern="[0-9]*"' : ''}  id="champTexteEx${exercice.numeroExercice}Q${i}${indice || ''}" >
+        <input type="text" ${numeric ? "type=\"number\" min=\"0\" inputmode=\"numeric\" pattern=\"[0-9]*\"" : ""}  id="champTexteEx${exercice.numeroExercice}Q${i}${indice || ""}" >
         <span>${texteApres}</span>
         <span id="resultatCheckEx${exercice.numeroExercice}Q${i}"></span>
       </div>
       </div>`
   } else {
-    return ''
+    return ""
   }
 }
 
 /**
  * Précise la réponse attendue
- * @param {'objet exercice'} exercice
- * @param {'numero de la question'} i
- * @param {'array || number'} a
+ * @param {Exercice} exercice
+ * @param {number} i
+ * @param {array || number} a
  */
 
-export function setReponse (exercice, i, valeurs, { digits = 0, decimals = 0, signe = false, exposantNbChiffres = 0, exposantSigne = false, approx = 0, aussiCorrect, digitsNum, digitsDen, basePuissance, exposantPuissance, baseNbChiffres, milieuIntervalle, formatInteractif = 'calcul' } = {}) {
+export function setReponse (exercice, i, valeurs, { digits = 0, formatInteractif = "calcul", decimals = 0, signe = false, exposantNbChiffres = 0, exposantSigne = false, approx = 0, aussiCorrect = undefined, digitsNum = undefined, digitsDen = undefined, basePuissance = undefined, exposantPuissance = undefined, baseNbChiffres = undefined, milieuIntervalle = undefined } = {}) {
   let reponses = []
 
   if (Array.isArray(valeurs)) {
@@ -72,64 +74,64 @@ export function setReponse (exercice, i, valeurs, { digits = 0, decimals = 0, si
   let test
   const engine = new ComputeEngine()
   switch (formatInteractif) {
-    case 'Num':
-      if (!(reponses[0] instanceof FractionX)) window.notify('setReponse : type "Num" une fraction est attendue !', { reponses })
-      else if (isNaN(reponses[0].num) || isNaN(reponses[0].den)) window.notify('setReponse : La fraction ne convient pas !', { reponses })
+    case "Num":
+      if (!(reponses[0] instanceof FractionX)) window.notify("setReponse : type \"Num\" une fraction est attendue !", { reponses })
+      else if (isNaN(reponses[0].num) || isNaN(reponses[0].den)) window.notify("setReponse : La fraction ne convient pas !", { reponses })
       break
-    case 'Den':
-      if (!(reponses[0] instanceof FractionX)) window.notify('setReponse : type "Den" une fraction est attendue !', { reponses })
+    case "Den":
+      if (!(reponses[0] instanceof FractionX)) window.notify("setReponse : type \"Den\" une fraction est attendue !", { reponses })
       break
-    case 'calcul':
+    case "calcul":
       laReponseDemandee = reponses[0]
-      if (typeof laReponseDemandee === 'string') {
-        laReponseDemandee = laReponseDemandee.replaceAll('dfrac', 'frac')
+      if (typeof laReponseDemandee === "string") {
+        laReponseDemandee = laReponseDemandee.replaceAll("dfrac", "frac")
       }
-      if (typeof laReponseDemandee === 'number' || typeof laReponseDemandee === 'string') {
-        laReponseDemandee = laReponseDemandee.toString().replace(/\s/g, '').replace(',', '.')
+      if (typeof laReponseDemandee === "number" || typeof laReponseDemandee === "string") {
+        laReponseDemandee = laReponseDemandee.toString().replace(/\s/g, "").replace(",", ".")
       }
       try {
         test = engine.parse(laReponseDemandee).canonical
       } catch (error) {
-        window.notify('setReponse : type "calcul" la réponse n\'est pas un nombre valide', { reponses, test })
+        window.notify("setReponse : type \"calcul\" la réponse n'est pas un nombre valide", { reponses, test })
       }
       break
-    case 'nombreDecimal':
-      if (isNaN(reponses[0])) window.notify('setReponse : type "nombreDecimal" un nombre est attendu !', { reponses })
+    case "nombreDecimal":
+      if (isNaN(reponses[0])) window.notify("setReponse : type \"nombreDecimal\" un nombre est attendu !", { reponses })
       break
-    case 'ecritureScientifique':
-      if (!(typeof reponses[0] === 'string')) window.notify('setReponse : type "ecritureScientifique" la réponse n\'est pas un string !', { reponses })
+    case "ecritureScientifique":
+      if (!(typeof reponses[0] === "string")) window.notify("setReponse : type \"ecritureScientifique\" la réponse n'est pas un string !", { reponses })
       // ToFix : vérifier que la chaine est au bon format
       break
 
-    case 'texte':
-      if (!(typeof reponses[0] === 'string')) window.notify('setReponse : type "texte" la réponse n\'est pas un string !', { reponses })
+    case "texte":
+      if (!(typeof reponses[0] === "string")) window.notify("setReponse : type \"texte\" la réponse n'est pas un string !", { reponses })
       break
 
-    case 'ignorerCasse':
-      if (!(typeof reponses[0] === 'string')) window.notify('setReponse : type "ignorerCasse" la réponse n\'est pas un string !', { reponses })
+    case "ignorerCasse":
+      if (!(typeof reponses[0] === "string")) window.notify("setReponse : type \"ignorerCasse\" la réponse n'est pas un string !", { reponses })
       break
-    case 'fractionPlusSimple':
-      if (!(reponses[0] instanceof FractionX)) window.notify('setReponse : type "fractionPlusSimple" une fraction est attendue !', { reponses })
-      else if (isNaN(reponses[0].num) || isNaN(reponses[0].den)) window.notify('setReponse : La fraction ne convient pas !', { reponses })
+    case "fractionPlusSimple":
+      if (!(reponses[0] instanceof FractionX)) window.notify("setReponse : type \"fractionPlusSimple\" une fraction est attendue !", { reponses })
+      else if (isNaN(reponses[0].num) || isNaN(reponses[0].den)) window.notify("setReponse : La fraction ne convient pas !", { reponses })
       break
-    case 'fractionEgale':
-      if (!(reponses[0] instanceof FractionX)) window.notify('setReponse : type "fractionEgale" une fraction est attendue !', { reponses })
-      else if (isNaN(reponses[0].num) || isNaN(reponses[0].den)) window.notify('setReponse : La fraction ne convient pas !', { reponses })
+    case "fractionEgale":
+      if (!(reponses[0] instanceof FractionX)) window.notify("setReponse : type \"fractionEgale\" une fraction est attendue !", { reponses })
+      else if (isNaN(reponses[0].num) || isNaN(reponses[0].den)) window.notify("setReponse : La fraction ne convient pas !", { reponses })
       break
-    case 'fraction':
-      if (!(reponses[0] instanceof FractionX)) window.notify('setReponse : type "fraction" une fraction est attendue !', { reponses })
-      else if (isNaN(reponses[0].num) || isNaN(reponses[0].den)) window.notify('setReponse : La fraction ne convient pas !', { reponses })
+    case "fraction":
+      if (!(reponses[0] instanceof FractionX)) window.notify("setReponse : type \"fraction\" une fraction est attendue !", { reponses })
+      else if (isNaN(reponses[0].num) || isNaN(reponses[0].den)) window.notify("setReponse : La fraction ne convient pas !", { reponses })
       break
-    case 'longueur': // Pour les exercices où l'on attend une mesure avec une unité au choix
-      if (!(reponses[0] instanceof Grandeur)) window.notify('setReponse : type "longueur" la réponse n\'est pas une instance de Grandeur !', { reponses })
+    case "longueur": // Pour les exercices où l'on attend une mesure avec une unité au choix
+      if (!(reponses[0] instanceof Grandeur)) window.notify("setReponse : type \"longueur\" la réponse n'est pas une instance de Grandeur !", { reponses })
       break
-    case 'intervalleStrict':// Pour les exercice où la saisie doit être dans un intervalle
+    case "intervalleStrict":// Pour les exercice où la saisie doit être dans un intervalle
     // ToFix : vérifier que la réponse est bien un intervalle valide
       break
-    case 'intervalle' :
+    case "intervalle" :
       // ToFix : vérifier que la réponse est bien un intervalle valide
       break
-    case 'puissance' :
+    case "puissance" :
     // ToFix : vérifier que la réponse est bien l'écriture d'une puissance ou en tout cas une réponse acceptable pour ce format
       break
   }
@@ -151,14 +153,14 @@ export function setReponse (exercice, i, valeurs, { digits = 0, decimals = 0, si
  * @param {object} exercice
  */
 export function exerciceCustom (exercice) {
-  document.addEventListener('exercicesAffiches', () => {
-    if (context.vue === 'can') {
+  document.addEventListener("exercicesAffiches", () => {
+    if (context.vue === "can") {
       gestionCan(exercice)
     }
     const button = document.querySelector(`#btnValidationEx${exercice.numeroExercice}-${exercice.id}`)
     if (button) {
       if (!button.hasMathaleaListener) {
-        button.addEventListener('click', event => {
+        button.addEventListener("click", event => {
           let nbBonnesReponses = 0
           let nbMauvaisesReponses = 0
           // Le get est non strict car on sait que l'élément n'existe pas à la première itération de l'exercice
@@ -166,23 +168,23 @@ export function exerciceCustom (exercice) {
           // On ajoute le div pour le feedback
           if (!eltFeedback) {
             const eltExercice = get(`exercice${exercice.numeroExercice}`)
-            eltFeedback = addElement(eltExercice, 'div', { id: `feedbackEx${exercice.numeroExercice}` })
+            eltFeedback = addElement(eltExercice, "div", { id: `feedbackEx${exercice.numeroExercice}` })
           }
-          setStyles(eltFeedback, 'marginBottom: 20px')
-          if (eltFeedback) eltFeedback.innerHTML = ''
+          setStyles(eltFeedback, "marginBottom: 20px")
+          if (eltFeedback) eltFeedback.innerHTML = ""
           // On utilise la correction définie dans l'exercice
           if (exercice.exoCustomResultat) {
             for (let i = 0; i < exercice.nbQuestions; i++) {
-              exercice.correctionInteractive(i) === 'OK' ? nbBonnesReponses++ : nbMauvaisesReponses++
+              exercice.correctionInteractive(i) === "OK" ? nbBonnesReponses++ : nbMauvaisesReponses++
             }
             afficheScore(exercice, nbBonnesReponses, nbMauvaisesReponses)
           } else {
             for (let i = 0; i < exercice.nbQuestions; i++) {
-              exercice.correctionInteractive(i) === 'OK' ? nbBonnesReponses++ : nbMauvaisesReponses++
+              exercice.correctionInteractive(i) === "OK" ? nbBonnesReponses++ : nbMauvaisesReponses++
             }
             afficheScore(exercice, nbBonnesReponses, nbMauvaisesReponses)
           }
-          button.classList.add('disabled')
+          button.classList.add("disabled")
         })
         button.hasMathaleaListener = true
       }
@@ -198,56 +200,56 @@ export function exerciceCustom (exercice) {
  * @param {object} exercice
  */
 export function exerciceNonInteractif (exercice) {
-  document.addEventListener('exercicesAffiches', () => {
-    if (context.vue === 'can') {
+  document.addEventListener("exercicesAffiches", () => {
+    if (context.vue === "can") {
       gestionCan(exercice)
     }
 
-    if (context.vue === 'eval') {
+    if (context.vue === "eval") {
       // Si c'est un exo dnb, bac, e3c ou crpe  on affiche plutôt :
       // => l'image de l'énoncé avec une largeur de 70% du container
       // => l'image de la correction avec une largeur de 60% du container
       const myImgs = []
       const myImgsCor = []
-      if (exercice.typeExercice === 'dnb' || exercice.typeExercice === 'bac' || exercice.typeExercice === 'e3c') {
+      if (exercice.typeExercice === "dnb" || exercice.typeExercice === "bac" || exercice.typeExercice === "e3c") {
         myImgs.push(document.querySelector(`#${exercice.id}`))
         if (!exercice.correctionIsCachee) myImgsCor.push(document.querySelector(`#${exercice.id}Cor`))
       }
-      if (exercice.typeExercice === 'crpe') {
+      if (exercice.typeExercice === "crpe") {
         for (let i = 1; i < exercice.png.length + 1; i++) {
           myImgs.push(document.querySelector(`#${exercice.id}-${i}`))
           if (!exercice.correctionIsCachee) myImgsCor.push(document.querySelector(`#${exercice.id}-${i}Cor`))
         }
       }
       for (const myImg of myImgs) {
-        myImg.removeAttribute('width')
-        myImg.style.width = '70%'
+        myImg.removeAttribute("width")
+        myImg.style.width = "70%"
       }
       if (!exercice.correctionIsCachee) {
         for (const myImgCor of myImgsCor) {
-          myImgCor.removeAttribute('width')
-          myImgCor.style.width = '60%'
+          myImgCor.removeAttribute("width")
+          myImgCor.style.width = "60%"
         }
       }
 
       const divAffichageExo = document.querySelector(`#exercice${exercice.numeroExercice}`)
 
       const button = document.querySelector(`#btnValidationEx${exercice.numeroExercice}-${exercice.id}`)
-      button.innerHTML = 'Voir la correction pour s\'auto-corriger'
-      button.style.margin = '1em'
+      button.innerHTML = "Voir la correction pour s'auto-corriger"
+      button.style.margin = "1em"
 
       let divMsg = document.querySelector(`#msgExNonIteractif${exercice.numeroExercice}-${exercice.id}`)
-      if (!divMsg) divMsg = addElement(divAffichageExo, 'div', { className: '', id: `msgExNonIteractif${exercice.numeroExercice}-${exercice.id}` })
-      divMsg.innerHTML = 'Cet exercice n’est pas interactif, faites-le au brouillon avant de vous auto-corriger.'
-      divMsg.style.color = '#f15929'
-      divMsg.style.fontWeight = 'bold'
-      divMsg.style.fontSize = 'x-large'
-      divMsg.style.display = 'block'
-      divMsg.style.margin = '1em'
+      if (!divMsg) divMsg = addElement(divAffichageExo, "div", { className: "", id: `msgExNonIteractif${exercice.numeroExercice}-${exercice.id}` })
+      divMsg.innerHTML = "Cet exercice n’est pas interactif, faites-le au brouillon avant de vous auto-corriger."
+      divMsg.style.color = "#f15929"
+      divMsg.style.fontWeight = "bold"
+      divMsg.style.fontSize = "x-large"
+      divMsg.style.display = "block"
+      divMsg.style.margin = "1em"
 
       if (button) {
         if (!button.hasMathaleaListener) {
-          button.addEventListener('click', event => {
+          button.addEventListener("click", event => {
             // Ici on met 1 bonne réponse dans tous les cas car les exos ne sont pas interactifs
             // Cela signifie que l'exo a été visualisé
             // À améliorer pour l'enregistrement dans le fichier de scores
@@ -255,7 +257,7 @@ export function exerciceNonInteractif (exercice) {
             const nbMauvaisesReponses = 0
             const besoinDe2eEssai = false
             if (!besoinDe2eEssai) {
-              button.classList.add('disabled')
+              button.classList.add("disabled")
               afficheScore(exercice, nbBonnesReponses, nbMauvaisesReponses)
             }
           })
@@ -267,9 +269,9 @@ export function exerciceNonInteractif (exercice) {
 }
 
 export function afficheScore (exercice, nbBonnesReponses, nbMauvaisesReponses) {
-  if (context.vue === 'exMoodle') {
-    const hauteurExercice = window.document.querySelector('section').scrollHeight + 20
-    if (!new URLSearchParams(window.location.search).get('moodleJson')) {
+  if (context.vue === "exMoodle") {
+    const hauteurExercice = window.document.querySelector("section").scrollHeight + 20
+    if (!new URLSearchParams(window.location.search).get("moodleJson")) {
       const scoreRetenu = (score) => {
         const scoreAcceptes = [100, 90, 80, 75, 66.666, 60, 50, 40, 33.333, 30, 25, 20, 16.666, 14.2857, 12.5, 11.111, 10, 5, 0]
         return scoreAcceptes.reduce((prev, curr) => {
@@ -292,15 +294,15 @@ export function afficheScore (exercice, nbBonnesReponses, nbMauvaisesReponses) {
           }
         }
       } catch (error) {
-        console.log('Réponse non sauvegardée')
+        console.log("Réponse non sauvegardée")
       }
-      window.parent.postMessage({ score, hauteurExercice, iMoodle: parseInt(new URLSearchParams(window.location.search).get('iMoodle')), reponses }, '*')
+      window.parent.postMessage({ score, hauteurExercice, iMoodle: parseInt(new URLSearchParams(window.location.search).get("iMoodle")), reponses }, "*")
     } else {
-      window.parent.postMessage({ hauteurExercice, iMoodle: parseInt(new URLSearchParams(window.location.search).get('iMoodle')) }, '*')
+      window.parent.postMessage({ hauteurExercice, iMoodle: parseInt(new URLSearchParams(window.location.search).get("iMoodle")) }, "*")
     }
   } else {
     // Envoie un message post avec le nombre de réponses correctes
-    window.parent.postMessage({ url: window.location.href, graine: context.graine, titre: exercice.titre, nbBonnesReponses, nbMauvaisesReponses }, '*')
+    window.parent.postMessage({ url: window.location.href, graine: context.graine, titre: exercice.titre, nbBonnesReponses, nbMauvaisesReponses }, "*")
   }
   if (context.timer) {
     clearInterval(context.timer)
@@ -311,27 +313,27 @@ export function afficheScore (exercice, nbBonnesReponses, nbMauvaisesReponses) {
   let divScore = get(`score${exercice.numeroExercice}`, false)
   // Appel Fecth via une fonction est-ce que c'est ça qui multiplie les appels ?
   isUserIdOk(exercice, nbBonnesReponses, nbMauvaisesReponses)
-  if (!divScore) divScore = addElement(divExercice, 'div', { className: 'score', id: `score${exercice.numeroExercice}` })
+  if (!divScore) divScore = addElement(divExercice, "div", { className: "score", id: `score${exercice.numeroExercice}` })
   divScore.innerHTML = `${nbBonnesReponses} / ${nbBonnesReponses + nbMauvaisesReponses}`
-  divScore.style.color = '#f15929'
-  divScore.style.fontWeight = 'bold'
-  divScore.style.fontSize = 'x-large'
-  divScore.style.display = 'inline'
+  divScore.style.color = "#f15929"
+  divScore.style.fontWeight = "bold"
+  divScore.style.fontSize = "x-large"
+  divScore.style.display = "inline"
   // Si l'exercice n'est pas interactif on n'affiche pas la div pour le score
   if (exercice.interactifType === undefined) {
-    divScore.style.display = 'none'
+    divScore.style.display = "none"
   }
-  if (context.vue === 'eval') {
+  if (context.vue === "eval") {
     const divCorr = get(`divexcorr${exercice.numeroExercice}`)
-    divCorr.style.display = 'block'
+    divCorr.style.display = "block"
     const divBoutonExercice = get(`btnEx${exercice.numeroExercice + 1}`)
-    divBoutonExercice.classList.add('green')
+    divBoutonExercice.classList.add("green")
     const divExercice = get(`exercice${exercice.numeroExercice}`)
     if (exercicesEvalRestants()[0]) {
-      const btnExerciceSuivant = addElement(divExercice, 'button', { id: 'btnSuivant', class: 'ui blue button', style: 'display: block' }, 'Exercice suivant')
+      const btnExerciceSuivant = addElement(divExercice, "button", { id: "btnSuivant", class: "ui blue button", style: "display: block" }, "Exercice suivant")
       btnExerciceSuivant.focus()
       if (!btnExerciceSuivant.hasMathaleaListener) {
-        btnExerciceSuivant.addEventListener('click', () => {
+        btnExerciceSuivant.addEventListener("click", () => {
           exercicesEvalRestants()[0].click()
         })
         btnExerciceSuivant.hasMathaleaListener = true
@@ -340,4 +342,4 @@ export function afficheScore (exercice, nbBonnesReponses, nbMauvaisesReponses) {
   }
 }
 
-const exercicesEvalRestants = () => document.querySelectorAll('[id ^= "btnEx"].circular.ui.button:not(.green):not(.red)')
+const exercicesEvalRestants = () => document.querySelectorAll("[id ^= \"btnEx\"].circular.ui.button:not(.green):not(.red)")

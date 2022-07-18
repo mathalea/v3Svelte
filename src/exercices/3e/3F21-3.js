@@ -13,6 +13,8 @@ export const interactifType = 'mathLive'
  * @author Rémi Angot
  * Référence
 */
+export const uuid = '0aaba'
+export const ref = '3F21-3'
 export default function PenteEtOrdonneeOrigineDroite () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -27,7 +29,7 @@ export default function PenteEtOrdonneeOrigineDroite () {
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const num = randint(-5, 5, 0)
@@ -66,10 +68,10 @@ export default function PenteEtOrdonneeOrigineDroite () {
     t2.color = '#f15929'
 
     s1.epaisseur = 3
-    s1.pointilles = true
+    s1.pointilles = 5
     s1.color = '#f15929'
     s2.epaisseur = 3
-    s2.pointilles = true
+    s2.pointilles = 5
     s2.color = '#f15929'
 
     const nomFonction = choice(['f', 'g', 'h', 'f_1', 'f_2', 'f_3'])

@@ -13,6 +13,8 @@ export const dateDeModifImportante = '24/10/2021' // Une date de modification im
  * @author
  * Référence
 */
+export const uuid = '9836c'
+export const ref = '1P10'
 export default function ProbabilitésConditionnelles () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''
@@ -33,7 +35,7 @@ export default function ProbabilitésConditionnelles () {
   function texProba (proba, rationnel) {
     return rationnel ? fraction(arrondi(proba, 3)).toLatex().replace('frac', 'dfrac') : number(arrondi(proba, 3)).toString().replace('.', '{,}')
   }
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

@@ -4,11 +4,13 @@
   const menus = {
     referentiels: {
       titre: "Référentiels",
+      id: "referentiels",
       entrees: ["Sixième", "Cinquième", "Quatrième", "Troisième", "Seconde", "CRPE"],
       isMenuOpen: false,
     },
     professeurs: {
       titre: "Professeurs",
+      id: "professeurs",
       entrees: [
         "Exercices en ligne",
         "Comment utiliser MathALEA",
@@ -23,29 +25,38 @@
     },
     aPropos: {
       titre: "À Propos",
+      id: "apropos",
       entrees: ["Objectifs généraux", "Présentation du logiciel", "Nous contacter", "Documentation pour les développeurs"],
+      isMenuOpen: false,
+    },
+    export: {
+      titre: "Export",
+      id: "export",
+      entrees: ["Plein écran", "Diaporama", "Lien", "LaTeX", "PDF", "Moodle", "AMC"],
       isMenuOpen: false,
     },
   }
 </script>
 
-<nav class="bg-coopmaths top-0">
+<nav class="bg-coopmaths z-50">
   <!-- container -->
-  <div class="container flex flex-wrap px-4 py-2 mx-auto lg:space-x-6 lg:items-center">
-    <!-- logo -->
-    <a href={"#"} class="inline-flex p-2 text-2xl font-bold text-white uppercase tracking-wider">Coopmaths</a>
+  <div class="flex flex-wrap w-full mx-auto lg:space-x-6 lg:items-center">
     <!-- bouton menu -->
-    <button class=" lg:hidden inline-flex ml-auto items-center justify-center text-white font-bold text-xl" on:click={() => (isNavBarVisible = !isNavBarVisible)}>
-      <i class="bx bx-menu" />
-    </button>
+    <div class="flex flex-row justify-start space-x-2">
+      <button class=" lg:hidden inline-flex ml-auto items-center justify-center text-white font-bold text-xl" on:click={() => (isNavBarVisible = !isNavBarVisible)}>
+        <i class="bx bx-menu" />
+      </button>
+      <!-- logo -->
+      <a href={"#"} class="inline-flex p-2 text-2xl font-extrabold text-white uppercase tracking-wider">Coopmaths</a>
+    </div>
     <!-- menu -->
-    <div class="w-full mt-2 lg:inline-flex lg:w-auto lg:mt-0 {isNavBarVisible ? 'flex' : 'hidden'}">
-      <ul class="flex flex-col w-full space-y-2 lg:w-auto lg:flex-row lg:space-x-2 lg:space-y-0">
+    <div class="flex flex-col mt-2 lg:inline-flex lg:grow lg:flex-row lg:mt-0 {isNavBarVisible ? 'flex' : 'hidden'}">
+      <ul class="flex flex-col space-y-2 lg:flex-row lg:space-y-0">
         <li>
           <NavBarMenu {...menus.referentiels} bind:isNavBarVisible />
         </li>
         <li>
-          <a href={"#"} class="flex px-4 py-2 text-xl font-medium text-white hover:text-orange-200 rounded-sm">Calcul mental</a>
+          <a href={"#"} class="bg-coopmaths hover:bg-coopmaths-light text-white text-xl font-extrabold relative block py-6 px-2 lg:p-6 items-center">Calcul mental</a>
         </li>
         <li>
           <NavBarMenu {...menus.professeurs} bind:isNavBarVisible />
@@ -54,6 +65,9 @@
           <NavBarMenu {...menus.aPropos} bind:isNavBarVisible />
         </li>
       </ul>
+      <div class="flex flex-1 pt-6 lg:pt-0 items-center justify-start lg:justify-end">
+        <NavBarMenu {...menus.export} bind:isNavBarVisible />
+      </div>
     </div>
   </div>
 </nav>

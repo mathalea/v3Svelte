@@ -16,6 +16,8 @@ export const amcType = 'AMCNum'
 * Date août 2021
 * 5N110
 */
+export const uuid = 'e137f'
+export const ref = '5N110'
 export default function VariationEnPourcentages () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -27,7 +29,7 @@ export default function VariationEnPourcentages () {
   this.nbCols = 1
   this.interactifType = 'mathLive'
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let fReponse
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

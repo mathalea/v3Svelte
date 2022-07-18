@@ -10,6 +10,8 @@ export const interactifType = 'mathLive'
  * Référence
  * Date de publication
 */
+export const uuid = '611be'
+export const ref = 'can6M09'
 export default function PerimetreCarreRectangle () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -17,7 +19,7 @@ export default function PerimetreCarreRectangle () {
   this.optionsChampTexte = { texteApres: ' cm' }
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b
     switch (choice(['a', 'b'])) {
       case 'a':

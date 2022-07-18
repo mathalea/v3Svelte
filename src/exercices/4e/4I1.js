@@ -13,6 +13,8 @@ export const titre = 'Dessiner avec scratch'
  * la fonction gère la sortie Latex ou html du code scratch
  */
 
+export const uuid = '2be17'
+export const ref = '4I1'
 export default function TracerAvecScratch () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -29,7 +31,7 @@ export default function TracerAvecScratch () {
   this.nbQuestions = 3
   this.debug = false
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.debug) {
       typesDeQuestionsDisponibles = [1, 2, 3, 4, 5]
     } else {
@@ -136,7 +138,7 @@ export default function TracerAvecScratch () {
         // le lutin2  trace le cadre en pointillés
         const lutin2 = creerLutin()
         lutin2.color = 'black'
-        lutin2.pointilles = true
+        lutin2.pointilles = 5
         allerA(fenetreMathalea2D.xmin * pixelsParCm, fenetreMathalea2D.ymax * pixelsParCm, lutin2)
         baisseCrayon(lutin2)
         allerA(fenetreMathalea2D.xmax * pixelsParCm, fenetreMathalea2D.ymax * pixelsParCm, lutin2)
@@ -193,7 +195,7 @@ export default function TracerAvecScratch () {
         // le lutin3  trace le cadre
         const lutin3 = creerLutin()
         lutin3.color = 'black'
-        lutin3.pointilles = true
+        lutin3.pointilles = 5
         allerA(fenetreMathalea2D.xmin * pixelsParCm, fenetreMathalea2D.ymax * pixelsParCm, lutin3)
         baisseCrayon(lutin3)
         allerA(fenetreMathalea2D.xmax * pixelsParCm, fenetreMathalea2D.ymax * pixelsParCm, lutin3)

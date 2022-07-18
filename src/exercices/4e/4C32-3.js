@@ -9,6 +9,8 @@ export const titre = 'Problèmes avec des puissances de 10 et des conversions'
  * Référence 4C32-3
  * 2021-02-05
 */
+export const uuid = '43af7'
+export const ref = '4C32-3'
 export default function ProblemesPuissancesDe10EtConversions () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -21,7 +23,7 @@ export default function ProblemesPuissancesDe10EtConversions () {
   this.video = '' // Id YouTube ou url
   context.isHtml ? this.spacingCorr = 2 : this.spacingCorr = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

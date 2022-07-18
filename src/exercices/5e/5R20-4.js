@@ -9,6 +9,8 @@ export const titre = 'Résoudre un problème en utilisant une somme algébrique 
  * @author Sébastien Lozano
  */
 
+export const uuid = 'd2f90'
+export const ref = '5R20-4'
 export default function ProblemesAdditifsRelatifs5e () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -31,7 +33,7 @@ export default function ProblemesAdditifsRelatifs5e () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.debug) {
       typesDeQuestionsDisponibles = [0]
     } else {
@@ -133,7 +135,7 @@ export default function ProblemesAdditifsRelatifs5e () {
           prenom: currentPrenom[0], // prenoms[choice([0,1])][0],
           pronomMaj: currentPrenom[1], // prenoms[choice([0,1])][1],
           pronomMin: currentPrenom[2], // prenoms[choice([0,1])][2],
-          bilan: bilan
+          bilan
         }
       ]
 

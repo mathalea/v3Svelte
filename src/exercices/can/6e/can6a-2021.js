@@ -1,7 +1,7 @@
 import Exercice from '../../Exercice.js'
 import { fraction } from '../../../modules/fractions.js'
 import {
-  mathalea2d, point, droiteGraduee2, segment, milieu, texteParPosition, codeSegment, polygone, grille
+  mathalea2d, point, droiteGraduee2, segment, milieu, texteParPosition, codageSegment, polygone, grille
 } from '../../../modules/2d.js'
 import { round, min } from 'mathjs'
 import { listeQuestionsToContenu, miseEnEvidence, randint, texNombre, shuffle, choice, sp, arrondi } from '../../../modules/outils.js'
@@ -24,6 +24,8 @@ export const dateDePublication = '11/04/2022' // La date de publication initiale
 function compareNombres (a, b) {
   return a - b
 }
+export const uuid = 'd4f41'
+export const ref = 'can6a-2021'
 export default function SujetCAN2021Sixieme () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -33,7 +35,7 @@ export default function SujetCAN2021Sixieme () {
   this.nbCols = 1
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const nbQ1 = min(round(this.nbQuestions * 10 / 30), 10) // Choisir d'un nb de questions de niveau 1 parmi les 8 possibles.
@@ -507,7 +509,7 @@ export default function SujetCAN2021Sixieme () {
             texte += `Recopie la réponse vraisemblable.<br>
             Le maître ramasse en tout : <br>
               ${propositions[0]} ${sp(6)} ${propositions[1]} ${sp(6)} ${propositions[2]}`
-            texte += ajouteChampTexteMathLive(this, index, 'inline largeur15') +'feuilles'
+            texte += ajouteChampTexteMathLive(this, index, 'inline largeur15') + 'feuilles'
           } else {
             texte += `Entoure la réponse vraisemblable.<br> 
             Le maître ramasse en tout : <br>
@@ -563,8 +565,8 @@ export default function SujetCAN2021Sixieme () {
           B = point(2.8, 0, 'B', 'below')
           C = point(3.4, 3.4, 'C', 'above')
           D = point(-0.6, 3.4, 'D', 'above')
-          code1 = codeSegment(B, C, '|')
-          code2 = codeSegment(A, D, '|')
+          code1 = codageSegment(B, C, '|')
+          code2 = codageSegment(A, D, '|')
           xmin = -1.5
           ymin = -1
           xmax = 4
@@ -578,7 +580,7 @@ export default function SujetCAN2021Sixieme () {
           reponse = arrondi(2 * a + b + c, 1)
           texte = `Quel est le périmètre de cette figure ? <br>
             `
-          texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 30, mainlevee: false, amplitude: 0.5, scale: 0.8, style: 'margin: auto' }, objets)
+          texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 30, mainlevee: false, amplitude: 0.5, scale: 0.8, style: 'margin: auto' }, objets)
           texteCorr = `Le périmètre est donné par la somme des quatre longueurs : $${texNombre(a, 1)}\\times 2+${texNombre(b, 1)}+${texNombre(c, 1)}=${texNombre(2 * a + b + c, 1)}$ cm.`
           setReponse(this, index, reponse, { formatInteractif: 'calcul' })
           if (this.interactif) {

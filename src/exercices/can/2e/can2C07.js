@@ -10,6 +10,8 @@ export const interactifType = 'mathLive'
  * Référence
  * Date de publication
 */
+export const uuid = '91e25'
+export const ref = 'can2C07'
 export default function CalculAvecRacineCarree2 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -17,7 +19,7 @@ export default function CalculAvecRacineCarree2 () {
   this.formatChampTexte = 'largeur15 inline'
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const listeRacines1 = [
       [2, 8], [2, 32], [2, 50], [3, 27], [5, 20], [2, 18], [2, 72], [3, 48], [5, 45], [2, 200], [3, 300], [5, 500], [6, 600], [7, 700]
     ] // couples pour simplifier des produits de racines carrées

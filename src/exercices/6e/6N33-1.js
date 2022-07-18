@@ -17,6 +17,8 @@ export const titre = 'Calculer mentalement le pourcentage d\'un nombre'
  * 6N33-1
  * Ajout niveau 2 + 1 correction différente cgrolleau 03/2021
  */
+export const uuid = '15a59'
+export const ref = '6N33-1'
 export default function PourcentageDunNombre () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 5
@@ -28,7 +30,7 @@ export default function PourcentageDunNombre () {
   this.sup = 1
   this.interactif = false
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let listePourcentages = []
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

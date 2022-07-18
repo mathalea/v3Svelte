@@ -12,6 +12,8 @@ export const titre = 'Trouver l\'image d\'une figure par symétrie centrale dans
  * @author Jean-Claude Lhote
  * Ref 5G12
  */
+export const uuid = 'd0aca'
+export const ref = '5G12'
 export default function PavageEtDemiTour2D () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -27,7 +29,7 @@ export default function PavageEtDemiTour2D () {
   this.sup2 = false // On cache les barycentres par défaut.
   this.sup3 = 7
   context.isHtml ? (this.spacingCorr = 2.5) : (this.spacingCorr = 1.5)
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = Number(this.sup)
     this.sup3 = Number(this.sup3)
     const videcouples = function (tableau) {

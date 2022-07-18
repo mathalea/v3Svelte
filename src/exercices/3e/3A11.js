@@ -15,6 +15,8 @@ export const amcType = 'qcmMono'
  * dans cet exo on n'utilise pas les critères par 7 et 11
  * @author Sébastien Lozano + Jean-Claude Lhote pour l'interactivité.
  */
+export const uuid = '62baa'
+export const ref = '3A11'
 export default function PremierOuPas () {
   Exercice.call(this) // Héritage de la classe Exercice()
   // pas de différence entre la version html et la version latex pour la consigne
@@ -31,7 +33,7 @@ export default function PremierOuPas () {
   this.listePackages = 'bclogo'
   const prems = cribleEratostheneN(529) // constante contenant tous les nombres premiers jusqu'à 529...
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let typesDeQuestions
     if (context.isHtml) { // les boutons d'aide uniquement pour la version html
       // this.boutonAide = '';

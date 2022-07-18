@@ -1,5 +1,5 @@
-import { calcul, choice, randint, texNombrec } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { calcul, choice, randint, texNombrec } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Déterminer le nombre de centaines, dizaines'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -11,6 +11,8 @@ export const dateDePublication = '02/12/2021'
  * Publié le 02 / 12 / 2021
  * Référence can6N06
  */
+export const uuid = 'df3c7'
+export const ref = 'can6N08'
 export default function NombreDeDizaines () {
   Exercice.call(this)
   this.typeExercice = 'simple'
@@ -19,7 +21,7 @@ export default function NombreDeDizaines () {
   this.formatChampTexte = 'largeur15 inline'
   this.consigne = ''
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(0, 4)
     const b = randint(1, 9, a)
     const c = randint(1, 9, [a, b])

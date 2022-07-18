@@ -12,6 +12,8 @@ export const amcReady = true
  * @author Gilles Mora
  * Référence can6C29
 */
+export const uuid = 'e0ab8'
+export const ref = 'can6C29'
 export default function Partage () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -24,7 +26,7 @@ export default function Partage () {
     ['Trois', 'trois', 3], ['Quatre', 'quatre', 4], ['Cinq', 'cinq', 5],
     ['Six', 'six', 6], ['Sept', 'sept', 7], ['Huit', 'huit', 8], ['Neuf', 'neuf', 9]]
   let nombre, a, b, prix, n
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     nombre = choice(nbrePers)
     a = nombre[0]
     b = nombre[1]

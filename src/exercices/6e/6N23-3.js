@@ -16,6 +16,8 @@ export const interactifType = 'mathLive'
  * 6N23-3
  * Ajout Interactivité et AMC : Janvier 2022 par EE
  */
+export const uuid = '2f3dc'
+export const ref = '6N23-3'
 export default function LireUneAbscisseAvecZoom () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.niveau = 'sixième'
@@ -34,7 +36,7 @@ export default function LireUneAbscisseAvecZoom () {
   this.nbQuestions = 1
   this.nbQuestionsModifiable = false
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []
@@ -158,8 +160,8 @@ export default function LireUneAbscisseAvecZoom () {
       pB2 = point(Math.floor(x1) - xmin + 21.5, 0)
       sA = segment(pA1, pA2)
       sB = segment(pB1, pB2)
-      sA.pointilles = true
-      sB.pointilles = true
+      sA.pointilles = 5
+      sB.pointilles = 5
       objets.push(d1, d2, sA, sB)
       objetsCorr.push(d1Corr, d2Corr, sA, sB)
       fenetre = { xmin: -1.5, xmax: 35, ymin: -1, ymax: 4.5, pixelsParCm: 25, scale: 0.5 }
@@ -297,8 +299,8 @@ export default function LireUneAbscisseAvecZoom () {
       pB2 = point(x3 - xmin + 26, 0)
       sA = segment(pA1, pA2)
       sB = segment(pB1, pB2)
-      sA.pointilles = true
-      sB.pointilles = true
+      sA.pointilles = 5
+      sB.pointilles = 5
       fenetre = { xmin: -1.5, xmax: 35, ymin: -1.5, ymax: 4.5, pixelsParCm: 25, scale: 0.5 }
       objets.push(d1, d2, sA, sB)
       objetsCorr.push(d1Corr, d2Corr, sA, sB)
@@ -493,16 +495,16 @@ export default function LireUneAbscisseAvecZoom () {
       pB2 = point(26.5, 3)
       sA = segment(pA1, pA2)
       sB = segment(pB1, pB2)
-      sA.pointilles = true
-      sB.pointilles = true
+      sA.pointilles = 5
+      sB.pointilles = 5
       pC1 = point(6.5 + (x21 - x2) * 200, 3)
       pC2 = point(6.5, 0)
       pD1 = point(6.5 + (x31 - x2) * 200, 3)
       pD2 = point(26.5, 0)
       sC = segment(pC1, pC2)
       sD = segment(pD1, pD2)
-      sC.pointilles = true
-      sD.pointilles = true
+      sC.pointilles = 5
+      sD.pointilles = 5
       fenetre = { xmin: -1.5, xmax: 35, ymin: -1.5, ymax: 7.5, pixelsParCm: 25, scale: 0.5 }
       objets.push(d1, d2, d3, sA, sB, sC, sD)
       objetsCorr.push(d1Corr, d2Corr, d3Corr, sA, sB, sC, sD)

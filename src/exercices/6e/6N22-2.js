@@ -18,6 +18,8 @@ export const amcType = 'AMCNum'
  * 6N14-2
  * Relecture : Novembre 2021 par EE
  */
+export const uuid = '0e660'
+export const ref = '6N22-2'
 export default function AjouterDesFractionsDunite () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''
@@ -25,7 +27,7 @@ export default function AjouterDesFractionsDunite () {
   this.nbCols = 2
   this.nbColsCorr = 2
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

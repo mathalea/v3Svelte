@@ -9,13 +9,15 @@ export const titre = 'Écrire correctement les grands nombres entiers'
  * 6N10-4
  * Relecture : Novembre 2021 par EE
  */
+export const uuid = '0984a'
+export const ref = '6N10-4'
 export default function EcrireNombresEntiersFormates () {
   Exercice.call(this)
   this.nbQuestions = 5
   this.nbCols = 1
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.consigne = 'Écrire les nombres en chiffres en supprimant les zéros inutiles et en séparant les classes.'
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

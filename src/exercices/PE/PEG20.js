@@ -11,13 +11,15 @@ export const dateDePublication = '29/10/2021'
  * @author Rémi Angot
  * Référence PEG20
 */
+export const uuid = '308c5'
+export const ref = 'PEG20'
 export default function PartageSegmentCompasRegle () {
   Exercice.call(this)
   this.typeExercice = 'IEP'
   this.nbQuestions = 1
   this.nbQuestionsModifiable = false
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     const d = randint(3, 5)
     let n
     if (d === 4) n = randint(1, d + 2, [2, 4, 6])

@@ -516,7 +516,7 @@ function questionDistance (exo, i) { // questions de distance parcourue à une v
               texte: texteCorr,
               statut: '',
               reponse: {
-                texte: texte,
+                texte,
                 valeur: [calcul(distance * dureeR / dureeQ)],
                 param: {
                   digits: nombreDeChiffresDe(calcul(distance * dureeR / dureeQ, 3)),
@@ -829,6 +829,8 @@ fois ${texteEnCouleur(stringNombre(liste[alea1].qtt_surface[alea3]), 'blue')}${s
 
 // _______ Fin des fonctions correspondants aux situations problèmes _____
 
+export const uuid = '2e3c4'
+export const ref = '6P11'
 export default function ProportionnaliteParLinearite () {
   'use strict'
   let question
@@ -842,7 +844,7 @@ export default function ProportionnaliteParLinearite () {
   this.sup = false
   this.besoinFormulaire2Texte = ['Type de questions', 'Nombres séparés par des tirets\n1 : Achat\n2 : Recette\n3 : Dilution\n4 : Distance\n5 : Echelle\n6 : Surface\n7 : Mélange']
   this.sup2 = 7
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.consigne = this.nbQuestions === 1 ? 'Répondre à la question posée en justifiant.' : 'Répondre aux questions posées en justifiant.'
     let indiceQuestion = 0
     this.listeQuestions = [] // Liste de questions

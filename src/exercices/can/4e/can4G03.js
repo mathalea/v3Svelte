@@ -13,6 +13,8 @@ export const interactifType = 'mathLive'
  * Référence can4G03
  * Date de publication
 */
+export const uuid = '23f8c'
+export const ref = 'can4G03'
 export default function CalculHypotenusePythagore () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -20,7 +22,7 @@ export default function CalculHypotenusePythagore () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   let a, b
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const nom = creerNomDePolygone(3, ['QD'])
     a = randint(2, 7)//
     b = randint(3, 7)//
@@ -48,7 +50,7 @@ export default function CalculHypotenusePythagore () {
           texteParPosition(`${texNombrec(b)}`, milieu(B, C).x + 0.2, milieu(B, C).y, 'milieu', 'black', 1, 'middle', true)
         )
         this.question = `Sur cette figure, calculer la valeur exacte de $${nom[0]}${nom[2]}$.<br>`
-        this.question += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 22, mainlevee: false, amplitude: 0.3, scale: 0.3, style: 'margin: auto' }, objets)
+        this.question += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 22, mainlevee: false, amplitude: 0.3, scale: 0.3, style: 'margin: auto' }, objets)
 
         if (entiere) {
           this.correction = ` On utilise le théorème de Pythagore dans le triangle $${nom[0]}${nom[1]}${nom[2]}$,  rectangle en $${nom[1]}$.<br>

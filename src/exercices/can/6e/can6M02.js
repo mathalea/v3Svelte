@@ -1,7 +1,7 @@
-import { context } from '../../../modules/context'
-import { propositionsQcm } from '../../../modules/interactif/questionQcm'
-import { enleveElement, listeQuestionsToContenu, randint } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { context } from '../../../modules/context.js'
+import { propositionsQcm } from '../../../modules/interactif/questionQcm.js'
+import { enleveElement, listeQuestionsToContenu, randint } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Trouver la bonne unité'
 export const interactifReady = true
 export const interactifType = 'qcm'
@@ -13,6 +13,8 @@ export const amcType = 'qcmMono'
  * Créé pendant l'été 2021
  * Référence can6M02
  */
+export const uuid = '4fb11'
+export const ref = 'can6M02'
 export default function LaBonneUnite () {
   Exercice.call(this)
   this.nbQuestions = 1
@@ -24,7 +26,7 @@ export default function LaBonneUnite () {
     ['girafe', 40, 50, 'dm'],
     ['coline', 75, 150, 'm']
   ]
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     const unites = ['cm', 'dm', 'm']

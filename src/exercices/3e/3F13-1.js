@@ -13,6 +13,8 @@ export const interactifType = 'mathLive'
  * @author Rémi Angot
  * Référence 3F13-1
 */
+export const uuid = 'aa9d3'
+export const ref = '3F13-1'
 export default function AntecedentEtImageGraphique () {
   Exercice.call(this)
   this.titre = titre
@@ -24,7 +26,7 @@ export default function AntecedentEtImageGraphique () {
   this.nbColsCorr = 1
   if (context.isHtml) { this.spacingCorr = 2 }
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const r = repere2({
       xMin: -5,
       xMax: 5,

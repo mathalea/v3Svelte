@@ -17,6 +17,8 @@ export const amcType = 'AMCNum'
  * @author Jean-Claude Lhote
  * Publié le 18/12/2021
  */
+export const uuid = '2d85b'
+export const ref = 'can5G03'
 export default function CompterlesSymetriquesCan5e () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''
@@ -25,7 +27,7 @@ export default function CompterlesSymetriquesCan5e () {
   this.nbColsCorr = 1
   this.sup = 1
   this.sup2 = 1
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = randint(1, 2)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

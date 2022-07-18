@@ -1,6 +1,6 @@
-import { fraction } from '../../../modules/fractions'
-import { calcul, choice, randint, texNombre, texNombrec } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { fraction } from '../../../modules/fractions.js'
+import { calcul, choice, randint, texNombre, texNombrec } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Convertir une fraction ou une somme vers un décimal'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -10,12 +10,14 @@ export const amcType = 'AMCNum'
 /*!
  * @author Gilles Mora
  */
+export const uuid = 'e2fbd'
+export const ref = 'can5C17'
 export default function EntierPlusFractionVersDecimal () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c, maFraction, maFraction2
     let resultat
     this.formatChampTexte = 'largeur15 inline'

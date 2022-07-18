@@ -1,5 +1,5 @@
-import { calcul, choice, miseEnEvidence, randint, texteEnCouleur } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { calcul, choice, miseEnEvidence, randint, texteEnCouleur } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Compléter un volume au litre'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -11,13 +11,15 @@ export const amcType = 'AMCNum'
  * Publié le 15/09/2021
  * Référence can6M07
  */
+export const uuid = '4cc32'
+export const ref = 'can6M07'
 export default function CompleterVolumeAuLitre () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a
     switch (choice(['a', 'b', 'c', 'd'])) {
       case 'a':

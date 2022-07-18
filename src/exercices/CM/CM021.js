@@ -8,6 +8,8 @@ export const titre = 'Le compte est bon original'
  *  @author Jean-Claude Lhote
  * Référence CM021
  */
+export const uuid = '12a48'
+export const ref = 'CM021'
 export default function CompteEstBon () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne =
@@ -17,7 +19,7 @@ export default function CompteEstBon () {
   this.nbColsCorr = 2
   this.sup = 1 // niveau de calcul souhaité
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let typesDeQuestions, a, b, c, d, cible, tirage
     if (!this.sup) {
       // Si rien n'est saisi

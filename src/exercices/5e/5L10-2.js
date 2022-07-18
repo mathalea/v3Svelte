@@ -17,6 +17,8 @@ export const dateDeModifImportante = '11/05/2022'
 * 5L10-2
 * Ajout de la possibilité d'afficher un résultat qui n'est pas développé par Guillaume Valmont le 11/05/2022
 */
+export const uuid = 'c42fb'
+export const ref = '5L10-2'
 export default function TraduireUnProgrammeDeCalcul () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -35,7 +37,7 @@ export default function TraduireUnProgrammeDeCalcul () {
   this.besoinFormulaireCaseACocher = ['Résultat développé']
   this.sup = true
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

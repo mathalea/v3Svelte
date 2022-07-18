@@ -13,13 +13,15 @@ export const interactifType = ['cliqueFigure']
  * @author ANGOT Rémi (Ajout AMC par Eric Elter)
  * Référence
 */
+export const uuid = '3fa95'
+export const ref = '6G10-3'
 export default function cliqueFigure () {
   Exercice.call(this)
   this.nbQuestions = 3
   this.nbCols = 1
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     this.interactifType = 'cliqueFigure'
     this.consigne = (this.interactif) ? 'Cliquer sur la bonne figure.' : 'Entourer la bonne figure.' /// Penser ici à AMC aussi.

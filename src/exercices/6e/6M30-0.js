@@ -11,6 +11,8 @@ export const amcReady = true
 export const interactifType = 'mathLive'
 export const amcType = 'AMCNum'
 
+export const uuid = '94cef'
+export const ref = '6M30-0'
 export default function VolumesPavesParDenombrement () {
   Exercice.call(this)
   this.nbQuestions = 1 // Ici le nombre de questions
@@ -22,7 +24,7 @@ export default function VolumesPavesParDenombrement () {
   this.correctionDetailleeDisponible = true
   this.correctionDetaillee = true
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // tableau contenant la liste des questions
     this.listeCorrections = []
     this.autoCorrection = []

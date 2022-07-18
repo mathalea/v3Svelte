@@ -13,13 +13,15 @@ export const dateDePublication = '25/10/2021' // La date de publication initiale
  * @author Gilles Mora (2F10-02)
  * Référence can3F07
 */
+export const uuid = '9c366'
+export const ref = 'can3F07'
 export default function LectureGraphiqueFonctionAffine1 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const o = texteParPosition('O', -0.3, -0.3, 'milieu', 'black', 1)
     let s1, s2
     const a = randint(-4, 4, 0)
@@ -38,7 +40,7 @@ export default function LectureGraphiqueFonctionAffine1 () {
     this.formatInteractif = 'calcul'
     this.question = '$f$ est une fonction affine définie par $f(x)=...$<br>'
     this.question += `${mathalea2d({ xmin: -7, ymin: -7, xmax: 7, ymax: 7, pixelsParCm: 15, scale: 0.6, style: 'margin: auto' },
-        repere, courbe2(x => a * x + b, { repere: repere, color: 'blue' }), o)}`
+        repere, courbe2(x => a * x + b, { repere, color: 'blue' }), o)}`
 
     this.reponse = [`${a}x+${b}`]
     this.correction = `<br> $f$ est de la forme 
@@ -61,13 +63,13 @@ export default function LectureGraphiqueFonctionAffine1 () {
     s1.styleExtremites = '->'
     if (a > 0) {
       this.correction += `${mathalea2d({ xmin: -7, ymin: -7, xmax: 7, ymax: 7, pixelsParCm: 15, scale: 0.6, style: 'margin: auto' },
-        repere, courbe2(x => a * x + b, { repere: repere, color: 'blue' }), o, s1, s2,
+        repere, courbe2(x => a * x + b, { repere, color: 'blue' }), o, s1, s2,
          texteParPosition('1', 0.5, b - 0.5, 0, 'green', 1, 'middle', true)
        , texteParPosition(a, 1.5, b + a / 2, 0, 'red', 1, 'middle', true))}<br>`
     }
     if (a < 0) {
       this.correction += `${mathalea2d({ xmin: -7, ymin: -7, xmax: 7, ymax: 7, pixelsParCm: 15, scale: 0.5, style: 'margin: auto' },
-        repere, courbe2(x => a * x + b, { repere: repere, color: 'blue' }), o, s1, s2,
+        repere, courbe2(x => a * x + b, { repere, color: 'blue' }), o, s1, s2,
          texteParPosition('1', 0.5, b + 0.5, 0, 'green', 1, 'middle', true)
        , texteParPosition(a, 1.5, b + a / 2, 0, 'red', 1, 'middle', true))}<br>`
     }

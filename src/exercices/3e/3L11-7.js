@@ -14,6 +14,8 @@ export const dateDePublication = '12/12/2021'
 * @author Rémi Angot
 * 3L11-7
 */
+export const uuid = 'cb3db'
+export const ref = '3L11-7'
 export default function CarreDoubleDistributivite () {
   Exercice.call(this)
   this.titre = titre
@@ -28,7 +30,7 @@ export default function CarreDoubleDistributivite () {
   this.sup = true
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

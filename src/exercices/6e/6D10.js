@@ -13,6 +13,8 @@ export const titre = 'Convertir des durées'
  * @author Rémi Angot
  * Référence 6D10
  */
+export const uuid = '35ee1'
+export const ref = '6D10'
 export default function ConversionsDeDurees () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = 5
@@ -23,7 +25,7 @@ export default function ConversionsDeDurees () {
   this.spacing = 2
   this.nbQuestions = 5
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

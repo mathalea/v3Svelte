@@ -12,6 +12,8 @@ export const titre = 'Division de polynômes'
  * @author Eric Schrafstetter
  * Référence
 */
+export const uuid = 'ee92d'
+export const ref = 'HPC100'
 export default function divisionDePolynomes () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Calculer le quotient Q(x) de la division de P(x) par D(x)'
@@ -25,7 +27,7 @@ export default function divisionDePolynomes () {
   this.video = '' // Id YouTube ou url
   this.typeExercice = 'XCas'
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

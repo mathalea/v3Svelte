@@ -13,6 +13,8 @@ export const dateDePublication = '23/02/2022' // La date de publication initiale
  * @author Gilles Mora
  * Référence
 */
+export const uuid = 'b3418'
+export const ref = 'can4L07'
 export default function ReduireExp () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -20,7 +22,7 @@ export default function ReduireExp () {
   this.tailleDiaporama = 2
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.formatChampTexte = 'largeur15 inline'
     let a, b, c, choix, d, e
     switch (randint(1, 3)) {

@@ -1,4 +1,4 @@
-import Operation from '../../modules/operations'
+import Operation from '../../modules/operations.js'
 import Exercice from '../Exercice.js'
 import { context } from '../../modules/context.js'
 import { listeQuestionsToContenu, randint, combinaisonListesSansChangerOrdre, texNombre, calcul, nombreDeChiffresDe } from '../../modules/outils.js'
@@ -24,6 +24,8 @@ export const titre = 'Poser additions, soustractions et multiplications de nombr
  * Support des opérations posées en html par Jean-Claude Lhote.
  * Référence 6C10
  */
+export const uuid = 'bb37c'
+export const ref = '6C10'
 export default function AdditionsSoustractionsMultiplicationsPosees () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -34,7 +36,7 @@ export default function AdditionsSoustractionsMultiplicationsPosees () {
   this.listePackages = 'xlop'
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

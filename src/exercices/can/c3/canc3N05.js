@@ -1,5 +1,5 @@
-import { calcul, choice, randint, texNombrec } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { calcul, choice, randint, texNombrec } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Calculer une somme (partie entière/décimale)'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -12,13 +12,15 @@ export const dateDePublication = '16/11/2021'
  * Date de publication septembre 2021
  * Référence canc3C02
  */
+export const uuid = '24722'
+export const ref = 'canc3N05'
 export default function CompositionDeNombreDecimalC3 () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(1, 9)
     const b = randint(1, 9, a)
     const c = randint(1, 9, [a, b])

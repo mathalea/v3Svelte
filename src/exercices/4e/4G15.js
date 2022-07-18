@@ -5,6 +5,8 @@ import { symetrieAnimee, rotationAnimee, translationAnimee, polygone, mathalea2d
 import Alea2iep from '../../modules/Alea2iep.js'
 
 export const titre = 'Tranformations de triangle'
+export const uuid = 'b1eca'
+export const ref = '4G15'
 export default function TransformationsDeTriangle () {
   'use strict'
   Exercice.call(this)
@@ -23,7 +25,7 @@ export default function TransformationsDeTriangle () {
   //  this.sup3 = false; // A décommenter : valeur par défaut d'un troisième paramètre
 
   // c'est ici que commence le code de l'exercice cette fonction crée une copie de l'exercice
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     // la variable numeroExercice peut être récupérée pour permettre de différentier deux copies d'un même exo
     // Par exemple, pour être certain de ne pas avoir les mêmes noms de points en appelant 2 fois cet exo dans la même page
 

@@ -9,6 +9,8 @@ export const titre = 'Puissances de 10 et préfixes kilo, méga, giga, téra'
  * Référence 4C32-2
  * 2021-02-05
 */
+export const uuid = 'b2b4c'
+export const ref = '4C32-2'
 export default function ConversionsPuissancesDe10 (numeroExercice) {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -32,7 +34,7 @@ micro : millionième $\\times10^{-6}$<br>
 nano : milliardième $\\times10^{-9}$<br>
 `, 'Signification des préfixes'
   )
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

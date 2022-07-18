@@ -7,6 +7,8 @@ export const titre = 'Déterminer les coordonnées d\'un vecteur à partir des c
 /**
  * @author Stéphane Guyon
  */
+export const uuid = 'c171c'
+export const ref = '2G24-1'
 export default function calculercoordonneesvecteurs () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -14,7 +16,7 @@ export default function calculercoordonneesvecteurs () {
   this.nbCols = 2
   this.nbColsCorr = 2
   this.sup = 1 //
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

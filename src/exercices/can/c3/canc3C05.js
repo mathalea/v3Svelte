@@ -1,7 +1,7 @@
-import { context } from '../../../modules/context'
-import { propositionsQcm } from '../../../modules/interactif/questionQcm'
-import { choice, listeQuestionsToContenu, randint, texNombre, texteEnCouleur } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { context } from '../../../modules/context.js'
+import { propositionsQcm } from '../../../modules/interactif/questionQcm.js'
+import { choice, listeQuestionsToContenu, randint, texNombre, texteEnCouleur } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Déterminer si un nombre est pair (V/F)'
 export const interactifReady = true
 export const interactifType = 'qcm'
@@ -13,11 +13,13 @@ export const dateDePublication = '20/11/2021'
  * @author Jean-Claude Lhote
  * Référence canc3C05
  */
+export const uuid = '7040f'
+export const ref = 'canc3C05'
 export default function PariteDunNombre () {
   Exercice.call(this)
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     let a, b, c, d, e, f, g, texte, texteCorr

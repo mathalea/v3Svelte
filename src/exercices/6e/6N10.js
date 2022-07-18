@@ -20,10 +20,11 @@ export const dateDePublication = '19/09/2021'
  * Référence 6N10
  * Relecture : Novembre 2021 par EE
 */
+export const uuid = '3e308'
+export const ref = '6N10'
 export default function EcrirePetitsNombresEntiers () {
   Exercice.call(this)
   this.nbQuestions = 5
-  this.titre = titre
 
   this.besoinFormulaireTexte = ['Type de nombres', ' Choix séparés par des tirets\n2 : À deux chiffres\n3 : À trois chiffres\n4 : À quatre chiffres\n5 : À cinq chiffres\n6 : À six chiffres\n7 : À neuf chiffres\n8 : À douze chiffres']
   this.sup = 4 // Valeur du paramètre par défaut
@@ -37,7 +38,7 @@ export default function EcrirePetitsNombresEntiers () {
   this.tailleDiaporama = 3
   this.video = ''
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let typeDeConsigne = []
     if (parseInt(this.sup3) === 1) {
       this.consigne = 'Écrire le nombre en lettres.'

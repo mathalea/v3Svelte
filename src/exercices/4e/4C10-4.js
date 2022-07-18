@@ -13,6 +13,8 @@ export const interactifType = 'mathLive'
 * @author Rémi Angot
 * 4C10-4
 */
+export const uuid = 'dc1fc'
+export const ref = '4C10-4'
 export default function ExerciceQuotientsRelatifs () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = false
@@ -23,7 +25,7 @@ export default function ExerciceQuotientsRelatifs () {
   this.spacing = 2
   this.nbQuestions = 6
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const listeTypeDeQuestions = combinaisonListes(['-+', '+-', '--', '++'], this.nbQuestions)

@@ -18,6 +18,8 @@ export const interactifType = 'mathLive'
  * @author Jean-Claude Lhote
  * 4C22-1
  */
+export const uuid = '5ffa1'
+export const ref = '4C22-1'
 export default function ExerciceTrouverInverse () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = 1 // Avec ou sans relatifs
@@ -29,7 +31,7 @@ export default function ExerciceTrouverInverse () {
   this.nbQuestions = 5
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let typesDeQuestionsDisponibles

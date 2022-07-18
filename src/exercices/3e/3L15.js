@@ -11,6 +11,8 @@ export const titre = 'Équations du second degré se ramenant au premier degré'
  * @author Rémi Angot
  * Référence 3L15
 */
+export const uuid = '158a8'
+export const ref = '3L15'
 export default function ExerciceEquations () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -23,7 +25,7 @@ export default function ExerciceEquations () {
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

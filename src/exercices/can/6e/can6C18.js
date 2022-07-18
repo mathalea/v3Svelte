@@ -1,5 +1,5 @@
-import { randint, texteEnCouleur, choice } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { randint, texteEnCouleur, choice } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Utiliser la division euclidienne'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -11,13 +11,15 @@ export const dateDeModifImportante = '04/12/2021'
  * Créé pendant l'été 2021
  * Référence can6C18
  */
+export const uuid = '18659'
+export const ref = 'can6C18'
 export default function ResteDivisionEuclidienne () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c, d, q, r
     if (choice([true, false])) {
       a = randint(7, 9)

@@ -16,6 +16,8 @@ export const amcType = 'AMCOpenNum'
  * @author Jean-Claude Lhote
  * Publié le 18/12/2021
  */
+export const uuid = '90ee6'
+export const ref = '5G11-6'
 export default function CompleterParSymetrie5e () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''
@@ -23,7 +25,7 @@ export default function CompleterParSymetrie5e () {
   this.nbCols = 1
   this.nbColsCorr = 1
   this.sup2 = 1
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.interactif) this.consigne = 'Placer les points en cliquant, puis vérifier la réponse.'
     this.sup2 = contraindreValeur(1, 4, this.sup2, 1)
     this.listeQuestions = [] // Liste de questions

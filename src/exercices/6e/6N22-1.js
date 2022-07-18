@@ -11,6 +11,8 @@ export const titre = 'Exprimer le rapport de deux longueurs sur un segment'
  * @author Sébastien Lozano
  */
 
+export const uuid = '2461a'
+export const ref = '6N22-1'
 export default function RapportsSurUnSegment () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.beta = false
@@ -30,7 +32,7 @@ export default function RapportsSurUnSegment () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.beta) {
       typesDeQuestionsDisponibles = [0, 1]
     } else {

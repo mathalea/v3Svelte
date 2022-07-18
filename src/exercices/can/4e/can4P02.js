@@ -1,5 +1,5 @@
-import { calcul, choice, texteEnCouleur } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { calcul, choice, texteEnCouleur } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Résoudre un problème de vitesse'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -11,12 +11,14 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can4P02
  */
+export const uuid = '37612'
+export const ref = 'can4P02'
 export default function ProblemesDeVitesse () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
   this.nbQuestions = 1
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = choice([2, 3, 5, 6, 10]) // diviseur de l'heure
     const b = calcul(60 / a) // nombre de minutes de l'énoncé
     const c = choice([30, 60, 90, 120])

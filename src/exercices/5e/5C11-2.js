@@ -8,6 +8,8 @@ export const titre = 'Traduire une succession des opérations par une expression
  * @author Jean-Claude Lhote
  * Référence 5C11-2
  */
+export const uuid = '08995'
+export const ref = '5C11-2'
 export default function EcrireUneExpressionMathador () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -17,7 +19,7 @@ export default function EcrireUneExpressionMathador () {
   this.nbCols = 1
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

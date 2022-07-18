@@ -13,6 +13,8 @@ export const amcType = 'AMCHybride'
 * Relecture : Novembre 2021 par EE
 */
 
+export const uuid = '4da00'
+export const ref = '6G25-1'
 export default function SymetrieAxialePavageTriangulaire () {
   'use strict'
   Exercice.call(this)
@@ -293,10 +295,10 @@ export default function SymetrieAxialePavageTriangulaire () {
         }
         break
     }
-    return { antecedent: antecedent, image: image, distracteurs: distracteurs }
+    return { antecedent, image, distracteurs }
   }
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = [] // tableau contenant la liste des questions
     this.listeCorrections = []
     this.autocorrection = []

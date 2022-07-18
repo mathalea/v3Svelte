@@ -21,6 +21,8 @@ export const amcType = 'AMCHybride'
 * @author Rémi Angot
 * 3F12-3
 */
+export const uuid = 'a380e'
+export const ref = '3F12-3'
 export default function TableauDeValeurs () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -31,7 +33,7 @@ export default function TableauDeValeurs () {
   this.sup = 5 // niveau de difficulté
   this.correctionDetailleeDisponible = true
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.spacing = this.interactif ? 2 : 1
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

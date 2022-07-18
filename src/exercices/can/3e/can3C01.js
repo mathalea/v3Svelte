@@ -1,8 +1,8 @@
-import { context } from '../../../modules/context'
-import { setReponse } from '../../../modules/gestionInteractif'
-import { ajouteChampTexteMathLive } from '../../../modules/interactif/questionMathLive'
-import { choice, listeQuestionsToContenu, miseEnEvidence, randint } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { context } from '../../../modules/context.js'
+import { setReponse } from '../../../modules/gestionInteractif.js'
+import { ajouteChampTexteMathLive } from '../../../modules/interactif/questionMathLive.js'
+import { choice, listeQuestionsToContenu, miseEnEvidence, randint } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Calculer avec des puissances'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -14,12 +14,14 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can3C01
  */
+export const uuid = 'a10d3'
+export const ref = 'can3C01'
 export default function CalculPuissanceSimple () {
   Exercice.call(this)
   this.nbQuestions = 1
   this.tailleDiaporama = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     this.autoCorrection = []

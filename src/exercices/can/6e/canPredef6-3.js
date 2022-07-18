@@ -17,6 +17,8 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can Predef6-3
 */
+export const uuid = 'e637a'
+export const ref = 'canPredef6-3'
 export default function CourseAuxNombres6e (numeroExercice) {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 30
@@ -31,7 +33,7 @@ export default function CourseAuxNombres6e (numeroExercice) {
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let a, b, c, d, resultat, propositions
@@ -55,7 +57,7 @@ export default function CourseAuxNombres6e (numeroExercice) {
     const listeIndex = combinaisonListesSansChangerOrdre(questions, this.nbQuestions)
     const fruits = [
       ['pêches', 4, 10, 30],
-      ['Noix', 5, 4, 13],
+      ['noix', 5, 4, 13],
       ['cerises', 6, 11, 20],
       ['pommes', 2, 20, 40],
       ['framboises', 15, 1, 5],

@@ -13,6 +13,8 @@ export const titre = 'Résoudre des problèmes avec des calculs de pourcentages'
  * @author Jean-Claude Lhote
  * Référence 6N33-3
  */
+export const uuid = 'eee5f'
+export const ref = '6N33-3'
 export default function AppliquerUnPourcentage () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1
@@ -22,7 +24,7 @@ export default function AppliquerUnPourcentage () {
   this.nbCols = 1
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

@@ -14,6 +14,8 @@ export const dateDePublication = '01/06/2022' // La date de publication initiale
  * @author Gilles Mora
  * Référence can1L03
 */
+export const uuid = 'b841f'
+export const ref = 'can1L03'
 export default function RacinesPoly () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1
@@ -22,7 +24,7 @@ export default function RacinesPoly () {
 
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let texte, texteCorr

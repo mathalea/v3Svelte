@@ -8,6 +8,8 @@ export const titre = 'Utiliser et comprendre les symboles $\\cup $ et $\\cap $ a
  * 2N11-2, ex 2N25
  * @author Stéphane Guyon
  */
+export const uuid = 'b57d2'
+export const ref = '2N11-2'
 export default function UnionEtIntersectionIntervallesDeR () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -16,7 +18,7 @@ export default function UnionEtIntersectionIntervallesDeR () {
   this.nbCols = 2
   this.nbColsCorr = 2
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const typesDeQuestionsDisponibles = [1, 2, 3, 4, 5, 6, 7, 8]; let typesDeQuestions

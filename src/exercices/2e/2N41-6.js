@@ -12,6 +12,8 @@ export const titre = 'Développer avec les identités remarquables'
 * @author Jean-Claude Lhote
 * 2N41-6, ex 2L10
 */
+export const uuid = '27a53'
+export const ref = '2N41-6'
 export default function DevelopperIdentitesRemarquables2 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -23,7 +25,7 @@ export default function DevelopperIdentitesRemarquables2 () {
   this.nbQuestions = 5
   this.sup = 1
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.sup = parseInt(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

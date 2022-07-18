@@ -11,6 +11,8 @@ export const amcType = 'AMCHybride'
  * @author Rémi Angot
  * Référence 4F12
  */
+export const uuid = 'db3cc'
+export const ref = '4F12'
 export default function ExploiterRepresentationGraphique () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -21,7 +23,7 @@ export default function ExploiterRepresentationGraphique () {
   this.nbQuestionsModifiable = false
   this.sup = 4
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

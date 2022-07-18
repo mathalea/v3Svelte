@@ -9,6 +9,8 @@ export const titre = 'Division Euclidienne - Diviseurs - Multiples'
  * Exercice bilan
  * @author Sébastien Lozano
  */
+export const uuid = '2c7a7'
+export const ref = '3A10'
 export default function DivisionEuclidienneMultiplesDiviseursCriteres () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -27,7 +29,7 @@ export default function DivisionEuclidienneMultiplesDiviseursCriteres () {
   this.sup2 = '10'
   this.sup3 = 13
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     const nbChiffresMax = combinaisonListesSansChangerOrdre(this.sup.toString().split('-'), this.nbQuestions)
     const nbDiviseursMax = combinaisonListesSansChangerOrdre(this.sup2.toString().split('-'), this.nbQuestions)
     this.sup3 = contraindreValeur(2, 16, parseFloat(this.sup3), 10)

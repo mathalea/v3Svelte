@@ -1,5 +1,5 @@
-import { choice, randint } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { choice, randint } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Calculer l’aire ou un périmètre d’un carré'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -11,12 +11,14 @@ export const amcType = 'AMCNum'
   * Créé pendant l'été 2021
  * Référence can3M01
 */
+export const uuid = '587ec'
+export const ref = 'can3M01'
 export default function CarreAire () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, c
     switch (choice(['a', 'b'])) {
       case 'a':

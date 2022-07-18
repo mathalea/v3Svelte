@@ -4,7 +4,7 @@ import { listeQuestionsToContenu, randint, calcul, texNombrec, creerNomDePolygon
 import { point, pointSurSegment, pointAdistance, polygone, triangle2points2longueurs, homothetie, similitude, texteParPoint, longueur, angle, angleOriente, mathalea2d } from '../../modules/2d.js'
 import { setReponse } from '../../modules/gestionInteractif.js'
 import { ajouteChampTexteMathLive } from '../../modules/interactif/questionMathLive.js'
-import Grandeur from '../../modules/Grandeur'
+import Grandeur from '../../modules/Grandeur.js'
 
 export const amcReady = true
 export const amcType = 'AMCOpenNum✖︎2'
@@ -30,7 +30,7 @@ export default function Thales2D () {
   this.correctionDetailleeDisponible = true
   this.correctionDetaillee = false
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let listeDeNomsDePolygones = []

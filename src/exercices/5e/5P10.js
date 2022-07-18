@@ -9,6 +9,8 @@ export const titre = 'Reconnaître des tableaux de proportionnalité'
  * @author Sébastien Lozano
  */
 
+export const uuid = 'c1930'
+export const ref = '5P10'
 export default function TableauxEtProportionnalite () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -31,7 +33,7 @@ export default function TableauxEtProportionnalite () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.debug) {
       typesDeQuestionsDisponibles = [0, 1, 2, 3, 4, 5]
     } else {

@@ -13,6 +13,8 @@ export const titre = 'Compléter une représentation en perspective cavalière'
  * référence : 6G41
  * @author Mireille Gain, s'inspirant fortement de Jean-Claude Lhote
  */
+export const uuid = '79c46'
+export const ref = '6G41'
 export default function RepresenterUnSolide () {
   Exercice.call(this) // Héritage de la classe Exercice ()
   this.titre = titre
@@ -25,7 +27,7 @@ export default function RepresenterUnSolide () {
   this.amcReady = amcReady
   this.amcType = amcType
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     let typeDeQuestionsDisponibles
 
@@ -174,11 +176,11 @@ export default function RepresenterUnSolide () {
       IA.color = 'black'
 
       if (G.y < C.y && G.x < C.x) {
-        CG.pointilles = true
-        GH.pointilles = true
-        FG.pointilles = true
-        IF.pointilles = true
-        FH.pointilles = true
+        CG.pointilles = 5
+        GH.pointilles = 5
+        FG.pointilles = 5
+        IF.pointilles = 5
+        FH.pointilles = 5
         CG.color = 'gray'
         GH.color = 'gray'
         FG.color = 'gray'
@@ -186,11 +188,11 @@ export default function RepresenterUnSolide () {
         GH.opacite = 0.7
         FG.opacite = 0.7
       } else if (E.y > A.y && E.x > A.x) {
-        AE.pointilles = true
-        EF.pointilles = true
-        HE.pointilles = true
-        IE.pointilles = true
-        FH.pointilles = true
+        AE.pointilles = 5
+        EF.pointilles = 5
+        HE.pointilles = 5
+        IE.pointilles = 5
+        FH.pointilles = 5
         AE.color = 'gray'
         EF.color = 'gray'
         HE.color = 'gray'
@@ -198,11 +200,11 @@ export default function RepresenterUnSolide () {
         EF.opacite = 0.7
         HE.opacite = 0.7
       } else if (F.x < B.x && F.y > B.y) {
-        BF.pointilles = true
-        FG.pointilles = true
-        EF.pointilles = true
-        IF.pointilles = true
-        FH.pointilles = true
+        BF.pointilles = 5
+        FG.pointilles = 5
+        EF.pointilles = 5
+        IF.pointilles = 5
+        FH.pointilles = 5
         BF.color = 'gray'
         FG.color = 'gray'
         EF.color = 'gray'
@@ -210,11 +212,11 @@ export default function RepresenterUnSolide () {
         FG.opacite = 0.7
         EF.opacite = 0.7
       } else if (H.x > D.x && H.y < D.y) {
-        DH.pointilles = true
-        GH.pointilles = true
-        HE.pointilles = true
-        IE.pointilles = true
-        FH.pointilles = true
+        DH.pointilles = 5
+        GH.pointilles = 5
+        HE.pointilles = 5
+        IE.pointilles = 5
+        FH.pointilles = 5
         DH.color = 'gray'
         GH.color = 'gray'
         HE.color = 'gray'
@@ -351,7 +353,7 @@ export default function RepresenterUnSolide () {
         this.listeQuestions.push(enonce + '<br>')
         this.listeCorrections.push(correction + '<br>')
         // Pour AMC question AmcOpen
-        this.autoCorrection[i] = { enonce: enonce, propositions: [{ texte: correction, statut: 3, feedback: '' }] }
+        this.autoCorrection[i] = { enonce, propositions: [{ texte: correction, statut: 3, feedback: '' }] }
         i++
       }
       cpt++

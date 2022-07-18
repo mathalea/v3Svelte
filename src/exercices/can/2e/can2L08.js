@@ -10,6 +10,8 @@ export const dateDePublication = '04/03/2022'
  * @author Gilles Mora
  * Référence can2L08
 */
+export const uuid = '95f02'
+export const ref = 'can2L08'
 export default function ResoudreEquationAvecQuotient () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -17,7 +19,7 @@ export default function ResoudreEquationAvecQuotient () {
   this.tailleDiaporama = 2
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(-10, 10, 0)
     const b = randint(-10, 10, [-1, 0, 1])
     const c = randint(-10, 10, 0)

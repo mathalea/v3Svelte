@@ -135,3 +135,67 @@ et un fichier `settings.json` de VS Codium qui ressemble à ça :
   }
 }
 ```
+
+## Svelte
+
+### Passer un paramètre à une fonction
+
+```javascript
+on:curseurNotif={submitOnSliderChange("formText1"}         // don't work
+on:curseurNotif={() => submitOnSliderChange("formText1")}  // works
+```
+
+## Bouts de code non utilisés
+
+Construire une liste où le contenu est récupéré de manière asynchrone
+
+```html
+<!-- construireListeExos est asynchrone -->
+{#await construireListeExos()} Loading {:then entrees}
+<ul>
+  {#each Array.from(entrees, ([cle, obj]) => ({ cle, obj })) as entree}
+  <li>{entree.cle}</li>
+  <ul class="ml-2">
+    {#each Array.from(entree.obj, ([cle, obj]) => ({ cle, obj })) as sousEntree}
+    <li>{sousEntree.cle}</li>
+    {/each}
+  </ul>
+  {/each}
+</ul>
+{/await}
+```
+
+et la fonction :
+
+```js
+async function construireListeExos() {
+  let dico: Map
+  try {
+    const reponse = await import("../dicos/exosDispo.json")
+    dico = toMap(reponse)
+    return dico.get("default")
+  } catch (error) {
+    console.error(`Impossible de récupérer les listes : ${error}`)
+  }
+}
+```
+
+```js
+/**
+   * Tester si un exercice est bien dans la liste des exercices sélectionnés
+   * (sur la base de la `listeExercices` présente dans le store)
+   * @param code nom de l'exercice (par exemple "6N11-5")
+   * @return `true` si le fichier est bien dans la liste (`false` sinon)
+   * @author sylvain chambon
+   */
+  function isPartOfSelectedExercises(code: string) {
+    let liste = get(listeExercices)
+    let reponse = false
+    liste.forEach((exo) => {
+      if (code === exo.filename) {
+        reponse = true
+      }
+    })
+    return reponse
+  }
+```

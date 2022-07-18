@@ -14,6 +14,8 @@ export const interactifType = 'mathLive'
 * 2021-02-07
 */
 
+export const uuid = '89ef5'
+export const ref = '3S12'
 export default function calculEffectifFrequence () {
   Exercice.call(this)
   this.titre = titre
@@ -35,7 +37,7 @@ export default function calculEffectifFrequence () {
   //  this.sup3 = false; // A décommenter : valeur par défaut d'un troisième paramètre
 
   // c'est ici que commence le code de l'exercice cette fonction crée une copie de l'exercice
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     // la variable numeroExercice peut être récupérée pour permettre de différentier deux copies d'un même exo
     // Par exemple, pour être certain de ne pas avoir les mêmes noms de points en appelant 2 fois cet exo dans la même page
 

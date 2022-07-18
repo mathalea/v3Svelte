@@ -10,6 +10,8 @@ export const titre = 'Engrenages'
  * pb dans la sortie LaTeX, revoir comment user de la fonction katexPopup2() pour affichage d'une note hors texte !
  * @author Sébastien Lozano
  */
+export const uuid = '7854a'
+export const ref = '3A13'
 export default function ppcmEngrenages () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -32,7 +34,7 @@ export default function ppcmEngrenages () {
     var pourcentage = '100%' // pour l'affichage des svg. On a besoin d'une variable globale
   } else { // sortie LaTeX
   };
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     let typesDeQuestions
     if (context.isHtml) { // les boutons d'aide uniquement pour la version html
       // this.boutonAide = '';

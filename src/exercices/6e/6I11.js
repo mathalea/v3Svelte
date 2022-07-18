@@ -17,6 +17,8 @@ export const titre = 'Note la couleur (scratch)'
 /**
  * Fonction exercice.
  */
+export const uuid = 'fd0b1'
+export const ref = '6I11'
 export default function NoteLaCouleur6e () {
   'use strict'
   Exercice.call(this)
@@ -37,7 +39,7 @@ export default function NoteLaCouleur6e () {
   this.correctionDetailleeDisponible = true
   this.correctionDetaillee = true
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     const damier = [
       ['Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc'],
       ['Blanc', 'Noir', 'Jaune', 'Bleu', 'Vert', 'Orange', 'Rouge', 'Orange', 'Noir', 'Jaune', 'Gris', 'Vert', 'Rose', 'Noir', 'Jaune', 'Blanc'],
@@ -318,7 +320,7 @@ export default function NoteLaCouleur6e () {
         texte += `N'hésitez pas à vous rendre sur le site ${modalUrl(numeroExercice + 1, 'https://www.monclasseurdemaths.fr', 'Mon classeur de Maths.fr', 'info circle')} de Jean-Yves pour y découvrir la multitude de ressources qu'il propose.<br>`
         texte += `Pour jouer, regarder les règles du jeu${modalPdf(numeroExercice + 2, '../../pdf/reglesnlc.pdf', 'Règles du jeu', 'Règles - PDF', 'file pdf')} .<br>`
       } else { texte = '' }
-      texte += 'Exécuter le programme et trouver la succession de couleur.<br><br>'
+      texte += 'Exécuter le programme et trouver la succession de couleurs.<br><br>'
       if (context.isHtml) {
         texte += '<table><tr><td>' +
       scratchblock(pion.codeScratch) +
@@ -392,6 +394,6 @@ export default function NoteLaCouleur6e () {
   }
   this.besoinFormulaireNumerique = ['Type de plateau', 4, '1 : Plateau couleur sans numéro\n2 : Plateau couleur avec numéros\n3 : Plateau noir et blanc avec nom des couleurs\n4 : Plateau noir et blanc avec numéros']
   this.besoinFormulaire2Numerique = ['Type de programme', 3, '1 : Avancer et tourner\n2 : Boucles\n3 : Mélange']
-  this.besoinFormulaire3Numerique = ['Nombre de couleurs (Maximmum 6)', 6]
+  this.besoinFormulaire3Numerique = ['Nombre de couleurs (Maximum 6)', 6]
   this.besoinFormulaire4CaseACocher = ['Plateau de jeu original', false]
 }

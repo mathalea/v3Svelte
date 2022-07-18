@@ -1,5 +1,5 @@
 import Exercice from '../../Exercice.js'
-import { fraction } from '../../../modules/fractions'
+import { fraction } from '../../../modules/fractions.js'
 import { randint, listeQuestionsToContenu, texteEnCouleur, reduireAxPlusB, sp, ecritureParentheseSiNegatif, choice } from '../../../modules/outils.js'
 import { propositionsQcm } from '../../../modules/interactif/questionQcm.js'
 export const titre = 'Résoudre une inéquation (QCM)'
@@ -11,12 +11,14 @@ export const interactifType = 'qcm'
  * Référence can2L05 // pour l'instant
  * Date de publication 24/10/2021
 */
+export const uuid = '79384'
+export const ref = 'can2L05'
 export default function SolutionInequationQCM () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1
   this.spacing = 3
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = []
     this.listeCorrections = []
     this.date = 1635094684684

@@ -15,6 +15,8 @@ export const titre = 'Réduire une expression littérale'
 * @author Rémi Angot
 * 5L12
 */
+export const uuid = 'fa8e2'
+export const ref = '5L12'
 export default function ReduireUneExpressionLitterale () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -25,7 +27,7 @@ export default function ReduireUneExpressionLitterale () {
   this.sup = 9 // valeur maximale des coefficients
   this.sup2 = false // avec des nombres décimaux
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

@@ -15,6 +15,8 @@ export const amcType = 'AMCNum'
  * Référence 6N10-2
  * Relecture : Décembre 2021 par EE
  */
+export const uuid = '8ef7a'
+export const ref = '6N10-2'
 export default function DecompositionNombreDecimal () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Compléter les phrases suivantes.'
@@ -23,7 +25,7 @@ export default function DecompositionNombreDecimal () {
   this.nbColsCorr = 1
   this.sup = 7
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

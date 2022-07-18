@@ -10,13 +10,15 @@ export const dateDePublication = '25/10/2021'
  * @author Gilles Mora
  * Référence can4P04
 */
+export const uuid = 'b643f'
+export const ref = 'can4P04'
 export default function ProportionnaliteNotes () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let b, n
     const a = choice([30, 40, 50, 60, 80, 100])
 

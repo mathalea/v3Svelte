@@ -9,6 +9,8 @@ export const titre = 'Instruction conditionelle (scratch)'
  * * publié le  24/11/2020
  * @author Erwan Duplessy
  */
+export const uuid = 'a12a0'
+export const ref = '3I1'
 export default function InstructionConditionelle () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -26,7 +28,7 @@ export default function InstructionConditionelle () {
   context.isHtml ? this.spacingCorr = 1 : this.spacingCorr = 1
   this.listePackages = 'scratch3'
   // let typesDeQuestionsDisponibles;
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     function scratchblocksTikz (codeSvg, codeTikz) {

@@ -1,5 +1,5 @@
-import { randint } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { randint } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Recomposer un entier*'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -11,13 +11,15 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can6N03
  */
+export const uuid = 'b8e51'
+export const ref = 'can6N03'
 export default function RecomposerEntierMoinsSimple () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(20, 70)
     const b = randint(20, 70, a)
     this.reponse = a * 100 + b * 10

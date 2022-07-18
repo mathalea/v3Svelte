@@ -15,6 +15,8 @@ export const interactifType = 'mathLive'
  * Exercice bilan
  * @author Sébastien Lozano & Jean Claude Lhote
  */
+export const uuid = 'b2b8f'
+export const ref = '5A10'
 export default function ListeDesDiviseurs5e () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -30,7 +32,7 @@ export default function ListeDesDiviseurs5e () {
   this.sup2 = '6-6-6'
   this.sup3 = 10
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let typesDeQuestions
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

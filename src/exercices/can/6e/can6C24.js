@@ -1,5 +1,5 @@
-import { calcul, choice, randint, texNombre, texteEnCouleur } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { calcul, choice, randint, texNombre, texteEnCouleur } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Multiplier par 0,1 ou 0,01 ou 0,001'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -11,13 +11,15 @@ export const amcType = 'AMCNum'
  * Publié le 15/09/2021
  * Référence can6C24
  */
+export const uuid = 'c8f0e'
+export const ref = 'can6C24'
 export default function MultiplierParPuissanceDixNeg () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const a = randint(1, 9)
     const b = randint(1, 9, a)
     const c = randint(1, 9, b)

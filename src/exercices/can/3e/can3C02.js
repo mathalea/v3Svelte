@@ -1,5 +1,5 @@
-import { texNombrec, randint, sp, texteEnCouleur } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { texNombrec, randint, sp, texteEnCouleur } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Calculer une moyenne avec des décimaux'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -11,13 +11,15 @@ export const amcType = 'AMCNum'
   * Créé pendant l'été 2021
  * Référence can3C02
 */
+export const uuid = '7ad1f'
+export const ref = 'can3C02'
 export default function MoyenneEntiereDeDecimaux () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.reponse = randint(7, 15) // la moyenne attendue on la multiplie par 10 pour l'avoir en 1/10e
     const a = randint(4, this.reponse, [10, 20]) * 10 + randint(1, 9) // premier nombre à ajouter multiplié par 10 pour l'avoir en 1/10e
     let b, c

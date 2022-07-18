@@ -19,6 +19,8 @@ export const dateDePublication = '08/06/2022'
  * @author Eric Elter (sur la base de 6C30)
  * Publié le 08/06/2022
  */
+export const uuid = 'c0c9c'
+export const ref = '6C30-0'
 export default function MultiplierDecimaux () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -40,7 +42,7 @@ export default function MultiplierDecimaux () {
   this.besoinFormulaire4Numerique = ['Choix du nombre de décimales significatives dans le second facteur', 3,
     '1 : Une décimale\n2 : Deux décimales\n3 : Trois décimales']
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

@@ -1,6 +1,6 @@
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, combinaisonListes, choisitLettresDifferentes } from '../../modules/outils.js'
-import { mathalea2d, point, rotation, codeSegments, segment, polygoneAvecNom, codageAngleDroit, labelPoint, similitude } from '../../modules/2d.js'
+import { mathalea2d, point, rotation, codageSegments, segment, polygoneAvecNom, codageAngleDroit, labelPoint, similitude } from '../../modules/2d.js'
 export const titre = 'Nature de parallélogrammes'
 
 /**
@@ -8,6 +8,8 @@ export const titre = 'Nature de parallélogrammes'
  * @author
  * Référence 5G42
 */
+export const uuid = '6a2f6'
+export const ref = '5G42'
 export default function demonstrationsParallelogrammes () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -17,7 +19,7 @@ export default function demonstrationsParallelogrammes () {
   this.nbColsCorr = 1 // Uniquement pour la sortie LaTeX
   this.video = '' // Id YouTube ou url
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []
@@ -52,8 +54,8 @@ export default function demonstrationsParallelogrammes () {
           prop1 = 'a des diagonales de même longueur'
           prop2 = `$${noms[0] + noms[2]}=${noms[1] + noms[3]}$`
           type = 'rectangle'
-          t2 = codeSegments('||', 'red', B, O, O, D)
-          t1 = codeSegments('||', 'red', A, O, O, C)
+          t2 = codageSegments('||', 'red', B, O, O, D)
+          t1 = codageSegments('||', 'red', A, O, O, C)
           objets.push(t1, t2, d1, d2)
           break
         case 'type2': // losange 1
@@ -61,9 +63,9 @@ export default function demonstrationsParallelogrammes () {
           prop1 = 'a des diagonales perpendiculaires'
           prop2 = `$[${noms[0] + noms[2]}]\\perp[${noms[1] + noms[3]}]$`
           type = 'losange'
-          t1 = codeSegments('||', 'red', A, O, O, C)
+          t1 = codageSegments('||', 'red', A, O, O, C)
           t2 = codageAngleDroit(A, O, D)
-          t3 = codeSegments('|||', 'blue', B, O, O, D)
+          t3 = codageSegments('|||', 'blue', B, O, O, D)
           t4 = labelPoint(O)
           objets.push(t1, t2, t3, t4, d1, d2)
           break
@@ -71,9 +73,9 @@ export default function demonstrationsParallelogrammes () {
           prop2 = `$[${noms[0] + noms[2]}]\\perp[${noms[1] + noms[3]}]$ et $${noms[0] + noms[2]}=${noms[1] + noms[3]}$`
           def = `ses diagonales $[${noms[0] + noms[2]}]$ et $[${noms[1] + noms[3]}]$ ont la même longueur et sont perpendiculaires`
           prop1 = 'a des diagonales perpendiculaires et de même longueur'
-          t1 = codeSegments('||', 'red', A, O, O, C)
+          t1 = codageSegments('||', 'red', A, O, O, C)
           t2 = codageAngleDroit(A, O, D)
-          t3 = codeSegments('||', 'red', B, O, O, D)
+          t3 = codageSegments('||', 'red', B, O, O, D)
           t4 = labelPoint(O)
           objets.push(t1, t2, t3, t4, d1, d2)
           type = 'carré'
@@ -83,7 +85,7 @@ export default function demonstrationsParallelogrammes () {
           def = `ses côtés $[${noms[0] + noms[1]}]$ et $[${noms[1] + noms[2]}]$ ont la même longueur`
           prop1 = 'a deux côtés consécutifs de même longueur'
           type = 'losange'
-          t3 = codeSegments('O', 'green', A, B, B, C)
+          t3 = codageSegments('O', 'green', A, B, B, C)
           objets.push(t3)
           break
         case 'type5': // rectangle 2
@@ -98,7 +100,7 @@ export default function demonstrationsParallelogrammes () {
           prop2 = `$[${noms[0] + noms[1]}]\\perp[${noms[1] + noms[2]}]$ et $${noms[0] + noms[1]}=${noms[1] + noms[2]}$`
           def = `ses côtés $[${noms[0] + noms[1]}]$ et $[${noms[1] + noms[2]}]$ sont perpendiculaires et de même longueur`
           prop1 = 'a deux côtés consécutifs perpendiculaires et de même longueur'
-          t2 = codeSegments('O', 'green', A, B, B, C)
+          t2 = codageSegments('O', 'green', A, B, B, C)
           t3 = codageAngleDroit(A, B, C)
           objets.push(t2, t3)
           type = 'carré'

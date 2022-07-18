@@ -14,6 +14,8 @@ export const amcType = 'AMCNum'
  * @author Rémi Angot
  * Référence CM013
 */
+export const uuid = 'c8c1a'
+export const ref = 'CM013'
 export default function ComplementAUneDizaine () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Calculer'
@@ -22,7 +24,7 @@ export default function ComplementAUneDizaine () {
   this.nbColsCorr = 2
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

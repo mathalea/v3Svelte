@@ -13,6 +13,8 @@ export const titre = 'Trouver l\'équation d\'une parabole'
  * 3) connaissant les deux racines et un autre point de passage à coordonnées entières
  * référence 1E12
  */
+export const uuid = 'dd081'
+export const ref = '1E12'
 export default function TrouverEquationParabole () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -24,7 +26,7 @@ export default function TrouverEquationParabole () {
   this.sup = 4
   this.correctionDetailleeDisponible = true
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     const pixelsParCm = 20
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
@@ -143,7 +145,7 @@ ${f(x1) - f(-x1)}=${2 * x1}b
       svgYmin = Math.min(calcule(Ymin / Yscale), -1)
       svgYmax = Math.max(calcule(Ymax / Yscale), 1)
       F = x => a * x ** 2 + b * x + c
-      texte += mathalea2d({ xmin: -10, xmax: 11, ymin: svgYmin, ymax: svgYmax + 2, pixelsParCm: pixelsParCm, scale: 0.6 }, courbe(F, -10, 10, 'blue', 1.5, r), r)
+      texte += mathalea2d({ xmin: -10, xmax: 11, ymin: svgYmin, ymax: svgYmax + 2, pixelsParCm, scale: 0.6 }, courbe(F, -10, 10, 'blue', 1.5, r), r)
       if (this.questionJamaisPosee(i, a, b, c)) {
         this.listeQuestions.push(texte)
         this.listeCorrections.push(texteCorr)

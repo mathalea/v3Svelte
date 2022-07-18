@@ -18,6 +18,8 @@ export const amcType = 'AMCNum'
  * @author Rémi Angot
  * Référence CM000
  */
+export const uuid = 'ef6d2'
+export const ref = 'CM000'
 export default function TablesAdditionsSoustractions () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = 20
@@ -25,7 +27,7 @@ export default function TablesAdditionsSoustractions () {
   this.consigne = 'Calculer'
   this.spacing = 2
   this.tailleDiaporama = 3
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.autoCorrection = []
     this.sup = parseInt(this.sup)
     this.sup2 = parseInt(this.sup2)

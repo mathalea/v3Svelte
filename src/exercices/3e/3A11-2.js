@@ -17,6 +17,8 @@ export const titre = 'Décomposition en facteurs premiers d\'un entier'
  * type 3 : un gros premiers au delà de 1000 et inférieur à 2 000
  * @author Sébastien Lozano
  */
+export const uuid = '2960a'
+export const ref = '3A11-2'
 export default function decompositionFacteursPremiers () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -35,7 +37,7 @@ export default function decompositionFacteursPremiers () {
   this.besoinFormulaireCaseACocher = ['Afficher la liste des nombres premiers inférieurs à 100']
   this.sup = true
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     let typesDeQuestions
     if (context.isHtml) { // les boutons d'aide uniquement pour la version html
       // this.boutonAide = '';

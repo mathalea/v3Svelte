@@ -1,5 +1,5 @@
-import { randint, texNombre, choice, arrondi } from '../../../modules/outils'
-import Exercice from '../../Exercice'
+import { randint, texNombre, choice, arrondi } from '../../../modules/outils.js'
+import Exercice from '../../Exercice.js'
 export const titre = 'Calculer la somme de décimaux qui se marient'
 export const interactifReady = true
 export const interactifType = 'mathLive'
@@ -11,13 +11,15 @@ export const dateDePublication = '11/05/2022'
  *
  *
  */
+export const uuid = '26942'
+export const ref = 'can5C21'
 export default function SommeDecimaux () {
   Exercice.call(this)
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
   this.typeExercice = 'simple'
   this.tailleDiaporama = 2
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b, c, e, f, g, k
     const choix = randint(1, 3)
     if (choix === 1) {

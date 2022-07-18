@@ -11,6 +11,8 @@ export const titre = 'Construire l\'image d\'un point par une homothetie avec ci
 * @author Jean-Claude Lhote
 * Publié le 30/11/2020
 */
+export const uuid = 'c13f9'
+export const ref = '3G11'
 export default function ConstruireHomothetiePoint3e () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -22,7 +24,7 @@ export default function ConstruireHomothetiePoint3e () {
   this.sup = 3
   this.typeExercice = 'IEP'
 
-  this.nouvelleVersion = function (numeroExercice) {
+  this.nouvelleVersion = (numeroExercice) => {
     let nontrouve, assezloin, cible, s
     const anim = new Alea2iep()
     const k = randint(-4, 4, [0, -2, 2]) / 2

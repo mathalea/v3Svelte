@@ -1,13 +1,15 @@
 <script lang="ts">
   import { flip } from "svelte/animate"
   import Exercice from "./Exercice.svelte"
-  import Header from "./Header.svelte"
   import NavBar from "./NavBar.svelte"
   import Footer from "./Footer.svelte"
+  import TitrePage from "./TitrePage.svelte"
   import { listeExercices } from "./store"
-  import InputListeExercices from "./InputListeExercices.svelte"
   import Recherche from "./Recherche.svelte"
-  // import { Modals, closeModal } from "svelte-modals"
+  import NiveauListeExos from "./NiveauListeExos.svelte"
+  import SearchChoiceOptionsRadio from "./SearchChoiceOptionsRadio.svelte"
+  import codeList from "../dicos/codeToLevelList.json"
+  import referentiel from "../dicos/referentiel2022.json"
 
   const exercice1 = {
     directory: "5e",
@@ -58,29 +60,126 @@
   //   filename: "bac_2021_01_sujet0_1",
   // }
 
-  // const exercice10 = {
-  //   directory: "exercicesStatiques",
-  //   filename: "crpe_2019-g5-pb-1",
-  // }
-  listeExercices.set([exercice1, exercice2, exercice3]) //, exercice4, exercice5, exercice6, exercice7, exercice8, exercice9, exercice10])
+  const exercice10 = {
+    directory: "exercicesStatiques",
+    filename: "crpe_2019-g5-pb-1",
+  }
+  // listeExercices.set([exercice1, exercice2, exercice3, exercice4, exercice5, exercice6, exercice7, exercice8, exercice9, exercice10])
+  listeExercices.set([exercice3])
+  /**
+   * Transforme un objet en arbre basé sur un type Map.
+   * Chaque propriété devient une clé et la valeur correspondante devient :
+   * - soit une valeur si la valeur de la propriété est un tableau
+   * - soit une autre map dans le cas contraire
+   * @param {any} obj
+   * @return {Map} l'arbre correspondant à l'objet
+   * @author sylvain chambon
+   */
+  function toMap(obj: any): Map {
+    let dico = new Map()
+    for (let cle of Object.keys(obj)) {
+      if (obj[cle] instanceof Object) {
+        if (obj[cle] instanceof Array) {
+          dico.set(cle, obj[cle])
+        } else {
+          dico.set(cle, toMap(obj[cle]))
+        }
+      } else {
+        dico.set(cle, obj[cle])
+      }
+    }
+    return dico
+  }
+
+  const refTree: Map = toMap(referentiel)
+  /**
+   * Retrouve le titre d'un niveau basé sur son
+   * @param levelId
+   */
+  function codeToLevelTitle(code: string) {
+    if (codeList[code]) {
+      return codeList[code]
+    } else {
+      return code
+    }
+  }
+
+  /*---------------------------------------------------------------------
+    Gestion du menu de recherche des exercices
+  ---------------------------------------------------------------------*/
+  let nbExercisesInList: number
+  let sideMenuVisible: boolean = false
+  $: {
+    nbExercisesInList = $listeExercices.length
+    if (nbExercisesInList === 0) {
+      sideMenuVisible = true
+    }
+  }
+  const searchOptions = [
+    {
+      value: "list",
+      label: "Liste",
+    },
+    {
+      value: "theme",
+      label: "Themes",
+    },
+  ]
+  let searchOption
+  function handleSideMenu(event: CustomEvent) {
+    sideMenuVisible = event.detail.isListVisible
+  }
+  function toggleSearchType(e) {
+    console.log(e.value)
+  }
 </script>
 
-<!-- <Header /> -->
-<NavBar />
-<main class="flex-grow px-1 pt-2 md:p-10">
-  <InputListeExercices />
-  <Recherche />
-  {#each $listeExercices as exercice, i (exercice)}
-    <div animate:flip={{ duration: (d) => 30 * Math.sqrt(d) }}>
-      <Exercice {...exercice} indiceExercice={i} indiceLastExercice={$listeExercices.length} />
+<div class="h-screen  scrollbar-hide">
+  <!-- <Header /> -->
+  <NavBar />
+  <TitrePage {sideMenuVisible} on:sideMenuChange={handleSideMenu} />
+  <main class="flex h-full">
+    <!-- side menu -->
+    {#if sideMenuVisible || nbExercisesInList === 0}
+      <aside class="flex flex-col bg-gray-200 w-1/3 p-4  overflow-hidden h-full transition-width transition-slowest ease duration-500">
+        <div class="flex-none block overflow-y-scroll overscroll-auto h-full">
+          <h2 class="inline-flex items-center font-bold text-xl mb-6">
+            <span>Choix des exercices</span>
+            <SearchChoiceOptionsRadio options={searchOptions} bind:userSelected={searchOption} />
+          </h2>
+          {#if searchOption === "list"}
+            <ul>
+              {#each Array.from(refTree, ([key, obj]) => ({ key, obj })) as item}
+                <li>
+                  <NiveauListeExos nestedLevelCount={1} pathToThisNode={[item.key]} levelTitle={codeToLevelTitle(item.key)} items={item.obj} />
+                </li>
+              {/each}
+            </ul>
+          {:else}
+            <Recherche />
+          {/if}
+        </div>
+      </aside>
+      <!-- split line -->
+      <div class="flex w-1 bg-coopmaths-light hover:bg-coopmaths-lightest" />
+    {/if}
+    <!-- content -->
+    <div class="flex-1 flex flex-col p-6 overflow-hidden h-full">
+      <div class="flex-1 overflow-y-scroll overscroll-auto">
+        {#each $listeExercices as exercice, i (exercice)}
+          <div animate:flip={{ duration: (d) => 30 * Math.sqrt(d) }}>
+            <Exercice {...exercice} indiceExercice={i} indiceLastExercice={$listeExercices.length} />
+          </div>
+        {/each}
+      </div>
     </div>
-  {/each}
-</main>
-<!-- Modals ne sont pas utilisés pour le moment
-<Modals>
-  <div slot="backdrop" class="backdrop" on:click={closeModal} />
-</Modals> -->
-<Footer />
+  </main>
+  <!-- Modals ne sont pas utilisés pour le moment
+  <Modals>
+    <div slot="backdrop" class="backdrop" on:click={closeModal} />
+  </Modals> -->
+  <Footer />
+</div>
 
 <style>
   :root {

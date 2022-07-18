@@ -40,7 +40,7 @@ export default function TableauxEtPourcentages () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     if (this.debug) {
       if (this.sup2 === 1) {
         typesDeQuestionsDisponibles = [0]

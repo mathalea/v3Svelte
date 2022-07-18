@@ -12,6 +12,8 @@ export const titre = 'Exercice de repérage dans un pavé droit'
  * Référence 4G52
  * publié 9/06/2021
 */
+export const uuid = '2fda8'
+export const ref = '4G52'
 export default function ReperagePaveDroit () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -24,7 +26,7 @@ export default function ReperagePaveDroit () {
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
 
-  this.nouvelleVersion = function () { // c'est ici que les données sont relatives
+  this.nouvelleVersion = () => { // c'est ici que les données sont relatives
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.introduction = '' // consigne avant les question y mettre le dessin + texte

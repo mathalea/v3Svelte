@@ -7,13 +7,15 @@ export const titre = 'Déterminer les termes d\'une suite définie par récurren
  * 1N11
  * @author Gaelle Morvan
  */
+export const uuid = '5d2c9'
+export const ref = '1N11'
 export default function TermeDUneSuiteDefinieParRecurrence () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
   this.consigne = 'Une suite étant donnée, calculer le terme demandé.'
   this.nbQuestions = 4
 
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     this.listeQuestions = [] // Vide la liste de questions
     this.listeCorrections = [] // Vide la liste de questions corrigées
 

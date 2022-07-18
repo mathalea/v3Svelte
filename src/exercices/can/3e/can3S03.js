@@ -10,12 +10,14 @@ export const interactifType = 'mathLive'
  * Référence
  * Date de publication
 */
+export const uuid = '3eb7e'
+export const ref = 'can3S03'
 export default function CalculsProbabilite2 () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = function () {
+  this.nouvelleVersion = () => {
     let a, b
     const choix = choice([true, false])
     switch (choice(['a', 'a', 'b'])) { //, 'a', 'b'
