@@ -107,9 +107,6 @@ export default function Exercice () {
  * modifie les valeurs de l'instance de l'exercice.
  * @param {number} numeroExercice
  */
-  this.nouvelleVersion = (numeroExercice) => {
-
-  }
   /**
      * Compare chaque nouvelle version d'un exercice aux précédentes pour s'assurer de ne pas avoir deux exercices identiques
      * @param {number} i indice de la question
