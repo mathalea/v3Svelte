@@ -101,10 +101,18 @@ const navigateList = (e) => {
     function handleChange2() {
       let newId = inputValue.replace('.js','')
       let ex = newId.split('/')
-      const newExercice = {
+      let newExercice = {}
+      if ( ex.length == 3 ) {
+        newExercice = {
+        directory: ex[0]+'/'+ex[1],
+        id: ex[2],
+        }
+      } else {
+      newExercice = {
         directory: ex[0],
         id: ex[1],
       }
+    }
       listeExercices.update((l) => [...l, newExercice])
       input.value = ""
     }
