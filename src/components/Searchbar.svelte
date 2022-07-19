@@ -115,7 +115,11 @@ const navigateList = (e) => {
 
 
   <svelte:window on:keydown={navigateList} />
-
+  <div class="inline-flex space-x-2">
+    {#each listeId as id, indice (indice)}
+      <Chips text={id} {indice} />
+    {/each}
+</div>
 <form autocomplete="off" on:submit|preventDefault={submitValue}>
   <div class="autocomplete">
     <input id="country-input" 
@@ -137,11 +141,7 @@ const navigateList = (e) => {
 		</ul>
 	{/if}
 </form>
-<div class="inline-flex space-x-2">
-    {#each listeId as id, indice (indice)}
-      <Chips text={id} {indice} />
-    {/each}
-</div>
+
 	
 <style>
 div.autocomplete {
@@ -149,6 +149,7 @@ div.autocomplete {
   position: relative;
   display: inline-block;
 	width: 200px;
+
 }
 input {
   border: 1px solid transparent;
@@ -171,8 +172,10 @@ input[type=submit] {
 	margin: 0;
 	padding: 0;
 	top: 0;
-	width: 297px;
+	width: 197px;
+    height: 200px;
 	border: 1px solid #ddd;
-	background-color: #ddd;
+	background-color: #ddd;    
+    overflow-y: scroll;
 }	
 </style>	
