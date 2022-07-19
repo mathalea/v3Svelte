@@ -53,7 +53,7 @@ const setInputVal = (ex) => {
 	inputValue = removeBold(ex);
 	filteredExercices = [];
 	hiLiteIndex = null;
-	document.querySelector('#country-input')//.focus();
+	document.querySelector('#country-input').focus();
 }	
 
 const submitValue = () => {
@@ -112,11 +112,7 @@ const navigateList = (e) => {
   </script>
 
 
-  <div class="inline-flex space-x-2">
-    {#each listeId as id, indice (indice)}
-      <Chips text={id} {indice} />
-    {/each}
-  </div>
+
 
   <svelte:window on:keydown={navigateList} />
 
@@ -130,9 +126,9 @@ const navigateList = (e) => {
 					 on:input={filterEx}>
   </div>
 	
-   <input type="submit" on:click={handleChange2}>
+  <input type="submit" on:click={handleChange2}>
 	
-	<!-- FILTERED LIST OF COUNTRIES -->
+	<!-- FILTERED LIST OF EXERCICES -->
 	{#if filteredExercices.length > 0}
 		<ul id="autocomplete-items-list">
 			{#each filteredExercices as ex, i}
@@ -141,7 +137,11 @@ const navigateList = (e) => {
 		</ul>
 	{/if}
 </form>
-	
+<div class="inline-flex space-x-2">
+    {#each listeId as id, indice (indice)}
+      <Chips text={id} {indice} />
+    {/each}
+</div>
 	
 <style>
 div.autocomplete {
@@ -153,8 +153,8 @@ div.autocomplete {
 input {
   border: 1px solid transparent;
   background-color: #f1f1f1;
-  padding: 10px;
-  font-size: 16px;
+  padding: 4px;
+  font-size: 12px;
 	margin: 0;
 }
 input[type=text] {
