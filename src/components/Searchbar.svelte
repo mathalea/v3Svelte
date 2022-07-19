@@ -3,6 +3,7 @@
     import { listeExercices } from "./store"
     import ExercicesData from "./ExercicesData.svelte";
     import data from '../exercicesList.json'
+    import data2 from '../modules/uuidsToUrl.json'
     
     let input: HTMLInputElement
     let listeId = []
@@ -48,8 +49,8 @@ const clearInput = () => {
 	searchInput.focus();
 }
 	
-const setInputVal = (countryName) => {
-	inputValue = removeBold(countryName);
+const setInputVal = (ex) => {
+	inputValue = removeBold(ex);
 	filteredExercices = [];
 	hiLiteIndex = null;
 	document.querySelector('#country-input')//.focus();
@@ -135,7 +136,7 @@ const navigateList = (e) => {
 	{#if filteredExercices.length > 0}
 		<ul id="autocomplete-items-list">
 			{#each filteredExercices as ex, i}
-				<ExercicesData itemLabel={ex} highlighted={i === hiLiteIndex} on:click={() => setInputVal(ex)} />
+				<ExercicesData itemLabel={ex} highlighted={i === hiLiteIndex} on:click={() => setInputVal(ex)} on:change={handleChange2} />
 			{/each}			
 		</ul>
 	{/if}
@@ -147,7 +148,7 @@ div.autocomplete {
   /*the container must be positioned relative:*/
   position: relative;
   display: inline-block;
-	width: 300px;
+	width: 200px;
 }
 input {
   border: 1px solid transparent;
