@@ -26,8 +26,8 @@ const filterEx = () => {
 	let storageArr = []
 	if (inputValue) {
 		data.forEach(ex => {
-			 if (ex.toLowerCase().startsWith(inputValue.toLowerCase())) {
-				 storageArr = [...storageArr, makeMatchBold(ex)];
+			 if (ex.replace('.js','').toLowerCase().startsWith(inputValue.toLowerCase())) {
+				 storageArr = [...storageArr, makeMatchBold(ex.replace('.js',''))];
 			 }
 		});
 	}
@@ -116,6 +116,7 @@ const navigateList = (e) => {
       listeExercices.update((l) => [...l, newExercice])
       input.value = ""
     }
+
 
   </script>
 
