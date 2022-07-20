@@ -24,8 +24,8 @@ const filterEx = () => {
 	let storageArr = []
 	if (inputValue) {
 		data.forEach(ex => {
-			 if (ex.toLowerCase().startsWith(inputValue.toLowerCase())) {
-				 storageArr = [...storageArr, makeMatchBold(ex)];
+			 if (ex.replace('.js','').toLowerCase().startsWith(inputValue.toLowerCase())) {
+				 storageArr = [...storageArr, makeMatchBold(ex.replace('.js',''))];
 			 }
 		})
 	}
@@ -94,13 +94,22 @@ const navigateList = (e) => {
     function handleChange2() {
       let newId = inputValue.replace('.js','')
       let ex = newId.split('/')
-      const newExercice = {
+      let newExercice = {}
+      if ( ex.length == 3 ) {
+        newExercice = {
+        directory: ex[0]+'/'+ex[1],
+        id: ex[2],
+        }
+      } else {
+      newExercice = {
         directory: ex[0],
         id: ex[1],
       }
+    }
       listeExercices.update((l) => [...l, newExercice])
       input.value = ""
     }
+
 
   </script>
 
