@@ -3,13 +3,11 @@
     import { listeExercices } from "./store"
     import ExercicesData from "./ExercicesData.svelte";
     import data from '../exercicesList.json'
-    import data2 from '../modules/uuidsToUrl.json'
     
     let input: HTMLInputElement
     let listeId = []
   
     const exercices = []
-    let selectedColor
     $: {
       listeId = []
       for (const ex of $listeExercices) {
@@ -18,72 +16,61 @@
       listeId = listeId
     }
 
-    /* FILTERING Exercices DATA BASED ON INPUT */	
 let filteredExercices = [];
-// $: console.log(filteredExercices)	
 
 const filterEx = () => {
 	let storageArr = []
 	if (inputValue) {
 		data.forEach(ex => {
-			 if (ex.replace('.js','').toLowerCase().startsWith(inputValue.toLowerCase())) {
+			 if (ex.replace('.js','').toLowerCase().includes(inputValue.toLowerCase())) {
 				 storageArr = [...storageArr, makeMatchBold(ex.replace('.js',''))];
 			 }
-		});
+		})
 	}
-	filteredExercices = storageArr;
+	filteredExercices = storageArr
 }	
 
 
-/* HANDLING THE INPUT */
-let searchInput; // use with bind:this to focus element
-let inputValue = "";
+let searchInput
+let inputValue = ''
 	
 $: if (!inputValue) {
-	filteredExercices = [];
-	hiLiteIndex = null;
+	filteredExercices = []
+	hiLiteIndex = null
 }
 
 const clearInput = () => {
-	inputValue = "";	
-	searchInput.focus();
+	inputValue = ''
+	searchInput.focus()
 }
 	
 const setInputVal = (ex) => {
-	inputValue = removeBold(ex);
-	filteredExercices = [];
-	hiLiteIndex = null;
-	document.querySelector('#country-input').focus();
+	inputValue = removeBold(ex)
+	filteredExercices = []
+	hiLiteIndex = null
+	const input = document.querySelector('#idInput') as HTMLInputElement
+	input.focus()
 }	
 
 const submitValue = () => {
 	if (inputValue) {
-		console.log(`${inputValue} is submitted!`);
 		setTimeout(clearInput, 1000);
-	} else {
-		alert("You didn't type anything.")
-	}
+	} 
 }
 
 const makeMatchBold = (str) => {
-	// replace part of (country name === inputValue) with strong tags
-    let matched = str.substring(0, inputValue.length);
-	let makeBold = `<strong>${matched}</strong>`;
-	let boldedMatch = str.replace(matched, makeBold);
-	return boldedMatch;
+  let matched = str.substring(str.indexOf(inputValue), str.indexOf(inputValue) + inputValue.length)
+	let makeBold = `<strong>${matched}</strong>`
+	let boldedMatch = str.replace(matched, makeBold)
+	return boldedMatch
 }
 
 const removeBold = (str) => {
-	//replace < and > all characters between
-	return str.replace(/<(.)*?>/g, "");
-	// return str.replace(/<(strong)>/g, "").replace(/<\/(strong)>/g, "");
+	return str.replace(/<(.)*?>/g, "")
 }	
 	
-
-/* NAVIGATING OVER THE LIST OF COUNTRIES W HIGHLIGHTING */	
-let hiLiteIndex = null;
-//$: console.log(hiLiteIndex);	
-$: hiLitedCountry = filteredExercices[hiLiteIndex]; 	
+let hiLiteIndex = null
+$: filteredExercices[hiLiteIndex] 	
 	
 const navigateList = (e) => {
 	if (e.key === "ArrowDown" && hiLiteIndex <= filteredExercices.length-1) {
@@ -91,9 +78,9 @@ const navigateList = (e) => {
 	} else if (e.key === "ArrowUp" && hiLiteIndex !== null) {
 		hiLiteIndex === 0 ? hiLiteIndex = filteredExercices.length-1 : hiLiteIndex -= 1
 	} else if (e.key === "Enter") {
-		setInputVal(filteredExercices[hiLiteIndex]);
+		setInputVal(filteredExercices[hiLiteIndex])
 	} else {
-		return;
+		return
 	}
 } 
   
@@ -114,13 +101,10 @@ const navigateList = (e) => {
       }
     }
       listeExercices.update((l) => [...l, newExercice])
-      input.value = ""
     }
 
 
   </script>
-
-
 
 
   <svelte:window on:keydown={navigateList} />
@@ -131,9 +115,9 @@ const navigateList = (e) => {
 </div>
 <form autocomplete="off" on:submit|preventDefault={submitValue}>
   <div class="autocomplete">
-    <input id="country-input" 
+    <input id="idInput" 
 					 type="text" 
-					 placeholder="Search Ex Names" 
+					 placeholder="Identifiant d'exercice" 
 					 bind:this={searchInput}
 					 bind:value={inputValue} 
 					 on:input={filterEx}>
@@ -141,9 +125,8 @@ const navigateList = (e) => {
 	
   <input type="submit" on:click={handleChange2}>
 	
-	<!-- FILTERED LIST OF EXERCICES -->
 	{#if filteredExercices.length > 0}
-		<ul id="autocomplete-items-list">
+		<ul id="autocomplete-items-list" class="fixed">
 			{#each filteredExercices as ex, i}
 				<ExercicesData itemLabel={ex} highlighted={i === hiLiteIndex} on:click={() => setInputVal(ex)} on:change={handleChange2} />
 			{/each}			
