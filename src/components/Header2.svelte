@@ -1,6 +1,5 @@
 <script lang="ts">
-  import InputListeExercices from "./InputListeExercices.svelte"
-  import Searchbar from "./Searchbar.svelte"
+  import Searchbar from "./header2/Searchbar.svelte"
   import { createEventDispatcher } from "svelte"
   const dispatch = createEventDispatcher()
   const dispatch2 = createEventDispatcher()
@@ -18,6 +17,5 @@
   <button type="button" on:click={toggleSideList}><i class="bx bx-menu-alt-left" /></button>
   <div class="text-gray-600 font-normal text-xs ml-8 w-15 max-h-15">
    <Searchbar />
-  <!--  <InputListeExercices /> -->
   </div>
 </h1>

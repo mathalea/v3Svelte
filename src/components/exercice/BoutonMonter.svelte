@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { listeExercices, moveExercice } from "./store"
+  import { listeExercices, moveExercice } from "../store"
   export let indice: number
   function monter() {
     listeExercices.update((l) => {

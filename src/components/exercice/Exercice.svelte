@@ -1,15 +1,15 @@
 <script lang="ts">
   import { afterUpdate, onMount, tick } from "svelte"
-  import { listeExercices } from "./store"
+  import { listeExercices } from "../store"
   import seedrandom from "seedrandom"
   import BoutonMonter from "./BoutonMonter.svelte"
   import BoutonDescendre from "./BoutonDescendre.svelte"
-  import { Mathalea } from "../Mathalea"
+  import { Mathalea } from "../../Mathalea"
   import Settings from "./Settings.svelte"
   import { randomInt } from "mathjs"
   import Contenu from "./Contenu.svelte"
-  import { loadMathLive } from "../modules/loaders"
-  import { exerciceInteractif, prepareExerciceCliqueFigure } from "../interactif/interactif"
+  import { loadMathLive } from "../../modules/loaders"
+  import { exerciceInteractif, prepareExerciceCliqueFigure } from "../../interactif/interactif"
 
   export let directory: string
   export let id: string

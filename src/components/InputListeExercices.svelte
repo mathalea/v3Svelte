@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Chips from "./Chips.svelte"
+  import Chips from './header2/Chips.svelte'
 
   import { listeExercices } from "./store"
 

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { listeExercices } from "./store"
+  import { listeExercices } from "../store"
   export let text = ""
   export let indice: number
 

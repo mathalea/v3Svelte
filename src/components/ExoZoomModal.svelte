@@ -1,6 +1,6 @@
 <script lang="ts">
   import { closeModal } from "svelte-modals"
-  import Contenu from "./Contenu.svelte"
+  import Contenu from "./exercice/Contenu.svelte"
   import { Mathalea } from "../Mathalea"
   import { onMount } from "svelte"
 

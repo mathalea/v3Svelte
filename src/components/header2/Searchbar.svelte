@@ -1,8 +1,8 @@
 <script lang="ts">
     import Chips from "./Chips.svelte"
-    import { listeExercices } from "./store"
+    import { listeExercices } from "../store"
     import ExercicesData from "./ExercicesData.svelte";
-    import data from '../exercicesList.json'
+    import data from '../../exercicesList.json'
     
     let input: HTMLInputElement
     let listeId = []
@@ -109,10 +109,6 @@ const navigateList = (e) => {
 
   <svelte:window on:keydown={navigateList} />
   <div class="inline-flex space-x-2">
-    {#each listeId as id, indice (indice)}
-      <Chips text={id} {indice} />
-    {/each}
-</div>
 <form autocomplete="off" on:submit|preventDefault={submitValue}>
   <div class="autocomplete">
     <input id="idInput" 
@@ -122,9 +118,7 @@ const navigateList = (e) => {
 					 bind:value={inputValue} 
 					 on:input={filterEx}>
   </div>
-	
   <input type="submit" on:click={handleChange2}>
-	
 	{#if filteredExercices.length > 0}
 		<ul id="autocomplete-items-list" class="fixed">
 			{#each filteredExercices as ex, i}
@@ -133,6 +127,11 @@ const navigateList = (e) => {
 		</ul>
 	{/if}
 </form>
+
+  {#each listeId as id, indice (indice)}
+    <Chips text={id} {indice} />
+  {/each}
+</div>
 
 	
 <style>

@@ -1,9 +1,9 @@
 <script lang="ts">
   import { flip } from "svelte/animate"
-  import Exercice from "./Exercice.svelte"
+  import Exercice from "./exercice/Exercice.svelte"
   import NavBar from "./NavBar.svelte"
   import Footer from "./Footer.svelte"
-  import TitrePage from "./TitrePage.svelte"
+  import TitrePage from "./Header2.svelte"
   import { listeExercices } from "./store"
   import Recherche from "./Recherche.svelte"
   import NiveauListeExos from "./NiveauListeExos.svelte"
