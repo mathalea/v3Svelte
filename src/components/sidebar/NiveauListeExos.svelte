@@ -33,7 +33,7 @@
     return dico
   }
 
-  import themesList from "../dicos/levelsThemesList.json"
+  import themesList from "../../dicos/levelsThemesList.json"
   const themes = toMap(themesList)
   /**
    * Recherche dans la liste des thèmes si le thème est référencé

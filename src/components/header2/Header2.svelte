@@ -1,5 +1,5 @@
 <script lang="ts">
-  import Searchbar from "./header2/Searchbar.svelte"
+  import Searchbar from "./Searchbar.svelte"
   import { createEventDispatcher } from "svelte"
   const dispatch = createEventDispatcher()
   const dispatch2 = createEventDispatcher()

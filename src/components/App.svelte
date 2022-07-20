@@ -1,13 +1,13 @@
 <script lang="ts">
   import { flip } from "svelte/animate"
   import Exercice from "./exercice/Exercice.svelte"
-  import NavBar from "./NavBar.svelte"
+  import NavBar from "./header/NavBar.svelte"
   import Footer from "./Footer.svelte"
-  import TitrePage from "./Header2.svelte"
+  import Header2 from "./header2/Header2.svelte"
   import { listeExercices } from "./store"
   import Recherche from "./Recherche.svelte"
-  import NiveauListeExos from "./NiveauListeExos.svelte"
-  import SearchChoiceOptionsRadio from "./SearchChoiceOptionsRadio.svelte"
+  import NiveauListeExos from "./sidebar/NiveauListeExos.svelte"
+  import SearchChoiceOptionsRadio from "./sidebar/SearchChoiceOptionsRadio.svelte"
   import codeList from "../dicos/codeToLevelList.json"
   import referentiel from "../dicos/referentiel2022.json"
   import { Mathalea } from "../Mathalea"
@@ -97,7 +97,7 @@
 <div class="h-screen  scrollbar-hide">
   <!-- <Header /> -->
   <NavBar />
-  <TitrePage {sideMenuVisible} on:sideMenuChange={handleSideMenu} />
+  <Header2 {sideMenuVisible} on:sideMenuChange={handleSideMenu} />
   <main class="flex h-full">
     <!-- side menu -->
     {#if sideMenuVisible || nbExercisesInList === 0}

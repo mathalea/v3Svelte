@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { listeExercices } from "./store"
+  import { listeExercices } from "../store"
 
   type Exo = {
     id: string
@@ -36,7 +36,7 @@
     return dico
   }
 
-  import data from "../dicos/exosDispo.json"
+  import data from "../../dicos/exosDispo.json"
   const dictionnaire = toMap(data)
 
   /**
