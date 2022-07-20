@@ -16,15 +16,13 @@
       listeId = listeId
     }
 
-    /* FILTERING Exercices DATA BASED ON INPUT */	
 let filteredExercices = [];
-// $: console.log(filteredExercices)	
 
 const filterEx = () => {
 	let storageArr = []
 	if (inputValue) {
 		data.forEach(ex => {
-			 if (ex.replace('.js','').toLowerCase().startsWith(inputValue.toLowerCase())) {
+			 if (ex.replace('.js','').toLowerCase().includes(inputValue.toLowerCase())) {
 				 storageArr = [...storageArr, makeMatchBold(ex.replace('.js',''))];
 			 }
 		})
@@ -61,7 +59,7 @@ const submitValue = () => {
 }
 
 const makeMatchBold = (str) => {
-    let matched = str.substring(0, inputValue.length)
+  let matched = str.substring(str.indexOf(inputValue), str.indexOf(inputValue) + inputValue.length)
 	let makeBold = `<strong>${matched}</strong>`
 	let boldedMatch = str.replace(matched, makeBold)
 	return boldedMatch
@@ -69,14 +67,10 @@ const makeMatchBold = (str) => {
 
 const removeBold = (str) => {
 	return str.replace(/<(.)*?>/g, "")
-	// return str.replace(/<(strong)>/g, "").replace(/<\/(strong)>/g, "")
 }	
 	
-
-/* NAVIGATING OVER THE LIST OF COUNTRIES W HIGHLIGHTING */	
 let hiLiteIndex = null
-//$: console.log(hiLiteIndex)	
-$: hiLitedCountry = filteredExercices[hiLiteIndex] 	
+$: filteredExercices[hiLiteIndex] 	
 	
 const navigateList = (e) => {
 	if (e.key === "ArrowDown" && hiLiteIndex <= filteredExercices.length-1) {
@@ -107,13 +101,10 @@ const navigateList = (e) => {
       }
     }
       listeExercices.update((l) => [...l, newExercice])
-      input.value = ""
     }
 
 
   </script>
-
-
 
 
   <svelte:window on:keydown={navigateList} />
@@ -134,7 +125,6 @@ const navigateList = (e) => {
 	
   <input type="submit" on:click={handleChange2}>
 	
-	<!-- FILTERED LIST OF EXERCICES -->
 	{#if filteredExercices.length > 0}
 		<ul id="autocomplete-items-list" class="fixed">
 			{#each filteredExercices as ex, i}
