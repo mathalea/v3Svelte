@@ -33,7 +33,7 @@
    * - soit une autre map dans le cas contraire
    * @param {any} obj
    * @return {Map} l'arbre correspondant à l'objet
-   * @author sylvain chambon
+   * @author sylvain Chambon
    */
   function toMap(obj: any): Map {
     let dico = new Map()
@@ -61,7 +61,6 @@
   const ref2e = refTree.get('2e')
   const ref1e = refTree.get('1e')
   const refPe = refTree.get('PE')
-  console.log(refTree)
   refTree = new Map()
   refTree.set('c3', refc3)
   refTree.set('6e', ref6e)
