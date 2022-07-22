@@ -64,13 +64,20 @@ const submitValue = () => {
 
 const makeMatchBold = (str) => {
 	let matched = []
-	cleanInput(inputValue).forEach(element => { 
-	matched.push(str.substring(str.indexOf(element), str.indexOf(element) + element.length)); })
+	inputValue.split(' ').filter(Boolean).forEach(element => { 
+	matched.push(str.substring(str.indexOf(element), str.indexOf(element) + element.length));
+	}
+	)
+	console.log('matched : '+ matched)
+	console.log('str : '+ str)
 	let boldedMatch = str
 	matched.forEach(element => {
 		let makeBold = `<strong>${element}</strong>`
-	boldedMatch.replace(element, makeBold )}
+		boldedMatch = boldedMatch.replace(element, makeBold)
+		console.log('element :'+element + '  boldedMatch : '+boldedMatch)
+		}
 	)
+	console.log(boldedMatch)
 	return boldedMatch
 }
 
