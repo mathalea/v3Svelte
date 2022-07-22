@@ -2379,15 +2379,15 @@ function Polygone (...points) {
         id: this.id,
         distanceDesHachures: this.distanceDesHachures,
         epaisseurDesHachures: this.epaisseurDesHachures,
-        couleurDesHachures: this.couleurDesHachures[0],
-        couleurDeRemplissage: this.couleurDeRemplissage[0],
+        couleurDesHachures: this.couleurDesHachures,
+        couleurDeRemplissage: this.couleurDeRemplissage,
         opaciteDeRemplissage: this.opaciteDeRemplissage
       }) + `<polygon points="${this.binomesXY(coeff)}" stroke="${this.color}" ${this.style} id="${this.id}" fill="url(#pattern${this.id})" />`
     } else {
       if (this.couleurDeRemplissage === '') {
         this.style += ' fill="none" '
       } else {
-        this.style += ` fill="${this.couleurDeRemplissage[0]}" `
+        this.style += ` fill="${this.couleurDeRemplissage}" `
         this.style += ` fill-opacity="${this.opaciteDeRemplissage}" `
       }
       if (this.opacite !== 1) {
@@ -2429,8 +2429,8 @@ function Polygone (...points) {
     if (this.opaciteDeRemplissage !== 1) {
       tableauOptions.push(`fill opacity = ${this.opaciteDeRemplissage}`)
     }
-    if (this.couleurDeRemplissage !== '' & this.couleurDeRemplissage[1] !== 'none') {
-      tableauOptions.push(`preaction={fill,color = ${this.couleurDeRemplissage[1]}}`)
+    if (this.couleurDeRemplissage !== '' & this.couleurDeRemplissage !== 'none') {
+      tableauOptions.push(`preaction={fill,color = ${this.couleurDeRemplissage}}`)
     }
 
     if (this.hachures) {
@@ -2438,8 +2438,8 @@ function Polygone (...points) {
         motif: this.hachures,
         id: this.id,
         distanceDesHachures: this.distanceDesHachures,
-        couleurDesHachures: this.couleurDesHachures[1],
-        couleurDeRemplissage: this.couleurDeRemplissage[1],
+        couleurDesHachures: this.couleurDesHachures,
+        couleurDeRemplissage: this.couleurDeRemplissage,
         opaciteDeRemplissage: this.opaciteDeRemplissage
       }))
     }
