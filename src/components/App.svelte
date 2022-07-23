@@ -11,7 +11,11 @@
   import codeList from "../dicos/codeToLevelList.json"
   import referentiel from "../dicos/referentiel2022.json"
   import { Mathalea } from "../Mathalea"
-  import { onMount } from "svelte";
+  import { onMount } from "svelte"
+
+
+  // ToFix fonction à lier avec bugsnag
+  window.notify = (arg) => console.log(arg)
 
 
   let isInitialUrlHandled = false
