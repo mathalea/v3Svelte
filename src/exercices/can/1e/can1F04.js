@@ -1,7 +1,7 @@
 import Exercice from '../../Exercice.js'
 import { randint, listeQuestionsToContenu, choice } from '../../../modules/outils.js'
 import { ajouteChampTexteMathLive } from '../../../modules/interactif/questionMathLive.js'
-import { repere2, courbe2, mathalea2d, texteParPosition } from '../../../modules/2d.js'
+import { repere, courbe, mathalea2d, texteParPosition } from '../../../modules/2d.js'
 import { setReponse } from '../../../modules/gestionInteractif.js'
 export const titre = 'Lire graphiquement le signe de $b$ dans $ax^2+bx+c$'
 export const interactifReady = true
@@ -49,7 +49,7 @@ export default function LectureGraphiqueParaboleB () {
             setReponse(this, i, '>', { formatInteractif: 'texte' })
           }
           // $${delta}$ et $${a}(x-${alpha})^2+${beta}$
-          r = repere2({
+          r = repere({
             xMin: -6,
             xMax: 3,
             yMin: -4,
@@ -64,7 +64,7 @@ export default function LectureGraphiqueParaboleB () {
           })
 
           F = x => a * (x - alpha) ** 2 + beta
-          texte += mathalea2d({ xmin: -6, xmax: 3, ymin: -4, ymax: 4, pixelsParCm: 20, scale: 0.8 }, r, o, courbe2(F, { repere: r, color: 'blue', epaisseur: 2 }))
+          texte += mathalea2d({ xmin: -6, xmax: 3, ymin: -4, ymax: 4, pixelsParCm: 20, scale: 0.8 }, r, o, courbe(F, { repere: r, color: 'blue', epaisseur: 2 }))
 
           texteCorr = `L'abscisse du sommet de la parabole est négatif. Celui-ci est donné par : $-\\dfrac{b}{2a}$.<br>
           On en déduit que $\\dfrac{-b}{2a}<0$. <br>
@@ -89,7 +89,7 @@ export default function LectureGraphiqueParaboleB () {
             setReponse(this, i, '<', { formatInteractif: 'texte' })
           }
           // $${delta}$ et $${a}(x-${alpha})^2+${beta}$
-          r = repere2({
+          r = repere({
             xMin: -6,
             xMax: 3,
             yMin: -4,
@@ -104,7 +104,7 @@ export default function LectureGraphiqueParaboleB () {
           })
 
           F = x => a * (x - alpha) ** 2 + beta
-          texte += mathalea2d({ xmin: -6, xmax: 3, ymin: -4, ymax: 4, pixelsParCm: 25, scale: 0.8 }, r, o, courbe2(F, { repere: r, color: 'blue', epaisseur: 2 }))
+          texte += mathalea2d({ xmin: -6, xmax: 3, ymin: -4, ymax: 4, pixelsParCm: 25, scale: 0.8 }, r, o, courbe(F, { repere: r, color: 'blue', epaisseur: 2 }))
 
           texteCorr = `L'abscisse du sommet de la parabole est négatif. Celui-ci est donné par : $-\\dfrac{b}{2a}$.<br>
         On en déduit que $\\dfrac{-b}{2a}<0$. <br>
@@ -128,7 +128,7 @@ export default function LectureGraphiqueParaboleB () {
             setReponse(this, i, '<', { formatInteractif: 'texte' })
           }
           // $${delta}$ et $${a}(x-${alpha})^2+${beta}$
-          r = repere2({
+          r = repere({
             xMin: -3,
             xMax: 6,
             yMin: -4,
@@ -143,7 +143,7 @@ export default function LectureGraphiqueParaboleB () {
           })
 
           F = x => a * (x - alpha) ** 2 + beta
-          texte += mathalea2d({ xmin: -3, xmax: 6, ymin: -4, ymax: 4, pixelsParCm: 20, scale: 0.8 }, r, o, courbe2(F, { repere: r, color: 'blue', epaisseur: 2 }))
+          texte += mathalea2d({ xmin: -3, xmax: 6, ymin: -4, ymax: 4, pixelsParCm: 20, scale: 0.8 }, r, o, courbe(F, { repere: r, color: 'blue', epaisseur: 2 }))
 
           texteCorr = `L'abscisse du sommet de la parabole est positif. Celui-ci est donné par : $-\\dfrac{b}{2a}$.<br>
         On en déduit que $\\dfrac{-b}{2a}>0$. <br>
@@ -168,7 +168,7 @@ export default function LectureGraphiqueParaboleB () {
           }
           // $${delta}$ et $${a}(x-${alpha})^2+${beta}$
 
-          r = repere2({
+          r = repere({
             xMin: -3,
             xMax: 6,
             yMin: -4,
@@ -183,7 +183,7 @@ export default function LectureGraphiqueParaboleB () {
           })
 
           F = x => a * (x - alpha) ** 2 + beta
-          texte += mathalea2d({ xmin: -3, xmax: 6, ymin: -4, ymax: 4, pixelsParCm: 20, scale: 0.8 }, r, o, courbe2(F, { repere: r, color: 'blue', epaisseur: 2 }))
+          texte += mathalea2d({ xmin: -3, xmax: 6, ymin: -4, ymax: 4, pixelsParCm: 20, scale: 0.8 }, r, o, courbe(F, { repere: r, color: 'blue', epaisseur: 2 }))
 
           texteCorr = `L'abscisse du sommet de la parabole est positif. Celui-ci est donné par : $-\\dfrac{b}{2a}$.<br>
         On en déduit que $\\dfrac{-b}{2a}>0$. <br>
@@ -208,7 +208,7 @@ export default function LectureGraphiqueParaboleB () {
           }
           // $${delta}$ et $${a}(x-${alpha})^2+${beta}$
 
-          r = repere2({
+          r = repere({
             xMin: -4,
             xMax: 4,
             yMin: -4,
@@ -223,7 +223,7 @@ export default function LectureGraphiqueParaboleB () {
           })
 
           F = x => a * (x - alpha) ** 2 + beta
-          texte += mathalea2d({ xmin: -4, xmax: 4, ymin: -4, ymax: 4, pixelsParCm: 20, scale: 0.8 }, r, o, courbe2(F, { repere: r, color: 'blue', epaisseur: 2 }))
+          texte += mathalea2d({ xmin: -4, xmax: 4, ymin: -4, ymax: 4, pixelsParCm: 20, scale: 0.8 }, r, o, courbe(F, { repere: r, color: 'blue', epaisseur: 2 }))
 
           texteCorr = `L'abscisse du sommet de la parabole est nul. Celui-ci est donné par : $-\\dfrac{b}{2a}$.<br>
       On en déduit que $\\dfrac{-b}{2a}=0$ soit $b=0$. `
@@ -246,7 +246,7 @@ export default function LectureGraphiqueParaboleB () {
           }
           // $${delta}$ et $${a}(x-${alpha})^2+${beta}$
 
-          r = repere2({
+          r = repere({
             xMin: -4,
             xMax: 4,
             yMin: -4,
@@ -261,7 +261,7 @@ export default function LectureGraphiqueParaboleB () {
           })
 
           F = x => a * (x - alpha) ** 2 + beta
-          texte += mathalea2d({ xmin: -4, xmax: 4, ymin: -4, ymax: 4, pixelsParCm: 20, scale: 0.8 }, r, o, courbe2(F, { repere: r, color: 'blue', epaisseur: 2 }))
+          texte += mathalea2d({ xmin: -4, xmax: 4, ymin: -4, ymax: 4, pixelsParCm: 20, scale: 0.8 }, r, o, courbe(F, { repere: r, color: 'blue', epaisseur: 2 }))
 
           texteCorr = `L'abscisse du sommet de la parabole est nul. Celui-ci est donné par : $-\\dfrac{b}{2a}$.<br>
       On en déduit que $\\dfrac{-b}{2a}=0$ soit $b=0$. `

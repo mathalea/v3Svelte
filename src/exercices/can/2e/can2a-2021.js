@@ -1,7 +1,7 @@
 import Exercice from '../../Exercice.js'
 import { fraction } from '../../../modules/fractions.js'
 import {
-  mathalea2d, point, repere2, courbe2, labelPoint, segment, milieu, texteParPosition, codageSegment
+  mathalea2d, point, repere, courbe, labelPoint, segment, milieu, texteParPosition, codageSegment
 } from '../../../modules/2d.js'
 import { round, min } from 'mathjs'
 import { listeQuestionsToContenu, stringNombre, randint, ecritureAlgebrique, texNombre, texFractionReduite, printlatex, shuffle, simplificationDeFractionAvecEtapes, choice, calcul, sp } from '../../../modules/outils.js'
@@ -686,10 +686,10 @@ export default function SujetCAN2021Seconde () {
           a = randint(-1, 6)
           b = randint(1, 4) + randint(1, 9) / 10
 
-          r = repere2({ xMin: -4, xMax: 4, yMin: -3, yMax: 8, xUnite: 2, yUnite: 1 })
-          // courbe2(x => a * x + b, { repere: repere, color: 'blue' })
+          r = repere({ xMin: -4, xMax: 4, yMin: -3, yMax: 8, xUnite: 2, yUnite: 1 })
+          // courbe(x => a * x + b, { repere: repere, color: 'blue' })
           f = x => 0.5 * x ** 3 + b
-          C = courbe2(f, { repere: r, color: 'red' })
+          C = courbe(f, { repere: r, color: 'red' })
 
           reponse = [Math.cbrt(2 * (a - b)) - 0.1, Math.cbrt(2 * (a - b)) + 0.1]
           texte = `Voici la courbe d'une fonction $f$. <br>

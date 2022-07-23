@@ -1,6 +1,6 @@
 import Exercice from '../Exercice.js'
 import { listeQuestionsToContenu, randint, choice, ecritureParentheseSiNegatif, ecritureAlgebrique } from '../../modules/outils.js'
-import { repere2, mathalea2d, point, tracePoint, labelPoint, segment, nomVecteurParPosition } from '../../modules/2d.js'
+import { repere, mathalea2d, point, tracePoint, labelPoint, segment, nomVecteurParPosition } from '../../modules/2d.js'
 
 export const titre = 'Déterminer les coordonnées d\'un vecteur à partir des coordonnées de deux points'
 
@@ -39,7 +39,7 @@ export default function calculercoordonneesvecteurs () {
         texteCorr += ' <br>On applique ici aux données de l\'énoncé :'
         texteCorr += ` $\\overrightarrow{AB}\\begin{pmatrix}${xB}-${ecritureParentheseSiNegatif(xA)}  \\\\${yB}-${ecritureParentheseSiNegatif(yA)}\\end{pmatrix}$<br>`
         texteCorr += `Ce qui donne au final : $\\overrightarrow{AB}\\begin{pmatrix}${xB - xA}  \\\\${yB - yA}\\end{pmatrix}$<br>`
-        r = repere2()// On définit le repère
+        r = repere()// On définit le repère
         A = point(xA, yA, 'A') // On définit et on trace le point A
         B = point(xB, yB, 'B') // On définit et on trace le point B
         t = tracePoint(A, B, 'red') // Variable qui trace les points avec une croix
@@ -97,7 +97,7 @@ export default function calculercoordonneesvecteurs () {
         texteCorr += `<br>ou encore : $\\begin{cases}x_B  =${ux}${ecritureAlgebrique(xA)}\\\\ y_B=${uy}${ecritureAlgebrique(yA)}\\end{cases}$`
         texteCorr += `<br>Ce qui donne au final : $\\begin{cases}x_B  =${xB}\\\\ y_B=${yB}\\end{cases}$`
         texteCorr += `<br>On a donc: $B(${xB};${yB})$.`
-        r = repere2()// On définit le repère
+        r = repere()// On définit le repère
         A = point(xA, yA, 'A') // On définit et on trace le point A
         B = point(xB, yB, 'B') // On définit et on trace le point B
         t = tracePoint(A, B, 'red') // Variable qui trace les points avec une croix
@@ -152,7 +152,7 @@ export default function calculercoordonneesvecteurs () {
         texteCorr += `<br>ou encore : $\\begin{cases}x_A  =${xB}${ecritureAlgebrique(-ux)}\\\\ y_A=${yB}${ecritureAlgebrique(-uy)}\\end{cases}$`
         texteCorr += `<br>Ce qui donne au final : $\\begin{cases}x_A  =${xA}\\\\ y_A=${yA}\\end{cases}$`
         texteCorr += `<br>On a donc: $A(${xA};${yA})$.`
-        r = repere2()// On définit le repère
+        r = repere()// On définit le repère
         A = point(xA, yA, 'A') // On définit et on trace le point A
         B = point(xB, yB, 'B') // On définit et on trace le point B
         t = tracePoint(A, B, 'red') // Variable qui trace les points avec une croix

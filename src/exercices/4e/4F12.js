@@ -1,7 +1,7 @@
 import Exercice from '../Exercice.js'
 import { context } from '../../modules/context.js'
 import { listeQuestionsToContenu, randint, choice, calcul, texNombrec, prenomF } from '../../modules/outils.js'
-import { point, polyline, axes, labelX, labelY, grille, repere, courbeInterpolee, texteParPosition, mathalea2d, repere2, courbe2 } from '../../modules/2d.js'
+import { point, polyline, axes, labelX, labelY, grille, repere, courbeInterpolee, texteParPosition, mathalea2d, courbe } from '../../modules/2d.js'
 export const titre = 'Problème s\'appuyant sur la lecture d\'une représentation graphique'
 export const amcReady = true
 export const amcType = 'AMCHybride'
@@ -57,9 +57,9 @@ export default function ExploiterRepresentationGraphique () {
         t1 = Math.round(Math.sqrt(2) * V0 / 10)
         xscale = 9 / t1
         f = (x) => Math.max(-5 * x ** 2 + V0 * Math.sqrt(2) * x / 2, 0)
-        repeRe = repere2({ xUnite: 1 * xscale, yUnite: 0.1 * xscale, xMin: 0, yMin: 0, xMax: t1 + 1, yMax: f(t1 / 2) + 11, xThickDistance: 1, yThickDistance: 10, grilleSecondaireY: true, grilleSecondaireYDistance: 2, grilleSecondaireYMin: 0, grilleSecondaireYMax: f(t1 / 2) + 5 }) // ()
+        repeRe = repere({ xUnite: 1 * xscale, yUnite: 0.1 * xscale, xMin: 0, yMin: 0, xMax: t1 + 1, yMax: f(t1 / 2) + 11, xThickDistance: 1, yThickDistance: 10, grilleSecondaireY: true, grilleSecondaireYDistance: 2, grilleSecondaireYMin: 0, grilleSecondaireYMax: f(t1 / 2) + 5 }) // ()
         texte1 = texteParPosition('hauteur (en mètre)', 0.2, (f(t1 / 2) / 10 + 0.5) * xscale, 'droite')
-        graphique = courbe2(f, { repere: repeRe, xMax: (t1 + 1) * xscale, step: 0.2 })
+        graphique = courbe(f, { repere: repeRe, xMax: (t1 + 1) * xscale, step: 0.2 })
         texte2 = texteParPosition('temps (en s)', (t1 + 0.5) * xscale, 0.4, 'droite')
 
         this.introduction =
@@ -112,9 +112,9 @@ export default function ExploiterRepresentationGraphique () {
         t1 = Math.round(V0 ** 2 / 10)
         xscale = 52 / t1
         f = (x) => Math.max(-10 * x ** 2 / (V0 ** 2) + x, 0)
-        repeRe = repere2({ xUnite: 0.25 * xscale, yUnite: 0.5 * xscale, xMin: 0, yMin: 0, xMax: t1 + 4, yMax: f(t1 / 2) + 2.1, xThickDistance: 4, yThickDistance: 1, grilleSecondaireY: true, grilleSecondaireYDistance: 0.25, grilleSecondaireYMin: 0, grilleSecondaireYMax: f(t1 / 2) + 1 }) // ()
+        repeRe = repere({ xUnite: 0.25 * xscale, yUnite: 0.5 * xscale, xMin: 0, yMin: 0, xMax: t1 + 4, yMax: f(t1 / 2) + 2.1, xThickDistance: 4, yThickDistance: 1, grilleSecondaireY: true, grilleSecondaireYDistance: 0.25, grilleSecondaireYMin: 0, grilleSecondaireYMax: f(t1 / 2) + 1 }) // ()
         texte1 = texteParPosition('hauteur (en mètre)', 0.2, xscale * (f(t1 / 2) / 2 + 1), 'droite')
-        graphique = courbe2(f, { repere: repeRe, step: 0.5 })
+        graphique = courbe(f, { repere: repeRe, step: 0.5 })
         texte2 = texteParPosition('distance (en m)', xscale * ((t1 + 2) / 4), 0.4, 'droite')
 
         this.introduction =
