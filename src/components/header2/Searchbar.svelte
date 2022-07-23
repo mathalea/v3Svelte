@@ -68,16 +68,11 @@ const makeMatchBold = (str) => {
 	matched.push(str.substring(str.indexOf(element), str.indexOf(element) + element.length));
 	}
 	)
-	console.log('matched : '+ matched)
-	console.log('str : '+ str)
 	let boldedMatch = str
 	matched.forEach(element => {
-		let makeBold = `<strong>${element}</strong>`
-		boldedMatch = boldedMatch.replace(element, makeBold)
-		console.log('element :'+element + '  boldedMatch : '+boldedMatch)
+		boldedMatch = boldedMatch.replace(element, `<strong>${element}</strong>`)
 		}
 	)
-	console.log(boldedMatch)
 	return boldedMatch
 }
 
