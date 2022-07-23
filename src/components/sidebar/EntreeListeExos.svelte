@@ -1,5 +1,8 @@
 <script lang="ts">
   import { listeExercices } from "../store"
+  import uuidToUrl from '../../dicos/uuidsToUrl.json'
+  import data from "../../dicos/exosDispo.json"
+
 
   type Exo = {
     id: string
@@ -36,7 +39,6 @@
     return dico
   }
 
-  import data from "../../dicos/exosDispo.json"
   const dictionnaire = toMap(data)
 
   /**
@@ -79,8 +81,8 @@
    */
   function addToList() {
     const newExercise = {
-      directory: exo.code[0] + "e",
-      id: exo.code,
+      directory: uuidToUrl[exo.id][0],
+      id: uuidToUrl[exo.id][1] // ToFix l'id est en fait le filename
     }
     listeExercices.update((list) => [...list, newExercise])
   }
