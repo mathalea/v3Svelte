@@ -1,4 +1,25 @@
 {
+  "c3C1" : {
+    "titre": "Calculs - Niveau 1"
+  },
+  "c3C2" : {
+    "titre": "Calculs - Niveau 2"
+  },
+  "c3C3" : {
+    "titre": "Calculs - Niveau 3"
+  },
+  "c3I1" : {
+    "titre": "Programmation"
+  },
+  "c3N1" : {
+    "titre": "Numération et fractions - Niveau 1"
+  },
+  "c3N2" : {
+    "titre": "Numération et fractions - Niveau 2"
+  },
+  "c3N3" : {
+    "titre": "Numération et fractions - Niveau 3"
+  },
   "6N1": {
     "titre": "Numération et fractions - Niveau 1",
     "sousThemes": {
@@ -62,6 +83,9 @@
       "6C32": "Résoudre des problèmes de niveau 3"
     }
   },
+  "6D1": {
+    "titre": "Les durées"
+  },
   "6G1": {
     "titre": "Constructions géométriques - Niveau 1",
     "sousThemes": {
@@ -91,6 +115,12 @@
       "6G32": "Connaître et utiliser les propriétés de conservation de la symétrie axiale",
       "6G33": "Connaître et utiliser les propriétés des polygones particuliers"
     }
+  },
+  "6G4": {
+    "titre": "Géométrie dans l'espace"
+  },
+  "6I": {
+    "titre": "Programmation"
   },
   "6M1": {
     "titre": "Grandeurs et mesures - Niveau 1",
@@ -670,6 +700,12 @@
   "2S4": {
     "titre": "Echantillonnage",
     "sousThemes": {}
+  },
+  "PEA1": {
+    "titre": "Numération et bases"
+  },
+  "PEG2": {
+    "titre": "À la règle et au compas"
   },
   "ExC1": { "titre": "Calculs avec nombres complexes", "sousThemes": {} },
   "ExE1": { "titre": "Équations", "sousThemes": {} },
