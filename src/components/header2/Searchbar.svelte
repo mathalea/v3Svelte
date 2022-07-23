@@ -22,7 +22,7 @@ const filterEx = () => {
 	let storageArr = []
 	if (inputValue) {
 		data.forEach(ex => {
-			 if (ex.replace('.js','').toLowerCase().includes(inputValue.toLowerCase())) {
+			 if (cleanInput(inputValue).every(element => ex.replace('.js','').toLowerCase().includes(element))) {
 				 storageArr = [...storageArr, makeMatchBold(ex.replace('.js',''))];
 			 }
 		})
@@ -37,6 +37,10 @@ let inputValue = ''
 $: if (!inputValue) {
 	filteredExercices = []
 	hiLiteIndex = null
+}
+
+const cleanInput = (str) => {
+	return str.toLowerCase().split(' ').filter(Boolean)
 }
 
 const clearInput = () => {
@@ -59,9 +63,16 @@ const submitValue = () => {
 }
 
 const makeMatchBold = (str) => {
-  let matched = str.substring(str.indexOf(inputValue), str.indexOf(inputValue) + inputValue.length)
-	let makeBold = `<strong>${matched}</strong>`
-	let boldedMatch = str.replace(matched, makeBold)
+	let matched = []
+	inputValue.split(' ').filter(Boolean).forEach(element => { 
+	matched.push(str.substring(str.indexOf(element), str.indexOf(element) + element.length));
+	}
+	)
+	let boldedMatch = str
+	matched.forEach(element => {
+		boldedMatch = boldedMatch.replace(element, `<strong>${element}</strong>`)
+		}
+	)
 	return boldedMatch
 }
 
