@@ -13,8 +13,6 @@ export const amcType = 'AMCNum'
  * @author Rémi Angot
  * Référence CM015
 */
-export const uuid = '4efcc'
-export const ref = 'CM015'
 export default function SommeDeDeuxNombresMaries () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Calculer'
@@ -22,7 +20,7 @@ export default function SommeDeDeuxNombresMaries () {
   this.nbCols = 2
   this.nbColsCorr = 2
   this.tailleDiaporama = 3
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

@@ -16,8 +16,6 @@ export const dateDePublication = '21/06/2022' // La date de publication initiale
  * @author Gilles Mora
  * Référence
 */
-export const uuid = '0d9ee'
-export const ref = 'can1F15'
 export default function LectureGraphiqueNombreDerivee () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -26,7 +24,7 @@ export default function LectureGraphiqueNombreDerivee () {
   this.tailleDiaporama = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   const listeFractions = [[1, 1], [1, 2], [1, 3], [1, 4], [2, 1], [2, 3], [3, 4], [3, 2], [4, 3], [5, 3], [5, 4]]
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let b; let f; let r; let alpha; let beta; let a; let F; let o; let nbre; let tang; let frac; let fraction = []
     switch (choice([1, 2, 3, 4, 5])) { //
       case 1:

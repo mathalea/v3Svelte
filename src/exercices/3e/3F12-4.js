@@ -5,7 +5,7 @@ import { listeQuestionsToContenuSansNumero, randint, abs, resolutionSystemeLinea
 import { setReponse } from '../../modules/gestionInteractif.js'
 import { ajouteChampTexteMathLive } from '../../modules/interactif/questionMathLive.js'
 import { courbe, mathalea2d, repere } from '../../modules/2d.js'
-export const titre = "Lire l'image d'un nombre à partir d'un graphique"
+export const titre = 'Lire l\'image d\'un nombre à partir d\'un graphique'
 export const interactifReady = true
 export const interactifType = 'mathLive'
 export const amcReady = true
@@ -18,8 +18,6 @@ export const amcType = 'AMCHybride'
 * @author Rémi Angot
 * 3F12-4
 */
-export const uuid = 'a26ec'
-export const ref = '3F12-4'
 export default function ImageGraphique () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -32,7 +30,7 @@ export default function ImageGraphique () {
   this.nbQuestionsModifiable = false
   this.nbCols = 1
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

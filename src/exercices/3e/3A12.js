@@ -7,8 +7,6 @@ export const titre = 'Fractions irréductibles'
  * 3A12 - Fractions irreductibles
  * @author Sébastien Lozano
  */
-export const uuid = '97e24'
-export const ref = '3A12'
 export default function FractionsIrreductibles () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -25,7 +23,7 @@ export default function FractionsIrreductibles () {
   this.listePackages = 'bclogo'
   this.sup = true
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     let typesDeQuestions
     if (context.isHtml) { // les boutons d'aide uniquement pour la version html
       // this.boutonAide = '';

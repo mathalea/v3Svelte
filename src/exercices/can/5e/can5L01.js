@@ -10,8 +10,6 @@ export const interactifType = 'mathLive'
  * Référence
  * Date de publication
 */
-export const uuid = 'a45ee'
-export const ref = 'can5L01'
 export default function MoitiePlusOuMoinsUn () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -19,7 +17,7 @@ export default function MoitiePlusOuMoinsUn () {
   this.tailleDiaporama = 2
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const a = randint(21, 35, 30) / 10
     if (choice([true, false])) {
       this.reponse = calcul(a / 2 + 1)

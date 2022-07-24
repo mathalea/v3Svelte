@@ -16,14 +16,12 @@ export const amcType = 'AMCNum'
  * Créé le 3/11/2021
  * Référence can6G06
  */
-export const uuid = '362e5'
-export const ref = '6G44'
 export default function NombreDeFacesEtDAretes () {
   Exercice.call(this)
   this.nbQuestions = 4
   this.formatChampTexte = 'largeur15 inline'
   this.sup = 3
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     if (this.version === 3) {
       this.sup = 3
     }

@@ -11,8 +11,6 @@ export const dateDePublication = '08/03/2022'
  * @author Mireille Gain
  * Référence 4L10-2
 */
-export const uuid = '85e6d'
-export const ref = '4L10-2'
 export default function AirePerimetrePolygone () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Exprimer le périmètre et l\'aire des rectangles et carrés suivants par une expression littérale réduite.'
@@ -21,7 +19,7 @@ export default function AirePerimetrePolygone () {
   this.nbColsCorr = 2 // Uniquement pour la sortie LaTeX
   this.video = '' // Id YouTube ou url
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

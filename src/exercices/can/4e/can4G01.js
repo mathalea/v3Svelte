@@ -12,15 +12,13 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can4G01
 */
-export const uuid = 'dc88f'
-export const ref = 'can4G01'
 export default function LongueurPythagore () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
   this.optionsChampTexte = { texteApres: ' cm' }
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const triplet = choice([
 
       [6, 8, 10],

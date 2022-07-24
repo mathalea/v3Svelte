@@ -11,8 +11,6 @@ export const titre = 'Factoriser un polynôme du second degré avec racines enti
  * @author Rémi Angot et Stéphane Guyon
  * Référence 1E14
 */
-export const uuid = 'ba7ac'
-export const ref = '1E14'
 export default function ResoudreEquationDegre2 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -23,7 +21,7 @@ export default function ResoudreEquationDegre2 () {
   this.spacingCorr = 3
   this.sup = 1
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.sup = Number(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

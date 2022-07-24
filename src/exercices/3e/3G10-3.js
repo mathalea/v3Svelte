@@ -10,8 +10,6 @@ export const titre = 'Construire l\'image d\'un point par une rotation avec cibl
  * @author Jean-Claude Lhote
  * Publié le 30/11/2020
  */
-export const uuid = 'c69ad'
-export const ref = '3G10-3'
 export default function ConstruireRotationPoint3e () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -21,7 +19,7 @@ export default function ConstruireRotationPoint3e () {
   this.nbCols = 1
   this.nbColsCorr = 1
   this.sup = 3
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let nontrouve, assezloin, cible
     const angle = randint(-8, 8, 0) * 10
     this.listeQuestions = [] // Liste de questions

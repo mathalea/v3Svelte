@@ -12,8 +12,6 @@ export const dateDePublication = '18/12/2021' // La date de publication initiale
  * @author Gilles Mora
  * Référence
 */
-export const uuid = '2a239'
-export const ref = 'can5P05'
 export default function PoucentageP2 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -21,7 +19,7 @@ export default function PoucentageP2 () {
   this.formatChampTexte = 'largeur15 inline'
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let a, u
     switch (choice(['a', 'a', 'b', 'c', 'c'])) {
       case 'a':

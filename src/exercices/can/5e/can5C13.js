@@ -13,15 +13,13 @@ export const amcType = 'AMCNum'
  * Référence can5C13
  * Date de publication
 */
-export const uuid = '167d0'
-export const ref = 'can5C13'
 export default function CalculAstucieux1 () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const a = randint(1, 9)
     const b = randint(1, 9, a)
     const c = randint(1, 9, [a, b])

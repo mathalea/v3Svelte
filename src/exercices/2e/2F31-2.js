@@ -9,8 +9,6 @@ export const dateDePublication = '31/01/2022'
  * @author Gilles Mora
  * Référence
 */
-export const uuid = 'c8d0e'
-export const ref = '2F31-2'
 export default function EncadrerAvecFctRef () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''
@@ -24,7 +22,7 @@ export default function EncadrerAvecFctRef () {
   this.tailleDiaporama = 2 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
   this.listePackages = ['tkz-tab']
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let typeDeQuestionsDisponibles

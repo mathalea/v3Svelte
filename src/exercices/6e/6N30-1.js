@@ -18,8 +18,6 @@ export const dateDeModificationImportante = '01/02/2022'
  * @author Jean-Claude Lhote
  * Référence 6N30-1
  */
-export const uuid = 'ca37b'
-export const ref = '6N30-1'
 export default function LireAbscisseDecimaleBis2d () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Lire l\'abscisse de chacun des points suivants et donner le résultat sous la forme d\'un nombre en écriture décimale.'
@@ -33,7 +31,7 @@ export default function LireAbscisseDecimaleBis2d () {
   this.interactif = false
   this.niveau = 6
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     // numeroExercice est 0 pour l'exercice 1
     let QuestionsDisponibles
     if (!this.sup) { // Si aucune liste n'est saisie

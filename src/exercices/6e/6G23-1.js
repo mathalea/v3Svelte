@@ -16,8 +16,6 @@ export const titre = 'Mesurer un angle sans rapporteur sur l\'énoncé'
  * @author Jean-Claude Lhote
  * Référence 6G23
  */
-export const uuid = 'cb9c1'
-export const ref = '6G23-1'
 export default function MesurerUnAngle () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''
@@ -29,7 +27,7 @@ export default function MesurerUnAngle () {
   this.sup2 = false
   this.video = 'TEzu9uky56M'
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

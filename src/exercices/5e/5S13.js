@@ -19,8 +19,6 @@ export const dateDeModifImportante = '28/02/2022'
 * @author Jean-Claude Lhote (Interactif et AMC par EE)
 * Référence 5S13
 */
-export const uuid = '2280e'
-export const ref = '5S13'
 export default function CalculerDesFrequences () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -32,7 +30,7 @@ export default function CalculerDesFrequences () {
   this.nbColsCorr = 1
   this.sup = 1
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

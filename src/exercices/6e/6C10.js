@@ -24,8 +24,6 @@ export const titre = 'Poser additions, soustractions et multiplications de nombr
  * Support des opérations posées en html par Jean-Claude Lhote.
  * Référence 6C10
  */
-export const uuid = 'bb37c'
-export const ref = '6C10'
 export default function AdditionsSoustractionsMultiplicationsPosees () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -36,7 +34,7 @@ export default function AdditionsSoustractionsMultiplicationsPosees () {
   this.listePackages = 'xlop'
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

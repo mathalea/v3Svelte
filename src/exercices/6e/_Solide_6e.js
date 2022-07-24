@@ -16,7 +16,7 @@ export default function Solide6e () {
   this.sup = 1
   this.sup2 = 1
   this.titre = ''
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let typesDeQuestionsDisponibles
     if (this.sup === 3) typesDeQuestionsDisponibles = [1, 2]
     else typesDeQuestionsDisponibles = [parseInt(this.sup)]

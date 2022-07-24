@@ -15,8 +15,6 @@ export const amcType = 'AMCHybride'
  * @author
  * Référence
 */
-export const uuid = '6ee43'
-export const ref = '2F32-2'
 export default function LecturesGraphiques () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''
@@ -29,7 +27,7 @@ export default function LecturesGraphiques () {
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

@@ -22,7 +22,7 @@ export default function TraceCourbeInterpolee1 () {
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const liste = this.sup.split(';')
     const ordonnees = []
     const objets = []
@@ -49,7 +49,7 @@ export default function TraceCourbeInterpolee1 () {
       x0: xMin,
       step: pas
     })
-    const c = courbeSpline(f, { repere: r, step: 0.1, xMin, xMax, yMin, yMax, tracenoeuds: true, color: couleurs[parseInt(this.sup3) - 1].colCourbe })
+    const c = courbeSpline(f, { repere: r, step: 0.1, xMin: xMin, xMax: xMax, yMin: yMin, yMax: yMax, tracenoeuds: true, color: couleurs[parseInt(this.sup3) - 1].colCourbe })
     objets.push(r, c)
 
     if (this.sup2) {

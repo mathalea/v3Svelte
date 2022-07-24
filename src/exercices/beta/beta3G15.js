@@ -15,7 +15,7 @@ export default function ConstructionsDeTransformes () {
   this.video = 'hFoN9sMWnac'
   this.typeExercice = 'IEP'
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     const anim = new Alea2iep()
     this.listeQuestions = [] // tableau contenant la liste des questions
     this.listeCorrections = []

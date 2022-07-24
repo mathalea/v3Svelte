@@ -12,8 +12,6 @@ export const dateDePublication = '09/12/2021' // La date de publication initiale
  * @author Gilles Mora
  * Référence
 */
-export const uuid = '5a0c7'
-export const ref = 'can2C10'
 export default function TauxCoeff () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -21,7 +19,7 @@ export default function TauxCoeff () {
   this.formatChampTexte = 'largeur15 inline'
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let taux
 
     switch (choice(['a', 'b', 'b'])) { //

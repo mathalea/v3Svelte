@@ -121,7 +121,7 @@ export function propositionsQcm (exercice, i) {
       texte += '<td>\n'
       if (exercice.interactif) {
         texte += `<div class="ui checkbox ex${exercice.numeroExercice} monQcm">
-            <input type="checkbox" tabindex="0" id="checkEx${exercice.numeroExercice}Q${i}R${rep}">
+            <input type="checkbox" tabindex="0" class="hidden" id="checkEx${exercice.numeroExercice}Q${i}R${rep}">
             <label id="labelEx${exercice.numeroExercice}Q${i}R${rep}">${exercice.autoCorrection[i].propositions[rep].texte + espace}</label>
           </div>`
       } else {
@@ -157,7 +157,7 @@ export function propositionsQcm (exercice, i) {
   } else {
     texte += '\\end{multicols}'
   }
-  return { texte, texteCorr }
+  return { texte: texte, texteCorr: texteCorr }
 }
 
 /**

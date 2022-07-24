@@ -20,7 +20,7 @@ export default function encadrerAireDisque () {
   this.sup = 10
   this.sup2 = 10
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     let texte = ''
     this.listeQuestions = []
     this.listeCorrections = [''] // Liste de questions corrigées

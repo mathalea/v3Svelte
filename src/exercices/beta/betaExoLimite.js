@@ -18,7 +18,7 @@ export default function NomExercice () {
   this.sup = false // x>2 au lieu de x->2+
   this.sup2 = false // asymptotes
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

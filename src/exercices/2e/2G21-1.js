@@ -7,8 +7,6 @@ export const titre = 'Construire les images de points par une translation'
 /**
  * @author Jean-Claude Lhote
  */
-export const uuid = 'f3e90'
-export const ref = '2G21-1'
 export default function SommeDeVecteurs () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -16,7 +14,7 @@ export default function SommeDeVecteurs () {
   this.nbCols = 2
   this.nbColsCorr = 2
   this.sup = 1 //
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let u, v, A, B, C, xU, yU, xV, yV, p, U, V, M, N, UU, VV, posLabelA

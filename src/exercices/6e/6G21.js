@@ -11,8 +11,6 @@ export const titre = 'Construire un triangle aux instruments'
  * Référence 6G21 et 5G20-0
  * Modifié 2021/04/02
  */
-export const uuid = '5dd4d'
-export const ref = '6G21'
 export default function ConstruireUnTriangle () {
   Exercice.call(this)
   this.titre = titre
@@ -26,7 +24,7 @@ export default function ConstruireUnTriangle () {
   this.besoinFormulaire2CaseACocher = ['Ne pas montrer de schéma']
   this.sup2 = false
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = []
     this.listeCorrections = []
     this.autoCorrection = []

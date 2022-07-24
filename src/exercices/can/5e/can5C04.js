@@ -11,15 +11,13 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can5C04
  */
-export const uuid = '061af'
-export const ref = 'can5C04'
 export default function TripleEtMoitie () {
   Exercice.call(this)
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const a = randint(3, 20)
     this.question = `Le triple d'un nombre vaut $${3 * a}$, combien vaut sa moitié ?`
     this.correction = `Le nombre est $${a}$, sa moitié est ${texNombrec(a / 2)}.`

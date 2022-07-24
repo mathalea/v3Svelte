@@ -17,8 +17,6 @@ export const titre = 'Calculer un angle dans un triangle rectangle en utilisant 
  * * Si this.level=4 alors seul le cosinus sera utilisé.
  * Mars 2021
  */
-export const uuid = 'cac28'
-export const ref = '3G31'
 export default function CalculDAngle () {
   Exercice.call(this)
   this.titre = titre
@@ -38,7 +36,7 @@ export default function CalculDAngle () {
     this.spacingCorr = 2
   }
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = []
     this.listeCorrections = []
     this.autoCorrection = []

@@ -17,8 +17,6 @@ export const titre = 'Note la couleur (scratch)'
 /**
  * Fonction exercice.
  */
-export const uuid = 'fd0b1'
-export const ref = '6I11'
 export default function NoteLaCouleur6e () {
   'use strict'
   Exercice.call(this)
@@ -39,7 +37,7 @@ export default function NoteLaCouleur6e () {
   this.correctionDetailleeDisponible = true
   this.correctionDetaillee = true
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     const damier = [
       ['Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc'],
       ['Blanc', 'Noir', 'Jaune', 'Bleu', 'Vert', 'Orange', 'Rouge', 'Orange', 'Noir', 'Jaune', 'Gris', 'Vert', 'Rose', 'Noir', 'Jaune', 'Blanc'],

@@ -18,8 +18,6 @@ export const amcType = 'AMCNum'
  * @author Jean-Claude Lhote
  * Référence can2P03
 */
-export const uuid = 'ca40a'
-export const ref = 'can1P01'
 export default function CalculProbaArbre2e () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = true
@@ -31,7 +29,7 @@ export default function CalculProbaArbre2e () {
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

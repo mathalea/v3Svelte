@@ -15,8 +15,6 @@ export const amcType = 'AMCHybride'
  * Référence 4G20-6
  * Date de publication : 08/08/2021
 */
-export const uuid = '3c20f'
-export const ref = '4G20-6'
 export default function CalculValeurApprocheeRacineCarree () {
   Exercice.call(this)
   this.nbQuestions = 6
@@ -28,7 +26,7 @@ export default function CalculValeurApprocheeRacineCarree () {
   this.besoinFormulaireNumerique = ['Avec ou sans calculatrice', 3, '1 : Avec calculatrice\n2 : Sans calculatrice\n3 : Mélange']
   this.sup = 3
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     this.autoCorrection = []
     this.listeQuestions = []
     this.listeCorrections = []

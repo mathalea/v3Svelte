@@ -10,8 +10,6 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can6C21
  */
-export const uuid = '9fb0d'
-export const ref = 'can6C21'
 export default function ComplementAUn () {
   Exercice.call(this)
   this.nbQuestions = 1
@@ -19,7 +17,7 @@ export default function ComplementAUn () {
   this.formatChampTexte = 'largeur15 inline'
   this.typeExercice = 'simple'
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const a = calcul(randint(1, 9) / 10 + randint(1, 9) / 100)
     this.question = `$1-${texNombrec(a)}=$`
     this.correction = `$1-${texNombrec(a)}=${texNombrec(1 - a)}$`

@@ -20,8 +20,6 @@ export const description = 'Déterminer si une égalité de deux fractions est v
  * * modification le jj/mm/aaaa pour ....
  * @author Sébastien Lozano
  */
-export const uuid = '9829a'
-export const ref = '5N14-3'
 export default function EqResolvantesThales () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -43,7 +41,7 @@ export default function EqResolvantesThales () {
   this.video = '' // Id YouTube ou url
   this.niveau = '5e'
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

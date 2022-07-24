@@ -1,3 +1,4 @@
+
 import FractionEtendue from '../FractionEtendue.js'
 import { number } from 'mathjs'
 import Grandeur from '../Grandeur.js'
@@ -5,10 +6,8 @@ import { context } from '../context.js'
 import { afficheScore } from '../gestionInteractif.js'
 import { gestionCan } from './gestionCan.js'
 import { sp, texteExposant } from '../outils.js'
-// import { ComputeEngine } from "@cortex-js/compute-engine"
 import * as pkg from '@cortex-js/compute-engine'
 const { ComputeEngine } = pkg
-
 export function verifQuestionMathLive (exercice, i) {
   const engine = new ComputeEngine()
   let saisieParsee, num, den, fSaisie, fReponse
@@ -239,7 +238,7 @@ export function verifQuestionMathLive (exercice, i) {
       spanReponseLigne.style.color = '#f15929'
       spanReponseLigne.style.fontWeight = 'bold'
     } else if (resultat === 'essaieEncorePuissance') {
-      spanReponseLigne.innerHTML = "<br><em>Attention, la réponse est mathématiquement correcte mais n'a pas le format demandé.</em>"
+      spanReponseLigne.innerHTML = '<br><em>Attention, la réponse est mathématiquement correcte mais n\'a pas le format demandé.</em>'
       spanReponseLigne.style.color = '#f15929'
       spanReponseLigne.style.fontWeight = 'bold'
     } else {

@@ -11,15 +11,13 @@ export const amcType = 'AMCNum'
 * Référence
 * Date de publication
 */
-export const uuid = '2b1cb'
-export const ref = 'techno1P4'
 export default function ProportiondeProportion () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur25 inline'
   this.optionsChampTexte = { texteApres: ' €' }
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let a, b, c, d
     switch (choice(['association', 'lycée', 'election'])) {
       case 'association':

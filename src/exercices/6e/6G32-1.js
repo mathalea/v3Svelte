@@ -16,8 +16,6 @@ export const dateDePublication = '26/10/2020'
  * @author Jean-Claude Lhote
  * Relecture : Novembre 2021 par EE
  */
-export const uuid = '33b29'
-export const ref = '6G32-1'
 export default function SymetrieAxialeConservation1 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -28,7 +26,7 @@ export default function SymetrieAxialeConservation1 () {
   this.nbColsCorr = 1
   this.sup = 1
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.sup = parseInt(this.sup)
     const typesDeQuestionsDisponibles = ['Segment', 'Droite', '1/2droite', 'Triangle', 'Angle']
     const points = []; const traces = []; const nom = []; let alternance

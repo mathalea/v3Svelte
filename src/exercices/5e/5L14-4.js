@@ -9,8 +9,6 @@ export const titre = 'Déterminer la dernière opération à effectuer dans une 
  * @author Sébastien Lozano fork Jean-Claude Lhote
  * Rendu paramétrable et ajout de la structure d'une expression le 14/08/2021 : Guillaume Valmont
  */
-export const uuid = 'f9a13'
-export const ref = '5L14-4'
 export default function DeterminerDerniereOperationExpressionLitterale () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -21,7 +19,7 @@ export default function DeterminerDerniereOperationExpressionLitterale () {
   this.sup2 = false // si false alors utilisation de nombres entiers, si true alors utilisation de nombres à un chiffre après la virgule.
   this.consigne = 'Déterminer la dernière opération à effectuer s\'il fallait faire le calcul pour des valeurs données de $x$ et de $y$.'
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

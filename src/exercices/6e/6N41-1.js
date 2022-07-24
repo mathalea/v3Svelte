@@ -11,8 +11,6 @@ export const titre = 'Parcourir un labyrinthe de fractions égales'
  * Ref : 6N41-1
  * Parcourir un labyrinthe de fractions en passant par des fractions égales.
  */
-export const uuid = '0635b'
-export const ref = '6N41-1'
 export default function ExerciceLabyrintheFractionsEgales () {
   Exercice.call(this)
   this.consigne = ''
@@ -33,7 +31,7 @@ export default function ExerciceLabyrintheFractionsEgales () {
     this.sup2 = 4
   }
   const tailleChiffre = 0.7
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeCorrections = []
     this.listeQuestions = []
     this.autoCorrection = []

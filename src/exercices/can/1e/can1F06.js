@@ -16,8 +16,6 @@ export const dateDePublication = '17/06/2022' // La date de publication initiale
  * @author Gilles Mora
  * Référence can1F06
 */
-export const uuid = 'e4345'
-export const ref = 'can1F06'
 export default function LectureGraphiqueParaboleaEtb () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1
@@ -26,7 +24,7 @@ export default function LectureGraphiqueParaboleaEtb () {
 
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

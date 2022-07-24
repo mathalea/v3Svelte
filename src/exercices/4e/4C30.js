@@ -11,8 +11,6 @@ export const interactifType = 'mathLive'
  * * Travailler des résultats automatisés
  * @author Sébastien Lozano
  */
-export const uuid = 'f970a'
-export const ref = '4C30'
 export default function PuissancesDeDix () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -27,7 +25,7 @@ export default function PuissancesDeDix () {
   this.correctionDetailleeDisponible = true
   this.nbColsCorr = 1
   this.sup = 1
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     this.sup = Number(this.sup)
     let typesDeQuestions
     this.boutonAide = modalPdf(

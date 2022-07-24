@@ -12,8 +12,6 @@ export const dateDeModifImportante = '05/12/2021'
  * Créé pendant l'été 2021
  * Référence can4C02
  */
-export const uuid = 'd1e35'
-export const ref = 'can4C02'
 export default function OpposeDeFraction () {
   Exercice.call(this)
   this.typeExercice = 'simple'
@@ -21,7 +19,7 @@ export default function OpposeDeFraction () {
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur25 inline'
   this.formatInteractif = 'fractionEgale'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const a = choice(obtenirListeFractionsIrreductibles())
     const c = a.d
     let b, d, e

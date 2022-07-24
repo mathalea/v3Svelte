@@ -12,15 +12,13 @@ export const amcType = 'AMCNum'
  * Créé le 2/11/2021
  * Référence can6G04
  */
-export const uuid = '62267'
-export const ref = 'can6G04'
 export default function ProblemesDeLongueurs () {
   Exercice.call(this)
   this.nbQuestions = 1
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
   this.optionsChampTexte = { texteApres: ' cm' }
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const objets = []
     const pointsSurDE = []
     const pointsSurAB = []

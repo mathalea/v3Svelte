@@ -13,8 +13,6 @@ export const interactifType = 'mathLive'
 * @author Rémi Angot
 * 3L11-3
 */
-export const uuid = '17caf'
-export const ref = '3L11-3'
 export default function DistributiviteSimpleDoubleReduction () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -29,7 +27,7 @@ export default function DistributiviteSimpleDoubleReduction () {
   this.spacingCorr = context.isHtml ? 3 : 2
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

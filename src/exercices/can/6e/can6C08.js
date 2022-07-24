@@ -11,15 +11,13 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can6C08
  */
-export const uuid = '9650d'
-export const ref = 'can6C08'
 export default function QuartOuTiers () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const a = randint(5, 10)
     let b
     if (choice([true, false])) {

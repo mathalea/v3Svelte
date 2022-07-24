@@ -11,8 +11,6 @@ export const titre = 'Déterminer la forme canonique d\'un polynôme du second d
  * @author Stéphane Guyon
  * Référence 1E11
 */
-export const uuid = '758fd'
-export const ref = '1E11-3'
 export default function Formacanonique () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -22,7 +20,7 @@ export default function Formacanonique () {
   this.nbColsCorr = 2
   this.spacingCorr = 3
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     if (this.interactif) {

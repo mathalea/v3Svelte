@@ -20,8 +20,6 @@ export const interactifReady = true
  * @author Rémi Angot
  * Référence 6M11
  */
-export const uuid = '1ef87'
-export const ref = '6M11'
 export default function AireCarresRectanglesTriangles () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -38,7 +36,7 @@ export default function AireCarresRectanglesTriangles () {
   this.nbQuestions = 1
   this.nbQuestionsModifiable = false
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     let texte = ''; let texteCorr = ''
     const nom = creerNomDePolygone(11, 'QD')
     this.listeQuestions = []

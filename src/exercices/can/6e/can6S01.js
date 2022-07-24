@@ -12,8 +12,6 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can6S01
  */
-export const uuid = '4ed66'
-export const ref = 'can6S01'
 export default function LectureDiagrammeBarre () {
   Exercice.call(this)
   this.typeExercice = 'simple'
@@ -23,7 +21,7 @@ export default function LectureDiagrammeBarre () {
     ['voitures', 'un garage', ['berline', 'utilitaire', 'cross over']],
     ['vêtements', 'une armoire', ['chemises', 'T-shirts', 'pulls']]]
   const quidam = prenom()
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const objets = []
 
     const n = randint(0, 2)

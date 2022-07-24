@@ -10,14 +10,12 @@ export const dateDeModifImportante = '23/01/2021' // Une date de modification im
 /**
  * @author Guillaume Valmont
  */
-export const uuid = '2c81f'
-export const ref = 'can4P05'
 export default function ImageSpline () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const r = repere({ xMin: -7, xMax: 7, yMin: -6, yMax: 6 })
     let c
     const type = choice(['lineaire', 'affine', 'autre'])

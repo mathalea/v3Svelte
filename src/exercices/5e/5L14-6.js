@@ -9,8 +9,6 @@ export const titre = 'Déterminer la dernière opération à effectuer dans une 
  * Déterminer la dernière opération à effectuer dans une expression numérique
  * @author Sébastien Lozano
  */
-export const uuid = 'da2df'
-export const ref = '5L14-6'
 export default function DeterminerDerniereOperationExpNum () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.debug = false
@@ -22,7 +20,7 @@ export default function DeterminerDerniereOperationExpNum () {
   this.sup2 = false // si false alors utilisation de nombres entiers, si true alors utilisation de nombres à un chiffre après la virgule.
   this.titre = titre
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

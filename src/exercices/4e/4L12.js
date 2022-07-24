@@ -14,8 +14,6 @@ export const dateDeModifImportante = '' // Une date de modification importante a
  * @author Guillaume Valmont
  * Référence 4L12
 */
-export const uuid = '5c255'
-export const ref = '4L12'
 export default function NomExercice () {
   Exercice.call(this)
   this.nbQuestions = 1
@@ -34,7 +32,7 @@ export default function NomExercice () {
     $${(nombreATester + B1) * B2} ${signeB3} ${B3} = ${miseEnEvidence((nombreATester + B1) * B2 + B3)}$ <br><br>`
   }
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     this.listeQuestions = []
     this.listeCorrections = []
     this.autoCorrection = []

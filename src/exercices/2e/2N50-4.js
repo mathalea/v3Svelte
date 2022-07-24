@@ -8,8 +8,6 @@ export const dateDePublication = '16/12/2021'
  * @author Gilles Mora
  * Référence
  */
-export const uuid = '1bece'
-export const ref = '2N50-4'
 export default function modeliserEquationsGeometrie () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''
@@ -20,7 +18,7 @@ export default function modeliserEquationsGeometrie () {
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

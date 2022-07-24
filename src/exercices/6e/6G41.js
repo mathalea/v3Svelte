@@ -1,5 +1,4 @@
 import Exercice from '../Exercice.js'
-import { context } from '../../modules/context.js'
 import { listeQuestionsToContenu, randint, choice, combinaisonListes, creerNomDePolygone } from '../../modules/outils.js'
 import { point, tracePoint, milieu, labelPoint, segment, translation2Points, similitude, grille, seyes, mathalea2d } from '../../modules/2d.js'
 
@@ -13,8 +12,6 @@ export const titre = 'Compléter une représentation en perspective cavalière'
  * référence : 6G41
  * @author Mireille Gain, s'inspirant fortement de Jean-Claude Lhote
  */
-export const uuid = '79c46'
-export const ref = '6G41'
 export default function RepresenterUnSolide () {
   Exercice.call(this) // Héritage de la classe Exercice ()
   this.titre = titre
@@ -27,7 +24,7 @@ export default function RepresenterUnSolide () {
   this.amcReady = amcReady
   this.amcType = amcType
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.autoCorrection = []
     let typeDeQuestionsDisponibles
 
@@ -74,13 +71,13 @@ export default function RepresenterUnSolide () {
       switch (listeTypeDeQuestions[i]) {
         case 1: // cube
           enonce = `$${nom}$ est un cube.<br>`
-          if (context.isHtml) { enonce += 'Reproduire et compléter la figure ci-dessous, en repassant de la même couleur les segments parallèles et de même longueur.<br>' }
+          enonce += 'Reproduire et compléter la figure ci-dessous, en repassant de la même couleur les segments parallèles et de même longueur.<br>'
           correction = 'Figure complétée :<br>'
           break
 
         case 2: // pavé droit
           enonce = `$${nom}$ est un pavé droit.<br>`
-          if (context.isHtml) { enonce += 'Reproduire et compléter la figure ci-dessous, en repassant de la même couleur les segments parallèles et de même longueur.<br>' }
+          enonce += 'Reproduire et compléter la figure ci-dessous, en repassant de la même couleur les segments parallèles et de même longueur.<br>'
           correction = 'Figure complétée :<br>'
           break
 
@@ -353,7 +350,7 @@ export default function RepresenterUnSolide () {
         this.listeQuestions.push(enonce + '<br>')
         this.listeCorrections.push(correction + '<br>')
         // Pour AMC question AmcOpen
-        this.autoCorrection[i] = { enonce, propositions: [{ texte: correction, statut: 3, feedback: '' }] }
+        this.autoCorrection[i] = { enonce: enonce, propositions: [{ texte: correction, statut: 3, feedback: '' }] }
         i++
       }
       cpt++

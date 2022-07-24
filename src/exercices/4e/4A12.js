@@ -17,8 +17,6 @@ export const titre = 'Problèmes d\'évenements récurrents'
  * Référence 4A12
  * 30/10/2021
 */
-export const uuid = '1ab9e'
-export const ref = '4A12'
 export default function ProblemesEvenementsRecurrents () {
   Exercice.call(this)
   this.nbQuestions = 1
@@ -27,7 +25,7 @@ export default function ProblemesEvenementsRecurrents () {
   this.correctionDetailleeDisponible = true
   this.interactif = false
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     this.listeQuestions = []
     this.listeCorrections = []
     this.autoCorrection = []

@@ -16,8 +16,6 @@ export const dateDeModifImportante = '24/10/2021' // Une date de modification im
  * @author Gilles Mora
  * Référence
 */
-export const uuid = '629b4'
-export const ref = 'can2F08'
 export default function EncadrerTableau () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1
@@ -25,7 +23,7 @@ export default function EncadrerTableau () {
   this.tailleDiaporama = 1.3
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let question1, correction1, ligne1

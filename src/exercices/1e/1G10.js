@@ -17,8 +17,6 @@ export const dateDeModifImportante = '' // Une date de modification importante a
  * Référence 1G10
 */
 
-export const uuid = 'c1535'
-export const ref = '1G10'
 export default class CosEtsin extends Exercice { // Héritage de la classe Exercice()
   constructor () {
     super()

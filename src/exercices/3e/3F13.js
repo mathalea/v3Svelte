@@ -4,7 +4,7 @@ import Decimal from 'decimal.js/decimal.mjs'
 import { context } from '../../modules/context.js'
 import { listeQuestionsToContenuSansNumero, randint, resolutionSystemeLineaire2x2 } from '../../modules/outils.js'
 import { courbe, mathalea2d, repere } from '../../modules/2d.js'
-export const titre = "Lire les antécédents d'un nombre à partir d'un graphique"
+export const titre = 'Lire les antécédents d\'un nombre à partir d\'un graphique'
 
 /**
 * Un graphique étant tracé, déterminer les antécédents de nombres donnés.
@@ -13,8 +13,6 @@ export const titre = "Lire les antécédents d'un nombre à partir d'un graphiqu
 * @author Rémi Angot
 * 3F13
 */
-export const uuid = 'af656'
-export const ref = '3F13'
 export default function AntecedentGraphique () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -26,7 +24,7 @@ export default function AntecedentGraphique () {
   this.nbQuestionsModifiable = false
   this.nbCols = 1
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.contenu = '' // Liste de questions

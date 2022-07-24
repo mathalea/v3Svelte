@@ -4,7 +4,7 @@ import { Polynome } from '../../modules/fonctionsMaths.js'
 import { simplify, parse, derivative, fraction } from 'mathjs'
 import { setReponse } from '../../modules/gestionInteractif.js'
 import { ajouteChampTexteMathLive } from '../../modules/interactif/questionMathLive.js'
-const math = { simplify, parse, derivative, fraction }
+const math = { simplify: simplify, parse: parse, derivative: derivative, fraction: fraction }
 export const titre = 'Dérivée d\'un quotient'
 export const dateDePublication = '22/01/2022'
 export const interactifReady = true
@@ -16,8 +16,6 @@ export const interactifType = 'mathLive'
  * Référence 1AN14-5
  */
 
-export const uuid = 'a6a3f'
-export const ref = '1AN14-5'
 export default function DeriveeQuotient () {
   Exercice.call(this)
   this.titre = titre
@@ -36,7 +34,7 @@ export default function DeriveeQuotient () {
   reglesDeSimplifications.push({ l: '-(n1*v)', r: '-n1*v' })
   reglesDeSimplifications.push('-(n1/n2) -> -n1/n2')
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.sup = Number(this.sup)
     this.sup2 = Boolean(this.sup2)
     this.listeQuestions = [] // Liste de questions

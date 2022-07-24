@@ -22,8 +22,6 @@ export const amcType = 'AMCHybride'
  * @author Rémi Angot
  * Référence 6M11-2
  */
-export const uuid = '76805'
-export const ref = '6M11-2'
 export default function PerimetreOuAireDeFiguresComposees () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -33,7 +31,7 @@ export default function PerimetreOuAireDeFiguresComposees () {
   this.nbQuestions = 1
   this.nbQuestionsModifiable = true
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     this.listeQuestions = []
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

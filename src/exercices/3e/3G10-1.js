@@ -16,8 +16,6 @@ export const amcType = 'AMCHybride'
  * @author Jean-Claude Lhote
  * 3G10-1
  */
-export const uuid = '307c2'
-export const ref = '3G10-1'
 export default function TransformationsDuPlanEtCoordonnees () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -32,7 +30,7 @@ export default function TransformationsDuPlanEtCoordonnees () {
   this.sup2 = false // on mélange les transformation par défaut
 
   context.isHtml ? this.spacingCorr = 2.5 : this.spacingCorr = 1.5
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     const objetsEnonce = []
     const objetsCorrection = []
     let enonceAmc = ''

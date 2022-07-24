@@ -16,8 +16,6 @@ export const titre = 'Utiliser les critères de divisibilité (plusieurs possibl
  * @author Rémi Angot
  * 6N43-2
  */
-export const uuid = '2b182'
-export const ref = '6N43-2'
 export default function TableauCriteresDeDivisibilite () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.spacing = 1
@@ -27,7 +25,7 @@ export default function TableauCriteresDeDivisibilite () {
   this.nbCols = 1
   this.sup = false
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.modeQcm = this.interactif
     this.autoCorrection = []
     if (!this.modeQcm) {

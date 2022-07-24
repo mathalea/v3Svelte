@@ -9,8 +9,6 @@ export const titre = 'Coordonnées de vecteurs et translations.'
  * @author Stéphane Guyon légèrement modifié par Jean-Claude Lhote
  * Référence 2G23-2
  */
-export const uuid = 'f2340'
-export const ref = '2G23-2'
 export default function TranslationEtCoordonnes () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -18,7 +16,7 @@ export default function TranslationEtCoordonnes () {
   this.nbCols = 2
   this.nbColsCorr = 2
   this.sup = 1 //
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

@@ -13,8 +13,6 @@ export const dateDePublication = '24/11/2021' // La date de publication initiale
  * @author Sébastien Lozano
  */
 
-export const uuid = '70827'
-export const ref = '4C20-2'
 export default function EqResolvantesThales4e () {
   EqResolvantesThales.call(this)
   this.niveau = '4e'

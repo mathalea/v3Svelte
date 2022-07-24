@@ -3,7 +3,7 @@ import Decimal from 'decimal.js/decimal.mjs'
 import { listeQuestionsToContenu, randint, combinaisonListes, texNombre } from '../../modules/outils.js'
 import { ajouteChampTexteMathLive } from '../../modules/interactif/questionMathLive.js'
 import { setReponse } from '../../modules/gestionInteractif.js'
-export const titre = "Déterminer un taux d'évolution global"
+export const titre = 'Déterminer un taux d\'évolution global'
 export const interactifReady = true
 export const interactifType = 'mathLive'
 export const dateDePublication = '06/01/2022'
@@ -19,8 +19,6 @@ export const dateDePublication = '06/01/2022'
 * 2S12-1
 */
 
-export const uuid = '7169d'
-export const ref = '2S12-2'
 export default function EvolutionsSuccesives () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -34,7 +32,7 @@ export default function EvolutionsSuccesives () {
   this.spacing = 1
   this.spacingCorr = 1
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.sup = parseInt(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
@@ -82,7 +80,7 @@ export default function EvolutionsSuccesives () {
           }
           texte = `Le prix d'un article subit une ${nom1} de $${t1}~\\%$ puis une ${nom2} de $${t2}~\\%$.<br>Déterminer le taux d'évolution global du prix de cet article.`
           texte += ajouteChampTexteMathLive(this, i, 'largeur15 inline', { texteApres: '%' })
-          texteCorr = "Pour déterminer le taux d'évolution global, on commence par calculer le coefficient multiplicateur global."
+          texteCorr = 'Pour déterminer le taux d\'évolution global, on commence par calculer le coefficient multiplicateur global.'
           texteCorr += '<br>Si une grandeur subit des évolutions successives, le coefficient multiplicateur global est le produit des coefficients multiplicateurs de chaque évolution :'
           texteCorr += `<br><br>Première évolution : ${verbe1} de $${t1}~\\%$ revient à multiplier par `
           if (taux1 > 0) {
@@ -144,7 +142,7 @@ export default function EvolutionsSuccesives () {
           }
           texte = `La population d'une ville a ${nom1} de $${t1}~\\%$ en $2020$ puis a ${nom2} de $${t2}~\\%$ en $2021$.<br>Quel est le taux d'évolution global ?`
           texte += ajouteChampTexteMathLive(this, i, 'largeur15 inline', { texteApres: '%' })
-          texteCorr = "Pour déterminer le taux d'évolution global, on commence par calculer le coefficient multiplicateur global."
+          texteCorr = 'Pour déterminer le taux d\'évolution global, on commence par calculer le coefficient multiplicateur global.'
           texteCorr += '<br>Si une grandeur subit des évolutions successives, le coefficient multiplicateur global est le produit des coefficients multiplicateurs de chaque évolution :'
           texteCorr += `<br><br>Première évolution : ${verbe1} de $${t1}~\\%$ revient à multiplier par `
           if (taux1 > 0) {
@@ -206,7 +204,7 @@ export default function EvolutionsSuccesives () {
           }
           texte = `Le nombre d'adhérents d'une association a ${nom1} de $${t1}~\\%$ entre $2019$ et $2020$ puis a ${nom2} de $${t2}~\\%$ entre $2020$ et $2021$.<br>Quel est le taux d'évolution global du nombre d'adhérents ?`
           texte += ajouteChampTexteMathLive(this, i, 'largeur15 inline', { texteApres: '%' })
-          texteCorr = "Pour déterminer le taux d'évolution global, on commence par calculer le coefficient multiplicateur global."
+          texteCorr = 'Pour déterminer le taux d\'évolution global, on commence par calculer le coefficient multiplicateur global.'
           texteCorr += '<br>Si une grandeur subit des évolutions successives, le coefficient multiplicateur global est le produit des coefficients multiplicateurs de chaque évolution :'
           texteCorr += `<br><br>Première évolution : ${verbe1} de $${t1}~\\%$ revient à multiplier par `
           if (taux1 > 0) {

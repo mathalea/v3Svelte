@@ -22,8 +22,6 @@ export const interactifType = 'mathLive'
  * @author Rémi Angot
  * Référence 6M31-2
  */
-export const uuid = '48363'
-export const ref = '6M31-2'
 export default function UnitesDeVolumesEtDeCapacite (niveau = 1) {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = niveau // Niveau de difficulté de l'exercice
@@ -34,7 +32,7 @@ export default function UnitesDeVolumesEtDeCapacite (niveau = 1) {
   this.nbQuestions = 8
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

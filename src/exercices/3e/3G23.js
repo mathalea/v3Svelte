@@ -10,8 +10,6 @@ export const titre = 'Reconnaître des triangles égaux dans différentes config
  * 3G23 reconnaître des triangles égaux
  * @author Jean-Claude Lhote et Sébastien Lozano
  */
-export const uuid = '43d23'
-export const ref = '3G23'
 export default function TrianglesEgaux () {
   Exercice.call(this)
   this.debug = false
@@ -20,7 +18,7 @@ export default function TrianglesEgaux () {
   this.nbQuestionsModifiable = false
   this.nbCols = 1
   this.nbColsCorr = 1
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let texte = ''

@@ -11,15 +11,13 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can6C10
  */
-export const uuid = '2dcf1'
-export const ref = 'can6C10'
 export default function Tables5A9 () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const a = randint(3, 9)
     const b = randint(5, 9)
     this.reponse = a * b

@@ -17,8 +17,6 @@ export const amcType = 'AMCNum' // type de question AMC
  * 4C32
  */
 
-export const uuid = '2e9bc'
-export const ref = '4C32'
 export default function NotationScientifique () {
   Exercice.call(this)
   this.sup = 1
@@ -28,12 +26,12 @@ export default function NotationScientifique () {
   this.nbQuestions = 5
   this.interactif = false
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     Decimal.toExpNeg = -15
     Decimal.toExpPos = 20
     let reponse
-    if (parseInt(this.sup) === 1) this.consigne = "Donner l'écriture scientifique des nombres suivants."
-    else this.consigne = "Donner l'écriture décimale des nombres suivants."
+    if (parseInt(this.sup) === 1) this.consigne = 'Donner l\'écriture scientifique des nombres suivants.'
+    else this.consigne = 'Donner l\'écriture décimale des nombres suivants.'
     let typesDeQuestionsDisponibles
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

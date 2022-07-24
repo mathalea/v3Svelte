@@ -6,8 +6,6 @@ export const titre = 'Déterminer les coordonnées (positives) d\'un point'
  * @author Jean-Claude Lhote
  * référence 5R12
  */
-export const uuid = '5f991'
-export const ref = '5R12'
 export default function ReperagePointDuQuartDePlan () {
   ReperagePointDuPlan.call(this)
   this.titre = titre

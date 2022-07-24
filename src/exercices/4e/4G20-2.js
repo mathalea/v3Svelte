@@ -14,8 +14,6 @@ export const interactifReady = true
  * Référence 4G20-2
  * Mis à jour le 08/08/2021
  */
-export const uuid = '3e6a8'
-export const ref = '4G20-2'
 export default function RacineCareeDeCarresParfaits () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -31,7 +29,7 @@ export default function RacineCareeDeCarresParfaits () {
   this.sup = 1
   this.sup2 = 2
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

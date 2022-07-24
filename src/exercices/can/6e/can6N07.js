@@ -12,8 +12,6 @@ export const amcType = 'AMCNum'
  * Publié le 11 / 09 / 2021
  * Référence can6N07
  */
-export const uuid = 'b037c'
-export const ref = 'can6N07'
 export default function LireAbscisseDecimaleDeFraction () {
   Exercice.call(this)
   this.typeExercice = 'simple'
@@ -21,7 +19,7 @@ export default function LireAbscisseDecimaleDeFraction () {
   this.formatChampTexte = 'largeur15 inline'
   this.consigne = ''
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let a
     switch (choice([1, 2])) { //
       case 1:// droite graduée     /4 resultat décimal

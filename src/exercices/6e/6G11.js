@@ -8,8 +8,6 @@ export const amcType = 'AMCOpen' // type de question AMC
  * @ Loïc Geeraerts (Refactoring (ES6))
  * référence 6G11
  */
-export const uuid = '41136'
-export const ref = '6G11'
 export default class TracerDesPerpendiculaires extends ParalleleEtPerpendiculaires {
   constructor () {
     super()

@@ -13,8 +13,6 @@ export const dateDePublication = '14/12/2020'
  * Réf : 6G25-3
  * Relecture : Novembre 2021 par EE
  */
-export const uuid = '660f3'
-export const ref = '6G25-3'
 export default function PavageEtReflexion2d () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -30,7 +28,7 @@ export default function PavageEtReflexion2d () {
   this.sup2 = false // On cache les centres par défaut.
   this.sup3 = 7
   context.isHtml ? (this.spacingCorr = 2.5) : (this.spacingCorr = 1.5)
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const videcouples = function (tableau) {
       for (let k = 0; k < tableau.length; k++) {
         for (let j = k + 1; j < tableau.length; j++) {

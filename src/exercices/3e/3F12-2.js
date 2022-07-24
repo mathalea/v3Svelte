@@ -19,8 +19,6 @@ export const interactifType = 'mathLive'
 * @author Rémi Angot
 * 3F12-2
 */
-export const uuid = '342f7'
-export const ref = '3F12-2'
 export default function ImageFonctionAlgebrique () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -32,7 +30,7 @@ export default function ImageFonctionAlgebrique () {
   this.nbColsCorr = 1
   this.sup = 5 // niveau de difficulté
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     this.sup = parseInt(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

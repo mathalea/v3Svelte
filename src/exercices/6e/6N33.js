@@ -16,8 +16,6 @@ export const amcType = 'AMCNum'
  * @author Rémi Angot + Jean-Claude Lhote
  * référence 6N33
  */
-export const uuid = '8a9f8'
-export const ref = '6N33'
 export default function FractionDUnNombre () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 5
@@ -29,7 +27,7 @@ export default function FractionDUnNombre () {
   this.nbCols = 2
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

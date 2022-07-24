@@ -9,8 +9,6 @@ export const dateDePublication = '20/11/2021'
  * @author Jean-Claude Lhote
  * Référence canc3D03
  */
-export const uuid = '31452'
-export const ref = 'canc3D03'
 export default function AjouterDesDurees () {
   Exercice.call(this)
   this.typeExercice = 'simple'
@@ -20,7 +18,7 @@ export default function AjouterDesDurees () {
   if (!this.interactif) {
     this.question += ' .... minutes'
   }
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const a = randint(1, 2)
     const b = choice([choice([10, 20, 30]), randint(1, 5) * 5, randint(11, 29, 20), 30])
     const c = randint(1, 3)

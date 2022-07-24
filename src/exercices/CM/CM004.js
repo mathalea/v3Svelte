@@ -17,8 +17,6 @@ export const amcType = 'AMCNum'
  * @author Rémi Angot
 * Référence CM004
   */
-export const uuid = 'defe1'
-export const ref = 'CM004'
 export default function QuatreOperations () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Calculer'
@@ -29,7 +27,7 @@ export default function QuatreOperations () {
   this.listePackages = 'xlop'
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

@@ -11,15 +11,13 @@ export const dateDePublication = '09/05/2022'
  *
  *
  */
-export const uuid = '9b4a2'
-export const ref = 'can6C31'
 export default function SoustraireEntierDecimal () {
   Exercice.call(this)
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
   this.typeExercice = 'simple'
   this.tailleDiaporama = 2
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let a, u, d, c
     switch (choice([1, 2])) {
       case 1:// 5-2,6 par ex

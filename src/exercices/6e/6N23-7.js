@@ -11,8 +11,6 @@ export const interactifType = 'mathLive'
 export const amcReady = true
 export const amcType = 'AMCNum'
 
-export const uuid = '94adf'
-export const ref = '6N23-7'
 export default function RecompositionDecimale () {
   Exercice.call(this)
   this.nbQuestions = 1 // Ici le nombre de questions
@@ -25,7 +23,7 @@ export default function RecompositionDecimale () {
   this.correctionDetailleeDisponible = true
   this.correctionDetaillee = true
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // tableau contenant la liste des questions
     this.listeCorrections = []
     this.autoCorrection = []

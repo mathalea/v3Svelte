@@ -10,8 +10,6 @@ export const titre = 'Problèmes additifs et de comparaison sur les rationnels'
  * 4C25-0
  * @author Sébastien Lozano
  */
-export const uuid = 'c888f'
-export const ref = '4C25-0'
 export default function ProblemesAdditifsFractionsBis () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.debug = false
@@ -33,7 +31,7 @@ export default function ProblemesAdditifsFractionsBis () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     if (this.debug) {
       typesDeQuestionsDisponibles = [1, 2, 3, 4, 5]
     } else {

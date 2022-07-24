@@ -12,8 +12,6 @@ export const titre = 'Calculer toutes les mesures d\'angle d\'une figure complex
  * 3G31-1
  * Février 2021
 */
-export const uuid = '565aa'
-export const ref = '3G31-1'
 export default function CalculDAngleFigureComplexe () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -29,7 +27,7 @@ export default function CalculDAngleFigureComplexe () {
   // this.tailleDiaporama = 3; // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

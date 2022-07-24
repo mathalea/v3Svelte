@@ -11,15 +11,13 @@ export const dateDePublication = '09/05/2022'
  *
  *
  */
-export const uuid = 'e04e8'
-export const ref = 'can5C19'
 export default function Soustraire2Decimaux () {
   Exercice.call(this)
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
   this.typeExercice = 'simple'
   this.tailleDiaporama = 2
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const a = randint(2, 15)
     const b = randint(1, a - 1)
     const d1 = randint(1, 6)

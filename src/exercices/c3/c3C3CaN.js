@@ -14,8 +14,6 @@ export const amcType = 'AMCNum'
  * @author Jean-Claude Lhote
  * Référence
 */
-export const uuid = 'cc8eb'
-export const ref = 'c3C3CaN'
 export default function CourseAuxNombresCM (numeroExercice) {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 30
@@ -30,7 +28,7 @@ export default function CourseAuxNombresCM (numeroExercice) {
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let a, b, c, d, resultat, objets, A, B, C

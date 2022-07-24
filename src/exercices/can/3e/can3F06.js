@@ -11,15 +11,13 @@ export const dateDePublication = '25/10/2021'
  * Référence can3F06
 */
 
-export const uuid = '41ea9'
-export const ref = 'can3F06'
 export default function CoefficientFonctionAffine () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const b = randint(-3, 3, 0)
     const c = randint(1, 5)
     const n = choice([-4, -3, -2, 2, 3, 4])

@@ -12,8 +12,6 @@ export const interactifType = 'mathLive'
  * publié le  15/11/2020
  * ref 3F13-2
  */
-export const uuid = '55099'
-export const ref = '3F13-2'
 export default function PremierEscapeGameMathalea () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -26,7 +24,7 @@ export default function PremierEscapeGameMathalea () {
   this.sup = 1
   // this.sup2 = ''
   this.pasDeVersionLatex = false
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const lettres = []; const mots = ['BMDF', 'OGNQ', 'BUQP', 'BAUP', 'BXGE', 'BDUJ', 'MZSXQE', 'BDUEYQ', 'BMDFUQ', 'HMXQGD', 'OAGBXQ', 'PDAUFQ', 'DQXMFUAZ', 'BMDMNAXQ', 'MPPUFUAZ', 'QJBAEMZF', 'RAZOFUAZ', 'OAYBXQJQ']
     let alphabet = []
     this.listeQuestions = []

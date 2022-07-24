@@ -10,8 +10,6 @@ export const interactifType = 'mathLive'
  * Référence can2N01
  * Date de publication 24/10/2021
 */
-export const uuid = '7eb8e'
-export const ref = 'can2N01'
 export default function Intervalles () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -19,7 +17,7 @@ export default function Intervalles () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let a, b, c, N, d, e
 
     switch (choice([1, 2])) { //, 2, 2

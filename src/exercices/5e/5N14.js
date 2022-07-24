@@ -15,8 +15,6 @@ export const titre = 'Comparer deux fractions (dénominateurs multiples)'
 * Ajout du paramètre d'inclusion de nombres négatifs le 14/08/2021 : Guillaume Valmont
 * rendu interactif + AMC par Jean-Claude Lhote
 */
-export const uuid = '48d7b'
-export const ref = '5N14'
 export default function ExerciceComparerDeuxFractions (max = 11) {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = max // Correspond au facteur commun
@@ -27,7 +25,7 @@ export default function ExerciceComparerDeuxFractions (max = 11) {
   this.nbColsCorr = 1
   this.sup2 = false
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

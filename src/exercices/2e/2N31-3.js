@@ -8,8 +8,6 @@ export const titre = 'Puissances : Calculs automatisés et règles de calculs'
  * @author Sébastien Lozano
  */
 
-export const uuid = '308d5'
-export const ref = '2N31-3'
 export default function PuissancesDUnRelatif22e () {
   PuissancesDUnRelatif2.call(this)
 }

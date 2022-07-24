@@ -10,8 +10,6 @@ export const interactifType = 'mathLive'
  * Référence
  * Date de publication
 */
-export const uuid = '1c9ed'
-export const ref = 'can3C08'
 export default function ProgrammeCalcul () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -19,7 +17,7 @@ export default function ProgrammeCalcul () {
   this.formatChampTexte = 'largeur15 inline'
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   // ${texNombrec(ecritureParenthesesSiNegatif(a / 5 - e))}^2=${texNombrec((a / 5 - e) * (a / 5 - e))}$
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const a = calcul(randint(2, 9) * 5)
     const b = calcul(randint(2, 9) * 4)
     const c = calcul(randint(2, 9) * 3)

@@ -12,8 +12,6 @@ export const amcType = 'AMCNum'
  * @author Rémi Angot
 * Référence CM010
  */
-export const uuid = '2a91f'
-export const ref = 'CM010'
 export default function Tiers () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Calculer'
@@ -23,7 +21,7 @@ export default function Tiers () {
   this.sup = 1 // niveau de difficulté
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

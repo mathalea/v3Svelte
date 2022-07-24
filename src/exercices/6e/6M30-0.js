@@ -11,8 +11,6 @@ export const amcReady = true
 export const interactifType = 'mathLive'
 export const amcType = 'AMCNum'
 
-export const uuid = '94cef'
-export const ref = '6M30-0'
 export default function VolumesPavesParDenombrement () {
   Exercice.call(this)
   this.nbQuestions = 1 // Ici le nombre de questions
@@ -24,7 +22,7 @@ export default function VolumesPavesParDenombrement () {
   this.correctionDetailleeDisponible = true
   this.correctionDetaillee = true
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // tableau contenant la liste des questions
     this.listeCorrections = []
     this.autoCorrection = []
@@ -41,7 +39,7 @@ export default function VolumesPavesParDenombrement () {
       barres = []
       plaques = []
 
-      texte = 'Donner le nombre de petits cubes qui constituent ce pavé droit<br>' + mathalea2d({ xmin: -1, ymin: -1, xmax: l + 0.9 * p, ymax: h + 0.6 * p }, ...monPave.c2d)
+      texte = 'Donner le nombre de petits cubes qui constituent ce pavé droit.<br>' + mathalea2d({ xmin: -1, ymin: -1, xmax: l + 0.9 * p, ymax: h + 0.6 * p }, ...monPave.c2d)
       if (!context.isAmc) texte += ajouteChampTexteMathLive(this, q, 'largeur25')
       for (let i = 0; i < h - 1; i++) {
         pavesCorr.push(...plaque3d(0, 0, i * 1.5, 1, l, p, 'black').c2d)
@@ -59,11 +57,11 @@ export default function VolumesPavesParDenombrement () {
       }
       if (this.correctionDetaillee) {
         texteCorr = `Il y a ${l} cubes par barre :<br>`
-        texteCorr += mathalea2d({ xmin: -0.5, xmax: l * 1.5 + 2, ymin: -0.5, ymax: 1.5 }, cubes)
+        texteCorr += mathalea2d({ xmin: -1, xmax: l * 1.5 + 2, ymin: -0.5, ymax: 1.5 }, cubes)
         texteCorr += `<br>Il y a ${p} barres par plaque :<br>`
-        texteCorr += mathalea2d({ xmin: -0.5, xmax: l * 1.5 + 2, ymin: -0.5, ymax: 1.5 + p * 0.75 }, barres)
+        texteCorr += mathalea2d({ xmin: -1, xmax: l * 1.5 + 2, ymin: -0.5, ymax: 1.5 + p * 0.3 }, barres)
         texteCorr += `<br>Enfin, il y a ${h} plaques empilées :<br>`
-        texteCorr += mathalea2d({ xmin: -1, ymin: -1, xmax: 15, ymax: h * 1 * 1.5 + p * 0.75 + 0.5 }, plaques)
+        texteCorr += mathalea2d({ xmin: -1, ymin: -1, xmax: 15, ymax: 1.5 + h * 1.4 }, plaques)
         texteCorr += `<br>Il y a donc $${l} \\times ${p} \\times ${h} = ${h * l * p}$ cubes.<br>`
       } else {
         texteCorr = `Il y a  ${l} cubes par barre, ${p} barres par plaque et ${h} plaques. Il y a donc $${l} \\times ${p} \\times ${h} = ${h * l * p}$ cubes.<br>`

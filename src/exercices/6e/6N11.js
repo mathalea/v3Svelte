@@ -16,8 +16,6 @@ export const amcType = 'AMCOpen'
  * référence 6N11
  * Relecture : Novembre 2021 par EE
  */
-export const uuid = '2b286'
-export const ref = '6N11'
 export default function LireAbscisseEntiere2d () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = "Lire l'abscisse de chacun des points suivants."
@@ -30,7 +28,7 @@ export default function LireAbscisseEntiere2d () {
   this.sup = 4
   this.interactif = false
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     // numeroExercice est 0 pour l'exercice 1
     let typesDeQuestions
     this.listeQuestions = []

@@ -21,8 +21,6 @@ export const dateDePublication = '30/03/2022' // La date de publication initiale
 function compareNombres (a, b) {
   return a - b
 }
-export const uuid = '9fea9'
-export const ref = 'can5a-2021'
 export default function SujetCAN20215ieme () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -32,7 +30,7 @@ export default function SujetCAN20215ieme () {
   this.nbCols = 1
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const nbQ1 = min(round(this.nbQuestions * 8 / 30), 8) // Choisir d'un nb de questions de niveau 1 parmi les 7 possibles.
@@ -348,7 +346,7 @@ export default function SujetCAN20215ieme () {
               s1, s2, s3, s4, s5, s6, code1, code2, code3, code4, code5, code6, s7, s8, s9, s10, s11, s12, code7, code8, code9, code10, code11, code12)
             reponse = 12 * a
             texte = 'Quel est le périmètre de cette figure ?<br>'
-            texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+            texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
             texteCorr = `La figure est composée de $12$ segments de longueur $${a}$ cm.<br>
               Le périmètre de cette figure est donc : $12\\times\\times ${a}=${12 * a}$ cm.   `
           }
@@ -387,7 +385,7 @@ export default function SujetCAN20215ieme () {
               s1, s2, s3, s4, s5, s6, code1, code2, code3, code4, code5, code6, segment(D, E))
             reponse = 4 * a + 2 * c + b
             texte = 'Quel est le périmètre de cette figure ?<br>'
-            texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+            texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
             texteCorr = `La figure est composée de $4$ segments de longueur $${a}$, de $2$ segments de longueur $${c}$ et d'un segment de longueur $${b}$.<br>
             Le périmètre de cette figure est donc : $4\\times ${a}+2\\times ${c}+${b}=${4 * a + 2 * c + b}$ cm.   `
           }
@@ -424,7 +422,7 @@ export default function SujetCAN20215ieme () {
               s1, s2, s4, s5, s6, code1, code2, code4, code5, code6, segment(D, E))
             reponse = 3 * c + 2 * a + b
             texte = 'Quel est le périmètre de cette figure ?<br>'
-            texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+            texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
             texteCorr = `La figure est composée de $3$ segments de longueur $${c}$, de $2$ segments de longueur $${a}$ et d'un segment de longueur $${b}$.<br>
                     Le périmètre de cette figure est donc : $3\\times ${c}+2\\times ${a}+${b}=${3 * c + 2 * a + b}$ cm.   `
           }
@@ -713,7 +711,7 @@ export default function SujetCAN20215ieme () {
           }
           reponse = 180 - a - b
           texte = '<br>'
-          texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+          texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
           texte += ' ? $=$'
           texteCorr = `Dans un triangle, la somme des angles vaut $180°$.<br>
          ?$=180-${a}-${b}=${180 - a - b}°$.`
@@ -820,7 +818,7 @@ export default function SujetCAN20215ieme () {
               s1, s2, s3, s4, s5, code1, code2, code3, code4, code5, labelPoint(A, C, D, E))
             texte = `Le périmètre du quadrilatère $AEDC$ est égal à $${b}$ cm.<br>
           `
-            texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+            texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
             texteCorr = ` Le quadrilatère est composé de $2$ segments de $${a}$ cm et de deux autres segments de même longueur.<br>
           Ainsi, $CD=(${b}-2\\times ${a})\\div 2=${texNombre((b - 2 * a) / 2)}$  `
             setReponse(this, index, reponse, { formatInteractif: 'calcul' })
@@ -833,7 +831,7 @@ export default function SujetCAN20215ieme () {
               s1, s2, s3, s4, s5, code1, code2, code3, code4, code5, labelPoint(A, C, D, E))
             texte = `Le périmètre du quadrilatère $AEDC$ est égal à $${b}$ cm.<br>
           `
-            texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+            texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
             texteCorr = ` Le quadrilatère est composé de $2$ segments de $${a}$ cm et de deux autres segments de même longueur.<br>
           Ainsi, $AE=(${b}-2\\times ${a})\\div 2=${texNombre((b - 2 * a) / 2)}$  `
             setReponse(this, index, reponse, { formatInteractif: 'calcul' })

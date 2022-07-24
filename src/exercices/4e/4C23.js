@@ -15,8 +15,6 @@ export const interactifReady = true
  * Référence 4C23-1
  * Date de publication septembre 2021
 */
-export const uuid = 'fb967'
-export const ref = '4C23'
 export default function SommeOuProduitFractions () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.interactifReady = interactifReady
@@ -34,7 +32,7 @@ export default function SommeOuProduitFractions () {
   this.correctionDetailleeDisponible = true // booléen qui indique si une correction détaillée est disponible.
   this.correctionDetaillee = false
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     this.sup = parseInt(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

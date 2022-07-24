@@ -27,8 +27,6 @@ export const dateDeModifImportante = '14/05/2022'
  * Référence 6M31
  * Amélioration de l'interactivité (mathLive maintenant inline) par Guillaume Valmont le 14/05/2022
  */
-export const uuid = '13ef2'
-export const ref = '6M31'
 export default function ExerciceConversionsVolumes (niveau = 1) {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = niveau // Niveau de difficulté de l`exercice
@@ -48,7 +46,7 @@ export default function ExerciceConversionsVolumes (niveau = 1) {
     }
     return a
   }
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.interactifType = parseInt(this.sup3) === 2 ? 'mathLive' : 'qcm'
     this.autoCorrection = []
     this.listeQuestions = [] // Liste de questions

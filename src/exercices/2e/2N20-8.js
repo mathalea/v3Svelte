@@ -7,8 +7,6 @@ export const titre = 'Déterminer la parité d\'une expression'
  * 2N21
  * @author Stéphane Guyon
  */
-export const uuid = '9fad1'
-export const ref = '2N20-8'
 export default function parite () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -17,7 +15,7 @@ export default function parite () {
   this.nbCols = 2
   this.nbColsCorr = 2
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const typesDeQuestionsDisponibles = [1, 2, 3]; let typesDeQuestions

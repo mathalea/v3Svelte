@@ -13,8 +13,6 @@ export const titre = 'Programmer des déplacements (Scratch)'
  * @author Erwan Duplessy // (Ajout paramètre 3 par EE)
  * Ajout AMC : Janvier 2022 par EE
  */
-export const uuid = '2fd2f'
-export const ref = '6I10'
 export default function ColorierDeplacement () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'Scratch'
@@ -32,7 +30,7 @@ export default function ColorierDeplacement () {
   context.isHtml ? this.spacingCorr = 2 : this.spacingCorr = 1
   this.listePackages = 'scratch3' // pour dessiner les blocs en LaTeX/Tikz
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

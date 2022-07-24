@@ -7,8 +7,6 @@ export const titre = 'Multiplier un entier par 10, 100, 1 000...'
  * @author Rémi Angot
  * Référence 6N12
  */
-export const uuid = '519b8'
-export const ref = '6N12'
 export default function MultiplierEntierPar101001000 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Calculer :'
@@ -17,7 +15,7 @@ export default function MultiplierEntierPar101001000 () {
   this.nbColsCorr = 2
   this.sup = 2
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     this.boutonAide = modalUrl(numeroExercice, 'https://mathix.org/glisse-nombre/index.html',
       'Glisse-nombre'
     )

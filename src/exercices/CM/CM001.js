@@ -10,8 +10,6 @@ export { interactifReady, interactifType, amcReady, amcType } from '../6e/_Table
  * @author Rémi Angot
  * Référence 6C10-1
  */
-export const uuid = '584d1'
-export const ref = 'CM001'
 export default class TablesParametres extends TablesDeMultiplications {
   constructor (tablesParDefaut = '2-3-4-5-6-7-8-9') {
     super(tablesParDefaut)

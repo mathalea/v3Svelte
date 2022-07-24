@@ -14,8 +14,6 @@ export const dateDePublication = '25/10/2021' // La date de publication initiale
  * @author Gilles Mora (2F10-02)
  * Référence
 */
-export const uuid = 'ef726'
-export const ref = 'can3F08'
 export default function LectureGraphiqueFonctionAffine2 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -23,7 +21,7 @@ export default function LectureGraphiqueFonctionAffine2 () {
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
   this.formatInteractif = 'calcul'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const o = texteParPosition('O', -0.3, -0.3, 'milieu', 'black', 1)
     let s1, s2, t
     const a = randint(-5, 5, [0, 4]) // numérateut coefficient directeur non nul

@@ -11,14 +11,12 @@ export const interactifType = 'mathLive'
  * Référence can3C07
  * Date de publication sptembre 2021
 */
-export const uuid = '25133'
-export const ref = 'can2C09'
 export default function MilieuEntre1EtFraction () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const listeFractions1 = [
       [10, 3], [5, 4], [7, 4], [10, 7], [11, 7], [12, 7], [9, 7], [13, 7], [11, 8], [11, 9], [7, 6], [12, 11], [4, 3],
       [7, 5], [13, 7], [13, 9], [13, 11], [13, 12], [14, 11]

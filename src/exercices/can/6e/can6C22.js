@@ -10,8 +10,6 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can6C22
  */
-export const uuid = '05e64'
-export const ref = 'can6C22'
 export default function ValeursDecimalesFractions () {
   Exercice.call(this)
   this.nbQuestions = 1
@@ -19,7 +17,7 @@ export default function ValeursDecimalesFractions () {
   this.formatChampTexte = 'largeur15 inline'
   this.typeExercice = 'simple'
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let a, b
     switch (choice([1, 2, 3, 4])) {
       case 1:

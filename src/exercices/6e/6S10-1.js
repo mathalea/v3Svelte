@@ -15,8 +15,6 @@ export const amcType = 'AMCHybride'
  * @author Jean-Claude Lhote
  * Référence 6S10-1
  */
-export const uuid = '604c2'
-export const ref = '6S10-1'
 export default function LireUnDiagramme () {
   'use strict'
   Exercice.call(this)
@@ -31,7 +29,7 @@ export default function LireUnDiagramme () {
   this.sup2 = 5
 
   //  this.sup2 = false;
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.sup2 = parseInt(this.sup2)
     this.listeQuestions = []
     this.listeCorrections = []

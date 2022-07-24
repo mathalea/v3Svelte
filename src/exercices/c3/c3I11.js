@@ -13,8 +13,6 @@ export const titre = 'Note la couleur (scratch)'
  * Publié le 11/04/2021
  * @author Jean-Claude Lhote
  */
-export const uuid = '55ace'
-export const ref = 'c3I11'
 export default function NoteLaCouleurC3 () {
   'use strict'
   Exercice.call(this)
@@ -35,7 +33,7 @@ export default function NoteLaCouleurC3 () {
   this.correctionDetailleeDisponible = true
   this.correctionDetaillee = true
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     const damier = [
       ['Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc', 'Blanc'],
       ['Blanc', 'Noir', 'Orange', 'Rouge', 'Orange', 'Jaune', 'Rouge', 'Jaune', 'Rose', 'Blanc'],

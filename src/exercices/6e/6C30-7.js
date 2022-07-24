@@ -18,8 +18,6 @@ export const dateDePublication = '04/11/2021'
  * @author Eric Elter (inspiré par Aude Duvold)
  * Référence 6C30-7
  */
-export const uuid = '38475'
-export const ref = '6C30-7'
 export default function DiviserUnNombreParPuissanceDeDix () {
   'use strict'
   Exercice.call(this)
@@ -29,7 +27,7 @@ export default function DiviserUnNombreParPuissanceDeDix () {
   this.sup2 = true
   this.listePackages = 'bclogo'
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // tableau contenant la liste des questions
     this.listeCorrections = []
     this.autoCorrection = []

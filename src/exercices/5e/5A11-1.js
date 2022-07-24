@@ -11,8 +11,6 @@ export const titre = 'Labyrinthe de multiples basé sur les critères de divisib
  * Ref 5A11-1
  * Sortir du labyrinthe en utilisant les critères de divisibilité.
  */
-export const uuid = '45cf7'
-export const ref = '5A11-1'
 export default function ExerciceLabyrintheDivisibilite () {
   Exercice.call(this)
   this.titre = titre
@@ -31,7 +29,7 @@ export default function ExerciceLabyrintheDivisibilite () {
     this.sup3 = 4
   }
   // this.consigne=`Trouve la sortie en ne passant que par les cases contenant un nombre divisible par $${parseInt(this.sup)}$.`
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.sup3 = Number(this.sup3)
     const tailleChiffre = 0.8
 

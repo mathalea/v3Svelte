@@ -11,8 +11,6 @@ export const dateDeModifImportante = '24/10/2021' // Une date de modification im
  * @author
  * Référence
 */
-export const uuid = '1ab59'
-export const ref = '1AN11'
 export default function equationdetangente () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''
@@ -22,7 +20,7 @@ export default function equationdetangente () {
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
   this.sup = parseInt(this.sup)
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

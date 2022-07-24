@@ -7,8 +7,6 @@ export const titre = 'Utiliser la distance entre deux points dans un repère ort
  * 2G12-1
  * @author Stéphane Guyon
  */
-export const uuid = 'b2f22'
-export const ref = '2G12-1'
 export default function Distance () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -18,7 +16,7 @@ export default function Distance () {
   this.nbColsCorr = 2
   this.sup = 1 //
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.sup = Number(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

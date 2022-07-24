@@ -15,8 +15,6 @@ export const dateDePublication = '22/06/2022' // La date de publication initiale
  * @author Gilles Mora
  * Référence
 */
-export const uuid = 'd649b'
-export const ref = 'can1F16'
 export default function LectureGraphiqueTangente () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -24,7 +22,7 @@ export default function LectureGraphiqueTangente () {
   this.formatChampTexte = 'largeur15 inline'
   this.tailleDiaporama = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let f; let r1; let r2; let alpha; let beta; let F; let o; let nbre; let courbef; let courbefp
     switch (choice([1, 2])) { //
       case 1:// second degré (x-alpha)^2+beta

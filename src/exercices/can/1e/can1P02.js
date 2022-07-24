@@ -17,8 +17,6 @@ export const amcType = 'AMCNum'
  * @author Gilles Mora
 
 */
-export const uuid = '4cb65'
-export const ref = 'can1P02'
 export default function LectureProbabilite () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = true
@@ -30,7 +28,7 @@ export default function LectureProbabilite () {
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []
@@ -102,7 +100,7 @@ export default function LectureProbabilite () {
 
       omega.setTailles() // On calcule les tailles des arbres.
       objets = omega.represente(0, 7, 0, 1.5, true, 1) // On crée l'arbre complet echelle 1.4 feuilles verticales sens gauche-droite
-      texte = "On donne l'arbre de probabilités ci-dessous :<br>"
+      texte = 'On donne l\'arbre de probabilités ci-dessous :<br>'
       texte += mathalea2d({ xmin: -0.1, xmax: 14, ymin: 0, ymax: 7, style: 'inline' }, ...objets)
       texte += '<br>Compléter avec la notation qui convient : '
       if (this.interactif) {

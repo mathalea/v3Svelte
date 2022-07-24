@@ -17,15 +17,13 @@ export const dateDeModifImportante = '14/05/2022'
  * Référence 6D13
  * Ajout d'une option "Mélange" par Guillaume Valmont le 14/05/2022
 */
-export const uuid = '7e21e'
-export const ref = '6D13'
 export default function ConversionHeuresMinutesOuMinutesEtSecondes (can = false) {
   Exercice.call(this)
   this.nbQuestions = 5
   this.correctionDetailleeDisponible = true
   this.correctionDetaillee = false
   this.sup = 1
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.sup = contraindreValeur(1, 3, this.sup, 1)
     this.listeQuestions = []
     this.listeCorrections = []

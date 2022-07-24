@@ -20,8 +20,6 @@ export const titre = 'Calculer une longueur dans un triangle rectangle en utilis
  * Mars 2021
  * combinaisonListes des questions par Guillaume Valmont le 23/05/2022
  */
-export const uuid = 'f1aba'
-export const ref = '3G30'
 export default function CalculDeLongueur () {
   Exercice.call(this)
   this.titre = titre
@@ -40,7 +38,7 @@ export default function CalculDeLongueur () {
     this.spacingCorr = 2
   }
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.autoCorrection = []
     this.listeQuestions = []
     this.listeCorrections = []

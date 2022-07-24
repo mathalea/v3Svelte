@@ -13,8 +13,6 @@ export const amcType = 'AMCHybride'
  * 6N14
  * Relecture : Novembre 2021 par EE
  */
-export const uuid = 'aad25'
-export const ref = '6N14'
 export default function RepresenterUneFraction () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''
@@ -22,7 +20,7 @@ export default function RepresenterUneFraction () {
   this.nbCols = 2
   this.nbColsCorr = 2
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

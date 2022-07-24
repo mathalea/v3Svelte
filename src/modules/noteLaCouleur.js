@@ -20,7 +20,7 @@ class NoteLaCouleur {
     x = 15, y = 15, orientation = 90, plateau = [], relatif = true, nx = 16, ny = 12, pas = 30
   }) {
     this.plateauNLC = plateau
-    this.currentPos = { x, y }
+    this.currentPos = { x: x, y: y }
     this.currentOrientation = orientation
     this.codeScratch = ''
     this.currentIndex = 0
@@ -231,7 +231,7 @@ class NoteLaCouleur {
 export function noteLaCouleur ({
   x = 15, y = 15, orientation = 90, plateau = [], relatif = true, nx = 16, ny = 12, pas = 30
 } = {}) {
-  return new NoteLaCouleur({ x, y, orientation, relatif, plateau, nx, ny, pas })
+  return new NoteLaCouleur({ x: x, y: y, orientation: orientation, relatif: relatif, plateau: plateau, nx: nx, ny: ny, pas: pas })
 }
 class Plateau2dNLC {
   constructor ({

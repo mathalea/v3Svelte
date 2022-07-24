@@ -16,8 +16,6 @@ export const titre = 'Trouver le terme manquant d\'une somme de nombres relatifs
  *  @author Jean-Claude Lhote à partir de CM000 de Rémi Angot
  * Référence 5R10
  */
-export const uuid = '6a56b'
-export const ref = '5R10'
 export default function TermeInconnuDeSomme () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -34,7 +32,7 @@ export default function TermeInconnuDeSomme () {
   this.amcType = amcType
   this.amcReady = amcReady
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

@@ -13,8 +13,6 @@ export const interactifType = 'mathLive'
  * Référence can4G07
  * Date de publication septembre 2021
 */
-export const uuid = 'fb142'
-export const ref = 'can4G07'
 export default function CalculLongueurThalesMilieu () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -22,7 +20,7 @@ export default function CalculLongueurThalesMilieu () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let a, A, B, C, D, E, objets, nom
     if (choice([true, false])) {
       nom = creerNomDePolygone(5, ['QD'])

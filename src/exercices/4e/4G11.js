@@ -10,8 +10,6 @@ export const titre = 'Trouver l\'image d\'une figure par une translation dans un
  * Réf : 4G11
  * Trouver une figure image dans un pavage par une translation. 6 pavages différents.
  */
-export const uuid = '8d370'
-export const ref = '4G11'
 export default function PavageEtTranslation2d () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -27,7 +25,7 @@ export default function PavageEtTranslation2d () {
   this.sup2 = false // On cache les centres par défaut.
   this.sup3 = 7
   context.isHtml ? (this.spacingCorr = 2.5) : (this.spacingCorr = 1.5)
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.sup = Number(this.sup)
     this.sup3 = Number(this.sup3)
     const videcouples = function (tableau) {

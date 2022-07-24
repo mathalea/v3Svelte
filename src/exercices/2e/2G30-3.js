@@ -7,8 +7,6 @@ export const titre = 'Déterminer une équation cartésienne de droite à partir
  * @author Stéphane Guyon
  * Référence 2G30-3, ex 2G51
 */
-export const uuid = 'fcd44'
-export const ref = '2G30-3'
 export default function equationcartesienne () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -20,7 +18,7 @@ export default function equationcartesienne () {
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

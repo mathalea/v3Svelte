@@ -12,8 +12,6 @@ export const titre = 'Résoudre une équation du second degré avec le discrimin
  * @author Stéphane Guyon
  * Référence 1E11
 */
-export const uuid = '9488e'
-export const ref = '1E11-5'
 export default function Resolutionavecdelta () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -23,7 +21,7 @@ export default function Resolutionavecdelta () {
   this.nbColsCorr = 1
   this.spacingCorr = 3
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     if (this.interactif) {

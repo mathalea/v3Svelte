@@ -9,8 +9,6 @@ export const titre = 'Utiliser les propriétés de la médiatrice'
  * Référence 5G22-1
  * Date de publication 05/08/2021
 */
-export const uuid = '9805d'
-export const ref = '5G22-1'
 export default function ProprietesMediatrice () {
   Exercice.call(this)
   this.nbQuestions = 4
@@ -22,7 +20,7 @@ export default function ProprietesMediatrice () {
   this.nbCols = 1
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     this.listeQuestions = []
     this.listeCorrections = []
     this.autoCorrection = []
@@ -122,7 +120,7 @@ export default function ProprietesMediatrice () {
       const ymin = Math.min(A.y, B.y, C.y) - 2
       const ymax = Math.max(A.y, B.y, C.y) + 2
       // paramètres de la fenêtre Mathalea2d pour l'énoncé normal
-      paramsEnonce = { xmin, ymin, xmax, ymax, pixelsParCm: 20, scale: 1 }
+      paramsEnonce = { xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 20, scale: 1 }
       // paramètres de la fenêtre Mathalea2d pour la correction
       paramsCorrection = paramsEnonce
       // On ajoute au texte de l'énoncé, la figure à main levée et la figure de l'enoncé.

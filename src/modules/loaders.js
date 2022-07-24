@@ -86,14 +86,14 @@ export async function loadGiac () {
  * @return {Promise<iepApp>} L'appli iep
  */
 export async function loadIep (elt, xml) {
-  // try {
-  //   const { default: iepLoadPromise } = await import('instrumenpoche')
-  //   const iepApp = await iepLoadPromise(elt, xml, { zoom: true, autostart: false })
-  //   return iepApp
-  // } catch (error) {
-  //   console.error(error)
-  //   throw UserFriendlyError('Le chargement d’instrumenpoche a échoué')
-  // }
+  try {
+    const { default: iepLoadPromise } = await import('instrumenpoche')
+    const iepApp = await iepLoadPromise(elt, xml, { zoom: true, autostart: false })
+    return iepApp
+  } catch (error) {
+    console.error(error)
+    throw UserFriendlyError('Le chargement d’instrumenpoche a échoué')
+  }
 }
 
 /**
@@ -142,7 +142,6 @@ export async function loadMathLive () {
     await import('mathlive')
     for (const mf of champs) {
       mf.setOptions(clavierCollege)
-      mf.setOptions({ fontsDirectory: './fonts' })
 
       // Evite les problèmes de positionnement du clavier mathématique dans les iframes
       if (context.vue === 'exMoodle') {

@@ -19,8 +19,6 @@ export const titre = 'Signe d\'un produit ou d\'un quotient de nombres relatifs'
 
  * @author Sébastien Lozano
  */
-export const uuid = '79d63'
-export const ref = '4C10-0'
 export default function SigneProduitQuotientRelatifs () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Donner le signe des expressions numériques.'
@@ -31,7 +29,7 @@ export default function SigneProduitQuotientRelatifs () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.autoCorrection = []
     this.sup = Number(this.sup) // attention le formulaire renvoie un string, on a besoin d'un number pour le switch !
     if (this.exo === this.beta + '4C10-1') {

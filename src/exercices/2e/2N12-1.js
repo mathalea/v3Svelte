@@ -7,8 +7,6 @@ export const dateDeModifImportante = '27/10/2021'
  *
  * @author Jean-Claude Lhote
  */
-export const uuid = '668e2'
-export const ref = '2N12-1'
 export default function EncadrerFractionEntre2Entiers2nde () {
   EncadrerFractionEntre2Entiers.call(this)
   this.lycee = true

@@ -10,8 +10,6 @@ export const titre = 'Calcul du discriminant d\'une équation du second degré'
  * @author Rémi Angot
  * Référence 1E10
 */
-export const uuid = 'fe053'
-export const ref = '1E10'
 export default function CalculDiscriminant () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -22,7 +20,7 @@ export default function CalculDiscriminant () {
   if (context.isHtml) {
     this.spacingCorr = 2
   }
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const listeTypesEquations = combinaisonListes(['0solution', '1solution', '2solutions'], this.nbQuestions)
@@ -98,12 +96,11 @@ export default function CalculDiscriminant () {
       }
       if (context.isHtml) {
         const f = x => a * x ** 2 + b * x + c
-        const graphique = courbe(f)
-        graphique.color = 'blue'
         const s = segment(point(-10, 0), point(10, 0))
         s.epaisseur = 3
         s.color = 'red'
         const r = repere({ afficheLabels: false, xLabelListe: [], yLabelListe: [] })
+        const graphique = courbe(f, { repere: r, color: 'blue' })
         let correctionComplementaire = `Notons $f : x \\mapsto ${rienSi1(a)}x^2${ecritureAlgebriqueSauf1(b)}x${ecritureAlgebrique(c)}$.`
         correctionComplementaire += `<br>On observe que la courbe représentative de $f$ ${aNbPointsIntersection} avec l'axe des abscisses.`
         correctionComplementaire += '<br>'

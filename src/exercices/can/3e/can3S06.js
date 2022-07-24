@@ -10,15 +10,13 @@ export const interactifType = 'mathLive'
  * Référence
  * Date de publication
 */
-export const uuid = '984fd'
-export const ref = 'can3S06'
 export default function Mediane () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const a = randint(10, 15)
     const n = randint(1, 4)
     const c = a * 2 * n + 1

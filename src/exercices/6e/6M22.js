@@ -5,8 +5,6 @@ export { interactifReady, interactifType, amcReady, amcType } from './_Exercice_
 
 /** */
 // Référence 6M22
-export const uuid = 'c5ebe'
-export const ref = '6M22'
 export default function Reglages6M22 () {
   ExercicePerimetresEtAires.call(this, 4)
   this.titre = titre

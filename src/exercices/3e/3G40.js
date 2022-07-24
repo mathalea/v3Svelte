@@ -6,8 +6,6 @@ import { point3d, droite3d, vecteur3d, arete3d, sphere3d, rotation3d, rotationV3
 
 export const titre = 'Repérage sur la sphère'
 
-export const uuid = 'a3151'
-export const ref = '3G40'
 export default function ReperageSurLaSphere () {
   'use strict'
   Exercice.call(this)
@@ -24,7 +22,7 @@ export default function ReperageSurLaSphere () {
   //  this.sup = false; // A décommenter : valeur par défaut d'un premier paramètre
   //  this.sup2 = false; // A décommenter : valeur par défaut d'un deuxième paramètre
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.sup = parseInt(this.sup)
     this.listeQuestions = [] // tableau contenant la liste des questions
     this.listeCorrections = []

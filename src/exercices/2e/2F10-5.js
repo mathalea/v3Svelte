@@ -10,8 +10,6 @@ export const titre = 'Déterminer le signe d\'une fonction affine'
 * @author Stéphane Guyon
 * 2F10-3
 */
-export const uuid = 'edf75'
-export const ref = '2F10-5'
 export default function signefonctionaffine () {
   Exercice.call(this)
   this.titre = titre
@@ -26,7 +24,7 @@ export default function signefonctionaffine () {
   this.sup2 = false
   this.listePackages = ['tkz-tab']
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.sup = parseInt(this.sup)
     this.listeQuestions = []
     this.listeCorrections = []

@@ -12,14 +12,12 @@ export const amcType = 'AMCNum'
  * Référence can2C01
  * Date de publication
 */
-export const uuid = 'a2f6f'
-export const ref = 'can2C01'
 export default function NombreDeNombresEntiersEntreDeuxValeurs2 () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let a, b
     switch (choice(['a', 'b', 'c'])) {
       case 'a':

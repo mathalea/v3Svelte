@@ -8,8 +8,6 @@ export const titre = 'Utiliser la notation de droites, segments et demi-droites'
  * @author Rémi Angot
  * Référence 6G10
  */
-export const uuid = '33651'
-export const ref = '6G10'
 export default function NotationSegmentDroiteDemiDroite () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -18,7 +16,7 @@ export default function NotationSegmentDroiteDemiDroite () {
   this.nbCols = 3
   this.nbColsCorr = 2
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

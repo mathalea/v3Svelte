@@ -27,8 +27,6 @@ export const titre = 'Substitution'
 * @author Rémi Angot
 * 5L14-2
 */
-export const uuid = 'b663c'
-export const ref = '5L14-2'
 export default function ExerciceSubstituer (difficulte = 1) {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = difficulte
@@ -40,7 +38,7 @@ export default function ExerciceSubstituer (difficulte = 1) {
   this.spacing = 1
   this.consigneModifiable = false
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.autoCorrection = []
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

@@ -11,15 +11,13 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can5N01
  */
-export const uuid = '056a8'
-export const ref = 'can5N01'
 export default function SommeDecimale5e () {
   Exercice.call(this)
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur25 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const a = randint(1, 9)
     const b = randint(1, 9, a)
     const c = randint(1, 9, [a, b])

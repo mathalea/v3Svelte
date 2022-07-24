@@ -15,8 +15,6 @@ export const dateDeModifImportante = '17/03/2022'
  * 2021-02-06
  * Ajout de l'interactivité par Guillaume Valmont le 17/03/2022
 */
-export const uuid = '73f4d'
-export const ref = '5N11-4'
 export default function ValeurApprocheeDePourcentages () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -28,7 +26,7 @@ export default function ValeurApprocheeDePourcentages () {
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

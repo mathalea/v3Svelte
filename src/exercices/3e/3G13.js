@@ -14,8 +14,6 @@ export const dateDePublication = '28/11/2021' // La date de publication initiale
  * @author Frédéric PIOU
  * Référence
 */
-export const uuid = '170ea'
-export const ref = '3G13'
 export default function calculsHomothetie () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''
@@ -59,7 +57,7 @@ export default function calculsHomothetie () {
     '1 : k est décimal (0.1 < k < 4) \n2 : k est une fraction k = a/b avec (a,b) in [1;9]\n3 : k est une fraction et les mesures sont des entiers'
   ]
   this.besoinFormulaire4CaseACocher = ['Figure dans l`énoncé (1-6,9-11)', false]
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let typeQuestionsDisponibles = []

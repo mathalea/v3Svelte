@@ -16,8 +16,6 @@ export const dateDePublication = '08/12/2021'
  * Publié le 08/12/2021
  * Référence 6C30-8
  */
-export const uuid = '88913'
-export const ref = '6C30-8'
 export default function DiviserPar101001000 () {
   'use strict'
   Exercice.call(this)
@@ -35,7 +33,7 @@ export default function DiviserPar101001000 () {
   this.sup3 = 4
 
   // c'est ici que commence le code de l'exercice cette fonction crée une copie de l'exercice
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.sup3 = parseInt(this.sup3)
     // la variable numeroExercice peut être récupérée pour permettre de différentier deux copies d'un même exo
     // Par exemple, pour être certain de ne pas avoir les mêmes noms de points en appelant 2 fois cet exo dans la même page

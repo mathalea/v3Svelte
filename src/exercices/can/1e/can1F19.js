@@ -13,8 +13,6 @@ export const dateDePublication = '24/06/2022' // La date de publication initiale
      * @author Gilles Mora
      * Référence
     */
-export const uuid = 'f1abd'
-export const ref = 'can1F19'
 export default function CalculFonctionDeriveeQuotient () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -24,7 +22,7 @@ export default function CalculFonctionDeriveeQuotient () {
 
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let m; let p; let a
     switch (choice([1, 2, 3, 4, 5, 6, 7])) {
       case 1:// //mx+p+a/x

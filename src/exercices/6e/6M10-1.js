@@ -10,8 +10,6 @@ export const titre = 'Problèmes d\'aires de rectangles'
 export const interactifReady = true
 export const interactifType = 'mathLive'
 
-export const uuid = 'dd2bd'
-export const ref = '6M10-1'
 export default function ProblemesAiresRectangles () {
   Exercice.call(this)
   this.titre = titre
@@ -313,7 +311,7 @@ export default function ProblemesAiresRectangles () {
     return [texte, texteCorr, reponse]
   }
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // tableau contenant la liste des questions
     this.listeCorrections = []
     this.autoCorrection = []

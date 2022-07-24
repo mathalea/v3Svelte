@@ -12,15 +12,13 @@ export const amcType = 'AMCNum'
  * Référence can6C23
  * Date de publication
 */
-export const uuid = 'd58c3'
-export const ref = 'can6C23'
 export default function CalculAvec99 () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let a
     switch (choice(['a', 'b', 'c', 'd', 'e'])) { //
       case 'a':

@@ -10,15 +10,13 @@ export const amcType = 'AMCNum'
  * @author Gilles Mora
  * Réference : can4L06
  */
-export const uuid = '14487'
-export const ref = 'can4L06'
 export default function CalculSubstitution () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.date = 1635092507483
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.formatChampTexte = 'largeur15 inline'
     let a, b, d
     switch (randint(1, 4)) {

@@ -11,15 +11,13 @@ export const amcType = 'AMCNum'
 * Référence
 * Date de publication
 */
-export const uuid = 'e3a68'
-export const ref = 'techno1P5'
 export default function Effectif () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur25 inline'
   this.optionsChampTexte = { texteApres: ' €' }
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let a, b, c
     switch (choice(['association', 'lycée', 'election'])) {
       case 'association':

@@ -14,8 +14,6 @@ export const interactifType = 'mathLive'
  * Référence 6C31-2
  * 2020-12-07
  */
-export const uuid = 'ea98f'
-export const ref = '6C31-2'
 export default function ValeurApprocheeDivisionDecimale () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Compléter les phrases suivantes.'
@@ -23,7 +21,7 @@ export default function ValeurApprocheeDivisionDecimale () {
   this.nbCols = 1
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

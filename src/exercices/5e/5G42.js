@@ -8,8 +8,6 @@ export const titre = 'Nature de parallélogrammes'
  * @author
  * Référence 5G42
 */
-export const uuid = '6a2f6'
-export const ref = '5G42'
 export default function demonstrationsParallelogrammes () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -19,7 +17,7 @@ export default function demonstrationsParallelogrammes () {
   this.nbColsCorr = 1 // Uniquement pour la sortie LaTeX
   this.video = '' // Id YouTube ou url
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

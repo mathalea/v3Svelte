@@ -14,8 +14,6 @@ export const interactifType = 'mathLive'
  * @author Rémi Angot
  * Référence 6C10-4
  */
-export const uuid = '11b51'
-export const ref = '6C10-4'
 export default function ExerciceTablesAdditions (max = 20) {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -24,7 +22,7 @@ export default function ExerciceTablesAdditions (max = 20) {
   this.spacing = 2
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

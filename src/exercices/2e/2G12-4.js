@@ -7,8 +7,6 @@ export const titre = 'Déterminer la nature d\'un polygone'
  * 2G12
  * @author Stéphane Guyon
  */
-export const uuid = '9e15d'
-export const ref = '2G12-4'
 export default function NaturePolygone () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -16,7 +14,7 @@ export default function NaturePolygone () {
   this.nbCols = 2
   this.nbColsCorr = 2
   // this.sup = 1 ; //
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const typesDeQuestionsDisponibles = [1]; let typesDeQuestions
@@ -37,7 +35,7 @@ export default function NaturePolygone () {
           yA = randint(0, 5) * choice([-1, 1])
           ux = randint(1, 5) * choice([-1, 1])
           uy = randint(1, 5) * choice([-1, 1])
-          while (ux === uy) {
+          while (ux === uy || ux === -uy) { // ajout d'une condition pour éviter des points alignés (Jean-claude Lhote)
             uy = randint(1, 5) * choice([-1, 1])
           }// empêcher ux=uy pour éviter B=C
           xB = xA + ux

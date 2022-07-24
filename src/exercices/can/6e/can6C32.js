@@ -1,5 +1,5 @@
 import { mathalea2d, texteParPosition } from '../../../modules/2d.js'
-import Pyramide from '../../../modules/pyramide.js'
+import { Pyramide } from '../../../modules/pyramide.ts'
 import Exercice from '../../Exercice.js'
 export const titre = 'Pyramide additive'
 export const interactifReady = true
@@ -12,15 +12,13 @@ export const dateDePublication = '09/05/2022'
  *
  *
  */
-export const uuid = 'c3c0e'
-export const ref = 'can6C32'
 export default function Pyramide3Etages () {
   Exercice.call(this)
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
   this.typeExercice = 'simple'
   this.tailleDiaporama = 2
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const pyr = new Pyramide({ operation: '+', nombreEtages: 3, rangeData: [3, 10], exclusions: [0] })
     pyr.isVisible = [[false], [false, false], [true, true, true]]
     this.question = `Chaque case contient la somme des deux cases sur lesquelles elle repose. Quel est le nombre qui correspond à * ?<br>

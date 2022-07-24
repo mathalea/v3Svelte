@@ -13,15 +13,13 @@ export const dateDePublication = '30/09/2021'
  * Référence can2G05
  * Date de publication sptembre 2021
 */
-export const uuid = '3896c'
-export const ref = 'can2G06'
 export default function CoeffDirecteurDroite () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
-    let xA, yA, xB, yB, n, d, a, b, tA, tB, repere
+  this.nouvelleVersion = function () {
+    let xA, yA, xB, yB, n, d, a, b, tA, tB, rep
     switch (choice([1, 2, 3, 4])) { //
       case 1:// coefficient directeur droite
         xA = randint(0, 7)
@@ -56,10 +54,10 @@ export default function CoeffDirecteurDroite () {
         tB = tracePoint(point(xB, yB))
         tA.color = 'red'
         tB.color = 'red'
-        repere = repere({ xMin: -5, yMin: -5, xMax: 5, yMax: 5 })
+        rep = repere({ xMin: -5, yMin: -5, xMax: 5, yMax: 5 })
         this.formatInteractif = 'calcul'
         this.question = 'Donner le coefficient directeur de la droite bleue.<br>'
-        this.question += `${mathalea2d({ xmin: -5, ymin: -5, xmax: 5, ymax: 5, pixelsParCm: 18, scale: 0.7, style: 'margin: auto' }, repere, courbe(x => a * x + b, { repere, color: 'blue' }))}`
+        this.question += `${mathalea2d({ xmin: -5, ymin: -5, xmax: 5, ymax: 5, pixelsParCm: 18, scale: 0.7, style: 'margin: auto' }, rep, courbe(x => a * x + b, { repere: rep, color: 'blue' }))}`
         this.correction = `<br>Le coefficient directeur est $${a}$`
         this.reponse = a
         break

@@ -12,8 +12,6 @@ export const amcType = 'AMCNum'
   * Créé pendant l'été 2021
  * Référence can3C04
 */
-export const uuid = 'cff9c'
-export const ref = 'can3C04'
 export default function SommeEntierEtFractionIrred () {
   Exercice.call(this)
   this.typeExercice = 'simple'
@@ -21,7 +19,7 @@ export default function SommeEntierEtFractionIrred () {
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
   this.formatInteractif = 'fraction'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const maFraction = choice(obtenirListeFractionsIrreductibles())
     const a = randint(1, 4)
     const b = maFraction[0]

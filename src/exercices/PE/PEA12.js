@@ -14,8 +14,6 @@ export const dateDePublication = '31/10/2021'
 *
 * @author Jean-Claude Lhote pour les opérations posées et Rémi Angot pour la correction détaillée
 */
-export const uuid = 'fa54c'
-export const ref = 'PEA12'
 export default function AdditionSoustractionBaseN () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Poser et effectuer les calculs suivants :'
@@ -29,7 +27,7 @@ export default function AdditionSoustractionBaseN () {
   this.sup = 3
   this.sup2 = 3
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let listeOperations = []
@@ -66,7 +64,7 @@ export default function AdditionSoustractionBaseN () {
         mb = base10VersBaseN(m, base)
         nb = base10VersBaseN(n, base)
         texte = `$(${mb})_{${base}} + (${nb})_{${base}}$`
-        texteCorr = `En base ${base} :<br>` + Operation({ operande1: m, operande2: n, type: 'addition', base })
+        texteCorr = `En base ${base} :<br>` + Operation({ operande1: m, operande2: n, type: 'addition', base: base })
         const retenue = []
         for (let rang = 0; rang < Math.max(mb.length, nb.length); rang++) {
           const somme = parseInt(mb[mb.length - 1 - rang] || 0, base) + parseInt(nb[nb.length - 1 - rang] || 0, base) + parseInt(retenue[rang - 1] || 0, base)
@@ -91,7 +89,7 @@ export default function AdditionSoustractionBaseN () {
         mb = base10VersBaseN(m, base)
         nb = base10VersBaseN(n, base)
         texte = `$(${mb})_{${base}} - (${nb})_{${base}}$`
-        texteCorr = `En base ${base} :<br>` + Operation({ operande1: m, operande2: n, type: 'soustraction', base })
+        texteCorr = `En base ${base} :<br>` + Operation({ operande1: m, operande2: n, type: 'soustraction', base: base })
         const retenue = []
         for (let rang = 0; rang < Math.max(mb.length, nb.length); rang++) {
           let difference = parseInt(mb[mb.length - 1 - rang] || 0, base) - (parseInt(nb[nb.length - 1 - rang] || 0, base) + parseInt(retenue[rang - 1] || 0, base))

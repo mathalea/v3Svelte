@@ -11,15 +11,13 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can5C11
  */
-export const uuid = '42e65'
-export const ref = 'can5C11'
 export default function DifferenceNegative () {
   Exercice.call(this)
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const a = randint(8, 15)
     const b = randint(18, 30)
     this.question = `$${a}-${b}=$`

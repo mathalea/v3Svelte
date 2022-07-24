@@ -14,15 +14,13 @@ export const amcType = 'AMCHybride'
  * Créé le 4/11/2021
  * Référence canc3D01
  */
-export const uuid = '70a01'
-export const ref = 'canc3D01'
 export default function LireHeure () {
   Exercice.call(this)
   this.nbQuestions = 1
   this.tailleDiaporama = 1
   this.typeExercice = 'simple'
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const horloge = []
     const O = point(0, 0)
     const C = cercle(O, 2)

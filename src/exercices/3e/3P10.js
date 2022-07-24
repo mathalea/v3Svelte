@@ -18,8 +18,6 @@ export const interactifType = 'mathLive'
 * @author Rémi Angot
 * 3P10
 */
-export const uuid = '50730'
-export const ref = '3P10'
 export default function EvolutionsEnPourcentage () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -31,7 +29,7 @@ export default function EvolutionsEnPourcentage () {
   this.nbColsCorr = 1
   this.sup = 4 // type de questions
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.sup = parseInt(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

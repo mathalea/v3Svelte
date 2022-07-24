@@ -12,15 +12,13 @@ export const amcType = 'AMCNum'
  * Date de publication septembre 2021
  * Référence can6N01
  */
-export const uuid = '5ef86'
-export const ref = 'canc3N02'
 export default function SuiteSurDroiteGraduee () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
   this.nbQuestions = 1
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const a = randint(1, 6) // choix de la table = écart entre deux graduations
     const c = Math.floor(randint(10, 40) / a) * a // premier nombre.
     const maListe = []

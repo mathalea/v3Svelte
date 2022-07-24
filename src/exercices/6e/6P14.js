@@ -18,8 +18,6 @@ export const dateDePublication = '13/03/2022'
  * @author Eric Elter
  * Référence 6P14
 */
-export const uuid = '38a15'
-export const ref = '6P14'
 export default function agrandirReduireFigure () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -39,7 +37,7 @@ export default function agrandirReduireFigure () {
   this.spacingCorr = 1
   this.spacing = 2
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let listeTypeQuestions = []

@@ -14,8 +14,6 @@ export const interactifType = 'mathLive'
  * @author Rémi Angot
  * Référence CM003
  */
-export const uuid = '861e4'
-export const ref = 'CM003'
 export default function TablesMultiplicationsDivisions (
   tablesParDefaut = '2-3-4-5-6-7-8-9'
 ) {
@@ -27,7 +25,7 @@ export default function TablesMultiplicationsDivisions (
   this.spacing = 2
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     if (!this.sup) {

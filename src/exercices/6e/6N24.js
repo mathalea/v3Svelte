@@ -7,8 +7,6 @@ export { interactifReady, interactifType, amcReady, amcType } from './_Exercice_
  * référence 6N24
  * Relecture : Novembre 2021 par EE
  */
-export const uuid = '8be79'
-export const ref = '6N24'
 export default function Exercice6N24 () {
   ExerciceConversions.call(this)
   this.sup = 3

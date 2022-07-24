@@ -16,7 +16,7 @@ export default function FeuilleDeZooms () {
   this.sup = 1
   this.titre = titre
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.contenu = ''
     let texte = ''
     const noms = choisitLettresDifferentes(5, 'QFN')

@@ -11,14 +11,12 @@ export const interactifType = 'mathLive'
  * Date de publication sptembre 2021
 */
 export const dateDeModifImportante = '06/12/2021'
-export const uuid = '94f54'
-export const ref = 'can3C07'
 export default function MilieuEntre1EtFraction () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const a = randint(1, 5)
     const c = randint(1, 9)
     const b = calcul(a + c + randint(1, 9, 5) / 5)

@@ -22,8 +22,6 @@ function compareNombres (a, b) {
   return a - b
 }
 
-export const uuid = 'db656'
-export const ref = 'can6a-2018'
 export default function SujetCAN20186ieme () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -33,7 +31,7 @@ export default function SujetCAN20186ieme () {
   this.nbCols = 1
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     const nbQ1 = min(round(this.nbQuestions * 7 / 30), 7) // Choisir d'un nb de questions de niveau 1 parmi les 7 possibles.
@@ -366,7 +364,7 @@ export default function SujetCAN20186ieme () {
           )
           reponse = arrondi(j * 1.5, 1)
           texte = 'Quelle est l\'aire du rectangle ?<br>'
-          texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 30, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+          texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 30, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
 
           texteCorr = `Le rectangle est constitué de  $${j}$ carrés d'aire $1$ cm$^2$ et de $${j}$ rectangles d'aire $0,5$ cm$^2$.<br>
             Son aire totale est donc :  $1\\times ${j}+0,5\\times ${j}=${reponse}$ cm$^2$.
@@ -543,7 +541,7 @@ export default function SujetCAN20186ieme () {
           reponse = l2 * k
           texte = 'Le rectangle $\\textcircled{2}$ est un agrandissement du rectangle $\\textcircled{1}$. <br>'
 
-          texte += mathalea2d({ xmin, ymin, xmax, ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
+          texte += mathalea2d({ xmin: xmin, ymin: ymin, xmax: xmax, ymax: ymax, pixelsParCm: 40, mainlevee: false, amplitude: 0.5, scale: 1, style: 'margin: auto' }, objets)
           texte += '<br>Quelle est la longueur du rectangle $\\textcircled{2}$ ?'
           texteCorr = `La longueur du rectangle $\\textcircled{1}$ est $${k}$ fois plus grande que sa largeur. On en déduit que la longueur du rectangle $\\textcircled{2}$ est aussi $${k}$ fois plus grande que sa largeur.<br>
           Elle est donc égale à $${l2}\\times ${k}=${k * l2}$ cm.

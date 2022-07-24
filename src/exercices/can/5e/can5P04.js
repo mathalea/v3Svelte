@@ -11,15 +11,13 @@ export const amcType = 'AMCNum'
  * Référence
  * Date de publication
 */
-export const uuid = 'baef1'
-export const ref = 'can5P04'
 export default function PoucentageP1 () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let b, caractere
 
     switch (choice(['a', 'b', 'c', 'd', 'e', 'f'])) {

@@ -12,8 +12,6 @@ export const titre = 'Calculer une expression numérique en détaillant les calc
  * @author Jean-Claude Lhote
  * Référence 5C12
  */
-export const uuid = '31be6'
-export const ref = '5C12'
 export default function CalculerUneExpressionNumerique () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''
@@ -24,7 +22,7 @@ export default function CalculerUneExpressionNumerique () {
   this.sup2 = false // si false alors utilisation de nombres entiers (calcul mental), si true alors utilisation de nombres à un chiffre après la virgule.
   this.sup3 = true
   this.sup4 = false
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.autoCorrection = []
     let typesDeQuestionsDisponibles = []
     let reponse

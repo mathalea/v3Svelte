@@ -14,8 +14,6 @@ export const amcType = 'AMCHybride'
  2G35-7, ex 2G50-2
 
 */
-export const uuid = 'fe2cb'
-export const ref = '2G35-7'
 export default function lecturegraphiquedeaetb (numeroExercice) {
   Exercice.call(this)
 
@@ -30,7 +28,7 @@ export default function lecturegraphiquedeaetb (numeroExercice) {
   this.spacingCorr = 3
   this.sup = 1
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.sup = parseInt(this.sup)
     this.listeQuestions = []
     this.listeCorrections = []
@@ -65,15 +63,15 @@ export default function lecturegraphiquedeaetb (numeroExercice) {
           texteCorr += `<br>La droite est l'ensemble des points ayant comme ordonnée : $${b}$ `
           texteCorr += `<br>L'équation réduite de cette droite est donc : $y=${b}$`
         } else {
-          texteCorr = "On sait que l'équation réduite d'une droite non verticale est de la forme : $y= ax+b$ avec $a$ et $b$ deux réels non tous deux nuls.<br>"
-          texteCorr += "Le premier coefficient à lire graphiquement est $b$, l'ordonnée à l'origine de la droite.<br>"
-          texteCorr += "C'est l'ordonnée du point d'intersection de la droite avec l'axe des ordonnées.<br>"
+          texteCorr = 'On sait que l\'équation réduite d\'une droite non verticale est de la forme : $y= ax+b$ avec $a$ et $b$ deux réels non tous deux nuls.<br>'
+          texteCorr += 'Le premier coefficient à lire graphiquement est $b$, l\'ordonnée à l\'origine de la droite.<br>'
+          texteCorr += 'C\'est l\'ordonnée du point d\'intersection de la droite avec l\'axe des ordonnées.<br>'
           texteCorr += `On lit ici que le point $(0;${b}) \\in (d)$.<br>`
           texteCorr += `On peut alors conclure que l'ordonnée à l'origine est : $b=${b}$. <br>`
           texteCorr += 'On peut lire ensuite le coefficient directeur $a$ de la droite $(d)$.<br>'
           texteCorr += 'On sait que $a=\\dfrac{\\text{Dénivelé vertical}}{\\text{Déplacement horizontal}}$'
           texteCorr += `<br>En lisant le déplacement vertical correspondant à un déplacement horizontal d'une unité, on lit : <br>$a=\\dfrac{\\text{Dénivelé vertical}}{1}=${a}$`
-          texteCorr += "<br>On peut en déduire que l'équation réduite de la droite $(d)$ est :"
+          texteCorr += '<br>On peut en déduire que l\'équation réduite de la droite $(d)$ est :'
 
           texteCorr += `$y=${reduireAxPlusB(a, b)}$`
         }
@@ -185,9 +183,9 @@ export default function lecturegraphiquedeaetb (numeroExercice) {
           texteCorr += `<br>La droite est l'ensemble des points ayant comme ordonnée : $${b}$ `
           texteCorr += `<br>L'équation réduite de cette droite est donc : $y=${b}$`
         } else {
-          texteCorr = "On sait que l'équation réduite d'une droite non verticale est de la forme : $y= ax+b$ avec $a$ et $b$ deux réels non tous deux nuls.<br>"
-          texteCorr += "Le premier coefficient à lire graphiquement est $b$, l'ordonnée à l'origine de la droite.<br>"
-          texteCorr += "C'est l'ordonnée du point d'intersection de la droite avec l'axe des ordonnées.<br>"
+          texteCorr = 'On sait que l\'équation réduite d\'une droite non verticale est de la forme : $y= ax+b$ avec $a$ et $b$ deux réels non tous deux nuls.<br>'
+          texteCorr += 'Le premier coefficient à lire graphiquement est $b$, l\'ordonnée à l\'origine de la droite.<br>'
+          texteCorr += 'C\'est l\'ordonnée du point d\'intersection de la droite avec l\'axe des ordonnées.<br>'
           texteCorr += `On lit ici que : $A(0;${b}) \\in (d)$.<br>`
           texteCorr += `On peut alors conclure que l'ordonnée à l'origine est : $b=${b}$. <br>`
           texteCorr += 'On peut lire ensuite le coefficient directeur $a$ de la droite $(d)$.<br>'
@@ -204,7 +202,7 @@ export default function lecturegraphiquedeaetb (numeroExercice) {
           }
           texteCorr += '$'
 
-          texteCorr += "<br>On peut en déduire que l'équation réduite de la droite $(d)$ est : $y= "
+          texteCorr += '<br>On peut en déduire que l\'équation réduite de la droite $(d)$ est : $y= '
           if (a === d) {
             texteCorr += `x${b !== 0 ? ecritureAlgebrique(b) : ''}`
           } else if (a === -d) {

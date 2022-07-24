@@ -10,15 +10,13 @@ export const dateDePublication = '25/10/2021'
  * @author Gilles Mora
  * Référence can2L06
 */
-export const uuid = '26a35'
-export const ref = 'can2L06'
 export default function DevelopperEgalitesRemarquables () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const inconnue = choice(['x', 'y'])
     const a = randint(1, 9)
     const b = randint(2, 5)

@@ -12,15 +12,13 @@ export const amcType = 'AMCNum'
  * Référence can4C06
  * Date de publication
 */
-export const uuid = '0f5e1'
-export const ref = 'can4C06'
 export default function NombreDeNombresEntiersEntreDeuxValeurs () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const a = randint(1, 15)
     const b = randint(18, 35)
     this.question = `Le nombre d'entiers strictement compris entre $${a}$ et $${b}$ est :`

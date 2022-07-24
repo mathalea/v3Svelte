@@ -10,15 +10,13 @@ export const interactifType = 'mathLive'
  * Référence can3C10
  * Date de publication 18/10/2021
 */
-export const uuid = '3850f'
-export const ref = 'can3C10'
 export default function EncadrementAvecPuissancesDe10 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let a
     const choix = choice(['$a$', '$b$'])
     switch (choice(['a', 'b', 'c', 'd', 'e'])) {

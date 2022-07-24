@@ -8,8 +8,6 @@ export { interactifReady, interactifType } from '../3e/3P10-1.js'
  * @author Rémi Angot
  */
 
-export const uuid = '4083a'
-export const ref = 'techno1E2'
 export default class AssocierCoefficient1T extends AssocierCoefficient {
   constructor () {
     super()

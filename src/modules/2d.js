@@ -1473,7 +1473,8 @@ function Mediatrice (
 */
 // JSDOC Validee EE Juin 2022
 export function mediatrice (A, B, nom = '', couleurMediatrice = 'red', color = 'blue', couleurConstruction = 'black', construction = false, detail = false, markmilieu = '×', markrayons = '||', epaisseurMediatrice = 1, opaciteMediatrice = 1, pointillesMediatrice = 0) {
-  return new Mediatrice(A, B, nom, couleurMediatrice, color, couleurConstruction, construction, detail, markmilieu, markrayons, epaisseurMediatrice, opaciteMediatrice, pointillesMediatrice)
+  if (arguments.length < 5) return new Mediatrice(A, B, nom, couleurMediatrice)
+  else return new Mediatrice(A, B, nom, couleurMediatrice, color, couleurConstruction, construction, detail, markmilieu, markrayons, epaisseurMediatrice, opaciteMediatrice, pointillesMediatrice)
 }
 
 /**
@@ -2593,11 +2594,8 @@ function Polygone (...points) {
     if (this.opacite !== 1) {
       tableauOptions.push(`opacity=${this.opacite}`)
     }
-    if (this.opaciteDeRemplissage !== 1) {
-      tableauOptions.push(`fill opacity = ${this.opaciteDeRemplissage}`)
-    }
     if (this.couleurDeRemplissage !== '' && this.couleurDeRemplissage !== 'none') {
-      tableauOptions.push(`preaction={fill,color = ${this.couleurDeRemplissage}}`)
+      tableauOptions.push(`preaction={fill,color = ${this.couleurDeRemplissage}, fill opacity = ${this.opaciteDeRemplissage}}`)
     }
 
     if (this.hachures) {
@@ -3328,11 +3326,8 @@ function Cercle (O, r, color = 'black', couleurDeRemplissage = 'none', couleurDe
     if (this.opacite !== 1) {
       tableauOptions.push(`opacity = ${this.opacite}`)
     }
-    if (this.opaciteDeRemplissage !== 1) {
-      tableauOptions.push(`fill opacity = ${this.opaciteDeRemplissage}`)
-    }
     if (this.couleurDeRemplissage !== '' && this.couleurDeRemplissage !== 'none') {
-      tableauOptions.push(`preaction={fill,color = ${this.couleurDeRemplissage}}`)
+      tableauOptions.push(`preaction={fill,color = ${this.couleurDeRemplissage}, fill opacity = ${this.opaciteDeRemplissage}}`)
     }
 
     if (this.hachures) {
@@ -3427,12 +3422,12 @@ export function cercle (O, r, color = 'black', couleurDeRemplissage = 'none', co
  */
 function Ellipse (O, rx, ry, color = 'black') {
   ObjetMathalea2D.call(this)
-  this.color = colorToLatexOrHTML(color)
+  this.color = color
   this.centre = O
   this.rx = rx
   this.ry = ry
   this.couleurDeRemplissage = ''
-  this.opaciteDeRemplissage = 1.1
+  this.opaciteDeRemplissage = 1
   this.bordures = [O.x - rx, O.y - ry, O.x + rx, O.y + ry]
   this.svg = function (coeff) {
     if (this.epaisseur !== 1) {
@@ -3498,11 +3493,8 @@ function Ellipse (O, rx, ry, color = 'black') {
     if (this.opacite !== 1) {
       tableauOptions.push(`opacity = ${this.opacite}`)
     }
-    if (this.opaciteDeRemplissage !== 1) {
-      tableauOptions.push(`fill opacity = ${this.opaciteDeRemplissage}`)
-    }
     if (this.couleurDeRemplissage !== '' && this.couleurDeRemplissage !== 'none') {
-      tableauOptions.push(`preaction={fill,color = ${this.couleurDeRemplissage}}`)
+      tableauOptions.push(`preaction={fill,color = ${this.couleurDeRemplissage}, fill opacity = ${this.opaciteDeRemplissage}}`)
     }
     if (tableauOptions.length > 0) {
       optionsDraw = '[' + tableauOptions.join(',') + ']'
@@ -3901,8 +3893,7 @@ function Arc (M, Omega, angle, rayon = false, couleurDeRemplissage = 'none', col
       tableauOptions.push(`opacity = ${this.opacite}`)
     }
     if (rayon && (this.couleurDeRemplissage !== 'none' && this.couleurDeRemplissage !== '')) {
-      tableauOptions.push(`preaction={fill,color = ${this.couleurDeRemplissage}}`)
-      tableauOptions.push(`fill opacity = ${this.opaciteDeRemplissage}`)
+      tableauOptions.push(`preaction={fill,color = ${this.couleurDeRemplissage}, fill opacity = ${this.opaciteDeRemplissage}}`)
     }
 
     if (this.hachures) {

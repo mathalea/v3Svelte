@@ -13,8 +13,6 @@ export const dateDePublication = '17/02/2022' // La date de publication initiale
  * @author Gilles Mora
  * Référence
 */
-export const uuid = '7a8a1'
-export const ref = 'can1S06'
 export default function CalculTermeSuiteRec () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -23,7 +21,7 @@ export default function CalculTermeSuiteRec () {
   this.tailleDiaporama = 2
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let a, u
     const nomSuite = ['u', 'v', 'w']
     const s = choice(nomSuite)

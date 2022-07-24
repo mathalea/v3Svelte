@@ -10,8 +10,6 @@ export const titre = 'Produire une formule à partir d\'un tableau'
  * @author Sébastien Lozano
  */
 
-export const uuid = '6b672'
-export const ref = '5L10-4'
 export default function TableauxEtFonction () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -34,7 +32,7 @@ export default function TableauxEtFonction () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     if (this.debug) {
       typesDeQuestionsDisponibles = [0]
     } else {
@@ -137,9 +135,9 @@ export default function TableauxEtFonction () {
       // pour les situations, autant de situations que de cas dans le switch !
       const situations = [
         { // case 0 -->
-          unites,
-          coteConnu,
-          coteInconnu,
+          unites: unites,
+          coteConnu: coteConnu,
+          coteInconnu: coteInconnu,
           tableau: tableauColonneLigne([`\\text{Longueur $${coteInconnu}$ du côté (en ${unites[0]})}`, `\\phantom{000}${L1}\\phantom{000}`, `\\phantom{000}${L2}\\phantom{000}`, `\\phantom{000}${L3}\\phantom{000}`, `\\phantom{000}${L4}\\phantom{000}`], [`\\text{Périmètre du rectangle (en $${unites[1]}$)}`],
             ['', '', '', '']
           ),

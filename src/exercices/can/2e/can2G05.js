@@ -10,14 +10,12 @@ export const interactifType = 'mathLive'
  * Référence can2G05
  * Date de publication sptembre 2021
 */
-export const uuid = 'ee4e8'
-export const ref = 'can2G05'
 export default function DistanceRepere () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let a, b, c, d
     const nom = creerNomDePolygone(2, 'PQD')
     switch (choice(['a', 'a', 'b'])) {

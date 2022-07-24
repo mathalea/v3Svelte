@@ -10,8 +10,6 @@ export const titre = 'Trouver l\'image d\'une figure par une rotation dans un pa
  * Trouver l'image par sune rotation d'une figure dans un pavage
  * Ref 3G12
  */
-export const uuid = 'd94a4'
-export const ref = '3G12'
 export default function PavageEtRotation2D () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -27,7 +25,7 @@ export default function PavageEtRotation2D () {
   this.sup2 = false // On cache les barycentres par défaut.
   this.sup3 = 7
   context.isHtml ? (this.spacingCorr = 2.5) : (this.spacingCorr = 1.5)
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.sup = Number(this.sup)
     this.sup3 = Number(this.sup3)
     const videcouples = function (tableau) {

@@ -24,8 +24,6 @@ export const amcType = 'AMCNum'
  * @author Sébastien Lozano
  * 4C33-1
  */
-export const uuid = '9a7b4'
-export const ref = '4C33-1'
 export default function PuissancesDunRelatif1 () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -43,7 +41,7 @@ export default function PuissancesDunRelatif1 () {
 
   this.listePackages = 'bclogo'
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     this.sup = Number(this.sup)
     let typesDeQuestions
     this.boutonAide = modalPdf(

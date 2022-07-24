@@ -12,8 +12,6 @@ export const amcType = 'AMCHybride'
  * @author Gilles Mora
  */
 export const dateDePublication = '22/06/2022'
-export const uuid = '5b5e5'
-export const ref = 'can2G16'
 export default function VecteursCol () {
   Exercice.call(this)
   this.typeExercice = 'simple'
@@ -22,7 +20,7 @@ export default function VecteursCol () {
   this.formatInteractif = 'fractionEgale'
   this.consigne = ''
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const a = randint(3, 10) // abscisse de C
     const b = randint(1, a - 1)// abscisse de B l'abscisse de A est 0
     const noms = choisitLettresDifferentes(3, 'O', true)

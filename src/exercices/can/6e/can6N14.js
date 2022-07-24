@@ -13,15 +13,13 @@ export const dateDePublication = '05/03/2022' // La date de publication initiale
  * @author Gilles Mora
  * Référence
 */
-export const uuid = 'ade4c'
-export const ref = 'can6N14'
 export default function DeterminerLeNombre () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.spacing = 2
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = []
     this.listeCorrections = []
 

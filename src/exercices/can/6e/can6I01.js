@@ -13,8 +13,6 @@ export const titre = 'Noter la couleur (scratch)'
  * Publié le 11/04/2021
  * @author Jean-Claude Lhote
  */
-export const uuid = '1b651'
-export const ref = 'can6I01'
 export default function CanNoteLaCouleur6 () {
   'use strict'
   Exercice.call(this)
@@ -35,7 +33,7 @@ export default function CanNoteLaCouleur6 () {
   this.correctionDetailleeDisponible = true
   this.correctionDetaillee = true
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     const damier = [
       ['Vert', 'Orange', 'Rose', 'Noir', 'Orange', 'Blanc'],
       ['Noir', 'Rouge', 'Rose', 'Vert', 'Orange', 'Rose'],

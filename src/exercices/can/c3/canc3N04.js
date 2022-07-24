@@ -11,8 +11,6 @@ export const amcType = 'AMCHybride'
  * Publié le 11 / 09 / 2021
  * Référence canc3N03
  */
-export const uuid = '3c0b2'
-export const ref = 'canc3N04'
 export default function ArrondiUnite () {
   Exercice.call(this)
   this.typeExercice = 'simple'
@@ -21,7 +19,7 @@ export default function ArrondiUnite () {
   this.formatChampTexte = 'largeur15 inline'
   this.consigne = ''
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const a = randint(1, 20)
     const b = randint(0, 9, 5)
     const c = randint(0, 9, b)

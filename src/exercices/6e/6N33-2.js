@@ -14,8 +14,6 @@ export const amcReady = true
  * @author Jean-Claude Lhote
  * Référence 6N33-2
  */
-export const uuid = 'bcb05'
-export const ref = '6N33-2'
 export default function CalculerUnPourcentage () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1
@@ -25,7 +23,7 @@ export default function CalculerUnPourcentage () {
   this.nbCols = 1
   this.nbColsCorr = 1
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const typesDeQuestionsDisponibles = [1, 2, 3]
     const listeChoix = combinaisonListes(typesDeQuestionsDisponibles, this.nbQuestions)
     this.listeQuestions = [] // Liste de questions

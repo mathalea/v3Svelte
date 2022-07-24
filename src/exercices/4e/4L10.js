@@ -23,8 +23,6 @@ export const interactifType = 'mathLive'
  * @author Rémi Angot
  * 4L10 et 3L11
  */
-export const uuid = '4d15e'
-export const ref = '4L10'
 export default function ExerciceDevelopper (difficulte = 1) {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = difficulte
@@ -37,7 +35,7 @@ export default function ExerciceDevelopper (difficulte = 1) {
   this.nbColsCorr = 1
   this.sup2 = true
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

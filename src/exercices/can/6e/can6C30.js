@@ -13,15 +13,13 @@ export const dateDePublication = '04/03/2022'
  *
  *
  */
-export const uuid = 'e5cd7'
-export const ref = 'can6C30'
 export default function MultiplierDeuxDecimaux () {
   Exercice.call(this)
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
   this.typeExercice = 'simple'
   this.tailleDiaporama = 2
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let a, b, c, d
     switch (choice([1, 2, 3, 4])) {
       case 1:// un entier par un décimal avec une chiffre après la virgule

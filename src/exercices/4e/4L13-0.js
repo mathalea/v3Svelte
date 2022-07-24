@@ -9,8 +9,6 @@ export const titre = 'Mettre en équation un problème sans objectif de résolut
  * * 4L13-0
  * @author Sébastien Lozano
  */
-export const uuid = '2cb76'
-export const ref = '4L13-0'
 export default function MettreEnEquationSansResoudre () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -33,7 +31,7 @@ export default function MettreEnEquationSansResoudre () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     if (this.debug) {
       typesDeQuestionsDisponibles = [1]
     } else {
@@ -124,7 +122,7 @@ export default function MettreEnEquationSansResoudre () {
       // on prépare l'objet polygone
       const polygone = {
         nb_cotes: n,
-        unite,
+        unite: unite,
         article: myPolyName(n).article,
         nom: myPolyName(n).name,
         let_cote: inc,

@@ -22,7 +22,7 @@ export default function EquationAvecUneValeurAbsolue () {
   context.isHtml ? (this.spacingCorr = 2) : (this.spacingCorr = 1.5)
   this.listePackages = 'tkz-tab' // Pour la compilation LateX des tableaux de signes
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

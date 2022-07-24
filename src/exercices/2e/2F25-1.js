@@ -10,8 +10,6 @@ export const titre = 'Propriétés graphiques de la parité d\'une fonction.'
 * @author Stéphane Guyon
 * 2F20
 */
-export const uuid = 'e9a7c'
-export const ref = '2F25-1'
 export default function EtudierGraphiqueParite () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -24,7 +22,7 @@ export default function EtudierGraphiqueParite () {
   this.spacingCorr = 1
   this.nbQuestions = 1
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let typesDeQuestionsDisponibles = []

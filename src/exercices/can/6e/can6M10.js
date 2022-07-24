@@ -13,15 +13,13 @@ export const dateDePublication = '04/07/2022'
  *
  * Référence can6M10
  */
-export const uuid = 'c83ea'
-export const ref = 'can6M10'
 export default function VolumePaveSimple () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.sup = 1
   this.tailleDiaporama = 2
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const l = randint(2, 5)
     const L = randint(2, 4)
     const h = randint(2, 6, [l, L])

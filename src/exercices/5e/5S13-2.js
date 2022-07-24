@@ -67,7 +67,7 @@ function listeEntiersDepuisSomme (total, nbElements) {
 }
 
 function graphique (hauteursBarres, etiquettes, { reperageTraitPointille = false, couleurDeRemplissage = 'blue', titreAxeVertical = '', titre = '', hauteurDiagramme = 8, coeff = 2, axeVertical = false, etiquetteValeur = true, labelAxeVert = false } = {}) {
-  const diagramme = diagrammeBarres(hauteursBarres, etiquettes, { reperageTraitPointille, couleurDeRemplissage, titreAxeVertical, titre, hauteurDiagramme, coeff, axeVertical, etiquetteValeur, labelAxeVert })
+  const diagramme = diagrammeBarres(hauteursBarres, etiquettes, { reperageTraitPointille: reperageTraitPointille, couleurDeRemplissage: couleurDeRemplissage, titreAxeVertical: titreAxeVertical, titre: titre, hauteurDiagramme: hauteurDiagramme, coeff: coeff, axeVertical: axeVertical, etiquetteValeur: etiquetteValeur, labelAxeVert: labelAxeVert })
   return mathalea2d(Object.assign({}, fixeBordures([diagramme], { rxmin: -3, rymin: -3, rymax: 1.5 }), { style: 'inline', scale: 0.5 }), diagramme)
 }
 
@@ -166,8 +166,6 @@ class Population {
  * @author Eve & Sylvain CHAMBON
  * Référence 5S13-2
 */
-export const uuid = '8fb5e'
-export const ref = '5S13-2'
 export default function CalculerDesFrequences () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = ''
@@ -363,7 +361,7 @@ export default function CalculerDesFrequences () {
   }
 
   // on met tout ensemble
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

@@ -28,7 +28,7 @@ export default function ConstruisMonTriangle () {
     }
   }
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let triangle
     let defaut = [3, 4, 5]
     const type = contraindreValeur(1, 6, this.sup, 1)

@@ -17,8 +17,6 @@ export const dateDeModifImportante = '18/03/2022'
  * Référence 3L14
  * Rendu interactif par Guillaume Valmont le 18/03/2022
  */
-export const uuid = '6ade3'
-export const ref = '3L14'
 export default function ResoudreUneEquationProduitNul () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -32,7 +30,7 @@ export default function ResoudreUneEquationProduitNul () {
   this.spacing = 1
   this.tailleDiaporama = 3
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let listeTypeDeQuestions = []

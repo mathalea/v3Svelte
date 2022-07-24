@@ -14,8 +14,6 @@ export const amcType = 'AMCOpen'
  * référence : 6N30-2
  * Relecture : Janvier 2022 par EE
  */
-export const uuid = '6f05c'
-export const ref = '6N30-2'
 export default function PlacerPointsSurAxe () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Placer trois points sur un axe gradué.'
@@ -30,7 +28,7 @@ export default function PlacerPointsSurAxe () {
     return (abs0 + (x - abs0) * 3 * pas1)
   }
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     this.sup = parseInt(this.sup)
     // numeroExercice est 0 pour l'exercice 1
     const pointsSolutions = []

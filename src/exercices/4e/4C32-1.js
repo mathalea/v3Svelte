@@ -14,8 +14,6 @@ export const interactifReady = true
  * @author Jean-Claude Lhote
  * 4C32-1
  */
-export const uuid = '18b69'
-export const ref = '4C32-1'
 export default function CalculsAvecPuissancesDeDix () {
   Exercice.call(this)
   this.sup = 1
@@ -29,7 +27,7 @@ export default function CalculsAvecPuissancesDeDix () {
   this.nbColsCorr = 1
   this.nbQuestions = 5
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.sup = parseInt(this.sup)
     this.sup2 = parseInt(this.sup2)
     this.autoCorrection = []

@@ -7,8 +7,6 @@ export const titre = 'Déterminer les coordonnées d\'un vecteur à partir des c
 /**
  * @author Stéphane Guyon
  */
-export const uuid = 'c171c'
-export const ref = '2G24-1'
 export default function calculercoordonneesvecteurs () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -16,7 +14,7 @@ export default function calculercoordonneesvecteurs () {
   this.nbCols = 2
   this.nbColsCorr = 2
   this.sup = 1 //
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 
@@ -54,9 +52,12 @@ export default function calculercoordonneesvecteurs () {
         s.styleExtremites = '->'// Variable qui transforme [AB] en vecteur
         k.styleExtremites = '->'// Variable qui transforme [OI] en vecteur
         j.styleExtremites = '->'// Variable qui transforme [OJ] en vecteur
-        s.epaisseur = 3// Variable qui grossit le tracé du vecteur AB
-        k.epaisseur = 3// Variable qui grossit le tracé du vecteur OI
-        j.epaisseur = 3// Variable qui grossit le tracé du vecteur OJ
+        s.epaisseur = 2// Variable qui grossit le tracé du vecteur AB
+        k.epaisseur = 2// Variable qui grossit le tracé du vecteur OI
+        j.epaisseur = 2// Variable qui grossit le tracé du vecteur OJ
+        k.tailleExtremites = 3
+        j.tailleExtremites = 3
+        s.tailleExtremites = 3
         // vi = vecteur(O, I) // Variable qui définit vecteur OI
         // vj = vecteur(O, J)// Variable qui définit vecteur OJ
         // nomi = vi.representantNomme(O, 'i', 2, 'red') // Variable qui trace le nom du représentant du vecteur OI en origine O

@@ -11,15 +11,13 @@ export const amcType = 'AMCNum'
  * Publié le 22/10/2021
  * Référence can4C09
 */
-export const uuid = 'e3932'
-export const ref = 'can4C09'
 export default function PuissancesDe2345 () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.tailleDiaporama = 2
   this.nbQuestions = 1
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let b, a
     switch (choice([2, 2, 2, 3, 3, 4, 5, 6, 7, 8, 9, 10])) {
       case 2:

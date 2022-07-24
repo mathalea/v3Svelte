@@ -10,8 +10,6 @@ export const dateDePublication = '27/06/2022'
  * Référence can1G04
  *
 */
-export const uuid = '23d06'
-export const ref = 'can1G05'
 export default function ProduitScalaireCoordonnees () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -19,7 +17,7 @@ export default function ProduitScalaireCoordonnees () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const ux = randint(-10, 10)
     const uy = randint(-10, 10, 0)
     const vx = randint(-10, 10, 0)

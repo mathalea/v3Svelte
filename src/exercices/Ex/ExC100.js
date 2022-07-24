@@ -10,8 +10,6 @@ export const dateDePublication = '30/10/2021'
  * @author Eric Schrafstetter
  * Référence ExC100
 */
-export const uuid = '163b0'
-export const ref = 'ExC100'
 export default function EquationDuPremierDegreDansC () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne = 'Résoudre dans $\\mathbb{C}$ les équations ci-dessous. On écrira les solutions sous forme algébrique.'
@@ -22,7 +20,7 @@ export default function EquationDuPremierDegreDansC () {
   this.tailleDiaporama = 3 // Pour les exercices chronométrés. 50 par défaut pour les exercices avec du texte
   this.video = '' // Id YouTube ou url
   this.spacingCorr = 2
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
 

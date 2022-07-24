@@ -18,8 +18,6 @@ const math = create(all)
  * Référence HPC102
 */
 
-export const uuid = '31a0d'
-export const ref = 'HPC102'
 export default function CalculsLoiNormale () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -30,7 +28,7 @@ export default function CalculsLoiNormale () {
   this.sup = 1
   this.spacing = 1
   this.spacingCorr = 1.5
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.sup = Number(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

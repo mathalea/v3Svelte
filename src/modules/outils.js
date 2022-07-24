@@ -9,10 +9,10 @@ import { setReponse } from './gestionInteractif.js'
 import { getVueFromUrl } from './gestionUrl.js'
 import FractionX from './FractionEtendue.js'
 import { elimineDoublons } from './interactif/questionQcm.js'
-// import { Decimal } from "decimal.js"
-import Decimal from 'decimal.js/decimal.mjs'
+import pkg from 'decimal.js'
+const { Decimal } = pkg
 
-const math = { format, evaluate }
+const math = { format: format, evaluate: evaluate }
 const epsilon = 0.000001
 
 /**
@@ -36,8 +36,8 @@ export function interactivite (exercice) {
 export function listeQuestionsToContenu (exercice) {
   if (context.isHtml) {
     exercice.contenu = htmlConsigne(exercice.consigne) + htmlParagraphe(exercice.introduction) + htmlEnumerate(exercice.listeQuestions, exercice.spacing, 'question', `exercice${exercice.numeroExercice}Q`, exercice.tailleDiaporama)
-    if ((exercice.interactif) || getVueFromUrl() === 'eval') {
-      exercice.contenu += `<button class="inline-block px-6 py-2.5 mr-10 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out checkReponses" type="submit" style="margin-bottom: 20px; margin-top: 20px" id="btnValidationEx${exercice.numeroExercice}-${exercice.id}">Vérifier les réponses</button>`
+    if ((exercice.interactif && exercice.interactifReady) || getVueFromUrl() === 'eval') {
+      exercice.contenu += `<button class="ui blue button checkReponses" type="submit" style="margin-bottom: 20px; margin-top: 20px" id="btnValidationEx${exercice.numeroExercice}-${exercice.id}">Vérifier les réponses</button>`
     }
     exercice.contenuCorrection = htmlParagraphe(exercice.consigneCorrection) + htmlEnumerate(exercice.listeCorrections, exercice.spacingCorr, 'correction', `correction${exercice.numeroExercice}Q`, exercice.tailleDiaporama)
   } else {
@@ -122,7 +122,7 @@ export function listeQuestionsToContenuSansNumero (exercice, retourCharriot = tr
   } else {
     if (context.isHtml) {
       exercice.contenu = htmlConsigne(exercice.consigne) + htmlParagraphe(exercice.introduction) + htmlEnumerate(exercice.listeQuestions, exercice.spacing, 'question', `exercice${exercice.numeroExercice}Q`, exercice.tailleDiaporama, 'sansNumero')
-      if ((exercice.interactif) || getVueFromUrl() === 'eval') {
+      if ((exercice.interactif && exercice.interactifReady) || getVueFromUrl() === 'eval') {
         exercice.contenu += `<button class="ui blue button checkReponses" type="submit" style="margin-bottom: 20px; margin-top: 20px" id="btnValidationEx${exercice.numeroExercice}-${exercice.id}">Vérifier les réponses</button>`
       }
       exercice.contenuCorrection = htmlParagraphe(exercice.consigneCorrection) + htmlEnumerate(exercice.listeCorrections, exercice.spacingCorr, 'correction', `correction${exercice.numeroExercice}Q`, exercice.tailleDiaporama, 'sansNumero')
@@ -1318,7 +1318,7 @@ export function unSiPositifMoinsUnSinon (a) {
  */
 export function arrondi (nombre, precision = 2) {
   if (isNaN(nombre)) {
-    window.notify("Le nombre à arrondir n'en est pas un, ça retourne NaN", { nombre, precision })
+    window.notify('Le nombre à arrondir n\'en est pas un, ça retourne NaN', { nombre, precision })
     return NaN
   } else {
     return round(nombre, precision)
@@ -1367,7 +1367,7 @@ export function egalOuApprox (a, precision) {
     return a.eq(a.toDP(precision)) ? '=' : '\\approx'
   } else if (!isNaN(a) && !isNaN(precision)) return egal(a, arrondi(a, precision)) ? '=' : '\\approx'
   else {
-    window.notify("egalOuApprox : l'argument n'est pas un nombre", { a, precision })
+    window.notify('egalOuApprox : l\'argument n\'est pas un nombre', { a, precision })
     return 'Mauvais argument (nombres attendus).'
   }
 }
@@ -2153,7 +2153,7 @@ class Personne {
  * le 14/03/2021
  */
 export function personne ({ prenom = '', genre = '', pronom = '' } = {}) {
-  return new Personne({ prenom, genre, pronom })
+  return new Personne({ prenom: prenom, genre: genre, pronom: pronom })
 }
 
 /**
@@ -2719,7 +2719,7 @@ export const insereEspaceDansNombre = nb => {
   if (!Number.isNaN(nb)) {
     nb = nb.toString().replace('.', ',')
   } else {
-    window.notify("insereEspaceDansNombre : l'argument n'est pas un nombre", nb)
+    window.notify('insereEspaceDansNombre : l\'argument n\'est pas un nombre', nb)
     return nb
   }
   let indiceVirgule = nb.indexOf(',')
@@ -2849,7 +2849,12 @@ function afficherNombre (nb, precision, fonction, force = false) {
   } else if (Number(nb) === 0) return '0'
   let nbChiffresPartieEntiere
   if (nb instanceof Decimal) {
-    nbChiffresPartieEntiere = nb.abs().lt(1) ? 0 : nb.abs().toFixed(0).length
+    if (nb.abs().lt(1)) {
+      nbChiffresPartieEntiere = 0
+      precision = Decimal.max(nb.log().ceil().add(precision), 0).toNumber()
+    } else {
+      nbChiffresPartieEntiere = nb.abs().toFixed(0).length
+    }
     if (nb.isInteger()) precision = 0
     else {
       if (typeof precision !== 'number') { // Si precision n'est pas un nombre, on le remplace par la valeur max acceptable
@@ -2859,7 +2864,12 @@ function afficherNombre (nb, precision, fonction, force = false) {
       }
     }
   } else {
-    nbChiffresPartieEntiere = Math.abs(nb) < 1 ? 0 : Math.abs(nb).toFixed(0).length
+    if (Math.abs(nb) < 1) {
+      nbChiffresPartieEntiere = 0
+      precision = Math.max(0, Math.ceil(Math.log10(nb)) + precision)
+    } else {
+      nbChiffresPartieEntiere = Math.abs(nb).toFixed(0).length
+    }
     if (Number.isInteger(nb)) precision = 0
     else {
       if (typeof precision !== 'number') { // Si precision n'est pas un nombre, on le remplace par la valeur max acceptable
@@ -4441,8 +4451,12 @@ export function texteOuPas (texte) {
 }
 
 /**
- * Crée un tableau avec un nombre de lignes et de colonnes déterminées par la longueur des tableaux des entetes passés en paramètre
- * Les contenus sont en mode maths par défaut, il faut donc penser à remplir les tableaux en utilisant éventuellement la commande \\text{}
+ * Crée un tableau avec un nombre de lignes et de colonnes déterminées
+ * par la longueur des tableaux des entetes passés en paramètre
+ * Les contenus sont en mode maths par défaut, il faut donc penser à remplir les tableaux
+ * en utilisant éventuellement la commande \\text{}
+ *
+ * @example
  * tableauColonneLigne(['coin','A','B'],['1','2'],['A1','B1','A2','B2']) affiche le tableau ci-dessous
  * ------------------
  * | coin | A  | B  |
@@ -4451,7 +4465,42 @@ export function texteOuPas (texte) {
  * ------------------
  * |  2   | A2 | B2 |
  * ------------------
-* @param {array} tabEntetesColonnes contient les entetes des colonnes
+ *
+ * @example
+ * tableauColonneLigne(['coin','A','B','C'],['1','2'],['A1','B1','C1','A2','B2','C2']) affiche le tableau ci-dessous
+ * -----------------------
+ * | coin | A  | B  | C  |
+ * -----------------------
+ * |  1   | A1 | B1 | C1 |
+ * -----------------------
+ * |  2   | A2 | B2 | C2 |
+ * -----------------------
+ *
+ * @example
+ * tableauColonneLigne(['coin','A','B'],['1','2','3'],['A1','B1','A2','B2','A3','B3']) affiche le tableau ci-dessous
+ * ------------------
+ * | coin | A  | B  |
+ * ------------------
+ * |  1   | A1 | B1 |
+ * ------------------
+ * |  2   | A2 | B2 |
+ * ------------------
+ * |  3   | A3 | B3 |
+ * ------------------
+ *
+ * @example
+ * tableauColonneLigne(['coin','A','B','C'],['1','2','3'],['A1','B1','C1','A2','B2','C2','A3','B3','C3']) affiche le tableau ci-dessous
+ * -----------------------
+ * | coin | A  | B  | C  |
+ * -----------------------
+ * |  1   | A1 | B1 | C1 |
+ * -----------------------
+ * |  2   | A2 | B2 | C2 |
+ * -----------------------
+ * |  3   | A3 | B3 | C3 |
+ * -----------------------
+ *
+ * @param {array} tabEntetesColonnes contient les entetes des colonnes
  * @param {array} tabEntetesLignes contient les entetes des lignes
  * @param {array} tabLignes contient les elements de chaque ligne
  * @author Sébastien Lozano
@@ -4705,7 +4754,7 @@ export function Triangles (l1, l2, l3, a1, a2, a3) {
   function getLongueursValeurs () {
     if ((typeof self.l1 === 'undefined') || (typeof self.l2 === 'undefined') || (typeof self.l3 === 'undefined')) {
       // return false;
-      return ["L'une des longueurs de l'objet triangle n'est pas définie"]
+      return ['L\'une des longueurs de l\'objet triangle n\'est pas définie']
     }
     const longueurs = []
     longueurs[0] = self.l1
@@ -4736,7 +4785,7 @@ export function Triangles (l1, l2, l3, a1, a2, a3) {
   function getAnglesValeurs () {
     if ((typeof self.a1 === 'undefined') || (typeof self.a2 === 'undefined') || (typeof self.a3 === 'undefined')) {
       // return false;
-      return ["L'un des angles de l'objet triangle n'est pas définie"]
+      return ['L\'un des angles de l\'objet triangle n\'est pas définie']
     }
     const angles = []
     angles[0] = self.a1
@@ -4772,7 +4821,7 @@ export function Triangles (l1, l2, l3, a1, a2, a3) {
   function getPerimetre () {
     if ((typeof self.l1 === 'undefined') || (typeof self.l2 === 'undefined') || (typeof self.l3 === 'undefined')) {
       // return false;
-      return "L'une des longueurs de l'objet triangle n'est pas définie"
+      return 'L\'une des longueurs de l\'objet triangle n\'est pas définie'
     } else {
       return self.l1 + self.l2 + self.l3
     }
@@ -4953,7 +5002,7 @@ export function Relatif (...relatifs) {
       })
       // Quoi faire sans nombres ?
       if (relatifs.length === 0) {
-        throw new Error("C'est mieux avec quelques nombres !")
+        throw new Error('C\'est mieux avec quelques nombres !')
       }
       relatifs.forEach(function (element) {
         if (element < 0) {
@@ -5010,7 +5059,7 @@ export function Relatif (...relatifs) {
       })
       // Quoi faire sans nombres ?
       if (n.length === 0) {
-        throw new Error("C'est mieux avec quelques nombres !")
+        throw new Error('C\'est mieux avec quelques nombres !')
       }
       n.forEach(function (element) {
         produit = produit * element
@@ -5067,7 +5116,7 @@ export function Relatif (...relatifs) {
       })
       // Quoi faire sans nombres ?
       if (n.length === 0) {
-        throw new Error("C'est mieux avec quelques nombres !")
+        throw new Error('C\'est mieux avec quelques nombres !')
       }
       n.forEach(function (element) {
         if (element < 0) {
@@ -5111,7 +5160,7 @@ export function Relatif (...relatifs) {
       })
       // Quoi faire sans nombres ?
       if (n.length === 0) {
-        throw new Error("C'est mieux avec quelques nombres !")
+        throw new Error('C\'est mieux avec quelques nombres !')
       }
       if (n.length === 2) {
         if (getCardNegatifs(n) % 2 === 0) {
@@ -5153,7 +5202,7 @@ export function Relatif (...relatifs) {
       })
       // Quoi faire sans nombres ?
       if (n.length === 0) {
-        throw new Error("C'est mieux avec quelques nombres !")
+        throw new Error('C\'est mieux avec quelques nombres !')
       }
       if (n.length === 2) {
         if (getCardNegatifs(n) % 2 === 0) {

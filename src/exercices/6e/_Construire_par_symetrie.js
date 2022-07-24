@@ -651,7 +651,7 @@ export default class ConstruireParSymetrie extends Exercice {
       if (context.isAmc) {
         this.autoCorrection[i] =
         {
-          enonce,
+          enonce: enonce,
           propositions: [
             {
               texte: correction,

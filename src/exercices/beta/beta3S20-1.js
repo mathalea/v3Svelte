@@ -14,7 +14,7 @@ function fraction2Tex (fraction) {
 }
 
 function graphique (hauteursBarres, etiquettes, { reperageTraitPointille = false, couleurDeRemplissage = 'blue', titreAxeVertical = '', titre = '', hauteurDiagramme = 5, coeff = 2, axeVertical = false, etiquetteValeur = true, labelAxeVert = false } = {}) {
-  const diagramme = diagrammeBarres(hauteursBarres, etiquettes, { reperageTraitPointille, couleurDeRemplissage, titreAxeVertical, titre, hauteurDiagramme, coeff, axeVertical, etiquetteValeur, labelAxeVert })
+  const diagramme = diagrammeBarres(hauteursBarres, etiquettes, { reperageTraitPointille: reperageTraitPointille, couleurDeRemplissage: couleurDeRemplissage, titreAxeVertical: titreAxeVertical, titre: titre, hauteurDiagramme: hauteurDiagramme, coeff: coeff, axeVertical: axeVertical, etiquetteValeur: etiquetteValeur, labelAxeVert: labelAxeVert })
   return mathalea2d(Object.assign({}, fixeBordures([diagramme], { rxmin: -3, rymin: -2, rymax: 1.5 }), { style: 'inline', scale: 1 }), diagramme)
 }
 // adapté par Loïc : Ajout du paramètre indices pour pouvoir mettre des indices aux symboles des évènements
@@ -52,7 +52,7 @@ function listeExhaustive (univers, ratios, indices = false) {
     }
   }
 
-  return { issues, issuesAbregees }
+  return { issues: issues, issuesAbregees: issuesAbregees }
 }
 
 function simulationExperienceAlaetoire (univers, ratios, nbEssais) {
@@ -74,7 +74,7 @@ function simulationExperienceAlaetoire (univers, ratios, nbEssais) {
   for (let j = 0; j < realisees.length; j++) {
     frequences.push(fraction(effectifs[j], nbEssais))
   }
-  return { effectifs, frequences, realisees }
+  return { effectifs: effectifs, frequences: frequences, realisees: realisees }
 }
 
 function etapesSimplificationFraction (n = 21, d = 45, A = undefined, methode = 0, aligned = false) {
@@ -230,7 +230,7 @@ function diagrammeCalculsFrequences (typeReponseAttendue = 0) {
           ${solution.calculs}
           Donc la fréquence d'apparition de la couleur ${choixIssue} est ${environ} ${solution.reponse}.
           `
-  return { texte, texteCorr }
+  return { texte: texte, texteCorr: texteCorr }
 }
 
 function ratiosCalculsProbabilites () {
@@ -268,7 +268,7 @@ function ratiosCalculsProbabilites () {
           ${solution.calculs}
           Donc la probabilité d'obtenir une bille de couleur ${choixIssue} est égale à ${solution.reponse}.
           `
-  return { texte, texteCorr }
+  return { texte: texte, texteCorr: texteCorr }
 }
 
 function probabilitesCalculsRatios () {
@@ -327,7 +327,7 @@ function probabilitesCalculsRatios () {
           et ${plurielsIssues[plurielsIssues.length - 1]}
           sont dans le ratio $${ratios.join('{:}')}$.
           `
-  return { texte, texteCorr }
+  return { texte: texte, texteCorr: texteCorr }
 }
 
 function ratios2EpreuvesCalculsProbabilites () {
@@ -400,7 +400,7 @@ function ratios2EpreuvesCalculsProbabilites () {
           ${solution.calculs}
           Donc la probabilité de cet événement est ${solution.reponse}.
           `
-  return { texte, texteCorr }
+  return { texte: texte, texteCorr: texteCorr }
 }
 
 function ratioPiece2EpreuvesCalculsProbabilites () {
@@ -469,7 +469,7 @@ function ratioPiece2EpreuvesCalculsProbabilites () {
           ${solution.calculs}
           Donc la probabilité de cet événement est ${solution.reponse}.
           `
-  return { texte, texteCorr }
+  return { texte: texte, texteCorr: texteCorr }
 }
 
 function diagrammeEffectifsCalculsLoiGrandNombre () {
@@ -526,7 +526,7 @@ function diagrammeEffectifsCalculsLoiGrandNombre () {
           <br>
           Il y a de fortes chances pour qu'il y ait $${ratios[choixRef]}$ billes ${choixIssue}s dans l'urne.
           `
-  return { texte, texteCorr }
+  return { texte: texte, texteCorr: texteCorr }
 }
 
 function exerciceSimplificationRatios () {
@@ -559,7 +559,7 @@ function exerciceSimplificationRatios () {
           <br>
           $${kratios._data.join('{:}')} = ${ratios._data.join('{:}')}$
           `
-  return { texte, texteCorr }
+  return { texte: texte, texteCorr: texteCorr }
 }
 
 function exercicesPourcentagesConversion () {
@@ -590,7 +590,7 @@ function exercicesPourcentagesConversion () {
   <br>
   $ {\color{red}b.}~${listeTexte[1]}=${listeTexte[1]}0=${num(liste[1].mul(100))}\% \quad {\color{red}c.}~${listeTexte[2]}=${num(liste[2].mul(100))}\%$
   `
-  return { texte, texteCorr }
+  return { texte: texte, texteCorr: texteCorr }
 }
 /**
  * Calculs de fréquences, probabilités, ratios
@@ -626,7 +626,7 @@ export default function CalculsProbabilites () {
       '10 : Convertir un nombre en pourcentages.'
     ].join('\n')
   ]
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = [] // À placer même si l'exercice n'a pas vocation à être corrigé

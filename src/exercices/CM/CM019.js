@@ -12,8 +12,6 @@ export const amcType = 'AMCOpen'
  * référence CM019
  */
 
-export const uuid = '0e9cc'
-export const ref = 'CM019'
 export default function LeCompteEstBonV3 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne =
@@ -25,7 +23,7 @@ export default function LeCompteEstBonV3 () {
   this.sup2 = 70
   let maxSolution = 70
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.autoCorrection = []
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

@@ -9,8 +9,6 @@ export const titre = 'Fonctions : Calculs d\'images'
  * Déterminer à partir de plusieurs modes de représentation l'image d'un nombre
  * @author Sébastien LOZANO
  */
-export const uuid = '4454b'
-export const ref = '3F12'
 export default function fonctionsCalculsDImages () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -35,7 +33,7 @@ export default function fonctionsCalculsDImages () {
     pourcentage = '100%' // pour l'affichage des svg. On a besoin d'une variable globale
   } else { // sortie LaTeX
   };
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     this.sup = Number(this.sup)
     let typesDeQuestions
     if (context.isHtml) { // les boutons d'aide uniquement pour la version html

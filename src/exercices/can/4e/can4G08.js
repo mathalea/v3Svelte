@@ -14,8 +14,6 @@ export const interactifType = 'mathLive'
  * Référence can4G07
  * Date de publication septembre 2021
 */
-export const uuid = '4926a'
-export const ref = 'can4G08'
 export default function QuestionsAiresEtPerimetres () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -24,7 +22,7 @@ export default function QuestionsAiresEtPerimetres () {
   this.nbQuestions = 1
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let a, b, c, n, d, A, B, C, D, N, maFraction
     const objets = []
     switch (choice([1, 2, 3, 4, 5, 6, 7])) {

@@ -11,8 +11,6 @@ export const interactifType = 'mathLive'
 * @author Jean-Claude Lhote
 * Référence 3S15
 */
-export const uuid = 'f79ca'
-export const ref = '3S15'
 export default function CalculerEtendues () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -26,7 +24,7 @@ export default function CalculerEtendues () {
   this.nbCols = 1
   this.sup = 1
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.sup = parseInt(this.sup)
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées

@@ -11,15 +11,13 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can4C04
  */
-export const uuid = '90459'
-export const ref = 'can4C04'
 export default function RegleDesSignes () {
   Exercice.call(this)
   this.typeExercice = 'simple'
   this.nbQuestions = 1
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let a = randint(-5, 5, [-1, 0, 1])
     const b = randint(-4, 4, [-1, 0, 1, a])
     const c = randint(2, 3)

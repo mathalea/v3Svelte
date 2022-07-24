@@ -64,8 +64,6 @@ function translationPuisRotationAnimees (...args) {
   return new TranslationPuisRotationAnimee(...args)
 }
 
-export const uuid = '099b8'
-export const ref = '6M21'
 export default function compareAireEtPerimetreAvecRectangle () {
   Exercice.call(this)
   this.titre = titre
@@ -77,7 +75,7 @@ export default function compareAireEtPerimetreAvecRectangle () {
   this.sup = 13
   this.sup2 = 3
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // tableau contenant la liste des questions
     this.listeCorrections = []
     this.autoCorrection = []

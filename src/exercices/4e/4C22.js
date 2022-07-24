@@ -23,8 +23,6 @@ export const dateDeModifImportante = '09/04/2022'
  * Ajout d'une option pour ne pas exiger une fraction irréductible le 09/04/2022 par Guillaume Valmont
  * 4C22
  */
-export const uuid = '06764'
-export const ref = '4C22'
 export default function ExerciceMultiplierFractions () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.sup = 1 // Avec ou sans relatifs
@@ -35,7 +33,7 @@ export default function ExerciceMultiplierFractions () {
   this.nbQuestions = 5
   this.nbColsCorr = 1
   this.sup2 = false // méthode
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

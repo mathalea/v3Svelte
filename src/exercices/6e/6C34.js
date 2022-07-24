@@ -16,8 +16,6 @@ export const amcType = 'AMCNum' // Question numérique
 * 6C34
 */
 
-export const uuid = '9a9b2'
-export const ref = '6C34'
 export default function DernierChiffre () {
   Exercice.call(this)
   this.sup = 3
@@ -37,7 +35,7 @@ export default function DernierChiffre () {
   this.sup = 1 // A décommenter : valeur par défaut d'un premier paramètre
 
   // c'est ici que commence le code de l'exercice cette fonction crée une copie de l'exercice
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     if (this.version === 2) {
       this.sup = 2
     }

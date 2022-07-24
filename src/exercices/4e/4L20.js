@@ -19,8 +19,6 @@ export const amcType = 'AMCHybride'
  * @author Rémi Angot
  * 4L20 et 3L13
  */
-export const uuid = 'f1d61'
-export const ref = '4L20'
 export default function ExerciceEquation1 () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -39,7 +37,7 @@ export default function ExerciceEquation1 () {
   this.nbQuestions = 6
   this.listePackages = 'bclogo'
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

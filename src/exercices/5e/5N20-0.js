@@ -9,8 +9,6 @@ export const titre = 'Résoudre un problème en utilisant des fractions'
  * * 5N20-0
  * @author Sébastien Lozano
  */
-export const uuid = '3c195'
-export const ref = '5N20-0'
 export default function ProblemesAdditifsFractions5e () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.debug = false
@@ -28,7 +26,7 @@ export default function ProblemesAdditifsFractions5e () {
 
   let typesDeQuestionsDisponibles
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     if (this.debug) {
       typesDeQuestionsDisponibles = [0]
     } else {
@@ -275,7 +273,7 @@ ${numAlpha(indexSouSegmentQuestion++)} Quelle fraction représente les ${situati
 ${numAlpha(indexSouSegmentQuestion++)} Quelle fraction représente les ${situations[k].nom_enonce} vers ${situations[k].cat2.destination} ?<br>
 ${numAlpha(indexSouSegmentQuestion++)} Sachant que ${situations[k].last_question[0]} ${situations[k].nb_total} ${situations[k].last_question[1]}
 et que les ${situations[k].nom_enonce} vers ${situations[k].cat3.destination} représentent $\\dfrac{${situations[k].cat3.frac[0]}}{${situations[k].cat3.frac[1]}}$ de ce total,
-caluler ${situations[k].last_question[2]} vers ${situations[k].cat3.destination}?
+calculer ${situations[k].last_question[2]} vers ${situations[k].cat3.destination}?
 
 `,
           correction: `

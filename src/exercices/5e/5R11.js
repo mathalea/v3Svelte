@@ -15,8 +15,6 @@ export const amcType = 'AMCHybride'
 * @author Jean-Claude Lhote et Rémi Angot
 * Référence 5R11
 */
-export const uuid = '3c2bc'
-export const ref = '5R11'
 export default function LireAbscisseRelative () {
   'use strict'
   Exercice.call(this) // Héritage de la classe Exercice()
@@ -34,7 +32,7 @@ export default function LireAbscisseRelative () {
     return (abs0 + (x - abs0) * 3 * pas1)
   }
 
-  this.nouvelleVersion = (numeroExercice) => {
+  this.nouvelleVersion = function (numeroExercice) {
     let typesDeQuestions
     this.listeQuestions = []
     this.listeCorrections = []

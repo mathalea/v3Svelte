@@ -10,8 +10,6 @@ export const titre = 'Compléter une représentation en perspective cavalière'
  * référence : 6G41
  * @author Mireille Gain, s'inspirant fortement de Jean-Claude Lhote
  */
-export const uuid = 'c2245'
-export const ref = '5G51'
 export default function RepresenterUnSolide5e () {
   Exercice.call(this) // Héritage de la classe Exercice ()
   this.titre = titre
@@ -21,7 +19,7 @@ export default function RepresenterUnSolide5e () {
   this.sup = 1
   this.sup2 = 1
   this.classe = 5
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let typesDeQuestionsDisponibles
     this.sup = parseInt(this.sup)
     if (this.sup === 3) { typesDeQuestionsDisponibles = [1, 2] } else if (this.sup === 5) { typesDeQuestionsDisponibles = [1, 2, 4] } else if (this.sup === 7) { typesDeQuestionsDisponibles = [1, 2, 4, 6] } else { typesDeQuestionsDisponibles = [parseInt(this.sup)] }

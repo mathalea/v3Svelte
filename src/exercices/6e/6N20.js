@@ -15,8 +15,6 @@ export const amcType = 'AMCHybride'
  * 6N20
  * Relecture : Novembre 2021 par EE
  */
-export const uuid = 'd30cd'
-export const ref = '6N20'
 export default function ExerciceFractionsDecomposer () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.consigne =
@@ -25,7 +23,7 @@ export default function ExerciceFractionsDecomposer () {
   this.spacingCorr = 2
   this.sup = false // Donner l'écriture décimale
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []

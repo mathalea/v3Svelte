@@ -13,8 +13,6 @@ export const dateDePublication = '19/12/2021' // La date de publication initiale
  * @author Gilles Mora
  * Référence
 */
-export const uuid = '230fb'
-export const ref = 'can2C12'
 export default function TauxGlobal () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.typeExercice = 'simple' // Cette ligne est très importante pour faire faire un exercice simple !
@@ -24,7 +22,7 @@ export default function TauxGlobal () {
   this.optionsChampTexte = { texteApres: ' $\\%$' }
   // Dans un exercice simple, ne pas mettre de this.listeQuestions = [] ni de this.consigne
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     let a, b, coeffG
     let listeCalculs = []
 

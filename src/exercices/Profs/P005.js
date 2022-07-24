@@ -14,7 +14,7 @@ export default function FeuilleDeGrilles () {
   this.sup = 1
   this.titre = titre
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.contenu = ''
     const objets = []; let fleche; let A; let B; let C; let D; let texte = ''
     if (parseInt(this.sup) === 1) { // On travaille au dixième

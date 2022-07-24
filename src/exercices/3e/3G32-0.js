@@ -25,8 +25,6 @@ export const dateDePublication = '05/03/2022'
  * Interactivité des exercices, aléatoirisation des figures et des points dans les exos, AMC-isation de tous les exos @author Eric Elter
  * Référence 3G32-0
 */
-export const uuid = '07c7f'
-export const ref = '3G32-0'
 export default function problemesTrigoLongueur () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -49,7 +47,7 @@ export default function problemesTrigoLongueur () {
   this.spacingCorr = 3
   this.spacing = 2
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     let listeDeNomsDePolygones

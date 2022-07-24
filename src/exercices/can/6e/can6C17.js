@@ -11,8 +11,6 @@ export const amcType = 'AMCNum'
  * Créé pendant l'été 2021
  * Référence can6C17
  */
-export const uuid = '9d305'
-export const ref = 'can6C17'
 export default function FractionSimpleDeQuantite () {
   Exercice.call(this)
   this.typeExercice = 'simple'
@@ -20,7 +18,7 @@ export default function FractionSimpleDeQuantite () {
   this.tailleDiaporama = 2
   this.formatChampTexte = 'largeur15 inline'
   this.optionsChampTexte = { texteApres: ' L' }
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     const a = randint(2, 6)
     this.reponse = calcul(randint(2, 9) * 10)
     const b = calcul(this.reponse * a)

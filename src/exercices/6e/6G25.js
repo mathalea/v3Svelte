@@ -10,8 +10,6 @@ export const amcType = 'AMCOpen'
  * @author Jean-Claude Lhote (Ajout AMC par Eric Elter)
  * Publié le 30/11/2020
  */
-export const uuid = 'e016b'
-export const ref = '6G25'
 export default function ConstruireMediatrices6e () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.titre = titre
@@ -20,7 +18,7 @@ export default function ConstruireMediatrices6e () {
   this.nbQuestionsModifiable = false
   this.nbCols = 1
   this.nbColsCorr = 1
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []
@@ -51,9 +49,9 @@ export default function ConstruireMediatrices6e () {
     const cA = cercle(A, calcul(randint(25, 40) / 20))
     const cB = cercle(B, calcul(randint(45, 60) / 20))
     const A1 = pointIntersectionLC(dA, cA, noms[0], 1)
-    const A2 = symetrieAxiale(A1, medA, noms[1])
+    const A2 = symetrieAxiale(A1,medA, noms[1])
     const B1 = pointIntersectionLC(dB, cB, noms[2], 1)
-    const B2 = symetrieAxiale(B1, medB, noms[3])
+    const B2 = symetrieAxiale(B1,medB, noms[3])
     const sA = segmentAvecExtremites(A1, A2)
     const sB = segmentAvecExtremites(B1, B2)
     sA.color = 'black'

@@ -19,8 +19,6 @@ export const dateDeModifImportante = '28/10/2021'
 * Date initiale 2021-01-12
 * Ajout de l'alternance entre effectif total pair et impair le 18/08/2021 : Guilllaume Valmont
 */
-export const uuid = '675a7'
-export const ref = '4S11'
 export default function DeterminerDesMedianes () {
   Exercice.call(this) // Héritage de la classe Exercice()
   this.nbQuestions = 1
@@ -31,7 +29,7 @@ export default function DeterminerDesMedianes () {
   this.sup = 1
   this.listePackages = 'bclogo'
 
-  this.nouvelleVersion = () => {
+  this.nouvelleVersion = function () {
     this.listeQuestions = [] // Liste de questions
     this.listeCorrections = [] // Liste de questions corrigées
     this.autoCorrection = []
