@@ -1,4 +1,4 @@
-import iepLoadPromise from 'instrumenpoche/src/iepLoadPromise.mjs'
+// import iepLoadPromise from 'instrumenpoche/src/iepLoadPromise.mjs'
 import { angleOriente, droite, homothetie, longueur, milieu, norme, point, pointAdistance, pointSurSegment, rotation, segment, translation, translation2Points, vecteur } from './2d.js'
 import { context } from './context.js'
 import { bissectriceAuCompas, cercleCirconscrit, hauteur, mediane, mediatriceAuCompas, mediatriceRegleEquerre } from './iepMacros/droitesRemarquables.js'
