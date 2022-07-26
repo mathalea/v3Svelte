@@ -19,20 +19,20 @@
     "decimal.js": "^10.3.1",
     "earcut": "^2.2.3",
     "instrumenpoche": "git+https://git.sesamath.net/sesamath/instrumenpoche.git",
-    "katex": "^0.13.24",
+    "katex": "^0.16.0",
     "loadjs": "^4.2.0",
-    "mathjs": "^10.6.1",
-    "mathlive": "^0.69.11",
+    "mathjs": "^11.0.1",
+    "mathlive": "^0.77.0",
     "mathsteps": "github:mathalea/mathsteps",
     "seedrandom": "^3.0.5",
     "simple-svelte-autocomplete": "^2.4.0",
-    "ts-import": "4.0.0-beta.2",
+    "ts-import": "4.0.0-beta.6",
     "tw-elements": "1.0.0-alpha12"
   },
   "devDependencies": {
     "@sveltejs/vite-plugin-svelte": "^1.0.0-next.30",
     "@tailwindcss/forms": "^0.5.2",
-    "@tsconfig/svelte": "^2.0.1",
+    "@tsconfig/svelte": "^3.0.0",
     "@typescript-eslint/eslint-plugin": "^5.30.6",
     "@typescript-eslint/parser": "^5.30.6",
     "autoprefixer": "^10.4.4",
@@ -43,7 +43,7 @@
     "eslint-plugin-promise": "^6.0.0",
     "eslint-plugin-svelte3": "^4.0.0",
     "postcss": "^8.4.12",
-    "postcss-load-config": "^3.1.4",
+    "postcss-load-config": "^4.0.1",
     "standard": "^17.0.0",
     "standard-version": "^9.5.0",
     "svelte": "^3.44.0",
@@ -54,7 +54,7 @@
     "tslib": "^2.3.1",
     "typescript": "^4.5.4",
     "util": "^0.12.4",
-    "vite": "^2.9.9"
+    "vite": "^3.0.3"
   },
   "pnpm": {
     "overrides": {
